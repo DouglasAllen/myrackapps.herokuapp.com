@@ -1,0 +1,1446 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+int iauPlan94(double date1, double date2, int np, double pv[<span style="color:#00D">2</span>][<span style="color:#00D">3</span>])
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - - - - -
+**   i a u P l a n 9 4
+**  - - - - - - - - - -
+**
+**  Status:  support function.
+**
+**  Approximate heliocentric position and velocity of a nominated major
+**  planet:  Mercury, Venus, EMB, Mars, Jupiter, Saturn, Uranus or
+**  Neptune (but not the Earth itself).
+**
+**  Given:
+**     date1  double       TDB date part A (Note 1)
+**     date2  double       TDB date part B (Note 1)
+**     np     int          planet (1=Mercury, 2=Venus, 3=EMB, 4=Mars,
+**                             5=Jupiter, 6=Saturn, 7=Uranus, 8=Neptune)
+**
+**  Returned (argument):
+**     pv     double[2][3] planet p,v (heliocentric, J2000.0, AU,AU</span><span style="color:#404">/</span></span>d)
+**
+**  <span style="color:#036;font-weight:bold">Returned</span> (function value):
+**            int          <span style="color:#606">status</span>: <span style="color:#00D">-1</span> = illegal <span style="color:#036;font-weight:bold">NP</span> (outside <span style="color:#00D">1</span>-<span style="color:#00D">8</span>)
+**                                  <span style="color:#00D">0</span> = <span style="color:#036;font-weight:bold">OK</span>
+**                                 <span style="color:#00D">+1</span> = <span style="color:#606">warning</span>: year outside <span style="color:#00D">1000</span>-<span style="color:#00D">3000</span>
+**                                 <span style="color:#00D">+2</span> = <span style="color:#606">warning</span>: failed to converge
+**
+**  <span style="color:#606">Notes</span>:
+**
+**  <span style="color:#00D">1</span>) <span style="color:#036;font-weight:bold">The</span> date date1+date2 is <span style="color:#080;font-weight:bold">in</span> the <span style="color:#036;font-weight:bold">TDB</span> time scale (<span style="color:#080;font-weight:bold">in</span> practice <span style="color:#036;font-weight:bold">TT</span> can
+**     be used) <span style="color:#080;font-weight:bold">and</span> is a <span style="color:#036;font-weight:bold">Julian</span> <span style="color:#036;font-weight:bold">Date</span>, apportioned <span style="color:#080;font-weight:bold">in</span> any convenient way
+**     between the two arguments.  For example, JD(<span style="color:#036;font-weight:bold">TDB</span>)=<span style="color:#60E">2450123.7</span> could
+**     be expressed <span style="color:#080;font-weight:bold">in</span> any of these ways, among <span style="color:#606">others</span>:
+**
+**            date1          date2
+**
+**         <span style="color:#60E">2450123.7</span>           <span style="color:#60E">0.0</span>       (<span style="color:#036;font-weight:bold">JD</span> method)
+**         <span style="color:#60E">2451545.0</span>       -<span style="color:#60E">1421.3</span>       (<span style="color:#036;font-weight:bold">J2000</span> method)
+**         <span style="color:#60E">2400000.5</span>       <span style="color:#60E">50123.2</span>       (<span style="color:#036;font-weight:bold">MJD</span> method)
+**         <span style="color:#60E">2450123.5</span>           <span style="color:#60E">0.2</span>       (date &amp; time method)
+**
+**     <span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">JD</span> method is the most natural <span style="color:#080;font-weight:bold">and</span> convenient to use <span style="color:#080;font-weight:bold">in</span> cases
+**     where the loss of several decimal digits of resolution is
+**     acceptable.  The <span style="color:#036;font-weight:bold">J2000</span> method is best matched to the way the
+**     argument is handled internally <span style="color:#080;font-weight:bold">and</span> will deliver the optimum
+**     resolution.  The <span style="color:#036;font-weight:bold">MJD</span> method <span style="color:#080;font-weight:bold">and</span> the date &amp; time methods are both
+**     good compromises between resolution <span style="color:#080;font-weight:bold">and</span> convenience.  The limited
+**     accuracy of the present algorithm is such that any of the methods
+**     is satisfactory.
+**
+**  <span style="color:#00D">2</span>) <span style="color:#036;font-weight:bold">If</span> an np value outside the range <span style="color:#00D">1</span>-<span style="color:#00D">8</span> is supplied, an error status
+**     (function value <span style="color:#00D">-1</span>) is returned <span style="color:#080;font-weight:bold">and</span> the pv vector set to zeroes.
+**
+**  <span style="color:#00D">3</span>) <span style="color:#036;font-weight:bold">For</span> np=<span style="color:#00D">3</span> the result is <span style="color:#080;font-weight:bold">for</span> the <span style="color:#036;font-weight:bold">Earth</span>-<span style="color:#036;font-weight:bold">Moon</span> <span style="color:#036;font-weight:bold">Barycenter</span>.  To obtain
+**     the heliocentric position <span style="color:#080;font-weight:bold">and</span> velocity of the <span style="color:#036;font-weight:bold">Earth</span>, use instead
+**     the <span style="color:#036;font-weight:bold">SOFA</span> function iauEpv00.
+**
+**  <span style="color:#00D">4</span>) <span style="color:#036;font-weight:bold">On</span> successful <span style="color:#080;font-weight:bold">return</span>, the array pv contains the <span style="color:#606">following</span>:
+**
+**        pv[<span style="color:#00D">0</span>][<span style="color:#00D">0</span>]   x      }
+**        pv[<span style="color:#00D">0</span>][<span style="color:#00D">1</span>]   y      } heliocentric position, <span style="color:#036;font-weight:bold">AU</span>
+**        pv[<span style="color:#00D">0</span>][<span style="color:#00D">2</span>]   z      }
+**
+**        pv[<span style="color:#00D">1</span>][<span style="color:#00D">0</span>]   xdot   }
+**        pv[<span style="color:#00D">1</span>][<span style="color:#00D">1</span>]   ydot   } heliocentric velocity, <span style="color:#036;font-weight:bold">AU</span>/d
+**        pv[<span style="color:#00D">1</span>][<span style="color:#00D">2</span>]   zdot   }
+**
+**     <span style="color:#036;font-weight:bold">The</span> reference frame is equatorial <span style="color:#080;font-weight:bold">and</span> is with respect to the
+**     mean equator <span style="color:#080;font-weight:bold">and</span> equinox of epoch <span style="color:#036;font-weight:bold">J2000</span>.<span style="color:#F00;background-color:#FAA">0</span>.
+**
+**  <span style="color:#00D">5</span>) <span style="color:#036;font-weight:bold">The</span> algorithm is due to <span style="color:#036;font-weight:bold">J</span>.L. Simon, <span style="color:#036;font-weight:bold">P</span>. Bretagnon, <span style="color:#036;font-weight:bold">J</span>. Chapront,
+**     <span style="color:#036;font-weight:bold">M</span>. Chapront-<span style="color:#036;font-weight:bold">Touze</span>, <span style="color:#036;font-weight:bold">G</span>. Francou <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">J</span>. Laskar (<span style="color:#036;font-weight:bold">Bureau</span> des
+**     <span style="color:#036;font-weight:bold">Longitudes</span>, <span style="color:#036;font-weight:bold">Paris</span>, <span style="color:#036;font-weight:bold">France</span>).  From comparisons with <span style="color:#036;font-weight:bold">JPL</span>
+**     ephemeris <span style="color:#036;font-weight:bold">DE102</span>, they quote the following maximum errors
+**     over the interval <span style="color:#00D">1800</span>-<span style="color:#00D">2050</span>:
+**
+**                     <span style="color:#036;font-weight:bold">L</span> (arcsec)    <span style="color:#036;font-weight:bold">B</span> (arcsec)      <span style="color:#036;font-weight:bold">R</span> (km)
+**
+**        <span style="color:#036;font-weight:bold">Mercury</span>          <span style="color:#00D">4</span>             <span style="color:#00D">1</span>             <span style="color:#00D">300</span>
+**        <span style="color:#036;font-weight:bold">Venus</span>            <span style="color:#00D">5</span>             <span style="color:#00D">1</span>             <span style="color:#00D">800</span>
+**        <span style="color:#036;font-weight:bold">EMB</span>              <span style="color:#00D">6</span>             <span style="color:#00D">1</span>            <span style="color:#00D">1000</span>
+**        <span style="color:#036;font-weight:bold">Mars</span>            <span style="color:#00D">17</span>             <span style="color:#00D">1</span>            <span style="color:#00D">7700</span>
+**        <span style="color:#036;font-weight:bold">Jupiter</span>         <span style="color:#00D">71</span>             <span style="color:#00D">5</span>           <span style="color:#00D">76000</span>
+**        <span style="color:#036;font-weight:bold">Saturn</span>          <span style="color:#00D">81</span>            <span style="color:#00D">13</span>          <span style="color:#00D">267000</span>
+**        <span style="color:#036;font-weight:bold">Uranus</span>          <span style="color:#00D">86</span>             <span style="color:#00D">7</span>          <span style="color:#00D">712000</span>
+**        <span style="color:#036;font-weight:bold">Neptune</span>         <span style="color:#00D">11</span>             <span style="color:#00D">1</span>          <span style="color:#00D">253000</span>
+**
+**     <span style="color:#036;font-weight:bold">Over</span> the interval <span style="color:#00D">1000</span>-<span style="color:#00D">3000</span>, they report that the accuracy is no
+**     worse than <span style="color:#60E">1.5</span> times that over <span style="color:#00D">1800</span>-<span style="color:#00D">2050</span>.  Outside <span style="color:#00D">1000</span>-<span style="color:#00D">3000</span> the
+**     accuracy declines.
+**
+**     <span style="color:#036;font-weight:bold">Comparisons</span> of the present function with the <span style="color:#036;font-weight:bold">JPL</span> <span style="color:#036;font-weight:bold">DE200</span> ephemeris
+**     give the following <span style="color:#036;font-weight:bold">RMS</span> errors over the interval <span style="color:#00D">1960</span>-<span style="color:#00D">2025</span>:
+**
+**                      position (km)     velocity (m/s)
+**
+**        <span style="color:#036;font-weight:bold">Mercury</span>            <span style="color:#00D">334</span>               <span style="color:#60E">0.437</span>
+**        <span style="color:#036;font-weight:bold">Venus</span>             <span style="color:#00D">1060</span>               <span style="color:#60E">0.855</span>
+**        <span style="color:#036;font-weight:bold">EMB</span>               <span style="color:#00D">2010</span>               <span style="color:#60E">0.815</span>
+**        <span style="color:#036;font-weight:bold">Mars</span>              <span style="color:#00D">7690</span>               <span style="color:#60E">1.98</span>
+**        <span style="color:#036;font-weight:bold">Jupiter</span>          <span style="color:#00D">71700</span>               <span style="color:#60E">7.70</span>
+**        <span style="color:#036;font-weight:bold">Saturn</span>          <span style="color:#00D">199000</span>              <span style="color:#60E">19.4</span>
+**        <span style="color:#036;font-weight:bold">Uranus</span>          <span style="color:#00D">564000</span>              <span style="color:#60E">16.4</span>
+**        <span style="color:#036;font-weight:bold">Neptune</span>         <span style="color:#00D">158000</span>              <span style="color:#60E">14.4</span>
+**
+**     <span style="color:#036;font-weight:bold">Comparisons</span> against <span style="color:#036;font-weight:bold">DE200</span> over the interval <span style="color:#00D">1800</span>-<span style="color:#00D">2100</span> gave the
+**     following maximum absolute differences.  (<span style="color:#036;font-weight:bold">The</span> results using
+**     <span style="color:#036;font-weight:bold">DE406</span> were essentially the same.)
+**
+**                   <span style="color:#036;font-weight:bold">L</span> (arcsec)   <span style="color:#036;font-weight:bold">B</span> (arcsec)     <span style="color:#036;font-weight:bold">R</span> (km)   <span style="color:#036;font-weight:bold">Rdot</span> (m/s)
+**
+**        <span style="color:#036;font-weight:bold">Mercury</span>        <span style="color:#00D">7</span>            <span style="color:#00D">1</span>            <span style="color:#00D">500</span>       <span style="color:#60E">0.7</span>
+**        <span style="color:#036;font-weight:bold">Venus</span>          <span style="color:#00D">7</span>            <span style="color:#00D">1</span>           <span style="color:#00D">1100</span>       <span style="color:#60E">0.9</span>
+**        <span style="color:#036;font-weight:bold">EMB</span>            <span style="color:#00D">9</span>            <span style="color:#00D">1</span>           <span style="color:#00D">1300</span>       <span style="color:#60E">1.0</span>
+**        <span style="color:#036;font-weight:bold">Mars</span>          <span style="color:#00D">26</span>            <span style="color:#00D">1</span>           <span style="color:#00D">9000</span>       <span style="color:#60E">2.5</span>
+**        <span style="color:#036;font-weight:bold">Jupiter</span>       <span style="color:#00D">78</span>            <span style="color:#00D">6</span>          <span style="color:#00D">82000</span>       <span style="color:#60E">8.2</span>
+**        <span style="color:#036;font-weight:bold">Saturn</span>        <span style="color:#00D">87</span>           <span style="color:#00D">14</span>         <span style="color:#00D">263000</span>      <span style="color:#60E">24.6</span>
+**        <span style="color:#036;font-weight:bold">Uranus</span>        <span style="color:#00D">86</span>            <span style="color:#00D">7</span>         <span style="color:#00D">661000</span>      <span style="color:#60E">27.4</span>
+**        <span style="color:#036;font-weight:bold">Neptune</span>       <span style="color:#00D">11</span>            <span style="color:#00D">2</span>         <span style="color:#00D">248000</span>      <span style="color:#60E">21.4</span>
+**
+**  <span style="color:#00D">6</span>) <span style="color:#036;font-weight:bold">The</span> present <span style="color:#036;font-weight:bold">SOFA</span> re-implementation of the original <span style="color:#036;font-weight:bold">Simon</span> et al.
+**     <span style="color:#036;font-weight:bold">Fortran</span> code differs from the original <span style="color:#080;font-weight:bold">in</span> the following <span style="color:#606">respects</span>:
+**
+**       *  <span style="color:#036;font-weight:bold">C</span> instead of <span style="color:#036;font-weight:bold">Fortran</span>.
+**
+**       *  <span style="color:#036;font-weight:bold">The</span> date is supplied <span style="color:#080;font-weight:bold">in</span> two parts.
+**
+**       *  <span style="color:#036;font-weight:bold">The</span> result is returned only <span style="color:#080;font-weight:bold">in</span> equatorial <span style="color:#036;font-weight:bold">Cartesian</span> form;
+**          the ecliptic longitude, latitude <span style="color:#080;font-weight:bold">and</span> radius vector are <span style="color:#080;font-weight:bold">not</span>
+**          returned.
+**
+**       *  <span style="color:#036;font-weight:bold">The</span> result is <span style="color:#080;font-weight:bold">in</span> the <span style="color:#036;font-weight:bold">J2000</span>.<span style="color:#F00;background-color:#FAA">0</span> equatorial frame, <span style="color:#080;font-weight:bold">not</span> ecliptic.
+**
+**       *  <span style="color:#036;font-weight:bold">More</span> is done <span style="color:#080;font-weight:bold">in</span>-<span style="color:#606">line</span>: there are fewer calls to subroutines.
+**
+**       *  <span style="color:#036;font-weight:bold">Different</span> error/warning status values are used.
+**
+**       *  <span style="color:#036;font-weight:bold">A</span> different <span style="color:#036;font-weight:bold">Kepler</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">s-equation-solver is used (avoiding
+**          use of double precision complex).
+**
+**       *  Polynomials in t are nested to minimize rounding errors.
+**
+**       *  Explicit double constants are used to avoid mixed-mode
+**          expressions.
+**
+**     None of the above changes affects the result significantly.
+**
+**  7) The returned status indicates the most serious condition
+**     encountered during execution of the function.  Illegal np is
+**     considered the most serious, overriding failure to converge,
+**     which in turn takes precedence over the remote date warning.
+**
+**  Called:
+**     iauAnp       normalize angle into range 0 to 2pi
+**
+**  Reference:  Simon, J.L, Bretagnon, P., Chapront, J.,
+**              Chapront-Touze, M., Francou, G., and Laskar, J.,
+**              Astron. Astrophys. 282, 663 (1994).
+**
+**  This revision:  2012 March 8
+**
+**  Original version 2012-03-01
+**
+**  Copyright (C) 2013 Naoki Arita.  See notes at end.
+*/
+{
+/* Gaussian constant */
+   static const double GK = 0.017202098950;
+
+/* Sin and cos of J2000.0 mean obliquity (IAU 1976) */
+   static const double SINEPS = 0.3977771559319137;
+   static const double COSEPS = 0.9174820620691818;
+
+/* Maximum number of iterations allowed to solve Kepler</span><span style="color:#710">'</span></span>s equation *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const int KMAX = 10;
+
+   int jstat, i, k;
+   double t, da, dl, de, dp, di, dom, dmu, arga, argl, am,
+          ae, dae, ae2, at, r, v, si2, xq, xp, tl, xsw,
+          xcw, xm2, xf, ci2, xms, xmc, xpxq2, x, y, z;
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Planetary</span> inverse masses *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const double amas[] = { 6023600.0,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Mercury</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                   408523.5,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Venus</span>   *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                   328900.5,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">EMB</span>     *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                  3098710.0,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Mars</span>    *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                     1047.355,     </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Jupiter</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                     3498.5,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Saturn</span>  *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                    22869.0,       </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Uranus</span>  *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+                                    19314.0 };     </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Neptune</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+
+</span><span style="color:#404">/</span></span>*
+** <span style="color:#036;font-weight:bold">Tables</span> giving the mean <span style="color:#036;font-weight:bold">Keplerian</span> elements, limited to t^<span style="color:#00D">2</span> <span style="color:#606">terms</span>:
+**
+**   a       semi-major axis (<span style="color:#036;font-weight:bold">AU</span>)
+**   dlm     mean longitude (degree <span style="color:#080;font-weight:bold">and</span> arcsecond)
+**   e       eccentricity
+**   pi      longitude of the perihelion (degree <span style="color:#080;font-weight:bold">and</span> arcsecond)
+**   dinc    inclination (degree <span style="color:#080;font-weight:bold">and</span> arcsecond)
+**   omega   longitude of the ascending node (degree <span style="color:#080;font-weight:bold">and</span> arcsecond)
+*<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+
+   static const double a[][3] = {
+       {  0.3870983098,           0.0,     0.0 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Mercury</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       {  0.7233298200,           0.0,     0.0 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Venus</span>   *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       {  1.0000010178,           0.0,     0.0 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">EMB</span>     *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       {  1.5236793419,         3e-10,     0.0 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Mars</span>    *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       {  5.2026032092,     19132e-10, -39e-10 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Jupiter</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       {  9.5549091915, -0.0000213896, 444e-10 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Saturn</span>  *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       { 19.2184460618,     -3716e-10, 979e-10 },  </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Uranus</span>  *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+       { 30.1103868694,    -16635e-10, 686e-10 }   </span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Neptune</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   };
+
+   static const double dlm[][3] = {
+       { 252.25090552, 5381016286.88982,  -1.92789 },
+       { 181.97980085, 2106641364.33548,   0.59381 },
+       { 100.46645683, 1295977422.83429,  -2.04411 },
+       { 355.43299958,  689050774.93988,   0.94264 },
+       {  34.35151874,  109256603.77991, -30.60378 },
+       {  50.07744430,   43996098.55732,  75.61614 },
+       { 314.05500511,   15424811.93933,  -1.75083 },
+       { 304.34866548,    7865503.20744,   0.21103 }
+   };
+
+   static const double e[][3] = {
+       { 0.2056317526,  0.0002040653,    -28349e-10 },
+       { 0.0067719164, -0.0004776521,     98127e-10 },
+       { 0.0167086342, -0.0004203654, -0.0000126734 },
+       { 0.0934006477,  0.0009048438,    -80641e-10 },
+       { 0.0484979255,  0.0016322542, -0.0000471366 },
+       { 0.0555481426, -0.0034664062, -0.0000643639 },
+       { 0.0463812221, -0.0002729293,  0.0000078913 },
+       { 0.0094557470,  0.0000603263,           0.0 }
+   };
+
+   static const double pi[][3] = {
+       {  77.45611904,  5719.11590,   -4.83016 },
+       { 131.56370300,   175.48640, -498.48184 },
+       { 102.93734808, 11612.35290,   53.27577 },
+       { 336.06023395, 15980.45908,  -62.32800 },
+       {  14.33120687,  7758.75163,  259.95938 },
+       {  93.05723748, 20395.49439,  190.25952 },
+       { 173.00529106,  3215.56238,  -34.09288 },
+       {  48.12027554,  1050.71912,   27.39717 }
+   };
+
+   static const double dinc[][3] = {
+       { 7.00498625, -214.25629,   0.28977 },
+       { 3.39466189,  -30.84437, -11.67836 },
+       {        0.0,  469.97289,  -3.35053 },
+       { 1.84972648, -293.31722,  -8.11830 },
+       { 1.30326698,  -71.55890,  11.95297 },
+       { 2.48887878,   91.85195, -17.66225 },
+       { 0.77319689,  -60.72723,   1.25759 },
+       { 1.76995259,    8.12333,   0.08135 }
+   };
+
+   static const double omega[][3] = {
+       {  48.33089304,  -4515.21727,  -31.79892 },
+       {  76.67992019, -10008.48154,  -51.32614 },
+       { 174.87317577,  -8679.27034,   15.34191 },
+       {  49.55809321, -10620.90088, -230.57416 },
+       { 100.46440702,   6362.03561,  326.52178 },
+       { 113.66550252,  -9240.19942,  -66.23743 },
+       {  74.00595701,   2669.15033,  145.93964 },
+       { 131.78405702,   -221.94322,   -0.78728 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Tables</span> <span style="color:#080;font-weight:bold">for</span> trigonometric terms to be added to the mean elements of *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+</span><span style="color:#404">/</span></span>* the semi-major axes *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+
+   static const double kp[][9] = {
+    {   69613, 75645, 88306, 59899, 15746, 71087, 142173,  3086,    0 },
+    {   21863, 32794, 26934, 10931, 26250, 43725,  53867, 28939,    0 },
+    {   16002, 21863, 32004, 10931, 14529, 16368,  15318, 32794,    0 },
+    {    6345,  7818, 15636,  7077,  8184, 14163,   1107,  4872,    0 },
+    {    1760,  1454,  1167,   880,   287,  2640,     19,  2047, 1454 },
+    {     574,     0,   880,   287,    19,  1760,   1167,   306,  574 },
+    {     204,     0,   177,  1265,     4,   385,    200,   208,  204 },
+    {       0,   102,   106,     4,    98,  1367,    487,   204,    0 }
+   };
+
+   static const double ca[][9] = {
+    {       4,    -13,    11,   -9,    -9,   -3,     -1,     4,     0 },
+    {    -156,     59,   -42,    6,    19,  -20,    -10,   -12,     0 },
+    {      64,   -152,    62,   -8,    32,  -41,     19,   -11,     0 },
+    {     124,    621,  -145,  208,    54,  -57,     30,    15,     0 },
+    {  -23437,  -2634,  6601, 6259, -1507,-1821,   2620, -2115, -1489 },
+    {   62911,-119919, 79336,17814,-24241,12068,   8306, -4893,  8902 },
+    {  389061,-262125,-44088, 8387,-22976,-2093,   -615, -9720,  6633 },
+    { -412235,-157046,-31430,37817, -9740,  -13,  -7449,  9644,     0 }
+   };
+
+   static const double sa[][9] = {
+    {     -29,    -1,     9,     6,    -6,     5,     4,     0,     0 },
+    {     -48,  -125,   -26,   -37,    18,   -13,   -20,    -2,     0 },
+    {    -150,   -46,    68,    54,    14,    24,   -28,    22,     0 },
+    {    -621,   532,  -694,   -20,   192,   -94,    71,   -73,     0 },
+    {  -14614,-19828, -5869,  1881, -4372, -2255,   782,   930,   913 },
+    {  139737,     0, 24667, 51123, -5102,  7429, -4095, -1976, -9566 },
+    { -138081,     0, 37205,-49039,-41901,-33872,-27037,-12474, 18797 },
+    {       0, 28492,133236, 69654, 52322,-49577,-26430, -3593,     0 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Tables</span> giving the trigonometric terms to be added to the mean *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+</span><span style="color:#404">/</span></span>* elements of the mean longitudes *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+
+   static const double kq[][10] = {
+    {   3086,15746,69613,59899,75645,88306, 12661,  2658,    0,     0 },
+    {  21863,32794,10931,   73, 4387,26934,  1473,  2157,    0,     0 },
+    {     10,16002,21863,10931, 1473,32004,  4387,    73,    0,     0 },
+    {     10, 6345, 7818, 1107,15636, 7077,  8184,   532,   10,     0 },
+    {     19, 1760, 1454,  287, 1167,  880,   574,  2640,   19,  1454 },
+    {     19,  574,  287,  306, 1760,   12,    31,    38,   19,   574 },
+    {      4,  204,  177,    8,   31,  200,  1265,   102,    4,   204 },
+    {      4,  102,  106,    8,   98, 1367,   487,   204,    4,   102 }
+   };
+
+   static const double cl[][10] = {
+    {      21,   -95, -157,   41,   -5,   42,  23,  30,      0,     0 },
+    {    -160,  -313, -235,   60,  -74,  -76, -27,  34,      0,     0 },
+    {    -325,  -322,  -79,  232,  -52,   97,  55, -41,      0,     0 },
+    {    2268,  -979,  802,  602, -668,  -33, 345, 201,    -55,     0 },
+    {    7610, -4997,-7689,-5841,-2617, 1115,-748,-607,   6074,   354 },
+    {  -18549, 30125,20012, -730,  824,   23,1289,-352, -14767, -2062 },
+    { -135245,-14594, 4197,-4030,-5630,-2898,2540,-306,   2939,  1986 },
+    {   89948,  2103, 8963, 2695, 3682, 1648, 866,-154,  -1963,  -283 }
+   };
+
+   static const double sl[][10] = {
+    {   -342,   136,  -23,   62,   66,  -52, -33,    17,     0,     0 },
+    {    524,  -149,  -35,  117,  151,  122, -71,   -62,     0,     0 },
+    {   -105,  -137,  258,   35, -116,  -88,-112,   -80,     0,     0 },
+    {    854,  -205, -936, -240,  140, -341, -97,  -232,   536,     0 },
+    { -56980,  8016, 1012, 1448,-3024,-3710, 318,   503,  3767,   577 },
+    { 138606,-13478,-4964, 1441,-1319,-1482, 427,  1236, -9167, -1918 },
+    {  71234,-41116, 5334,-4935,-1848,   66, 434, -1748,  3780,  -701 },
+    { -47645, 11647, 2166, 3194,  679,    0,-244,  -419, -2531,    48 }
+   };
+
+</span><span style="color:#404">/</span></span>*--------------------------------------------------------------------*<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Validate</span> the planet number. */
+   <span style="color:#080;font-weight:bold">if</span> ((np &lt; <span style="color:#00D">1</span>) || (np &gt; <span style="color:#00D">8</span>)) {
+      jstat = <span style="color:#00D">-1</span>;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Reset the result in case of failure. *</span><span style="color:#404">/</span></span>
+      <span style="color:#080;font-weight:bold">for</span> (k = <span style="color:#00D">0</span>; k &lt; <span style="color:#00D">2</span>; k++) {
+         <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#00D">0</span>; i &lt; <span style="color:#00D">3</span>; i++) {
+            pv[k][i] = <span style="color:#60E">0.0</span>;
+         }
+      }
+
+   } <span style="color:#080;font-weight:bold">else</span> {
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Decrement the planet number to start at zero. *</span><span style="color:#404">/</span></span>
+      np--;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Time: Julian millennia since J2000.0. *</span><span style="color:#404">/</span></span>
+      t = ((date1 - <span style="color:#036;font-weight:bold">DJ00</span>) + date2) / <span style="color:#036;font-weight:bold">DJM</span>;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* OK status unless remote date. *</span><span style="color:#404">/</span></span>
+      jstat = fabs(t) &lt;= <span style="color:#60E">1.0</span> ? <span style="color:#00D">0</span> : <span style="color:#00D">1</span>;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Compute the mean elements. *</span><span style="color:#404">/</span></span>
+      da = a[np][<span style="color:#00D">0</span>] +
+          (a[np][<span style="color:#00D">1</span>] +
+           a[np][<span style="color:#00D">2</span>] * t) * t;
+      dl = (<span style="color:#60E">3600.0</span> * dlm[np][<span style="color:#00D">0</span>] +
+                    (dlm[np][<span style="color:#00D">1</span>] +
+                     dlm[np][<span style="color:#00D">2</span>] * t) * t) * <span style="color:#036;font-weight:bold">DAS2R</span>;
+      de = e[np][<span style="color:#00D">0</span>] +
+         ( e[np][<span style="color:#00D">1</span>] +
+           e[np][<span style="color:#00D">2</span>] * t) * t;
+      dp = iauAnpm((<span style="color:#60E">3600.0</span> * pi[np][<span style="color:#00D">0</span>] +
+                            (pi[np][<span style="color:#00D">1</span>] +
+                             pi[np][<span style="color:#00D">2</span>] * t) * t) * <span style="color:#036;font-weight:bold">DAS2R</span>);
+      di = (<span style="color:#60E">3600.0</span> * dinc[np][<span style="color:#00D">0</span>] +
+                    (dinc[np][<span style="color:#00D">1</span>] +
+                     dinc[np][<span style="color:#00D">2</span>] * t) * t) * <span style="color:#036;font-weight:bold">DAS2R</span>;
+      dom = iauAnpm((<span style="color:#60E">3600.0</span> * omega[np][<span style="color:#00D">0</span>] +
+                             (omega[np][<span style="color:#00D">1</span>] +
+                              omega[np][<span style="color:#00D">2</span>] * t) * t) * <span style="color:#036;font-weight:bold">DAS2R</span>);
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Apply the trigonometric terms. *</span><span style="color:#404">/</span></span>
+      dmu = <span style="color:#60E">0.35953620</span> * t;
+      <span style="color:#080;font-weight:bold">for</span> (k = <span style="color:#00D">0</span>; k &lt; <span style="color:#00D">8</span>; k++) {
+         arga = kp[np][k] * dmu;
+         argl = kq[np][k] * dmu;
+         da += (ca[np][k] * cos(arga) +
+                sa[np][k] * sin(arga)) * <span style="color:#60E">1e-7</span>;
+         dl += (cl[np][k] * cos(argl) +
+                sl[np][k] * sin(argl)) * <span style="color:#60E">1e-7</span>;
+      }
+      arga = kp[np][<span style="color:#00D">8</span>] * dmu;
+      da += t * (ca[np][<span style="color:#00D">8</span>] * cos(arga) +
+                 sa[np][<span style="color:#00D">8</span>] * sin(arga)) * <span style="color:#60E">1e-7</span>;
+      <span style="color:#080;font-weight:bold">for</span> (k = <span style="color:#00D">8</span>; k &lt; <span style="color:#00D">10</span>; k++) {
+         argl = kq[np][k] * dmu;
+         dl += t * (cl[np][k] * cos(argl) +
+                    sl[np][k] * sin(argl)) * <span style="color:#60E">1e-7</span>;
+      }
+      dl = fmod(dl, <span style="color:#036;font-weight:bold">D2PI</span>);
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Iterative soln. of Kepler's equation to get eccentric anomaly. *</span><span style="color:#404">/</span></span>
+      am = dl - dp;
+      ae = am + de * sin(am);
+      k = <span style="color:#00D">0</span>;
+      dae = <span style="color:#60E">1.0</span>;
+      <span style="color:#080;font-weight:bold">while</span> (k &lt; <span style="color:#036;font-weight:bold">KMAX</span> &amp;&amp; fabs(dae) &gt; <span style="color:#60E">1e-12</span>) {
+         dae = (am - ae + de * sin(ae)) / (<span style="color:#60E">1.0</span> - de * cos(ae));
+         ae += dae;
+         k++;
+         <span style="color:#080;font-weight:bold">if</span> (k == <span style="color:#036;font-weight:bold">KMAX</span>-<span style="color:#00D">1</span>) jstat = <span style="color:#00D">2</span>;
+      }
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* True anomaly. *</span><span style="color:#404">/</span></span>
+      ae2 = ae / <span style="color:#60E">2.0</span>;
+      at = <span style="color:#60E">2.0</span> * atan2(sqrt((<span style="color:#60E">1.0</span> + de) / (<span style="color:#60E">1.0</span> - de)) * sin(ae2),
+                                                       cos(ae2));
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Distance (AU) and speed (radians per day). *</span><span style="color:#404">/</span></span>
+      r = da * (<span style="color:#60E">1.0</span> - de * cos(ae));
+      v = <span style="color:#036;font-weight:bold">GK</span> * sqrt((<span style="color:#60E">1.0</span> + <span style="color:#60E">1.0</span> / amas[np]) / (da * da * da));
+
+      si2 = sin(di / <span style="color:#60E">2.0</span>);
+      xq = si2 * cos(dom);
+      xp = si2 * sin(dom);
+      tl = at + dp;
+      xsw = sin(tl);
+      xcw = cos(tl);
+      xm2 = <span style="color:#60E">2.0</span> * (xp * xcw - xq * xsw);
+      xf = da / sqrt(<span style="color:#00D">1</span>  -  de * de);
+      ci2 = cos(di / <span style="color:#60E">2.0</span>);
+      xms = (de * sin(dp) + xsw) * xf;
+      xmc = (de * cos(dp) + xcw) * xf;
+      xpxq2 = <span style="color:#00D">2</span> * xp * xq;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Position (J2000.0 ecliptic x,y,z in AU). *</span><span style="color:#404">/</span></span>
+      x = r * (xcw - xm2 * xp);
+      y = r * (xsw + xm2 * xq);
+      z = r * (-xm2 * ci2);
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Rotate to equatorial. *</span><span style="color:#404">/</span></span>
+      pv[<span style="color:#00D">0</span>][<span style="color:#00D">0</span>] = x;
+      pv[<span style="color:#00D">0</span>][<span style="color:#00D">1</span>] = y * <span style="color:#036;font-weight:bold">COSEPS</span> - z * <span style="color:#036;font-weight:bold">SINEPS</span>;
+      pv[<span style="color:#00D">0</span>][<span style="color:#00D">2</span>] = y * <span style="color:#036;font-weight:bold">SINEPS</span> + z * <span style="color:#036;font-weight:bold">COSEPS</span>;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Velocity (J2000.0 ecliptic xdot,ydot,zdot in AU</span><span style="color:#404">/</span></span>d). */
+      x = v * (( <span style="color:#60E">-1.0</span> + <span style="color:#60E">2.0</span> * xp * xp) * xms + xpxq2 * xmc);
+      y = v * ((  <span style="color:#60E">1.0</span> - <span style="color:#60E">2.0</span> * xq * xq) * xmc - xpxq2 * xms);
+      z = v * (<span style="color:#60E">2.0</span> * ci2 * (xp * xms + xq * xmc));
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Rotate to equatorial. *</span><span style="color:#404">/</span></span>
+      pv[<span style="color:#00D">1</span>][<span style="color:#00D">0</span>] = x;
+      pv[<span style="color:#00D">1</span>][<span style="color:#00D">1</span>] = y * <span style="color:#036;font-weight:bold">COSEPS</span> - z * <span style="color:#036;font-weight:bold">SINEPS</span>;
+      pv[<span style="color:#00D">1</span>][<span style="color:#00D">2</span>] = y * <span style="color:#036;font-weight:bold">SINEPS</span> + z * <span style="color:#036;font-weight:bold">COSEPS</span>;
+
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Return the status. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">return</span> jstat;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http:</span><span style="color:#404">/</span></span>/www.iausofa.org/tandc.html).
+**
+**  <span style="color:#036;font-weight:bold">The</span> original library is available from <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#036;font-weight:bold">Standards</span> of
+**  <span style="color:#036;font-weight:bold">Fundamental</span> <span style="color:#036;font-weight:bold">Astronomy</span> (<span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>www.iausofa.org/).
+**
+**
+**
+**
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span>, <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>
+**  <span style="color:#036;font-weight:bold">All</span> rights reserved.
+**
+**  <span style="color:#036;font-weight:bold">Redistribution</span> <span style="color:#080;font-weight:bold">and</span> use <span style="color:#080;font-weight:bold">in</span> source <span style="color:#080;font-weight:bold">and</span> binary forms, with <span style="color:#080;font-weight:bold">or</span> without
+**  modification, are permitted provided that the following conditions
+**  are <span style="color:#606">met</span>:
+**
+**  <span style="color:#00D">1</span> <span style="color:#036;font-weight:bold">Redistributions</span> of source code must retain the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer.
+**
+**  <span style="color:#00D">2</span> <span style="color:#036;font-weight:bold">Redistributions</span> <span style="color:#080;font-weight:bold">in</span> binary form must reproduce the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer <span style="color:#080;font-weight:bold">in</span>
+**    the documentation <span style="color:#080;font-weight:bold">and</span><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+}
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

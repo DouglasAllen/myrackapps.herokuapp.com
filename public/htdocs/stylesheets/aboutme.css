@@ -1,0 +1,151 @@
+@font-face {
+	font-family: DeliciousRoman;
+	src: url(http://www.font-face.com/fonts/delicious/Delicious-Roman.otf);
+	font-weight: 600;
+}
+
+body, td, input, select, textarea
+{
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+}
+
+body {
+    margin: 10px 40px;
+    background-color: #eeeeee;
+    font-family: sans-serif;
+    border-top: 4px solid #2A1959;
+    border-left: 4px solid #2A1959;
+    border-right: 4px solid #2A1959;
+    border-bottom: 4px solid #2A1959;
+}
+h1 { font-size: 320%; }
+h2 { font-size: 240%; }
+h3 { font-size: 180%; }
+h4 { font-size: 140%; }
+h5 { font-size: 120%; }
+h6 { font-size: 100%; }
+
+h1, h2, h3, h4, h5, h6
+{
+	font-family: Trebuchet MS, Verdana, Arial, sans-serif;
+}
+
+h2 {
+  color: #474B94;
+  font-size: 1.2em;
+}
+h2, p {
+    color: #474B94;
+    margin-left: 120px;
+}
+
+a, a:visited, a:active, a:hover
+{
+	color: #3333cc;
+	text-decoration: underline;
+}
+
+titlerow navrow contentrow footerrow  {
+  display: table-row;
+}
+
+navcontainer {
+  background-color: #0000ff;
+  color: blue;
+  border-top: solid 4px;
+  border-bottom: solid 4px;
+  padding: 5px 0 5px 0;
+}
+
+navcontainer ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: blue;
+  text-align: center;
+  margin: 0;
+  padding: .2em 0;
+  list-style-type: none;
+  width: 100%;
+  text-align: center;
+}
+
+navcontainer ul li {
+  display: inline;
+  border-right: 0px solid #aa2004;
+  border-left: 0px solid #aa2004;
+}
+
+navcontainer ul li a {
+  padding: 5px 10px 5px 10px;
+  color: blue;
+  #text-decoration: none;  
+}
+
+span.disabled {
+  padding: 5px 10px 5px 10px;
+  color: blue;;
+  text-decoration: none;
+  border-right: 1px solid #C12820;
+}
+
+navcontainer ul li a:hover {
+  #color: #aa2004;
+}
+
+first a { 
+  border-left: 1px solid #C12820;
+}
+
+#container {
+  display: table;
+  width: 600px;
+  text-align: center;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+#titlerow #navrow #contentrow #footerrow  {
+  display: table-row;
+}
+
+#contentrow {
+  text-align: left;
+  padding-left: 5px;
+}
+
+#left, #middle {
+  display: table-cell;
+  padding-left: 5px;
+  text-align: left;
+}
+
+#right, #middle {
+  display: table-cell;
+  text-align: right;
+  width: 100%;
+  padding-right: 10px;
+}
+
+#title {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 24px;
+  font-weight: bold;
+  color: #aa2004;
+  text-align: left;
+}
+
+#subtitle {
+  font-family : Helvetica, sans-serif, Arial; 
+  font-size: 22px;
+  font-weight: bold;
+  text-align: right;
+  color: #aa2004;
+}
+
+h5 {
+  color: #0000FF;   
+}

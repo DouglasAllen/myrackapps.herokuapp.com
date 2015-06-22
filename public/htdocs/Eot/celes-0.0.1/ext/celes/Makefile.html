@@ -1,0 +1,1216 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>
+<span style="color:#036;font-weight:bold">SHELL</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">bin</span><span style="color:#404">/</span><span style="color:#C2C">s</span></span>h
+
+<span style="color:#777"># V=0 quiet, V=1 verbose.  other values don't work.</span>
+<span style="color:#036;font-weight:bold">V</span> = <span style="color:#00D">0</span>
+<span style="color:#036;font-weight:bold">Q1</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#606">V</span>:<span style="color:#00D">1</span>=)
+<span style="color:#036;font-weight:bold">Q</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#606">Q1</span>:<span style="color:#00D">0</span>=<span style="color:#F00;background-color:#FAA">@</span>)
+<span style="color:#036;font-weight:bold">ECHO1</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#606">V</span>:<span style="color:#00D">1</span>=<span style="color:#F00;background-color:#FAA">@</span>:)
+<span style="color:#036;font-weight:bold">ECHO</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#606">ECHO1</span>:<span style="color:#00D">0</span>=<span style="color:#33B">@echo</span>)
+<span style="color:#036;font-weight:bold">NULLCMD</span> = :
+
+<span style="color:#777">#### Start of system configuration section. ####</span>
+
+srcdir = .
+topdir = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">home</span><span style="color:#404">/</span></span>douglasallen/.rbenv/versions/<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>/include/ruby-<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>
+hdrdir = <span style="color:#F00;background-color:#FAA">$</span>(topdir)
+arch_hdrdir = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">home</span><span style="color:#404">/</span></span>douglasallen/.rbenv/versions/<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>/include/ruby-<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>/i686-linux
+<span style="color:#036;font-weight:bold">PATH_SEPARATOR</span> = :
+<span style="color:#036;font-weight:bold">VPATH</span> = <span style="color:#F00;background-color:#FAA">$</span>(srcdir):<span style="color:#F00;background-color:#FAA">$</span>(arch_hdrdir)/<span style="color:#606">ruby</span>:<span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby
+prefix = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DESTDIR</span>)/home/douglasallen/.rbenv/versions/<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>
+rubysitearchprefix = <span style="color:#F00;background-color:#FAA">$</span>(rubylibprefix)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+rubyarchprefix = <span style="color:#F00;background-color:#FAA">$</span>(rubylibprefix)/<span style="color:#F00;background-color:#FAA">$</span>(arch)
+rubylibprefix = <span style="color:#F00;background-color:#FAA">$</span>(libdir)/<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_BASE_NAME</span>)
+exec_prefix = <span style="color:#F00;background-color:#FAA">$</span>(prefix)
+vendorarchhdrdir = <span style="color:#F00;background-color:#FAA">$</span>(vendorhdrdir)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+sitearchhdrdir = <span style="color:#F00;background-color:#FAA">$</span>(sitehdrdir)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+rubyarchhdrdir = <span style="color:#F00;background-color:#FAA">$</span>(rubyhdrdir)/<span style="color:#F00;background-color:#FAA">$</span>(arch)
+vendorhdrdir = <span style="color:#F00;background-color:#FAA">$</span>(rubyhdrdir)/vendor_ruby
+sitehdrdir = <span style="color:#F00;background-color:#FAA">$</span>(rubyhdrdir)/site_ruby
+rubyhdrdir = <span style="color:#F00;background-color:#FAA">$</span>(includedir)/<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_VERSION_NAME</span>)
+vendorarchdir = <span style="color:#F00;background-color:#FAA">$</span>(vendorlibdir)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+vendorlibdir = <span style="color:#F00;background-color:#FAA">$</span>(vendordir)/<span style="color:#F00;background-color:#FAA">$</span>(ruby_version)
+vendordir = <span style="color:#F00;background-color:#FAA">$</span>(rubylibprefix)/vendor_ruby
+sitearchdir = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DESTDIR</span>)./.gem.<span style="color:#F00;background-color:#FAA">20150116</span>-<span style="color:#00D">15572</span>-pc550e
+sitelibdir = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DESTDIR</span>)./.gem.<span style="color:#F00;background-color:#FAA">20150116</span>-<span style="color:#00D">15572</span>-pc550e
+sitedir = <span style="color:#F00;background-color:#FAA">$</span>(rubylibprefix)/site_ruby
+rubyarchdir = <span style="color:#F00;background-color:#FAA">$</span>(rubylibdir)/<span style="color:#F00;background-color:#FAA">$</span>(arch)
+rubylibdir = <span style="color:#F00;background-color:#FAA">$</span>(rubylibprefix)/<span style="color:#F00;background-color:#FAA">$</span>(ruby_version)
+sitearchincludedir = <span style="color:#F00;background-color:#FAA">$</span>(includedir)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+archincludedir = <span style="color:#F00;background-color:#FAA">$</span>(includedir)/<span style="color:#F00;background-color:#FAA">$</span>(arch)
+sitearchlibdir = <span style="color:#F00;background-color:#FAA">$</span>(libdir)/<span style="color:#F00;background-color:#FAA">$</span>(sitearch)
+archlibdir = <span style="color:#F00;background-color:#FAA">$</span>(libdir)/<span style="color:#F00;background-color:#FAA">$</span>(arch)
+ridir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)/<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RI_BASE_NAME</span>)
+mandir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)/man
+localedir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)/locale
+libdir = <span style="color:#F00;background-color:#FAA">$</span>(exec_prefix)/lib
+psdir = <span style="color:#F00;background-color:#FAA">$</span>(docdir)
+pdfdir = <span style="color:#F00;background-color:#FAA">$</span>(docdir)
+dvidir = <span style="color:#F00;background-color:#FAA">$</span>(docdir)
+htmldir = <span style="color:#F00;background-color:#FAA">$</span>(docdir)
+infodir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)/info
+docdir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)/doc/<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">PACKAGE</span>)
+oldincludedir = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DESTDIR</span>)/usr/include
+includedir = <span style="color:#F00;background-color:#FAA">$</span>(prefix)/include
+localstatedir = <span style="color:#F00;background-color:#FAA">$</span>(prefix)/var
+sharedstatedir = <span style="color:#F00;background-color:#FAA">$</span>(prefix)/com
+sysconfdir = <span style="color:#F00;background-color:#FAA">$</span>(prefix)/etc
+datadir = <span style="color:#F00;background-color:#FAA">$</span>(datarootdir)
+datarootdir = <span style="color:#F00;background-color:#FAA">$</span>(prefix)/share
+libexecdir = <span style="color:#F00;background-color:#FAA">$</span>(exec_prefix)/libexec
+sbindir = <span style="color:#F00;background-color:#FAA">$</span>(exec_prefix)/sbin
+bindir = <span style="color:#F00;background-color:#FAA">$</span>(exec_prefix)/bin
+archdir = <span style="color:#F00;background-color:#FAA">$</span>(rubyarchdir)
+
+
+<span style="color:#036;font-weight:bold">CC</span> = gcc
+<span style="color:#036;font-weight:bold">CXX</span> = g++
+<span style="color:#036;font-weight:bold">LIBRUBY</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">LIBRUBY_A</span>)
+<span style="color:#036;font-weight:bold">LIBRUBY_A</span> = lib<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_SO_NAME</span>)-static.a
+<span style="color:#036;font-weight:bold">LIBRUBYARG_SHARED</span> = -<span style="color:#036;font-weight:bold">Wl</span>,-<span style="color:#036;font-weight:bold">R</span><span style="color:#F00;background-color:#FAA">$</span>(libdir) -<span style="color:#036;font-weight:bold">L</span><span style="color:#F00;background-color:#FAA">$</span>(libdir) 
+<span style="color:#036;font-weight:bold">LIBRUBYARG_STATIC</span> = -<span style="color:#036;font-weight:bold">Wl</span>,-<span style="color:#036;font-weight:bold">R</span><span style="color:#F00;background-color:#FAA">$</span>(libdir) -<span style="color:#036;font-weight:bold">L</span><span style="color:#F00;background-color:#FAA">$</span>(libdir) -l<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_SO_NAME</span>)-static
+empty =
+<span style="color:#036;font-weight:bold">OUTFLAG</span> = -o <span style="color:#F00;background-color:#FAA">$</span>(empty)
+<span style="color:#036;font-weight:bold">COUTFLAG</span> = -o <span style="color:#F00;background-color:#FAA">$</span>(empty)
+
+<span style="color:#036;font-weight:bold">RUBY_EXTCONF_H</span> = 
+cflags   =  <span style="color:#F00;background-color:#FAA">$</span>(optflags) <span style="color:#F00;background-color:#FAA">$</span>(debugflags) <span style="color:#F00;background-color:#FAA">$</span>(warnflags)
+optflags = -<span style="color:#036;font-weight:bold">O3</span> -fno-fast-math
+debugflags = -ggdb3
+warnflags = -<span style="color:#036;font-weight:bold">Wall</span> -<span style="color:#036;font-weight:bold">Wextra</span> -<span style="color:#036;font-weight:bold">Wno</span>-unused-parameter -<span style="color:#036;font-weight:bold">Wno</span>-parentheses -<span style="color:#036;font-weight:bold">Wno</span>-long-long -<span style="color:#036;font-weight:bold">Wno</span>-missing-field-initializers -<span style="color:#036;font-weight:bold">Wunused</span>-variable -<span style="color:#036;font-weight:bold">Wpointer</span>-arith -<span style="color:#036;font-weight:bold">Wwrite</span>-strings -<span style="color:#036;font-weight:bold">Wdeclaration</span>-after-statement -<span style="color:#036;font-weight:bold">Wimplicit</span>-function-declaration -<span style="color:#036;font-weight:bold">Wdeprecated</span>-declarations -<span style="color:#036;font-weight:bold">Wno</span>-packed-bitfield-compat
+<span style="color:#036;font-weight:bold">CCDLFLAGS</span> = -fPIC
+<span style="color:#036;font-weight:bold">CFLAGS</span>   = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CCDLFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(cflags) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ARCH_FLAG</span>)
+<span style="color:#036;font-weight:bold">INCFLAGS</span> = -<span style="color:#036;font-weight:bold">I</span>. -<span style="color:#036;font-weight:bold">I</span><span style="color:#F00;background-color:#FAA">$</span>(arch_hdrdir) -<span style="color:#036;font-weight:bold">I</span><span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/backward -<span style="color:#036;font-weight:bold">I</span><span style="color:#F00;background-color:#FAA">$</span>(hdrdir) -<span style="color:#036;font-weight:bold">I</span><span style="color:#F00;background-color:#FAA">$</span>(srcdir)
+<span style="color:#036;font-weight:bold">DEFS</span>     = -<span style="color:#036;font-weight:bold">D_FILE_OFFSET_BITS</span>=<span style="color:#00D">64</span>
+<span style="color:#036;font-weight:bold">CPPFLAGS</span> =  -<span style="color:#036;font-weight:bold">I</span>/home/douglasallen/.rbenv/versions/<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>/include  <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DEFS</span>) <span style="color:#F00;background-color:#FAA">$</span>(cppflags)
+<span style="color:#036;font-weight:bold">CXXFLAGS</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CCDLFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(cxxflags) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ARCH_FLAG</span>)
+ldflags  = -<span style="color:#036;font-weight:bold">L</span>. -<span style="color:#036;font-weight:bold">L</span>/home/douglasallen/.rbenv/versions/<span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>/lib  -fstack-protector -rdynamic -<span style="color:#036;font-weight:bold">Wl</span>,-export-dynamic
+dldflags =  
+<span style="color:#036;font-weight:bold">ARCH_FLAG</span> = 
+<span style="color:#036;font-weight:bold">DLDFLAGS</span> = <span style="color:#F00;background-color:#FAA">$</span>(ldflags) <span style="color:#F00;background-color:#FAA">$</span>(dldflags) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ARCH_FLAG</span>)
+<span style="color:#036;font-weight:bold">LDSHARED</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CC</span>) -shared
+<span style="color:#036;font-weight:bold">LDSHAREDXX</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) -shared
+<span style="color:#036;font-weight:bold">AR</span> = ar
+<span style="color:#036;font-weight:bold">EXEEXT</span> = 
+
+<span style="color:#036;font-weight:bold">RUBY_INSTALL_NAME</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_BASE_NAME</span>)
+<span style="color:#036;font-weight:bold">RUBY_SO_NAME</span> = ruby
+<span style="color:#036;font-weight:bold">RUBYW_INSTALL_NAME</span> = 
+<span style="color:#036;font-weight:bold">RUBY_VERSION_NAME</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_BASE_NAME</span>)-<span style="color:#F00;background-color:#FAA">$</span>(ruby_version)
+<span style="color:#036;font-weight:bold">RUBYW_BASE_NAME</span> = rubyw
+<span style="color:#036;font-weight:bold">RUBY_BASE_NAME</span> = ruby
+
+arch = i686-linux
+sitearch = <span style="color:#F00;background-color:#FAA">$</span>(arch)
+ruby_version = <span style="color:#60E">2.2</span>.<span style="color:#F00;background-color:#FAA">0</span>
+ruby = <span style="color:#F00;background-color:#FAA">$</span>(bindir)/<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_BASE_NAME</span>)
+<span style="color:#036;font-weight:bold">RUBY</span> = <span style="color:#F00;background-color:#FAA">$</span>(ruby)
+ruby_headers = <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/ruby.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/defines.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/missing.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/intern.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/st.h <span style="color:#F00;background-color:#FAA">$</span>(hdrdir)/ruby/subst.h <span style="color:#F00;background-color:#FAA">$</span>(arch_hdrdir)/ruby/config.h
+
+<span style="color:#036;font-weight:bold">RM</span> = rm -f
+<span style="color:#036;font-weight:bold">RM_RF</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY</span>) -run -e rm -- -rf
+<span style="color:#036;font-weight:bold">RMDIRS</span> = rmdir --ignore-fail-on-non-empty -p
+<span style="color:#036;font-weight:bold">MAKEDIRS</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">bin</span><span style="color:#404">/</span><span style="color:#C2C">m</span></span>kdir -p
+<span style="color:#036;font-weight:bold">INSTALL</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">usr</span><span style="color:#404">/</span></span>bin/install -c
+<span style="color:#036;font-weight:bold">INSTALL_PROG</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INSTALL</span>) -m <span style="color:#00D">0755</span>
+<span style="color:#036;font-weight:bold">INSTALL_DATA</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INSTALL</span>) -m <span style="color:#00D">644</span>
+<span style="color:#036;font-weight:bold">COPY</span> = cp
+<span style="color:#036;font-weight:bold">TOUCH</span> = exit &gt;
+
+<span style="color:#777">#### End of system configuration section. ####</span>
+
+preload = 
+
+libpath = . <span style="color:#F00;background-color:#FAA">$</span>(libdir)
+<span style="color:#036;font-weight:bold">LIBPATH</span> =  -<span style="color:#036;font-weight:bold">L</span>. -<span style="color:#036;font-weight:bold">L</span><span style="color:#F00;background-color:#FAA">$</span>(libdir) -<span style="color:#036;font-weight:bold">Wl</span>,-<span style="color:#036;font-weight:bold">R</span><span style="color:#F00;background-color:#FAA">$</span>(libdir)
+<span style="color:#036;font-weight:bold">DEFFILE</span> = 
+
+<span style="color:#036;font-weight:bold">CLEANFILES</span> = mkmf.log
+<span style="color:#036;font-weight:bold">DISTCLEANFILES</span> = 
+<span style="color:#036;font-weight:bold">DISTCLEANDIRS</span> = 
+
+extout = 
+extout_prefix = 
+target_prefix = 
+<span style="color:#036;font-weight:bold">LOCAL_LIBS</span> = 
+<span style="color:#036;font-weight:bold">LIBS</span> =   -lpthread -lrt -ldl -lcrypt -lm   -lc
+<span style="color:#036;font-weight:bold">ORIG_SRCS</span> = c2tpe.c ppsp.c xys00b.c pn06.c zpv.c cp.c s2p.c obl06.c fk5hz.c eect00.c num06a.c epb2jd.c pmat00.c fasa03.c ppp.c tttcg.c ry.c rx.c gst00a.c utcut1.c pnm00b.c pn.c ttut1.c nut00b.c hfk5z.c cal2jd.c tttai.c zp.c p2pv.c fw2m.c epb.c epj.c pm.c jd2cal.c nutm80.c c2i06a.c tcgtt.c xys00a.c fave03.c fk52h.c fw2xy.c jdcalf.c nut06a.c pap.c prec76.c ee00a.c cpv.c pvppv.c s06a.c rxr.c pxp.c trxpv.c dtdb.c c2ixys.c tr.c seps.c faf03.c xy06.c c2i00a.c nut00a.c starpv.c sxpv.c epv00.c sepp.c c2t06a.c tttdb.c ee06a.c s00.c tf2d.c rxp.c pn00b.c gmst00.c fama03.c rm2v.c pnm80.c tdbtcb.c fame03.c s2pv.c gst94.c era00.c pdp.c gmst06.c faur03.c pvstar.c pnm00a.c fae03.c celes_core.c pom00.c s2xpv.c tdbtt.c c2i00b.c rz.c taiut1.c num00b.c pas.c ir.c s00b.c c2teqx.c pvup.c s2c.c ut1utc.c pfw06.c c2s.c faom03.c anpm.c ut1tai.c gst06.c pnm06a.c dat.c faju03.c gc2gde.c fad03.c pvxpv.c gd2gce.c p06e.c ut1tt.c anp.c c2t00a.c s00a.c c2ibpn.c taitt.c c2txy.c gmst82.c num00a.c eqeq94.c plan94.c sxp.c tf2a.c pv2p.c rxpv.c pn00a.c bp00.c pmat06.c taiutc.c rv2m.c c2tcio.c h2fk5.c numat.c bp06.c pn00.c pmat76.c pmp.c pvdpv.c s06.c ee00b.c fal03.c dtf2d.c pn06a.c d2tf.c epj2jd.c utctai.c pvm.c nut80.c eo06a.c p2s.c gd2gc.c falp03.c d2dtf.c a2tf.c tcbtdb.c obl80.c gst06a.c trxp.c gc2gd.c bi00.c fapa03.c af2a.c pvu.c xys06a.c pr00.c eors.c gst00b.c sp00.c cr.c fk5hip.c bpn2xy.c ee00.c pv2s.c pb06.c c2ixy.c c2t00b.c fane03.c a2af.c zr.c starpm.c pvmpv.c eform.c
+<span style="color:#036;font-weight:bold">SRCS</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ORIG_SRCS</span>) 
+<span style="color:#036;font-weight:bold">OBJS</span> = c2tpe.o ppsp.o xys00b.o pn06.o zpv.o cp.o s2p.o obl06.o fk5hz.o eect00.o num06a.o epb2jd.o pmat00.o fasa03.o ppp.o tttcg.o ry.o rx.o gst00a.o utcut1.o pnm00b.o pn.o ttut1.o nut00b.o hfk5z.o cal2jd.o tttai.o zp.o p2pv.o fw2m.o epb.o epj.o pm.o jd2cal.o nutm80.o c2i06a.o tcgtt.o xys00a.o fave03.o fk52h.o fw2xy.o jdcalf.o nut06a.o pap.o prec76.o ee00a.o cpv.o pvppv.o s06a.o rxr.o pxp.o trxpv.o dtdb.o c2ixys.o tr.o seps.o faf03.o xy06.o c2i00a.o nut00a.o starpv.o sxpv.o epv00.o sepp.o c2t06a.o tttdb.o ee06a.o s00.o tf2d.o rxp.o pn00b.o gmst00.o fama03.o rm2v.o pnm80.o tdbtcb.o fame03.o s2pv.o gst94.o era00.o pdp.o gmst06.o faur03.o pvstar.o pnm00a.o fae03.o celes_core.o pom00.o s2xpv.o tdbtt.o c2i00b.o rz.o taiut1.o num00b.o pas.o ir.o s00b.o c2teqx.o pvup.o s2c.o ut1utc.o pfw06.o c2s.o faom03.o anpm.o ut1tai.o gst06.o pnm06a.o dat.o faju03.o gc2gde.o fad03.o pvxpv.o gd2gce.o p06e.o ut1tt.o anp.o c2t00a.o s00a.o c2ibpn.o taitt.o c2txy.o gmst82.o num00a.o eqeq94.o plan94.o sxp.o tf2a.o pv2p.o rxpv.o pn00a.o bp00.o pmat06.o taiutc.o rv2m.o c2tcio.o h2fk5.o numat.o bp06.o pn00.o pmat76.o pmp.o pvdpv.o s06.o ee00b.o fal03.o dtf2d.o pn06a.o d2tf.o epj2jd.o utctai.o pvm.o nut80.o eo06a.o p2s.o gd2gc.o falp03.o d2dtf.o a2tf.o tcbtdb.o obl80.o gst06a.o trxp.o gc2gd.o bi00.o fapa03.o af2a.o pvu.o xys06a.o pr00.o eors.o gst00b.o sp00.o cr.o fk5hip.o bpn2xy.o ee00.o pv2s.o pb06.o c2ixy.o c2t00b.o fane03.o a2af.o zr.o starpm.o pvmpv.o eform.o
+<span style="color:#036;font-weight:bold">HDRS</span> = <span style="color:#F00;background-color:#FAA">$</span>(srcdir)/sofa.h <span style="color:#F00;background-color:#FAA">$</span>(srcdir)/sofam.h
+<span style="color:#036;font-weight:bold">TARGET</span> = celes_core
+<span style="color:#036;font-weight:bold">TARGET_NAME</span> = celes_core
+<span style="color:#036;font-weight:bold">TARGET_ENTRY</span> = <span style="color:#036;font-weight:bold">Init_</span><span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TARGET_NAME</span>)
+<span style="color:#036;font-weight:bold">DLLIB</span> = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TARGET</span>).so
+<span style="color:#036;font-weight:bold">EXTSTATIC</span> = 
+<span style="color:#036;font-weight:bold">STATIC_LIB</span> = 
+
+<span style="color:#036;font-weight:bold">TIMESTAMP_DIR</span> = .
+BINDIR        = <span style="color:#F00;background-color:#FAA">$</span>(bindir)
+<span style="color:#036;font-weight:bold">RUBYCOMMONDIR</span> = <span style="color:#F00;background-color:#FAA">$</span>(sitedir)<span style="color:#F00;background-color:#FAA">$</span>(target_prefix)
+<span style="color:#036;font-weight:bold">RUBYLIBDIR</span>    = <span style="color:#F00;background-color:#FAA">$</span>(sitelibdir)<span style="color:#F00;background-color:#FAA">$</span>(target_prefix)
+<span style="color:#036;font-weight:bold">RUBYARCHDIR</span>   = <span style="color:#F00;background-color:#FAA">$</span>(sitearchdir)<span style="color:#F00;background-color:#FAA">$</span>(target_prefix)
+<span style="color:#036;font-weight:bold">HDRDIR</span>        = <span style="color:#F00;background-color:#FAA">$</span>(rubyhdrdir)/ruby<span style="color:#F00;background-color:#FAA">$</span>(target_prefix)
+<span style="color:#036;font-weight:bold">ARCHHDRDIR</span>    = <span style="color:#F00;background-color:#FAA">$</span>(rubyhdrdir)/<span style="color:#F00;background-color:#FAA">$</span>(arch)/ruby<span style="color:#F00;background-color:#FAA">$</span>(target_prefix)
+
+<span style="color:#036;font-weight:bold">TARGET_SO</span>     = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>)
+<span style="color:#036;font-weight:bold">CLEANLIBS</span>     = <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TARGET</span>).so 
+<span style="color:#036;font-weight:bold">CLEANOBJS</span>     = *.o  *.bak
+
+<span style="color:#606">all</span>:    <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>)
+<span style="color:#606">static</span>: <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">STATIC_LIB</span>)
+.PHONY: all install static install-so install-rb
+.PHONY: clean clean-so clean-static clean-rb
+
+clean-static::
+clean-rb-default::
+clean-rb::
+clean-so::
+clean: clean-so clean-static clean-rb-default clean-rb
+                -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RM</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CLEANLIBS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CLEANOBJS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CLEANFILES</span>) .*.time
+
+distclean-rb-default::
+distclean-rb::
+distclean-so::
+distclean-static::
+distclean: clean distclean-so distclean-static distclean-rb-default distclean-rb
+                -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RM</span>) <span style="color:#036;font-weight:bold">Makefile</span> <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBY_EXTCONF_H</span>) conftest.* mkmf.log
+                -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RM</span>) core ruby<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">EXEEXT</span>) *~ <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DISTCLEANFILES</span>)
+                -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RMDIRS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DISTCLEANDIRS</span>) <span style="color:#00D">2</span>&gt; <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">dev</span><span style="color:#404">/</span><span style="color:#C2C">nu</span></span>ll || <span style="color:#069">true</span>
+
+<span style="color:#606">realclean</span>: distclean
+<span style="color:#606">install</span>: install-so install-rb
+
+install-<span style="color:#606">so</span>: <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TIMESTAMP_DIR</span>)/.RUBYARCHDIR.time
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INSTALL_PROG</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBYARCHDIR</span>)
+clean-static::
+        -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RM</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">STATIC_LIB</span>)
+install-<span style="color:#606">rb</span>: pre-install-rb install-rb-default
+install-rb-<span style="color:#606">default</span>: pre-install-rb-default
+pre-install-<span style="color:#606">rb</span>: <span style="color:#036;font-weight:bold">Makefile</span>
+pre-install-rb-<span style="color:#606">default</span>: <span style="color:#036;font-weight:bold">Makefile</span>
+pre-install-rb-<span style="color:#606">default</span>:
+        <span style="color:#F00;background-color:#FAA">@</span><span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">NULLCMD</span>)
+<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TIMESTAMP_DIR</span>)/.RUBYARCHDIR.time:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">MAKEDIRS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#33B">@D</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RUBYARCHDIR</span>)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">TOUCH</span>) <span style="color:#d70">$@</span>
+
+site-<span style="color:#606">install</span>: site-install-so site-install-rb
+site-install-<span style="color:#606">so</span>: install-so
+site-install-<span style="color:#606">rb</span>: install-rb
+
+.SUFFIXES: .c .m .cc .mm .cxx .cpp .o .S
+
+.cc.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.cc.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+.mm.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.mm.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+.cxx.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.cxx.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+.cpp.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.cpp.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXX</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CXXFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+.c.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CC</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.c.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CC</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+.m.o:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) compiling <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CC</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -c <span style="color:#d70">$&lt;</span>
+
+.m.S:
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) translating <span style="color:#F00;background-color:#FAA">$</span>(&lt;)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CC</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">INCFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CPPFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">CFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">COUTFLAG</span>)<span style="color:#d70">$@</span> -<span style="color:#036;font-weight:bold">S</span> <span style="color:#d70">$&lt;</span>
+
+<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>): <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">OBJS</span>) <span style="color:#036;font-weight:bold">Makefile</span>
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">ECHO</span>) linking shared-object <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLLIB</span>)
+        -<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>)<span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">RM</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#F00;background-color:#FAA">@</span>)
+        <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">Q</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">LDSHARED</span>) -o <span style="color:#d70">$@</span> <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">OBJS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">LIBPATH</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">DLDFLAGS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">LOCAL_LIBS</span>) <span style="color:#F00;background-color:#FAA">$</span>(<span style="color:#036;font-weight:bold">LIBS</span>)
+
+
+
+<span style="color:#777">###</span>
+celes_core.o: celes_core.c sofa.h sofam.h a2af.c a2tf.c af2a.c \
+                anp.c anpm.c bi00.c bp00.c bp06.c bpn2xy.c c2i00a.c c2i00b.c \
+                c2i06a.c c2ibpn.c c2ixy.c c2ixys.c c2s.c c2t00a.c c2t00b.c \
+                c2t06a.c c2tcio.c c2teqx.c c2tpe.c c2txy.c cal2jd.c cp.c cpv.c \
+                cr.c d2dtf.c d2tf.c dat.c dtdb.c dtf2d.c ee00.c ee00a.c ee00b.c \
+                ee06a.c eect00.c eform.c eo06a.c eors.c epb.c epb2jd.c epj.c \
+                epj2jd.c epv00.c eqeq94.c era00.c fad03.c fae03.c faf03.c \
+                faju03.c fal03.c falp03.c fama03.c fame03.c fane03.c faom03.c \
+                fapa03.c fasa03.c faur03.c fave03.c fk52h.c fk5hip.c fk5hz.c \
+                fw2m.c fw2xy.c gc2gd.c gc2gde.c gd2gc.c gd2gce.c gmst00.c \
+                gmst06.c gmst82.c gst00a.c gst00b.c gst06.c gst06a.c gst94.c \
+                h2fk5.c hfk5z.c ir.c jd2cal.c jdcalf.c num00a.c num00b.c \
+                num06a.c numat.c nut00a.c nut00b.c nut06a.c nut80.c nutm80.c \
+                obl06.c obl80.c p06e.c p2pv.c p2s.c pap.c pas.c pb06.c pdp.c \
+                pfw06.c plan94.c pm.c pmat00.c pmat06.c pmat76.c pmp.c pn.c \
+                pn00.c pn00a.c pn00b.c pn06.c pn06a.c pnm00a.c pnm00b.c \
+                pnm06a.c pnm80.c pom00.c ppp.c ppsp.c pr00.c prec76.c pv2p.c \
+                pv2s.c pvdpv.c pvm.c pvmpv.c pvppv.c pvstar.c pvu.c pvup.c \
+                pvxpv.c pxp.c rm2v.c rv2m.c rx.c rxp.c rxpv.c rxr.c ry.c \
+                rz.c s00.c s00a.c s00b.c s06.c s06a.c s2c.c s2p.c s2pv.c \
+                s2xpv.c sepp.c seps.c sp00.c starpm.c starpv.c sxp.c sxpv.c \
+                taitt.c taiut1.c taiutc.c tcbtdb.c tcgtt.c tdbtcb.c tdbtt.c \
+                tf2a.c tf2d.c tr.c trxp.c trxpv.c tttai.c tttcg.c tttdb.c \
+                ttut1.c ut1tai.c ut1tt.c ut1utc.c utctai.c utcut1.c xy06.c \
+                xys00a.c xys00b.c xys06a.c zp.c zpv.c zr.c
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

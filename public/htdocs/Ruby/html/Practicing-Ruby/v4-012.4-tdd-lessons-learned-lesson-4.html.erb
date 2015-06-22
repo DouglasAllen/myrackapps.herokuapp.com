@@ -1,0 +1,747 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>NOTE:</strong> This is one of <a href="http://practicingruby.com/articles/65">four lessons
+learned</a> from my 90 day <a href="http://practicingruby.com/articles/28">self-study on
+test-driven development</a>. 
+If this topic interests you, be sure to check out the other lessons!</p>
+</blockquote>
+
+<p>When used in moderation, experimental spikes can be a very powerful tool for
+shining some light into the dark corners of your projects. However, there is
+a natural tension between chaotic spiking and formal TDD practices 
+that needs to be balanced if you want to use the two techniques 
+side by side. Equalizing these forces can be very challenging, and
+it is something that I have struggled with throughout my career.</p>
+
+<p>Because I started programming as a self-taught hobbyist, I spent many years
+writing code without a well defined process. As I started to work
+on larger and more important projects, I learned how to program in a
+more disciplined way. I developed an interest in object-oriented design 
+and also picked up the basics of test-driven development. These methodologies
+helped me work in a more controlled fashion when I needed to, but they did not do 
+much to change my everyday coding habits. I still relied on lots of messy
+experimentation; I just knew how to clean up my code so that I didn’t
+end up shipping sloppy work in the end.</p>
+
+<p>While I have managed to be very productive over the years, my day to day 
+efficiency has been very unpredictable because of the way that I do things. This
+is something I have been aware of for some time, and was one of the 
+main problems that I wanted to take a closer look at during 
+this study. With that in mind, I will now walk you through three 
+examples of where I broke away from TDD to try out some experiments and
+then share my thoughts on what worked and what didn’t work.</p>
+
+<h3 id="exploring-the-unknown">Exploring the unknown</h3>
+
+<p>I knew when I started working on <a href="https://github.com/elm-city-craftworks/blind">Blind</a> 
+that I would need to learn how to do two
+things with the <a href="http://mon-ouie.github.com/projects/ray.html">Ray</a> game engine
+that I hadn’t done before: work with positional 
+audio, and write tests against the UI layer. I knew that these things were
+supported by Ray because the documentation had examples for them, but I needed
+to convince myself that they would work in practice by building a small proof of
+concept.</p>
+
+<p>Rather than trying to build realistic examples that matched how I would end up
+using these features, I instead focused on their most basic prerequisites. For
+example, I knew that I’d never be able to have dynamically positioned sound 
+emitters in a three-dimensional space if I couldn’t play a simple beeping 
+sound without any positioning at all. I also saw from the documentation that
+in order to write tests against Ray it was necessary to use its class-based API
+rather than using its fancy DSL. Combining those two ideas together lead me to
+build the following (almost trivial) spike solution:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ray</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MainScene</span> &lt; <span style="color:#036;font-weight:bold">Ray</span>::<span style="color:#036;font-weight:bold">Scene</span>
+  scene_name <span style="color:#A60">:main</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">setup</span>
+    <span style="color:#33B">@sound</span> = sound(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">beep.wav</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">register</span>
+    always <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#33B">@sound</span>.play
+      sleep <span style="color:#33B">@sound</span>.duration
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">render</span>(win)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Game</span> &lt; <span style="color:#036;font-weight:bold">Ray</span>::<span style="color:#036;font-weight:bold">Game</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#080;font-weight:bold">super</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Awesome Game</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#036;font-weight:bold">MainScene</span>.bind(<span style="color:#069">self</span>)
+
+    scenes &lt;&lt; <span style="color:#A60">:main</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Game</span>.new.run
+</pre></div>
+</div>
+</div>
+
+<p>While this code was little more than the end result of mixing a
+couple examples from Ray’s documentation together, it helped me verify 
+that there weren’t any problems playing sounds on my system, and that
+the documentation I was reading was up to date.</p>
+
+<p>Coincidentally, this tiny script helped me notice that my wife’s
+laptop was missing the core audio dependencies that Ray needed; 
+which is a perfect example of what this kind of spike is made to test. It also
+gave me an opportunity to answer some questions that the documentation
+didn’t make clear to me. For example, removing the <code>sleep</code> call made me realize
+that playing a sound was a non-blocking operation, and deleting the <code>render</code>
+method made me realize that it only needed to be provided if it was doing
+something useful. In a fairly complex and immature project like Ray, this
+kind of trial-and-error based investigation is often a faster way to 
+find answers than digging through source code.</p>
+
+<p>I was actually very happy with the outcomes from this spike, and the effort I
+put into it was minimal compared to what I got out of it. While I can’t say
+the same for the other experiments I am about to show you, this little script
+serves as a nice example of spiking done right.</p>
+
+<h3 id="trying-out-a-new-design">Trying out a new design</h3>
+
+<p>Mid-way through working on Blind, I decided to completely change the way I
+was modeling things. All elements in the game were originally modeled as 
+rectangles, but as I tweaked the game rules, I started to realize that all I
+really cared about was point-to-point distance between the player and various
+locations in the world. The hoops I was having to jump through to work with
+rectangular game elements eventually got annoying enough that I decided to try
+out my new ideas on an experimental branch.</p>
+
+<p>I started working on this redesign from the bottom up, test-driving a couple
+supporting objects that I knew I’d need, including a very boring <code>Point</code> class.
+Despite the smooth start, it eventually became clear to me that this approach 
+would only take me so far: the original <code>Game</code> class was tightly 
+coupled to a particular representation of Blind’s world. To make matters 
+worse, the UI code I had written was a messy prototype 
+that I hadn’t cleaned up or tested properly yet. These issues 
+left me stuck between a rock and a hard place.</p>
+
+<p>I had already sunk a lot of time into building the new object model, but didn’t
+want to keep investing in it without being reasonably sure that it was the right
+way to go. To build up my confidence, I decided to do a quick spike to transform
+the old UI into something that could work on top of the new object model.</p>
+
+<p>Within an hour or two, I had a working game running on top of the new codebase. 
+I made several minor changes and added a couple new features
+to various objects in the process of doing so, without writing any tests for
+them. I originally assumed that I didn’t need to write tests because I expected
+to throw all this code away, but after wrapping up my experiment I decided that
+the code was good enough to merge could be easily cleaned up later. This decision
+eventually came back to haunt me.</p>
+
+<p>Over the next several days, I ran into small bugs in various edge case
+scenarios in the code that had been implemented during the spike. For example,
+the randomized positioning of mines and exit locations had not been rewritten to
+account for the fact that the game no longer defined regions as rectangles, and
+that would occasionally cause them to spawn in the wrong regions. The following
+patch was required to fix that problem:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>       @current_position = Blind::Point.new(0,0)
+ 
+       @mine_positions   = mine_count.times.map do
+<span style="background:hsla(0,100%,50%,0.12)" class="line"><span style="color:#c00;background:transparent;font-weight:bold">-</span>        <span style="background-color:hsla(0,100%,50%,0.2);border:1pxsolidhsla(0,100%,45%,0.5);margin:-1px;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px">Blind::Point.new(rand(MINE_FIELD_RANGE), rand(MINE_FIELD_RANGE))</span></span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>        <span style="background-color:hsla(120,100%,50%,0.2);border:1pxsolidhsla(120,100%,25%,0.5);margin:-1px;border-top:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px">random_minefield_position</span></span>
+       end
+ 
+<span style="background:hsla(0,100%,50%,0.12)" class="line"><span style="color:#c00;background:transparent;font-weight:bold">-</span>      @exit_position = </span>
+<span style="background:hsla(0,100%,50%,0.12)" class="line"><span style="color:#c00;background:transparent;font-weight:bold">-</span>        Blind::Point.new(rand(MINE_FIELD_RANGE), rand(MINE_FIELD_RANGE))</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>      @exit_position = random_minefield_position</span>
+     end
+ 
+     attr_reader :current_position, :mine_positions, :exit_position
+<span style="color:#bbf;background:#007"><span style="color:#88f">@@</span> -42,5 +41,15 <span style="color:#88f">@@</span></span> def current_region
+         :outer_rim
+       end
+     end
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span></span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>    private</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>    </span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>    def random_minefield_position</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>      begin </span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>        point = Blind::Point.new(rand(MINE_FIELD_RANGE), rand(MINE_FIELD_RANGE))</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>      end until MINE_FIELD_RANGE.include?(@center.distance(point))</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span></span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>      point</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>    end</span>
+   end
+ end
+</pre></div>
+</div>
+</div>
+
+<p>Similarly, whenever I wanted to refactor some code to introduce a change or
+extend functionality in some way, I needed to write tests to fill the coverage gaps 
+that were introduced during my experiment. This lead to a temporary but
+sharp rise in the cost of change, and that caused my morale to plummet.</p>
+
+<p>Looking back on what happened, I think the problem was not that I created an
+experimental branch with some untested code on it, but that I decided to keep
+that code rather than throwing it out and starting fresh. Wiring up my new data
+model to the UI and seeing a playable game come out of it was a huge confidence
+booster, and it only cost me a couple hours to get to that point. But because I
+decided to merge that code into master, I inherited several more hours of
+unpredictable maintenance work that might have been avoided if I had redone the
+work in a more disciplined way.</p>
+
+<h3 id="sketching-out-an-idea">Sketching out an idea</h3>
+
+<p>About mid-way through my study, I had an idea for a project that I knew I
+wouldn’t have time for right away: an abstract interface for describing vector
+drawings. However, because I couldn’t stop thinking about the problem, I decided
+I needed to make a simple prototype to satisfy my curiosity. An entire evening
+of hacking got me to the point where I was able to generate the following image
+in PDF format using <a href="https://github.com/prawnpdf/prawn">Prawn</a>:</p>
+
+<p><img src="http://i.imgur.com/OW5gT.png" alt="" /></p>
+
+<p>The basic idea of my abstract interface was that rather than making direct calls
+to Prawn’s APIs, you could instead describe your diagrams in a general way, such
+as in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing = <span style="color:#036;font-weight:bold">Vellum</span>::<span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">300</span>,<span style="color:#00D">400</span>)
+
+drawing.layer(<span style="color:#A60">:box</span>) <span style="color:#080;font-weight:bold">do</span> |g|
+  g.rect(g.top_left, g.width, g.height)
+<span style="color:#080;font-weight:bold">end</span>
+
+drawing.layer(<span style="color:#A60">:x</span>) <span style="color:#080;font-weight:bold">do</span> |g|
+  g.line(g.top_left,  g.bottom_right)
+   .line(g.top_right, g.bottom_left)
+<span style="color:#080;font-weight:bold">end</span>
+
+drawing.layer(<span style="color:#A60">:cross</span>) <span style="color:#080;font-weight:bold">do</span> |g|
+  g.line([g.width / <span style="color:#00D">2</span>, <span style="color:#00D">0</span>], [g.width / <span style="color:#00D">2</span>, g.height])
+   .line([<span style="color:#00D">0</span>, g.height / <span style="color:#00D">2</span>], [g.width, g.height/<span style="color:#00D">2</span>])
+<span style="color:#080;font-weight:bold">end</span>
+
+drawing.style(<span style="color:#A60">:x</span>,     <span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ff0000</span><span style="color:#710">&quot;</span></span>) 
+
+drawing.style(<span style="color:#A60">:box</span>,   <span style="color:#A60">:line_width</span>   =&gt; <span style="color:#00D">2</span>, 
+                      <span style="color:#A60">:fill_color</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ffffcc</span><span style="color:#710">&quot;</span></span>)
+
+drawing.style(<span style="color:#A60">:cross</span>, <span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">00ff00</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>A <code>Vellum::Renderer</code> object would then be used to turn this abstract
+representation into output in a particular format, using some simple 
+callbacks. A Prawn-based implementation is shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prawn</span><span style="color:#710">&quot;</span></span>
+
+pdf      = <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>.new
+renderer = <span style="color:#036;font-weight:bold">Vellum</span>::<span style="color:#036;font-weight:bold">Renderer</span>.new
+
+renderer.on(<span style="color:#036;font-weight:bold">Object</span>) <span style="color:#080;font-weight:bold">do</span> |shape, style|
+  pdf.stroke_color = style.fetch(<span style="color:#A60">:stroke_color</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">000000</span><span style="color:#710">&quot;</span></span>)
+  pdf.fill_color   = style.fetch(<span style="color:#A60">:fill_color</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ffffff</span><span style="color:#710">&quot;</span></span>)
+  pdf.line_width   = style.fetch(<span style="color:#A60">:line_width</span>, <span style="color:#00D">1</span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+renderer.on(<span style="color:#036;font-weight:bold">Vellum</span>::<span style="color:#036;font-weight:bold">Line</span>) <span style="color:#080;font-weight:bold">do</span> |shape, style|
+  pdf.stroke_line(shape.p1, shape.p2)
+<span style="color:#080;font-weight:bold">end</span>
+
+renderer.on(<span style="color:#036;font-weight:bold">Vellum</span>::<span style="color:#036;font-weight:bold">Rectangle</span>) <span style="color:#080;font-weight:bold">do</span> |shape, style|
+  pdf.fill_and_stroke_rectangle(shape.point, shape.width, shape.height)
+<span style="color:#080;font-weight:bold">end</span>
+
+renderer.render(drawing)
+
+pdf.render_file(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo.pdf</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Looking back on this code, I’m still excited by the basic idea, because it
+would make it possible for backend-agnostic graphics code to be written, and
+would allow for more than a few interesting manipulations of the abstract
+structures prior to rendering. However, I can’t help but think that for a
+throwaway prototype, there is far too much detail here.</p>
+
+<p>If you take a closer look at <a href="https://gist.github.com/2732815">how I actually implemented Vellum</a>, 
+you’ll find that I shoved together 
+several classes into a single file, which I stowed away on a gist. I never
+bothered to record the history of my experiment, which I assume was actually
+built up incrementally rather than designed all at once. Without a single test
+to guide me, I would need to study the implementation code all over again if I
+wanted to begin to understand what I had actually learned from my experiment.</p>
+
+<p>While it is hard to say whether this little prototype was worth the effort or
+not, it underscores a bad habit of mine that bites me from time to time: I can
+easily get excited about an idea and then dive into it with reckless abandon. In
+this particular situation, I ended up with some working code at the end of
+my wild hacking session, but there were several other ideas I worked on during
+my study that I ended up getting nowhere with.</p>
+
+<h3 id="what-makes-spiking-different-from-cowboy-coding">What makes spiking different from cowboy coding?</h3>
+
+<p>The main thing I learned from taking a look at how I work on experimental ideas
+is that there is a big difference between spiking and cowboy coding.</p>
+
+<p>When you are truly working on a spike, you have a specific question in mind that 
+you want to answer, you know roughly how much you’re willing to invest in 
+finding out that answer, and you cut as many corners as possible to get that
+answer as quickly as possible. The success of a spike is measured by what you
+learn, not what code you produce. Once you feel that you understand what
+needs to be done, you pull yourself out of spike mode and return to your 
+more disciplined way of doing things.</p>
+
+<p>Cowboy coding, on the other hand, is primarily driven by gut feelings, past
+experiences, and on-the-spot decision making. This kind of programming can be
+fun because it allows you to write code quickly without thinking deeply about
+its consequences, but in most circumstances, you end up needing to pay for your
+lack of discipline somewhere down the line.</p>
+
+<p>Of the three examples I discussed in this article, the first one looks and feels
+like a true spike, and the third one is the result of straight-up guns-blazing
+cowboy coding. The second example lies somewhere between those two extremes, and
+perhaps represents a spike that turned into a cowboy coding session. I think
+scenarios like that are what we really need to look out for, because it is
+very easy to drop our good practices but much harder to return to them.</p>
+
+<p>Now that I’ve laid this all out on the line for you, I’d love to hear some
+of your own stories! Please leave a comment if you have an interesting
+experience to share, or if you have any questions for me.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> While doing some research for this article, I stumbled across a nice excerpt
+from “The Art of Agile Development” which describes <a href="http://jamesshore.com/Agile-Book/spike_solutions.html">how to safely make use
+of spike solutions</a>. It’s
+definitely worth checking out if you’re interested in studying this topic more.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

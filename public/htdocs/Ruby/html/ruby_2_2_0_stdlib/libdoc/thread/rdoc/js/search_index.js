@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["readme"],"longSearchIndex":[""],"info":[["README","","thread/README_rdoc.html","","<p>Thread \n<p>The Thread class is now part of the core classes.\n"]]}}

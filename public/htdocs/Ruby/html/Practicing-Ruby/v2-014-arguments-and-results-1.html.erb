@@ -1,0 +1,779 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>Back in 1997, James Noble published a paper called <a href="http://www.laputan.org/pub/patterns/noble/noble.pdf">Arguments and Results</a> which outlined several useful patterns for designing better object protocols. Despite the fact that this paper was written nearly 15 years ago, it addresses design problems that programmers still struggle with today. In this two part article, I will show how the patterns James came up with can be applied to modern Ruby programs.</p>
+
+<p><u>Arguments and Results</u> is written in such a way that it is natural to split the patterns it describes into two separate groups: patterns about method arguments and patterns about the results returned by methods. I’ve decided to split this Practicing Ruby article in the same manner in order to make it easier for me to write and easier for you to read. </p>
+
+<p>In this first installment, we will explore the patterns James lays out for working with method arguments, and in Issue 2.15 we’ll look into results objects. If you read this part, be sure to read the second part once it comes out, because the two concepts complement each other nicely.</p>
+
+<h3 id="establishing-a-context">Establishing a context</h3>
+
+<p>It is very difficult to study design patterns without applying them within a particular context. When I am trying to learn new patterns, I tend to start by looking for a realistic scenario that the pattern might be applicable to. I then examine the benefits and drawbacks of the design changes within that context. James uses a lot of graphics programming examples in his paper and this is for good reason: it’s an area where designing good interfaces for your objects can quickly become challenging.</p>
+
+<p>I’ve decided to follow in James’s footsteps here and use a trivial <a href="http://www.w3.org/TR/SVG/">SVG</a> generator as the common theme for the examples in this article. The following code illustrates the interface that I started with before applying any special patterns:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># image dimensions are provided to `Drawing` in cm, </span>
+<span style="color:#777"># all other measurements are done in units of 0.01 cm</span>
+
+drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+
+drawing.line(<span style="color:#A60">:x1</span> =&gt; <span style="color:#00D">100</span>, <span style="color:#A60">:y1</span> =&gt; <span style="color:#00D">100</span>, <span style="color:#A60">:x2</span> =&gt; <span style="color:#00D">200</span>, <span style="color:#A60">:y2</span> =&gt; <span style="color:#00D">250</span>,
+             <span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+
+drawing.line(<span style="color:#A60">:x1</span> =&gt; <span style="color:#00D">300</span>, <span style="color:#A60">:y1</span> =&gt; <span style="color:#00D">100</span>, <span style="color:#A60">:x2</span> =&gt; <span style="color:#00D">200</span>, <span style="color:#A60">:y2</span> =&gt; <span style="color:#00D">250</span>,
+             <span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>The implementation details are not important here, but if you would like to see how this code works, you can check out the <a href="https://github.com/elm-city-craftworks/pr-arguments-and-results/blob/7656768680b6a940a5ccf569fc0e0dce48a5dbfe/drawing.rb">source code for the Drawing class</a>. The interface for <code>Drawing#line</code> uses keyword-style arguments in a similar fashion to most other Ruby libraries. Because keyword arguments are easier to remember and more flexible than ordinal arguments, this style of interface has become very popular among Ruby programmers. However, the more arguments a method takes, the more unwieldy this sort of API becomes. That tipping point is where design patterns about arguments come into play.</p>
+
+<h3 id="arguments-object">Arguments object</h3>
+
+<p>As the number of arguments to a method increase, the amount of code within the method to handle those arguments tends to increase as well. This is because complex protocols typically require  arguments to be validated and transformed before they can be operated on. By introducing new objects to wrap related sets of arguments, it is possible to keep your argument processing logic somewhat separated from your business logic. The following code demonstrates how to use this concept to simplify the interface of the <code>Drawing#line</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+
+line1 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Shape</span>.new([<span style="color:#00D">100</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+line2 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Shape</span>.new([<span style="color:#00D">300</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+
+line_style = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Style</span>.new(<span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span>)
+
+drawing.line(line1, line_style)
+
+drawing.line(line2, line_style)
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>This approach takes a single complex method call on a single object and replaces it with several less complex method calls distributed across several objects. In the early stages of development, applying this pattern feels ugly because it involves writing a lot more code for both the library developer and application developer. However, as the complexity of the argument processing increases, the benefits of this approach begin to shine. The following example demonstrates how the newly introduced arguments objects raise the <code>Drawing#line</code> code up to a higher level of abstraction.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">line</span>(data, style)
+  <span style="color:#080;font-weight:bold">unless</span> data.bounded_by?(<span style="color:#33B">@viewbox_width</span>, <span style="color:#33B">@viewbox_height</span>)
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shape is not within view box</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#33B">@lines</span> &lt;&lt; { <span style="color:#A60">:x1</span> =&gt; data[<span style="color:#00D">0</span>].x.to_s, <span style="color:#A60">:y1</span> =&gt; data[<span style="color:#00D">0</span>].y.to_s,
+              <span style="color:#A60">:x2</span> =&gt; data[<span style="color:#00D">1</span>].x.to_s, <span style="color:#A60">:y2</span> =&gt; data[<span style="color:#00D">1</span>].y.to_s,
+              <span style="color:#A60">:style</span> =&gt; style.to_css }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The cost of making <code>Drawing#line</code> so concise is a big chunk of boilerplate code that on the surface feels a bit overkill at this stage in the game. However, it does not take a very wild imagination to see how these new objects set the stage for future extensions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x, y)
+    <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Shape</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*point_data)
+    <span style="color:#33B">@points</span> = point_data.map { |e| <span style="color:#036;font-weight:bold">Point</span>.new(*e) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(index)
+    <span style="color:#33B">@points</span>[index]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bounded_by?</span>(x_max, y_max)
+    <span style="color:#33B">@points</span>.all? { |p| p.x &lt;= x_max &amp;&amp; p.y &lt;= y_max }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Style</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+    <span style="color:#33B">@stroke_width</span>  = params.fetch(<span style="color:#A60">:stroke_width</span>, <span style="color:#00D">5</span>)
+    <span style="color:#33B">@stroke_color</span>  = params.fetch(<span style="color:#A60">:stroke_color</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">black</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:stroke_width</span>, <span style="color:#A60">:stroke_color</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_css</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stroke: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@stroke_color</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; stroke-width: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@stroke_width</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The interesting thing about these objects is that they actually represent domain models even though their original purpose was simply to wrap up some arguments to a single method defined on the <code>Drawing</code> object. James mentions in his paper that this phenomena is common and would call these “Found objects”, i.e. objects that are part of the domain model that were found through refactoring rather than accounted for in the original design.</p>
+
+<p>You might have noticed that in the previous example, I set some default values for some of the variables on the <code>Style</code> object. If you compare this to setting defaults directly within the <code>Drawing#line</code> method itself, it becomes obvious that there is a benefit here. Properties like
+the color and thickness of the lines drawn to form a shape are universal properties, not things specific to straight lines only. Centralizing the defaults makes it so that they do not need to be repeated for each type of shape that the <code>Drawing</code> object supports.</p>
+
+<h3 id="selector-object">Selector object</h3>
+
+<p>Sometimes we end up with objects that have many methods that take similar arguments. While these methods may actually do different things, the only difference in the object protocol is the name of the message being sent. After adding a method for rendering polygons to my <code>Drawing</code> object, I ended up in exactly this situation. The following example shows just how similar the <code>Drawing#line</code> interface is to the newly created <code>Drawing#polygon</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+
+line1 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Shape</span>.new([<span style="color:#00D">100</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+line2 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Shape</span>.new([<span style="color:#00D">300</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+
+triangle = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Shape</span>.new([<span style="color:#00D">350</span>, <span style="color:#00D">150</span>], [<span style="color:#00D">250</span>, <span style="color:#00D">300</span>], [<span style="color:#00D">150</span>,<span style="color:#00D">150</span>])
+
+style = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Style</span>.new(<span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+
+drawing.line(line1, style)
+
+drawing.line(line2, style)
+
+drawing.polygon(triangle, style)
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>Taking a look at the implementation of both methods, it is easy to see that there are deep similarities in structure between the two:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Drawing</span>
+  <span style="color:#777"># NOTE: other code omitted, not important...</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">line</span>(data, style)
+    <span style="color:#080;font-weight:bold">unless</span> data.bounded_by?(<span style="color:#33B">@viewbox_width</span>, <span style="color:#33B">@viewbox_height</span>)
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shape is not within view box</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#33B">@elements</span> &lt;&lt; [<span style="color:#A60">:line</span>, { <span style="color:#A60">:x1</span>    =&gt; data[<span style="color:#00D">0</span>].x.to_s, 
+                           <span style="color:#A60">:y1</span>    =&gt; data[<span style="color:#00D">0</span>].y.to_s, 
+                           <span style="color:#A60">:x2</span>    =&gt; data[<span style="color:#00D">1</span>].x.to_s, 
+                           <span style="color:#A60">:y2</span>    =&gt; data[<span style="color:#00D">1</span>].y.to_s,
+                           <span style="color:#A60">:style</span> =&gt; style.to_css }] 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">polygon</span>(data, style)
+    <span style="color:#080;font-weight:bold">unless</span> data.bounded_by?(<span style="color:#33B">@viewbox_width</span>, <span style="color:#33B">@viewbox_height</span>)
+       raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shape is not within view box</span><span style="color:#710">&quot;</span></span>     
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#33B">@elements</span> &lt;&lt; [<span style="color:#A60">:polygon</span>, { 
+      <span style="color:#A60">:points</span> =&gt; data.each.map { |point| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>point.x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">,</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>point.y<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>),
+      <span style="color:#A60">:style</span>  =&gt; style.to_css
+    }]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To make this code more DRY, James recommends converting our arguments object into what he calls a selector object. A selector object is an object which uses similar arguments to do different things depending on the type of message it is meant to represent. James recommends using double dispatch or multi-methods to implement this pattern, but that approach is not appropriate for Ruby because the language does not provide built-in semantics for function overloading. The good news is that he also mentions that inheritance can be used as an alternative, and in this case it was a perfect fit.</p>
+
+<p>To simplify and clean up the previous example, I introduced <code>Line</code> and <code>Polygon</code> which inherit from <code>Shape</code>. I then combined the <code>Drawing#line</code> method and <code>Drawing#polygon</code> method into a single method called <code>Drawing#draw</code>. The following example demonstrates what the API ended up looking like as a result of this change:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+
+line1 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Line</span>.new([<span style="color:#00D">100</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+line2 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Line</span>.new([<span style="color:#00D">300</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+
+triangle = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Polygon</span>.new([<span style="color:#00D">350</span>, <span style="color:#00D">150</span>], [<span style="color:#00D">250</span>, <span style="color:#00D">300</span>], [<span style="color:#00D">150</span>,<span style="color:#00D">150</span>])
+
+style = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Style</span>.new(<span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+
+drawing.draw(line1, style)
+drawing.draw(line2, style)
+drawing.draw(triangle, style)
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>The changes to the API are small but make the code a lot easier to read. This rearrangement introduces even more objects into the system, but simplifies the protocol between those objects. In large systems, this leads to greater maintainability and learnability at the cost of having a few more moving parts.</p>
+
+<p>In order to implement this new interface, some non-trivial changes needed to be made under the hood. You can check out the <a href="https://github.com/elm-city-craftworks/pr-arguments-and-results/commit/47924901552d0509f97a3083737709980139feba">exact commit</a> to see the details about what changed implementation-wise between this example and the last one, but most of the changes were just boring housekeeping. The general idea is that the <code>Drawing#draw</code> method now simply asks each shape object to represent itself as a hash which ultimately ends up getting converted into an XML tag within the SVG document. As an example, here is what the definition for the <code>Line</code> object looks like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Drawing</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Line</span> &lt; <span style="color:#036;font-weight:bold">Shape</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_hash</span>(style)
+      { <span style="color:#A60">:tag_name</span> =&gt; <span style="color:#A60">:line</span>,
+        <span style="color:#A60">:params</span> =&gt; { <span style="color:#A60">:x1</span>    =&gt; <span style="color:#069">self</span>[<span style="color:#00D">0</span>].x.to_s,
+                     <span style="color:#A60">:y1</span>    =&gt; <span style="color:#069">self</span>[<span style="color:#00D">0</span>].y.to_s,
+                     <span style="color:#A60">:x2</span>    =&gt; <span style="color:#069">self</span>[<span style="color:#00D">1</span>].x.to_s,
+                     <span style="color:#A60">:y2</span>    =&gt; <span style="color:#069">self</span>[<span style="color:#00D">1</span>].y.to_s,
+                     <span style="color:#A60">:style</span> =&gt; style.to_css } }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can imagine, the <code>Polygon</code> object uses a similar approach and this general pattern would be applicable for new types of shapes as well.</p>
+
+<h3 id="curried-object">Curried object</h3>
+
+<p>While method arguments exist to allow us to vary the objects we pass in, its not uncommon for the same method to be called many times with some of its arguments being held constant. In fact, all of the examples in this article have shown the same <code>Style</code> object being passed to the same method again and again, with only the shape varying. This has resulted in some repetitive code that looks ugly, and could be improved.</p>
+
+<p>James recommends creating a curried object to deal with this sort of problem. The curried object acts as a lightweight proxy over the original object, but keeps the constant data stored in variables so that you do not need to keep repeating it. The following code applies this concept to clean up our previous example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>line1 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Line</span>.new([<span style="color:#00D">100</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+line2 = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Line</span>.new([<span style="color:#00D">300</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>])
+
+triangle = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Polygon</span>.new([<span style="color:#00D">350</span>, <span style="color:#00D">150</span>], [<span style="color:#00D">250</span>, <span style="color:#00D">300</span>], [<span style="color:#00D">150</span>,<span style="color:#00D">150</span>])
+
+drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+style   = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Style</span>.new(<span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+pen     = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Pen</span>.new(drawing, style)
+
+pen.draw(line1)
+pen.draw(line2)
+pen.draw(triangle)
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>While introducing the new <code>Pen</code> object requires a change in the calling code so that <code>Pen#draw</code> gets called instead of <code>Drawing#draw</code>, no change to the implementation of <code>Drawing</code> was needed to introduce this new object. The following class definition will do the trick:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Drawing</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Pen</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(drawing, style)
+      <span style="color:#33B">@drawing</span>, <span style="color:#33B">@style</span> = drawing, style
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">draw</span>(shape)
+      drawing.draw(shape, style)
+    <span style="color:#080;font-weight:bold">end</span>
+    
+    private
+
+    attr_reader <span style="color:#A60">:drawing</span>, <span style="color:#A60">:style</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this particular case, <code>Pen</code> is easy to write because the interface on <code>Drawing</code> is so small. In more complicated cases, it would make sense to use some of Ruby’s metaprogramming features to implement a dynamic proxy of some sort. However, if you find yourself simultaneously facing a broad interface that has arguments that often remain constant in many of its functions, you may want to evaluate whether you have a flawed design before going down that road.</p>
+
+<p>An interesting thing to note is that curried objects are not necessarily limited to arguments that remain constant. This pattern can also be applied in situations where method calls made in sequence have a clear pattern in the way that one or more arguments are varied. The example James gives in his paper describes some logic for a text editor in which lines of text are rendered to the screen with all the same style attributes from line to line, but with the line number incremented as each new line is rendered. Taking inspiration from that example, I decided to build a simple turtle graphics system to demonstrate how curried objects can be used for predictably varying arguments as well as constant arguments. The code below generates an image of an X when run:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing = <span style="color:#036;font-weight:bold">Drawing</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">4</span>)
+style   = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Style</span>.new(<span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span>)
+turtle  = <span style="color:#036;font-weight:bold">Drawing</span>::<span style="color:#036;font-weight:bold">Turtle</span>.new(drawing, style)
+
+turtle.move_to([<span style="color:#00D">0</span>, <span style="color:#00D">400</span>])
+
+turtle.pen_down
+turtle.move_to([<span style="color:#00D">400</span>, <span style="color:#00D">0</span>])
+
+turtle.pen_up
+turtle.move_to([<span style="color:#00D">0</span>,<span style="color:#00D">0</span>])
+
+turtle.pen_down
+turtle.move_to([<span style="color:#00D">400</span>,<span style="color:#00D">400</span>])
+
+<span style="color:#036;font-weight:bold">File</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>, drawing.to_svg)
+</pre></div>
+</div>
+</div>
+
+<p>The implementation code to make the previous example work was very easy to write and required no changes to the rest of the system:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Drawing</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Turtle</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(drawing, style)
+      <span style="color:#33B">@drawing</span>  = drawing
+      <span style="color:#33B">@style</span>    = style
+      <span style="color:#33B">@inked</span>    = <span style="color:#069">false</span>
+      <span style="color:#33B">@position</span> = [<span style="color:#00D">0</span>,<span style="color:#00D">0</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">move_to</span>(next_position)
+      <span style="color:#080;font-weight:bold">if</span> inked
+        drawing.draw(<span style="color:#036;font-weight:bold">Line</span>.new(position, next_position), style)
+      <span style="color:#080;font-weight:bold">end</span>
+      
+      <span style="color:#069">self</span>.position = next_position
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pen_up</span>
+      <span style="color:#069">self</span>.inked = <span style="color:#069">false</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pen_down</span> 
+      <span style="color:#069">self</span>.inked = <span style="color:#069">true</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_reader   <span style="color:#A60">:drawing</span>, <span style="color:#A60">:style</span>
+    attr_accessor <span style="color:#A60">:position</span>, <span style="color:#A60">:inked</span> 
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>After taking a look at the finished <code>Turtle</code> object, I did wonder a little bit about whether the idea of a curried object in Ruby is nothing more than an ordinary object making use of object composition. However, because the name of the pattern is helpful for describing the intent of this sort of object in a succinct way, it may be a good label for us to use when discussing the merits of different design options.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Applying these various argument patterns to a realistic example made it much easier for me to see the power behind these ideas. I have gradually picked up bits and pieces of the various techniques shown here before reading this paper largely due to my trial and error work on the Prawn PDF generator. </p>
+
+<p>In lots of places in Prawn, we let hash arguments grow to an insanely large size and it created a lot of problems for us. We also ignored using curried objects in a lot of places by instead placing instance variables directly on the target objects and then mutating the state within them over time to vary things. This led to complicated transactional code and made it easy for things to end up in an inconsistent state. The solutions to these problems tended to be refactorings that are quite similar to what you’ve seen in this article, even if we didn’t call them by a special name at the time.</p>
+
+<p>Still, I do have some concern that these patterns might be overkill for any interfaces that you are reasonably sure won’t get too complex over time. If we apply these patterns overzealously, you might end up needing to go through level after level of indirection just to accomplish anything useful, and that will make Ruby start to feel like Java. However, it seems like using some sort of formalized arguments object is obviously beneficial for highly complex interactions, and likely to be at least somewhat useful for medium complexity protocols as well.</p>
+
+<p>No matter what the complexity of the problem I was working on, it’s unlikely that I would make it so that the application developer needed to jump through so many hoops just to use my library. Instead, I would probably build a simple facade or DSL that made their life easier, even if a rich object structure was lurking under the hood. If I were really building an SVG generator, I might end up building a DSL for it that looked something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>drawing <span style="color:#080;font-weight:bold">do</span>
+  style <span style="color:#A60">:stroke_color</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:stroke_width</span> =&gt; <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">do</span>
+    line    [<span style="color:#00D">100</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>]
+    line    [<span style="color:#00D">300</span>, <span style="color:#00D">100</span>], [<span style="color:#00D">200</span>, <span style="color:#00D">250</span>]
+    polygon [<span style="color:#00D">350</span>, <span style="color:#00D">150</span>], [<span style="color:#00D">250</span>, <span style="color:#00D">300</span>], [<span style="color:#00D">150</span>,<span style="color:#00D">150</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  save_as <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sample.svg</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If I implemented this as a thin veneer on top of code similar to what we ended up with in this article, I think that would be a pretty well designed library. The end user gets convenience for the normal case, but the underlying system would be easier to maintain, test, and learn. It would also give the user flexibility to interact with the system in ways I didn’t anticipate.</p>
+
+<p>Be sure to tune in next week for the second part of this article, where I’ll focus on the results side of the method interface. Until then, I’d love to hear any questions or thoughts you have about this topic.</p>
+
+
+  </div>
+</body>
+</html>

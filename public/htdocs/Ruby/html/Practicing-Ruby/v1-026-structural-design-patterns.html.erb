@@ -1,0 +1,949 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>In this two part series, I’ve been looking at the classical design patterns laid out by the Gang of Four and exploring their relevance to modern day Ruby programming. Rather than teaching the design patterns themselves, my goal is to give practical examples using real code so that you can consider what the strengths and weaknesses of these techniques are.</p>
+
+<p>In this issue, I’ll be focusing on the structural design patterns, all of which have to do with the relationships between clusters of code. The seven patterns listed below are the ones we’ll focus on in this article.</p>
+
+<ul>
+  <li>Adapter</li>
+  <li>Bridge</li>
+  <li>Composite</li>
+  <li>Proxy</li>
+  <li>Decorator</li>
+  <li>Facade</li>
+  <li>Flyweight</li>
+</ul>
+
+<p>An important thing to keep in mind is that while the original GoF book was written with C++ and Smalltalk examples, none of the patterns were written with Ruby’s semantics in mind. This makes it necessary to use a little poetic license to explore how these patterns apply in Ruby. That having been said, the examples we’ll look at attempt to preserve the spirit of the patterns they implement even if they’re not semantically identical.</p>
+
+<h3 id="adapter">Adapter</h3>
+
+<p>An <a href="http://en.wikipedia.org/wiki/Adapter_pattern">Adapter</a> is used when you want to provide a unified interface to a number of different objects that implement similar functionality. This pattern is easy to spot in the wild for a Ruby developer, as most of us have to use ActiveRecord in our day to day work. Under the hood, ActiveRecord talks to a large amount of different databases, but wraps them up in a common interface its implementation code can avoid worrying about their individual differences. This is exactly the sort of thing the Adapter pattern is useful for.</p>
+
+<p>Increasingly, Rubyists are finding this pattern to be useful in other settings as well. In particular, things like Intridea’s <a href="https://github.com/intridea/multi_json">multi_json</a> gem allow libraries and applications to be built against an abstract interface rather than requiring some particular JSON library that might conflict with other dependencies. Inspired by the ideas behind multi_json, a Mendicant University student (Mitko Kostov) built a similar adapter library for Markdown processors called <a href="https://github.com/mytrile/marky">Marky</a>. The base implementation is very simple, and gives us a good opportunity to look at one way to implement an Adapter in Ruby from the ground up.</p>
+
+<p>The basic idea is that we want to be able to use a common interface while easily
+configuring which backend is used. The following example shows how Marky might
+be used:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># using RDiscount as a backend</span>
+<span style="color:#036;font-weight:bold">Marky</span>.adapter = <span style="color:#A60">:rdiscount</span>
+
+<span style="color:#036;font-weight:bold">Marky</span>.to_html(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>) <span style="color:#777">#=&gt; &quot;&lt;p&gt;hello world&lt;/p&gt;</span>
+
+<span style="color:#777"># using BlueCloth as a backend</span>
+<span style="color:#036;font-weight:bold">Marky</span>.adapter = <span style="color:#A60">:bluecloth</span>
+
+<span style="color:#036;font-weight:bold">Marky</span>.to_html(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>) <span style="color:#777">#=&gt; &quot;&lt;p&gt;hello world&lt;/p&gt;&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>To make this work, it is necessary to map the name of an adapter to a class which wraps the underlying engine and implements a <code>to_html()</code> method. The code that actually wires up the adapter is shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Marky</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">adapter</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#33B">@adapter</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@adapter</span>
+    <span style="color:#069">self</span>.adapter = <span style="color:#A60">:rdiscount</span>
+    <span style="color:#33B">@adapter</span>
+  <span style="color:#080;font-weight:bold">end</span>
+   
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">adapter=</span>(adapter_name)
+    <span style="color:#080;font-weight:bold">case</span> adapter_name
+    <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">Symbol</span>, <span style="color:#036;font-weight:bold">String</span>
+      require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">adapters/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>adapter_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+      <span style="color:#33B">@adapter</span> = <span style="color:#036;font-weight:bold">Marky</span>::<span style="color:#036;font-weight:bold">Adapters</span>.const_get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>adapter_name.to_s.capitalize<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">else</span>
+      raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Missing adapter </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>adapter_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_html</span>(string)
+    adapter.to_html(string)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While this uses a tiny bit of dynamic Ruby magic to look up the right module name, when we see the actual adapters, it all comes together.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># adapters/bluecloth.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bluecloth</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Marky</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Adapters</span>
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Bluecloth</span>
+      extend <span style="color:#069">self</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_html</span>(string)
+        ::<span style="color:#036;font-weight:bold">BlueCloth</span>.new(string).to_html
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># adapters/rdiscount.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rdiscount</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Marky</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Adapters</span>
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Rdiscount</span>
+      extend <span style="color:#069">self</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_html</span>(string)
+        ::<span style="color:#036;font-weight:bold">RDiscount</span>.new(string).to_html
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Since all the adapters implement a <code>to_html()</code> method that share a common
+contract, <code>Marky.to_html()</code> will work regardless of what adapter gets loaded.
+The win here is that if that libraries, applications and frameworks rely on
+adapters rather than concrete implementations, it will be easier to swap
+one engine out for another when necessary.</p>
+
+<p>While not every problem domain needs added level of indirection that Adapters introduce, they can come in handy when there are several competing implementations solving a common problem but you don’t want to forced to choose one over the other.</p>
+
+<h3 id="bridge">Bridge</h3>
+
+<p>The idea behind a <a href="http://en.wikipedia.org/wiki/Bridge_pattern">Bridge</a> is to place a physical separation between the interface of a given type of object and its implementation. In languages in which the type system gets in the way, this kind of pattern is important for reducing the proliferation of various type permutations by making hierarchies of interfaces and implementations orthogonal to one another. If that sounds like academic jibberish to you, there is a <a href="http://sourcemaking.com/design_patterns/bridge">SourceMaking article</a> that might help sort the concepts out for you a bit.</p>
+
+<p>I had a hard time thinking through where this pattern has its place in Ruby, mainly because there is a built in separation of interface and implementation in Ruby via duck typing semantics. The best example I could come up with was to port the painfully complex C++ example that SourceMaking uses in their article to something that is a bit more natural looking in Ruby. Read it over, and think about what it might be gaining us as you go.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">##Concrete Implementations</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BasicTimeData</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(hour, minutes)
+    <span style="color:#33B">@hour</span>     = hour
+    <span style="color:#33B">@minutes</span>  = minutes
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_output</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Time is </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@hour</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@minutes</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TimeWithMeridianData</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(hour, minutes, meridian)
+    <span style="color:#33B">@hour</span>     = hour
+    <span style="color:#33B">@minutes</span>  = minutes
+    <span style="color:#33B">@meridian</span> = meridian
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_output</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Time is </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@hour</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@minutes</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@meridian</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777">##Bridge</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">TimeFormatter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+    <span style="color:#33B">@time_data</span>.formatted_output
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777">## Abstract Objects linked to Concrete Implementations through Bridge</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BasicTime</span>
+  include <span style="color:#036;font-weight:bold">TimeFormatter</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*a, &amp;b)
+    <span style="color:#33B">@time_data</span> = <span style="color:#036;font-weight:bold">BasicTimeData</span>.new(*a, &amp;b)    
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TimeWithMeridian</span>
+  include <span style="color:#036;font-weight:bold">TimeFormatter</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*a, &amp;b)
+    <span style="color:#33B">@time_data</span> = <span style="color:#036;font-weight:bold">TimeWithMeridianData</span>.new(*a, &amp;b)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777">## Example Usage</span>
+
+time1  = <span style="color:#036;font-weight:bold">BasicTime</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">30</span><span style="color:#710">&quot;</span></span>)
+time2  = <span style="color:#036;font-weight:bold">TimeWithMeridian</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">10</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">30</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PM</span><span style="color:#710">&quot;</span></span>)
+
+[time1, time2].each { |t| puts t }
+</pre></div>
+</div>
+</div>
+
+<p>While it might just due to the nature of the example, I feel this code is still quite contrived, and that hides its benefits. The takeway here is mostly that it’s possible for both <code>BasicTimeData</code> and <code>TimeWithMeridianData</code> to change without breaking <code>BasicTime</code> and <code>TimeWithMeridian</code>, as long as <code>TimeFormatter</code> is updated. Similarly, a change in the needs of <code>BasicTime</code> and <code>TimeWithMeridian</code> will not affect the concrete implementations of the data structures, as long as the bridge provides the necessary wiring.</p>
+
+<p>The thing that I struggle with in this pattern is understanding what unique behaviors the <code>BasicTime</code> and <code>TimeWithMeridian</code> objects could implement that justify their existence. Is this pattern an artifact of static languages that isn’t really needed in Ruby? Or am I just missing some important detail that could be cleared up with a good example or two? Feel free to leave a comment letting me know what you think.</p>
+
+<h3 id="composite">Composite</h3>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Composite_pattern">Composite pattern</a> is useful when you want to treat a group of objects as if it were a single, unified object. To explore this pattern, we can look at some experimental code I wrote for Prawn which was designed to make it possible to treat all objects drawn in the document as compositions of primitive PDF instructions. We can start with an example of rendering a curve, working from the outside in.</p>
+
+<p>When <code>curve()</code> is called on a Prawn drawing, the PDF content is generated as a
+side effect and the user does not need to do anything with the return value of
+that method. However, if someone wanted to play with the internals, they could
+call <code>curve!()</code> instead and get themselves an object that implements a
+<code>to_pdf()</code> method, as in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>chunk = canvas.curve!(<span style="color:#A60">:point1</span> =&gt; [<span style="color:#00D">100</span>,<span style="color:#00D">100</span>],
+                      <span style="color:#A60">:point2</span> =&gt; [<span style="color:#00D">50</span>,<span style="color:#00D">50</span>], 
+                      <span style="color:#A60">:bound1</span> =&gt; [<span style="color:#00D">60</span>,<span style="color:#00D">90</span>],
+                      <span style="color:#A60">:bound2</span> =&gt; [<span style="color:#00D">60</span>,<span style="color:#00D">90</span>])
+
+puts chunk.to_pdf
+
+...........................................................<span style="color:#036;font-weight:bold">OUTPUTS</span>..
+
+  <span style="color:#60E">100.000</span> <span style="color:#60E">100.000</span> m
+  <span style="color:#60E">60.000</span> <span style="color:#60E">90.000</span> <span style="color:#60E">60.000</span> <span style="color:#60E">90.000</span> <span style="color:#60E">50.000</span> <span style="color:#60E">50.000</span> c
+</pre></div>
+</div>
+</div>
+
+<p>We can catch a glimpse of how this <code>to_pdf()</code> method is actually implemented via several composed primitive objects by taking a look at the source for the <code>curve!()</code> method.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">curve!</span>(params)
+  chunk(<span style="color:#A60">:curve</span>, params) <span style="color:#080;font-weight:bold">do</span> |c|
+    [ move_to!(<span style="color:#A60">:point</span> =&gt; c[<span style="color:#A60">:point1</span>]),
+      curve_to!(<span style="color:#A60">:point</span> =&gt; c[<span style="color:#A60">:point2</span>],
+                <span style="color:#A60">:bound1</span> =&gt; c[<span style="color:#A60">:bound1</span>],
+                <span style="color:#A60">:bound2</span> =&gt; c[<span style="color:#A60">:bound2</span>]) ]
+
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In the above, <code>chunk()</code> is a helper method which builds a <code>Prawn::Core::Chunk</code> object, which serves as the composite object in this system. We’ll look at how chunks are implemented in a bit, but note that the block given to the <code>chunk()</code> method defines what the individual chunk is composed of. In this case, a curve consists of two subchunks, one responsible for generating a move instruction, and one for rendering a curve from the current drawing location to another point. The definitions for both of those methods are shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">move_to!</span>(params)
+  chunk(<span style="color:#A60">:move_to</span>, params) <span style="color:#080;font-weight:bold">do</span> |c|
+    raw_chunk(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">%.3f %.3f m</span><span style="color:#710">&quot;</span></span> % c[<span style="color:#A60">:point</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">line_to!</span>(params)
+  chunk(<span style="color:#A60">:line_to</span>, params) <span style="color:#080;font-weight:bold">do</span> |c|
+    raw_chunk(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">%.3f %.3f l</span><span style="color:#710">&quot;</span></span> % c[<span style="color:#A60">:point</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Similar to <code>chunk!()</code>, these methods can called directly, producing an object with a <code>to_pdf()</code> method, as shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>chunk = canvas.move_to!(<span style="color:#A60">:point</span> =&gt; [<span style="color:#00D">100</span>,<span style="color:#00D">100</span>])
+puts chunk.to_pdf
+
+chunk2 = canvas.curve_to!(<span style="color:#A60">:point</span> =&gt; [<span style="color:#00D">50</span>,<span style="color:#00D">50</span>],
+                          <span style="color:#A60">:bound1</span> =&gt; [<span style="color:#00D">60</span>,<span style="color:#00D">90</span>],
+                          <span style="color:#A60">:bound2</span> =&gt; [<span style="color:#00D">60</span>,<span style="color:#00D">90</span>])
+
+puts chunk2.to_pdf
+
+<span style="color:#777"># combined output is identical to calling curve!() directly.</span>
+</pre></div>
+</div>
+</div>
+
+<p>Through these two methods, we encounter the leaf nodes in our composition, <code>Prawn::Core::RawChunk</code> objects. These objects are where the actual text that is in our <code>to_pdf()</code> is stored. With that in mind, we can now look at the actual objects that this graphics system is built on.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Prawn</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Core</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">RawChunk</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(content)
+        <span style="color:#33B">@content</span> = content
+        <span style="color:#33B">@command</span> = <span style="color:#A60">:raw_pdf_text</span>
+        <span style="color:#33B">@params</span> = {}
+      <span style="color:#080;font-weight:bold">end</span>
+
+      attr_accessor <span style="color:#A60">:content</span>, <span style="color:#A60">:command</span>, <span style="color:#A60">:params</span>
+      alias_method <span style="color:#A60">:to_pdf</span>, <span style="color:#A60">:content</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Chunk</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(command, params={}, &amp;action)
+        <span style="color:#33B">@command</span> = command
+        <span style="color:#33B">@params</span> = params
+        <span style="color:#33B">@action</span> = action
+      <span style="color:#080;font-weight:bold">end</span>
+
+      attr_reader <span style="color:#A60">:command</span>, <span style="color:#A60">:params</span>, <span style="color:#A60">:action</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">content</span>
+        action.call(<span style="color:#069">self</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_pdf</span>
+        <span style="color:#080;font-weight:bold">case</span> results = content
+        <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">Array</span>
+          results.map { |sub_chunk| sub_chunk.to_pdf }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+        <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Core</span>::<span style="color:#036;font-weight:bold">Chunk</span>, <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Core</span>::<span style="color:#036;font-weight:bold">RawChunk</span>
+          results.to_pdf
+        <span style="color:#080;font-weight:bold">else</span>
+          raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Bad Chunk: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>results.class<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not supported</span><span style="color:#710">&quot;</span></span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>From this we see that a chunk’s content can be an array of children, a chunk, or a raw chunk object. The <code>to_pdf()</code> method is responsible for traversing downwards through the composition until it reaches the raw chunk objects which simply return the raw content. But because the APIs match, we can look at the chunks at any level of the system and burrow down to their raw data.</p>
+
+<p>While this might be a bit of an intense example, it shows how the Composite pattern can be used to make a complex set of objects look and feel as if they were a single unified entity. It may be a bit much to take in on a first glance, but try to think of how you could apply these ideas to your own code and you might gain some useful insights.</p>
+
+<h3 id="proxy">Proxy</h3>
+
+<p>A <a href="http://en.wikipedia.org/wiki/Proxy_pattern">Proxy</a> is any object that acts as a drop-in replacement object that does a bit of work and then delegates to some other underlying object. This is another pattern that’s easy to recognize for Rails developers, because it is used extensively in ActiveRecord associations support. The following example shows a typical interaction between a base model and one of its associations.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>quiz = <span style="color:#036;font-weight:bold">Quiz</span>.first
+quiz.questions.class <span style="color:#777">#=&gt; Array</span>
+
+quiz.questions.count <span style="color:#777">#=&gt; 10</span>
+
+quiz.questions.create(<span style="color:#A60">:question_text</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Who is the creator of Ruby?</span><span style="color:#710">&quot;</span></span>,
+                      <span style="color:#A60">:answer</span>        =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Matz</span><span style="color:#710">&quot;</span></span>)
+
+quiz.questions.count <span style="color:#777">#=&gt; 11</span>
+
+quiz.questions[<span style="color:#00D">-1</span>].answer <span style="color:#777">#=&gt; &quot;Matz&quot; </span>
+</pre></div>
+</div>
+</div>
+
+<p>While the questions association claims to be an array, it also provides some of the common helpers found in <code>ActiveRecord::Base</code>. If we stick to the core idea and ignore some of the Rails specific details, creating such an association proxy is fairly easy to do using Ruby’s delegate standard library. The code below more or less does the trick.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">delegate</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Quiz</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">questions</span>
+    <span style="color:#33B">@questions</span>                  ||= <span style="color:#036;font-weight:bold">HasManyAssociation</span>.new([])
+    <span style="color:#33B">@questions</span>.associated_class ||= <span style="color:#036;font-weight:bold">Question</span>
+
+    <span style="color:#33B">@questions</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Question</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+    <span style="color:#33B">@params</span> = params
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:params</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">answer</span>
+    params[<span style="color:#A60">:answer</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HasManyAssociation</span> &lt; DelegateClass(<span style="color:#036;font-weight:bold">Array</span>)
+  attr_accessor <span style="color:#A60">:associated_class</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(array)
+    <span style="color:#080;font-weight:bold">super</span>(array)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>(params)
+    <span style="color:#069">self</span> &lt;&lt; associated_class.new(params)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+quiz = <span style="color:#036;font-weight:bold">Quiz</span>.new
+
+<span style="color:#777"># grab the proxy object</span>
+questions = quiz.questions
+
+
+<span style="color:#777"># use custom create() method on proxy object</span>
+
+questions.create(<span style="color:#A60">:question_text</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Who is the creator of Ruby?</span><span style="color:#710">&quot;</span></span>,
+                 <span style="color:#A60">:answer</span>        =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Matz</span><span style="color:#710">&quot;</span></span>)
+questions.create(<span style="color:#A60">:question_text</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Who is the creator of Perl?</span><span style="color:#710">&quot;</span></span>,
+                 <span style="color:#A60">:answer</span>        =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Larry Wall</span><span style="color:#710">&quot;</span></span>)
+
+
+<span style="color:#777"># use array like behavior on proxy object</span>
+
+p questions[<span style="color:#00D">0</span>].answer <span style="color:#777">#=&gt; &quot;Matz&quot;</span>
+p questions[<span style="color:#00D">1</span>].answer <span style="color:#777">#=&gt; &quot;Larry Wall&quot;</span>
+p questions.map { |q| q.answer }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>) <span style="color:#777">#=&gt; &quot;Matz, Larry Wall&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Interestingly enough, while Ruby provides a standard library for building Proxy objects, most people tend to implement them in a different way, through the use of an explicit <code>method_missing()</code> hook on a blank slate object such as Ruby 1.9’s BasicObject. For example, we could have written our HasManyAssociation code in the manner shown below and things would still work as expected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HasManyAssociation</span> &lt; <span style="color:#036;font-weight:bold">BasicObject</span>
+  attr_accessor <span style="color:#A60">:associated_class</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(array)
+    <span style="color:#33B">@array</span> = array
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>(params)
+    <span style="color:#069">self</span> &lt;&lt; associated_class.new(params)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(*a, &amp;b)
+    <span style="color:#33B">@array</span>.send(*a, &amp;b)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Without looking at the source, I’m almost sure that Rails does something similar to this, because doing some_association.class returns Array rather than the name of the proxy object. This is the only noticeable difference between this approach and the DelegateClass approach.</p>
+
+<p>Personally, I’ve written proxies in both ways, and I tend to prefer the <code>DelegateClass()</code> approach slightly, simply because it’s more explicit and doesn’t require me to explicitly define a <code>method_missing()</code> hook. But on the other hand, we can see that rolling your own proxy implementation is trivial in Ruby, and some may prefer the self contained nature of doing the delegation work yourself. It’d be interesting to hear what readers have to say on this topic, so please feel free to post to the mailing list if you prefer one approach over the other.</p>
+
+<h3 id="decorator">Decorator</h3>
+
+<p>While there is a clear distinction between a <a href="http://en.wikipedia.org/wiki/Decorator_pattern">Decorator</a> and a Proxy in static languages, in Ruby the two concepts almost merge, except that a Decorator is used for the purpose of adding / extending behavior of a target object, and a Proxy is a more general concept.</p>
+
+<p>Since I’ve already written up a cool example of using decorators on this blog, I think what I’ll do is point you over there in the interest of keeping this article from being even more incredibly long than it already is. Check out the <a href="http://blog.rubybestpractices.com/posts/gregory/008-decorator-delegator-disco.html">Decorator Delegator Disco</a> if you want to see some interesting code samples that implement this pattern.</p>
+
+<h3 id="facade">Facade</h3>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Facade_pattern">Facade pattern</a> simplifies how users interact with a codebase by implementing an interface that hides many implementation details for the most common behaviors needed by consumers. Looking at it from the outside, a perfect example of this is the open-uri standard library. When using open-uri, it is possible to do a simple HTTP get request with just a single line of code, as shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+
+puts open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.google.com</span><span style="color:#710">&quot;</span></span>).read
+</pre></div>
+</div>
+</div>
+
+<p>The purpose of open-uri is to make reading a resource via an HTTP GET request look and feel like opening an ordinary file. This is a very common use case, so open-uri makes it easy to work with. To see what this facade is hiding, we can write the equivalent code using the libraries it wraps, <code>Net::HTTP</code> and <code>URI</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">net/http</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uri</span><span style="color:#710">'</span></span>
+
+url = <span style="color:#036;font-weight:bold">URI</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http://www.google.com</span><span style="color:#710">'</span></span>)
+
+res = <span style="color:#036;font-weight:bold">Net</span>::<span style="color:#036;font-weight:bold">HTTP</span>.start(url.host, url.port) {|http|
+  http.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/index.html</span><span style="color:#710">'</span></span>)
+}
+
+puts res.body
+</pre></div>
+</div>
+</div>
+
+<p>While the code above isn’t especially difficult to read, it certainly feels like more work than the previous example. This is primarily because of the flexibility and functionality tradeoff between the two approaches. The open-uri library can afford to be much more high level and limited in scope because its sole purpose is to help make a single particular task easier. On the other hand, <code>Net::HTTP</code> and <code>URI</code> are both complex tools that can be used for a number of different things. The use of the Facade pattern allows for both kinds of objects to coexist peacefully within a single system.</p>
+
+<p>It’s worth keeping in mind that pretty much every DSL you encounter is a Facade of some form or another. If you’re interested in seeing how simple interfaces can mask highly complex networks of objects, consider doing a source dive into your favorite tool that utilizes a domain specific language, such as Rake, RSpec, or Sinatra. You’ll find a number of different techniques at work depending on which project you explore, but all have the common characteristic of providing a simplified way to interact with a deep system.</p>
+
+<h3 id="flyweight">Flyweight</h3>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Flyweight_pattern">Flyweight pattern</a> is a way to represent what would seem like a large amount of data in a lightweight way. This is one of those patterns that mostly goes away in Ruby due to built in language constructs, but it’s worth taking a look at just for the sake of completeness.</p>
+
+<p>The wikipedia article linked above discusses font metrics as a common application of the flyweight pattern, in which you may want to associate each character in a string with a large amount of information describing how that character should be rendered. The basic idea is that it’d be far too inefficient memory-wise to create a new instance of font metrics data for every character in a document. So instead, using the Flyweight pattern, it is possible to map the index of characters in a string to a single instance for each unique character, vastly reducing the amount of memory consumed. This is a problem I’ve actually had to solve before within Prawn, but it’s a bit of a tough one demonstrate briefly if we attempt to show real code.</p>
+
+<p>However, if we stub out the actual font metrics generation, it’s easy to see that this problem can be solved by wrapping a simple Ruby hash that has an initializer block.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FontMetrics</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(string)
+    <span style="color:#33B">@string</span> = string
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(index)
+    glyph_data[<span style="color:#33B">@string</span>[index]]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">glyph_data</span>
+    <span style="color:#33B">@glyph_data</span> ||= <span style="color:#036;font-weight:bold">Hash</span>.new { |h,k| h[k] = metrics_for(k) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># stubbed out, but would typcially refer to something</span>
+  <span style="color:#777"># largish and time consuming to generate</span>
+  <span style="color:#777"># </span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">metrics_for</span>(k)
+    { <span style="color:#A60">:bbox</span> =&gt; [rand(<span style="color:#00D">100</span>), rand(<span style="color:#00D">100</span>), rand(<span style="color:#00D">100</span>), rand(<span style="color:#00D">100</span>)] }
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+
+string = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>
+
+metrics = <span style="color:#036;font-weight:bold">FontMetrics</span>.new(string)
+
+p metrics[<span style="color:#00D">0</span>]  <span style="color:#777">#=&gt; {:bbox=&gt;[86, 44, 88, 31]}</span>
+p metrics[<span style="color:#00D">2</span>]  <span style="color:#777">#=&gt; {:bbox=&gt;[52, 7, 38, 98]}</span>
+p metrics[<span style="color:#00D">3</span>]  <span style="color:#777">#=&gt; {:bbox=&gt;[52, 7, 38, 98]}</span>
+p metrics[<span style="color:#00D">-2</span>] <span style="color:#777">#=&gt; {:bbox=&gt;[52, 7, 38, 98]}</span>
+
+p metrics[<span style="color:#00D">2</span>].object_id == metrics[<span style="color:#00D">3</span>].object_id <span style="color:#777">#=&gt; true</span>
+
+p metrics[<span style="color:#00D">0</span>] == metrics[<span style="color:#00D">1</span>] <span style="color:#777">#=&gt; false</span>
+p metrics[<span style="color:#00D">2</span>] == metrics[<span style="color:#00D">3</span>] <span style="color:#777">#=&gt; true</span>
+</pre></div>
+</div>
+</div>
+
+<p>From the above code, we see that the <code>FontMetrics</code> object gives the appearance of having data for each and every character in the string, but checking the <code>object_id</code> for each proves that only one object per unique character has been created. While I suppose we could call this a Flyweight, I think that in Ruby we’d just say that we were caching the metrics data using a hash with an initializer. But perhaps using this vocabulary wouldn’t hurt, if we want to keep our minds focused on the high level concepts.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>After writing two articles on the the topic, I’m finding myself getting sick of design patterns. But when I look back on the code I’ve shared with you, I realize that when I built these things, I never really thought consciously about what pattern they were, and it took me until the time of writing this article to put a name on them.</p>
+
+<p>A major concern I have about classical patterns is that in order to see the resemblance of the code I’ve shared to the original GoF patterns, you really need to look at things sideways and squint a bit. It’d be great for me to be able to just say ‘Use a flyweight here’ and have it mean something, but if you say that to someone without a strong background in Ruby, you may end up with hundreds of lines of a Java-esque monstrosity.</p>
+
+<p>To be sure, I’m not saying that this exploration has not been worthwhile. Forcing myself to think of how many of the classic GoF patterns might materialize themselves in Ruby has been a very interesting experience, because it’s really making me think about how we build and design our code. But the problem of whether we can actually have a common vocabulary about concepts that really get distorted in translation makes me wonder about the merits of stacking up pattern definitions, at least without giving them new names.</p>
+
+<p>I’m quite curious about what folks have been thinking as they read through the last two articles, in particular, I wonder if seeing me try to attack patterns from a purely pragmatic perspective has changed anything about the way readers look at these concepts. I’m also kind of curious if ‘that guy’ is out there, silently thinking to himself “Well… actually” after seeing my somewhat liberal interpretation of these classic patterns. Please leave a comment letting me know what you think!</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/060-issue-26-structural-design-patterns.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

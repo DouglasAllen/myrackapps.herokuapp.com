@@ -1,0 +1,496 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="a-guide-for-upgrading-ruby-on-rails">A Guide for Upgrading Ruby on Rails</h1>
+
+<p>This guide provides steps to be followed when you upgrade your applications to a newer version of Ruby on Rails. These steps are also available in individual release guides.</p>
+
+<h2 id="general-advice">General Advice</h2>
+
+<p>Before attempting to upgrade an existing application, you should be sure you have a good reason to upgrade. You need to balance out several factors: the need for new features, the increasing difficulty of finding support for old code, and your available time and skills, to name a few.</p>
+
+<h3 id="test-coverage">Test Coverage</h3>
+
+<p>The best way to be sure that your application still works after upgrading is to have good test coverage before you start the process. If you don’t have automated tests that exercise the bulk of your application, you’ll need to spend time manually exercising all the parts that have changed. In the case of a Rails upgrade, that will mean every single piece of functionality in the application. Do yourself a favor and make sure your test coverage is good <em>before</em> you start an upgrade.</p>
+
+<h3 id="ruby-versions">Ruby Versions</h3>
+
+<p>Rails generally stays close to the latest released Ruby version when it’s released:</p>
+
+<ul>
+  <li>Rails 3 and above require Ruby 1.8.7 or higher. Support for all of the previous Ruby versions has been dropped officially. You should upgrade as early as possible.</li>
+  <li>Rails 3.2.x is the last branch to support Ruby 1.8.7.</li>
+  <li>Rails 4 prefers Ruby 2.0 and requires 1.9.3 or newer.</li>
+</ul>
+
+<p>TIP: Ruby 1.8.7 p248 and p249 have marshaling bugs that crash Rails. Ruby Enterprise Edition has these fixed since the release of 1.8.7-2010.02. On the 1.9 front, Ruby 1.9.1 is not usable because it outright segfaults, so if you want to use 1.9.x, jump straight to 1.9.3 for smooth sailing.</p>
+
+<h2 id="upgrading-from-rails-32-to-rails-40">Upgrading from Rails 3.2 to Rails 4.0</h2>
+
+<p>NOTE: This section is a work in progress.</p>
+
+<p>If your application is currently on any version of Rails older than 3.2.x, you should upgrade to Rails 3.2 before attempting one to Rails 4.0.</p>
+
+<p>The following changes are meant for upgrading your application to Rails 4.0.</p>
+
+<h3 id="gemfile">Gemfile</h3>
+
+<p>Rails 4.0 removed the <code>assets</code> group from Gemfile. You’d need to remove that line from your Gemfile when upgrading.</p>
+
+<h3 id="vendorplugins">vendor/plugins</h3>
+
+<p>Rails 4.0 no longer supports loading plugins from <code>vendor/plugins</code>. You must replace any plugins by extracting them to gems and adding them to your Gemfile. If you choose not to make them gems, you can move them into, say, <code>lib/my_plugin/*</code> and add an appropriate initializer in <code>config/initializers/my_plugin.rb</code>.</p>
+
+<h3 id="active-record">Active Record</h3>
+
+<ul>
+  <li>
+    <p>Rails 4.0 has removed the identity map from Active Record, due to <a href="https://github.com/rails/rails/commit/302c912bf6bcd0fa200d964ec2dc4a44abe328a6">some inconsistencies with associations</a>. If you have manually enabled it in your application, you will have to remove the following config that has no effect anymore: <code>config.active_record.identity_map</code>.</p>
+  </li>
+  <li>
+    <p>The <code>delete</code> method in collection associations can now receive <code>Fixnum</code> or <code>String</code> arguments as record ids, besides records, pretty much like the <code>destroy</code> method does. Previously it raised <code>ActiveRecord::AssociationTypeMismatch</code> for such arguments. From Rails 4.0 on <code>delete</code> automatically tries to find the records matching the given ids before deleting them.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has changed how orders get stacked in <code>ActiveRecord::Relation</code>. In previous versions of Rails, the new order was applied after the previously defined order. But this is no longer true. Check <a href="active_record_querying.html#ordering">Active Record Query guide</a> for more information.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has changed <code>serialized_attributes</code> and <code>attr_readonly</code> to class methods only. You shouldn’t use instance methods since it’s now deprecated. You should change them to use class methods, e.g. <code>self.serialized_attributes</code> to <code>self.class.serialized_attributes</code>.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has removed <code>attr_accessible</code> and <code>attr_protected</code> feature in favor of Strong Parameters. You can use the <a href="https://github.com/rails/protected_attributes">Protected Attributes gem</a> to a smoothly upgrade path.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 requires that scopes use a callable object such as a Proc or lambda:</p>
+  </li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  scope <span style="color:#A60">:active</span>, where(<span style="color:#606">active</span>: <span style="color:#069">true</span>)
+
+  <span style="color:#777"># becomes</span>
+  scope <span style="color:#A60">:active</span>, -&gt; { where <span style="color:#606">active</span>: <span style="color:#069">true</span> }
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Rails 4.0 has deprecated <code>ActiveRecord::Fixtures</code> in favor of <code>ActiveRecord::FixtureSet</code>.</li>
+  <li>Rails 4.0 has deprecated <code>ActiveRecord::TestCase</code> in favor of <code>ActiveSupport::TestCase</code>.</li>
+</ul>
+
+<h3 id="active-resource">Active Resource</h3>
+
+<p>Rails 4.0 extracted Active Resource to its own gem. If you still need the feature you can add the <a href="https://github.com/rails/activeresource">Active Resource gem</a> in your Gemfile.</p>
+
+<h3 id="active-model">Active Model</h3>
+
+<ul>
+  <li>
+    <p>Rails 4.0 has changed how errors attach with the <code>ActiveModel::Validations::ConfirmationValidator</code>. Now when confirmation validations fail, the error will be attached to <code>:#{attribute}_confirmation</code> instead of <code>attribute</code>.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has changed <code>ActiveModel::Serializers::JSON.include_root_in_json</code> default value to <code>false</code>. Now, Active Model Serializers and Active Record objects have the same default behaviour. This means that you can comment or remove the following option in the <code>config/initializers/wrap_parameters.rb</code> file:</p>
+  </li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Disable root element in JSON by default.</span>
+<span style="color:#777"># ActiveSupport.on_load(:active_record) do</span>
+<span style="color:#777">#   self.include_root_in_json = false</span>
+<span style="color:#777"># end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="action-pack">Action Pack</h3>
+
+<ul>
+  <li>Rails 4.0 introduces <code>ActiveSupport::KeyGenerator</code> and uses this as a base from which to generate and verify signed cookies (among other things). Existing signed cookies generated with Rails 3.x will be transparently upgraded if you leave your existing <code>secret_token</code> in place and add the new <code>secret_key_base</code>.</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#777"># config/initializers/secret_token.rb</span>
+  <span style="color:#036;font-weight:bold">Myapp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.secret_token = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">existing secret token</span><span style="color:#710">'</span></span>
+  <span style="color:#036;font-weight:bold">Myapp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.secret_key_base = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">new secret key base</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Please note that you should wait to set <code>secret_key_base</code> until you have 100% of your userbase on Rails 4.x and are reasonably sure you will not need to rollback to Rails 3.x. This is because cookies signed based on the new <code>secret_key_base</code> in Rails 4.x are not backwards compatible with Rails 3.x. You are free to leave your existing <code>secret_token</code> in place, not set the new <code>secret_key_base</code>, and ignore the deprecation warnings until you are reasonably sure that your upgrade is otherwise complete.</p>
+
+<p>If you are relying on the ability for external applications or Javascript to be able to read your Rails app’s signed session cookies (or signed cookies in general) you should not set <code>secret_key_base</code> until you have decoupled these concerns.</p>
+
+<ul>
+  <li>Rails 4.0 encrypts the contents of cookie-based sessions if <code>secret_key_base</code> has been set. Rails 3.x signed, but did not encrypt, the contents of cookie-based session. Signed cookies are “secure” in that they are verified to have been generated by your app and are tamper-proof. However, the contents can be viewed by end users, and encrypting the contents eliminates this caveat/concern without a significant performance penalty.</li>
+</ul>
+
+<p>As described above, existing signed cookies generated with Rails 3.x will be transparently upgraded if you leave your existing <code>secret_token</code> in place and add the new <code>secret_key_base</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#777"># config/initializers/secret_token.rb</span>
+  <span style="color:#036;font-weight:bold">Myapp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.secret_token = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">existing secret token</span><span style="color:#710">'</span></span>
+  <span style="color:#036;font-weight:bold">Myapp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.secret_key_base = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">new secret key base</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The same caveats apply here, too. You should wait to set <code>secret_key_base</code> until you have 100% of your userbase on Rails 4.x and are reasonably sure you will not need to rollback to Rails 3.x. You should also take care to make sure you are not relying on the ability to decode signed cookies generated by your app in external applications or Javascript before upgrading.</p>
+
+<p>Please read <a href="https://github.com/rails/rails/pull/9978">Pull Request #9978</a> for details on the move to encrypted session cookies.</p>
+
+<ul>
+  <li>
+    <p>Rails 4.0 removed the <code>ActionController::Base.asset_path</code> option. Use the assets pipeline feature.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has deprecated <code>ActionController::Base.page_cache_extension</code> option. Use <code>ActionController::Base.default_static_extension</code> instead.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has removed Action and Page caching from Action Pack. You will need to add the <code>actionpack-action_caching</code> gem in order to use <code>caches_action</code> and the <code>actionpack-page_caching</code> to use <code>caches_pages</code> in your controllers.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 has removed the XML parameters parser. You will need to add the <code>actionpack-xml_parser</code> gem if you require this feature.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 changes the default memcached client from <code>memcache-client</code> to <code>dalli</code>. To upgrade, simply add <code>gem 'dalli'</code> to your <code>Gemfile</code>.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 deprecates the <code>dom_id</code> and <code>dom_class</code> methods in controllers (they are fine in views). You will need to include the <code>ActionView::RecordIdentifier</code> module in controllers requiring this feature.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 changed how <code>assert_generates</code>, <code>assert_recognizes</code>, and <code>assert_routing</code> work. Now all these assertions raise <code>Assertion</code> instead of <code>ActionController::RoutingError</code>.</p>
+  </li>
+  <li>
+    <p>Rails 4.0 raises an <code>ArgumentError</code> if clashing named routes are defined. This can be triggered by explicitly defined named routes or by the <code>resources</code> method. Here are two examples that clash with routes named <code>example_path</code>:</p>
+  </li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">one</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test#example</span><span style="color:#710">'</span></span>, <span style="color:#606">as</span>: <span style="color:#A60">:example</span>
+  get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">two</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test#example</span><span style="color:#710">'</span></span>, <span style="color:#606">as</span>: <span style="color:#A60">:example</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  resources <span style="color:#A60">:examples</span>
+  get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clashing/:id</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test#example</span><span style="color:#710">'</span></span>, <span style="color:#606">as</span>: <span style="color:#A60">:example</span>
+</pre></div>
+</div>
+</div>
+
+<p>In the first case, you can simply avoid using the same name for multiple
+routes. In the second, you can use the <code>only</code> or <code>except</code> options provided by
+the <code>resources</code> method to restrict the routes created as detailed in the
+<a href="routing.html#restricting-the-routes-created">Routing Guide</a>.</p>
+
+<ul>
+  <li>Rails 4.0 also changed the way unicode character routes are drawn. Now you can draw unicode character routes directly. If you already draw such routes, you must change them, for example:</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>get <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Utils</span>.escape(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">こんにちは</span><span style="color:#710">'</span></span>), <span style="color:#606">controller</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">welcome</span><span style="color:#710">'</span></span>, <span style="color:#606">action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">index</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>becomes</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">こんにちは</span><span style="color:#710">'</span></span>, <span style="color:#606">controller</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">welcome</span><span style="color:#710">'</span></span>, <span style="color:#606">action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">index</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Rails 4.0 requires that routes using <code>match</code> must specify the request method. For example:</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#777"># Rails 3.x</span>
+  match <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">root#index</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777"># becomes</span>
+  match <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">root#index</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">via</span>: <span style="color:#A60">:get</span>
+
+  <span style="color:#777"># or</span>
+  get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">root#index</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Rails 4.0 has removed <code>ActionDispatch::BestStandardsSupport</code> middleware, <code>&lt;!DOCTYPE html&gt;</code> already triggers standards mode per http://msdn.microsoft.com/en-us/library/jj676915(v=vs.85).aspx and ChromeFrame header has been moved to <code>config.action_dispatch.default_headers</code>.</li>
+</ul>
+
+<p>Remember you must also remove any references to the middleware from your application code, for example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Raise exception</span>
+config.middleware.insert_before(<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Lock</span>, <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">BestStandardsSupport</span>)
+</pre></div>
+</div>
+</div>
+
+<p>Also check your environment settings for <code>config.action_dispatch.best_standards_support</code> and remove it if present.</p>
+
+<ul>
+  <li>
+    <p>In Rails 4.0, precompiling assets no longer automatically copies non-JS/CSS assets from <code>vendor/assets</code> and <code>lib/assets</code>. Rails application and engine developers should put these assets in <code>app/assets</code> or configure <code>config.assets.precompile</code>.</p>
+  </li>
+  <li>
+    <p>In Rails 4.0, <code>ActionController::UnknownFormat</code> is raised when the action doesn’t handle the request format. By default, the exception is handled by responding with 406 Not Acceptable, but you can override that now. In Rails 3, 406 Not Acceptable was always returned. No overrides.</p>
+  </li>
+  <li>
+    <p>In Rails 4.0, a generic <code>ActionDispatch::ParamsParser::ParseError</code> exception is raised when <code>ParamsParser</code> fails to parse request params. You will want to rescue this exception instead of the low-level <code>MultiJson::DecodeError</code>, for example.</p>
+  </li>
+  <li>
+    <p>In Rails 4.0, <code>SCRIPT_NAME</code> is properly nested when engines are mounted on an app that’s served from a URL prefix. You no longer have to set <code>default_url_options[:script_name]</code> to work around overwritten URL prefixes.</p>
+  </li>
+  <li>Rails 4.0 deprecated <code>ActionController::Integration</code> in favor of <code>ActionDispatch::Integration</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::IntegrationTest</code> in favor of <code>ActionDispatch::IntegrationTest</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::PerformanceTest</code> in favor of <code>ActionDispatch::PerformanceTest</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::AbstractRequest</code> in favor of <code>ActionDispatch::Request</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::Request</code> in favor of <code>ActionDispatch::Request</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::AbstractResponse</code> in favor of <code>ActionDispatch::Response</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::Response</code> in favor of <code>ActionDispatch::Response</code>.</li>
+  <li>Rails 4.0 deprecated <code>ActionController::Routing</code> in favor of <code>ActionDispatch::Routing</code>.</li>
+</ul>
+
+<h3 id="active-support">Active Support</h3>
+
+<p>Rails 4.0 removes the <code>j</code> alias for <code>ERB::Util#json_escape</code> since <code>j</code> is already used for <code>ActionView::Helpers::JavaScriptHelper#escape_javascript</code>.</p>
+
+<h3 id="helpers-loading-order">Helpers Loading Order</h3>
+
+<p>The order in which helpers from more than one directory are loaded has changed in Rails 4.0. Previously, they were gathered and then sorted alphabetically. After upgrading to Rails 4.0, helpers will preserve the order of loaded directories and will be sorted alphabetically only within each directory. Unless you explicitly use the <code>helpers_path</code> parameter, this change will only impact the way of loading helpers from engines. If you rely on the ordering, you should check if correct methods are available after upgrade. If you would like to change the order in which engines are loaded, you can use <code>config.railties_order=</code> method.</p>
+
+<h3 id="active-record-observer-and-action-controller-sweeper">Active Record Observer and Action Controller Sweeper</h3>
+
+<p>Active Record Observer and Action Controller Sweeper have been extracted to the <code>rails-observers</code> gem. You will need to add the <code>rails-observers</code> gem if you require these features.</p>
+
+<h3 id="sprockets-rails">sprockets-rails</h3>
+
+<ul>
+  <li><code>assets:precompile:primary</code> has been removed. Use <code>assets:precompile</code> instead.</li>
+</ul>
+
+<h3 id="sass-rails">sass-rails</h3>
+
+<ul>
+  <li><code>asset_url</code> with two arguments is deprecated. For example: <code>asset-url("rails.png", image)</code> becomes <code>asset-url("rails.png")</code></li>
+</ul>
+
+<h2 id="upgrading-from-rails-31-to-rails-32">Upgrading from Rails 3.1 to Rails 3.2</h2>
+
+<p>If your application is currently on any version of Rails older than 3.1.x, you should upgrade to Rails 3.1 before attempting an update to Rails 3.2.</p>
+
+<p>The following changes are meant for upgrading your application to Rails 3.2.12, the latest 3.2.x version of Rails.</p>
+
+<h3 id="gemfile-1">Gemfile</h3>
+
+<p>Make the following changes to your <code>Gemfile</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rails</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">= 3.2.12</span><span style="color:#710">'</span></span>
+
+group <span style="color:#A60">:assets</span> <span style="color:#080;font-weight:bold">do</span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sass-rails</span><span style="color:#710">'</span></span>,   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~&gt; 3.2.3</span><span style="color:#710">'</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">coffee-rails</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~&gt; 3.2.1</span><span style="color:#710">'</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uglifier</span><span style="color:#710">'</span></span>,     <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&gt;= 1.0.3</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentsdevelopmentrb">config/environments/development.rb</h3>
+
+<p>There are a couple of new configuration settings that you should add to your development environment:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Raise exception on mass assignment protection for Active Record models</span>
+config.active_record.mass_assignment_sanitizer = <span style="color:#A60">:strict</span>
+
+<span style="color:#777"># Log the query plan for queries taking more than this (works</span>
+<span style="color:#777"># with SQLite, MySQL, and PostgreSQL)</span>
+config.active_record.auto_explain_threshold_in_seconds = <span style="color:#60E">0.5</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentstestrb">config/environments/test.rb</h3>
+
+<p>The <code>mass_assignment_sanitizer</code> configuration setting should also be be added to <code>config/environments/test.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Raise exception on mass assignment protection for Active Record models</span>
+config.active_record.mass_assignment_sanitizer = <span style="color:#A60">:strict</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="vendorplugins-1">vendor/plugins</h3>
+
+<p>Rails 3.2 deprecates <code>vendor/plugins</code> and Rails 4.0 will remove them completely. While it’s not strictly necessary as part of a Rails 3.2 upgrade, you can start replacing any plugins by extracting them to gems and adding them to your Gemfile. If you choose not to make them gems, you can move them into, say, <code>lib/my_plugin/*</code> and add an appropriate initializer in <code>config/initializers/my_plugin.rb</code>.</p>
+
+<h2 id="upgrading-from-rails-30-to-rails-31">Upgrading from Rails 3.0 to Rails 3.1</h2>
+
+<p>If your application is currently on any version of Rails older than 3.0.x, you should upgrade to Rails 3.0 before attempting an update to Rails 3.1.</p>
+
+<p>The following changes are meant for upgrading your application to Rails 3.1.11, the latest 3.1.x version of Rails.</p>
+
+<h3 id="gemfile-2">Gemfile</h3>
+
+<p>Make the following changes to your <code>Gemfile</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rails</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">= 3.1.11</span><span style="color:#710">'</span></span>
+gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mysql2</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Needed for the new asset pipeline</span>
+group <span style="color:#A60">:assets</span> <span style="color:#080;font-weight:bold">do</span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sass-rails</span><span style="color:#710">'</span></span>,   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">~&gt; 3.1.5</span><span style="color:#710">&quot;</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">coffee-rails</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">~&gt; 3.1.1</span><span style="color:#710">&quot;</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uglifier</span><span style="color:#710">'</span></span>,     <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&gt;= 1.0.3</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># jQuery is the default JavaScript library in Rails 3.1</span>
+gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">jquery-rails</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configapplicationrb">config/application.rb</h3>
+
+<p>The asset pipeline requires the following additions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.assets.enabled = <span style="color:#069">true</span>
+config.assets.version = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1.0</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>If your application is using an “/assets” route for a resource you may want change the prefix used for assets to avoid conflicts:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Defaults to '/assets'</span>
+config.assets.prefix = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/asset-files</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentsdevelopmentrb-1">config/environments/development.rb</h3>
+
+<p>Remove the RJS setting <code>config.action_view.debug_rjs = true</code>.</p>
+
+<p>Add these settings if you enable the asset pipeline:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Do not compress assets</span>
+config.assets.compress = <span style="color:#069">false</span>
+
+<span style="color:#777"># Expands the lines which load the assets</span>
+config.assets.debug = <span style="color:#069">true</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentsproductionrb">config/environments/production.rb</h3>
+
+<p>Again, most of the changes below are for the asset pipeline. You can read more about these in the <a href="asset_pipeline.html">Asset Pipeline</a> guide.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Compress JavaScripts and CSS</span>
+config.assets.compress = <span style="color:#069">true</span>
+
+<span style="color:#777"># Don't fallback to assets pipeline if a precompiled asset is missed</span>
+config.assets.compile = <span style="color:#069">false</span>
+
+<span style="color:#777"># Generate digests for assets URLs</span>
+config.assets.digest = <span style="color:#069">true</span>
+
+<span style="color:#777"># Defaults to Rails.root.join(&quot;public/assets&quot;)</span>
+<span style="color:#777"># config.assets.manifest = YOUR_PATH</span>
+
+<span style="color:#777"># Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)</span>
+<span style="color:#777"># config.assets.precompile += %w( search.js )</span>
+
+<span style="color:#777"># Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.</span>
+<span style="color:#777"># config.force_ssl = true</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentstestrb-1">config/environments/test.rb</h3>
+
+<p>You can help test performance with these additions to your test environment:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Configure static asset server for tests with Cache-Control for performance</span>
+config.serve_static_assets = <span style="color:#069">true</span>
+config.static_cache_control = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">public, max-age=3600</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configinitializerswrapparametersrb">config/initializers/wrap_parameters.rb</h3>
+
+<p>Add this file with the following contents, if you wish to wrap parameters into a nested hash. This is on by default in new applications.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Be sure to restart your server when you modify this file.</span>
+<span style="color:#777"># This file contains settings for ActionController::ParamsWrapper which</span>
+<span style="color:#777"># is enabled by default.</span>
+
+<span style="color:#777"># Enable parameter wrapping for JSON. You can disable this by setting :format to an empty array.</span>
+<span style="color:#036;font-weight:bold">ActiveSupport</span>.on_load(<span style="color:#A60">:action_controller</span>) <span style="color:#080;font-weight:bold">do</span>
+  wrap_parameters <span style="color:#606">format</span>: [<span style="color:#A60">:json</span>]
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Disable root element in JSON by default.</span>
+<span style="color:#036;font-weight:bold">ActiveSupport</span>.on_load(<span style="color:#A60">:active_record</span>) <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#069">self</span>.include_root_in_json = <span style="color:#069">false</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="configinitializerssessionstorerb">config/initializers/session_store.rb</h3>
+
+<p>You need to change your session key to something new, or remove all sessions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># in config/initializers/session_store.rb</span>
+<span style="color:#036;font-weight:bold">AppName</span>::<span style="color:#036;font-weight:bold">Application</span>.config.session_store <span style="color:#A60">:cookie_store</span>, <span style="color:#606">key</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SOMETHINGNEW</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>or</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:sessions:clear
+</pre></div>
+</div>
+</div>
+
+<h3 id="remove-cache-and-concat-options-in-asset-helpers-references-in-views">Remove :cache and :concat options in asset helpers references in views</h3>
+
+<ul>
+  <li>With the Asset Pipeline the :cache and :concat options aren’t used anymore, delete these options from your views.</li>
+</ul>
+
+    </div>
+  </body>
+</html>

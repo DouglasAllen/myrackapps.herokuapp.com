@@ -1,0 +1,922 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>Many design patterns that originated in other object-oriented languages have elegant Ruby translations. However, the <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a> stands out as a construct that seems to have no good way to implement in Ruby. In this article, I will walk through the different options and explain why they all have something wrong with them. But first, we need a working definition of the singleton pattern to make sure we’re on the same page.</p>
+
+<p>Put briefly, the singleton pattern is a clever way of implementing global objects that you never need to explicitly instantiate. Not to be confused with Ruby’s mostly unrelated concept of a “singleton class,” the singleton pattern is applied when only a single instance of an object is needed across an entire application. Typical examples include objects that represent configuration data, global logging systems, and other similar structures. But there are also some subtle use cases in Ruby due to the fact that classes and modules are objects. For example, we have the <code>Math</code> module on which we can call methods such as <code>Math.sin()</code>, and <code>Math.cos()</code>. The <code>Math</code> module is acting as a singleton object in this context, even if it’s not immediately obvious to the user. Keep in mind while reading this article that I’ve lumped this sort of use case in with the more traditional ones, as it shifts the perspective somewhat.</p>
+
+<p>There are a lot of different ways to implement this general pattern in Ruby, but as I’ve already mentioned, they all pretty much suck. That said, studying this problem can teach us a thing or two about the subtleties (and warts) of the Ruby object system. As you read along, try figuring out the downsides of each implementation before moving on to read my explanations. This exercise will make the article more interesting and may even uncover some fresh ideas that I haven’t considered yet.</p>
+
+<h3 id="using-the-singleton-module-provided-by-the-standard-library">Using the <code>Singleton</code> module provided by the standard library</h3>
+
+<p>Ruby provides a standard library to assist in implementing the singleton pattern. The following code (originally from Practicing Ruby 1.25) illustrates how you can use this library to build a simple logger object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">singleton</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  include <span style="color:#036;font-weight:bold">Singleton</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@output</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:output</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+    <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>By including the <code>Singleton</code> module, we make it so that it is no longer possible to create an instance of the <code>SimpleLogger</code> class in an ordinary way.</p>
+
+<pre><code>&gt;&gt; logger = SimpleLogger.new
+NoMethodError: private method `new' called for SimpleLogger:Class
+  from (irb):2
+</code></pre>
+
+<p>This behavior makes sense, because the point of the singleton pattern is to prevent multiple instances of a given object from being created. This example code shows how to get at a <code>SimpleLogger</code> instance in a way that guarantees that only one will be created.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>logger = <span style="color:#036;font-weight:bold">SimpleLogger</span>.instance
+
+logger.error(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Some serious problem</span><span style="color:#710">&quot;</span></span>)
+logger.info(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Something you might want to know</span><span style="color:#710">&quot;</span></span>)
+logger.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">log.txt</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This interface is a bit cumbersome to work with, but it gets the job done, and on its own isn’t too bad. However, disabling <code>new</code> and adding an <code>instance</code> method isn’t all that the <code>Singleton</code> module does. It also does all of the following things:</p>
+
+<ul>
+  <li>Overrides <code>inherited()</code> on the class to ensure that subclasses also retain <code>Singleton</code> behavior</li>
+  <li>Overrides <code>dup()</code>/<code>clone()</code> on the class to ensure that copied classes also retain <code>Singleton</code> behavior</li>
+  <li>Overrides <code>_load()</code> to call <code>instance()</code>, modifying <code>Marshal</code> loading behavior to return the single instance</li>
+  <li>Overrides <code>_dump()</code> to strip state information when serializing via <code>Marshal</code></li>
+  <li>Overrides <code>dup()</code>/<code>clone()</code> on the instance to raise a <code>TypeError</code>, preventing cloning or duping of the instance</li>
+</ul>
+
+<p>When you think about what a singleton object is actually meant to be, these changes make sense. However, many Rubyists look at this and see a whole lot of complexity without a lot of direct benefits. This impression causes many folks to avoid the use of the <code>Singleton</code> module in favor of implementations that are a bit more low ceremony. These implementations tend to ignore some of the edge cases that the <code>Singleton</code> module accounts for but are much easier to understand.</p>
+
+<h3 id="using-a-class-consisting-of-only-class-methods">Using a class consisting of only class methods</h3>
+
+<p>The following code uses ordinary class methods as an alternative to the previous approach. We explicitly call <code>undef_method</code> to make it so that instances of this class cannot be created, but otherwise this code is a vanilla Ruby class definition.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>
+    undef_method <span style="color:#A60">:new</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">output</span>
+      <span style="color:#33B">@output</span> ||= []
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+      output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+      output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+      <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Using this class is very simple, as the entire API consists of class method calls.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">SimpleLogger</span>.error(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Some serious problem</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.info(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Something you might want to know</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">log.txt</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This approach isn’t too bad, but it has its own set of caveats. The use of <code>undef_method</code> to disable the <code>new</code> method makes our <code>Class</code> object into something that is some ways class-like, but isn’t quite a class anymore. From a purity standpoint, something just feels wrong about a construct that can exist in an inheritance hierarchy but cannot be instantiated. There is also the question of whether it ever really makes sense to create a subclass of a singleton object.</p>
+
+<p>For a number of reasons, these philosophical issues tend to push folks in the direction of Ruby’s <code>Module</code> construct, which at first glance seems to address some of these problems.</p>
+
+<h3 id="using-a-module-consisting-of-only-module-methods">Using a module consisting of only module methods</h3>
+
+<p>Every module is an object that cannot exist in a hierarchy and cannot be instantiated but otherwise holds similar properties of <code>Class</code> objects. Note how similar this code is to our previous example.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">output</span>
+      <span style="color:#33B">@output</span> ||= []
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+      output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+      output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+      <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The two approaches are so similar that they look identical from the end user’s perspective:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">SimpleLogger</span>.error(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Some serious problem</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.info(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Something you might want to know</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">log.txt</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Of course, if we look under the hood, we find that these two implementations are quite different. Although it’s true that we’ve effectively made it impossible to create a subclass of <code>SimpleLogger</code> and that we didn’t have to explicitly disable the <code>new</code> method because <code>Module</code> does not provide one, we now are faced with the problem that this module can be mixed into other objects.</p>
+
+<p>Just as a class can have methods at the class level and the instance level, a module can have methods at the module level and the “mixin” level. Our <code>SimpleLogger</code> code defines all of its methods at the module level, which means that mixing it into an object via <code>include</code> or <code>extend</code> will not add any new functionality to the object it gets mixed into. From a purity standpoint, this approach is pretty much identical to the “useless instances” that would be possible for us to create if we allowed calls to the <code>new</code> method in our class-based <code>SimpleLogger</code>. Modules therefore don’t actually give us much of an advantage over classes after all.</p>
+
+<p>To make matters more confusing, Ruby provides us with a couple additional ways to use modules to implement the singleton pattern that bring new kinds of complexity into the mix.</p>
+
+<h3 id="using-a-module-with-modulefunction">Using a module with <code>module_function</code></h3>
+
+<p>If I were to create a list of Ruby’s most confusing features, <code>module_function</code> would be near the top. It is a keyword (like <code>private</code> and <code>protected</code>), which allows you to specify certain methods within a module to be callable at the module level. This feature seems useful at a glance and is even used by Ruby’s <code>Math</code> module. The interesting thing about module methods is that they serve as public methods on the module itself but get mixed into other objects as private methods. </p>
+
+<p>This example code demonstrates directly calling methods on the <code>Math</code> module, which looks similar to our previous module-based singleton pattern example.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span> = x
+    <span style="color:#33B">@y</span> = y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">distance_to</span>(other_point)
+    <span style="color:#036;font-weight:bold">Math</span>.hypot(other_point.x - x, other_point.y - y)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+point_a = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)
+point_b = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">3</span>)
+
+p point_a.distance_to(point_b)
+</pre></div>
+</div>
+</div>
+
+<p>If we instead include the <code>Math</code> module into the <code>Point</code> class, we see that the behavior is different than defining methods directly on the <code>Math</code> module because its functionality does get mixed into <code>Point</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  include <span style="color:#036;font-weight:bold">Math</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span> = x
+    <span style="color:#33B">@y</span> = y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">distance_to</span>(other_point)
+    hypot(other_point.x - x, other_point.y - y)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+point_a = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)
+point_b = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">3</span>)
+
+p point_a.distance_to(point_b)
+</pre></div>
+</div>
+</div>
+
+<p>This pattern of having a module that doubles as a mixin and a singleton object probably has limited applications, but it seems reasonable for the <code>Math</code> module because each method provided by <code>Math</code> is purely functional and is also unlikely to clash with other features within a given class. But even if mixing in the <code>Math</code> module is convenient and relatively safe, we wouldn’t want our <code>Point</code> object to expose the features that the <code>Math</code> object provides via its public API. This is where we notice that <code>module_function</code> anticipates this potential problem and attempts to solve it by making all mixed-in methods private.</p>
+
+<pre><code>&gt;&gt; point_a.hypot(4,3)
+NoMethodError: private method `hypot' called for #&lt;Point:0x0000010083bd68 @x=0, @y=0&gt;
+    from (irb):20
+    from /Users/seacreature/.rvm/rubies/ruby-1.9.3-rc1/bin/irb:16:in `&lt;main&gt;'
+</code></pre>
+
+<p>Though this is potentially a useful feature, we now must keep in mind that modules that utilize <code>module_function</code> do not have ordinary mixin behavior. However, this is not the main reason why I said that <code>module_function</code> is confusing. To generate our proper “WTF?” moment, we can attempt to use <code>module_function</code> to implement our <code>SimpleLogger</code> object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  module_function
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">output</span>
+    <span style="color:#33B">@output</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+    <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>That implementation <em>almost</em> works, but ends up failing with an error that is quite surprising unless you know exactly how <code>module_function</code> works. </p>
+
+<pre><code>&gt;&gt; SimpleLogger.error("This won't actually succeed")
+NoMethodError: undefined method `formatted_message' for SimpleLogger:Module
+    from (irb):29:in `error'
+    from (irb):50
+    from /Users/seacreature/.rvm/rubies/ruby-1.9.3-rc1/bin/irb:16:in `&lt;main&gt;'
+</code></pre>
+
+<p>The reason this happens is multifaceted. When using <code>module_function</code> with no arguments, as we do, the public methods that are defined after the <code>module_function</code> call are treated as module functions and get copied onto the module itself. However, once the private keyword is reached, the methods are no longer treated as module functions and thus don’t end up getting copied onto the module. It is therefore effectively impossible to use <code>module_function</code> if you want to have your module methods call any private methods. If we accept this limitation and remove the <code>private</code> keyword from our <code>SimpleLogger</code> definition, things will work as expected using the original runner code from the previous examples.</p>
+
+<p>If you made it through the previous example without becoming incredibly confused, try guessing what this code will do before running it, and then prepare to be surprised.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">A</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>
+    <span style="color:#00D">10</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  module_function <span style="color:#A60">:x</span> 
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>
+    <span style="color:#00D">12</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+p <span style="color:#036;font-weight:bold">A</span>.x
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">B</span>
+  include <span style="color:#036;font-weight:bold">A</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+p <span style="color:#036;font-weight:bold">B</span>.new.x
+</pre></div>
+</div>
+</div>
+
+<p>If you managed to run this example without thinking that <code>module_function</code> is an abomination that should be removed from the Ruby language post-haste, please leave a convincing argument in the comments section. But you may want to first look at <code>module_function</code>’s slightly less awkward cousin, <code>extend self</code>.</p>
+
+<h3 id="using-a-module-with-extend-self">Using a module with <code>extend self</code></h3>
+
+<p>The main problem with <code>module_function</code> is that it has so many moving parts. You need to really understand a fairly broad range of Ruby concepts in order to use it effectively. But if we accept the notion that it’s sometimes useful for a singleton object to double as a mixin, we can try another approach that behaves similar to <code>module_function</code> without too many special cases to consider.</p>
+
+<p>We can start by exploring a contrived example that demonstrates what happens when you use <code>extend</code> to mix a module into itself. If it’s not immediately obvious what the <code>extend self</code> line does, treat it as a black box for now and focus on how the objects behave as we call methods on them.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">A</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>
+    y
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">y</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yay!</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">B</span>
+  include <span style="color:#036;font-weight:bold">A</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">A</span>.x      <span style="color:#777">#=&gt; &quot;yay!&quot;</span>
+<span style="color:#036;font-weight:bold">A</span>.y      <span style="color:#777">#=&gt; raises NoMethodError: private method `y' called for A:Module</span>
+<span style="color:#036;font-weight:bold">B</span>.new.x  <span style="color:#777">#=&gt; &quot;yay!&quot;</span>
+<span style="color:#036;font-weight:bold">B</span>.new.y  <span style="color:#777">#=&gt; raises NoMethodError: private method `y' called for #&lt;B:...&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Speaking purely from the perspective of the externally visible behavior, we see that the key difference between <code>module_function</code> and <code>extend self</code> is that <code>extend self</code> results in identical behavior at both the module level and the mixin level when it comes to access control. Both private methods and public methods get mixed into the target object, and their access control is kept the same as whatever it was in the module definition. This is good because it means that your module can actually define private methods without any consequences. The main technical downside of this approach is that if <code>Math</code> were implemented in this way, including the <code>Math</code> module in a given object would add all the functions that can be called on the <code>Math</code> module to the public API of that object. There are workarounds to get that sort of behavior without <code>module_function</code>, but they’re cumbersome and not really worth talking about. Assuming that we don’t care about this subtle distinction, the following code will implement a working <code>SimpleLogger</code> singleton object that’s a bit easier to reason about than the <code>module_function</code> version:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">output</span>
+    <span style="color:#33B">@output</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+    <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Even if the <code>extend self</code> approach is more fundamentally simple than <code>module_function</code>, it is not necessarily easy to learn or easy to understand. I go into great detail explaining exactly how this technique works in <a href="http://blog.rubybestpractices.com/posts/gregory/040-issue-10-uses-for-modules.html">Practicing Ruby 1.10</a>, but the two pages it takes me to explain it at a very high level serve as a hint that we’re probably trying too hard to be clever when we write code this way. </p>
+
+<p>So far, we’ve gone down a deep bunny hole because each alternative approach we’ve attempted was about solving a problem with the previous implementation. But for every improvement we make, we lose something in return. Much of our struggle has to do with the costs involved in trying to implement a singleton object that conforms to the expectations we have about classes and modules. To sidestep this issue, we can think about a solution that works directly with an individual object instead. </p>
+
+<h3 id="using-a-bare-instance-of-object">Using a bare instance of <code>Object</code></h3>
+
+<p>The following code shows how to implement the singleton pattern by adding methods to a bare instance of <code>Object</code>. This code may look a bit strange at first but is at its core the same as defining methods on any other Ruby object, including instances of the <code>Module</code> and <code>Class</code> classes.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">SimpleLogger</span> = <span style="color:#036;font-weight:bold">Object</span>.new
+<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">SimpleLogger</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">output</span>
+    <span style="color:#33B">@output</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">error</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ERROR</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">info</span>(message)
+    output &lt;&lt; formatted_message(message, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">INFO</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(filename)
+    <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; output.join }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_message</span>(message, message_type)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> | </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message_type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although we didn’t have to store the object in the <code>SimpleLogger</code> constant, doing so makes the familiar runner code we’ve been using over and over work exactly as expected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">SimpleLogger</span>.error(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Some serious problem</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.info(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Something you might want to know</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">SimpleLogger</span>.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">log.txt</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>The code looks and feels the same from the end-user’s perspective, but we know that there is something quite different hiding under the hood. The good news is that this approach makes it so that our <code>SimpleLogger</code> is not a factory for creating new objects like classes are and cannot be mixed into other objects or part of a hierarchy. The bad news is that the resulting object is very opaque. When we inspect a class or module object, it at least gives us back its name. However, when we inspect this object, what we get is the following:</p>
+
+<pre><code>&gt;&gt; SimpleLogger
+=&gt; #&lt;Object:0x0000010084bc18&gt;
+</code></pre>
+
+<p>Documenting this object using something like RDoc would be similarly frustrating, as it wouldn’t be able to infer much about the object without lots of explicit directives. Although Ruby is designed in terms of ordinary objects, its infrastructure is surely defined in terms of classes and modules.</p>
+
+<p>We can’t do anything about the documentation problem without major changes to Ruby, but we might be able to build our own custom construct that takes these basic ideas and adds better debugging support.</p>
+
+<h3 id="using-a-hand-rolled-construct">Using a hand-rolled construct</h3>
+
+<p>A few days before writing this article, I complained on Twitter about the lack of a good way to implement the singleton pattern in Ruby and suggested that perhaps we needed a new first-order construct for these purposes. Someone was quick to point out that <a href="http://hestia.typepad.com/flatlander/2009/01/scala-for-c-programmers-part-2-singletons.html">Scala has such a construct</a>, which got the wheels turning in my head. As a point of reference, here’s what the construct looks like in Scala:</p>
+
+<pre><code>object Universe {
+  def contains(obj: Any): Boolean = true  
+}
+
+val v = Universe.contains(42)
+</code></pre>
+
+<p>Now, there is a big difference between having built-in support for something in a language and building some sort of hand-rolled approximation. However, I couldn’t resist implementing a construct in Ruby that works roughly the same way as this Scala code. After some tinkering, I settled on this syntax:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>object <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Universe</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">contains?</span>(anything)
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+p <span style="color:#036;font-weight:bold">Universe</span>.contains?(<span style="color:#00D">42</span>) <span style="color:#777">#=&gt; true</span>
+p <span style="color:#036;font-weight:bold">Universe</span> <span style="color:#777">#=&gt; #&lt;Universe:2156157600&gt;  </span>
+</pre></div>
+</div>
+</div>
+
+<p>Because the call to <code>object</code> hides the actual object creation, I was able to add nice <code>inspect</code> output in a way that is transparent to the user. Similar debugging and introspection features could be added just as easily. Under the hood, I used an approach similar to working with bare objects, so I retain all the benefits of that approach while getting rid of some of the downsides. (NOTE: I’ve decided to leave implementing this construct as a homework exercise, but please let me know if you get stuck and want to see how I did it.)</p>
+
+<p>Looking back on this code, I like the way the experiment went, but I am stuck wondering whether it makes sense to take it any farther. Without first-order support in the Ruby language for this construct, documentation would still be a struggle. Also, the awkward syntax breaks consistency with <code>Class</code> and <code>Module</code>. What we’d really want to be able to type is something like the following definition:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>object <span style="color:#036;font-weight:bold">Universe</span> 
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">contains?</span>(anything)
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although the previous example is syntactically pleasing to me, I wonder if encouraging us to use more global functionality (and on a related note, more constants) is a good idea. At a minimum, such a change would need to also be mirrored in <code>Object.new</code> by adding a block form similar to the way that <code>Module</code> and <code>Class</code> work. This approach would end up looking something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>universe = <span style="color:#036;font-weight:bold">Object</span>.new <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">contains?</span>(anything)
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The thing we have to ask ourselves is whether these features would really make Ruby a better language to work in. To answer that question, we need to consider the costs and benefits of avoiding the singleton pattern entirely.</p>
+
+<h3 id="avoiding-the-singleton-pattern-entirely">Avoiding the singleton pattern entirely</h3>
+
+<p>Pretty much everything discussed so far is about avoiding explictly instantiating objects, which makes it possible for us to put off potentially expensive setup work and also makes it easier for us to prevent multiple instances of a given object from being instantiated within our applications. Some of our implementations do a good job of communicating these desires to the user by preventing them from creating instances. Others encourage a limited form of code reuse through module mixins, but with a number of caveats attached.</p>
+
+<p>But in the end, we must not forget that the singleton pattern is essentially just a fancy way of managing global state. If we converted our <code>SimpleLogger</code> into an ordinary class and then did something like <code>$logger = SimpleLogger.new</code>, there would be marginal practical difference in the way things worked in our codebase. Things change slightly when we think of function bags like the <code>Math</code> module, but not as much as you might think. We must remember that no matter what form our singleton objects take, each one we add to our system is by definition less reusable and less testable due to its singular, global nature.</p>
+
+<p>The question of whether to implement the singleton pattern really depends on the context, but it’s safe to say that it’s a bad default. However, this is a genuinely hard problem in object-oriented programming, which may explain why we’ve seen so many different attempts in Ruby without a real consensus on which way is best. We’ve also been unable to eliminate the pattern entirely, which is a sign that we can’t simply write it off as one of those bad Java imports that real Rubyists freely ignore.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>The process of writing this article has taught me a few things. First of all, most of the approaches we take to implement the singleton pattern are way too complicated. Although this grail quest for object-oriented purity is entertaining from an academic perspective, it isn’t something we should need to think about in our daily coding lives.</p>
+
+<p>That said, it seems like a first-order construct that lets us define individual objects in an elegant way would be an interesting addition to Ruby. If we gravitated toward a more prototype-based design style via these standalone objects while using modules for our code reuse, we might end up with very nice solutions that would make this “singleton object” problem just disappear. But then again, that would be a huge shift in the way we write Ruby code, and I’m not sure the juice is worth the squeeze.</p>
+
+<p>In the end, it amazes me that I was able to write so much on this topic, but not in a good way. As powerful as Ruby-the-language is, it seems that we’re still far from being able to balance that power with responsibility. Every approach I criticized in this article is one I’ve advocated for at some earlier point, and now I’m not so sure I like any of them.</p>
+
+<p>My hope is that you got two things from reading this article: a deeper understanding of the complexity of Ruby’s object system and an awareness of the trade-offs of various approaches to this problem, so that you can be better equipped when you encounter this sort of design in the wild. If I’ve accomplished that, then this article was well worth the effort it took to write up. If not, don’t worry: we’ll return to more practical content next week! :)</p>
+
+  </div>
+</body>
+</html>

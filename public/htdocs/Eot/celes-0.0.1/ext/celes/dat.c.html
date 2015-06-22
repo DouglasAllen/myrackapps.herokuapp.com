@@ -1,0 +1,1221 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+int iauDat(int iy, int im, int id, double fd, double *deltat )
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - -
+**   i a u D a t
+**  - - - - - - -
+**
+**  For a given UTC date, calculate delta(AT) = TAI-UTC.
+**
+**     :------------------------------------------:
+**     :                                          :
+**     :                 IMPORTANT                :
+**     :                                          :
+**     :  A new version of this function must be  :
+**     :  produced whenever a new leap second is  :
+**     :  announced.  There are four items to     :
+**     :  change on each such occasion:           :
+**     :                                          :
+**     :  1) A new line must be added to the set  :
+**     :     of statements that initialize the    :
+**     :     array &quot;changes&quot;.                     :
+**     :                                          :
+**     :  2) The parameter IYV must be set to     :
+**     :     the current year.                    :
+**     :                                          :
+**     :  3) The &quot;Latest leap second&quot; comment     :
+**     :     below must be set to the new leap    :
+**     :     second date.                         :
+**     :                                          :
+**     :  4) The &quot;This revision&quot; comment, later,  :
+**     :     must be set to the current date.     :
+**     :                                          :
+**     :  Change (2) must also be carried out     :
+**     :  whenever the function is re-issued,     :
+**     :  even if no leap seconds have been       :
+**     :  added.                                  :
+**     :                                          :
+**     :  Latest leap second:  2012 June 30       :
+**     :                                          :
+**     :__________________________________________:
+**
+**  Status:  support function.
+**
+**  Given:
+**     iy     int      UTC:  year (Notes 1 and 2)
+**     im     int            month (Note 2)
+**     id     int            day (Notes 2 and 3)
+**     fd     double         fraction of day (Note 4)
+**
+**  Returned:
+**     deltat double   TAI minus UTC, seconds
+**
+**  Returned (function value):
+**            int      status (Note 5):
+**                       1 = dubious year (Note 1)
+**                       0 = OK
+**                      -1 = bad year
+**                      -2 = bad month
+**                      -3 = bad day (Note 3)
+**                      -4 = bad fraction (Note 4)
+**
+**  Notes:
+**
+**  1) UTC began at 1960 January 1.0 (JD 2436934.5) and it is improper
+**     to call the function with an earlier date.  If this is attempted,
+**     zero is returned together with a warning status.
+**
+**     Because leap seconds cannot, in principle, be predicted in
+**     advance, a reliable check for dates beyond the valid range is
+**     impossible.  To guard against gross errors, a year five or more
+**     after the release year of the present function (see parameter
+**     IYV) is considered dubious.  In this case a warning status is
+**     returned but the result is computed in the normal way.
+**
+**     For both too-early and too-late years, the warning status is
+**     j=+1.  This is distinct from the error status j=-1, which
+**     signifies a year so early that JD could not be computed.
+**
+**  2) If the specified date is for a day which ends with a leap second,
+**     the UTC-TAI value returned is for the period leading up to the
+**     leap second.  If the date is for a day which begins as a leap
+**     second ends, the UTC-TAI returned is for the period following the
+**     leap second.
+**
+**  3) The day number must be in the normal calendar range, for example
+**     1 through 30 for April.  The &quot;almanac&quot; convention of allowing
+**     such dates as January 0 and December 32 is not supported in this
+**     function, in order to avoid confusion near leap seconds.
+**
+**  4) The fraction of day is used only for dates before the
+**     introduction of leap seconds, the first of which occurred at the
+**     end of 1971.  It is tested for validity (0 to 1 is the valid
+**     range) even if not used;  if invalid, zero is used and status
+**     j=-4 is returned.  For many applications, setting fd to zero is
+**     acceptable;  the resulting error is always less than 3 ms (and
+**     occurs only pre-1972).
+**
+**  5) The status value returned in the case where there are multiple
+**     errors refers to the first error detected.  For example, if the
+**     month and day are 13 and 32 respectively, j=-2 (bad month)
+**     will be returned.
+**
+**  6) In cases where a valid result is not available, zero is returned.
+**
+**  References:
+**
+**  1) For dates from 1961 January 1 onwards, the expressions from the
+**     file ftp:</span><span style="color:#404">/</span></span>/maia.usno.navy.mil/ser7/tai-utc.dat are used.
+**
+**  <span style="color:#00D">2</span>) <span style="color:#036;font-weight:bold">The</span> <span style="color:#00D">5</span>ms timestep at <span style="color:#00D">1961</span> <span style="color:#036;font-weight:bold">January</span> <span style="color:#00D">1</span> is taken from <span style="color:#60E">2.58</span>.<span style="color:#F00;background-color:#FAA">1</span> (p87) of
+**     the <span style="color:#00D">1992</span> <span style="color:#036;font-weight:bold">Explanatory</span> <span style="color:#036;font-weight:bold">Supplement</span>.
+**
+**  <span style="color:#606">Called</span>:
+**     iauCal2jd    <span style="color:#036;font-weight:bold">Gregorian</span> calendar to <span style="color:#036;font-weight:bold">Julian</span> <span style="color:#036;font-weight:bold">Day</span> number
+**
+**  <span style="color:#036;font-weight:bold">This</span> <span style="color:#606">revision</span>:  <span style="color:#00D">2012</span> <span style="color:#036;font-weight:bold">June</span> <span style="color:#00D">14</span>
+**
+**  <span style="color:#036;font-weight:bold">Original</span> version <span style="color:#00D">2012</span>-<span style="color:#00D">03</span>-<span style="color:#00D">01</span>
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span> <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>.  See notes at <span style="color:#080;font-weight:bold">end</span>.
+*/
+{
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Release year for this version of iauDat *</span><span style="color:#404">/</span></span>
+<span style="color:#777">#define IYV (2012)</span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Reference dates (MJD) and drift rates (s</span><span style="color:#404">/</span></span>day), pre leap seconds *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const double drift[][2] = {
+      { 37300.0, 0.0012960 },
+      { 37300.0, 0.0012960 },
+      { 37300.0, 0.0012960 },
+      { 37665.0, 0.0011232 },
+      { 37665.0, 0.0011232 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 38761.0, 0.0012960 },
+      { 39126.0, 0.0025920 },
+      { 39126.0, 0.0025920 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Number</span> of Delta(<span style="color:#036;font-weight:bold">AT</span>) expressions before leap seconds were introduced *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+#define NERA1 ((int) (sizeof drift </span><span style="color:#404">/</span></span> sizeof (double) / <span style="color:#00D">2</span>))
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Dates and Delta(AT)s *</span><span style="color:#404">/</span></span>
+   static const struct {
+      int iyear, month;
+      double delat;
+   } changes[] = {
+      { <span style="color:#00D">1960</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">1.4178180</span> },
+      { <span style="color:#00D">1961</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">1.4228180</span> },
+      { <span style="color:#00D">1961</span>,  <span style="color:#00D">8</span>,  <span style="color:#60E">1.3728180</span> },
+      { <span style="color:#00D">1962</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">1.8458580</span> },
+      { <span style="color:#00D">1963</span>, <span style="color:#00D">11</span>,  <span style="color:#60E">1.9458580</span> },
+      { <span style="color:#00D">1964</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">3.2401300</span> },
+      { <span style="color:#00D">1964</span>,  <span style="color:#00D">4</span>,  <span style="color:#60E">3.3401300</span> },
+      { <span style="color:#00D">1964</span>,  <span style="color:#00D">9</span>,  <span style="color:#60E">3.4401300</span> },
+      { <span style="color:#00D">1965</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">3.5401300</span> },
+      { <span style="color:#00D">1965</span>,  <span style="color:#00D">3</span>,  <span style="color:#60E">3.6401300</span> },
+      { <span style="color:#00D">1965</span>,  <span style="color:#00D">7</span>,  <span style="color:#60E">3.7401300</span> },
+      { <span style="color:#00D">1965</span>,  <span style="color:#00D">9</span>,  <span style="color:#60E">3.8401300</span> },
+      { <span style="color:#00D">1966</span>,  <span style="color:#00D">1</span>,  <span style="color:#60E">4.3131700</span> },
+      { <span style="color:#00D">1968</span>,  <span style="color:#00D">2</span>,  <span style="color:#60E">4.2131700</span> },
+      { <span style="color:#00D">1972</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">10.0</span>       },
+      { <span style="color:#00D">1972</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">11.0</span>       },
+      { <span style="color:#00D">1973</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">12.0</span>       },
+      { <span style="color:#00D">1974</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">13.0</span>       },
+      { <span style="color:#00D">1975</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">14.0</span>       },
+      { <span style="color:#00D">1976</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">15.0</span>       },
+      { <span style="color:#00D">1977</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">16.0</span>       },
+      { <span style="color:#00D">1978</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">17.0</span>       },
+      { <span style="color:#00D">1979</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">18.0</span>       },
+      { <span style="color:#00D">1980</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">19.0</span>       },
+      { <span style="color:#00D">1981</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">20.0</span>       },
+      { <span style="color:#00D">1982</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">21.0</span>       },
+      { <span style="color:#00D">1983</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">22.0</span>       },
+      { <span style="color:#00D">1985</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">23.0</span>       },
+      { <span style="color:#00D">1988</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">24.0</span>       },
+      { <span style="color:#00D">1990</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">25.0</span>       },
+      { <span style="color:#00D">1991</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">26.0</span>       },
+      { <span style="color:#00D">1992</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">27.0</span>       },
+      { <span style="color:#00D">1993</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">28.0</span>       },
+      { <span style="color:#00D">1994</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">29.0</span>       },
+      { <span style="color:#00D">1996</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">30.0</span>       },
+      { <span style="color:#00D">1997</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">31.0</span>       },
+      { <span style="color:#00D">1999</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">32.0</span>       },
+      { <span style="color:#00D">2006</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">33.0</span>       },
+      { <span style="color:#00D">2009</span>,  <span style="color:#00D">1</span>, <span style="color:#60E">34.0</span>       },
+      { <span style="color:#00D">2012</span>,  <span style="color:#00D">7</span>, <span style="color:#60E">35.0</span>       }
+   };
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Number of Delta(AT) changes *</span><span style="color:#404">/</span></span>
+   const int <span style="color:#036;font-weight:bold">NDAT</span> = sizeof changes / sizeof changes[<span style="color:#00D">0</span>];
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Miscellaneous local variables *</span><span style="color:#404">/</span></span>
+   int j, i, m;
+   double da, djm0, djm;
+
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Initialize the result to zero. *</span><span style="color:#404">/</span></span>
+   *deltat = da = <span style="color:#60E">0.0</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* If invalid fraction of a day, set error status and give up. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> (fd &lt; <span style="color:#60E">0.0</span> || fd &gt; <span style="color:#60E">1.0</span>) <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">-4</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Convert the date into an MJD. *</span><span style="color:#404">/</span></span>
+   j = iauCal2jd(iy, im, id, &amp;djm0, &amp;djm);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* If invalid year, month, or day, give up. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> (j &lt; <span style="color:#00D">0</span>) <span style="color:#080;font-weight:bold">return</span> j;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* If pre-UTC year, set warning status and give up. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> (iy &lt; changes[<span style="color:#00D">0</span>].iyear) <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">1</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* If suspiciously late year, set warning status but proceed. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> (iy &gt; <span style="color:#036;font-weight:bold">IYV</span> + <span style="color:#00D">5</span>) j = <span style="color:#00D">1</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Combine year and month to form a date-ordered integer... *</span><span style="color:#404">/</span></span>
+   m = <span style="color:#00D">12</span>*iy + im;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ...and use it to find the preceding table entry. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NDAT</span>-<span style="color:#00D">1</span>; i &gt;=<span style="color:#00D">0</span>; i--) {
+      <span style="color:#080;font-weight:bold">if</span> (m &gt;= (<span style="color:#00D">12</span> * changes[i].iyear + changes[i].month)) <span style="color:#080;font-weight:bold">break</span>;
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Get the Delta(AT). *</span><span style="color:#404">/</span></span>
+   da = changes[i].delat;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* If pre-1972, adjust for drift. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> (i &lt; <span style="color:#036;font-weight:bold">NERA1</span>) da += (djm + fd - drift[i][<span style="color:#00D">0</span>]) * drift[i][<span style="color:#00D">1</span>];
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Return the Delta(AT) value. *</span><span style="color:#404">/</span></span>
+   *deltat = da;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Return the status. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">return</span> j;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http:</span><span style="color:#404">/</span></span>/www.iausofa.org/tandc.html).
+**
+**  <span style="color:#036;font-weight:bold">The</span> original library is available from <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#036;font-weight:bold">Standards</span> of
+**  <span style="color:#036;font-weight:bold">Fundamental</span> <span style="color:#036;font-weight:bold">Astronomy</span> (<span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>www.iausofa.org/).
+**
+**
+**
+**
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span>, <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>
+**  <span style="color:#036;font-weight:bold">All</span> rights reserved.
+**
+**  <span style="color:#036;font-weight:bold">Redistribution</span> <span style="color:#080;font-weight:bold">and</span> use <span style="color:#080;font-weight:bold">in</span> source <span style="color:#080;font-weight:bold">and</span> binary forms, with <span style="color:#080;font-weight:bold">or</span> without
+**  modification, are permitted provided that the following conditions
+**  are <span style="color:#606">met</span>:
+**
+**  <span style="color:#00D">1</span> <span style="color:#036;font-weight:bold">Redistributions</span> of source code must retain the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer.
+**
+**  <span style="color:#00D">2</span> <span style="color:#036;font-weight:bold">Redistributions</span> <span style="color:#080;font-weight:bold">in</span> binary form must reproduce the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer <span style="color:#080;font-weight:bold">in</span>
+**    the documentation <span style="color:#080;font-weight:bold">and</span><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+}
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

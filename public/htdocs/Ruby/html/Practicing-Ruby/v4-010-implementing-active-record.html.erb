@@ -1,0 +1,1187 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p>This two part article explores the challenges involved in
+building a minimal implementation of the Active Record pattern. 
+<a href="http://practicingruby.com/articles/60">Part 1 (Issue 4.8)</a> provides
+some basic background information about the problem and
+walks through some of the low level structures that are
+needed to build an ORM. Part 2 (this issue) builds on top of
+those structures to construct a complete Active Record
+object.</p>
+</blockquote>
+
+<h3 id="building-object-oriented-mixins">Building object-oriented mixins</h3>
+
+<p>One thing that makes the Active Record pattern challenging to implement is that
+involves shoehorning a bunch of persistence-related functionality into model
+objects. In the case of Rails, models inherit from <code>ActiveRecord::Base</code> which
+has dozens of modules mixed into it. This inheritance-based approach is the
+common way of doing complex behavior sharing in Ruby, but comes at a <a href="http://practicingruby.com/articles/62">high
+maintainence cost</a>. This is one of the
+main design challenges that
+<a href="https://github.com/elm-city-craftworks/broken_record">BrokenRecord</a> attempts to solve.</p>
+
+<p>Because this is a tricky problem, it helps to explore these ideas by
+solving an easier problem first. For example, suppose that you have the following trivial
+<code>Stack</code> object and you want to extend it with some <code>Enumerable</code>-like
+functionality without mixing <code>Enumerable</code> directly into the <code>Stack</code> object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Stack</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@data</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">push</span>(obj)
+    data.push(obj)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pop</span>
+    data.pop
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">size</span>
+    data.size
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>
+    data.reverse_each { |e| <span style="color:#080;font-weight:bold">yield</span>(e) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_reader <span style="color:#A60">:data</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You could use an <code>Enumerator</code> for this purpose, as shown in the following
+example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stack = <span style="color:#036;font-weight:bold">Stack</span>.new
+
+stack.push(<span style="color:#00D">10</span>)
+stack.push(<span style="color:#00D">20</span>)
+stack.push(<span style="color:#00D">30</span>)
+
+enum  = <span style="color:#036;font-weight:bold">Enumerator</span>.new { |y| stack.each { |e| y.yield(e) } }
+p enum.map { |x| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Has element: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> } <span style="color:#777">#=~</span>
+<span style="color:#777"># [&quot;Has element: 30&quot;, &quot;Has element: 20&quot;, &quot;Has element: 10&quot;]    </span>
+</pre></div>
+</div>
+</div>
+
+<p>This is a very clean design, but it makes it so that you have to interact with
+both a <code>Stack</code> object and an <code>Enumerator</code>, which feels a bit tedious. With a
+little effort, the two could be unified under a single interface while keeping
+their variables and internal method calls separated:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">EnumerableStack</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@stack</span> = <span style="color:#036;font-weight:bold">Stack</span>.new
+    <span style="color:#33B">@enum</span>  = <span style="color:#036;font-weight:bold">Enumerator</span>.new { |y| <span style="color:#33B">@stack</span>.each { |e| y.yield(e) } }       
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">respond_to_missing?</span>(m, *a)
+    [<span style="color:#33B">@stack</span>, <span style="color:#33B">@enum</span>].find { |e| e.respond_to?(m) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(m, *a, &amp;b)
+    obj = respond_to_missing?(m)
+
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">super</span> <span style="color:#080;font-weight:bold">unless</span> obj
+    obj.send(m, *a, &amp;b)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>From the external perspective, <code>EnumerableStack</code> still looks and 
+feels like an ordinary <code>Enumerable</code> object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stack = <span style="color:#036;font-weight:bold">EnumerableStack</span>.new
+
+stack.push(<span style="color:#00D">10</span>)
+stack.push(<span style="color:#00D">20</span>)
+stack.push(<span style="color:#00D">30</span>)
+
+p stack.map { |x| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Has element: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> } <span style="color:#777">#=~</span>
+<span style="color:#777"># [&quot;Has element: 30&quot;, &quot;Has element: 20&quot;, &quot;Has element: 10&quot;]  </span>
+</pre></div>
+</div>
+</div>
+
+<p>Unfortunately, it is painful to implement objects this way. If you
+applied this kind of technique throughout a codebase without introducing some
+sort of abstraction, you would end up having to write a ton of very boring
+<code>respond_to_missing?</code> and <code>method_missing</code> calls. It would be better to have
+an object that knows how to delegate methods automatically, such as 
+the <code>Composite</code> object in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">EnumerableStack</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    stack = <span style="color:#036;font-weight:bold">Stack</span>.new
+    enum  = <span style="color:#036;font-weight:bold">Enumerator</span>.new { |y| stack.each { |e| y.yield(e) } }      
+    
+    <span style="color:#33B">@composite</span> = <span style="color:#036;font-weight:bold">Composite</span>.new
+    <span style="color:#33B">@composite</span> &lt;&lt; stack &lt;&lt; enum
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">respond_to_missing?</span>(m, *a)
+    <span style="color:#33B">@composite</span>.receives?(m)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(m, *a, &amp;b)
+    <span style="color:#33B">@composite</span>.dispatch(m, *a, &amp;b)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The neat thing about this approach is that the <code>EnumerableStack</code>
+object now only needs to keep track of a single variable, even though it is
+delegating to multiple objects. This makes it safe to extract some
+of the functionality into a mix-in without the code becoming too brittle:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">EnumerableStack</span>
+  include <span style="color:#036;font-weight:bold">Composable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    stack = <span style="color:#036;font-weight:bold">Stack</span>.new
+    enum  = <span style="color:#036;font-weight:bold">Enumerator</span>.new { |y| stack.each { |e| y.yield(e) } }      
+
+    <span style="color:#777"># features is a simple attribute containing a Composite object</span>
+    features &lt;&lt; stack &lt;&lt; enum
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The end result looks pretty clean, but using the <code>Composable</code> 
+mixin to solve this particular problem is massively overkill. 
+Mixing the <code>Enumerable</code> module directly into the <code>Stack</code> object
+is not that hard to do, and is unlikely to have any adverse
+consequences. Still, seeing how <code>Composable</code> can be used to
+replace one of the most common applications of mixins makes
+it much easier to understand how this technique can be 
+applied in more complex scenarios. The good news is 
+that as long as you have a rough idea of how <code>Composable</code> 
+works in this context, you will have no trouble understanding
+how it is used in BrokenRecord.</p>
+
+<p>To test whether or not you understand the basic pattern, take a look at the
+following code and see if you can figure out how it works. Don’t worry about
+the exact implementation details, just compare the following code to the other
+examples in this section and think about what the purpose of this module is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Mapping</span>
+    include <span style="color:#036;font-weight:bold">Composable</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+      features &lt;&lt; <span style="color:#036;font-weight:bold">Record</span>.new(params)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">included</span>(base)
+      base.extend(<span style="color:#036;font-weight:bold">ClassMethods</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ClassMethods</span>
+      include <span style="color:#036;font-weight:bold">Composable</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map_to_table</span>(table_name)
+        features &lt;&lt; <span style="color:#036;font-weight:bold">Relation</span>.new(<span style="color:#A60">:name</span>         =&gt; table_name,
+                                 <span style="color:#A60">:db</span>           =&gt; <span style="color:#036;font-weight:bold">BrokenRecord</span>.database,
+                                 <span style="color:#A60">:record_class</span> =&gt; <span style="color:#069">self</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you guessed that mixing <code>BrokenRecord::Mapping</code> into a class will cause any
+unhandled messages to be delegated to <code>BrokenRecord::Relation</code> at the class 
+level and to <code>BrokenRecord::Record</code> at the instance level, then you guessed
+correctly! If you’re still stuck, it might help to recall how this mixin 
+is used:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span>
+  include <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Mapping</span>
+
+  map_to_table <span style="color:#A60">:articles</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+article = <span style="color:#036;font-weight:bold">Article</span>.create(<span style="color:#A60">:title</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Great article</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Wonderful!</span><span style="color:#710">&quot;</span></span>)
+p article.title.upcase <span style="color:#777">#=&gt; &quot;GREAT ARTICLE&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you consider that the definition of <code>BrokenRecord::Mapping</code> above is its
+complete implementation, it becomes clear that the methods being called in this
+example need to come from somewhere. Now, it should be easier to see that
+<code>Relation</code> and <code>Record</code> are where those methods come from.</p>
+
+<p>You really don’t need to know the exact details of how 
+the <code>Composable</code> module works, because it is based entirely on the 
+ideas already discussed in this article. However, if <code>Composable</code> still feels a
+bit too magical, go ahead and <a href="https://github.com/elm-city-craftworks/broken_record/blob/master/lib/broken_record/composable.rb">study its
+implementation</a>
+before reading on. For bonus points, pull the code down and try to 
+recreate the <code>EnumerableStack</code> example on your own machine.</p>
+
+<p>Once you feel that you have a good grasp on how <code>Composable</code> works, you can
+continue on to see how it can be used to implement an Active Record object.</p>
+
+<h3 id="implementing-basic-crud-operations">Implementing basic CRUD operations</h3>
+
+<p>The complex relationships that Active Record objects depend upon make them a bit
+challenging to understand and analyze. But like any complicated system,
+you can gain some foundational knowledge by starting with a very simple example as an
+entry point and digging deeper from there.</p>
+
+<p>In the case of BrokenRecord, a good place to start is with a somewhat trivial
+model definition:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span>
+  include <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Mapping</span>
+
+  map_to_table <span style="color:#A60">:articles</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">published?</span>
+    status == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You found out earlier when you looked at <code>BrokenRecord::Mapping</code> that it exists
+primarily to extend classes with functionality provided by
+<code>BrokenRecord::Relation</code> at the class level, and <code>BrokenRecord::Record</code> at the
+instance level. Because <code>BrokenRecord::Mapping</code> provides a fairly complicated 
+<code>initialize</code> method, it is safe to assume that <code>Article</code> objects should be
+created by factory methods rather than instantiated directly. The following 
+code demonstrates how that works:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Article</span>.create(<span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A great article</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The rain in Spain...</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#036;font-weight:bold">Article</span>.create(<span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A mediocre article</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Falls mainly in the plains</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#036;font-weight:bold">Article</span>.create(<span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A bad article</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Is really bad!</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#036;font-weight:bold">Article</span>.all.each <span style="color:#080;font-weight:bold">do</span> |article|
+  <span style="color:#080;font-weight:bold">if</span> article.published?
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PUBLISHED: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">else</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UPCOMING: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you ignore what is going on inside the <code>each</code> block for the moment, it is
+easy to spot two factory methods being used in the previous example:
+<code>Article.create</code> and <code>Article.all</code>. To track down where these methods are coming
+from, you need to take a look at <code>BrokenRecord::Relation</code>, because that is where
+class-level method calls on <code>Article</code> are forwarded to if <code>Article</code> does not
+handle them itself. But before you do that, keep in mind that this is how
+that object gets created in the first place:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map_to_table</span>(table_name)
+    features &lt;&lt; <span style="color:#036;font-weight:bold">Relation</span>.new(<span style="color:#A60">:name</span>         =&gt; table_name,
+                             <span style="color:#A60">:db</span>           =&gt; <span style="color:#036;font-weight:bold">BrokenRecord</span>.database,
+                             <span style="color:#A60">:record_class</span> =&gt; <span style="color:#069">self</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you note that <code>map_to_table :articles</code> is called within the <code>Article</code>
+class, you can visualize the call to <code>Relation.new</code> in the previous example as
+being essentially the same as what you see below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>features &lt;&lt; <span style="color:#036;font-weight:bold">Relation</span>.new(<span style="color:#A60">:name</span>          =&gt; <span style="color:#A60">:articles</span>,
+                         <span style="color:#A60">:db</span>            =&gt; <span style="color:#036;font-weight:bold">BrokenRecord</span>.database,
+                         <span style="color:#A60">:record_class</span>  =&gt; <span style="color:#036;font-weight:bold">Article</span>)
+</pre></div>
+</div>
+</div>
+
+<p>Armed with this knowledge, it should be easier to make sense of the
+<code>BrokenRecord::Relation</code> class, which is shown in its entirety below. Pay
+particular attention to the <code>initialize</code> method, and just skim the rest of the
+method definitions; it isn’t important to fully understand them until later.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Relation</span>
+    include <span style="color:#036;font-weight:bold">Composable</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+      <span style="color:#069">self</span>.table = <span style="color:#036;font-weight:bold">Table</span>.new(<span style="color:#A60">:name</span> =&gt; params.fetch(<span style="color:#A60">:name</span>),
+                             <span style="color:#A60">:db</span>   =&gt; params.fetch(<span style="color:#A60">:db</span>))
+
+      <span style="color:#069">self</span>.record_class = params.fetch(<span style="color:#A60">:record_class</span>)
+
+      features &lt;&lt; <span style="color:#036;font-weight:bold">CRUD</span>.new(<span style="color:#069">self</span>) &lt;&lt; <span style="color:#036;font-weight:bold">Associations</span>.new(<span style="color:#069">self</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    attr_reader <span style="color:#A60">:table</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">attributes</span>
+      table.columns.keys
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new_record</span>(values)
+      record_class.new(<span style="color:#A60">:relation</span> =&gt; <span style="color:#069">self</span>,
+                       <span style="color:#A60">:values</span>   =&gt; values,
+                       <span style="color:#A60">:key</span>      =&gt; values[table.primary_key])
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">define_record_method</span>(name, &amp;block)
+      record_class.send(<span style="color:#A60">:define_method</span>, name, &amp;block)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_reader <span style="color:#A60">:record_class</span>
+    attr_writer <span style="color:#A60">:table</span>, <span style="color:#A60">:record_class</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The main thing to notice about <code>BrokenRecord::Relation</code> is that its main purpose
+is to glue together a <code>BrokenRecord::Table</code> object with a user-defined record
+class, such as the <code>Article</code> class we’ve been working with in this example. The
+rest of its functionality is provided by the <code>Relation::CRUD</code> and
+<code>Relation::Associations</code> objects via composition. Because <code>Article.all</code> and
+<code>Article.create</code> are both easily identifiable as CRUD operations, the <code>Relation::CRUD</code> 
+object is the next stop on your tour:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Relation</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CRUD</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(relation)
+        <span style="color:#069">self</span>.relation = relation
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">all</span>
+        table.all.map { |values| relation.new_record(values) }
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>(values)
+        id = table.insert(values)    
+      
+        find(id)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">find</span>(id)
+        values = table.where(table.primary_key =&gt; id).first
+
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">nil</span> <span style="color:#080;font-weight:bold">unless</span> values
+
+        relation.new_record(values)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># ... other irrelevant CRUD operations omitted</span>
+      
+      private
+
+      attr_accessor <span style="color:#A60">:relation</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">table</span>
+        relation.table
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>At this point, you should have noticed that both <code>create()</code> and
+<code>all()</code> are defined by <code>Relation::CRUD</code>, and it is ultimately these 
+methods that get called whenever you call <code>Article.create</code> 
+and <code>Article.all</code>. Whether you trace <code>Relation::CRUD#create</code> or <code>Relation::CRUD#all</code>, you’ll find
+that they both interact with the <code>Table</code> object provided by <code>Relation</code>, and that
+they both call <code>Relation#new_record</code>, and they don’t do much more than that. 
+To keep things simple, we’ll follow the path that <code>Relation::CRUD#all</code> takes:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">all</span>
+  table.all.map { |values| relation.new_record(values) }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method calls <code>BrokenRecord::Table#all</code>, which as you saw in 
+<a href="http://practicingruby.com/articles/60">Issue 4.8</a> returns an
+array of hashes representing the results returned from the 
+database when a trivial <code>select * from articles</code> query is issued. 
+For this particular data set, the following results get 
+returned:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[
+ { <span style="color:#A60">:id</span>     =&gt; <span style="color:#00D">1</span>, 
+   <span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A great article</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The rain in Spain...</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span> }, 
+
+ { <span style="color:#A60">:id</span>     =&gt; <span style="color:#00D">2</span>, 
+   <span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A mediocre article</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Falls mainly in the plains</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>}, 
+
+ { <span style="color:#A60">:id</span>     =&gt; <span style="color:#00D">3</span>, 
+   <span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A bad article</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Is really bad!</span><span style="color:#710">&quot;</span></span>, 
+   <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span> }
+]
+</pre></div>
+</div>
+</div>
+
+<p>Taking a second look at the <code>Relation::CRUD#all</code> method, it is easy to
+see that this is being transformed by a simple <code>map</code> call which passes each of
+these hashes to <code>Relation#new_record</code>. I had asked you to skim over that
+method earlier, but now would be a good time to take a second look at its
+definition:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Relation</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new_record</span>(values)
+      record_class.new(<span style="color:#A60">:relation</span> =&gt; <span style="color:#069">self</span>,
+                       <span style="color:#A60">:values</span>   =&gt; values,
+                       <span style="color:#A60">:key</span>      =&gt; values[table.primary_key])
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you recall that in this context <code>record_class</code> is a reference to <code>Article</code>,
+it becomes easy to visualize this call as something similar to what is 
+shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>values = { <span style="color:#A60">:id</span>     =&gt; <span style="color:#00D">1</span>, 
+           <span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A great article</span><span style="color:#710">&quot;</span></span>, 
+           <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The rain in Spain...</span><span style="color:#710">&quot;</span></span>, 
+           <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span> }
+
+<span style="color:#036;font-weight:bold">Article</span>.new(<span style="color:#A60">:relation</span> =&gt; some_relation_obj,
+            <span style="color:#A60">:values</span>   =&gt; values,
+            <span style="color:#A60">:key</span>      =&gt; <span style="color:#00D">1</span>)
+</pre></div>
+</div>
+</div>
+
+<p>As you discovered before, <code>Article</code> does not provide its own <code>initialize</code>
+method, and instead inherits the definition provided by 
+<code>BrokenRecord::Mapping#initialize</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Mapping</span>
+  include <span style="color:#036;font-weight:bold">Composable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+    features &lt;&lt; <span style="color:#036;font-weight:bold">Record</span>.new(params)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you put all the pieces together, you will find that calls to
+<code>Article.all</code> or <code>Article.create</code> return instances of <code>Article</code>, but
+those instances are imbued with functionality provided by a <code>Record</code>
+object, which in turn hold a reference to a <code>Relation</code> object 
+that ties everything back to the database. By now you’re probably feeling like
+the Active Record pattern is a bit of a 
+<a href="http://www.youtube.com/watch?v=qybUFnY7Y8w">Rube Goldberg machine</a>, and that
+isn’t far from the truth. Don’t worry though, the next section should help 
+tie everything together for you.</p>
+
+<h3 id="implementing-the-active-record-object-itself">Implementing the Active Record object itself</h3>
+
+<p>Earlier, I had asked you to ignore what was going on in the <code>each</code> block of the
+original example that kicked off this exploration, because I wanted to show you
+how <code>Article</code> instances get created before discussing how they work. Now that you
+have worked through that process, you can drop down to the instance level to
+complete the journey. Using the same code reading strategy as what you used
+before, you can start with the <code>Article#published?</code> and <code>Article#title</code> 
+calls in the following example and see where they take you:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Article</span>.all.each <span style="color:#080;font-weight:bold">do</span> |article|
+  <span style="color:#080;font-weight:bold">if</span> article.published?
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PUBLISHED: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">else</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UPCOMING: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>A second look at the <code>Article</code> class definition reveals that it implements
+the <code>published?</code> method but does not implement the <code>title</code> method; the latter call gets 
+passed along to <code>BrokenRecord::Record</code> automatically. Similarly, the internal call 
+to <code>status</code> gets delegated as well:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span>
+  include <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Mapping</span>
+
+  map_to_table <span style="color:#A60">:articles</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">published?</span>
+    status == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To understand what happens next, take a look at how the <code>BrokenRecord::Record</code> class works:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Record</span>
+    include <span style="color:#036;font-weight:bold">Composable</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(params)
+      <span style="color:#069">self</span>.key      = params.fetch(<span style="color:#A60">:key</span>, <span style="color:#069">nil</span>)
+      <span style="color:#069">self</span>.relation = params.fetch(<span style="color:#A60">:relation</span>)
+
+      <span style="color:#777"># NOTE: FieldSet (formally called Row) is a simple Struct-like object</span>
+      features &lt;&lt; <span style="color:#036;font-weight:bold">FieldSet</span>.new(<span style="color:#A60">:values</span>     =&gt; params.fetch(<span style="color:#A60">:values</span>, {}),
+                               <span style="color:#A60">:attributes</span> =&gt; relation.attributes)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ... irrelevant functionality omitted ...</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:relation</span>, <span style="color:#A60">:key</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>By now you should be able to quickly identify <code>BrokenRecord::FieldSet</code> as the object that
+receives any calls that <code>Record</code> does not answer itself. The good
+news is that you already know how <code>FieldSet</code> works, because it was discussed in
+detail in <a href="http://practicingruby.com/articles/60">Issue 4.8</a>. But if you need a
+refresher, check out the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>values = { <span style="color:#A60">:id</span>     =&gt; <span style="color:#00D">1</span>, 
+           <span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A great article</span><span style="color:#710">&quot;</span></span>, 
+           <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The rain in Spain...</span><span style="color:#710">&quot;</span></span>, 
+           <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span> }
+
+fieldset = <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">FieldSet</span>.new(<span style="color:#A60">:values</span>     =&gt; values,
+                                      <span style="color:#A60">:attributes</span> =&gt; values.keys)
+
+p fieldset.title  <span style="color:#777">#=&gt; &quot;A great article&quot;</span>
+p fieldset.status <span style="color:#777">#=&gt; &quot;draft&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you read back through the last few examples, you should be able to see how
+the data provided by <code>Relation</code> gets shoehorned into one of these <code>FieldSet</code>
+objects, and from there it becomes obvious how the <code>Article#title</code> and <code>Article#status</code>
+messages are handled.</p>
+
+<p>If <code>FieldSet</code> is doing all the heavy lifting, you may be wondering why the
+<code>Record</code> class needs to exist at all. Those details were omitted from the
+original example, so it is definitely a reasonable question to ask. To find your
+answer, consider the following example of updating database records:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>articles = <span style="color:#036;font-weight:bold">Article</span>.where(<span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span>)
+
+articles.each <span style="color:#080;font-weight:bold">do</span> |article|
+  article.status = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>
+  article.save
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In the example you worked through earlier, data was being read and not written,
+and so it was hard to see how <code>Record</code> offered anything more than a layer of
+indirection on top of <code>FieldSet</code>. However, the example shown above changes that
+perspective significantly by giving a clear reason for <code>Record</code> to hold a
+reference to a <code>Relation</code> object. While <code>Article#status=</code> is provided by
+<code>FieldSet</code>, the <code>Article#save</code> method is provided by <code>Record</code>, and is defined as
+follows:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">BrokenRecord</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Record</span>
+    
+    <span style="color:#777"># ... other details omitted ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save</span>
+      <span style="color:#080;font-weight:bold">if</span> key
+        relation.update(key, to_hash)
+      <span style="color:#080;font-weight:bold">else</span>
+        relation.create(to_hash)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span> 
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>From this method (and others like it), it becomes clear that <code>Record</code> is
+essentially a persistent <code>FieldSet</code> object, which forms the essence of what an
+Active Record object is in its most basic form.</p>
+
+<h3 id="exercise-implementing-minimal-association-support">EXERCISE: Implementing minimal association support</h3>
+
+<p>The process of working through the low level foundations built up in <a href="http://practicingruby.com/articles/60">Issue
+4.8</a> combined with this article’s 
+extensive walkthrough of how BrokenRecord implements some basic CRUD 
+functionality probably gave you enough learning moments to make you want to 
+quit while you’re ahead. That said, if you are looking to dig a little deeper, I’d recommend
+trying to work your way through BrokenRecord’s implementation of associations
+and see if you can make sense of it. The following example should serve as a
+good starting point:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span>
+  include <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Mapping</span>
+
+  map_to_table <span style="color:#A60">:articles</span>
+
+  has_many <span style="color:#A60">:comments</span>, <span style="color:#A60">:key</span>   =&gt; <span style="color:#A60">:article_id</span>, 
+                      <span style="color:#A60">:class</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Comment</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">published?</span>
+    status == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Comment</span>
+  include <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Mapping</span>
+
+  map_to_table <span style="color:#A60">:comments</span>
+
+  belongs_to <span style="color:#A60">:article</span>, <span style="color:#A60">:key</span>   =&gt; <span style="color:#A60">:article_id</span>,
+                       <span style="color:#A60">:class</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Article</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+
+<span style="color:#036;font-weight:bold">Article</span>.create(<span style="color:#A60">:title</span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A great articles</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:body</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The Rain in Spain</span><span style="color:#710">&quot;</span></span>,
+               <span style="color:#A60">:status</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span>)
+
+
+<span style="color:#036;font-weight:bold">Comment</span>.create(<span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A first comment</span><span style="color:#710">&quot;</span></span>,  <span style="color:#A60">:article_id</span> =&gt; <span style="color:#00D">1</span>)
+<span style="color:#036;font-weight:bold">Comment</span>.create(<span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A second comment</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:article_id</span> =&gt; <span style="color:#00D">1</span>)
+
+
+article = <span style="color:#036;font-weight:bold">Article</span>.find(<span style="color:#00D">1</span>)
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.title<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> -- </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>article.comments.count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> comments</span><span style="color:#710">&quot;</span></span>
+puts article.comments.map { |e| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">  * </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e.body<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Because not all the features used by this example are covered in this article,
+you will definitely need to directly reference the <a href="https://github.com/elm-city-craftworks/broken_record">full source of
+BrokenRecord</a> to complete
+this exercise. But don’t worry, by now you should be familiar with most of its
+code, and that will help you find your way around. If you attempt this 
+exercise, please let me know your thoughts and questions about it!</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Object-oriented mixins seems very promising to me, but also full of open 
+questions and potential pitfalls. While they seem to work well in this toy 
+implementation of Active Record, they may end up creating as many problems as
+they solve. In particular, it remains to be seen how this kind of modeling would
+impact performance, debugging, and introspection of Ruby objects. Still, the
+pattern does a good enough job of handling a very complex architectural
+pattern to hint that some further experimentation may be worthwhile.</p>
+
+<p>Going back to the original question I had hoped to answer in the first part of
+this article about whether or not the Active Record pattern is inherently complex, I
+suppose we have found out that there isn’t an easy answer to that question. My
+BrokenRecord implementation is conceptually simpler than the Rails-based
+ActiveRecord, but only implements a tiny amount of functionality. I think that
+the closest thing to a conclusion I can come to here is that the traditional
+methods we use for object modeling in Ruby are certainly complex, and so any
+system which attempts to implement large-scale architectural patterns in Ruby
+will inherit that complexity unless it deviates from convention.</p>
+
+<p>That all having been said, reducing complexity is about  more than just
+preferring composition over inheritance and reducing the amount of magic in our
+code. The much deeper questions that we can ask ourselves is whether these very
+complicated systems we build are really necessary, or if they are a
+consequence of piling <a href="http://timelessrepo.com/abstraction-creep">abstractions on top of abstractions</a> 
+in order to fix some fundamental low-level problem.</p>
+
+<p>While this article was a fun little exploration into the depths of a
+complex modeling problem in Ruby, I think its real point is to get us to
+question our own tolerance for complexity at all levels of what we do. If you
+have thoughts to share about that, I would love to hear them.</p>
+
+  </div>
+</body>
+</html>

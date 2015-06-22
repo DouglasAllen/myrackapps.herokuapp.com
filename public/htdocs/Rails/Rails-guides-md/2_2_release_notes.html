@@ -1,0 +1,572 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="ruby-on-rails-22-release-notes">Ruby on Rails 2.2 Release Notes</h1>
+
+<p>Rails 2.2 delivers a number of new and improved features. This list covers the major upgrades, but doesn’t include every little bug fix and change. If you want to see everything, check out the <a href="http://github.com/rails/rails/commits/master">list of commits</a> in the main Rails repository on GitHub.</p>
+
+<p>Along with Rails, 2.2 marks the launch of the <a href="http://guides.rubyonrails.org/">Ruby on Rails Guides</a>, the first results of the ongoing <a href="http://hackfest.rubyonrails.org/guide">Rails Guides hackfest</a>. This site will deliver high-quality documentation of the major features of Rails.</p>
+
+<hr />
+
+<h2 id="infrastructure">Infrastructure</h2>
+
+<p>Rails 2.2 is a significant release for the infrastructure that keeps Rails humming along and connected to the rest of the world.</p>
+
+<h3 id="internationalization">Internationalization</h3>
+
+<p>Rails 2.2 supplies an easy system for internationalization (or i18n, for those of you tired of typing).</p>
+
+<ul>
+  <li>Lead Contributors: Rails i18 Team</li>
+  <li>More information :
+    <ul>
+      <li><a href="http://rails-i18n.org">Official Rails i18 website</a></li>
+      <li><a href="http://www.artweb-design.de/2008/7/18/finally-ruby-on-rails-gets-internationalized">Finally. Ruby on Rails gets internationalized</a></li>
+      <li><a href="http://github.com/clemens/i18n_demo_app">Localizing Rails : Demo application</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="compatibility-with-ruby-19-and-jruby">Compatibility with Ruby 1.9 and JRuby</h3>
+
+<p>Along with thread safety, a lot of work has been done to make Rails work well with JRuby and the upcoming Ruby 1.9. With Ruby 1.9 being a moving target, running edge Rails on edge Ruby is still a hit-or-miss proposition, but Rails is ready to make the transition to Ruby 1.9 when the latter is released.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>The internal documentation of Rails, in the form of code comments, has been improved in numerous places. In addition, the <a href="http://guides.rubyonrails.org/">Ruby on Rails Guides</a> project is the definitive source for information on major Rails components. In its first official release, the Guides page includes:</p>
+
+<ul>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/getting_started.md">Getting Started with Rails</a></li>
+</ul>
+
+<p>-</p>
+
+<ul>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/action_controller_overview.md">Action Controller Overview</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/action_mailer_basics.md">Action Mailer Basics</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/action_view_overview.md">Action View Overview</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/form_helpers.md">Action View Form Helpers</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_model_basics.md">Active Model Basics</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_record_basics.md">Active Record Basics</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/association_basics.md">Active Record Associations</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_record_callbacks.md">Active Record Callbacks</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/migrations.md">Active Record Migrations</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_record_querying.md">Active Record Query Interface</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_record_validations.md">Active Record Validations</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_support_core_extensions.md">Active Support Core Extensions</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/active_support_instrumentation.md">Active Support Instrumentation</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/asset_pipeline.md">Asset Pipeline</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/caching_with_rails.md">Caching with Rails: An overview</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/command_line.md">Command Line</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/configuring.md">Configuring Rails Applications</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/contributing_to_ruby_on_rails.md">Contributing to Ruby on Rails</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/generators.md">Creating and Customizing Rails Generators &amp; Templates</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/debugging_rails_applications.md">Debugging Rails Applications</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/development_dependencies_install.md">Development Dependencies Install</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/engines.md">Getting Started with Engines</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/working_with_javascript_in_rails.md">Working with JavaScript in Rails</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/layouts_and_rendering.md">Layouts and Rendering in Rails</a></li>
+  <li><a href="performance_testing.html">Performance Testing Rails Applications</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/rails_application_templates.md">Rails Application Templates</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/i18n.md">Rails Internationalization (I18n) API</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/nested_model_forms.md">Rails nested model forms</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/plugins.md">The Basics of Creating Rails Plugins</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/rails_on_rack.md">Rails on Rack</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/routing.md">Rails Routing from the Outside In</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/ruby_on_rails_guides_guidelines.md">Ruby on Rails Guides Guidelines</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/security.md">Ruby on Rails Security Guide</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/testing.md">A Guide to Testing Rails Applications</a></li>
+  <li><a href="https://github.com/DouglasAllen/Rails-projects/blob/master/getting_started/public/upgrading_ruby_on_rails.md">A Guide for Upgrading Ruby on Rails</a></li>
+</ul>
+
+<p>All told, the Guides provide tens of thousands of words of guidance for beginning and intermediate Rails developers.</p>
+
+<p>If you want to generate these guides locally, inside your application:</p>
+
+<pre><code>rake doc:guides
+</code></pre>
+
+<p>This will put the guides inside <code>Rails.root/doc/guides</code> and you may start surfing straight away by opening <code>Rails.root/doc/guides/index.html</code> in your favourite browser.</p>
+
+<ul>
+  <li>Lead Contributors: <a href="credits.html">Rails Documentation Team</a></li>
+  <li>Major contributions from <a href="http://izumi.plan99.net/blog/.">Xavier Noria”:http://advogato.org/person/fxn/diary.html and “Hongli Lai</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="http://hackfest.rubyonrails.org/guide">Rails Guides hackfest</a></li>
+      <li><a href="http://weblog.rubyonrails.org/2008/5/2/help-improve-rails-documentation-on-git-branch">Help improve Rails documentation on Git branch</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="better-integration-with-http--out-of-the-box-etag-support">Better integration with HTTP : Out of the box ETag support</h2>
+
+<p>Supporting the etag and last modified timestamp in HTTP headers means that Rails can now send back an empty response if it gets a request for a resource that hasn’t been modified lately. This allows you to check whether a response needs to be sent at all.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ArticlesController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">show_with_respond_to_block</span>
+    <span style="color:#33B">@article</span> = <span style="color:#036;font-weight:bold">Article</span>.find(params[<span style="color:#A60">:id</span>])
+
+    <span style="color:#777"># If the request sends headers that differs from the options provided to stale?, then</span>
+    <span style="color:#777"># the request is indeed stale and the respond_to block is triggered (and the options</span>
+    <span style="color:#777"># to the stale? call is set on the response).</span>
+    <span style="color:#777">#</span>
+    <span style="color:#777"># If the request headers match, then the request is fresh and the respond_to block is</span>
+    <span style="color:#777"># not triggered. Instead the default render will occur, which will check the last-modified</span>
+    <span style="color:#777"># and etag headers and conclude that it only needs to send a &quot;304 Not Modified&quot; instead</span>
+    <span style="color:#777"># of rendering the template.</span>
+    <span style="color:#080;font-weight:bold">if</span> stale?(<span style="color:#A60">:last_modified</span> =&gt; <span style="color:#33B">@article</span>.published_at.utc, <span style="color:#A60">:etag</span> =&gt; <span style="color:#33B">@article</span>)
+      respond_to <span style="color:#080;font-weight:bold">do</span> |wants|
+        <span style="color:#777"># normal response processing</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">show_with_implied_render</span>
+    <span style="color:#33B">@article</span> = <span style="color:#036;font-weight:bold">Article</span>.find(params[<span style="color:#A60">:id</span>])
+
+    <span style="color:#777"># Sets the response headers and checks them against the request, if the request is stale</span>
+    <span style="color:#777"># (i.e. no match of either etag or last-modified), then the default render of the template happens.</span>
+    <span style="color:#777"># If the request is fresh, then the default render will return a &quot;304 Not Modified&quot;</span>
+    <span style="color:#777"># instead of rendering the template.</span>
+    fresh_when(<span style="color:#A60">:last_modified</span> =&gt; <span style="color:#33B">@article</span>.published_at.utc, <span style="color:#A60">:etag</span> =&gt; <span style="color:#33B">@article</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="thread-safety">Thread Safety</h2>
+
+<p>The work done to make Rails thread-safe is rolling out in Rails 2.2. Depending on your web server infrastructure, this means you can handle more requests with fewer copies of Rails in memory, leading to better server performance and higher utilization of multiple cores.</p>
+
+<p>To enable multithreaded dispatching in production mode of your application, add the following line in your <code>config/environments/production.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.threadsafe!
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>More information :
+    <ul>
+      <li><a href="http://m.onkey.org/2008/10/23/thread-safety-for-your-rails">Thread safety for your Rails</a></li>
+      <li><a href="http://weblog.rubyonrails.org/2008/8/16/josh-peek-officially-joins-the-rails-core">Thread safety project announcement</a></li>
+      <li><a href="http://blog.headius.com/2008/08/qa-what-thread-safe-rails-means.html">Q/A: What Thread-safe Rails Means</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="active-record">Active Record</h2>
+
+<p>There are two big additions to talk about here: transactional migrations and pooled database transactions. There’s also a new (and cleaner) syntax for join table conditions, as well as a number of smaller improvements.</p>
+
+<h3 id="transactional-migrations">Transactional Migrations</h3>
+
+<p>Historically, multiple-step Rails migrations have been a source of trouble. If something went wrong during a migration, everything before the error changed the database and everything after the error wasn’t applied. Also, the migration version was stored as having been executed, which means that it couldn’t be simply rerun by <code>rake db:migrate:redo</code> after you fix the problem. Transactional migrations change this by wrapping migration steps in a DDL transaction, so that if any of them fail, the entire migration is undone. In Rails 2.2, transactional migrations are supported on PostgreSQL out of the box. The code is extensible to other database types in the future - and IBM has already extended it to support the DB2 adapter.</p>
+
+<ul>
+  <li>Lead Contributor: <a href="http://adam.heroku.com/">Adam Wiggins</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="http://adam.heroku.com/past/2008/9/3/ddl_transactions/">DDL Transactions</a></li>
+      <li><a href="http://db2onrails.com/2008/11/08/a-major-milestone-for-db2-on-rails/">A major milestone for DB2 on Rails</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="connection-pooling">Connection Pooling</h3>
+
+<p>Connection pooling lets Rails distribute database requests across a pool of database connections that will grow to a maximum size (by default 5, but you can add a <code>pool</code> key to your <code>database.yml</code> to adjust this). This helps remove bottlenecks in applications that support many concurrent users. There’s also a <code>wait_timeout</code> that defaults to 5 seconds before giving up. <code>ActiveRecord::Base.connection_pool</code> gives you direct access to the pool if you need it.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">development</span>:
+  <span style="color:#606">adapter</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">mysql</span></span>
+  <span style="color:#606">username</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">root</span></span>
+  <span style="color:#606">database</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sample_development</span></span>
+  <span style="color:#606">pool</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10</span></span>
+  <span style="color:#606">wait_timeout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">10</span></span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Lead Contributor: <a href="http://blog.nicksieger.com/">Nick Sieger</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="http://ryandaigle.com/articles/2008/9/7/what-s-new-in-edge-rails-connection-pools">What’s New in Edge Rails: Connection Pools</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="hashes-for-join-table-conditions">Hashes for Join Table Conditions</h3>
+
+<p>You can now specify conditions on join tables using a hash. This is a big help if you need to query across complex joins.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Photo</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:product</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Product</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:photos</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Get all products with copyright-free photos:</span>
+<span style="color:#036;font-weight:bold">Product</span>.all(<span style="color:#A60">:joins</span> =&gt; <span style="color:#A60">:photos</span>, <span style="color:#A60">:conditions</span> =&gt; { <span style="color:#A60">:photos</span> =&gt; { <span style="color:#A60">:copyright</span> =&gt; <span style="color:#069">false</span> }})
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>More information:
+    <ul>
+      <li><a href="http://ryandaigle.com/articles/2008/7/7/what-s-new-in-edge-rails-easy-join-table-conditions">What’s New in Edge Rails: Easy Join Table Conditions</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="new-dynamic-finders">New Dynamic Finders</h3>
+
+<p>Two new sets of methods have been added to Active Record’s dynamic finders family.</p>
+
+<h4 id="findlastbyattribute"><code>find_last_by_attribute</code></h4>
+
+<p>The <code>find_last_by_attribute</code> method is equivalent to <code>Model.last(:conditions =&gt; {:attribute =&gt; value})</code></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Get the last user who signed up from London</span>
+<span style="color:#036;font-weight:bold">User</span>.find_last_by_city(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">London</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Lead Contributor: <a href="http://www.workingwithrails.com/person/9147-emilio-tagua">Emilio Tagua</a></li>
+</ul>
+
+<h4 id="findbyattribute"><code>find_by_attribute!</code></h4>
+
+<p>The new bang! version of <code>find_by_attribute!</code> is equivalent to <code>Model.first(:conditions =&gt; {:attribute =&gt; value}) || raise ActiveRecord::RecordNotFound</code> Instead of returning <code>nil</code> if it can’t find a matching record, this method will raise an exception if it cannot find a match.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Raise ActiveRecord::RecordNotFound exception if 'Moby' hasn't signed up yet!</span>
+<span style="color:#036;font-weight:bold">User</span>.find_by_name!(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Moby</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Lead Contributor: <a href="http://blog.hasmanythrough.com">Josh Susser</a></li>
+</ul>
+
+<h3 id="associations-respect-privateprotected-scope">Associations Respect Private/Protected Scope</h3>
+
+<p>Active Record association proxies now respect the scope of methods on the proxied object. Previously (given User has_one :account) <code>@user.account.private_method</code> would call the private method on the associated Account object. That fails in Rails 2.2; if you need this functionality, you should use <code>@user.account.send(:private_method)</code> (or make the method public instead of private or protected). Please note that if you’re overriding <code>method_missing</code>, you should also override <code>respond_to</code> to match the behavior in order for associations to function normally.</p>
+
+<ul>
+  <li>Lead Contributor: Adam Milligan</li>
+  <li>More information:
+    <ul>
+      <li><a href="http://afreshcup.com/2008/10/24/rails-22-change-private-methods-on-association-proxies-are-private/">Rails 2.2 Change: Private Methods on Association Proxies are Private</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="other-active-record-changes">Other Active Record Changes</h3>
+
+<ul>
+  <li><code>rake db:migrate:redo</code> now accepts an optional VERSION to target that specific migration to redo</li>
+  <li>Set <code>config.active_record.timestamped_migrations = false</code> to have migrations with numeric prefix instead of UTC timestamp.</li>
+  <li>Counter cache columns (for associations declared with <code>:counter_cache =&gt; true</code>) do not need to be initialized to zero any longer.</li>
+  <li><code>ActiveRecord::Base.human_name</code> for an internationalization-aware humane translation of model names</li>
+</ul>
+
+<h2 id="action-controller">Action Controller</h2>
+
+<p>On the controller side, there are several changes that will help tidy up your routes. There are also some internal changes in the routing engine to lower memory usage on complex applications.</p>
+
+<h3 id="shallow-route-nesting">Shallow Route Nesting</h3>
+
+<p>Shallow route nesting provides a solution to the well-known difficulty of using deeply-nested resources. With shallow nesting, you need only supply enough information to uniquely identify the resource that you want to work with.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>map.resources <span style="color:#A60">:publishers</span>, <span style="color:#A60">:shallow</span> =&gt; <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">do</span> |publisher|
+  publisher.resources <span style="color:#A60">:magazines</span> <span style="color:#080;font-weight:bold">do</span> |magazine|
+    magazine.resources <span style="color:#A60">:photos</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This will enable recognition of (among others) these routes:</p>
+
+<pre><code>/publishers/1           ==&gt; publisher_path(1)
+/publishers/1/magazines ==&gt; publisher_magazines_path(1)
+/magazines/2            ==&gt; magazine_path(2)
+/magazines/2/photos     ==&gt; magazines_photos_path(2)
+/photos/3               ==&gt; photo_path(3)
+</code></pre>
+
+<ul>
+  <li>Lead Contributor: <a href="http://www.unwwwired.net/">S. Brent Faulkner</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="routing.html#nested-resources">Rails Routing from the Outside In</a></li>
+      <li><a href="http://ryandaigle.com/articles/2008/9/7/what-s-new-in-edge-rails-shallow-routes">What’s New in Edge Rails: Shallow Routes</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="method-arrays-for-member-or-collection-routes">Method Arrays for Member or Collection Routes</h3>
+
+<p>You can now supply an array of methods for new member or collection routes. This removes the annoyance of having to define a route as accepting any verb as soon as you need it to handle more than one. With Rails 2.2, this is a legitimate route declaration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>map.resources <span style="color:#A60">:photos</span>, <span style="color:#A60">:collection</span> =&gt; { <span style="color:#A60">:search</span> =&gt; [<span style="color:#A60">:get</span>, <span style="color:#A60">:post</span>] }
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Lead Contributor: <a href="http://brennandunn.com/">Brennan Dunn</a></li>
+</ul>
+
+<h3 id="resources-with-specific-actions">Resources With Specific Actions</h3>
+
+<p>By default, when you use <code>map.resources</code> to create a route, Rails generates routes for seven default actions (index, show, create, new, edit, update, and destroy). But each of these routes takes up memory in your application, and causes Rails to generate additional routing logic. Now you can use the <code>:only</code> and <code>:except</code> options to fine-tune the routes that Rails will generate for resources. You can supply a single action, an array of actions, or the special <code>:all</code> or <code>:none</code> options. These options are inherited by nested resources.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>map.resources <span style="color:#A60">:photos</span>, <span style="color:#A60">:only</span> =&gt; [<span style="color:#A60">:index</span>, <span style="color:#A60">:show</span>]
+map.resources <span style="color:#A60">:products</span>, <span style="color:#A60">:except</span> =&gt; <span style="color:#A60">:destroy</span>
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>Lead Contributor: <a href="http://experthuman.com/">Tom Stuart</a></li>
+</ul>
+
+<h3 id="other-action-controller-changes">Other Action Controller Changes</h3>
+
+<ul>
+  <li>You can now easily <a href="http://m.onkey.org/2008/7/20/rescue-from-dispatching">show a custom error page</a> for exceptions raised while routing a request.</li>
+  <li>The HTTP Accept header is disabled by default now. You should prefer the use of formatted URLs (such as <code>/customers/1.xml</code>) to indicate the format that you want. If you need the Accept headers, you can turn them back on with <code>config.action_controller.use_accept_header = true</code>.</li>
+  <li>Benchmarking numbers are now reported in milliseconds rather than tiny fractions of seconds</li>
+  <li>Rails now supports HTTP-only cookies (and uses them for sessions), which help mitigate some cross-site scripting risks in newer browsers.</li>
+  <li><code>redirect_to</code> now fully supports URI schemes (so, for example, you can redirect to a svn`ssh: URI).</li>
+  <li><code>render</code> now supports a <code>:js</code> option to render plain vanilla JavaScript with the right mime type.</li>
+  <li>Request forgery protection has been tightened up to apply to HTML-formatted content requests only.</li>
+  <li>Polymorphic URLs behave more sensibly if a passed parameter is nil. For example, calling <code>polymorphic_path([@project, @date, @area])</code> with a nil date will give you <code>project_area_path</code>.</li>
+</ul>
+
+<h2 id="action-view">Action View</h2>
+
+<ul>
+  <li><code>javascript_include_tag</code> and <code>stylesheet_link_tag</code> support a new <code>:recursive</code> option to be used along with <code>:all</code>, so that you can load an entire tree of files with a single line of code.</li>
+  <li>The included Prototype JavaScript library has been upgraded to version 1.6.0.3.</li>
+  <li><code>RJS#page.reload</code> to reload the browser’s current location via JavaScript</li>
+  <li>The <code>atom_feed</code> helper now takes an <code>:instruct</code> option to let you insert XML processing instructions.</li>
+</ul>
+
+<h2 id="action-mailer">Action Mailer</h2>
+
+<p>Action Mailer now supports mailer layouts. You can make your HTML emails as pretty as your in-browser views by supplying an appropriately-named layout - for example, the <code>CustomerMailer</code> class expects to use <code>layouts/customer_mailer.html.erb</code>.</p>
+
+<ul>
+  <li>More information:
+    <ul>
+      <li><a href="http://ryandaigle.com/articles/2008/9/7/what-s-new-in-edge-rails-mailer-layouts">What’s New in Edge Rails: Mailer Layouts</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Action Mailer now offers built-in support for GMail’s SMTP servers, by turning on STARTTLS automatically. This requires Ruby 1.8.7 to be installed.</p>
+
+<h2 id="active-support">Active Support</h2>
+
+<p>Active Support now offers built-in memoization for Rails applications, the <code>each_with_object</code> method, prefix support on delegates, and various other new utility methods.</p>
+
+<h3 id="memoization">Memoization</h3>
+
+<p>Memoization is a pattern of initializing a method once and then stashing its value away for repeat use. You’ve probably used this pattern in your own applications:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">full_name</span>
+  <span style="color:#33B">@full_name</span> ||= <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>first_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>last_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Memoization lets you handle this task in a declarative fashion:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>extend <span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Memoizable</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">full_name</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>first_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>last_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+memoize <span style="color:#A60">:full_name</span>
+</pre></div>
+</div>
+</div>
+
+<p>Other features of memoization include <code>unmemoize</code>, <code>unmemoize_all</code>, and <code>memoize_all</code> to turn memoization on or off.</p>
+
+<ul>
+  <li>Lead Contributor: <a href="http://joshpeek.com/">Josh Peek</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="http://ryandaigle.com/articles/2008/7/16/what-s-new-in-edge-rails-memoization">What’s New in Edge Rails: Easy Memoization</a></li>
+      <li><a href="http://www.railway.at/articles/2008/09/20/a-guide-to-memoization">Memo-what? A Guide to Memoization</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="eachwithobject">each_with_object</h3>
+
+<p>The <code>each_with_object</code> method provides an alternative to <code>inject</code>, using a method backported from Ruby 1.9. It iterates over a collection, passing the current element and the memo into the block.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">foo bar</span><span style="color:#710">)</span></span>.each_with_object({}) { |str, hsh| hsh[str] = str.upcase } <span style="color:#777">#=&gt; {'foo' =&gt; 'FOO', 'bar' =&gt; 'BAR'}</span>
+</pre></div>
+</div>
+</div>
+
+<p>Lead Contributor: <a href="http://therealadam.com/">Adam Keys</a></p>
+
+<h3 id="delegates-with-prefixes">Delegates With Prefixes</h3>
+
+<p>If you delegate behavior from one class to another, you can now specify a prefix that will be used to identify the delegated methods. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Vendor</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_one <span style="color:#A60">:account</span>
+  delegate <span style="color:#A60">:email</span>, <span style="color:#A60">:password</span>, <span style="color:#A60">:to</span> =&gt; <span style="color:#A60">:account</span>, <span style="color:#A60">:prefix</span> =&gt; <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This will produce delegated methods <code>vendor#account_email</code> and <code>vendor#account_password</code>. You can also specify a custom prefix:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Vendor</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_one <span style="color:#A60">:account</span>
+  delegate <span style="color:#A60">:email</span>, <span style="color:#A60">:password</span>, <span style="color:#A60">:to</span> =&gt; <span style="color:#A60">:account</span>, <span style="color:#A60">:prefix</span> =&gt; <span style="color:#A60">:owner</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This will produce delegated methods <code>vendor#owner_email</code> and <code>vendor#owner_password</code>.</p>
+
+<p>Lead Contributor: <a href="http://workingwithrails.com/person/5830-daniel-schierbeck">Daniel Schierbeck</a></p>
+
+<h3 id="other-active-support-changes">Other Active Support Changes</h3>
+
+<ul>
+  <li>Extensive updates to <code>ActiveSupport::Multibyte</code>, including Ruby 1.9 compatibility fixes.</li>
+  <li>The addition of <code>ActiveSupport::Rescuable</code> allows any class to mix in the <code>rescue_from</code> syntax.</li>
+  <li><code>past?</code>, <code>today?</code> and <code>future?</code> for <code>Date</code> and <code>Time</code> classes to facilitate date/time comparisons.</li>
+  <li><code>Array#second</code> through <code>Array#fifth</code> as aliases for <code>Array#[1]</code> through <code>Array#[4]</code></li>
+  <li><code>Enumerable#many?</code> to encapsulate <code>collection.size &gt; 1</code></li>
+  <li><code>Inflector#parameterize</code> produces a URL-ready version of its input, for use in <code>to_param</code>.</li>
+  <li><code>Time#advance</code> recognizes fractional days and weeks, so you can do <code>1.7.weeks.ago</code>, <code>1.5.hours.since</code>, and so on.</li>
+  <li>The included TzInfo library has been upgraded to version 0.3.12.</li>
+  <li><code>ActiveSuport::StringInquirer</code> gives you a pretty way to test for equality in strings: <code>ActiveSupport::StringInquirer.new("abc").abc? =&gt; true</code></li>
+</ul>
+
+<h2 id="railties">Railties</h2>
+
+<p>In Railties (the core code of Rails itself) the biggest changes are in the <code>config.gems</code> mechanism.</p>
+
+<h3 id="configgems">config.gems</h3>
+
+<p>To avoid deployment issues and make Rails applications more self-contained, it’s possible to place copies of all of the gems that your Rails application requires in <code>/vendor/gems</code>. This capability first appeared in Rails 2.1, but it’s much more flexible and robust in Rails 2.2, handling complicated dependencies between gems. Gem management in Rails includes these commands:</p>
+
+<ul>
+  <li><code>config.gem _gem_name_</code> in your <code>config/environment.rb</code> file</li>
+  <li><code>rake gems</code> to list all configured gems, as well as whether they (and their dependencies) are installed, frozen, or framework (framework gems are those loaded by Rails before the gem dependency code is executed; such gems cannot be frozen)</li>
+  <li><code>rake gems:install</code> to install missing gems to the computer</li>
+  <li><code>rake gems:unpack</code> to place a copy of the required gems into <code>/vendor/gems</code></li>
+  <li><code>rake gems:unpack:dependencies</code> to get copies of the required gems and their dependencies into <code>/vendor/gems</code></li>
+  <li><code>rake gems:build</code> to build any missing native extensions</li>
+  <li><code>rake gems:refresh_specs</code> to bring vendored gems created with Rails 2.1 into alignment with the Rails 2.2 way of storing them</li>
+</ul>
+
+<p>You can unpack or install a single gem by specifying <code>GEM=_gem_name_</code> on the command line.</p>
+
+<ul>
+  <li>Lead Contributor: <a href="http://github.com/al2o3cr">Matt Jones</a></li>
+  <li>More information:
+    <ul>
+      <li><a href="http://ryandaigle.com/articles/2008/4/1/what-s-new-in-edge-rails-gem-dependencies">What’s New in Edge Rails: Gem Dependencies</a></li>
+      <li><a href="http://afreshcup.com/2008/10/25/rails-212-and-22rc1-update-your-rubygems/">Rails 2.1.2 and 2.2RC1: Update Your RubyGems</a></li>
+      <li><a href="http://rails.lighthouseapp.com/projects/8994-ruby-on-rails/tickets/1128">Detailed discussion on Lighthouse</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="other-railties-changes">Other Railties Changes</h3>
+
+<ul>
+  <li>If you’re a fan of the <a href="http://code.macournoyer.com/thin/">Thin</a> web server, you’ll be happy to know that <code>script/server</code> now supports Thin directly.</li>
+  <li><code>script/plugin install &amp;lt;plugin&amp;gt; -r &amp;lt;revision&amp;gt;</code> now works with git-based as well as svn-based plugins.</li>
+  <li><code>script/console</code> now supports a <code>--debugger</code> option</li>
+  <li>Instructions for setting up a continuous integration server to build Rails itself are included in the Rails source</li>
+  <li><code>rake notes:custom ANNOTATION=MYFLAG</code> lets you list out custom annotations.</li>
+  <li>Wrapped <code>Rails.env</code> in <code>StringInquirer</code> so you can do <code>Rails.env.development?</code></li>
+  <li>To eliminate deprecation warnings and properly handle gem dependencies, Rails now requires rubygems 1.3.1 or higher.</li>
+</ul>
+
+<h2 id="deprecated">Deprecated</h2>
+
+<p>A few pieces of older code are deprecated in this release:</p>
+
+<ul>
+  <li><code>Rails::SecretKeyGenerator</code> has been replaced by <code>ActiveSupport::SecureRandom</code></li>
+  <li><code>render_component</code> is deprecated. There’s a <a href="http://github.com/rails/render_component/tree/master">render_components plugin</a> available if you need this functionality.</li>
+  <li>
+    <p>Implicit local assignments when rendering partials has been deprecated.</p>
+
+    <p>~~~ruby
+  def partial_with_implicit_local_assignment
+    @customer = Customer.new(“Marcel”)
+    render :partial =&gt; “customer”
+  end
+  ~~~</p>
+
+    <p>Previously the above code made available a local variable called <code>customer</code> inside the partial ‘customer’. You should explicitly pass all the variables via :locals hash now.</p>
+  </li>
+  <li><code>country_select</code> has been removed. See the <a href="http://www.rubyonrails.org/deprecation/list-of-countries">deprecation page</a> for more information and a plugin replacement.</li>
+  <li><code>ActiveRecord::Base.allow_concurrency</code> no longer has any effect.</li>
+  <li><code>ActiveRecord::Errors.default_error_messages</code> has been deprecated in favor of <code>I18n.translate('activerecord.errors.messages')</code></li>
+  <li>The <code>%s</code> and <code>%d</code> interpolation syntax for internationalization is deprecated.</li>
+  <li><code>String#chars</code> has been deprecated in favor of <code>String#mb_chars</code>.</li>
+  <li>Durations of fractional months or fractional years are deprecated. Use Ruby’s core <code>Date</code> and <code>Time</code> class arithmetic instead.</li>
+  <li><code>Request#relative_url_root</code> is deprecated. Use <code>ActionController::Base.relative_url_root</code> instead.</li>
+</ul>
+
+<h2 id="credits">Credits</h2>
+
+<p>Release notes compiled by <a href="http://afreshcup.com">Mike Gunderloy</a></p>
+
+    </div>
+  </body>
+</html>

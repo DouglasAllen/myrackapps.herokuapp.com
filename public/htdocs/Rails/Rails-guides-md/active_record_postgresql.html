@@ -1,0 +1,899 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="active-record-and-postgresql">Active Record and PostgreSQL</h1>
+
+<p>This guide covers PostgreSQL specific usage of Active Record.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to use PostgreSQL’s datatypes.</li>
+  <li>How to use UUID primary keys.</li>
+  <li>How to implement full text search with PostgreSQL.</li>
+  <li>How to back your Active Record models with database views.</li>
+</ul>
+
+<hr />
+
+<p>In order to use the PostgreSQL adapter you need to have at least version 8.2
+installed. Older versions are not supported.</p>
+
+<p>To get started with PostgreSQL have a look at the
+<a href="configuring.html#configuring-a-postgresql-database">configuring Rails guide</a>.
+It describes how to properly setup Active Record for PostgreSQL.</p>
+
+<h2 id="datatypes">Datatypes</h2>
+
+<p>PostgreSQL offers a number of specific datatypes. Following is a list of types,
+that are supported by the PostgreSQL adapter.</p>
+
+<h3 id="bytea">Bytea</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-binary.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/functions-binarystring.html">functions and operators</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20140207133952_create_documents.rb</span>
+create_table <span style="color:#A60">:documents</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.binary <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">payload</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/document.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Document</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+data = <span style="color:#036;font-weight:bold">File</span>.read(<span style="color:#036;font-weight:bold">Rails</span>.root + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tmp/output.pdf</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#036;font-weight:bold">Document</span>.create <span style="color:#606">payload</span>: data
+</pre></div>
+</div>
+</div>
+
+<h3 id="array">Array</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/arrays.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/functions-array.html">functions and operators</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20140207133952_create_books.rb</span>
+create_table <span style="color:#A60">:books</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.string <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">title</span><span style="color:#710">'</span></span>
+  t.string <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tags</span><span style="color:#710">'</span></span>, <span style="color:#606">array</span>: <span style="color:#069">true</span>
+  t.integer <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ratings</span><span style="color:#710">'</span></span>, <span style="color:#606">array</span>: <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span>
+add_index <span style="color:#A60">:books</span>, <span style="color:#A60">:tags</span>, <span style="color:#606">using</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">gin</span><span style="color:#710">'</span></span>
+add_index <span style="color:#A60">:books</span>, <span style="color:#A60">:ratings</span>, <span style="color:#606">using</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">gin</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># app/models/book.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Book</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Book</span>.create <span style="color:#606">title</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Brave New World</span><span style="color:#710">&quot;</span></span>,
+            <span style="color:#606">tags</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fantasy</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fiction</span><span style="color:#710">&quot;</span></span>],
+            <span style="color:#606">ratings</span>: [<span style="color:#00D">4</span>, <span style="color:#00D">5</span>]
+
+<span style="color:#777">## Books for a single tag</span>
+<span style="color:#036;font-weight:bold">Book</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">'fantasy' = ANY (tags)</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777">## Books for multiple tags</span>
+<span style="color:#036;font-weight:bold">Book</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tags @&gt; ARRAY[?]::varchar[]</span><span style="color:#710">&quot;</span></span>, [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fantasy</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fiction</span><span style="color:#710">&quot;</span></span>])
+
+<span style="color:#777">## Books with 3 or more ratings</span>
+<span style="color:#036;font-weight:bold">Book</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">array_length(ratings, 1) &gt;= 3</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="hstore">Hstore</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/hstore.html">type definition</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131009135255_create_profiles.rb</span>
+<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Schema</span>.define <span style="color:#080;font-weight:bold">do</span>
+  create_table <span style="color:#A60">:profiles</span> <span style="color:#080;font-weight:bold">do</span> |t|
+    t.hstore <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">settings</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/profile.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Profile</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Profile</span>.create(<span style="color:#606">settings</span>: { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">color</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">blue</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">resolution</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">800x600</span><span style="color:#710">&quot;</span></span> })
+
+profile = <span style="color:#036;font-weight:bold">Profile</span>.first
+profile.settings <span style="color:#777"># =&gt; {&quot;color&quot;=&gt;&quot;blue&quot;, &quot;resolution&quot;=&gt;&quot;800x600&quot;}</span>
+
+profile.settings = {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">color</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yellow</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">resolution</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1280x1024</span><span style="color:#710">&quot;</span></span>}
+profile.save!
+</pre></div>
+</div>
+</div>
+
+<h3 id="json">JSON</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-json.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/functions-json.html">functions and operators</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_events.rb</span>
+create_table <span style="color:#A60">:events</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.json <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">payload</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/event.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Event</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Event</span>.create(<span style="color:#606">payload</span>: { <span style="color:#606">kind</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user_renamed</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">change</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">jack</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">john</span><span style="color:#710">&quot;</span></span>]})
+
+event = <span style="color:#036;font-weight:bold">Event</span>.first
+event.payload <span style="color:#777"># =&gt; {&quot;kind&quot;=&gt;&quot;user_renamed&quot;, &quot;change&quot;=&gt;[&quot;jack&quot;, &quot;john&quot;]}</span>
+
+<span style="color:#777">## Query based on JSON document</span>
+<span style="color:#777"># The -&gt; operator returns the original JSON type (which might be an object), whereas -&gt;&gt; returns text</span>
+<span style="color:#036;font-weight:bold">Event</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">payload-&gt;&gt;'kind' = ?</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user_renamed</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="range-types">Range Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/rangetypes.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/functions-range.html">functions and operators</a></li>
+</ul>
+
+<p>This type is mapped to Ruby <a href="http://www.ruby-doc.org/core-2.1.1/Range.html"><code>Range</code></a> objects.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20130923065404_create_events.rb</span>
+create_table <span style="color:#A60">:events</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.daterange <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">duration</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/event.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Event</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Event</span>.create(<span style="color:#606">duration</span>: <span style="color:#036;font-weight:bold">Date</span>.new(<span style="color:#00D">2014</span>, <span style="color:#00D">2</span>, <span style="color:#00D">11</span>)..<span style="color:#036;font-weight:bold">Date</span>.new(<span style="color:#00D">2014</span>, <span style="color:#00D">2</span>, <span style="color:#00D">12</span>))
+
+event = <span style="color:#036;font-weight:bold">Event</span>.first
+event.duration <span style="color:#777"># =&gt; Tue, 11 Feb 2014...Thu, 13 Feb 2014</span>
+
+<span style="color:#777">## All Events on a given date</span>
+<span style="color:#036;font-weight:bold">Event</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">duration @&gt; ?::date</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Date</span>.new(<span style="color:#00D">2014</span>, <span style="color:#00D">2</span>, <span style="color:#00D">12</span>))
+
+<span style="color:#777">## Working with range bounds</span>
+event = <span style="color:#036;font-weight:bold">Event</span>.
+  select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lower(duration) AS starts_at</span><span style="color:#710">&quot;</span></span>).
+  select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">upper(duration) AS ends_at</span><span style="color:#710">&quot;</span></span>).first
+
+event.starts_at <span style="color:#777"># =&gt; Tue, 11 Feb 2014</span>
+event.ends_at <span style="color:#777"># =&gt; Thu, 13 Feb 2014</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="composite-types">Composite Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/rowtypes.html">type definition</a></li>
+</ul>
+
+<p>Currently there is no special support for composite types. They are mapped to
+normal text columns:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">CREATE</span> TYPE full_address <span style="color:#080;font-weight:bold">AS</span>
+(
+  city <span style="color:#0a8;font-weight:bold">VARCHAR</span>(<span style="color:#00D">90</span>),
+  street <span style="color:#0a8;font-weight:bold">VARCHAR</span>(<span style="color:#00D">90</span>)
+);
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20140207133952_create_contacts.rb</span>
+execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+ CREATE TYPE full_address AS
+ (
+   city VARCHAR(90),
+   street VARCHAR(90)
+ );</span><span style="color:#710">
+SQL</span></span>
+create_table <span style="color:#A60">:contacts</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.column <span style="color:#A60">:address</span>, <span style="color:#A60">:full_address</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/contact.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Contact</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Contact</span>.create <span style="color:#606">address</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(Paris,Champs-Élysées)</span><span style="color:#710">&quot;</span></span>
+contact = <span style="color:#036;font-weight:bold">Contact</span>.first
+contact.address <span style="color:#777"># =&gt; &quot;(Paris,Champs-Élysées)&quot;</span>
+contact.address = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(Paris,Rue Basse)</span><span style="color:#710">&quot;</span></span>
+contact.save!
+</pre></div>
+</div>
+</div>
+
+<h3 id="enumerated-types">Enumerated Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-enum.html">type definition</a></li>
+</ul>
+
+<p>Currently there is no special support for enumerated types. They are mapped as
+normal text columns:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_articles.rb</span>
+execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+  CREATE TYPE article_status AS ENUM ('draft', 'published');</span><span style="color:#710">
+SQL</span></span>
+create_table <span style="color:#A60">:articles</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.column <span style="color:#A60">:status</span>, <span style="color:#A60">:article_status</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/article.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Article</span>.create <span style="color:#606">status</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span>
+article = <span style="color:#036;font-weight:bold">Article</span>.first
+article.status <span style="color:#777"># =&gt; &quot;draft&quot;</span>
+
+article.status = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>
+article.save!
+</pre></div>
+</div>
+</div>
+
+<h3 id="uuid">UUID</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-uuid.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/uuid-ossp.html">generator functions</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_revisions.rb</span>
+create_table <span style="color:#A60">:revisions</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.column <span style="color:#A60">:identifier</span>, <span style="color:#A60">:uuid</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/revision.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Revision</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Revision</span>.create <span style="color:#606">identifier</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A0EEBC99-9C0B-4EF8-BB6D-6BB9BD380A11</span><span style="color:#710">&quot;</span></span>
+
+revision = <span style="color:#036;font-weight:bold">Revision</span>.first
+revision.identifier <span style="color:#777"># =&gt; &quot;a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="bit-string-types">Bit String Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-bit.html">type definition</a></li>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/functions-bitstring.html">functions and operators</a></li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_users.rb</span>
+create_table <span style="color:#A60">:users</span>, <span style="color:#606">force</span>: <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.column <span style="color:#A60">:settings</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bit(8)</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/device.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">User</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">User</span>.create <span style="color:#606">settings</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">01010011</span><span style="color:#710">&quot;</span></span>
+user = <span style="color:#036;font-weight:bold">User</span>.first
+user.settings <span style="color:#777"># =&gt; &quot;01010011&quot;</span>
+user.settings = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0xAF</span><span style="color:#710">&quot;</span></span>
+user.settings <span style="color:#777"># =&gt; 10101111</span>
+user.save!
+</pre></div>
+</div>
+</div>
+
+<h3 id="network-address-types">Network Address Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-net-types.html">type definition</a></li>
+</ul>
+
+<p>The types <code>inet</code> and <code>cidr</code> are mapped to Ruby
+<a href="http://www.ruby-doc.org/stdlib-2.1.1/libdoc/ipaddr/rdoc/IPAddr.html"><code>IPAddr</code></a>
+objects. The <code>macaddr</code> type is mapped to normal text.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20140508144913_create_devices.rb</span>
+create_table(<span style="color:#A60">:devices</span>, <span style="color:#606">force</span>: <span style="color:#069">true</span>) <span style="color:#080;font-weight:bold">do</span> |t|
+  t.inet <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ip</span><span style="color:#710">'</span></span>
+  t.cidr <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">network</span><span style="color:#710">'</span></span>
+  t.macaddr <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">address</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/device.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Device</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+macbook = <span style="color:#036;font-weight:bold">Device</span>.create(<span style="color:#606">ip</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">192.168.1.12</span><span style="color:#710">&quot;</span></span>,
+                        <span style="color:#606">network</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">192.168.2.0/24</span><span style="color:#710">&quot;</span></span>,
+                        <span style="color:#606">address</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">32:01:16:6d:05:ef</span><span style="color:#710">&quot;</span></span>)
+
+macbook.ip
+<span style="color:#777"># =&gt; #&lt;IPAddr: IPv4:192.168.1.12/255.255.255.255&gt;</span>
+
+macbook.network
+<span style="color:#777"># =&gt; #&lt;IPAddr: IPv4:192.168.2.0/255.255.255.0&gt;</span>
+
+macbook.address
+<span style="color:#777"># =&gt; &quot;32:01:16:6d:05:ef&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="geometric-types">Geometric Types</h3>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/datatype-geometric.html">type definition</a></li>
+</ul>
+
+<p>All geometric types, with the exception of <code>points</code> are mapped to normal text.
+A point is casted to an array containing <code>x</code> and <code>y</code> coordinates.</p>
+
+<h2 id="uuid-primary-keys">UUID Primary Keys</h2>
+
+<p>NOTE: you need to enable the <code>uuid-ossp</code> extension to generate UUIDs.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_devices.rb</span>
+enable_extension <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uuid-ossp</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">unless</span> extension_enabled?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uuid-ossp</span><span style="color:#710">'</span></span>)
+create_table <span style="color:#A60">:devices</span>, <span style="color:#606">id</span>: <span style="color:#A60">:uuid</span>, <span style="color:#606">default</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uuid_generate_v4()</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.string <span style="color:#A60">:kind</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/models/device.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Device</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+device = <span style="color:#036;font-weight:bold">Device</span>.create
+device.id <span style="color:#777"># =&gt; &quot;814865cd-5a1d-4771-9306-4268f188fe9e&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="full-text-search">Full Text Search</h2>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_documents.rb</span>
+create_table <span style="color:#A60">:documents</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.string <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">title</span><span style="color:#710">'</span></span>
+  t.string <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">body</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">CREATE INDEX documents_idx ON documents USING gin(to_tsvector('english', title || ' ' || body));</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#777"># app/models/document.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Document</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+<span style="color:#036;font-weight:bold">Document</span>.create(<span style="color:#606">title</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cats and Dogs</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">are nice!</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777">## all documents matching 'cat &amp; dog'</span>
+<span style="color:#036;font-weight:bold">Document</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">to_tsvector('english', title || ' ' || body) @@ to_tsquery(?)</span><span style="color:#710">&quot;</span></span>,
+                 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cat &amp; dog</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h2 id="database-views">Database Views</h2>
+
+<ul>
+  <li><a href="http://www.postgresql.org/docs/9.3/static/sql-createview.html">view creation</a></li>
+</ul>
+
+<p>Imagine you need to work with a legacy database containing the following table:</p>
+
+<pre><code>rails_pg_guide=# \d "TBL_ART"
+                                        Table "public.TBL_ART"
+   Column   |            Type             |                         Modifiers
+------------+-----------------------------+------------------------------------------------------------
+ INT_ID     | integer                     | not null default nextval('"TBL_ART_INT_ID_seq"'::regclass)
+ STR_TITLE  | character varying           |
+ STR_STAT   | character varying           | default 'draft'::character varying
+ DT_PUBL_AT | timestamp without time zone |
+ BL_ARCH    | boolean                     | default false
+Indexes:
+    "TBL_ART_pkey" PRIMARY KEY, btree ("INT_ID")
+</code></pre>
+
+<p>This table does not follow the Rails conventions at all.
+Because simple PostgreSQL views are updateable by default,
+we can wrap it as follows:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20131220144913_create_articles_view.rb</span>
+execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+CREATE VIEW articles AS
+  SELECT &quot;INT_ID&quot; AS id,
+         &quot;STR_TITLE&quot; AS title,
+         &quot;STR_STAT&quot; AS status,
+         &quot;DT_PUBL_AT&quot; AS published_at,
+         &quot;BL_ARCH&quot; AS archived
+  FROM &quot;TBL_ART&quot;
+  WHERE &quot;BL_ARCH&quot; = 'f'</span><span style="color:#710">
+  SQL</span></span>
+
+<span style="color:#777"># app/models/article.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#069">self</span>.primary_key = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">archive!</span>
+    update_attribute <span style="color:#A60">:archived</span>, <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Usage</span>
+first = <span style="color:#036;font-weight:bold">Article</span>.create! <span style="color:#606">title</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Winter is coming</span><span style="color:#710">&quot;</span></span>,
+                        <span style="color:#606">status</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published</span><span style="color:#710">&quot;</span></span>,
+                        <span style="color:#606">published_at</span>: <span style="color:#00D">1</span>.year.ago
+second = <span style="color:#036;font-weight:bold">Article</span>.create! <span style="color:#606">title</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Brace yourself</span><span style="color:#710">&quot;</span></span>,
+                         <span style="color:#606">status</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">draft</span><span style="color:#710">&quot;</span></span>,
+                         <span style="color:#606">published_at</span>: <span style="color:#00D">1</span>.month.ago
+
+<span style="color:#036;font-weight:bold">Article</span>.count <span style="color:#777"># =&gt; 1</span>
+first.archive!
+<span style="color:#036;font-weight:bold">Article</span>.count <span style="color:#777"># =&gt; 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: This application only cares about non-archived <code>Articles</code>. A view also
+allows for conditions so we can exclude the archived <code>Articles</code> directly.</p>
+
+  </div>
+</body>
+</html>

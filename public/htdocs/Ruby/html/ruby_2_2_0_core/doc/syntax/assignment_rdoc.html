@@ -1,0 +1,1035 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- RD version: 0.32.0  -->
+    <!--  filepage  -->
+  <meta charset="utf-8">
+          
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <!-- meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" -->
+
+
+	<title>File: assignment.rdoc [Ruby 2.2.0]</title>
+  <link rel="stylesheet" href="../../css/inuit.css" >
+  <link rel="stylesheet" href="../../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../../css/rdoc.css" type="text/css" >
+  <!-- rel_prefix  = '../..' -->
+    
+  <!-- rel_prefix = '../..'   asset_rel_prefix = '../..'  --> 
+
+</head>
+
+<body class="file">
+<div id='actionbar' >
+<div class='wrapper'>
+<ul class='grids g0'></ul></div>
+</div> <!-- end action bar -->
+<!-- VERSION HEADER for 2.2.0 NOT FOUND -->          <div class='wrapper'>
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <header>
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+      </div>
+      </header>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/globals_rdoc.html">globals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/security_rdoc.html">security.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../sample/drb/README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" ></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" class="quicksearch-field" >
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ArgumentError.html">ArgumentError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Array.html">Array</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../BasicObject.html">BasicObject</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Bignum.html">Bignum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Binding.html">Binding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Class.html">Class</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Comparable.html">Comparable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Complex.html">Complex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Complex/compatible.html">Complex::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ConditionVariable.html">ConditionVariable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Continuation.html">Continuation</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Data.html">Data</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Dir.html">Dir</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ENV.html">ENV</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../EOFError.html">EOFError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding.html">Encoding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/Converter.html">Encoding::Converter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../EncodingError.html">EncodingError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerable.html">Enumerable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator.html">Enumerator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Generator.html">Enumerator::Generator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Errno.html">Errno</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Exception.html">Exception</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FalseClass.html">FalseClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Fiber.html">Fiber</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FiberError.html">FiberError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File.html">File</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File/Constants.html">File::Constants</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File/Stat.html">File::Stat</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FileTest.html">FileTest</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Fixnum.html">Fixnum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Float.html">Float</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FloatDomainError.html">FloatDomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../GC.html">GC</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../GC/Profiler.html">GC::Profiler</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Hash.html">Hash</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO.html">IO</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/WaitReadable.html">IO::WaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/WaitWritable.html">IO::WaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IOError.html">IOError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IndexError.html">IndexError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Integer.html">Integer</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Interrupt.html">Interrupt</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Kernel.html">Kernel</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../KeyError.html">KeyError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../LoadError.html">LoadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../LocalJumpError.html">LocalJumpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Marshal.html">Marshal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../MatchData.html">MatchData</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Math.html">Math</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Math/DomainError.html">Math::DomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Method.html">Method</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Module.html">Module</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Mutex.html">Mutex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NameError.html">NameError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NilClass.html">NilClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NoMemoryError.html">NoMemoryError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NoMethodError.html">NoMethodError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NotImplementedError.html">NotImplementedError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Numeric.html">Numeric</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Object.html">Object</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ObjectSpace.html">ObjectSpace</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Proc.html">Proc</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process.html">Process</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/GID.html">Process::GID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Status.html">Process::Status</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Sys.html">Process::Sys</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/UID.html">Process::UID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Waiter.html">Process::Waiter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Queue.html">Queue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Random.html">Random</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Range.html">Range</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RangeError.html">RangeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Rational.html">Rational</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Rational/compatible.html">Rational::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Regexp.html">Regexp</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RegexpError.html">RegexpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM.html">RubyVM</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM/Env.html">RubyVM::Env</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RuntimeError.html">RuntimeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ScriptError.html">ScriptError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SecurityError.html">SecurityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Signal.html">Signal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SignalException.html">SignalException</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SizedQueue.html">SizedQueue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../StandardError.html">StandardError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../StopIteration.html">StopIteration</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../String.html">String</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Struct.html">Struct</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Symbol.html">Symbol</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SyntaxError.html">SyntaxError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemCallError.html">SystemCallError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemExit.html">SystemExit</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemStackError.html">SystemStackError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Thread.html">Thread</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ThreadError.html">ThreadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ThreadGroup.html">ThreadGroup</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Time.html">Time</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TracePoint.html">TracePoint</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TrueClass.html">TrueClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TypeError.html">TypeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../UnboundMethod.html">UnboundMethod</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../UncaughtThrowError.html">UncaughtThrowError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ZeroDivisionError.html">ZeroDivisionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../fatal.html">fatal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../unknown.html">unknown</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+  <div class='adzbox'  id="azk83167">
+      
+  </div> 
+	<div id="documentation">
+		
+<h1 id="label-Assignment">Assignment<span><a href="#label-Assignment">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>In Ruby assignment uses the <code>=</code> (equals sign) character.  This
+example assigns the number five to the local variable <code>v</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">v</span> = <span class="ruby-value">5</span>
+</pre>
+
+<p>Assignment creates a local variable if the variable was not previously
+referenced.</p>
+
+<h2 id="label-Local+Variable+Names">Local Variable Names<span><a href="#label-Local+Variable+Names">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>A local variable name must start with a lowercase US-ASCII letter or a
+character with the eight bit set.  Typically local variables are US-ASCII
+compatible since the keys to type them exist on all keyboards.</p>
+
+<p>(Ruby programs must be written in a US-ASCII-compatible character set.  In
+such character sets if the eight bit is set it indicates an extended
+character.  Ruby allows local variables to contain such characters.)</p>
+
+<p>A local variable name may contain letters, numbers, an <code>_</code>
+(underscore or low line) or a character with the eighth bit set.</p>
+
+<h2 id="label-Local+Variable+Scope">Local Variable Scope<span><a href="#label-Local+Variable+Scope">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Once a local variable name has been assigned-to all uses of the name for
+the rest of the scope are considered local variables.</p>
+
+<p>Here is an example:</p>
+
+<pre class="ruby"><span class="ruby-value">1</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;local variables in the block: #{local_variables.join &quot;, &quot;}&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;no local variables outside the block&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">local_variables</span>.<span class="ruby-identifier">empty?</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre>local variables in the block: a
+no local variables outside the block</pre>
+
+<p>Since the block creates a new scope, any local variables created inside it
+do not leak to the surrounding scope.</p>
+
+<p>Variables defined in an outer scope appear inner scope:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">0</span>
+
+<span class="ruby-value">1</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;local variables: #{local_variables.join &quot;, &quot;}&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby"><span class="ruby-identifier">local</span> <span class="ruby-identifier">variables</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>
+</pre>
+
+<p>You may isolate variables in a block from the outer scope by listing them
+following a <code>;</code> in the block’s arguments.  See the documentation
+for block local variables in the calling methods documentation for an
+example.</p>
+
+<p>See also <a
+href="../../Kernel.html#method-i-local_variables">Kernel#local_variables</a>,
+but note that a <code>for</code> loop does not create a new scope like a
+block does.</p>
+
+<h2 id="label-Local+Variables+and+Methods">Local Variables and Methods<span><a href="#label-Local+Variables+and+Methods">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>In Ruby local variable names and method names are nearly identical.  If you
+have not assigned to one of these ambiguous names ruby will assume you wish
+to call a method.  Once you have assigned to the name ruby will assume you
+wish to reference a local variable.</p>
+
+<p>The local variable is created when the parser encounters the assignment,
+not when the assignment occurs:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">false</span> <span class="ruby-comment"># does not assign to a</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">local_variables</span> <span class="ruby-comment"># prints [:a]</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints nil</span>
+</pre>
+
+<p>The similarity between method and local variable names can lead to
+confusing code, for example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">big_calculation</span>
+  <span class="ruby-value">42</span> <span class="ruby-comment"># pretend this takes a long time</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">big_calculation</span> = <span class="ruby-identifier">big_calculation</span>()
+</pre>
+
+<p>Now any reference to <code>big_calculation</code> is considered a local
+variable and will be cached.  To call the method, use
+<code>self.big_calculation</code>.</p>
+
+<p>You can force a method call by using empty argument parentheses as shown
+above or by using an explicit receiver like <code>self.</code>.  Using an
+explicit receiver may raise a <a href="../../NameError.html">NameError</a>
+if the method’s visibility is not public.</p>
+
+<p>Another commonly confusing case is when using a modifier <code>if</code>:</p>
+
+<pre class="ruby"><span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">a</span> = <span class="ruby-value">0</span>.<span class="ruby-identifier">zero?</span>
+</pre>
+
+<p>Rather than printing “true” you receive a <a
+href="../../NameError.html">NameError</a>, “undefined local variable or
+method `a’”.  Since ruby parses the bare <code>a</code> left of the
+<code>if</code> first and has not yet seen an assignment to <code>a</code>
+it assumes you wish to call a method.  Ruby then sees the assignment to
+<code>a</code> and will assume you are referencing a local method.</p>
+
+<p>The confusion comes from the out-of-order execution of the expression. 
+First the local variable is assigned-to then you attempt to call a
+nonexistent method.</p>
+
+<h2 id="label-Instance+Variables">Instance Variables<span><a href="#label-Instance+Variables">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Instance variables are shared across all methods for the same object.</p>
+
+<p>An instance variable must start with a <code>@</code> (“at” sign or
+commercial at).  Otherwise instance variable names follow the rules as
+local variable names.  Since the instance variable starts with an
+<code>@</code> the second character may be an upper-case letter.</p>
+
+<p>Here is an example of instance variable usage:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-ivar">@instance_variable</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-ivar">@instance_variable</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">object1</span> = <span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;some value&quot;</span>
+<span class="ruby-identifier">object2</span> = <span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;other value&quot;</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">object1</span>.<span class="ruby-identifier">value</span> <span class="ruby-comment"># prints &quot;some value&quot;</span>
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">object2</span>.<span class="ruby-identifier">value</span> <span class="ruby-comment"># prints &quot;other value&quot;</span>
+</pre>
+
+<p>An uninitialized instance variable has a value of <code>nil</code>.  If you
+run Ruby with warnings enabled you will get a warning when accessing an
+uninitialized instance variable.</p>
+
+<p>The <code>value</code> method has access to the value set by the
+<code>initialize</code> method, but only for the same object.</p>
+
+<h2 id="label-Class+Variables"><a href="../../Class.html">Class</a> Variables<span><a href="#label-Class+Variables">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><a href="../../Class.html">Class</a> variables are shared between a class,
+its subclasses and its instances.</p>
+
+<p>A class variable must start with a <code>@@</code> (two “at” signs).  The
+rest of the name follows the same rules as instance variables.</p>
+
+<p>Here is an example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">A</span>
+  <span class="ruby-identifier">@@class_variable</span> = <span class="ruby-value">0</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-identifier">@@class_variable</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+    <span class="ruby-identifier">@@class_variable</span> = <span class="ruby-identifier">@@class_variable</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">B</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">A</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+    <span class="ruby-identifier">@@class_variable</span> = <span class="ruby-identifier">@@class_variable</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">a</span> = <span class="ruby-constant">A</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">b</span> = <span class="ruby-constant">B</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;A value: #{a.value}&quot;</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;B value: #{b.value}&quot;</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby"><span class="ruby-constant">A</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+<span class="ruby-constant">B</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">0</span>
+</pre>
+
+<p>Continuing with the same example, we can update using objects from either
+class and the value is shared:</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;update A&quot;</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">update</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;A value: #{a.value}&quot;</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;B value: #{b.value}&quot;</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;update B&quot;</span>
+<span class="ruby-identifier">b</span>.<span class="ruby-identifier">update</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;A value: #{a.value}&quot;</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;B value: #{b.value}&quot;</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;update A&quot;</span>
+<span class="ruby-identifier">a</span>.<span class="ruby-identifier">update</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;A value: #{a.value}&quot;</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;B value: #{b.value}&quot;</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby"><span class="ruby-identifier">update</span> <span class="ruby-constant">A</span>
+<span class="ruby-constant">A</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+<span class="ruby-constant">B</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+<span class="ruby-identifier">update</span> <span class="ruby-constant">B</span>
+<span class="ruby-constant">A</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+<span class="ruby-constant">B</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">3</span>
+<span class="ruby-identifier">update</span> <span class="ruby-constant">A</span>
+<span class="ruby-constant">A</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">4</span>
+<span class="ruby-constant">B</span> <span class="ruby-identifier">value</span><span class="ruby-operator">:</span> <span class="ruby-value">4</span>
+</pre>
+
+<p>Accessing an uninitialized class variable will raise a <a
+href="../../NameError.html">NameError</a> exception.</p>
+
+<p>Note that classes have instance variables because classes are objects, so
+try not to confuse class and instance variables.</p>
+
+<h2 id="label-Global+Variables">Global Variables<span><a href="#label-Global+Variables">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Global variables are accessible everywhere.</p>
+
+<p>Global variables start with a <code>$</code> (dollar sign).  The rest of
+the name follows the same rules as instance variables.</p>
+
+<p>Here is an example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">$global</span> = <span class="ruby-value">0</span>
+
+<span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;in a class: #{$global}&quot;</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;in a method: #{$global}&quot;</span>
+
+    <span class="ruby-identifier">$global</span> = <span class="ruby-identifier">$global</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">$other_global</span> = <span class="ruby-value">3</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">my_method</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;at top-level, $global: #{$global}, $other_global: #{$other_global}&quot;</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre>in a class: 0
+in a method: 0
+at top-level, $global: 1, $other_global: 3</pre>
+
+<p>An uninitialized global variable has a value of <code>nil</code>.</p>
+
+<p>Ruby has some special globals that behave differently depending on context
+such as the regular expression match variables or that have a side-effect
+when assigned to.  See the global variables documentation for details.</p>
+
+<h2 id="label-Assignment+Methods">Assignment Methods<span><a href="#label-Assignment+Methods">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can define methods that will behave like assignment, for example:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">value=</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">c</span> = <span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">c</span>.<span class="ruby-identifier">value</span> = <span class="ruby-value">42</span>
+</pre>
+
+<p>Using assignment methods allows your programs to look nicer.  When
+assigning to an instance variable most people use <a
+href="../../Module.html#method-i-attr_accessor">Module#attr_accessor</a>:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">attr_accessor</span> :<span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>When using method assignment you must always have a receiver.  If you do
+not have a receiver Ruby assumes you are assigning to a local variable:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">attr_accessor</span> :<span class="ruby-identifier">value</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-value">42</span>
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;local_variables: #{local_variables.join &quot;, &quot;}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;@value: #{@value.inspect}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">my_method</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre>local_variables: value
+@value: nil</pre>
+
+<p>To use the assignment method you must set the receiver:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-identifier">attr_accessor</span> :<span class="ruby-identifier">value</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">value</span> = <span class="ruby-value">42</span>
+
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;local_variables: #{local_variables.join &quot;, &quot;}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;@value: #{@value.inspect}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">my_method</span>
+</pre>
+
+<p>This prints:</p>
+
+<pre>local_variables:
+@value: 42</pre>
+
+<h2 id="label-Abbreviated+Assignment">Abbreviated Assignment<span><a href="#label-Abbreviated+Assignment">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can mix several of the operators and assignment.  To add 1 to an object
+you can write:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>
+
+<span class="ruby-identifier">a</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints 3</span>
+</pre>
+
+<p>This is equivalent to:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>
+
+<span class="ruby-identifier">a</span> = <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints 3</span>
+</pre>
+
+<p>You can use the following operators this way:  <code>+</code>,
+<code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>,
+<code>**</code>, <code>&amp;</code>, <code>|</code>, <code>^</code>,
+<code>&lt;&lt;</code>, <code>&gt;&gt;</code></p>
+
+<p>There are also <code>||=</code> and <code>&amp;&amp;=</code>.  The former
+makes an assignment if the value was <code>nil</code> or <code>false</code>
+while the latter makes an assignment if the value was not <code>nil</code>
+or <code>false</code>.</p>
+
+<p>Here is an example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
+<span class="ruby-identifier">a</span> <span class="ruby-operator">&amp;&amp;=</span> <span class="ruby-value">1</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints 1</span>
+</pre>
+
+<p>Note that these two operators behave more like <code>a || a = 0</code> than
+<code>a = a || 0</code>.</p>
+
+<h2 id="label-Implicit+Array+Assignment">Implicit <a href="../../Array.html">Array</a> Assignment<span><a href="#label-Implicit+Array+Assignment">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can implicitly create an array by listing multiple values when
+assigning:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints [1, 2, 3]</span>
+</pre>
+
+<p>This implicitly creates an <a href="../../Array.html">Array</a>.</p>
+
+<p>You can use <code>*</code> or the “splat” operator or unpack an <a
+href="../../Array.html">Array</a> when assigning.  This is similar to
+multiple assignment:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-operator">*</span>[<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>]
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints [1, 2, 3]</span>
+</pre>
+
+<p>You can splat anywhere in the right-hand side of the assignment:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>, <span class="ruby-operator">*</span>[<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span> <span class="ruby-comment"># prints [1, 2, 3]</span>
+</pre>
+
+<h2 id="label-Multiple+Assignment">Multiple Assignment<span><a href="#label-Multiple+Assignment">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can assign multiple values on the right-hand side to multiple
+variables:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span> <span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;2}</span>
+</pre>
+
+<p>In the following sections any place “variable” is used an assignment
+method, instance, class or global will also work:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">value=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">assigned</span><span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">self</span>.<span class="ruby-identifier">value</span>, <span class="ruby-identifier">$global</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span> <span class="ruby-comment"># prints {:assigned=&gt;1}</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">$global</span> <span class="ruby-comment"># prints 2</span>
+</pre>
+
+<p>You can use multiple assignment to swap two values in-place:</p>
+
+<pre class="ruby"><span class="ruby-identifier">old_value</span> = <span class="ruby-value">1</span>
+
+<span class="ruby-identifier">new_value</span>, <span class="ruby-identifier">old_value</span> = <span class="ruby-identifier">old_value</span>, <span class="ruby-value">2</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">new_value</span><span class="ruby-operator">:</span> <span class="ruby-identifier">new_value</span>, <span class="ruby-identifier">old_value</span><span class="ruby-operator">:</span> <span class="ruby-identifier">old_value</span>
+<span class="ruby-comment"># prints {:new_value=&gt;1, :old_value=&gt;2}</span>
+</pre>
+
+<p>If you have more values on the right hand side of the assignment than
+variables on the left hand side the extra values are ignored:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span> <span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;2}</span>
+</pre>
+
+<p>You can use <code>*</code> to gather extra values on the right-hand side of
+the assignment.</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">b</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span> <span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;[2, 3]}</span>
+</pre>
+
+<p>The <code>*</code> can appear anywhere on the left-hand side:</p>
+
+<pre class="ruby"><span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span> <span class="ruby-comment"># prints {:a=&gt;[1, 2], :b=&gt;3}</span>
+</pre>
+
+<p>But you may only use one <code>*</code> in an assignment.</p>
+
+<h2 id="label-Array+Decomposition"><a href="../../Array.html">Array</a> Decomposition<span><a href="#label-Array+Decomposition">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Like <a href="../../Array.html">Array</a> decomposition in method arguments
+you can decompose an <a href="../../Array.html">Array</a> during assignment
+using parenthesis:</p>
+
+<pre class="ruby">(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>) = [<span class="ruby-value">1</span>, <span class="ruby-value">2</span>]
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span> <span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;2}</span>
+</pre>
+
+<p>You can decompose an <a href="../../Array.html">Array</a> as part of a
+larger multiple assignment:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>, (<span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span>) = <span class="ruby-value">1</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span> <span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;2, :c=&gt;3}</span>
+</pre>
+
+<p>Since each decomposition is considered its own multiple assignment you can
+use <code>*</code> to gather arguments in the decomposition:</p>
+
+<pre class="ruby"><span class="ruby-identifier">a</span>, (<span class="ruby-identifier">b</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">c</span>), <span class="ruby-operator">*</span><span class="ruby-identifier">d</span> = <span class="ruby-value">1</span>, [<span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>], <span class="ruby-value">5</span>, <span class="ruby-value">6</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">:</span> <span class="ruby-identifier">d</span>
+<span class="ruby-comment"># prints {:a=&gt;1, :b=&gt;2, :c=&gt;[3, 4], :d=&gt;[5, 6]}</span>
+</pre>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small>Generated with Rubydoc Rdoc Generator 0.32.0</small>.</p>
+	</div>
+
+    
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,944 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was contributed by <a href="http://jstorimer.com">Jesse Storimer</a>. He is
+the author of <a href="http://workingwithunixprocesses.com">Working with Unix Processes</a>
+and <a href="http://workingwithtcpsockets.com">Working with TCP Sockets</a>, a pair of
+ebooks providing fundamental Unix knowledge to Ruby developers. When he’s not at
+the keyboard, he’s often enjoying the great Canadian outdoors with his family.</em></p>
+
+<p>Like many of you, I discovered Ruby via Rails and web development. That was my
+“in.” But before it was popular for writing web apps, Ruby was known for its
+object-oriented fundamentals and for being a great scripting language. One of the reasons for
+this latter benefit is that it’s so easy to marry Ruby with command-line
+utilities. Here’s an example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>task <span style="color:#A60">:console</span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2">irb -r my_app</span><span style="color:#161">`</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>There’s something simple and beautiful in the combination of Ruby and the
+command line here–the backticks are barely detectable. This code will technically 
+accomplish what you think it will: it will drop you into an app-specific console  that is
+basically an <code>irb</code> session with your app already required. But do you know what’s 
+going on inside that backtick method? </p>
+
+<p>Ruby provides many ways of spawing processes. Why use backticks instead of
+<code>system</code>?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>task <span style="color:#A60">:console</span> <span style="color:#080;font-weight:bold">do</span>
+  system(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">irb -r my_app</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or what about <code>exec</code>? Would that have been better?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>task <span style="color:#A60">:console</span> <span style="color:#080;font-weight:bold">do</span>
+  exec(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">irb</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-r</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my_app</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In order to make this decision, you need to understand what these methods are
+doing under the hood. The differences may be trivial for spawning a development
+console, but picking one of these methods over another in a production environment can
+have major implications.</p>
+
+<p>In this article, we’re going to reimplement the key parts of these process-spawning
+primitives to get a better understanding of how they work and where they’re most
+applicable. Afterward, you’ll have a greater understanding of how process
+spawning works regardless of programming language and you’ll have a grip on
+which methods are most applicable in different situations.</p>
+
+<h2 id="starting-somewhere">Starting somewhere</h2>
+
+<p>I have already hinted at a few different process-spawning methods–Ruby has
+a ton of them. Off the top of my head, there’s: <code>Kernel#system</code>,
+<code>Kernel#\`</code>, <code>IO.popen</code>, <code>Process.spawn</code>, <code>open</code>, <code>shell</code>, <code>open3</code>,
+<code>pty</code>, and probably more. All of these ship with Ruby, some in the core and
+others in the standard library.</p>
+
+<p>All of these spawning methods boil down to the same pattern, but we’re not going
+to implement them all. To save time, we’ll stick with implementing <code>system</code> and
+the backtick method. Either of these methods can be called
+with a shell command as the argument. Both handle the command in slightly
+different ways with slightly different outputs:</p>
+
+<pre><code>system('ls -l') #=&gt; true
+system('ls -l *.rb | ack Product') #=&gt; true
+system('boohoo') #=&gt; nil
+`git log -n1 --format=%h^` #=&gt; 51e7a1c
+`hostname` #=&gt; jessebook
+</code></pre>
+
+<p>Let’s start building them.</p>
+
+<h2 id="harnessing-ourselves-with-tests">Harnessing ourselves with tests</h2>
+
+<p>Before we dive into spawning process head first, let’s rein ourselves in a
+bit. If we’re going to reimplement what Ruby already provides, we’re going to
+need a way to test our implementation and make sure that it performs the same
+way that Ruby does. Enter <a href="http://rubyspec.org">Rubyspec</a>.</p>
+
+<blockquote>
+  <p>The RubySpec project aims to write a complete executable specification for the
+Ruby programming language that is syntax-compatible with RSpec. RSpec is
+essentially a DSL (domain-specific language) for describing the behavior of
+code. This project contains specs that describe Ruby language syntax, core
+library classes, and standard library classes.</p>
+</blockquote>
+
+<p>RubySpec provides a specification for the Ruby language itself, and we want to
+reimplement a part of the Ruby language; therefore, we can use RubySpec
+to test our implementation.</p>
+
+<p>To use these specs to drive our implementation, we need to get two
+things: RubySpec itself, and its testing library mspec. You can check
+out <a href="https://github.com/rubyspec/rubyspec/blob/master/README">this README</a> 
+for installation instructions. To verify that things are working as 
+expected, try running the kernel tests from within the RubySpec project
+directory:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ mspec core/kernel
+</pre></div>
+</div>
+</div>
+
+<p>To run our custom code against these tests, we can use
+the familiar <code>-r</code> option with <code>mspec</code> to require a file that redefines
+the methods we want to override. Let’s do that, while at the same time 
+running the <code>Kernel.system</code> specs:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ touch practicing_spawning.rb
+$ mspec -r ./practicing_spawning.rb core/kernel/system_spec.rb
+</pre></div>
+</div>
+</div>
+
+<p>Should be all green so far!</p>
+
+<h2 id="breaking-the-test">Breaking the test</h2>
+
+<p>Let’s begin our implementation by causing the tests to fail:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># practicing_spawning.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Kernel</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">system</span>(*args)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private <span style="color:#A60">:system</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The very first spec says that <code>system</code> should be private. I set that up right
+away because it’s not the interesting part. If we run the <code>system</code> specs again,
+we get our first of several failures:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>1)
+Kernel#system executes the specified command in a subprocess FAILED
+Expected (STDOUT): &quot;a\n&quot;
+          but got: &quot;&quot;
+</pre></div>
+</div>
+</div>
+
+<p>This failure directly relates to the following spec:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">executes the specified command in a subprocess</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  lambda { <span style="color:#33B">@object</span>.system(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">echo a</span><span style="color:#710">&quot;</span></span>) }.should output_to_fd(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you’ve ever used the <code>system</code> method, this test should be easy to
+understand. It says that shelling out to <code>echo</code> should output the echoed string.
+If you <a href="https://github.com/rubyspec/mspec/blob/master/lib/mspec/matchers/output_to_fd.rb#L68-70">dig into</a>
+ the <code>output_to_fd</code> method that’s part of <code>mspec</code>, you’ll see that it’s
+expecting this output on <code>STDOUT</code>.</p>
+
+<h2 id="fork-and-subprocesses">fork and subprocesses</h2>
+
+<p>The failing spec title says that <code>system</code> spawns a subprocess. If you’re
+creating new processes on a Unix system, that means using <code>fork</code>:</p>
+
+<blockquote>
+  <hr />
+  <p>Kernel.fork  [{ block }]   -&gt; fixnum or nil<br />
+  Process.fork [{ block }]   -&gt; fixnum or nil</p>
+
+  <hr />
+
+  <p>Creates a subprocess. If a block is specified, that block is run in the
+subprocess, and the subprocess terminates with a status of zero. Otherwise,
+the fork call returns twice, once in the parent, returning the process ID of
+the child, and once in the child, returning nil.</p>
+</blockquote>
+
+<p>This bit of Ruby documentation gives you an idea of what <code>fork</code> does. It’s
+conceptually similar to going on a hike and coming to a fork in the trail. The
+trail represents the execution of a process over time. Whereas humans can only
+pick one path, when a process is forked it literally continues down both
+branches of the trail in parallel. What was one process becomes two independent 
+processes. This behavior is specified by the fork(2) manpage:</p>
+
+<blockquote>
+  <p>Fork() causes creation of a new process.  The new process (child process) is
+an exact copy of the calling process (parent process) […]</p>
+</blockquote>
+
+<p>When you <code>fork</code>, you start with one process and end up with two processes that
+are <em>exactly the same</em>. In some cases, this means that everything is copied from
+one process to the other. But if <a href="http://en.wikipedia.org/wiki/Copy-on-write">copy-on-write
+semantics</a> are implemented,
+the two processes may physically share memory until one of them tries to
+modify it; then each gets its own copy written out.</p>
+
+<p>Although understanding <code>fork</code> is certainly helpful, we still haven’t quite figured
+out how to implement the <code>system</code> method. We know that we can take our Ruby 
+process and create a copy of it with <code>fork</code>, but how do we then turn the 
+new child process into an <code>echo</code> process?</p>
+
+<h2 id="fork--exec">fork + exec</h2>
+
+<p>The <code>fork</code> + <code>exec</code> pattern for spawning processes is the blueprint upon which
+most process spawning is built. We’ve already looked at <code>fork</code>, so what
+about <code>exec</code>?</p>
+
+<p><code>exec</code> transforms the current process into another process. Using
+<code>exec</code>, you can transform a Ruby process into an <code>ls</code> process, another Ruby
+process, or an <code>echo</code> process:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hi from Ruby</span><span style="color:#710">'</span></span>
+exec(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ls</span><span style="color:#710">'</span></span>)
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bye from Ruby</span><span style="color:#710">'</span></span> <span style="color:#777"># will never be reached</span>
+</pre></div>
+</div>
+</div>
+
+<p>This program will never get to the last line of Ruby code. Once it has performed
+<code>exec('ls')</code>, the Ruby program no longer exists. It has been transformed to <code>ls</code>.
+So there’s no possible way for it to get back to this Ruby program and finish
+execution.</p>
+
+<h2 id="finally-a-passing-test">Finally, a passing test</h2>
+
+<p>With <code>fork</code> and <code>exec</code>, we now have the building blocks that we need to implement
+our own <code>system</code> method. Here’s the most basic implementation:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># practicing_spawning.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Kernel</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">system</span>(*args)
+
+    <span style="color:#777"># Create a new subprocess that will just exec the requested program.</span>
+    pid = fork { exec(*args) }
+
+    <span style="color:#777"># Because fork() allows both processes to work in parallel, we must tell the</span>
+    <span style="color:#777"># parent process to wait for the child to exit. Otherwise, the parent would</span>
+    <span style="color:#777"># continue in parallel with the child and would be unable to process its</span>
+    <span style="color:#777"># return value.</span>
+    _, status = <span style="color:#036;font-weight:bold">Process</span>.waitpid2(pid)
+    status.success?
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private <span style="color:#A60">:system</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If we run this against the same spec as before, more tests pass, but
+not all of them. Still, getting that initial spec to pass means that we’re headed
+in the right direction.</p>
+
+<p>There are three very simple Unix programming primitives in use here: <code>fork</code>,
+<code>exec</code>, and <code>wait</code>. We’ve already talked about <code>fork</code> and <code>exec</code>, the
+cornerstone of Unix process spawning. The third player here, <code>wait</code>, is often
+used in unison with these two. It tells the parent process to wait for the child
+process before continuing, rather than continuing execution in parallel. This is
+a pretty common pattern when spawning shell commands, because you usually want to
+wait for the output of the command.</p>
+
+<p>In this case, we collect the status of the child when it exits and return the
+result of <code>success?</code>. This result is <code>true</code> for a successful exit status code (i.e., 0)
+and <code>false</code> for any other value.</p>
+
+<h2 id="getting-back-to-green">Getting back to green</h2>
+
+<p>Now we need to get the rest of the <code>system</code> specs passing. In
+the remainder of the failures, we see the following output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>1) 
+Kernel#system returns nil when command execution fails FAILED
+Expected false to be nil
+&lt;snipped backtrace...&gt;
+
+2)
+Kernel#system does not write to stderr when command execution fails FAILED
+Expected (STDERR): &quot;&quot;
+         but got: &quot;/[...]/practicing_spawning.rb:8:in `exec': No such 
+         file or directory - sad (Errno::ENOENT)
+&lt;snipped backtrace...&gt;
+</pre></div>
+</div>
+</div>
+
+<p>These failures relate to the following specs:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby_version_is <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.9</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">returns nil when command execution fails</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@object</span>.system(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sad</span><span style="color:#710">&quot;</span></span>).should be_nil
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">does not write to stderr when command execution fails</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  lambda { <span style="color:#33B">@object</span>.system(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sad</span><span style="color:#710">&quot;</span></span>) }.should output_to_fd(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, <span style="color:#069">STDERR</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Both of these specs are testing the same situation: trying to <code>exec</code> a command
+that doesn’t exist. When this happens, it actually raises an exception in
+the subprocess, as is evidenced by the previously listed failure #2, which prints an
+exception message along with a stacktrace on its <code>STDERR</code>, whereas the spec
+expected that <code>STDERR</code> would be empty.</p>
+
+<p>So when the subprocess raises an exception, we need to notify the parent process
+of what went wrong. Note that we can’t use Ruby’s regular exception handling in
+this case because the exception is happening inside the subprocess. The
+subprocess got a copy of everything that the parent had, including the Ruby
+interpreter. So although all of the code is sourced from the same file, we can’t
+depend on regular Ruby features because the processes are actually running on
+their own separate copies of the Ruby interpreter!</p>
+
+<p>To solve this problem, we need some form of interprocess communication (IPC).
+Keeping with the general theme of this article, we’ll use a Unix pipe.</p>
+
+<h2 id="the-pipe">The pipe</h2>
+
+<p>A call to <code>IO.pipe</code> in Ruby will return two <code>IO</code> objects, one readable and
+one writable. Together, they form a one-way data ‘pipe’. Data is written
+to one <code>IO</code> object and read from the other:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rd, wr = <span style="color:#036;font-weight:bold">IO</span>.pipe
+wr.write <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ping</span><span style="color:#710">&quot;</span></span>
+wr.close
+
+rd.read <span style="color:#777">#=&gt; &quot;ping&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>A pipe can be used for IPC by taking advantage of <code>fork</code> semantics. If you
+create a pipe before forking, the child process inherits a copy of the pipe
+from its parent. As both have a copy, one process can write to the pipe while
+the other reads from it, enabling IPC. Pipes are
+backed by the kernel itself, so we can use them to communicate between our independent
+Ruby processes.</p>
+
+<h2 id="implementing-system-with-a-pipe">Implementing system() with a pipe</h2>
+
+<p>Now we can roll together all of these concepts and write our own implementation
+of <code>system</code> that passes all the specs:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># practicing_spawning.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Kernel</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">system</span>(*args)
+
+    rd, wr = <span style="color:#036;font-weight:bold">IO</span>.pipe
+
+    <span style="color:#777"># Create a new subprocess that will just exec the requested program.</span>
+    pid = fork <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#777"># The subprocess closes its copy of the reading end of the pipe</span>
+      <span style="color:#777"># because it only needs to write.</span>
+      rd.close
+
+      <span style="color:#080;font-weight:bold">begin</span>
+        exec(*args)
+      <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">SystemCallError</span>
+
+        <span style="color:#777"># In case of failure, write a byte to the pipe to signal that an exception</span>
+        <span style="color:#777"># occurred and exit with an unsuccessful code.</span>
+        wr.write(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>)
+        exit <span style="color:#00D">1</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># The parent process closes its copy of the writing end of the pipe</span>
+    <span style="color:#777"># because it only needs to read.</span>
+    wr.close
+
+    <span style="color:#777"># Tell the parent to wait.</span>
+    _, status = <span style="color:#036;font-weight:bold">Process</span>.waitpid2(pid)
+
+    <span style="color:#777"># If the reading end of the pipe has no data, there was no exception</span>
+    <span style="color:#777"># and we fall back to the exit status code of the subprocess. Otherwise,</span>
+    <span style="color:#777"># we return nil to denote the error case.</span>
+    <span style="color:#080;font-weight:bold">if</span> rd.eof?
+      status.success?
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#069">nil</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private <span style="color:#A60">:system</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>All green!</p>
+
+<h2 id="implementing-backticks">Implementing backticks</h2>
+
+<p>Now that you’ve got the fundamentals under your belt, we can apply these concepts to the
+implementation of other process-spawning methods. Let’s do backticks:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># practicing_spawning.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Kernel</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">`</span>(str)
+    rd, wr = <span style="color:#036;font-weight:bold">IO</span>.pipe
+
+    <span style="color:#777"># Create a new subprocess that will exec just the requested program.</span>
+    pid = fork <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#777"># The subprocess closes its copy of the reading end of the pipe</span>
+      <span style="color:#777"># because it only needs to write.</span>
+      rd.close
+
+      <span style="color:#777"># Anything that the exec'ed process would have written to $stdout will</span>
+      <span style="color:#777"># be written to the pipe instead.</span>
+      <span style="color:#d70">$stdout</span>.reopen(wr)
+
+      exec(str)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># The parent process closes its copy of the writing end of the pipe</span>
+    <span style="color:#777"># because it only needs to read.</span>
+    wr.close
+
+    <span style="color:#777"># The parent waits for the child to exit.</span>
+    <span style="color:#036;font-weight:bold">Process</span>.waitpid(pid)
+
+    <span style="color:#777"># The parent returns whatever it can read from the pipe.</span>
+    rd.read
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private <span style="color:#A60">:`</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now we can run the backticks spec against our implementation and see that it’s
+all green!</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ mspec -r ./practicing_spawning.rb core/kernel/backtick_spec.rb
+</pre></div>
+</div>
+</div>
+
+<p>The full source for our <code>practicing_spawning.rb</code> file is available <a href="https://gist.github.com/3730986">as a gist</a>. </p>
+
+<h2 id="closing-notes">Closing notes</h2>
+
+<p>I find something special in spawning processes. You get to dig down
+below the top layer of your programming language to the lower layer where All
+Things Are One. When dealing with things such as <code>fork</code>, <code>exec</code>, and <code>wait</code>, your
+operating system treats all processes equally. Any Ruby process can transform
+into a C program, or a Python process, or vice versa. Similarly, you can <code>wait</code>
+on processes written in any language. At this layer of abstraction, there are only
+the system and its primitives.</p>
+
+<p>We spend a lot of our mental energy worrying about good principles such as
+abstraction, decoupling, efficiency. When digging down a layer and learning what
+your operating system is capable of, you see an extremely robust and abstract
+system. It cares not how you implement your programs but offers the same
+functionality for any running program. Understanding your system at this level
+will really show you what it’s capable of and give you a good mental
+understanding of how your system sees the world. Once you really grasp the
+<code>fork</code> + <code>exec</code> concepts, you’ll see that these are right at the core of a Unix system.
+Every process is spawned this way. The simplest example is your shell, which uses
+this very pattern to launch programs.</p>
+
+<p>I’ll leave you with two more tips:</p>
+
+<ol>
+  <li>
+    <p>Use <code>exec()</code> at the end of scripts to save a process. Remember the early example
+in which a rake task spawned an <code>irb</code> session? The obvious
+choice in that case is to use <code>exec</code>.</p>
+
+    <p>Any other variant will require forking a new process that then execs and
+ has the parent wait for it. Using <code>exec</code> directly eliminates the need for an extra
+ process by transforming the <code>rake</code> process directly into an <code>irb</code> process.
+ This trick obviously won’t work in situations where you need to shell out and then
+ work with the output, but keep it in mind if the last line of your script
+ just shells out.</p>
+  </li>
+  <li>
+    <p>Pass an <code>Array</code> instead of a <code>String</code>. The backticks method always takes a
+string, but the <code>system</code> method (and many other process spawning methods) will
+take an array or a string. </p>
+
+    <p>When passed a string, <code>exec</code> may spawn a shell to interpret the
+ command, rather than executing it directly. This approach is handy for stuff like
+ <code>system('find . | ack foobar -l')</code> but is very dangerous when user input is
+ involved. An unescaped string makes shell injection possible. Shell
+ injection is like SQL injection, except that a compromised shell could provide an
+ attacker with root access to your entire system! Using an array will never
+ spawn a shell but will pass the elements directly as the <code>ARGV</code> of the exec’ed process. 
+ Always do this.</p>
+  </li>
+</ol>
+
+<p>Finally, if you enjoyed these exercises, try to implement some of
+the other process spawning primitives I mentioned. With RubySpec as your guide,
+you can try reimplementing just about anything with confidence. Doing so will
+surely give you a better understanding of how process spawning works in Ruby–or 
+any Unix environment.</p>
+
+<p>Please leave a comment and share your code if you implement some pure-Ruby versions 
+of these spawning methods. I’d love to see them!</p>
+
+  </div>
+</body>
+</html>

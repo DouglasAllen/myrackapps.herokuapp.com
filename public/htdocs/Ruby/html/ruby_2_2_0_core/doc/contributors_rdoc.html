@@ -1,0 +1,1860 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- RD version: 0.32.0  -->
+    <!--  filepage  -->
+  <meta charset="utf-8">
+          
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <!-- meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" -->
+
+
+	<title>File: contributors.rdoc [Ruby 2.2.0]</title>
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+  <!-- rel_prefix  = '..' -->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+
+</head>
+
+<body class="file">
+<div id='actionbar' >
+<div class='wrapper'>
+<ul class='grids g0'></ul></div>
+</div> <!-- end action bar -->
+<!-- VERSION HEADER for 2.2.0 NOT FOUND -->          <div class='wrapper'>
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <header>
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+      </header>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/globals_rdoc.html">globals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/security_rdoc.html">security.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../sample/drb/README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" ></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" class="quicksearch-field" >
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ArgumentError.html">ArgumentError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Array.html">Array</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../BasicObject.html">BasicObject</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Bignum.html">Bignum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Binding.html">Binding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Class.html">Class</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Comparable.html">Comparable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Complex.html">Complex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Complex/compatible.html">Complex::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ConditionVariable.html">ConditionVariable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Continuation.html">Continuation</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Data.html">Data</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Dir.html">Dir</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ENV.html">ENV</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../EOFError.html">EOFError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding.html">Encoding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/Converter.html">Encoding::Converter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../EncodingError.html">EncodingError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerable.html">Enumerable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator.html">Enumerator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Generator.html">Enumerator::Generator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Errno.html">Errno</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Exception.html">Exception</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FalseClass.html">FalseClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Fiber.html">Fiber</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FiberError.html">FiberError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File.html">File</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File/Constants.html">File::Constants</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File/Stat.html">File::Stat</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FileTest.html">FileTest</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Fixnum.html">Fixnum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Float.html">Float</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FloatDomainError.html">FloatDomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../GC.html">GC</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../GC/Profiler.html">GC::Profiler</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Hash.html">Hash</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO.html">IO</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/WaitReadable.html">IO::WaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/WaitWritable.html">IO::WaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IOError.html">IOError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IndexError.html">IndexError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Integer.html">Integer</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Interrupt.html">Interrupt</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Kernel.html">Kernel</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../KeyError.html">KeyError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../LoadError.html">LoadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../LocalJumpError.html">LocalJumpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Marshal.html">Marshal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../MatchData.html">MatchData</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Math.html">Math</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Math/DomainError.html">Math::DomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Method.html">Method</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Module.html">Module</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Mutex.html">Mutex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NameError.html">NameError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NilClass.html">NilClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NoMemoryError.html">NoMemoryError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NoMethodError.html">NoMethodError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NotImplementedError.html">NotImplementedError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Numeric.html">Numeric</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Object.html">Object</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Proc.html">Proc</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process.html">Process</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/GID.html">Process::GID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Status.html">Process::Status</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Sys.html">Process::Sys</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/UID.html">Process::UID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Waiter.html">Process::Waiter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Queue.html">Queue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Random.html">Random</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Range.html">Range</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RangeError.html">RangeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Rational.html">Rational</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Rational/compatible.html">Rational::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Regexp.html">Regexp</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RegexpError.html">RegexpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM.html">RubyVM</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM/Env.html">RubyVM::Env</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RuntimeError.html">RuntimeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ScriptError.html">ScriptError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SecurityError.html">SecurityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Signal.html">Signal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SignalException.html">SignalException</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SizedQueue.html">SizedQueue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../StandardError.html">StandardError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../StopIteration.html">StopIteration</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../String.html">String</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Struct.html">Struct</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Symbol.html">Symbol</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SyntaxError.html">SyntaxError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemCallError.html">SystemCallError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemExit.html">SystemExit</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemStackError.html">SystemStackError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Thread.html">Thread</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ThreadError.html">ThreadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ThreadGroup.html">ThreadGroup</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Time.html">Time</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TracePoint.html">TracePoint</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TrueClass.html">TrueClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TypeError.html">TypeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../UncaughtThrowError.html">UncaughtThrowError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ZeroDivisionError.html">ZeroDivisionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../fatal.html">fatal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../unknown.html">unknown</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+  <div class='adzbox'  id="azk83167">
+      
+  </div> 
+	<div id="documentation">
+		
+<h1 id="label-Contributors+to+Ruby">Contributors to Ruby<span><a href="#label-Contributors+to+Ruby">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>The following list might be imcomplete. Feel free to add your name if your
+patch was accepted into Ruby.</p>
+
+<h2 id="label-A">A<span><a href="#label-A">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Ayumu AIZAWA (ayumin)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>AKIYOSHI, Masamichi (akiyoshi)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He had maintained the VMS support on 2003-2004.</p>
+</li></ul>
+
+<p>Muhammad Ali</p>
+<ul><li>
+<p>wrote rdoc for <a href="../Fiber.html">Fiber</a></p>
+</li></ul>
+
+<p>Minero Aoki (aamine)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>fileutils</p>
+</li><li>
+<p>net/http, net/https</p>
+</li><li>
+<p>net/pop</p>
+</li><li>
+<p>net/smtp</p>
+</li><li>
+<p>racc</p>
+</li><li>
+<p>ripper</p>
+</li><li>
+<p>strscan</p>
+</li></ul>
+</li></ul>
+
+<p>Wakou Aoyama (wakou)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He was the maintainer of some standard libraries.</p>
+</li></ul>
+
+<p>Koji Arai</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>arton</p>
+<ul><li>
+<p>He is the distributor of ActiveScriptRuby and experimental 1.9.0-x
+installers for win32.</p>
+</li><li>
+<p>Wrote patches for win32ole, gc.c, tmpdir.rb</p>
+</li></ul>
+
+<h2 id="label-B">B<span><a href="#label-B">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Daniel Berger</p>
+<ul><li>
+<p>a patch for irb</p>
+</li><li>
+<p>documentation</p>
+</li><li>
+<p>He wrote forwardable.rb</p>
+</li></ul>
+
+<p>David Black (dblack)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of scanf</p>
+</li></ul>
+
+<p>Ken Bloom</p>
+<ul><li>
+<p>a patch for REXML.</p>
+</li></ul>
+
+<p>Oliver M. Bolzer</p>
+<ul><li>
+<p>a patch for soap</p>
+</li></ul>
+
+<p>Alexey Borzenkov</p>
+<ul><li>
+<p>a patch for mkmf.rb</p>
+</li></ul>
+
+<p>Richard Brown</p>
+<ul><li>
+<p>a patch for configure.in</p>
+</li></ul>
+
+<p>Dirkjan Bussink</p>
+<ul><li>
+<p>a patch for date.rb</p>
+</li></ul>
+
+<p>Daniel Bovensiepen</p>
+<ul><li>
+<p>documentation</p>
+</li><li>
+<p>a patch for irb</p>
+</li></ul>
+
+<h2 id="label-C">C<span><a href="#label-C">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Brian Candler</p>
+<ul><li>
+<p>a patch for configure.in, net/telnet</p>
+</li></ul>
+
+<p>keith cascio</p>
+<ul><li>
+<p>a patch for optparse.rb</p>
+</li></ul>
+
+<p>Frederick Cheung</p>
+<ul><li>
+<p>a patch for test/ruby/test_symbol.rb</p>
+</li></ul>
+
+<p>Christoph</p>
+<ul><li>
+<p>patches for set.rb</p>
+</li></ul>
+
+<p>Sean Chittenden</p>
+<ul><li>
+<p>pathces for net/http, cgi</p>
+</li></ul>
+
+<p>William D. Clinger</p>
+<ul><li>
+<p>ruby_strtod is based on his paper.</p>
+</li></ul>
+
+<h2 id="label-D">D<span><a href="#label-D">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Ryan Davis (ryan)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of miniunit</p>
+</li></ul>
+
+<p>Guy Decoux (ts)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>Zach Dennis</p>
+
+<p>Martin Duerst (duerst)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>M17N</p>
+</li></ul>
+
+<p>Paul Duncan</p>
+<ul><li>
+<p>pathces for rdoc</p>
+</li></ul>
+
+<p>Alexander Dymo</p>
+<ul><li>
+<p>a patch for lib/benchmark.rb</p>
+</li></ul>
+
+<h2 id="label-E">E<span><a href="#label-E">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Yusuke Endoh (mame)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of base64 library (1.9)</p>
+</li><li>
+<p>did much upon YARV compiler.</p>
+</li></ul>
+
+<p>erlercw</p>
+<ul><li>
+<p>wrote Integer::gcd2</p>
+</li></ul>
+
+<h2 id="label-F">F<span><a href="#label-F">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Frank S.Fejes</p>
+<ul><li>
+<p>a patch for net/pop</p>
+</li></ul>
+
+<p>Fundakowski Feldman</p>
+<ul><li>
+<p>a patch for process.c</p>
+</li></ul>
+
+<p>Mauricio Fernandez</p>
+<ul><li>
+<p>patches for parse.y</p>
+</li></ul>
+
+<p>David Flanagan (davidflanagan)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>M17N</p>
+</li></ul>
+
+<p>Takeyuki Fujioka (xibbar)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of cgi/*</p>
+</li></ul>
+
+<p>FUKUMOTO, Atsushi</p>
+<ul><li>
+<p>a patch for tracer.rb</p>
+</li></ul>
+
+<p>Shota Fukumori (sorah)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>#4415 parallel unit/test</p>
+</li></ul>
+
+<p>Tadayoshi Funaba (tadf)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of</p>
+<ul><li>
+<p>date</p>
+</li><li>
+<p>parsedate (1.8)</p>
+</li></ul>
+</li><li>
+<p>He ported rational.rb and complex.rb, which 1.8 contains, into rational.c
+and complex.c of 1.9.</p>
+</li></ul>
+
+<h2 id="label-G">G<span><a href="#label-G">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>David M. Gay</p>
+<ul><li>
+<p>ruby_strtod</p>
+</li></ul>
+
+<p>Florian Gilcher</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>GOTOU, Kentaro (gotoken)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote benchmark.rb</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>benchmark.rb</p>
+</li><li>
+<p>open3</p>
+</li></ul>
+</li></ul>
+
+<p>GOTOU, Yuuzou (gotoyuzo)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>James Edward Gray II (jeg2)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote the faster implementation of CSV and is the maintainer of csv.</p>
+</li><li>
+<p>Wrote documentation for rdoc</p>
+</li></ul>
+
+<h2 id="label-H">H<span><a href="#label-H">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Phil Hagelberg</p>
+<ul><li>
+<p>patch for ruby-mode.el’s documentation.</p>
+</li></ul>
+
+<p>Kirk Haines (wyhaines)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>the maintainer of ruby_1_8_6 branch</p>
+</li></ul>
+
+<p>Shinichiro Hamaji</p>
+<ul><li>
+<p>fixed memory leaks (marshal.c, string.c)</p>
+</li></ul>
+
+<p>Shin-ichiro HARA</p>
+<ul><li>
+<p>the developer and the sysop of ruby-{dev,list,core,talk} archive.</p>
+</li><li>
+<p>a patch for numeric.c</p>
+</li></ul>
+
+<p>Chris Heath (traumdeutung)</p>
+<ul><li>
+<p>a patch for proc.c</p>
+</li></ul>
+
+<p>HIROKAWA Hisashi</p>
+<ul><li>
+<p>fixed socket/socket.c</p>
+</li></ul>
+
+<p>Daniel Hob</p>
+<ul><li>
+<p>He wrote:</p>
+<ul><li>
+<p>SMTP-TLS support for net/smtp.</p>
+</li><li>
+<p>POP3S support</p>
+</li></ul>
+</li></ul>
+
+<p>Eric Hodel (drbrain)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>rdoc</p>
+</li><li>
+<p>ri</p>
+</li><li>
+<p>rubygems</p>
+</li></ul>
+</li></ul>
+
+<p>Erik Hollensbe</p>
+<ul><li>
+<p>a patch for delegate.rb</p>
+</li></ul>
+
+<p>Johan Holmberg</p>
+<ul><li>
+<p>a patch for dir.c</p>
+</li><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Erik Huelsmann</p>
+
+<p>Dae San Hwang</p>
+<ul><li>
+<p>built a continuous integration environment on OpenSolaris.</p>
+</li></ul>
+
+<h2 id="label-I">I<span><a href="#label-I">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Nobuhiro IMAI</p>
+<ul><li>
+<p>a patch for logger.rb</p>
+</li></ul>
+
+<p>“incorporate”</p>
+<ul><li>
+<p>a patch for sprintf.c</p>
+</li></ul>
+
+<p>Keiju Ishitsuka (keiju)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of:</p>
+<ul><li>
+<p>cmath.rb (1.9)</p>
+</li><li>
+<p>complex.rb (1.8)</p>
+</li><li>
+<p>e2mmap.rb</p>
+</li><li>
+<p>forwardable.rb</p>
+</li><li>
+<p>irb</p>
+</li><li>
+<p>mathn</p>
+</li><li>
+<p>matrix.rb</p>
+</li><li>
+<p>mutex_m.rb</p>
+</li><li>
+<p>rational.rb (1.8)</p>
+</li><li>
+<p>sync.rb</p>
+</li><li>
+<p>shell/*</p>
+</li><li>
+<p>thwait.rb</p>
+</li><li>
+<p>tracer.rb</p>
+</li></ul>
+</li></ul>
+
+<h2 id="label-J">J<span><a href="#label-J">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Curtis Jackson</p>
+<ul><li>
+<p>missing/dup2.c</p>
+</li></ul>
+
+<p>Alan Johnson</p>
+<ul><li>
+<p>a patch for net/ftp</p>
+</li></ul>
+
+<p>Lyle Johnson</p>
+<ul><li>
+<p>patches for nkf, bigdecimal, numeric.c</p>
+</li></ul>
+
+<h2 id="label-K">K<span><a href="#label-K">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Yoshihiro Kambayashi</p>
+<ul><li>
+<p>a patch for enc/trans/single_byte.trans.</p>
+</li><li>
+<p>He wrote supports for some encodings.</p>
+</li></ul>
+
+<p>Yutaka Kanemoto</p>
+<ul><li>
+<p>patches for common.mk, AIX AF_INET6 support</p>
+</li></ul>
+
+<p>Motoyuki Kasahara</p>
+<ul><li>
+<p>He wrote getoptlong.rb</p>
+</li></ul>
+
+<p>Masahiro Kawato</p>
+<ul><li>
+<p>a patch for shellwords.rb</p>
+</li></ul>
+
+<p>Wataru Kimura</p>
+<ul><li>
+<p>a patch for configure.in</p>
+</li></ul>
+
+<p>Michael Klishin</p>
+<ul><li>
+<p>patch for make help.</p>
+</li></ul>
+
+<p>Noritada Kobayashi</p>
+<ul><li>
+<p>a patch for optparse.rb</p>
+</li></ul>
+
+<p>Shigeo Kobayashi (shigek)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of bigdecimal</p>
+</li></ul>
+
+<p>KONISHI, Hiromasa (H_Konishi)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He had maintained the bcc32 support in 2004.</p>
+</li></ul>
+
+<p>Kornelius “murphy” Kalnbach</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>K.Kosako (kosako)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote Oniguruma.</p>
+</li></ul>
+
+<p>Takehiro Kubo</p>
+<ul><li>
+<p>patches for dl 64bit support.</p>
+</li></ul>
+
+<h2 id="label-L">L<span><a href="#label-L">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Marc-Andre Lafortune (marcandre)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>patches for hash.c, array.c, thread.c, enumc, string.c, range.c and rdoc
+documentation.</p>
+</li></ul>
+
+<p>Hongli Lai</p>
+<ul><li>
+<p>improved pstore.rb</p>
+</li><li>
+<p>patch for tool/file2lastrev.rb.</p>
+</li></ul>
+
+<p>raspberry lemon</p>
+<ul><li>
+<p>a patch for webrick/httpproxy.rb.</p>
+</li></ul>
+
+<p>Christian Loew</p>
+<ul><li>
+<p>a patch for fileutils.rb</p>
+</li></ul>
+
+<h2 id="label-M">M<span><a href="#label-M">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Shugo Maeda (shugo)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>A system administrator of ruby-lang.org servers.</p>
+</li><li>
+<p>He wrote and is the maintainer of:</p>
+<ul><li>
+<p>monitor.rb</p>
+</li><li>
+<p>net/ftp</p>
+</li><li>
+<p>net/imap</p>
+</li></ul>
+</li></ul>
+
+<p>Stephan Maka (mathew)</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Yukihiro Matsumoto (matz)</p>
+<ul><li>
+<p>Matz – the founder, language designer of Ruby.</p>
+</li><li>
+<p>committer</p>
+</li><li>
+<p>Ruby itself, most of Ruby.</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>singleton</p>
+</li><li>
+<p>timeout</p>
+</li><li>
+<p>gdbm</p>
+</li><li>
+<p>sdbm</p>
+</li></ul>
+</li></ul>
+
+<p>Konrad Meyer</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Mib Software</p>
+<ul><li>
+<p>missing/vsnprintf.c</p>
+</li></ul>
+
+<p>Todd C. Miller</p>
+<ul><li>
+<p>missing/strlcat.c</p>
+</li><li>
+<p>missing/strlcpy.c</p>
+</li></ul>
+
+<p>MIYASAKA, Masaru</p>
+<ul><li>
+<p>a patch for cgi.rb</p>
+</li></ul>
+
+<p>Stefan Monnier</p>
+<ul><li>
+<p>regex.c was fixed with based on his Emacs21 patch.</p>
+</li></ul>
+
+<p>Marcel Moolenaar</p>
+<ul><li>
+<p>patches for eval.c and gc.c.</p>
+</li></ul>
+
+<p>moonwolf</p>
+<ul><li>
+<p>a patch for REXML, xmlrpc</p>
+</li></ul>
+
+<p>Hiroshi Moriyama</p>
+<ul><li>
+<p>a patch for yaml.</p>
+</li></ul>
+
+<p>Kyosuke Morohashi</p>
+<ul><li>
+<p>a patch for gem_prelude.rb</p>
+</li></ul>
+
+<p>Kenta Murata</p>
+<ul><li>
+<p>patches for json, bignum.c</p>
+</li></ul>
+
+<p>Akinori MUSHA (knu)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of:</p>
+<ul><li>
+<p>abbrev.rb</p>
+</li><li>
+<p>generator (1.8)</p>
+</li><li>
+<p>enumerator (1.8)</p>
+</li><li>
+<p>set</p>
+</li><li>
+<p>ipaddr.rb</p>
+</li><li>
+<p>digest/*</p>
+</li><li>
+<p>syslog</p>
+</li></ul>
+</li><li>
+<p>He is the branch maintainer of ruby_1_8, the release manager of 1.8 series.</p>
+</li></ul>
+
+<h2 id="label-N">N<span><a href="#label-N">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Hidetoshi NAGAI (nagai)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of tk/*</p>
+</li></ul>
+
+<p>Nobuyoshi Nakada (nobu)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. the “patch monster”</p>
+</li><li>
+<p>He wrote and is the maintainer of:</p>
+<ul><li>
+<p>optparse</p>
+</li><li>
+<p>stringio</p>
+</li><li>
+<p>io/wait</p>
+</li><li>
+<p>iconv</p>
+</li></ul>
+</li></ul>
+
+<p>Satoshi Nakagawa</p>
+<ul><li>
+<p>patches for util.c</p>
+</li></ul>
+
+<p>Narihiro Nakamura (nari)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. authorNari</p>
+</li><li>
+<p>working at <a href="../GC.html">GC</a></p>
+</li></ul>
+
+<p>NAKAMURA, Hiroshi (nahi)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>csv.rb (1.8)</p>
+</li><li>
+<p>logger.rb</p>
+</li><li>
+<p>soap/* (1.8)</p>
+</li><li>
+<p>wsdl/* (1.8)</p>
+</li><li>
+<p>xsd/* (1.8)</p>
+</li></ul>
+</li></ul>
+
+<p>NAKAMURA, Usaku (usa)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. unak</p>
+</li><li>
+<p>He is the maintainer of mswin32 and mswin64 support.</p>
+</li></ul>
+
+<p>NARUSE, Yui (naruse)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. “nurse”</p>
+</li><li>
+<p>Did much upon m17n.</p>
+</li><li>
+<p>He is the maintainer of:</p>
+<ul><li>
+<p>json</p>
+</li><li>
+<p>nkf</p>
+</li></ul>
+</li></ul>
+
+<p>Christian Neukirchen</p>
+<ul><li>
+<p>a patch for webrick/httputils</p>
+</li></ul>
+
+<p>Michael Neumann (mneumann)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of</p>
+<ul><li>
+<p>xmlrpc (1.8)</p>
+</li><li>
+<p>gserver (1.8)</p>
+</li></ul>
+</li></ul>
+
+<p>NISHIO Hirokazu</p>
+<ul><li>
+<p>wrote a patch for CVE-2010-0541</p>
+</li></ul>
+
+<p>Kazuhiro NISHIYAMA (kazu)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. znz</p>
+</li></ul>
+
+<p>Go Noguchi</p>
+
+<p>Martin Nordholts</p>
+<ul><li>
+<p>misc/rdebug.el</p>
+</li></ul>
+
+<p>nmu</p>
+<ul><li>
+<p>a patch for socket</p>
+</li></ul>
+
+<h2 id="label-O">O<span><a href="#label-O">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>okkez</p>
+<ul><li>
+<p>He is a sysop of the Ruby Reference Manual Renewal Project.</p>
+</li><li>
+<p>fixed ipaddr.rb, ext/etc</p>
+</li></ul>
+
+<p>Haruhiko Okumura</p>
+<ul><li>
+<p>some of missing/* is based on his book:</p>
+<ul><li>
+<p>missing/erf.c</p>
+</li><li>
+<p>missing/lgamma_r.c</p>
+</li><li>
+<p>missing/tgamma.c</p>
+</li></ul>
+</li></ul>
+
+<p>OMAE, jun</p>
+<ul><li>
+<p>a patch for debug.rb</p>
+</li></ul>
+
+<p>Eugene Ossintsev</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<h2 id="label-P">P<span><a href="#label-P">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Heesob Park</p>
+<ul><li>
+<p>a patch for win32/win32.c.</p>
+</li></ul>
+
+<p>pegacorn</p>
+<ul><li>
+<p>a patch for instruby.rb</p>
+</li></ul>
+
+<h2 id="label-Q">Q<span><a href="#label-Q">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h2 id="label-R">R<span><a href="#label-R">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Gaston Ramos</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>The Regents of the University of California</p>
+<ul><li>
+<p>missing/crypt.c</p>
+</li><li>
+<p>missing/vsnprintf.c</p>
+</li></ul>
+
+<p>Sam Roberts</p>
+<ul><li>
+<p>patch for socket</p>
+</li><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Michal Rokos (michal)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He was the maintainer of DJGPP support.</p>
+</li></ul>
+
+<p>rubikitch</p>
+<ul><li>
+<p>a patch for io.c</p>
+</li></ul>
+
+<p>Marcus Rueckert</p>
+<ul><li>
+<p>a patch for mkconfig.rb.</p>
+</li></ul>
+
+<p>Run Paint Run Run</p>
+<ul><li>
+<p>patch for enc/unicode.c</p>
+</li><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Sean Russell (ser)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of REXML.</p>
+</li></ul>
+
+<h2 id="label-S">S<span><a href="#label-S">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Kazuo Saito (ksaito)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>M17N</p>
+</li></ul>
+
+<p>Tadashi Saito</p>
+<ul><li>
+<p>patches for test/ruby/test_math.rb, thread_*.c, bignum.c</p>
+</li><li>
+<p>working upon BigDecimal.</p>
+</li><li>
+<p>did much upon documentation</p>
+</li></ul>
+
+<p>Masahiro Sakai</p>
+<ul><li>
+<p>a patch for io.c</p>
+</li></ul>
+
+<p>Laurent Sansonetti</p>
+<ul><li>
+<p>a patch for tool/ytab.sed</p>
+</li></ul>
+
+<p>Jeff Saracco</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Koichi Sasada (ko1)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote YARV.</p>
+</li></ul>
+
+<p>Hugh Sasse</p>
+<ul><li>
+<p>a patch for net/http</p>
+</li><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Charlie Savage</p>
+<ul><li>
+<p>a patch for win32/Makefile.sub</p>
+</li></ul>
+
+<p>Michael Scholz</p>
+<ul><li>
+<p>a patch for ruby-mode.el</p>
+</li></ul>
+
+<p>Arthur Schreiber</p>
+<ul><li>
+<p>patch for net/http and rdoc.</p>
+</li></ul>
+
+<p>Masatoshi SEKI (seki)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of:</p>
+<ul><li>
+<p>drb/*</p>
+</li><li>
+<p>erb</p>
+</li><li>
+<p>rinda</p>
+</li></ul>
+</li></ul>
+
+<p>Roman Shterenzon</p>
+<ul><li>
+<p>a patch for open-uri.</p>
+</li></ul>
+
+<p>Kent Sibilev</p>
+
+<p>Gavin Sinclair (gsinclair)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>John W. Small</p>
+<ul><li>
+<p>He wrote gserver.rb</p>
+</li></ul>
+
+<p>Yuki Sonoda (yugui)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>She is the maintainer of man/* manual pages and is the release manager of
+1.9 series.</p>
+</li><li>
+<p>She wrote prime.rb.</p>
+</li><li>
+<p>A developer and a sysop of redmine.ruby-lang.org.</p>
+</li></ul>
+
+<p>SOUMA, Yutaka</p>
+<ul><li>
+<p>a patch for pack.c.</p>
+</li></ul>
+
+<p>Tatsuki Sugiura</p>
+<ul><li>
+<p>WebDAV support for net/http</p>
+</li></ul>
+
+<p>Masaki Suketa (suke)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of win32ole</p>
+</li></ul>
+
+<p>sheepman</p>
+<ul><li>
+<p>patches for ruby.c, thread.c, stringio, enum.c, webrick, net/http</p>
+</li></ul>
+
+<p>Siena. (siena)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>Kirill A. Shutemov</p>
+<ul><li>
+<p>a patch for parse.y</p>
+</li></ul>
+
+<p>Darren Smith</p>
+<ul><li>
+<p>a patch for golf_prelude.rb</p>
+</li></ul>
+
+<p>Richard M. Stallman</p>
+<ul><li>
+<p>missing/alloca.c</p>
+</li></ul>
+
+<p>Robin Stocker</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Adam Strzelecki</p>
+<ul><li>
+<p>a patch for compile.c</p>
+</li></ul>
+
+<p>Masashi Sumi</p>
+<ul><li>
+<p>improved net/pop.rb</p>
+</li></ul>
+
+<p>Eric Sunshine</p>
+<ul><li>
+<p>NeXT OpenStep, Rhapsody support</p>
+</li></ul>
+
+<p>Kouhei Sutou (kou)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote and is the maintainer of rss/*</p>
+</li></ul>
+
+<p>David Symonds</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<h2 id="label-T">T<span><a href="#label-T">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>TAKANO Mitsuhiro (takano32)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of IA-64 support.</p>
+</li><li>
+<p>BigDecimal</p>
+</li></ul>
+
+<p>TAKAO, Kouji (kouji)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of readline.</p>
+</li></ul>
+
+<p>Nathaniel Talbott (ntalbott)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He was the maintainer of test/unit, runit, rubyunit.</p>
+</li></ul>
+
+<p>TANAKA, Akira (akr)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>Did much upon m17n.</p>
+</li><li>
+<p>And he is the maintainer of:</p>
+<ul><li>
+<p>open-uri</p>
+</li><li>
+<p>pathname</p>
+</li><li>
+<p>pp</p>
+</li><li>
+<p>resolv-replace</p>
+</li><li>
+<p>resolv</p>
+</li><li>
+<p>time</p>
+</li><li>
+<p>tsort</p>
+</li></ul>
+</li></ul>
+
+<p>Takaaki Tateishi (ttate)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He was the maintainer of dl</p>
+</li></ul>
+
+<p>Technorama Ltd. (technoroma)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>openssl</p>
+</li></ul>
+
+<p>Andrew Thompson</p>
+<ul><li>
+<p>a patch for socket.c IRIX support.</p>
+</li></ul>
+
+<p>Dave Thomas (dave)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. the Pragmatic Programmer.</p>
+</li><li>
+<p>He wrote rdoc.</p>
+</li></ul>
+
+<p>Tietew</p>
+<ul><li>
+<p>patches for win32 support</p>
+</li></ul>
+
+<p>Masahiro Tomita</p>
+<ul><li>
+<p>a patch for cgi.rb</p>
+</li></ul>
+
+<p>Jakub Travnik</p>
+<ul><li>
+<p>a patch for eval.c</p>
+</li></ul>
+
+<p>Tom Truscott</p>
+<ul><li>
+<p>missing/crypt.c</p>
+</li></ul>
+
+<h2 id="label-U">U<span><a href="#label-U">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>UEDA, Satoshi</p>
+<ul><li>
+<p>a patch for uri</p>
+</li></ul>
+
+<p>Takaaki Uematsu (uema2)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He was the maintainer of WinCE support.</p>
+</li></ul>
+
+<p>UENO, Katsuhiro (katsu)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of zlib</p>
+</li></ul>
+
+<p>Hajimu UMEMOTO</p>
+<ul><li>
+<p>He wrote ipaddr.rb</p>
+</li></ul>
+
+<p>URABE, Shyouhei (shyouhei)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>a.k.a. mput.</p>
+</li><li>
+<p>He is the branch maintainer of ruby_1_8_6 and ruby_1_8_7</p>
+</li><li>
+<p>and is the release manager of 1.8.x-pXXX.</p>
+</li></ul>
+
+<h2 id="label-V">V<span><a href="#label-V">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Joel VanderWerf</p>
+<ul><li>
+<p>a patch for numeric.c</p>
+</li></ul>
+
+<p>Peter Vanbroekhoven</p>
+
+<p>Corinna Vinschen</p>
+
+<h2 id="label-W">W<span><a href="#label-W">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>wanabe (wanabe)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>fixed YARV and Oniguruma.</p>
+</li></ul>
+
+<p>Chun Wang</p>
+<ul><li>
+<p>a patch for time.rb</p>
+</li></ul>
+
+<p>WATANABE, Hirofumi (eban)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of</p>
+<ul><li>
+<p>ftools (1.8)</p>
+</li><li>
+<p>tmpdir</p>
+</li><li>
+<p>un</p>
+</li><li>
+<p>Win32API</p>
+</li></ul>
+</li></ul>
+
+<p>WATANABE, Tetsuya</p>
+<ul><li>
+<p>a patch for ruby.c</p>
+</li></ul>
+
+<p>William Webber (wew)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>Jim Weirich (jim)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He wrote Rake.</p>
+</li></ul>
+
+<p>Nathan Weizenbaum</p>
+<ul><li>
+<p>fixed misc/ruby-mode.el.</p>
+</li></ul>
+
+<p>why the lukky stiff (why)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of syck</p>
+</li></ul>
+
+<p>Caley Woods</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Gary Wright</p>
+<ul><li>
+<p>documentation</p>
+</li></ul>
+
+<h2 id="label-X">X<span><a href="#label-X">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h2 id="label-Y">Y<span><a href="#label-Y">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Akira Yamada (akira)</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer of ruby related packages at Debian project.</p>
+</li></ul>
+
+<p>Keita Yamaguchi</p>
+<ul><li>
+<p>patches for enum.c, parse.y</p>
+</li><li>
+<p>documentation</p>
+</li></ul>
+
+<p>Hirokazu Yamamoto (ocean)</p>
+<ul><li>
+<p>committer</p>
+</li></ul>
+
+<p>Hirotaka Yoshioka</p>
+<ul><li>
+<p>a patch for improving SEGV handling</p>
+</li></ul>
+
+<h2 id="label-Z">Z<span><a href="#label-Z">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Aristarkh A Zagorodnikov</p>
+<ul><li>
+<p>a patch for io.c</p>
+</li></ul>
+
+<p>Alexander Zavorine</p>
+<ul><li>
+<p>committer</p>
+</li><li>
+<p>He is the maintainer for Symbian OS.</p>
+</li></ul>
+
+<p>Chiyuan Zhang</p>
+<ul><li>
+<p>a patch for misc/ruby-mode.el.</p>
+</li></ul>
+
+<p>Dee Zsombor (zunda)</p>
+<ul><li>
+<p>a patch for thread_pthread.c</p>
+</li></ul>
+
+<p>Dan Zwell</p>
+<ul><li>
+<p>a patch for net/pop</p>
+</li></ul>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small>Generated with Rubydoc Rdoc Generator 0.32.0</small>.</p>
+	</div>
+
+    
+
+
+</body>
+
+</html>
+

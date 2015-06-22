@@ -1,0 +1,653 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <p>I decided to start off this newsletter with one of the most basic but essential pieces of knowledge you can have about Ruby’s object model: the way it looks up methods. Let’s do a little exploration by working through a few examples.</p>
+
+<p>Below we have a simple report class tasked with performing some basic data manipulations and then producing some text output.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Report</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(ledger)
+    <span style="color:#33B">@balance</span>          = ledger.inject(<span style="color:#00D">0</span>) { |sum, (k,v)| sum + v }
+    <span style="color:#33B">@credits</span>, <span style="color:#33B">@debits</span> = ledger.partition { |k,v| v &gt; <span style="color:#00D">0</span> }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:credits</span>, <span style="color:#A60">:debits</span>, <span style="color:#A60">:balance</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_output</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Current Balance: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>balance<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Credits:</span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>formatted_line_items(credits)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Debits:</span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>formatted_line_items(debits)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_line_items</span>(items)
+    items.map { |k, v| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>k<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">%.2f</span><span style="color:#710">'</span></span> % v.abs<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The following example demonstrates how we’d make use of this class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ledger = [ [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Deposit Check #123</span><span style="color:#710">&quot;</span></span>, <span style="color:#60E">500.15</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fancy Shoes</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">-200.25</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fancy Hat</span><span style="color:#710">&quot;</span></span>,          <span style="color:#60E">-54.40</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ATM Deposit</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">1200.00</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Kitteh Litteh</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">-5.00</span>] ]
+
+report = <span style="color:#036;font-weight:bold">Report</span>.new(ledger)
+puts report.formatted_output
+</pre></div>
+</div>
+</div>
+
+<p>And for those who don’t want to take the time to copy and paste this code and run it locally, the actual output is shown below.</p>
+
+<pre><code>Current Balance: 1440.5
+
+Credits:
+
+Deposit Check #123: 500.15
+ATM Deposit: 1200.00
+
+Debits:
+
+Fancy Shoes: 200.25
+Fancy Hat: 54.40
+Kitteh Litteh: 5.00
+</code></pre>
+
+<p>While not particularly pretty, this report is mostly what we’d expect to see. You can probably imagine how this information might be embedded within another report, such as an email-based form letter with some header and footer information. One possible way to do this would be through class inheritance, as in the example below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">date</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">EmailReport</span> &lt; <span style="color:#036;font-weight:bold">Report</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">header</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Dear Valued Customer,</span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This report shows your account activity as of </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Date</span>.today<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">banner</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">............................................................</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">formatted_output</span>
+    header + banner + <span style="color:#080;font-weight:bold">super</span> + banner + footer
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">footer</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">With Much Love,</span><span style="color:#b0b">\n</span><span style="color:#D20">Your Faceless Banking Institution</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We only need to make a minor change to our calling code to make use of this new class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ledger = [ [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Deposit Check #123</span><span style="color:#710">&quot;</span></span>, <span style="color:#60E">500.15</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fancy Shoes</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">-200.25</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fancy Hat</span><span style="color:#710">&quot;</span></span>,          <span style="color:#60E">-54.40</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ATM Deposit</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">1200.00</span>],
+           [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Kitteh Litteh</span><span style="color:#710">&quot;</span></span>,       <span style="color:#60E">-5.00</span>] ]
+
+report = <span style="color:#036;font-weight:bold">EmailReport</span>.new(ledger)
+puts report.formatted_output
+</pre></div>
+</div>
+</div>
+
+<p>Below you can see what the new output ends up looking like.</p>
+
+<pre><code>Dear Valued Customer,
+
+The following report shows your account activity as of 2010-11-09
+
+............................................................
+Current Balance: 1440.5
+
+Credits:
+
+Deposit Check #123: 500.15
+ATM Deposit: 1200.00
+
+Debits:
+
+Fancy Shoes: 200.25
+Fancy Hat: 54.40
+Kitteh Litteh: 5.00
+............................................................
+
+With Much Love,
+Your Faceless Banking Institution
+</code></pre>
+
+<p>Looking back at the <code>EmailReport</code> code, it’s easy to see what we’ve done to produce this new output. We’ve defined a new <code>formatted_output</code> method which adds the headers and footers, and combined this new behavior with the original behavior of our <code>Report</code> class by calling <code>super</code>. This is the same extension by inheritance pattern that you’ll learn in any basic computer science course or encounter in any of the reasonably traditional object oriented languages out there.</p>
+
+<p>But before you go asking for a refund and start telling your friends that this newsletter is painfully dull, consider this: While many languages have a method lookup path which is based on inheritance alone, that isn’t even close to being true about Ruby.</p>
+
+<p>Because Ruby allows for module mixins and per-object behavior, the <code>super</code> keyword takes on a whole new life in which an object’s superclass is the last stop on a five part journey through Ruby’s object model. The following example proves the point by composing a simple string which demonstrates the order in which methods are resolved in Ruby.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">A</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Instance method defined by A</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">W</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Mixed in method defined by W</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">X</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Mixed in method defined by X</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">B</span> &lt; <span style="color:#036;font-weight:bold">A</span>
+  include <span style="color:#036;font-weight:bold">W</span>
+  include <span style="color:#036;font-weight:bold">X</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Instance method defined by B</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Y</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Mixed in method defined by Y</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Z</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Mixed in method defined by Z</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+object = <span style="color:#036;font-weight:bold">B</span>.new
+object.extend(<span style="color:#036;font-weight:bold">Y</span>)
+object.extend(<span style="color:#036;font-weight:bold">Z</span>)
+
+<span style="color:#080;font-weight:bold">def</span> object.<span style="color:#06B;font-weight:bold">foo</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- Method defined directly on an instance of B</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> + <span style="color:#080;font-weight:bold">super</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+puts object.foo
+</pre></div>
+</div>
+</div>
+
+<p>When we run this code, we see the following output, which traces the <code>super</code> calls all the way up from the method defined directly on our object to its superclass.</p>
+
+<pre><code>- Method defined directly on an instance of B
+- Mixed in method defined by Z
+- Mixed in method defined by Y
+- Instance method defined by B
+- Mixed in method defined by X
+- Mixed in method defined by W
+- Instance method defined by A
+</code></pre>
+
+<p>As promised, it’s a five step journey. Particularly, the above is a demonstration that Ruby methods are looked up in the following order:</p>
+
+<ol>
+  <li>Methods defined in the object’s singleton class (i.e. the object itself)</li>
+  <li>Modules mixed into the singleton class in reverse order of inclusion</li>
+  <li>Methods defined by the object’s class</li>
+  <li>Modules included into the object’s class in reverse order of inclusion</li>
+  <li>Methods defined by the object’s superclass.</li>
+</ol>
+
+<p>This process is then repeated all the way up the inheritance chain until <code>BasicObject</code> is reached. Now that we know the basic order, we should stop and consider a few questions about what we’ve discussed so far.</p>
+
+<h3 id="open-questions--things-to-explore">Open Questions / Things To Explore</h3>
+
+<ul>
+  <li>
+    <p>Why would we want or need five distinct places to define methods? Do these other options really gain us anything over ordinary inheritance?</p>
+  </li>
+  <li>
+    <p>Does this change the way that classic object oriented design principles apply to Ruby? For example, how well do you think direct translations of design patterns map to Ruby?</p>
+  </li>
+  <li>
+    <p>Think of each place you can define a method in Ruby, and consider which ones are important for every day use, and which ones are edge cases. Is per-object behavior really that useful?</p>
+  </li>
+  <li>
+    <p>It is rare to use all of these options at once, and the only reason it was done in this exercise was for demonstration purposes. But taken individually, can you think of a practical use for each way of defining Ruby methods?</p>
+  </li>
+  <li>
+    <p>What are some disadvantages for each technique shown here?</p>
+  </li>
+</ul>
+
+<p>I will address these points and also go over some practical applications in the next issue, but please share your own thoughts in the comments section below.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/030-issue-1-method-lookup.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

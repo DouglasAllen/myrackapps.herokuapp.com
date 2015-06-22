@@ -1,0 +1,1000 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../.images/header.png" />
+    <p><em>This issue of Practicing Ruby was contributed by Magnus Holm (<a href="http://twitter.com/judofyr">@judofyr</a>), 
+a Ruby programmer  from Norway. Magnus works on various open source 
+projects (including the <a href="https://github.com/camping">Camping</a> web framework),
+and writes articles over at <a href="http://timelessrepo.com">the timeless repository</a>.</em></p>
+
+<p>Working with network I/O in Ruby is so easy: </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">socket</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Start a server on port 9234</span>
+server = <span style="color:#036;font-weight:bold">TCPServer</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0.0.0.0</span><span style="color:#710">'</span></span>, <span style="color:#00D">9234</span>)
+
+<span style="color:#777"># Wait for incoming connections</span>
+<span style="color:#080;font-weight:bold">while</span> io = server.accept
+  io &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP/1.1 200 OK</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#D20">Hello world!</span><span style="color:#710">&quot;</span></span>
+  io.close
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Visit http://localhost:9234/ in your browser.</span>
+</pre></div>
+</div>
+</div>
+
+<p>Boom, a server is up and running! Working in Ruby has some disadvantages, though: we
+can handle only one connection at a time. We can also have only one <em>server</em>
+running at a time. There’s no understatement in saying that these constraints
+can be quite limiting. </p>
+
+<p>There are several ways to improve this situation, but lately we’ve seen an
+influx of event-driven solutions. <a href="http://nodejs.org">Node.js</a> is just an event-driven I/O-library
+built on top of JavaScript. <a href="http://rubyeventmachine.com">EventMachine</a> has been a solid solution in the Ruby
+world for several years. Python has <a href="http://twistedmatrix.com">Twisted</a>, and Perl has so many that they even
+have <a href="http://metacpan.org/module/AnyEvent">an abstraction around them</a>.</p>
+
+<p>Although these solutions might seem like silver bullets, there are subtle details that
+you’ll have to think about. You can accomplish a lot by following simple rules
+(“don’t block the thread”), but I always prefer to know precisely what I’m
+dealing with. Besides, if doing regular I/O is so simple, why does
+event-driven I/O have to be looked at as black magic?</p>
+
+<p>To show that they are nothing to be afraid of, we are going to implement an 
+I/O event loop in this article. Yep, that’s right; we’ll capture the core 
+part of EventMachine/Node.js/Twisted in about 150 lines of Ruby. It won’t 
+be performant, it won’t be test-driven, and it won’t be solid, but it will 
+use the same concepts as in all of these great projects. We will start 
+by looking at a minimal chat server example and then discuss 
+how to build the infrastructure that supports it.</p>
+
+<h2 id="obligatory-chat-server-example">Obligatory chat server example</h2>
+
+<p>Because chat servers seem to be the event-driven equivalent of a
+“hello world” program, we will keep with that tradition here. The
+following example shows a trivial <code>ChatServer</code> object that uses
+the <code>IOLoop</code> that we’ll discuss in this article:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ChatServer</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@clients</span> = []
+    <span style="color:#33B">@client_id</span> = <span style="color:#00D">0</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(server)
+    server.on(<span style="color:#A60">:accept</span>) <span style="color:#080;font-weight:bold">do</span> |stream|
+      add_client(stream)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add_client</span>(stream)
+    id = (<span style="color:#33B">@client_id</span> += <span style="color:#00D">1</span>)
+    send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">User #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> joined</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+
+    stream.on(<span style="color:#A60">:data</span>) <span style="color:#080;font-weight:bold">do</span> |chunk|
+      send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">User #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>chunk<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    stream.on(<span style="color:#A60">:close</span>) <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#33B">@clients</span>.delete(stream)
+      send(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">User #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> left</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#33B">@clients</span> &lt;&lt; stream
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">send</span>(msg)
+    <span style="color:#33B">@clients</span>.each <span style="color:#080;font-weight:bold">do</span> |stream|
+      stream &lt;&lt; msg
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># usage</span>
+
+io     = <span style="color:#036;font-weight:bold">IOLoop</span>.new
+server = <span style="color:#036;font-weight:bold">ChatServer</span>.new
+
+server &lt;&lt; io.listen(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0.0.0.0</span><span style="color:#710">'</span></span>, <span style="color:#00D">1234</span>)
+
+io.start
+</pre></div>
+</div>
+</div>
+
+<p>To play around with this server, run <a href="https://gist.githubusercontent.com/sandal/3612925/raw/315e7bfc5de7a029606b3885d71953acb84f112e/ChatServer.rb">this script</a> and then open up
+a couple of telnet sessions to it. You should be able to produce something like the
+following with a bit of experimentation:</p>
+
+<pre><code># from User #1's console:
+$ telnet 127.0.0.1 1234
+
+User #2 joined
+User #2 said: Hi
+Hi
+User #1 said: Hi
+User #2 said: Bye
+User #2 left
+
+# from User #2's console (quits after saying Bye)
+$ telnet 127.0.0.1 1234
+
+User #1 said: Hi
+Bye
+User #2 said: Bye
+</code></pre>
+
+<p>If you don’t have the time to try out this code right now,
+don’t worry: as long as you understand the basic idea behind it, you’ll be fine.
+This chat server is here to serve as a practical example to help you 
+understand <a href="https://gist.githubusercontent.com/sandal/3612925/raw/315e7bfc5de7a029606b3885d71953acb84f112e/ChatServer.rb">the code we’ll be discussing</a> throughout this article.</p>
+
+<p>Now that we have a place to start from, let’s build our event system.</p>
+
+<h2 id="event-handling">Event handling</h2>
+
+<p>First of all we need, obviously, events! With no further ado:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">EventEmitter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">_callbacks</span>
+    <span style="color:#33B">@_callbacks</span> ||= <span style="color:#036;font-weight:bold">Hash</span>.new { |h, k| h[k] = [] }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">on</span>(type, &amp;blk)
+    _callbacks[type] &lt;&lt; blk
+    <span style="color:#069">self</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">emit</span>(type, *args)
+    _callbacks[type].each <span style="color:#080;font-weight:bold">do</span> |blk|
+      blk.call(*args)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HTTPServer</span>
+  include <span style="color:#036;font-weight:bold">EventEmitter</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+server = <span style="color:#036;font-weight:bold">HTTPServer</span>.new
+server.on(<span style="color:#A60">:request</span>) <span style="color:#080;font-weight:bold">do</span> |req, res|
+  res.respond(<span style="color:#00D">200</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Content-Type</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text/html</span><span style="color:#710">'</span></span>)
+  res &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello world!</span><span style="color:#710">&quot;</span></span>
+  res.close
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># When a new request comes in, the server will run:</span>
+<span style="color:#777">#   server.emit(:request, req, res)</span>
+
+</pre></div>
+</div>
+</div>
+
+<p><code>EventEmitter</code> is a module that we can include in classes that can send and
+receive events. In one sense, this is the most important part of our event
+loop: it defines how we use and reason about events in the system. Modifying it
+later will require changes all over the place. Although this particular
+implementation is a bit more simple than what you’d expect from a real 
+library, it covers the fundamental ideas that are common to all
+event-based systems.</p>
+
+<h2 id="the-io-loop">The IO loop</h2>
+
+<p>Next, we need something to fire up these events. As you will see in
+the following code, the general flow of an event loop is simple:
+detect new events, run their associated callbacks, and then repeat
+the whole process again.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">IOLoop</span>
+  <span style="color:#777"># List of streams that this IO loop will handle.</span>
+  attr_reader <span style="color:#A60">:streams</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@streams</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#777"># Low-level API for adding a stream.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(stream)
+    <span style="color:#33B">@streams</span> &lt;&lt; stream
+    stream.on(<span style="color:#A60">:close</span>) <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#33B">@streams</span>.delete(stream)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Some useful helpers:</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">io</span>(io)
+    stream = <span style="color:#036;font-weight:bold">Stream</span>.new(io)
+    <span style="color:#069">self</span> &lt;&lt; stream
+    stream
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">open</span>(file, *args)
+    io <span style="color:#036;font-weight:bold">File</span>.open(file, *args)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">connect</span>(host, port)
+    io <span style="color:#036;font-weight:bold">TCPSocket</span>.new(host, port)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">listen</span>(host, port)
+    server = <span style="color:#036;font-weight:bold">Server</span>.new(<span style="color:#036;font-weight:bold">TCPServer</span>.new(host, port))
+    <span style="color:#069">self</span> &lt;&lt; server
+    server.on(<span style="color:#A60">:accept</span>) <span style="color:#080;font-weight:bold">do</span> |stream|
+      <span style="color:#069">self</span> &lt;&lt; stream
+    <span style="color:#080;font-weight:bold">end</span>
+    server
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Start the loop by calling #tick over and over again.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start</span>
+    <span style="color:#33B">@running</span> = <span style="color:#069">true</span>
+    tick <span style="color:#080;font-weight:bold">while</span> <span style="color:#33B">@running</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Stop/pause the event loop after the current tick.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">stop</span>
+    <span style="color:#33B">@running</span> = <span style="color:#069">false</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">tick</span>
+    <span style="color:#33B">@streams</span>.each <span style="color:#080;font-weight:bold">do</span> |stream|
+      stream.handle_read  <span style="color:#080;font-weight:bold">if</span> stream.readable?
+      stream.handle_write <span style="color:#080;font-weight:bold">if</span> stream.writable?
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice here that <code>IOLoop#start</code> blocks everything until <code>IOLoop#stop</code> is called.
+Everything after <code>IOLoop#start</code> will happen in callbacks, which means that the
+control flow can be surprising. For example, consider the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>l = <span style="color:#036;font-weight:bold">IOLoop</span>.new
+
+ruby = i.connect(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ruby-lang.org</span><span style="color:#710">'</span></span>, <span style="color:#00D">80</span>)  <span style="color:#777"># 1</span>
+ruby &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GET / HTTP/1.0</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>       <span style="color:#777"># 2</span>
+
+<span style="color:#777"># Print output</span>
+ruby.on(<span style="color:#A60">:data</span>) <span style="color:#080;font-weight:bold">do</span> |chunk|
+  puts chunk   <span style="color:#777"># 3</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Stop IO loop when we're done</span>
+ruby.on(<span style="color:#A60">:close</span>) <span style="color:#080;font-weight:bold">do</span>
+  l.stop       <span style="color:#777"># 4</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+l.start        <span style="color:#777"># 5</span>
+</pre></div>
+</div>
+</div>
+
+<p>You might think that you’re writing data in step 2, but the
+<code>&lt;&lt;</code> method actually just stores the data in a local buffer.
+It’s not until the event loop has started (in step 5) that the data
+actually gets sent. The <code>IOLoop#start</code> method triggers <code>#tick</code> to be run in a loop, which
+delegates to <code>Stream#handle_read</code> and <code>Stream#handle_write</code>. These methods 
+are responsible for doing any necessary I/O operations and then triggering
+events such as <code>:data</code> and <code>:close</code>, which you can see being used in steps 3 and 4. We’ll take a look at how <code>Stream</code> is implemented later, but for now 
+the main thing to take away from this example is that event-driven code 
+cannot be read in top-down fashion as if it were procedural code.</p>
+
+<p>Studying the implementation of <code>IOLoop</code> should also reveal why it’s 
+so terrible to block inside a callback. For example, take a look at this 
+call graph:</p>
+
+<pre><code># indentation means that a method/block is called
+# deindentation means that the method/block returned
+
+tick (10 streams are readable)
+  stream1.handle_read
+    stream1.emit(:data)
+      your callback
+
+  stream2.handle_read
+    stream2.emit(:data)
+      your callback
+        you have a "sleep 5" inside here
+
+  stream3.handle_read
+    stream3.emit(:data)
+      your callback
+  ...
+</code></pre>
+
+<p>By blocking inside the second callback, the I/O loop has to wait 5 seconds 
+before it’s able to call the rest of the callbacks. This wait is
+obviously a bad thing, and it is important
+to avoid such a situation when possible. Of course, nonblocking
+callbacks are not enough—the event loop also needs to make use of nonblocking
+I/O. Let’s go over that a bit more now.</p>
+
+<h2 id="io-events">IO events</h2>
+
+<p>At the most basic level, there are only two events for an <code>IO</code> object:</p>
+
+<ol>
+  <li>Readable: The <code>IO</code> is readable; data is waiting for us. </li>
+  <li>Writable: The <code>IO</code> is writable; we can write data.</li>
+</ol>
+
+<p>These might sound a little confusing: how can a client know that the server
+will send us data? It can’t. Readable doesn’t mean “the server will send us
+data”; it means “the server has already sent us data.” In that case, the data
+is handled by the kernel in your OS. Whenever you read from an <code>IO</code> object, you’re
+actually just copying bytes from the kernel. If the receiver does not read 
+from <code>IO</code>, the kernel’s buffer will become full and the sender’s <code>IO</code> will 
+no longer be writable. The sender will then have to wait until the 
+receiver can catch up and free up the kernel’s buffer. This situation is
+what makes nonblocking <code>IO</code> operations tricky to work with.</p>
+
+<p>Because these low-level operations can be tedious to handle manually, the 
+goal of an I/O loop is to trigger some more usable events for application
+programmers:</p>
+
+<ol>
+  <li>Data: A chunk of data was sent to us.</li>
+  <li>Close: The IO was closed.</li>
+  <li>Drain: We’ve sent all buffered outgoing data.</li>
+  <li>Accept: A new connection was opened (only for servers).</li>
+</ol>
+
+<p>All of this functionality can be built on top of Ruby’s <code>IO</code> objects with
+a bit of effort.</p>
+
+<h2 id="working-with-the-ruby-io-object">Working with the Ruby IO object</h2>
+
+<p>There are various ways to read from an <code>IO</code> object in Ruby:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>data = io.read
+data = io.read(<span style="color:#00D">12</span>)
+data = io.readpartial(<span style="color:#00D">12</span>)
+data = io.read_nonblock(<span style="color:#00D">12</span>)
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p><code>io.read</code> reads until the <code>IO</code> is closed (e.g., end of file, server closes the
+connection, etc.) </p>
+  </li>
+  <li>
+    <p><code>io.read(12)</code> reads until it has received exactly 12 bytes.</p>
+  </li>
+  <li>
+    <p><code>io.readpartial(12)</code> waits until the <code>IO</code> becomes readable, then it reads <em>at
+most</em> 12 bytes. So if a server sends only 6 bytes, <code>readpartial</code> will return
+those 6 bytes. If you had used <code>read(12)</code>, it would wait until 6 more bytes were
+sent.</p>
+  </li>
+  <li>
+    <p><code>io.read_nonblock(12)</code> will read at most 12 bytes if the IO is readable. It
+raises <code>IO::WaitReadable</code> if the <code>IO</code> is not readable.</p>
+  </li>
+</ul>
+
+<p>For writing, there are two methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>length = io.write(str)
+length = io.write_nonblock(str)
+</pre></div>
+</div>
+</div>
+
+<ul>
+  <li>
+    <p><code>io.write</code> writes the whole string to the <code>IO</code>, waiting until the <code>IO</code> becomes
+writable if necessary. It returns the number of bytes written (which should
+always be equal to the number of bytes in the original string).</p>
+  </li>
+  <li>
+    <p><code>io.write_nonblock</code> writes as many bytes as possible until the <code>IO</code> becomes
+nonwritable, returning the number of bytes written. It raises <code>IO::WaitWritable</code>
+if the <code>IO</code> is not writable.</p>
+  </li>
+</ul>
+
+<p>The challenge when both reading and writing in a nonblocking fashion is knowing 
+when it is possible to do so and when it is necessary to wait.</p>
+
+<h2 id="getting-real-with-ioselect">Getting real with IO.select</h2>
+
+<p>We need some mechanism for knowing when we can read or write to our
+streams, but I’m not going to implement <code>Stream#readable?</code> or <code>#writable?</code>. It’s 
+a terrible solution to loop over every stream object in Ruby and check whether it’s
+readable/writable over and over again. This is really just not a job for Ruby;
+it’s too far away from the kernel.</p>
+
+<p>Luckily, the kernel exposes ways to efficiently detect readable and writable
+I/O streams. The simplest cross-platform method is called select(2) 
+and is available in Ruby as <code>IO.select</code>:</p>
+
+<pre><code>IO.select(read_array [, write_array [, error_array [, timeout]]])
+
+Calls select(2) system call. It monitors supplied arrays of IO objects and waits
+until one or more IO objects are ready for reading, ready for writing, or have
+errors. It returns an array of those IO objects that need attention. It returns 
+nil if the optional timeout (in seconds) was supplied and has elapsed.
+</code></pre>
+
+<p>With this knowledge, we can write a much better <code>#tick</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">IOLoop</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">tick</span>
+    r, w = <span style="color:#036;font-weight:bold">IO</span>.select(<span style="color:#33B">@streams</span>, <span style="color:#33B">@streams</span>)
+    r.each <span style="color:#080;font-weight:bold">do</span> |stream|
+      stream.handle_read
+    <span style="color:#080;font-weight:bold">end</span>
+  
+    w.each <span style="color:#080;font-weight:bold">do</span> |stream|
+      stream.handle_write
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>IO.select</code> will block until some of our streams become readable or writable
+and then return those streams. From there, it is up to those streams to do 
+the actual data processing work.</p>
+
+<h2 id="handling-streaming-input-and-output">Handling streaming input and output</h2>
+
+<p>Now that we’ve used the <code>Stream</code> object in various examples, you may 
+already have an idea of what its responsibilities are. But let’s first take a look at how it is implemented:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Stream</span>
+  <span style="color:#777"># We want to bind/emit events.</span>
+  include <span style="color:#036;font-weight:bold">EventEmitter</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(io)
+    <span style="color:#33B">@io</span> = io
+    <span style="color:#777"># Store outgoing data in this String.</span>
+    <span style="color:#33B">@writebuffer</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This tells IO.select what IO to use.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_io</span>; <span style="color:#33B">@io</span> <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(chunk)
+    <span style="color:#777"># Append to buffer; #handle_write is doing the actual writing.</span>
+    <span style="color:#33B">@writebuffer</span> &lt;&lt; chunk
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_read</span>
+    chunk = <span style="color:#33B">@io</span>.read_nonblock(<span style="color:#00D">4096</span>)
+    emit(<span style="color:#A60">:data</span>, chunk)
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">IO</span>::<span style="color:#036;font-weight:bold">WaitReadable</span>
+    <span style="color:#777"># Oops, turned out the IO wasn't actually readable.</span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">EOFError</span>, <span style="color:#036;font-weight:bold">Errno</span>::<span style="color:#036;font-weight:bold">ECONNRESET</span>
+    <span style="color:#777"># IO was closed</span>
+    emit(<span style="color:#A60">:close</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_write</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@writebuffer</span>.empty?
+    length = <span style="color:#33B">@io</span>.write_nonblock(<span style="color:#33B">@writebuffer</span>)
+    <span style="color:#777"># Remove the data that was successfully written.</span>
+    <span style="color:#33B">@writebuffer</span>.slice!(<span style="color:#00D">0</span>, length)
+    <span style="color:#777"># Emit &quot;drain&quot; event if there's nothing more to write.</span>
+    emit(<span style="color:#A60">:drain</span>) <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@writebuffer</span>.empty?
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">IO</span>::<span style="color:#036;font-weight:bold">WaitWritable</span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">EOFError</span>, <span style="color:#036;font-weight:bold">Errno</span>::<span style="color:#036;font-weight:bold">ECONNRESET</span>
+    emit(<span style="color:#A60">:close</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Stream</code> is nothing more than a wrapper around a Ruby <code>IO</code> object that
+abstracts away all the low-level details of reading and writing that were
+discussed throughout this article. The <code>Server</code> object we make use of 
+in <code>IOLoop#listen</code> is implemented in a similar fashion but is focused
+on accepting incoming connections instead:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Server</span>
+  include <span style="color:#036;font-weight:bold">EventEmitter</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(io)
+    <span style="color:#33B">@io</span> = io
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_io</span>; <span style="color:#33B">@io</span> <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_read</span>
+    sock = <span style="color:#33B">@io</span>.accept_nonblock
+    emit(<span style="color:#A60">:accept</span>, <span style="color:#036;font-weight:bold">Stream</span>.new(sock))
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">IO</span>::<span style="color:#036;font-weight:bold">WaitReadable</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_write</span>
+    <span style="color:#777"># do nothing</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now that you’ve studied how these low-level objects work, you should
+be able to revisit the full <a href="https://gist.githubusercontent.com/sandal/3612925/raw/315e7bfc5de7a029606b3885d71953acb84f112e/ChatServer.rb">source code for the Chat Server
+example</a> and understand exactly how it works. If you
+can do that, you know how to build an evented I/O loop from scratch.</p>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<p>Although the basic ideas behind event-driven I/O systems are easy to understand, 
+there are many low-level details that complicate things. This article discussed some of these ideas, but there are many others that would need
+to be considered if we were trying to build a real event library. Among
+other things, we would need to consider the following problems:</p>
+
+<ul>
+  <li>
+    <p>Because our event loop does not implement timers, it is difficult to do
+a number of important things. Even something as simple as keeping a 
+connection open for a set period of time can be painful without built-in
+support for timers, so any serious event library must support them. It’s
+worth pointing out that <code>IO#select</code> does accept a timeout parameter, and
+it would be possible to make use of it fairly easily within this codebase.</p>
+  </li>
+  <li>
+    <p>The event loop shown in this article is susceptible to <a href="http://en.wikipedia.org/wiki/Back_pressure#Back_pressure_in_information_technology">back pressure</a>,
+which occurs when data continues to be buffered infinitely even if it
+has not been accepted for processing yet. Because our event loop 
+provides no mechanism for signaling that its buffers are full, incoming
+data will accumulate and have a similar effect to a memory leak until
+the connection is closed or the data is accepted.</p>
+  </li>
+  <li>
+    <p>The performance of select(2) is linear, which means that handling 
+10,000 streams will take 10,000x as long as handling a single stream. 
+Alternative solutions do exist at the kernel, but many are not 
+cross-platform and are not exposed to Ruby by default. If you have 
+high performance needs, you may want to look into the <a href="https://github.com/tarcieri/nio4r">nio4r</a> 
+project, which attempts to solve this problem in a clean way by 
+wrapping the libev library.</p>
+  </li>
+</ul>
+
+<p>The challenges involved in getting the details right in event loops
+are the real reason why tools like EventMachine and Node.js exist. These systems
+allow application programmers to gain the benefits of event-driven I/O without
+having to worry about too many subtle details. Still, knowing how they work under the hood
+should help you make better use of these tools, and should also take away some
+of the feeling that they are a kind of deep voodoo that you’ll never
+comprehend. Event-driven I/O is perfectly understandable; it is just a bit 
+messy.</p>
+
+
+  </div>
+</body>
+</html>

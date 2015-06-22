@@ -1,0 +1,616 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>In Issue #6, you got to see my intentionally bad implementation of Tic Tac Toe. For today, I have promised to show you some better code and the steps I took to get there. But before we move forward, let’s take a quick look back at where we started.</p>
+
+<p>To start this exercise, I had challenged myself to implement this simple game without using any user defined classes or methods. Given that I wanted to make sure I produced <em>bad</em> code to start with, I got a little nervous when my back-of-the-napkin proof of concept didn’t come out looking that bad. Here it is again below, for those who forgot about it.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>board = [[<span style="color:#069">nil</span>,<span style="color:#069">nil</span>,<span style="color:#069">nil</span>],
+         [<span style="color:#069">nil</span>,<span style="color:#069">nil</span>,<span style="color:#069">nil</span>],
+         [<span style="color:#069">nil</span>,<span style="color:#069">nil</span>,<span style="color:#069">nil</span>]]
+
+players = [<span style="color:#A60">:X</span>, <span style="color:#A60">:O</span>].cycle
+
+loop <span style="color:#080;font-weight:bold">do</span>
+  current_player = players.next
+  puts board.map { |row| row.map { |e| e || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>) }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+  print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">&gt;&gt; </span><span style="color:#710">&quot;</span></span>
+  row, col = gets.split.map { |e| e.to_i }
+  puts
+  board[row][col] = current_player
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The above code is good demo-ware, as long as you type really carefully and conveniently forget to finish a game before hitting ctrl+c. But to make a real, playable implementation, some end game conditions and basic validations are necessary. To my great joy, adding those new features caused this tight little script to explode into a hot mess of intertwined logic and nasty little hacks. Check out <a href="https://github.com/sandal/tictactoe/tree/7fd72a33aec33f75909d8c9d59a43423b0f66b24">the source tree</a> that we ended up with at the end of Issue #6 to see how things turned.</p>
+
+<p>While concise at less than 60 lines of code, it’s pretty easy to see that this isn’t the kind of software we should aspire to be writing. So the challenge was to start here and end up somewhere better.</p>
+
+<p>Whenever I do this exercise with my students, there is a roadmap I follow that tends to lead to some decent insights. It roughly goes like this:</p>
+
+<ul>
+  <li>
+    <p>Get some basic file structures and namespaces in place so that you get yourself out of the global namespace and open the doors for scripting some examples or running things in irb without firing off a procedure automatically.</p>
+  </li>
+  <li>
+    <p>Break down the procedure into some separable chunks so that you can think about smaller parts of the problems, and more easily see the dependencies between the steps in the procedure.</p>
+  </li>
+  <li>
+    <p>Re-think the design by identifying areas where objects can put an abstraction barrier between different layers of data and logic. Strive to have each bit of code do one thing and one thing well.</p>
+  </li>
+  <li>
+    <p>Identify the leaky abstractions and dangly bits that didn’t get ironed out by the last step. Aim for beautiful solutions, but be skeptical of over-engineering at this point. No problem can be modeled perfectly</p>
+  </li>
+  <li>
+    <p>Reflect on the exercise, and ask yourself whether you’ve gone far enough with your cleanup. If you feel like so, then be sure to think about whether you’ve gone <em>too</em> far!</p>
+  </li>
+</ul>
+
+<p>This is the approach I took as I worked on this problem myself, and you’ll be able to see it step by step in the git logs. I tried to write good log messages, so I will link to them rather than repeat what was said, but I’ll also share some more big-picture oriented thoughts as I walk you through my work.</p>
+
+<h3 id="basic-organization-first">Basic organization first</h3>
+
+<p>Here is my <a href="https://github.com/sandal/tictactoe/commit/5af96941d74f8014a3276b77fe67c17e0ed5e2df">first commit</a> of the evening. And this is the <a href="https://github.com/sandal/tictactoe/tree/5af96941d74f8014a3276b77fe67c17e0ed5e2df">source tree</a>.</p>
+
+<p>Tiny changes really, but it’s the first thing I do as soon as I’ve exited ‘spike
+mode’ on any project, no matter how small. I’ve used a standard structure, and
+it does two things for me:</p>
+
+<ol>
+  <li>
+    <p>Allows me to load my whole library with a single require. (See app.rb for example and note how it doesn’t change throughout this walkthrough)</p>
+  </li>
+  <li>
+    <p>Places 100% of what I build under a single constant’s namespace (i.e. <code>TicTacToe</code>)</p>
+  </li>
+</ol>
+
+<p>These two points pretty much guarantee me that I won’t have any naming clashes or unexpected collisions with other people’s code unless I plan on loading a library that might clobber the name <code>TicTacToe</code> or the <code>require</code> path of <i>“tictactoe/*”</i>. It also makes it easy for me to start interacting with my code from scripts I write, from irb, and from unit tests. For so little work, we get a ton of benefit, and this is a great place to start when doing any sort of cleanup.</p>
+
+<h3 id="basic-slicing-and-dicing">Basic Slicing and Dicing</h3>
+
+<p>My next goal is to start breaking my monolithic procedure into some smaller chunks so I can get a sense of what parts go well together and how they need to interact with each other.</p>
+
+<p>I start by realizing that using a singleton pattern for <code>Game</code>, while possible, isn’t a great idea. A function bag approach in which we pass board and player information around like crazy also wouldn’t be great, so I decide to make <code>Game</code> an ordinary class in this <a href="https://github.com/sandal/tictactoe/commit/2579626bd73fc7ad9e7d0a87419d5ecab2aacdda">commit</a>.</p>
+
+<p>Read the message, and then if you’d like, have a look at the <a href="https://github.com/sandal/tictactoe/tree/2579626bd73fc7ad9e7d0a87419d5ecab2aacdda">updated source tree</a>.</p>
+
+<p>I immediately make use this refactoring by breaking down the original game procedure into several smaller, simpler methods. (<a href="https://github.com/sandal/tictactoe/commit/286724de5328fda779caa500ccc76a0ad5de2bd7">commit</a>, <a href="https://github.com/sandal/tictactoe/tree/286724de5328fda779caa500ccc76a0ad5de2bd7">source</a>)</p>
+
+<p>At this point, it’s not uncommon for folks to think they’re done refactoring. By giving things nicer names and distributing the pain points so that they’re not all crammed together in one place, the code feels cleaner. But upon further investigation of this code, while perhaps understandability and organization have improved, flexibility and abstraction have not. This is what I like to call ‘procedural programming with objects’, and we can do better than this.</p>
+
+<p>The good news is, with the code cleaned up a bit, we see where some of the pain points are. When it seems like a large amount of your code is dedicated to handling a particular concept, that means you have an object begging to be born. Our handling of the game board logic in this code is a prime example.</p>
+
+<h3 id="sneaking-in-domain-models">Sneaking in Domain Models</h3>
+
+<p>A key principle of object oriented design is to do one thing and do it well. But what does that mean? Hopefully, this refactored <code>Board</code> class gives you an idea!
+(<a href="https://github.com/sandal/tictactoe/commit/efcbf51bcc1f7d4d094c671b60761229aec3dded">commit</a>, <a href="https://github.com/sandal/tictactoe/tree/efcbf51bcc1f7d4d094c671b60761229aec3dded">source</a>)</p>
+
+<p>If you look at the <code>Board</code> class, you’ll see that it takes the concept of a Tic Tac Toe board and solidifies it so that when <code>Game</code> works with it, <code>Board</code> does the heavy lifting and <code>Game</code> mostly just calls the methods it needs to get its job done. This lets <code>Game</code> forget about some of the finer points like what the individual kinds of illegal moves are, or how to compute the intersecting lines that cross through a given point. This sort of black box effect gives us some real abstraction, which is exactly why object oriented programming is as good as they say it is.</p>
+
+<p>With this complex board logic out of the way and some updates to the way flow is handled in game, it’s obvious that <code>Game</code> is now something like a controller, and <code>Board</code> is a model. But there are still some loose ends in <code>Game</code>, things that actually look like logic rather than just flow control and dispatch. The majority of the code you see in this class has to do with implementing a user interface and basic event loop. So, methods like <code>check_move</code>, <code>check_win</code>, and <code>check_draw</code> feel a little bit out of place, since they implement actual logic about the rules of the game rather than just how players interact with it.</p>
+
+<p>Sometimes, little leaks like this aren’t a big deal. In fact, the code looks reasonable to me at this point and if I were doing this for my day job and wasn’t trying to get in the record books for ‘World’s Best Tic Tac Toe Implementation’, I’d probably stop here.</p>
+
+<p>But we’re already cruising now, so why don’t we try to shoot for the stars?</p>
+
+<h3 id="grail-quests">Grail Quests</h3>
+
+<p>I really wanted to find a way to rip that last bit of domain logic out of <code>Game</code>, and after wrestling a little bit, I came up with something.
+(<a href="https://github.com/sandal/tictactoe/commit/0fef18d320af2bd1a08f5115a2b94e552205f218">commit</a>, <a href="https://github.com/sandal/tictactoe/tree/0fef18d320af2bd1a08f5115a2b94e552205f218">source</a>)</p>
+
+<p>The thing I kept wrestling with was how to manage the screen output stuff. I wrestled with a bunch of ideas, including defining a simply <code>display()</code> method on <code>Game</code> like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">display</span>(message)
+  puts message
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The reason why I wanted this is so my Rules mixin could rely on a method that <code>Game</code> provided for display rather than directly assuming console output. But I think that what I ended up with is better.</p>
+
+<p>Imagine that my <code>check_draw</code> method in Rules was written like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_draw</span>
+  <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@board</span>.covered?
+     display <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's a draw</span><span style="color:#710">&quot;</span></span>
+     game_over
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>It’s almost a trivial difference <em>except</em> that now we have a leak on the Rules side. If <code>TicTacToe::Game</code> is now meant to exclusively be a UI event loop, having the messages that are displayed to the user caught up in some module seems a bit ugly.</p>
+
+<p>But instead, I chose to let <code>Game</code> fill in the blanks with an implementation like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_draw</span>
+  <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@board</span>.covered?
+     <span style="color:#080;font-weight:bold">yield</span>
+     game_over
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This allows the draw logic to live in <code>Rules</code>, with calling code in <code>Game</code>
+that looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>check_draw { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's a draw</span><span style="color:#710">&quot;</span></span> }
+</pre></div>
+</div>
+</div>
+
+<p>A place for everything and everything in its place! Time to go hang some banners on aircraft carriers, because well, Mission Accomplished.</p>
+
+<h3 id="fear-uncertainty-and-doubt">Fear, Uncertainty, and Doubt</h3>
+
+<p>Is this final implementation an example of good Ruby code? Yeah, probably. Is it excellent? I really have no idea. At the very least, it’s almost certainly not ‘The Best Tic Tac Toe Implementation Ever’.</p>
+
+<p>But really, the kind of perfection I was trying to seek in this exercise is not really what we should be looking for in our day to day work. Right now I have the amps cranked up to 11, when 7 or 8 would really do fine. But as I said before, this is one of my favorite exercises for learning and teaching. Here’s why: It really gets me thinking.</p>
+
+<p>I’m still trying to decide on whether extracting out the <code>Rules</code> module was really necessary, and I also have some areas about this I still don’t like. For example, I’m not sure whether <code>Board</code> should know more about the rules of the game, or even less. I don’t like the hard coding I did of all the parameters of the game in there, but I can’t put my finger on why. After all, it’s very unlikely that Tic Tac Toe is suddenly going to become Chess and need to expand to an NxN board. Even if it did, wouldn’t it need to change a whole lot to accommodate it?</p>
+
+<p>Still, I don’t like things like these constants:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">LEFT_DIAGONAL_POSITIONS</span>  = [[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">2</span>,<span style="color:#00D">2</span>]]
+<span style="color:#036;font-weight:bold">RIGHT_DIAGONAL_POSITIONS</span> = [[<span style="color:#00D">2</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>]]
+<span style="color:#036;font-weight:bold">SPAN</span>                     = (<span style="color:#00D">0</span>..<span style="color:#00D">2</span>)
+<span style="color:#036;font-weight:bold">CELL_COUNT</span>               = <span style="color:#00D">9</span>
+</pre></div>
+</div>
+</div>
+
+<p>There is a natural connascence between all four of these values, but the code to generalize their creation would be longer and much uglier to read than the above. So maybe it’s a good choice to do it this way, but it makes the mathematician in me uneasy.</p>
+
+<p>Another thing I don’t like about my design is <code>Board#to_s</code>, because putting presentation logic on domain logic is nasty. But to make a view object or otherwise promote one line of code to something more complex seems to be a cure that is worse than the disease.</p>
+
+<p>But on the bright side of things, I really like the callback scheme for doing the bits of game logic like <code>check_win</code> and <code>check_draw</code> and passing in a block with the rendering code. This is actually a formal design pattern just hiding in a line of code, and things like that remind me of why Ruby is so beautiful.</p>
+
+<p>Also, I’ve never used <code>throw</code> / <code>catch</code> before in real code. Never really saw why I’d need it. But at a glance, my use of it here actually seems pretty expressive and appropriate given the situation. But because I’ve never used it before, I’m still glancing at it sideways with considerable doubt. I even had to wrap it in a method called <code>game_over</code> to hide the throw keyword to get over my fear of its relative novelty. But now, my <code>game_over</code> method is like some sort of crazy goto call… and that makes me not so sure that this was a good idea afterall.</p>
+
+<p>Oh yeah, and I also didn’t write any tests while working on this code. I thought about writing them, but I felt that it’d cause me to think about the tests themselves more than the coding practices I was experimenting with. But then again, maybe if I wrote tests, I wouldn’t be pondering the relative merits of my fancy <code>game_over()</code> goto.</p>
+
+<p>And this is how this exercise always ends. It doesn’t come together in a beautiful blossom of Ruby awesomeness, it just kind of falls off a cliff. But really, that’s okay! Not every question needs to be answered, and as I said before, if this were something I was working on just to get a job done, I would happily make concessions where needed to avoid letting perfect become the enemy of the good.</p>
+
+<p>Still, this sort of practice gnaws on your subconscious, and I’ve seen it lead to great progress in my own studies and in my students as well. Hopefully you’ve enjoyed seeing this process in action, and will give it a try soon if you weren’t able to try it out this week.</p>
+
+<h3 id="submissions-from-our-readers">Submissions from our readers</h3>
+
+<p>I haven’t had a chance to review them in depth, but a few readers did share
+their own explorations with us. Check out the <a href="https://github.com/sandal/tictactoe/network">github network graph</a> to see what others have done.</p>
+
+<p>Looking forward to hearing your thoughts on this exercise, and whether it seems like something you could make good use of. Until next time, happy hacking!</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/036-issue-7-good-and-bad-code.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,738 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span><span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$LOADED_FEATURES</span>.grep(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">session6</span><span style="color:#D20">\/</span><span style="color:#808">solved</span><span style="color:#D20">\/</span><span style="color:#808">1</span><span style="color:#404">/</span></span>).empty?
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span>  app_root = <span style="color:#036;font-weight:bold">File</span>.expand_path <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../../challenge/1_build_an_app</span><span style="color:#710">&quot;</span></span>, <span style="color:#069">__FILE__</span>
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span><span style="color:#080;font-weight:bold">else</span>
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span>  app_root = <span style="color:#036;font-weight:bold">File</span>.expand_path <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../../solved/1_build_an_app</span><span style="color:#710">&quot;</span></span>, <span style="color:#069">__FILE__</span>
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span><span style="color:#777"># check necessary preliminaries</span>
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">unrecoverable_error</span>(message)
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span>  message     =  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> *</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span>  border      =  message.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">.</span><span style="color:#404">/</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*</span><span style="color:#710">'</span></span>)
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span>  blank_line  = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span>  puts blank_line, border, message, border, blank_line
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span>  exit <span style="color:#00D">1</span>
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span>
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span><span style="color:#080;font-weight:bold">begin</span>
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span>  require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/main</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span><span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">LoadError</span>
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span>  unrecoverable_error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You should have a main file in in challenge/1_build_an_app/main.rb</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span>
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span><span style="color:#080;font-weight:bold">begin</span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span>  <span style="color:#036;font-weight:bold">Sinatra</span>
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span><span style="color:#080;font-weight:bold">rescue</span> =&gt; e
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span>  unrecoverable_error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You should have required Sinatra from your main file.</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span>
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span><span style="color:#080;font-weight:bold">begin</span>
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span>  require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">capybara/rspec</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span><span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">LoadError</span>
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span>  unrecoverable_error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">You need to install capybara `$ gem install capybara` (for testing).</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span>
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span><span style="color:#080;font-weight:bold">begin</span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span>  require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rack/test</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span><span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">LoadError</span>
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span>  unrecoverable_error <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You need to install rack-test `$ gem install rack-test`</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span>
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span>
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span><span style="color:#777"># Set up the environment</span>
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span>set <span style="color:#A60">:show_exceptions</span>, <span style="color:#069">false</span>
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">MyHelpers</span>
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span>  extend <span style="color:#069">self</span>
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">app</span>
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span>    <span style="color:#036;font-weight:bold">Sinatra</span>::<span style="color:#036;font-weight:bold">Application</span>
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span>
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">assert</span>(bool)
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span>    expect(bool).to eq <span style="color:#069">true</span>
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span>
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">main</span>
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>    <span style="color:#069">TOPLEVEL_BINDING</span>.eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">self</span><span style="color:#710">'</span></span>)
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span>
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span><span style="color:#036;font-weight:bold">RSpec</span>.configure <span style="color:#080;font-weight:bold">do</span> |config|
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span>  config.include <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Methods</span>
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span>  config.include <span style="color:#036;font-weight:bold">MyHelpers</span>
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span>  config.disable_monkey_patching!
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span>
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span><span style="color:#036;font-weight:bold">Capybara</span>.app = <span style="color:#036;font-weight:bold">MyHelpers</span>.app
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Capybara::Session</span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span>  <span style="color:#777"># Super displeased with this solution.</span>
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span>  <span style="color:#777"># There is `page.driver.post`, but that doesn't update the browser's DOM, which took me fkn *hours* to figure out</span>
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span>  <span style="color:#777"># (b/c page.body is correct, and code passes self to fkn everything... seriously, probably 4+ hours over multiple days)</span>
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span>  <span style="color:#777"># I would drop to rack-test and Nokogiri, but the shared assertions expect to be using Capybara.</span>
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">post</span>(url, data={})
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span>    driver.browser.reset_host!
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span>    driver.browser.process_and_follow_redirects <span style="color:#A60">:post</span>, url, data
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span>
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span>
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span><span style="color:#777"># Test the app</span>
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your application's library</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">is be in a folder named lib/caesar_cipher.rb</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span>    assert <span style="color:#036;font-weight:bold">File</span>.exist?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/lib/caesar_cipher.rb</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span>    require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/lib/caesar_cipher</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span>
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Should be in a module named CaesarCipher</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span>    expect(<span style="color:#036;font-weight:bold">CaesarCipher</span>).to be_an_instance_of <span style="color:#036;font-weight:bold">Module</span>
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span>
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span>  describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">CaesarCipher.encrypt</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">assert_encrypts</span>(encryptions)
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span>      encryptions.each <span style="color:#080;font-weight:bold">do</span> |key, value|
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span>        specify(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> encrypts to </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span>          expect(<span style="color:#036;font-weight:bold">CaesarCipher</span>.encrypt key).to eq value
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span>        <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a lowercase message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>      assert_encrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">d</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">e</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">z</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with an uppercase message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span>      assert_encrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">D</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">B</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">E</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">C</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a numerical message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span>      assert_encrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">3</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">4</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">7</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">9</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with non alphanumeric message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~!@#$%^&amp;*(){}[];</span><span style="color:#b0b">\'</span><span style="color:#D20">:&quot;,./</span><span style="color:#b0b">\\</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>.each_char <span style="color:#080;font-weight:bold">do</span> |char|
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span>        specify { expect(<span style="color:#036;font-weight:bold">CaesarCipher</span>.encrypt char.dup).to eq char }
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a full message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span>      specify <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span>        expect(<span style="color:#036;font-weight:bold">CaesarCipher</span>.encrypt <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The quick brown fox jumps over the lazy dog.</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span>          .to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span>
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span>  describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">CaesarCipher.decrypt</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span>    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">assert_decrypts</span>(decryptions)
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>      decryptions.each <span style="color:#080;font-weight:bold">do</span> |key, value|
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span>        specify(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> decrypts to </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span>          expect(<span style="color:#036;font-weight:bold">CaesarCipher</span>.decrypt key).to eq value
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span>        <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n135" name="n135">135</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n136" name="n136">136</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n137" name="n137">137</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a lowercase message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n138" name="n138">138</a></span>      assert_decrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">d</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n139" name="n139">139</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">e</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">b</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><strong><a href="#n140" name="n140">140</a></strong></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n141" name="n141">141</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">c</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">z</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n142" name="n142">142</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n143" name="n143">143</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with an uppercase message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n144" name="n144">144</a></span>      assert_decrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">D</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n145" name="n145">145</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">E</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">B</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n146" name="n146">146</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">X</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n147" name="n147">147</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">C</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Z</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n148" name="n148">148</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n149" name="n149">149</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a numerical message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n150" name="n150">150</a></strong></span>      assert_decrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">3</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n151" name="n151">151</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">4</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n152" name="n152">152</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">7</span><span style="color:#710">'</span></span>,
+<span class="line-numbers"><a href="#n153" name="n153">153</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">9</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n154" name="n154">154</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n155" name="n155">155</a></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with non alphanumeric message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n156" name="n156">156</a></span>      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~!@#$%^&amp;*(){}[];</span><span style="color:#b0b">\'</span><span style="color:#D20">:&quot;,./</span><span style="color:#b0b">\\</span><span style="color:#D20"> </span><span style="color:#710">'</span></span>.each_char <span style="color:#080;font-weight:bold">do</span> |char|
+<span class="line-numbers"><a href="#n157" name="n157">157</a></span>        assert_decrypts char.dup =&gt; char
+<span class="line-numbers"><a href="#n158" name="n158">158</a></span>      <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n159" name="n159">159</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n160" name="n160">160</a></strong></span>    describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">with a full message</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n161" name="n161">161</a></span>      assert_decrypts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj.</span><span style="color:#710">&quot;</span></span> =&gt;
+<span class="line-numbers"><a href="#n162" name="n162">162</a></span>                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">The quick brown fox jumps over the lazy dog.</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n163" name="n163">163</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n164" name="n164">164</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n165" name="n165">165</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n166" name="n166">166</a></span>
+<span class="line-numbers"><a href="#n167" name="n167">167</a></span>
+<span class="line-numbers"><a href="#n168" name="n168">168</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your application's Gemfile</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n169" name="n169">169</a></span>  specify { assert <span style="color:#036;font-weight:bold">File</span>.exist?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile</span><span style="color:#710">&quot;</span></span>) }
+<span class="line-numbers"><strong><a href="#n170" name="n170">170</a></strong></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a source of &quot;https://rubygems.org</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n171" name="n171">171</a></span>    expect(main).to receive(<span style="color:#A60">:source</span>).with(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://rubygems.org</span><span style="color:#710">&quot;</span></span>).once
+<span class="line-numbers"><a href="#n172" name="n172">172</a></span>    allow(main).to receive <span style="color:#A60">:gem</span>
+<span class="line-numbers"><a href="#n173" name="n173">173</a></span>    load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n174" name="n174">174</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n175" name="n175">175</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a line for Sinatra</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n176" name="n176">176</a></span>    allow(main).to receive <span style="color:#A60">:source</span>
+<span class="line-numbers"><a href="#n177" name="n177">177</a></span>    allow(main).to receive <span style="color:#A60">:gem</span>
+<span class="line-numbers"><a href="#n178" name="n178">178</a></span>    expect(main).to receive(<span style="color:#A60">:gem</span>).with(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sinatra</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~&gt; 1.4</span><span style="color:#710">'</span></span>).once
+<span class="line-numbers"><a href="#n179" name="n179">179</a></span>    load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><strong><a href="#n180" name="n180">180</a></strong></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n181" name="n181">181</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a line for rack-test</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n182" name="n182">182</a></span>    allow(main).to receive <span style="color:#A60">:source</span>
+<span class="line-numbers"><a href="#n183" name="n183">183</a></span>    allow(main).to receive <span style="color:#A60">:gem</span>
+<span class="line-numbers"><a href="#n184" name="n184">184</a></span>    expect(main).to receive(<span style="color:#A60">:gem</span>).with(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rack-test</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">~&gt; 0.6</span><span style="color:#710">'</span></span>).once
+<span class="line-numbers"><a href="#n185" name="n185">185</a></span>    load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n186" name="n186">186</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n187" name="n187">187</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n188" name="n188">188</a></span>
+<span class="line-numbers"><a href="#n189" name="n189">189</a></span>
+<span class="line-numbers"><strong><a href="#n190" name="n190">190</a></strong></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your application's Gemfile.lock</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n191" name="n191">191</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has been installed to a Gemfile.lock</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n192" name="n192">192</a></span>    assert <span style="color:#036;font-weight:bold">File</span>.exist?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile.lock</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n193" name="n193">193</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n194" name="n194">194</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a line for Sinatra</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n195" name="n195">195</a></span>    lines = <span style="color:#036;font-weight:bold">File</span>.readlines(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile.lock</span><span style="color:#710">&quot;</span></span>).grep(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\b</span><span style="color:#808">sinatra</span><span style="color:#D20">\b</span><span style="color:#404">/</span></span>)
+<span class="line-numbers"><a href="#n196" name="n196">196</a></span>    expect(lines).to_not be_empty
+<span class="line-numbers"><a href="#n197" name="n197">197</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n198" name="n198">198</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a line for rack-test</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n199" name="n199">199</a></span>    lines = <span style="color:#036;font-weight:bold">File</span>.readlines(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/Gemfile.lock</span><span style="color:#710">&quot;</span></span>).grep(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\b</span><span style="color:#808">rack-test</span><span style="color:#D20">\b</span><span style="color:#404">/</span></span>)
+<span class="line-numbers"><strong><a href="#n200" name="n200">200</a></strong></span>    expect(lines).to_not be_empty
+<span class="line-numbers"><a href="#n201" name="n201">201</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n202" name="n202">202</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n203" name="n203">203</a></span>
+<span class="line-numbers"><a href="#n204" name="n204">204</a></span>
+<span class="line-numbers"><a href="#n205" name="n205">205</a></span><span style="color:#036;font-weight:bold">RSpec</span>.shared_examples_for <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">every page</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n206" name="n206">206</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and have an html tag</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n207" name="n207">207</a></span>    expect(page).to have_css <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n208" name="n208">208</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n209" name="n209">209</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and have a head tag</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n210" name="n210">210</a></strong></span>    expect(page).to have_css <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html head</span><span style="color:#710">'</span></span>, <span style="color:#606">visible</span>: <span style="color:#069">false</span>
+<span class="line-numbers"><a href="#n211" name="n211">211</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n212" name="n212">212</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and have an title of &quot;Caesar Cipher&quot;</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n213" name="n213">213</a></span>    title = page.find <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html head title</span><span style="color:#710">'</span></span>, <span style="color:#606">visible</span>: <span style="color:#069">false</span>
+<span class="line-numbers"><a href="#n214" name="n214">214</a></span>    expect(title.text <span style="color:#A60">:all</span>).to include <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Caesar Cipher</span><span style="color:#710">'</span></span> <span style="color:#777"># :all makes it work with hidden elements</span>
+<span class="line-numbers"><a href="#n215" name="n215">215</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n216" name="n216">216</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and have a body tag</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n217" name="n217">217</a></span>    expect(page).to have_css <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html body</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n218" name="n218">218</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n219" name="n219">219</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">and have an h1 with the text &quot;Caesar Cipher&quot;</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n220" name="n220">220</a></strong></span>    h1 = page.find <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html body h1</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n221" name="n221">221</a></span>    expect(h1).to have_text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Caesar Cipher</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n222" name="n222">222</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n223" name="n223">223</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n224" name="n224">224</a></span>
+<span class="line-numbers"><a href="#n225" name="n225">225</a></span>
+<span class="line-numbers"><a href="#n226" name="n226">226</a></span>
+<span class="line-numbers"><a href="#n227" name="n227">227</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your application's '/' route</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">type</span>: <span style="color:#A60">:feature</span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n228" name="n228">228</a></span>  before  { page.visit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span> }
+<span class="line-numbers"><a href="#n229" name="n229">229</a></span>  specify { expect(page.status_code).to eq <span style="color:#00D">200</span> }
+<span class="line-numbers"><strong><a href="#n230" name="n230">230</a></strong></span>
+<span class="line-numbers"><a href="#n231" name="n231">231</a></span>  it_behaves_like <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">every page</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n232" name="n232">232</a></span>
+<span class="line-numbers"><a href="#n233" name="n233">233</a></span>  describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has a form that posts to encrypt</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n234" name="n234">234</a></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">posts to '/encrypt'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n235" name="n235">235</a></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[method=&quot;post&quot;][action=&quot;/encrypt&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n236" name="n236">236</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n237" name="n237">237</a></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has an input of type 'text' and name 'message'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n238" name="n238">238</a></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[action=&quot;/encrypt&quot;] input[type=&quot;text&quot;][name=&quot;message&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n239" name="n239">239</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n240" name="n240">240</a></strong></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has an input of type 'submit' and value 'encrypt'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n241" name="n241">241</a></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[action=&quot;/encrypt&quot;] input[type=&quot;submit&quot;][value=&quot;encrypt&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n242" name="n242">242</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n243" name="n243">243</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n244" name="n244">244</a></span>
+<span class="line-numbers"><a href="#n245" name="n245">245</a></span>  describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has a form to decrypt</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n246" name="n246">246</a></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has to '/decrypt'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n247" name="n247">247</a></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[method=&quot;post&quot;][action=&quot;/decrypt&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n248" name="n248">248</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n249" name="n249">249</a></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has an input of type 'text' and name 'message'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n250" name="n250">250</a></strong></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[action=&quot;/decrypt&quot;] input[type=&quot;text&quot;][name=&quot;message&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n251" name="n251">251</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n252" name="n252">252</a></span>    it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">has an input of type 'submit' and value 'decrypt'</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n253" name="n253">253</a></span>      expect(page).to have_selector <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">form[action=&quot;/decrypt&quot;] input[type=&quot;submit&quot;][value=&quot;decrypt&quot;]</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n254" name="n254">254</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n255" name="n255">255</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n256" name="n256">256</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n257" name="n257">257</a></span>
+<span class="line-numbers"><a href="#n258" name="n258">258</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Posting to your application's '/encrypt' route</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">type</span>: <span style="color:#A60">:feature</span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n259" name="n259">259</a></span>  before { page.post <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/encrypt</span><span style="color:#710">'</span></span>, <span style="color:#606">message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Abcd.</span><span style="color:#710">'</span></span> }
+<span class="line-numbers"><strong><a href="#n260" name="n260">260</a></strong></span>  specify { expect(page.status_code).to eq <span style="color:#00D">200</span> }
+<span class="line-numbers"><a href="#n261" name="n261">261</a></span>  it_behaves_like <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">every page</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n262" name="n262">262</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20">has a paragraph saying '&quot;Abcd.&quot; encrypts to &quot;Defg.&quot;'</span><span style="color:#710">}</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n263" name="n263">263</a></span>    paragraphs = page.all(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">p</span><span style="color:#710">'</span></span>).map(&amp;<span style="color:#A60">:text</span>).join
+<span class="line-numbers"><a href="#n264" name="n264">264</a></span>    expect(paragraphs).to include <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&quot;Abcd.&quot; encrypts to &quot;Defg.&quot;</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n265" name="n265">265</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n266" name="n266">266</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a link to &quot;/&quot;, with the text &quot;Back&quot;</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n267" name="n267">267</a></span>    expect(page.find <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a[href=&quot;/&quot;]</span><span style="color:#710">'</span></span>).to have_text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Back</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n268" name="n268">268</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n269" name="n269">269</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n270" name="n270">270</a></strong></span>
+<span class="line-numbers"><a href="#n271" name="n271">271</a></span>
+<span class="line-numbers"><a href="#n272" name="n272">272</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Posting to your application's '/decrypt' route</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">type</span>: <span style="color:#A60">:feature</span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n273" name="n273">273</a></span>  before { page.post <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/decrypt</span><span style="color:#710">'</span></span>, <span style="color:#606">message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Defg.</span><span style="color:#710">&quot;</span></span> }
+<span class="line-numbers"><a href="#n274" name="n274">274</a></span>  specify { expect(page.status_code).to eq <span style="color:#00D">200</span> }
+<span class="line-numbers"><a href="#n275" name="n275">275</a></span>  it_behaves_like <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">every page</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n276" name="n276">276</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20">has a paragraph saying '&quot;Defg.&quot; decrypts to &quot;Abcd.&quot;'</span><span style="color:#710">}</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n277" name="n277">277</a></span>    paragraphs = page.all(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">p</span><span style="color:#710">'</span></span>).map(&amp;<span style="color:#A60">:text</span>).join
+<span class="line-numbers"><a href="#n278" name="n278">278</a></span>    expect(paragraphs).to include <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&quot;Defg.&quot; decrypts to &quot;Abcd.&quot;</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n279" name="n279">279</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n280" name="n280">280</a></strong></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a link to &quot;/&quot;, with the text &quot;Back&quot;</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n281" name="n281">281</a></span>    expect(page.find <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">a[href=&quot;/&quot;]</span><span style="color:#710">'</span></span>).to have_text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Back</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n282" name="n282">282</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n283" name="n283">283</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n284" name="n284">284</a></span>
+<span class="line-numbers"><a href="#n285" name="n285">285</a></span>
+<span class="line-numbers"><a href="#n286" name="n286">286</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Your application's config.ru</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n287" name="n287">287</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">exists</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n288" name="n288">288</a></span>    assert <span style="color:#036;font-weight:bold">File</span>.exist?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/config.ru</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n289" name="n289">289</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n290" name="n290">290</a></strong></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">requires main.rb</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n291" name="n291">291</a></span>    expect(main).to receive(<span style="color:#A60">:require</span>).with(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/main</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n292" name="n292">292</a></span>    allow(main).to receive <span style="color:#A60">:run</span>
+<span class="line-numbers"><a href="#n293" name="n293">293</a></span>    load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/config.ru</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n294" name="n294">294</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n295" name="n295">295</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">runs Sinatra::Application</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n296" name="n296">296</a></span>    allow(main).to receive <span style="color:#A60">:require</span>
+<span class="line-numbers"><a href="#n297" name="n297">297</a></span>    expect(main).to receive(<span style="color:#A60">:run</span>).with(<span style="color:#036;font-weight:bold">Sinatra</span>::<span style="color:#036;font-weight:bold">Application</span>)
+<span class="line-numbers"><a href="#n298" name="n298">298</a></span>    load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>app_root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/config.ru</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n299" name="n299">299</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n300" name="n300">300</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n301" name="n301">301</a></span>
+<span class="line-numbers"><a href="#n302" name="n302">302</a></span>
+<span class="line-numbers"><a href="#n303" name="n303">303</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n304" name="n304">304</a></span>  specify <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n305" name="n305">305</a></span>    at_exit <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n306" name="n306">306</a></span>      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-MESSAGE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"><a href="#n307" name="n307">307</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">        Great job! I'd add tests for github, but honestly, I don't know how to :/</span></span>
+<span class="line-numbers"><a href="#n308" name="n308">308</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">        Anyway, go ahead and put it under git source control and put it on Heroku :)</span></span>
+<span class="line-numbers"><a href="#n309" name="n309">309</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"><strong><a href="#n310" name="n310">310</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">        This is our last challenge together, I hope you've enjoyed it!</span><span style="color:#710"></span></span>
+<span class="line-numbers"><a href="#n311" name="n311">311</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">      MESSAGE</span></span>
+<span class="line-numbers"><a href="#n312" name="n312">312</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n313" name="n313">313</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n314" name="n314">314</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

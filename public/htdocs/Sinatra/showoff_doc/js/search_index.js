@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["readme"],"longSearchIndex":[""],"info":[["README","","README_rdoc.html","","<p>Showoff Presentation Software\n<p>Showoff is a Sinatra web app that reads simple configuration files for a …\n"]]}}

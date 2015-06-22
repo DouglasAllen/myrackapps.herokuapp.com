@@ -1,0 +1,1304 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+void iauNut00b(double date1, double date2, double *dpsi, double *deps)
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - - - - -
+**   i a u N u t 0 0 b
+**  - - - - - - - - - -
+**
+**  Nutation, IAU 2000B model.
+**
+**  Status:  canonical model.
+**
+**  Given:
+**     date1,date2   double    TT as a 2-part Julian Date (Note 1)
+**
+**  Returned:
+**     dpsi,deps     double    nutation, luni-solar + planetary (Note 2)
+**
+**  Notes:
+**
+**  1) The TT date date1+date2 is a Julian Date, apportioned in any
+**     convenient way between the two arguments.  For example,
+**     JD(TT)=2450123.7 could be expressed in any of these ways,
+**     among others:
+**
+**            date1          date2
+**
+**         2450123.7           0.0       (JD method)
+**         2451545.0       -1421.3       (J2000 method)
+**         2400000.5       50123.2       (MJD method)
+**         2450123.5           0.2       (date &amp; time method)
+**
+**     The JD method is the most natural and convenient to use in
+**     cases where the loss of several decimal digits of resolution
+**     is acceptable.  The J2000 method is best matched to the way
+**     the argument is handled internally and will deliver the
+**     optimum resolution.  The MJD method and the date &amp; time methods
+**     are both good compromises between resolution and convenience.
+**
+**  2) The nutation components in longitude and obliquity are in radians
+**     and with respect to the equinox and ecliptic of date.  The
+**     obliquity at J2000.0 is assumed to be the Lieske et al. (1977)
+**     value of 84381.448 arcsec.  (The errors that result from using
+**     this function with the IAU 2006 value of 84381.406 arcsec can be
+**     neglected.)
+**
+**     The nutation model consists only of luni-solar terms, but
+**     includes also a fixed offset which compensates for certain long-
+**     period planetary terms (Note 7).
+**
+**  3) This function is an implementation of the IAU 2000B abridged
+**     nutation model formally adopted by the IAU General Assembly in
+**     2000.  The function computes the MHB_2000_SHORT luni-solar
+**     nutation series (Luzum 2001), but without the associated
+**     corrections for the precession rate adjustments and the offset
+**     between the GCRS and J2000.0 mean poles.
+**
+**  4) The full IAU 2000A (MHB2000) nutation model contains nearly 1400
+**     terms.  The IAU 2000B model (McCarthy &amp; Luzum 2003) contains only
+**     77 terms, plus additional simplifications, yet still delivers
+**     results of 1 mas accuracy at present epochs.  This combination of
+**     accuracy and size makes the IAU 2000B abridged nutation model
+**     suitable for most practical applications.
+**
+**     The function delivers a pole accurate to 1 mas from 1900 to 2100
+**     (usually better than 1 mas, very occasionally just outside
+**     1 mas).  The full IAU 2000A model, which is implemented in the
+**     function iauNut00a (q.v.), delivers considerably greater accuracy
+**     at current dates;  however, to realize this improved accuracy,
+**     corrections for the essentially unpredictable free-core-nutation
+**     (FCN) must also be included.
+**
+**  5) The present function provides classical nutation.  The
+**     MHB_2000_SHORT algorithm, from which it is adapted, deals also
+**     with (i) the offsets between the GCRS and mean poles and (ii) the
+**     adjustments in longitude and obliquity due to the changed
+**     precession rates.  These additional functions, namely frame bias
+**     and precession adjustments, are supported by the SOFA functions
+**     iauBi00  and iauPr00.
+**
+**  6) The MHB_2000_SHORT algorithm also provides &quot;total&quot; nutations,
+**     comprising the arithmetic sum of the frame bias, precession
+**     adjustments, and nutation (luni-solar + planetary).  These total
+**     nutations can be used in combination with an existing IAU 1976
+**     precession implementation, such as iauPmat76,  to deliver GCRS-
+**     to-true predictions of mas accuracy at current epochs.  However,
+**     for symmetry with the iauNut00a  function (q.v. for the reasons),
+**     the SOFA functions do not generate the &quot;total nutations&quot;
+**     directly.  Should they be required, they could of course easily
+**     be generated by calling iauBi00, iauPr00 and the present function
+**     and adding the results.
+**
+**  7) The IAU 2000B model includes &quot;planetary bias&quot; terms that are
+**     fixed in size but compensate for long-period nutations.  The
+**     amplitudes quoted in McCarthy &amp; Luzum (2003), namely
+**     Dpsi = -1.5835 mas and Depsilon = +1.6339 mas, are optimized for
+**     the &quot;total nutations&quot; method described in Note 6.  The Luzum
+**     (2001) values used in this SOFA implementation, namely -0.135 mas
+**     and +0.388 mas, are optimized for the &quot;rigorous&quot; method, where
+**     frame bias, precession and nutation are applied separately and in
+**     that order.  During the interval 1995-2050, the SOFA
+**     implementation delivers a maximum error of 1.001 mas (not
+**     including FCN).
+**
+**  References:
+**
+**     Lieske, J.H., Lederle, T., Fricke, W., Morando, B., &quot;Expressions
+**     for the precession quantities based upon the IAU </span><span style="color:#404">/</span></span><span style="color:#00D">1976</span>/ system of
+**     astronomical constants<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, Astron.Astrophys. 58, 1-2, 1-16. (1977)
+**
+**     Luzum, B., private communication, 2001 (Fortran code
+**     MHB_2000_SHORT)
+**
+**     McCarthy, D.D. &amp; Luzum, B.J., </span><span style="color:#710">&quot;</span></span><span style="color:#036;font-weight:bold">An</span> abridged model of the
+**     precession-nutation of the celestial pole<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, Cel.Mech.Dyn.Astron.
+**     85, 37-49 (2003)
+**
+**     Simon, J.-L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+**     Francou, G., Laskar, J., Astron.Astrophys. 282, 663-683 (1994)
+**
+**  This revision:  2010 September 4
+**
+**  Original version 2012-03-01
+**
+**  Copyright (C) 2013 Naoki Arita.  See notes at end.
+*/
+{
+   double t, el, elp, f, d, om, arg, dp, de, sarg, carg,
+          dpsils, depsls, dpsipl, depspl;
+   int i;
+
+/* Units of 0.1 microarcsecond to radians */
+   static const double U2R = DAS2R / 1e7;
+
+/* ---------------------------------------- */
+/* Fixed offsets in lieu of planetary terms */
+/* ---------------------------------------- */
+
+   static const double DPPLAN = -0.135 * DMAS2R;
+   static const double DEPLAN =  0.388 * DMAS2R;
+
+/* --------------------------------------------------- */
+/* Luni-solar nutation: argument and term coefficients */
+/* --------------------------------------------------- */
+
+/* The units for the sine and cosine coefficients are */
+/* 0.1 microarcsec and the same per Julian century    */
+
+   static const struct {
+      int nl,nlp,nf,nd,nom; /* coefficients of l,l',F,D,Om */
+      double ps,pst,pc;     /* longitude sin, t*sin, cos coefficients */
+      double ec,ect,es;     /* obliquity cos, t*cos, sin coefficients */
+
+   } x[] = {
+
+   /* 1-10 */
+      { 0, 0, 0, 0,1,
+         -172064161.0, -174666.0, 33386.0, 92052331.0, 9086.0, 15377.0},
+      { 0, 0, 2,-2,2,
+           -13170906.0, -1675.0, -13696.0, 5730336.0, -3015.0, -4587.0},
+      { 0, 0, 2, 0,2,-2276413.0,-234.0, 2796.0, 978459.0,-485.0,1374.0},
+      { 0, 0, 0, 0,2,2074554.0,  207.0, -698.0,-897492.0, 470.0,-291.0},
+      { 0, 1, 0, 0,0,1475877.0,-3633.0,11817.0, 73871.0,-184.0,-1924.0},
+      { 0, 1, 2,-2,2,-516821.0, 1226.0, -524.0, 224386.0,-677.0,-174.0},
+      { 1, 0, 0, 0,0, 711159.0,   73.0, -872.0,  -6750.0,   0.0, 358.0},
+      { 0, 0, 2, 0,1,-387298.0, -367.0,  380.0, 200728.0,  18.0, 318.0},
+      { 1, 0, 2, 0,2,-301461.0,  -36.0,  816.0, 129025.0, -63.0, 367.0},
+      { 0,-1, 2,-2,2, 215829.0, -494.0,  111.0, -95929.0, 299.0, 132.0},
+
+   /* 11-20 */
+      { 0, 0, 2,-2,1, 128227.0,  137.0,  181.0, -68982.0,  -9.0,  39.0},
+      {-1, 0, 2, 0,2, 123457.0,   11.0,   19.0, -53311.0,  32.0,  -4.0},
+      {-1, 0, 0, 2,0, 156994.0,   10.0, -168.0,  -1235.0,   0.0,  82.0},
+      { 1, 0, 0, 0,1,  63110.0,   63.0,   27.0, -33228.0,   0.0,  -9.0},
+      {-1, 0, 0, 0,1, -57976.0,  -63.0, -189.0,  31429.0,   0.0, -75.0},
+      {-1, 0, 2, 2,2, -59641.0,  -11.0,  149.0,  25543.0, -11.0,  66.0},
+      { 1, 0, 2, 0,1, -51613.0,  -42.0,  129.0,  26366.0,   0.0,  78.0},
+      {-2, 0, 2, 0,1,  45893.0,   50.0,   31.0, -24236.0, -10.0,  20.0},
+      { 0, 0, 0, 2,0,  63384.0,   11.0, -150.0,  -1220.0,   0.0,  29.0},
+      { 0, 0, 2, 2,2, -38571.0,   -1.0,  158.0,  16452.0, -11.0,  68.0},
+
+   /* 21-30 */
+      { 0,-2, 2,-2,2,  32481.0,    0.0,    0.0, -13870.0,   0.0,   0.0},
+      {-2, 0, 0, 2,0, -47722.0,    0.0,  -18.0,    477.0,   0.0, -25.0},
+      { 2, 0, 2, 0,2, -31046.0,   -1.0,  131.0,  13238.0, -11.0,  59.0},
+      { 1, 0, 2,-2,2,  28593.0,    0.0,   -1.0, -12338.0,  10.0,  -3.0},
+      {-1, 0, 2, 0,1,  20441.0,   21.0,   10.0, -10758.0,   0.0,  -3.0},
+      { 2, 0, 0, 0,0,  29243.0,    0.0,  -74.0,   -609.0,   0.0,  13.0},
+      { 0, 0, 2, 0,0,  25887.0,    0.0,  -66.0,   -550.0,   0.0,  11.0},
+      { 0, 1, 0, 0,1, -14053.0,  -25.0,   79.0,   8551.0,  -2.0, -45.0},
+      {-1, 0, 0, 2,1,  15164.0,   10.0,   11.0,  -8001.0,   0.0,  -1.0},
+      { 0, 2, 2,-2,2, -15794.0,   72.0,  -16.0,   6850.0, -42.0,  -5.0},
+
+   /* 31-40 */
+      { 0, 0,-2, 2,0,  21783.0,    0.0,   13.0,   -167.0,   0.0,  13.0},
+      { 1, 0, 0,-2,1, -12873.0,  -10.0,  -37.0,   6953.0,   0.0, -14.0},
+      { 0,-1, 0, 0,1, -12654.0,   11.0,   63.0,   6415.0,   0.0,  26.0},
+      {-1, 0, 2, 2,1, -10204.0,    0.0,   25.0,   5222.0,   0.0,  15.0},
+      { 0, 2, 0, 0,0,  16707.0,  -85.0,  -10.0,    168.0,  -1.0,  10.0},
+      { 1, 0, 2, 2,2,  -7691.0,    0.0,   44.0,   3268.0,   0.0,  19.0},
+      {-2, 0, 2, 0,0, -11024.0,    0.0,  -14.0,    104.0,   0.0,   2.0},
+      { 0, 1, 2, 0,2,   7566.0,  -21.0,  -11.0,  -3250.0,   0.0,  -5.0},
+      { 0, 0, 2, 2,1,  -6637.0,  -11.0,   25.0,   3353.0,   0.0,  14.0},
+      { 0,-1, 2, 0,2,  -7141.0,   21.0,    8.0,   3070.0,   0.0,   4.0},
+
+   /* 41-50 */
+      { 0, 0, 0, 2,1,  -6302.0,  -11.0,    2.0,   3272.0,   0.0,   4.0},
+      { 1, 0, 2,-2,1,   5800.0,   10.0,    2.0,  -3045.0,   0.0,  -1.0},
+      { 2, 0, 2,-2,2,   6443.0,    0.0,   -7.0,  -2768.0,   0.0,  -4.0},
+      {-2, 0, 0, 2,1,  -5774.0,  -11.0,  -15.0,   3041.0,   0.0,  -5.0},
+      { 2, 0, 2, 0,1,  -5350.0,    0.0,   21.0,   2695.0,   0.0,  12.0},
+      { 0,-1, 2,-2,1,  -4752.0,  -11.0,   -3.0,   2719.0,   0.0,  -3.0},
+      { 0, 0, 0,-2,1,  -4940.0,  -11.0,  -21.0,   2720.0,   0.0,  -9.0},
+      {-1,-1, 0, 2,0,   7350.0,    0.0,   -8.0,    -51.0,   0.0,   4.0},
+      { 2, 0, 0,-2,1,   4065.0,    0.0,    6.0,  -2206.0,   0.0,   1.0},
+      { 1, 0, 0, 2,0,   6579.0,    0.0,  -24.0,   -199.0,   0.0,   2.0},
+
+   /* 51-60 */
+      { 0, 1, 2,-2,1,   3579.0,    0.0,    5.0,  -1900.0,   0.0,   1.0},
+      { 1,-1, 0, 0,0,   4725.0,    0.0,   -6.0,    -41.0,   0.0,   3.0},
+      {-2, 0, 2, 0,2,  -3075.0,    0.0,   -2.0,   1313.0,   0.0,  -1.0},
+      { 3, 0, 2, 0,2,  -2904.0,    0.0,   15.0,   1233.0,   0.0,   7.0},
+      { 0,-1, 0, 2,0,   4348.0,    0.0,  -10.0,    -81.0,   0.0,   2.0},
+      { 1,-1, 2, 0,2,  -2878.0,    0.0,    8.0,   1232.0,   0.0,   4.0},
+      { 0, 0, 0, 1,0,  -4230.0,    0.0,    5.0,    -20.0,   0.0,  -2.0},
+      {-1,-1, 2, 2,2,  -2819.0,    0.0,    7.0,   1207.0,   0.0,   3.0},
+      {-1, 0, 2, 0,0,  -4056.0,    0.0,    5.0,     40.0,   0.0,  -2.0},
+      { 0,-1, 2, 2,2,  -2647.0,    0.0,   11.0,   1129.0,   0.0,   5.0},
+
+   /* 61-70 */
+      {-2, 0, 0, 0,1,  -2294.0,    0.0,  -10.0,   1266.0,   0.0,  -4.0},
+      { 1, 1, 2, 0,2,   2481.0,    0.0,   -7.0,  -1062.0,   0.0,  -3.0},
+      { 2, 0, 0, 0,1,   2179.0,    0.0,   -2.0,  -1129.0,   0.0,  -2.0},
+      {-1, 1, 0, 1,0,   3276.0,    0.0,    1.0,     -9.0,   0.0,   0.0},
+      { 1, 1, 0, 0,0,  -3389.0,    0.0,    5.0,     35.0,   0.0,  -2.0},
+      { 1, 0, 2, 0,0,   3339.0,    0.0,  -13.0,   -107.0,   0.0,   1.0},
+      {-1, 0, 2,-2,1,  -1987.0,    0.0,   -6.0,   1073.0,   0.0,  -2.0},
+      { 1, 0, 0, 0,2,  -1981.0,    0.0,    0.0,    854.0,   0.0,   0.0},
+      {-1, 0, 0, 1,0,   4026.0,    0.0, -353.0,   -553.0,   0.0,-139.0},
+      { 0, 0, 2, 1,2,   1660.0,    0.0,   -5.0,   -710.0,   0.0,  -2.0},
+
+   /* 71-77 */
+      {-1, 0, 2, 4,2,  -1521.0,    0.0,    9.0,    647.0,   0.0,   4.0},
+      {-1, 1, 0, 1,1,   1314.0,    0.0,    0.0,   -700.0,   0.0,   0.0},
+      { 0,-2, 2,-2,1,  -1283.0,    0.0,    0.0,    672.0,   0.0,   0.0},
+      { 1, 0, 2, 2,1,  -1331.0,    0.0,    8.0,    663.0,   0.0,   4.0},
+      {-2, 0, 2, 2,2,   1383.0,    0.0,   -2.0,   -594.0,   0.0,  -2.0},
+      {-1, 0, 0, 0,2,   1405.0,    0.0,    4.0,   -610.0,   0.0,   2.0},
+      { 1, 1, 2,-2,2,   1290.0,    0.0,    0.0,   -556.0,   0.0,   0.0}
+   };
+
+/* Number of terms in the series */
+   const int NLS = (int) (sizeof x / sizeof x[0]);
+
+/*--------------------------------------------------------------------*/
+
+/* Interval between fundamental epoch J2000.0 and given date (JC). */
+   t = ((date1 - DJ00) + date2) / DJC;
+
+/* --------------------*/
+/* LUNI-SOLAR NUTATION */
+/* --------------------*/
+
+/* Fundamental (Delaunay) arguments from Simon et al. (1994) */
+
+/* Mean anomaly of the Moon. */
+   el = fmod(485868.249036 + (1717915923.2178) * t, TURNAS) * DAS2R;
+
+/* Mean anomaly of the Sun. */
+   elp = fmod(1287104.79305 + (129596581.0481) * t, TURNAS) * DAS2R;
+
+/* Mean argument of the latitude of the Moon. */
+   f = fmod(335779.526232 + (1739527262.8478) * t, TURNAS) * DAS2R;
+
+/* Mean elongation of the Moon from the Sun. */
+   d = fmod(1072260.70369 + (1602961601.2090) * t, TURNAS) * DAS2R;
+
+/* Mean longitude of the ascending node of the Moon. */
+   om = fmod(450160.398036 + (-6962890.5431) * t, TURNAS) * DAS2R;
+
+/* Initialize the nutation values. */
+   dp = 0.0;
+   de = 0.0;
+
+/* Summation of luni-solar nutation series (smallest terms first). */
+   for (i = NLS-1; i &gt;= 0; i--) {
+
+   /* Argument and functions. */
+      arg = fmod( (double)x[i].nl  * el  +
+                  (double)x[i].nlp * elp +
+                  (double)x[i].nf  * f   +
+                  (double)x[i].nd  * d   +
+                  (double)x[i].nom * om, D2PI  );
+      sarg = sin(arg);
+      carg = cos(arg);
+
+   /* Term. */
+      dp += (x[i].ps + x[i].pst * t) * sarg + x[i].pc * carg;
+      de += (x[i].ec + x[i].ect * t) * carg + x[i].es * sarg;
+   }
+
+/* Convert from 0.1 microarcsec units to radians. */
+   dpsils = dp * U2R;
+   depsls = de * U2R;
+
+/* ------------------------------*/
+/* IN LIEU OF PLANETARY NUTATION */
+/* ------------------------------*/
+
+/* Fixed offset to correct for missing terms in truncated series. */
+   dpsipl = DPPLAN;
+   depspl = DEPLAN;
+
+/* --------*/
+/* RESULTS */
+/* --------*/
+
+/* Add luni-solar and planetary components. */
+   *dpsi = dpsils + dpsipl;
+   *deps = depsls + depspl;
+
+   return;
+
+/*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http://www.iausofa.org/tandc.html).
+**
+**  The original library is available from IAU Standards of
+**  Fundamental Astronomy (http://www.iausofa.org/).
+**
+**
+**
+**
+**
+**  Copyright (C) 2013, Naoki Arita
+**  All rights reserved.
+**
+**  Redistribution and use in source and binary forms, with or without
+**  modification, are permitted provided that the following conditions
+**  are met:
+**
+**  1 Redistributions of source code must retain the above copyright
+**    notice, this list of conditions and the following disclaimer.
+**
+**  2 Redistributions in binary form must reproduce the above copyright
+**    notice, this list of conditions and the following disclaimer in
+**    the documentation and/or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  </span><span style="color:#710">&quot;</span></span><span style="color:#036;font-weight:bold">AS</span> <span style="color:#036;font-weight:bold">IS</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*/
+}
+
+</span></span></pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

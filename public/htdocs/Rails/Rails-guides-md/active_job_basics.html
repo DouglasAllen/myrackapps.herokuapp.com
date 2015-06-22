@@ -1,0 +1,757 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="active-job-basics">Active Job Basics</h1>
+
+<p>This guide provides you with all you need to get started in creating,
+enqueueing and executing background jobs.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to create jobs.</li>
+  <li>How to enqueue jobs.</li>
+  <li>How to run jobs in the background.</li>
+  <li>How to send emails from your application async.</li>
+</ul>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Active Job is a framework for declaring jobs and making them run on a variety
+of queueing backends. These jobs can be everything from regularly scheduled
+clean-ups, to billing charges, to mailings. Anything that can be chopped up
+into small units of work and run in parallel, really.</p>
+
+<h2 id="the-purpose-of-active-job">The Purpose of Active Job</h2>
+<p>The main point is to ensure that all Rails apps will have a job infrastructure
+in place, even if it’s in the form of an “immediate runner”. We can then have
+framework features and other gems build on top of that, without having to
+worry about API differences between various job runners such as Delayed Job
+and Resque. Picking your queuing backend becomes more of an operational concern,
+then. And you’ll be able to switch between them without having to rewrite your jobs.</p>
+
+<h2 id="creating-a-job">Creating a Job</h2>
+
+<p>This section will provide a step-by-step guide to creating a job and enqueuing it.</p>
+
+<h3 id="create-the-job">Create the Job</h3>
+
+<p>Active Job provides a Rails generator to create jobs. The following will create a
+job in <code>app/jobs</code> (with an attached test case under <code>test/jobs</code>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ bin/rails generate job guests_cleanup
+invoke  test_unit
+create    test/jobs/guests_cleanup_job_test.rb
+create  app/jobs/guests_cleanup_job.rb
+</pre></div>
+</div>
+</div>
+
+<p>You can also create a job that will run on a specific queue:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ bin/rails generate job guests_cleanup --queue urgent
+</pre></div>
+</div>
+</div>
+
+<p>If you don’t want to use a generator, you could create your own file inside of
+<code>app/jobs</code>, just make sure that it inherits from <code>ActiveJob::Base</code>.</p>
+
+<p>Here’s what a job looks like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:default</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>(*args)
+    <span style="color:#777"># Do something later</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="enqueue-the-job">Enqueue the Job</h3>
+
+<p>Enqueue a job like so:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Enqueue a job to be performed as soon the queueing system is free.</span>
+<span style="color:#036;font-weight:bold">MyJob</span>.perform_later record
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Enqueue a job to be performed tomorrow at noon.</span>
+<span style="color:#036;font-weight:bold">MyJob</span>.set(<span style="color:#606">wait_until</span>: <span style="color:#036;font-weight:bold">Date</span>.tomorrow.noon).perform_later(record)
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Enqueue a job to be performed 1 week from now.</span>
+<span style="color:#036;font-weight:bold">MyJob</span>.set(<span style="color:#606">wait</span>: <span style="color:#00D">1</span>.week).perform_later(record)
+</pre></div>
+</div>
+</div>
+
+<p>That’s it!</p>
+
+<h2 id="job-execution">Job Execution</h2>
+
+<p>If no adapter is set, the job is immediately executed.</p>
+
+<h3 id="backends">Backends</h3>
+
+<p>Active Job has built-in adapters for multiple queueing backends (Sidekiq,
+Resque, Delayed Job and others). To get an up-to-date list of the adapters
+see the API Documentation for <a href="http://api.rubyonrails.org/classes/ActiveJob/QueueAdapters.html">ActiveJob::QueueAdapters</a>.</p>
+
+<h3 id="setting-the-backend">Setting the Backend</h3>
+
+<p>You can easily set your queueing backend:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">YourApp</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Application</span> &lt; <span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Application</span>
+    <span style="color:#777"># Be sure to have the adapter's gem in your Gemfile and follow</span>
+    <span style="color:#777"># the adapter's specific installation and deployment instructions.</span>
+    config.active_job.queue_adapter = <span style="color:#A60">:sidekiq</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="queues">Queues</h2>
+
+<p>Most of the adapters support multiple queues. With Active Job you can schedule
+the job to run on a specific queue:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:low_priority</span>
+  <span style="color:#777">#....</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can prefix the queue name for all your jobs using
+<code>config.active_job.queue_name_prefix</code> in <code>application.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">YourApp</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Application</span> &lt; <span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Application</span>
+    config.active_job.queue_name_prefix = <span style="color:#036;font-weight:bold">Rails</span>.env
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/jobs/guests_cleanup.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:low_priority</span>
+  <span style="color:#777">#....</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Now your job will run on queue production_low_priority on your</span>
+<span style="color:#777"># production environment and on staging_low_priority on your staging</span>
+<span style="color:#777"># environment</span>
+</pre></div>
+</div>
+</div>
+
+<p>The default queue name prefix delimiter is ‘_’.  This can be changed by setting
+<code>config.active_job.queue_name_delimiter</code> in <code>application.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">YourApp</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Application</span> &lt; <span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Application</span>
+    config.active_job.queue_name_prefix = <span style="color:#036;font-weight:bold">Rails</span>.env
+    config.active_job.queue_name_delimiter = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># app/jobs/guests_cleanup.rb</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:low_priority</span>
+  <span style="color:#777">#....</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Now your job will run on queue production.low_priority on your</span>
+<span style="color:#777"># production environment and on staging.low_priority on your staging</span>
+<span style="color:#777"># environment</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you want more control on what queue a job will be run you can pass a <code>:queue</code>
+option to <code>#set</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">MyJob</span>.set(<span style="color:#606">queue</span>: <span style="color:#A60">:another_queue</span>).perform_later(record)
+</pre></div>
+</div>
+</div>
+
+<p>To control the queue from the job level you can pass a block to <code>#queue_as</code>. The
+block will be executed in the job context (so you can access <code>self.arguments</code>)
+and you must return the queue name:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ProcessVideoJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#080;font-weight:bold">do</span>
+    video = <span style="color:#069">self</span>.arguments.first
+    <span style="color:#080;font-weight:bold">if</span> video.owner.premium?
+      <span style="color:#A60">:premium_videojobs</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#A60">:videojobs</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>(video)
+    <span style="color:#777"># do process video</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">ProcessVideoJob</span>.perform_later(<span style="color:#036;font-weight:bold">Video</span>.last)
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: Make sure your queueing backend “listens” on your queue name. For some
+backends you need to specify the queues to listen to.</p>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>Active Job provides hooks during the lifecycle of a job. Callbacks allow you to
+trigger logic during the lifecycle of a job.</p>
+
+<h3 id="available-callbacks">Available callbacks</h3>
+
+<ul>
+  <li><code>before_enqueue</code></li>
+  <li><code>around_enqueue</code></li>
+  <li><code>after_enqueue</code></li>
+  <li><code>before_perform</code></li>
+  <li><code>around_perform</code></li>
+  <li><code>after_perform</code></li>
+</ul>
+
+<h3 id="usage">Usage</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:default</span>
+
+  before_enqueue <span style="color:#080;font-weight:bold">do</span> |job|
+    <span style="color:#777"># do something with the job instance</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  around_perform <span style="color:#080;font-weight:bold">do</span> |job, block|
+    <span style="color:#777"># do something before perform</span>
+    block.call
+    <span style="color:#777"># do something after perform</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>
+    <span style="color:#777"># Do something later</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="action-mailer">Action Mailer</h2>
+
+<p>One of the most common jobs in a modern web application is sending emails outside
+of the request-response cycle, so the user doesn’t have to wait on it. Active Job
+is integrated with Action Mailer so you can easily send emails asynchronously:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># If you want to send the email now use #deliver_now</span>
+<span style="color:#036;font-weight:bold">UserMailer</span>.welcome(<span style="color:#33B">@user</span>).deliver_now
+
+<span style="color:#777"># If you want to send the email through Active Job use #deliver_later</span>
+<span style="color:#036;font-weight:bold">UserMailer</span>.welcome(<span style="color:#33B">@user</span>).deliver_later
+</pre></div>
+</div>
+</div>
+
+<h2 id="globalid">GlobalID</h2>
+
+<p>Active Job supports GlobalID for parameters. This makes it possible to pass live
+Active Record objects to your job instead of class/id pairs, which you then have
+to manually deserialize. Before, jobs would look like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TrashableCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>(trashable_class, trashable_id, depth)
+    trashable = trashable_class.constantize.find(trashable_id)
+    trashable.cleanup(depth)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now you can simply do:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TrashableCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>(trashable, depth)
+    trashable.cleanup(depth)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This works with any class that mixes in <code>GlobalID::Identification</code>, which
+by default has been mixed into Active Model classes.</p>
+
+<h2 id="exceptions">Exceptions</h2>
+
+<p>Active Job provides a way to catch exceptions raised during the execution of the
+job:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GuestsCleanupJob</span> &lt; <span style="color:#036;font-weight:bold">ActiveJob</span>::<span style="color:#036;font-weight:bold">Base</span>
+  queue_as <span style="color:#A60">:default</span>
+
+  rescue_from(<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">RecordNotFound</span>) <span style="color:#080;font-weight:bold">do</span> |exception|
+   <span style="color:#777"># do something with the exception</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">perform</span>
+    <span style="color:#777"># Do something later</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

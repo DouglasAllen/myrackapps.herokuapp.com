@@ -1,0 +1,1333 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="ruby-on-rails-41-release-notes">Ruby on Rails 4.1 Release Notes</h1>
+
+<p>Highlights in Rails 4.1:</p>
+
+<ul>
+  <li>Spring application preloader</li>
+  <li><code>config/secrets.yml</code></li>
+  <li>Action Pack variants</li>
+  <li>Action Mailer previews</li>
+</ul>
+
+<p>These release notes cover only the major changes. To learn about various bug
+fixes and changes, please refer to the change logs or check out the <a href="https://github.com/rails/rails/commits/4-1-stable">list of
+commits</a> in the main Rails
+repository on GitHub.</p>
+
+<hr />
+
+<h2 id="upgrading-to-rails-41">Upgrading to Rails 4.1</h2>
+
+<p>If you’re upgrading an existing application, it’s a great idea to have good test
+coverage before going in. You should also first upgrade to Rails 4.0 in case you
+haven’t and make sure your application still runs as expected before attempting
+an update to Rails 4.1. A list of things to watch out for when upgrading is
+available in the
+<a href="upgrading_ruby_on_rails.html#upgrading-from-rails-4-0-to-rails-4-1">Upgrading Ruby on Rails</a>
+guide.</p>
+
+<h2 id="major-features">Major Features</h2>
+
+<h3 id="spring-application-preloader">Spring Application Preloader</h3>
+
+<p>Spring is a Rails application preloader. It speeds up development by keeping
+your application running in the background so you don’t need to boot it every
+time you run a test, rake task or migration.</p>
+
+<p>New Rails 4.1 applications will ship with “springified” binstubs. This means
+that <code>bin/rails</code> and <code>bin/rake</code> will automatically take advantage of preloaded
+spring environments.</p>
+
+<p><strong>Running rake tasks:</strong></p>
+
+<pre><code>bin/rake test:models
+</code></pre>
+
+<p><strong>Running a Rails command:</strong></p>
+
+<pre><code>bin/rails console
+</code></pre>
+
+<p><strong>Spring introspection:</strong></p>
+
+<pre><code>$ bin/spring status
+Spring is running:
+
+ 1182 spring server | my_app | started 29 mins ago
+ 3656 spring app    | my_app | started 23 secs ago | test mode
+ 3746 spring app    | my_app | started 10 secs ago | development mode
+</code></pre>
+
+<p>Have a look at the
+<a href="https://github.com/rails/spring/blob/master/README.md">Spring README</a> to
+see all available features.</p>
+
+<p>See the <a href="upgrading_ruby_on_rails.html#spring">Upgrading Ruby on Rails</a>
+guide on how to migrate existing applications to use this feature.</p>
+
+<h3 id="configsecretsyml"><code>config/secrets.yml</code></h3>
+
+<p>Rails 4.1 generates a new <code>secrets.yml</code> file in the <code>config</code> folder. By default,
+this file contains the application’s <code>secret_key_base</code>, but it could also be
+used to store other secrets such as access keys for external APIs.</p>
+
+<p>The secrets added to this file are accessible via <code>Rails.application.secrets</code>.
+For example, with the following <code>config/secrets.yml</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#606">development</span>:
+  <span style="color:#606">secret_key_base</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">3b7cd727ee24e8444053437c36cc66c3</span></span>
+  <span style="color:#606">some_api_key</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">SOMEKEY</span></span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Rails.application.secrets.some_api_key</code> returns <code>SOMEKEY</code> in the development
+environment.</p>
+
+<p>See the <a href="upgrading_ruby_on_rails.html#config-secrets-yml">Upgrading Ruby on Rails</a>
+guide on how to migrate existing applications to use this feature.</p>
+
+<h3 id="action-pack-variants">Action Pack Variants</h3>
+
+<p>We often want to render different HTML/JSON/XML templates for phones,
+tablets, and desktop browsers. Variants make it easy.</p>
+
+<p>The request variant is a specialization of the request format, like <code>:tablet</code>,
+<code>:phone</code>, or <code>:desktop</code>.</p>
+
+<p>You can set the variant in a <code>before_action</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>request.variant = <span style="color:#A60">:tablet</span> <span style="color:#080;font-weight:bold">if</span> request.user_agent =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">iPad</span><span style="color:#404">/</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Respond to variants in the action just like you respond to formats:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+  format.html <span style="color:#080;font-weight:bold">do</span> |html|
+    html.tablet <span style="color:#777"># renders app/views/projects/show.html+tablet.erb</span>
+    html.phone { extra_setup; render ... }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Provide separate templates for each format and variant:</p>
+
+<pre><code>app/views/projects/show.html.erb
+app/views/projects/show.html+tablet.erb
+app/views/projects/show.html+phone.erb
+</code></pre>
+
+<p>You can also simplify the variants definition using the inline syntax:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+  format.js         { render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">trash</span><span style="color:#710">&quot;</span></span> }
+  format.html.phone { redirect_to progress_path }
+  format.html.none  { render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">trash</span><span style="color:#710">&quot;</span></span> }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="action-mailer-previews">Action Mailer Previews</h3>
+
+<p>Action Mailer previews provide a way to see how emails look by visiting
+a special URL that renders them.</p>
+
+<p>You implement a preview class whose methods return the mail object you’d like
+to check:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">NotifierPreview</span> &lt; <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Preview</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">welcome</span>
+    <span style="color:#036;font-weight:bold">Notifier</span>.welcome(<span style="color:#036;font-weight:bold">User</span>.first)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The preview is available in http://localhost:3000/rails/mailers/notifier/welcome,
+and a list of them in http://localhost:3000/rails/mailers.</p>
+
+<p>By default, these preview classes live in <code>test/mailers/previews</code>.
+This can be configured using the <code>preview_path</code> option.</p>
+
+<p>See its
+<a href="http://api.rubyonrails.org/v4.1.0/classes/ActionMailer/Base.html#class-ActionMailer::Base-label-Previewing+emails">documentation</a>
+for a detailed write up.</p>
+
+<h3 id="active-record-enums">Active Record enums</h3>
+
+<p>Declare an enum attribute where the values map to integers in the database, but
+can be queried by name.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Conversation</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  enum <span style="color:#606">status</span>: [ <span style="color:#A60">:active</span>, <span style="color:#A60">:archived</span> ]
+<span style="color:#080;font-weight:bold">end</span>
+
+conversation.archived!
+conversation.active? <span style="color:#777"># =&gt; false</span>
+conversation.status  <span style="color:#777"># =&gt; &quot;archived&quot;</span>
+
+<span style="color:#036;font-weight:bold">Conversation</span>.archived <span style="color:#777"># =&gt; Relation for all archived Conversations</span>
+
+<span style="color:#036;font-weight:bold">Conversation</span>.statuses <span style="color:#777"># =&gt; { &quot;active&quot; =&gt; 0, &quot;archived&quot; =&gt; 1 }</span>
+</pre></div>
+</div>
+</div>
+
+<p>See its
+<a href="http://api.rubyonrails.org/v4.1.0/classes/ActiveRecord/Enum.html">documentation</a>
+for a detailed write up.</p>
+
+<h3 id="message-verifiers">Message Verifiers</h3>
+
+<p>Message verifiers can be used to generate and verify signed messages. This can
+be useful to safely transport sensitive data like remember-me tokens and
+friends.</p>
+
+<p>The method <code>Rails.application.message_verifier</code> returns a new message verifier
+that signs messages with a key derived from secret_key_base and the given
+message verifier name:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>signed_token = <span style="color:#036;font-weight:bold">Rails</span>.application.message_verifier(<span style="color:#A60">:remember_me</span>).generate(token)
+<span style="color:#036;font-weight:bold">Rails</span>.application.message_verifier(<span style="color:#A60">:remember_me</span>).verify(signed_token) <span style="color:#777"># =&gt; token</span>
+
+<span style="color:#036;font-weight:bold">Rails</span>.application.message_verifier(<span style="color:#A60">:remember_me</span>).verify(tampered_token)
+<span style="color:#777"># raises ActiveSupport::MessageVerifier::InvalidSignature</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="moduleconcerning">Module#concerning</h3>
+
+<p>A natural, low-ceremony way to separate responsibilities within a class:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Todo</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  concerning <span style="color:#A60">:EventTracking</span> <span style="color:#080;font-weight:bold">do</span>
+    included <span style="color:#080;font-weight:bold">do</span>
+      has_many <span style="color:#A60">:events</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">latest_event</span>
+      ...
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">some_internal_method</span>
+        ...
+      <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This example is equivalent to defining a <code>EventTracking</code> module inline,
+extending it with <code>ActiveSupport::Concern</code>, then mixing it in to the
+<code>Todo</code> class.</p>
+
+<p>See its
+<a href="http://api.rubyonrails.org/v4.1.0/classes/Module/Concerning.html">documentation</a>
+for a detailed write up and the intended use cases.</p>
+
+<h3 id="csrf-protection-from-remote-script-tags">CSRF protection from remote <code>&lt;script&gt;</code> tags</h3>
+
+<p>Cross-site request forgery (CSRF) protection now covers GET requests with
+JavaScript responses, too. That prevents a third-party site from referencing
+your JavaScript URL and attempting to run it to extract sensitive data.</p>
+
+<p>This means any of your tests that hit <code>.js</code> URLs will now fail CSRF protection
+unless they use <code>xhr</code>. Upgrade your tests to be explicit about expecting
+XmlHttpRequests. Instead of <code>post :create, format: :js</code>, switch to the explicit
+<code>xhr :post, :create, format: :js</code>.</p>
+
+<h2 id="railties">Railties</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/railties/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="removals">Removals</h3>
+
+<ul>
+  <li>
+    <p>Removed <code>update:application_controller</code> rake task.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Rails.application.railties.engines</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>threadsafe!</code> from Rails Config.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActiveRecord::Generators::ActiveModel#update_attributes</code> in
+favor of <code>ActiveRecord::Generators::ActiveModel#update</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>config.whiny_nils</code> option.</p>
+  </li>
+  <li>
+    <p>Removed deprecated rake tasks for running tests: <code>rake test:uncommitted</code> and
+<code>rake test:recent</code>.</p>
+  </li>
+</ul>
+
+<h3 id="notable-changes">Notable changes</h3>
+
+<ul>
+  <li>
+    <p>The <a href="https://github.com/rails/spring">Spring application
+preloader</a> is now installed
+by default for new applications. It uses the development group of
+the Gemfile, so will not be installed in
+production. (<a href="https://github.com/rails/rails/pull/12958">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>BACKTRACE</code> environment variable to show unfiltered backtraces for test
+failures. (<a href="https://github.com/rails/rails/commit/84eac5dab8b0fe9ee20b51250e52ad7bfea36553">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Exposed <code>MiddlewareStack#unshift</code> to environment
+configuration. (<a href="https://github.com/rails/rails/pull/12479">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Application#message_verifier</code> method to return a message
+verifier. (<a href="https://github.com/rails/rails/pull/12995">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>The <code>test_help.rb</code> file which is required by the default generated test
+helper will automatically keep your test database up-to-date with
+<code>db/schema.rb</code> (or <code>db/structure.sql</code>). It raises an error if
+reloading the schema does not resolve all pending migrations. Opt out
+with <code>config.active_record.maintain_test_schema = false</code>. (<a href="https://github.com/rails/rails/pull/13528">Pull
+Request</a>)</p>
+  </li>
+  <li>
+    <p>Introduce <code>Rails.gem_version</code> as a convenience method to return
+<code>Gem::Version.new(Rails.version)</code>, suggesting a more reliable way to perform
+version comparison. (<a href="https://github.com/rails/rails/pull/14103">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h2 id="action-pack">Action Pack</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/actionpack/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="removals-1">Removals</h3>
+
+<ul>
+  <li>
+    <p>Removed deprecated Rails application fallback for integration testing, set
+<code>ActionDispatch.test_app</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>page_cache_extension</code> config.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActionController::RecordIdentifier</code>, use
+<code>ActionView::RecordIdentifier</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated constants from Action Controller:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">Removed</th>
+          <th style="text-align: left">Successor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">ActionController::AbstractRequest</td>
+          <td style="text-align: left">ActionDispatch::Request</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::Request</td>
+          <td style="text-align: left">ActionDispatch::Request</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::AbstractResponse</td>
+          <td style="text-align: left">ActionDispatch::Response</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::Response</td>
+          <td style="text-align: left">ActionDispatch::Response</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::Routing</td>
+          <td style="text-align: left">ActionDispatch::Routing</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::Integration</td>
+          <td style="text-align: left">ActionDispatch::Integration</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">ActionController::IntegrationTest</td>
+          <td style="text-align: left">ActionDispatch::IntegrationTest</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h3 id="notable-changes-1">Notable changes</h3>
+
+<ul>
+  <li>
+    <p><code>protect_from_forgery</code> also prevents cross-origin <code>&lt;script&gt;</code> tags.
+Update your tests to use <code>xhr :get, :foo, format: :js</code> instead of
+<code>get :foo, format: :js</code>.
+(<a href="https://github.com/rails/rails/pull/13345">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>#url_for</code> takes a hash with options inside an
+array. (<a href="https://github.com/rails/rails/pull/9599">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>session#fetch</code> method fetch behaves similarly to
+<a href="http://www.ruby-doc.org/core-1.9.3/Hash.html#method-i-fetch">Hash#fetch</a>,
+with the exception that the returned value is always saved into the
+session. (<a href="https://github.com/rails/rails/pull/12692">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Separated Action View completely from Action
+Pack. (<a href="https://github.com/rails/rails/pull/11032">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Log which keys were affected by deep
+munge. (<a href="https://github.com/rails/rails/pull/13813">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>New config option <code>config.action_dispatch.perform_deep_munge</code> to opt out of
+params “deep munging” that was used to address security vulnerability
+CVE-2013-0155. (<a href="https://github.com/rails/rails/pull/13188">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>New config option <code>config.action_dispatch.cookies_serializer</code> for specifying a
+serializer for the signed and encrypted cookie jars. (Pull Requests
+<a href="https://github.com/rails/rails/pull/13692">1</a>,
+<a href="https://github.com/rails/rails/pull/13945">2</a> /
+<a href="upgrading_ruby_on_rails.html#cookies-serializer">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>render :plain</code>, <code>render :html</code> and <code>render
+:body</code>. (<a href="https://github.com/rails/rails/pull/14062">Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#rendering-content-from-string">More Details</a>)</p>
+  </li>
+</ul>
+
+<h2 id="action-mailer">Action Mailer</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/actionmailer/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="notable-changes-2">Notable changes</h3>
+
+<ul>
+  <li>
+    <p>Added mailer previews feature based on 37 Signals mail_view
+gem. (<a href="https://github.com/rails/rails/commit/d6dec7fcb6b8fddf8c170182d4fe64ecfc7b2261">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Instrument the generation of Action Mailer messages. The time it takes to
+generate a message is written to the log. (<a href="https://github.com/rails/rails/pull/12556">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h2 id="active-record">Active Record</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/activerecord/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="removals-2">Removals</h3>
+
+<ul>
+  <li>
+    <p>Removed deprecated nil-passing to the following <code>SchemaCache</code> methods:
+<code>primary_keys</code>, <code>tables</code>, <code>columns</code> and <code>columns_hash</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated block filter from <code>ActiveRecord::Migrator#migrate</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated String constructor from <code>ActiveRecord::Migrator</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>scope</code> use without passing a callable object.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>transaction_joinable=</code> in favor of <code>begin_transaction</code>
+with a <code>:joinable</code> option.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>decrement_open_transactions</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>increment_open_transactions</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>PostgreSQLAdapter#outside_transaction?</code>
+method. You can use <code>#transaction_open?</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActiveRecord::Fixtures.find_table_name</code> in favor of
+<code>ActiveRecord::Fixtures.default_fixture_model_name</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>columns_for_remove</code> from <code>SchemaStatements</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>SchemaStatements#distinct</code>.</p>
+  </li>
+  <li>
+    <p>Moved deprecated <code>ActiveRecord::TestCase</code> into the Rails test
+suite. The class is no longer public and is only used for internal
+Rails tests.</p>
+  </li>
+  <li>
+    <p>Removed support for deprecated option <code>:restrict</code> for <code>:dependent</code>
+in associations.</p>
+  </li>
+  <li>
+    <p>Removed support for deprecated <code>:delete_sql</code>, <code>:insert_sql</code>, <code>:finder_sql</code>
+and <code>:counter_sql</code> options in associations.</p>
+  </li>
+  <li>
+    <p>Removed deprecated method <code>type_cast_code</code> from Column.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActiveRecord::Base#connection</code> method.
+Make sure to access it via the class.</p>
+  </li>
+  <li>
+    <p>Removed deprecation warning for <code>auto_explain_threshold_in_seconds</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>:distinct</code> option from <code>Relation#count</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated methods <code>partial_updates</code>, <code>partial_updates?</code> and
+<code>partial_updates=</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated method <code>scoped</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated method <code>default_scopes?</code>.</p>
+  </li>
+  <li>
+    <p>Remove implicit join references that were deprecated in 4.0.</p>
+  </li>
+  <li>
+    <p>Removed <code>activerecord-deprecated_finders</code> as a dependency.
+Please see <a href="https://github.com/rails/activerecord-deprecated_finders#active-record-deprecated-finders">the gem README</a>
+for more info.</p>
+  </li>
+  <li>
+    <p>Removed usage of <code>implicit_readonly</code>. Please use <code>readonly</code> method
+explicitly to mark records as
+<code>readonly</code>. (<a href="https://github.com/rails/rails/pull/10769">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h3 id="deprecations">Deprecations</h3>
+
+<ul>
+  <li>
+    <p>Deprecated <code>quoted_locking_column</code> method, which isn’t used anywhere.</p>
+  </li>
+  <li>
+    <p>Deprecated <code>ConnectionAdapters::SchemaStatements#distinct</code>,
+as it is no longer used by internals. (<a href="https://github.com/rails/rails/pull/10556">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Deprecated <code>rake db:test:*</code> tasks as the test database is now
+automatically maintained. See railties release notes. (<a href="https://github.com/rails/rails/pull/13528">Pull
+Request</a>)</p>
+  </li>
+  <li>
+    <p>Deprecate unused <code>ActiveRecord::Base.symbolized_base_class</code>
+and <code>ActiveRecord::Base.symbolized_sti_name</code> without
+replacement. <a href="https://github.com/rails/rails/commit/97e7ca48c139ea5cce2fa9b4be631946252a1ebd">Commit</a></p>
+  </li>
+</ul>
+
+<h3 id="notable-changes-3">Notable changes</h3>
+
+<ul>
+  <li>
+    <p>Default scopes are no longer overridden by chained conditions.</p>
+
+    <p>Before this change when you defined a <code>default_scope</code> in a model
+it was overridden by chained conditions in the same field. Now it
+is merged like any other scope. <a href="upgrading_ruby_on_rails.html#changes-on-default-scopes">More Details</a>.</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveRecord::Base.to_param</code> for convenient “pretty” URLs derived from
+a model’s attribute or
+method. (<a href="https://github.com/rails/rails/pull/12891">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveRecord::Base.no_touching</code>, which allows ignoring touch on
+models. (<a href="https://github.com/rails/rails/pull/12772">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Unify boolean type casting for <code>MysqlAdapter</code> and <code>Mysql2Adapter</code>.
+<code>type_cast</code> will return <code>1</code> for <code>true</code> and <code>0</code> for <code>false</code>. (<a href="https://github.com/rails/rails/pull/12425">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>.unscope</code> now removes conditions specified in
+<code>default_scope</code>. (<a href="https://github.com/rails/rails/commit/94924dc32baf78f13e289172534c2e71c9c8cade">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveRecord::QueryMethods#rewhere</code> which will overwrite an existing,
+named where condition. (<a href="https://github.com/rails/rails/commit/f950b2699f97749ef706c6939a84dfc85f0b05f2">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Extended <code>ActiveRecord::Base#cache_key</code> to take an optional list of timestamp
+attributes of which the highest will be used. (<a href="https://github.com/rails/rails/commit/e94e97ca796c0759d8fcb8f946a3bbc60252d329">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveRecord::Base#enum</code> for declaring enum attributes where the values
+map to integers in the database, but can be queried by
+name. (<a href="https://github.com/rails/rails/commit/db41eb8a6ea88b854bf5cd11070ea4245e1639c5">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Type cast json values on write, so that the value is consistent with reading
+from the database. (<a href="https://github.com/rails/rails/pull/12643">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Type cast hstore values on write, so that the value is consistent
+with reading from the database. (<a href="https://github.com/rails/rails/commit/5ac2341fab689344991b2a4817bd2bc8b3edac9d">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Make <code>next_migration_number</code> accessible for third party
+generators. (<a href="https://github.com/rails/rails/pull/12407">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Calling <code>update_attributes</code> will now throw an <code>ArgumentError</code> whenever it
+gets a <code>nil</code> argument. More specifically, it will throw an error if the
+argument that it gets passed does not respond to to
+<code>stringify_keys</code>. (<a href="https://github.com/rails/rails/pull/9860">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>CollectionAssociation#first</code>/<code>#last</code> (e.g. <code>has_many</code>) use a <code>LIMIT</code>ed
+query to fetch results rather than loading the entire
+collection. (<a href="https://github.com/rails/rails/pull/12137">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>inspect</code> on Active Record model classes does not initiate a new
+connection. This means that calling <code>inspect</code>, when the database is missing,
+will no longer raise an exception. (<a href="https://github.com/rails/rails/pull/11014">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Removed column restrictions for <code>count</code>, let the database raise if the SQL is
+invalid. (<a href="https://github.com/rails/rails/pull/10710">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Rails now automatically detects inverse associations. If you do not set the
+<code>:inverse_of</code> option on the association, then Active Record will guess the
+inverse association based on heuristics. (<a href="https://github.com/rails/rails/pull/10886">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Handle aliased attributes in ActiveRecord::Relation. When using symbol keys,
+ActiveRecord will now translate aliased attribute names to the actual column
+name used in the database. (<a href="https://github.com/rails/rails/pull/7839">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>The ERB in fixture files is no longer evaluated in the context of the main
+object. Helper methods used by multiple fixtures should be defined on modules
+included in <code>ActiveRecord::FixtureSet.context_class</code>. (<a href="https://github.com/rails/rails/pull/13022">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Don’t create or drop the test database if RAILS_ENV is specified
+explicitly. (<a href="https://github.com/rails/rails/pull/13629">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>Relation</code> no longer has mutator methods like <code>#map!</code> and <code>#delete_if</code>. Convert
+to an <code>Array</code> by calling <code>#to_a</code> before using these methods. (<a href="https://github.com/rails/rails/pull/13314">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>find_in_batches</code>, <code>find_each</code>, <code>Result#each</code> and <code>Enumerable#index_by</code> now
+return an <code>Enumerator</code> that can calculate its
+size. (<a href="https://github.com/rails/rails/pull/13938">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>scope</code>, <code>enum</code> and Associations now raise on “dangerous” name
+conflicts. (<a href="https://github.com/rails/rails/pull/13450">Pull Request</a>,
+<a href="https://github.com/rails/rails/pull/13896">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>second</code> through <code>fifth</code> methods act like the <code>first</code>
+finder. (<a href="https://github.com/rails/rails/pull/13757">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Make <code>touch</code> fire the <code>after_commit</code> and <code>after_rollback</code>
+callbacks. (<a href="https://github.com/rails/rails/pull/12031">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Enable partial indexes for <code>sqlite &gt;= 3.8.0</code>.
+(<a href="https://github.com/rails/rails/pull/13350">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Make <code>change_column_null</code>
+revertible. (<a href="https://github.com/rails/rails/commit/724509a9d5322ff502aefa90dd282ba33a281a96">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added a flag to disable schema dump after migration. This is set to <code>false</code>
+by default in the production environment for new applications.
+(<a href="https://github.com/rails/rails/pull/13948">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h2 id="active-model">Active Model</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/activemodel/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="deprecations-1">Deprecations</h3>
+
+<ul>
+  <li>Deprecate <code>Validator#setup</code>. This should be done manually now in the
+validator’s constructor. (<a href="https://github.com/rails/rails/commit/7d84c3a2f7ede0e8d04540e9c0640de7378e9b3a">Commit</a>)</li>
+</ul>
+
+<h3 id="notable-changes-4">Notable changes</h3>
+
+<ul>
+  <li>
+    <p>Added new API methods <code>reset_changes</code> and <code>changes_applied</code> to
+<code>ActiveModel::Dirty</code> that control changes state.</p>
+  </li>
+  <li>
+    <p>Ability to specify multiple contexts when defining a
+validation. (<a href="https://github.com/rails/rails/pull/13754">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>attribute_changed?</code> now accepts a hash to check if the attribute was changed
+<code>:from</code> and/or <code>:to</code> a given
+value. (<a href="https://github.com/rails/rails/pull/13131">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h2 id="active-support">Active Support</h2>
+
+<p>Please refer to the
+<a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/CHANGELOG.md">Changelog</a>
+for detailed changes.</p>
+
+<h3 id="removals-3">Removals</h3>
+
+<ul>
+  <li>
+    <p>Removed <code>MultiJSON</code> dependency. As a result, <code>ActiveSupport::JSON.decode</code>
+no longer accepts an options hash for <code>MultiJSON</code>. (<a href="https://github.com/rails/rails/pull/10576">Pull Request</a> / <a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Removed support for the <code>encode_json</code> hook used for encoding custom objects into
+JSON. This feature has been extracted into the <a href="https://github.com/rails/activesupport-json_encoder">activesupport-json_encoder</a>
+gem.
+(<a href="https://github.com/rails/rails/pull/12183">Related Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActiveSupport::JSON::Variable</code> with no replacement.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>String#encoding_aware?</code> core extensions (<code>core_ext/string/encoding</code>).</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Module#local_constant_names</code> in favor of <code>Module#local_constants</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>DateTime.local_offset</code> in favor of <code>DateTime.civil_from_format</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Logger</code> core extensions (<code>core_ext/logger.rb</code>).</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Time#time_with_datetime_fallback</code>, <code>Time#utc_time</code> and
+<code>Time#local_time</code> in favor of <code>Time#utc</code> and <code>Time#local</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Hash#diff</code> with no replacement.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Date#to_time_in_current_zone</code> in favor of <code>Date#in_time_zone</code>.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Proc#bind</code> with no replacement.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>Array#uniq_by</code> and <code>Array#uniq_by!</code>, use native
+<code>Array#uniq</code> and <code>Array#uniq!</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>ActiveSupport::BasicObject</code>, use
+<code>ActiveSupport::ProxyObject</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>BufferedLogger</code>, use <code>ActiveSupport::Logger</code> instead.</p>
+  </li>
+  <li>
+    <p>Removed deprecated <code>assert_present</code> and <code>assert_blank</code> methods, use <code>assert
+object.blank?</code> and <code>assert object.present?</code> instead.</p>
+  </li>
+  <li>
+    <p>Remove deprecated <code>#filter</code> method for filter objects, use the corresponding
+method instead (e.g. <code>#before</code> for a before filter).</p>
+  </li>
+  <li>
+    <p>Removed ‘cow’ =&gt; ‘kine’ irregular inflection from default
+inflections. (<a href="https://github.com/rails/rails/commit/c300dca9963bda78b8f358dbcb59cabcdc5e1dc9">Commit</a>)</p>
+  </li>
+</ul>
+
+<h3 id="deprecations-2">Deprecations</h3>
+
+<ul>
+  <li>
+    <p>Deprecated <code>Numeric#{ago,until,since,from_now}</code>, the user is expected to
+explicitly convert the value into an AS::Duration, i.e. <code>5.ago</code> =&gt; <code>5.seconds.ago</code>
+(<a href="https://github.com/rails/rails/pull/12389">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Deprecated the require path <code>active_support/core_ext/object/to_json</code>. Require
+<code>active_support/core_ext/object/json</code> instead. (<a href="https://github.com/rails/rails/pull/12203">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Deprecated <code>ActiveSupport::JSON::Encoding::CircularReferenceError</code>. This feature
+has been extracted into the <a href="https://github.com/rails/activesupport-json_encoder">activesupport-json_encoder</a>
+gem.
+(<a href="https://github.com/rails/rails/pull/12785">Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Deprecated <code>ActiveSupport.encode_big_decimal_as_string</code> option. This feature has
+been extracted into the <a href="https://github.com/rails/activesupport-json_encoder">activesupport-json_encoder</a>
+gem.
+(<a href="https://github.com/rails/rails/pull/13060">Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Deprecate custom <code>BigDecimal</code>
+serialization. (<a href="https://github.com/rails/rails/pull/13911">Pull Request</a>)</p>
+  </li>
+</ul>
+
+<h3 id="notable-changes-5">Notable changes</h3>
+
+<ul>
+  <li>
+    <p><code>ActiveSupport</code>’s JSON encoder has been rewritten to take advantage of the
+JSON gem rather than doing custom encoding in pure-Ruby.
+(<a href="https://github.com/rails/rails/pull/12183">Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Improved compatibility with the JSON gem.
+(<a href="https://github.com/rails/rails/pull/12862">Pull Request</a> /
+<a href="upgrading_ruby_on_rails.html#changes-in-json-handling">More Details</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveSupport::Testing::TimeHelpers#travel</code> and <code>#travel_to</code>. These
+methods change current time to the given time or duration by stubbing
+<code>Time.now</code> and <code>Date.today</code>.</p>
+  </li>
+  <li>
+    <p>Added <code>ActiveSupport::Testing::TimeHelpers#travel_back</code>. This method returns
+the current time to the original state, by removing the stubs added by <code>travel</code>
+and <code>travel_to</code>. (<a href="https://github.com/rails/rails/pull/13884">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Numeric#in_milliseconds</code>, like <code>1.hour.in_milliseconds</code>, so we can feed
+them to JavaScript functions like
+<code>getTime()</code>. (<a href="https://github.com/rails/rails/commit/423249504a2b468d7a273cbe6accf4f21cb0e643">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Date#middle_of_day</code>, <code>DateTime#middle_of_day</code> and <code>Time#middle_of_day</code>
+methods. Also added <code>midday</code>, <code>noon</code>, <code>at_midday</code>, <code>at_noon</code> and
+<code>at_middle_of_day</code> as
+aliases. (<a href="https://github.com/rails/rails/pull/10879">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Date#all_week/month/quarter/year</code> for generating date
+ranges. (<a href="https://github.com/rails/rails/pull/9685">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Time.zone.yesterday</code> and
+<code>Time.zone.tomorrow</code>. (<a href="https://github.com/rails/rails/pull/12822">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>String#remove(pattern)</code> as a short-hand for the common pattern of
+<code>String#gsub(pattern,'')</code>. (<a href="https://github.com/rails/rails/commit/5da23a3f921f0a4a3139495d2779ab0d3bd4cb5f">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Hash#compact</code> and <code>Hash#compact!</code> for removing items with nil value
+from hash. (<a href="https://github.com/rails/rails/pull/13632">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p><code>blank?</code> and <code>present?</code> commit to return
+singletons. (<a href="https://github.com/rails/rails/commit/126dc47665c65cd129967cbd8a5926dddd0aa514">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Default the new <code>I18n.enforce_available_locales</code> config to <code>true</code>, meaning
+<code>I18n</code> will make sure that all locales passed to it must be declared in the
+<code>available_locales</code>
+list. (<a href="https://github.com/rails/rails/pull/13341">Pull Request</a>)</p>
+  </li>
+  <li>
+    <p>Introduce <code>Module#concerning</code>: a natural, low-ceremony way to separate
+responsibilities within a
+class. (<a href="https://github.com/rails/rails/commit/1eee0ca6de975b42524105a59e0521d18b38ab81">Commit</a>)</p>
+  </li>
+  <li>
+    <p>Added <code>Object#presence_in</code> to simplify value whitelisting.
+(<a href="https://github.com/rails/rails/commit/4edca106daacc5a159289eae255207d160f22396">Commit</a>)</p>
+  </li>
+</ul>
+
+<h2 id="credits">Credits</h2>
+
+<p>See the
+<a href="http://contributors.rubyonrails.org/">full list of contributors to Rails</a> for
+the many people who spent many hours making Rails, the stable and robust
+framework it is. Kudos to all of them.</p>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,958 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>Even if we rarely give them much thought, binary file formats are everywhere.
+Ranging from images to audio files to nearly every other sort of media you can
+imagine, binary files are used because they are an efficient way of
+storing information in a ready-to-process format.</p>
+
+<p>Despite their usefulness, binary files are cryptic and appear to be 
+difficult to understand on the surface. Unlike a
+text-based data format, simply looking at a binary file won’t give you any 
+hints about what its contents are. To even begin to understand a binary
+encoded file, you need to read its format specification. These specifications 
+tend to include lots of details about obscure edge cases, and that makes for
+challenging reading unless you already have spent a fair amount of time 
+working in the realm of bits and bytes. For these reasons, it’s probably better
+to learn by example rather than taking a more formal approach.</p>
+
+<p>In this article, I will show you how to encode and decode the bitmap image
+format. Bitmap images have a simple structure, and the format is well documented. 
+Despite the fact that you’ll probably never need to work with bitmap images 
+at all in your day-to-day work, the concepts involved in both reading and 
+writing a BMP file are pretty much the same as any other file format you’ll encounter.</p>
+
+<h3 id="the-anatomy-of-a-bitmap">The anatomy of a bitmap</h3>
+
+<p>A bitmap file consists of several sections of metadata followed by a pixel array that represents the color and position of every pixel in the image. 
+The example below demonstrates that even if you break the sequence up into its different parts, it would still be a real 
+challenge to understand without any documentation handy:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># coding: binary</span>
+
+hex_data = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w[</span><span style="color:#D20">
+  42 4D 
+  46 00 00 00 
+  00 00 
+  00 00 
+  36 00 00 00
+
+  28 00 00 00 
+  02 00 00 00 
+  02 00 00 00 
+  01 00 
+  18 00 
+  00 00 00 00 
+  10 00 00 00 
+  13 0B 00 00 
+  13 0B 00 00
+  00 00 00 00 
+  00 00 00 00
+
+  00 00 FF
+  FF FF FF 
+  00 00 
+  FF 00 00 
+  00 FF 00 
+  00 00
+</span><span style="color:#710">]</span></span>
+
+out = hex_data.each_with_object(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>) { |e,s| s &lt;&lt; Integer(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0x</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>) }
+
+<span style="color:#036;font-weight:bold">File</span>.binwrite(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">example1.bmp</span><span style="color:#710">&quot;</span></span>, out)
+</pre></div>
+</div>
+</div>
+
+<p>Once you learn what each section represents, you can start
+to interpret the data. For example, if you know that this is a
+24-bit per pixel image that is two pixels wide, and two pixels high, you might
+be able to make sense of the pixel array data shown below:</p>
+
+<pre><code>00 00 FF
+FF FF FF 
+00 00 
+FF 00 00 
+00 FF 00 
+00 00
+</code></pre>
+
+<p>If you run this example script and open the image file it produces, you’ll see
+something similar to what is shown below once you zoom in close enough to see
+its pixels:</p>
+
+<p><img src="http://i.imgur.com/XhKW1.png" alt="Pixels" /></p>
+
+<p>By experimenting with changing some of the values in the pixel array by hand, you will fairly quickly discover the overall structure of the array and the way pixels are represented. After figuring this out, you might also be able to look back on the rest of the file and determine what a few of the fields in the headers are without looking at the documentation.</p>
+
+<p>After exploring a bit on your own, you should check out the <a href="http://en.wikipedia.org/wiki/BMP_file_format#Example_1">field-by-field walkthrough of a 2x2 bitmap file</a> that this example was based on. The information in that table is pretty much all you’ll need to know in order to make sense of the bitmap reader and writer implementations I’ve built for this article.</p>
+
+<h3 id="encoding-a-bitmap-image">Encoding a bitmap image</h3>
+
+<p>Now that you’ve seen what a bitmap looks like in its raw form, I can demonstrate
+how to build a simple encoder object that allows you to generate bitmap images
+in a much more convenient way. In particular, I’m going to show what I did to
+get the following code to output the same image that we rendered via a raw
+sequence of bytes earlier:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>bmp = <span style="color:#036;font-weight:bold">BMP</span>::<span style="color:#036;font-weight:bold">Writer</span>.new(<span style="color:#00D">2</span>,<span style="color:#00D">2</span>)
+
+<span style="color:#777"># NOTE: Bitmap encodes pixels in BGR format, not RGB!</span>
+bmp[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ff0000</span><span style="color:#710">&quot;</span></span>
+bmp[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">00ff00</span><span style="color:#710">&quot;</span></span>
+bmp[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0000ff</span><span style="color:#710">&quot;</span></span>
+bmp[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ffffff</span><span style="color:#710">&quot;</span></span>
+
+bmp.save_as(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">example_generated.bmp</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Like most binary formats, the bitmap format has a tremendous amount of options
+that make building a complete implementation a whole lot more complicated than
+just building a tool which is suitable for generating a single type of image. I
+realized shortly after skimming the format description that you can skip out on
+a lot of the boilerplate information if you stick to 24bit-per-pixel images, so
+I decided to do exactly that.</p>
+
+<p>Looking at the implementation from the outside-in, you can see the general
+structure of the <code>BMP::Writer</code> class. Pixels are stored in a two-dimensional
+array, and all the interesting things happen at the time you write the image out
+to file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Writer</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(width, height)
+      <span style="color:#33B">@width</span>, <span style="color:#33B">@height</span> = width, height
+
+      <span style="color:#33B">@pixels</span> = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#33B">@height</span>) { <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#33B">@width</span>) { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">000000</span><span style="color:#710">&quot;</span></span> } }
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(x,y,value)
+      <span style="color:#33B">@pixels</span>[y][x] = value
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save_as</span>(filename)
+      <span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wb</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |file|
+        write_bmp_file_header(file)
+        write_dib_header(file)
+        write_pixel_array(file)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ... rest of implementation details omitted for now ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>All bitmap files start out with the bitmap file header, which consists of the
+following things:</p>
+
+<ul>
+  <li>A two character signature to indicate the file is a bitmap file (typically “BM”).</li>
+  <li>A 32bit unsigned little-endian integer representing the size of the file itself.</li>
+  <li>A pair of 16bit unsigned little-endian integers reserved for application specific uses.</li>
+  <li>A 32bit unsigned little-endian integer representing the offset to where the pixel array starts in the file.</li>
+</ul>
+
+<p>The following code shows how <code>BMP::Writer</code> builds up this header and writes it
+to file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Writer</span>
+    <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span> = <span style="color:#00D">54</span>
+    <span style="color:#036;font-weight:bold">BITS_PER_PIXEL</span>     = <span style="color:#00D">24</span>
+
+    <span style="color:#777"># ... rest of code as before ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write_bmp_file_header</span>(file)
+      file &lt;&lt; [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BM</span><span style="color:#710">&quot;</span></span>, file_size, <span style="color:#00D">0</span>, <span style="color:#00D">0</span>, <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span>].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A2Vv2V</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">file_size</span>
+      <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span> + pixel_array_size 
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pixel_array_size</span>
+      ((<span style="color:#036;font-weight:bold">BITS_PER_PIXEL</span>*<span style="color:#33B">@width</span>)/<span style="color:#60E">32.0</span>).ceil*<span style="color:#00D">4</span>*<span style="color:#33B">@height</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Out of the five fields in this header, only the file size ended up being
+dynamic. I was able to treat the pixel array offset as a constant because the
+headers for 24 bit color images take up a fixed amount of space. The file size
+computations<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> will make sense later once we examine the way that the pixel 
+array gets encoded.</p>
+
+<p>The tool that makes it possible for us to convert these various field values
+into binary sequences is <code>Array#pack</code>. If you note that the file size of our
+reference image is 2x2 bitmap is 70 bytes, it becomes clear what <code>pack</code>
+is actually doing for us when we examine the byte by byte values 
+in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>header = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BM</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">70</span>, <span style="color:#00D">0</span>, <span style="color:#00D">0</span>, <span style="color:#00D">54</span>].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A2Vv2V</span><span style="color:#710">&quot;</span></span>) 
+p header.bytes.map { |e| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">%.2x</span><span style="color:#710">&quot;</span></span> % e }
+
+<span style="color:#777">=begin expected output (NOTE: reformatted below for easier reading)
+  [&quot;42&quot;, &quot;4d&quot;, 
+   &quot;46&quot;, &quot;00&quot;, &quot;00&quot;, &quot;00&quot;, 
+   &quot;00&quot;, &quot;00&quot;, 
+   &quot;00&quot;, &quot;00&quot;, 
+   &quot;36&quot;, &quot;00&quot;, &quot;00&quot;, &quot;00&quot;]
+=end</span>
+</pre></div>
+</div>
+</div>
+<p>The byte sequence for the file header exactly matches that of our reference image, 
+which indicates that the proper bitmap file header is being generated. 
+Below I’ve listed out how each field in the header encoded:</p>
+
+<pre><code>  "A2" -&gt; arbitrary binary string of width 2 (packs "BM" as: 42 4d)
+  "V"  -&gt; a 32bit unsigned little endian int (packs 70 as: 46 00 00 00)
+  "v2" -&gt; two 16bit unsigned little endian ints (packs 0, 0 as: 00 00 00 00)
+  "V"  -&gt; a 32bit unsigned little endian int (packs 54 as: 36 00 00 00)
+</code></pre>
+
+<p>While I went to the effort of expanding out the byte sequences to make it easier
+to see what is going on, you don’t typically need to do this at all while
+working with <code>Array#pack</code> as long as you craft your template strings carefully.
+But like anything else in Ruby, it’s nice to be able to write little scripts or
+hack around a bit in <code>irb</code> whenever you’re trying to figure out how your
+code is actually working.</p>
+
+<p>After figuring out how to encode the file header, the next step was to work on
+the DIB header, which includes some metadata about the image and how it should
+be displayed on the screen:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Writer</span>
+    <span style="color:#036;font-weight:bold">DIB_HEADER_SIZE</span>    = <span style="color:#00D">40</span>
+    <span style="color:#036;font-weight:bold">PIXELS_PER_METER</span>   = <span style="color:#00D">2835</span> <span style="color:#777"># 2835 pixels per meter is basically 72dpi</span>
+
+    <span style="color:#777"># ... other code as before ...</span>
+
+   <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write_dib_header</span>(file)
+      file &lt;&lt; [<span style="color:#036;font-weight:bold">DIB_HEADER_SIZE</span>, <span style="color:#33B">@width</span>, <span style="color:#33B">@height</span>, <span style="color:#00D">1</span>, <span style="color:#036;font-weight:bold">BITS_PER_PIXEL</span>,
+               <span style="color:#00D">0</span>, pixel_array_size, <span style="color:#036;font-weight:bold">PIXELS_PER_METER</span>, <span style="color:#036;font-weight:bold">PIXELS_PER_METER</span>, 
+               <span style="color:#00D">0</span>, <span style="color:#00D">0</span>].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Vl&lt;2v2V2l&lt;2V2</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because we are only working on a very limited subset of BMP features, it’s
+possible to construct the DIB header mostly from preset constants combined with
+a few values that we already computed for the BMP file header.</p>
+
+<p>The <code>pack</code> statement in the above code works in a very similar fashion as the
+code that writes out the BMP file header, with one exception: it needs to handle
+signed 32-bit little endian integers. This data type does not have a pattern of its own, 
+but instead is a composite pattern made up of two
+characters: <code>l&lt;</code>. The first character (<code>l</code>) instructs Ruby to read a 32-bit
+signed integer, and the second character (<code>&lt;</code>) tells it to read it in
+little-endian byte order.</p>
+
+<p>It isn’t clear to me at all why a bitmap image could contain negative values for
+its width, height, and pixel density – this is just how the format is
+specified. Because our goal is to learn about binary file processing and not
+image format esoterica, it’s fine to treat that design decision as a black
+box for now and move on to looking at how the pixel array is processed.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Writer</span>
+    <span style="color:#777"># .. other code as before ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write_pixel_array</span>(file)
+      <span style="color:#33B">@pixels</span>.reverse_each <span style="color:#080;font-weight:bold">do</span> |row|
+        row.each <span style="color:#080;font-weight:bold">do</span> |color|
+          file &lt;&lt; pixel_binstring(color)
+        <span style="color:#080;font-weight:bold">end</span>
+
+        file &lt;&lt; row_padding
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pixel_binstring</span>(rgb_string)
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">unless</span> rgb_string =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\h</span><span style="color:#808">{6}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>
+      [rgb_string].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">H6</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">row_padding</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\x0</span><span style="color:#710">&quot;</span></span> * (<span style="color:#33B">@width</span> % <span style="color:#00D">4</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The most interesting thing to note about this code is that each row of pixels ends up getting padded with some null characters. This is to ensure that each row of pixels is aligned on WORD boundaries (4 byte sequences). This is a semi-arbitrary limitation that has to do with file storage constraints, but things like this are common in binary files. </p>
+
+<p>The calculations below show how much padding is needed to bring rows of various widths up to a multiple of 4, and explains how I derived the computation for the <code>row_padding</code> method:</p>
+
+<pre><code>Width 2 : 2 * 3 Bytes per pixel = 6 bytes  + 2 padding  = 8
+Width 3 : 3 * 3 Bytes per pixel = 9 bytes  + 3 padding  = 12
+Width 4 : 4 * 3 Bytes per pixel = 12 bytes + 0 padding  = 12
+Width 5 : 5 * 3 Bytes per pixel = 15 bytes + 1 padding  = 16
+Width 6 : 6 * 3 Bytes per pixel = 18 bytes + 2 padding  = 20
+Width 7 : 7 * 3 Bytes per pixel = 21 bytes + 3 padding  = 24
+...
+</code></pre>
+
+<p>Sometimes calculations like this are provided for you in format specifications,
+other times you need to derive them yourself. Choosing to work
+with only 24bit per pixel images allowed me to skirt the question of how to
+generalize this computation to an arbitrary amount of bits per pixel.</p>
+
+<p>While the padding code is definitely the most interesting aspect of the pixel array, there are a couple other details about this implementation worth discussing. In particular, we should take a closer look at the <code>pixel_binstring</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pixel_binstring</span>(rgb_string)
+  raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">unless</span> rgb_string =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\h</span><span style="color:#808">{6}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>
+  [rgb_string].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">H6</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is the method that converts the values we set in the pixel array via lines like <code>bmp[0,0] = "ff0000"</code> into actual binary sequences. It starts by matching the string with a regex to ensure that the input string is a valid sequence of 6 hexadecimal digits. If the validation succeeds, it then packs those values into a binary sequence, creating a string with three bytes in it. The example below should make it clear what is going on here:</p>
+
+<pre><code>&gt;&gt; ["ffa0ff"].pack("H6").bytes.to_a
+=&gt; [255, 160, 255]
+</code></pre>
+
+<p>This pattern makes it possible for us to specify color values directly in hexadecimal strings and then convert them to their numeric value just before they get written to the file.</p>
+
+<p>With this last detail explained, you should now understand how to build a
+functional bitmap encoder for writing 24bit color images. If seeing things
+broken out step by step caused you to lose a sense of the big picture, you can
+check out the <a href="https://gist.github.com/1351737">source code for BMP::Writer</a>. Feel free to play around with it a bit before moving on to the next section: the best way to learn is to actually run these code samples and try to extend them and/or break them in various ways.</p>
+
+<h3 id="decoding-a-bitmap-image">Decoding a bitmap image</h3>
+
+<p>As you might expect, there is a nice symmetry between encoding and decoding binary files. To show just to what extent this is the case, I will walk you through the code which makes the following example run:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>bmp = <span style="color:#036;font-weight:bold">BMP</span>::<span style="color:#036;font-weight:bold">Reader</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">example1.bmp</span><span style="color:#710">&quot;</span></span>)
+p bmp.width  <span style="color:#777">#=&gt; 2</span>
+p bmp.height <span style="color:#777">#=&gt; 2</span>
+
+p bmp[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>] <span style="color:#777">#=&gt; &quot;ff0000&quot;   </span>
+p bmp[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] <span style="color:#777">#=&gt; &quot;00ff00&quot; </span>
+p bmp[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] <span style="color:#777">#=&gt; &quot;0000ff&quot; </span>
+p bmp[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] <span style="color:#777">#=&gt; &quot;ffffff&quot; </span>
+</pre></div>
+</div>
+</div>
+
+<p>The general structure of <code>BMP::Reader</code> ended up being quite similar to what I did for <code>BMP::Writer</code>. The code below shows the methods which define the public interface:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Reader</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(bmp_filename) 
+      <span style="color:#036;font-weight:bold">File</span>.open(bmp_filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rb</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |file|
+        read_bmp_header(file) <span style="color:#777"># does some validations</span>
+        read_dib_header(file) <span style="color:#777"># sets @width, @height</span>
+        read_pixels(file)     <span style="color:#777"># populates the @pixels array</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    attr_reader <span style="color:#A60">:width</span>, <span style="color:#A60">:height</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(x,y)
+      <span style="color:#33B">@pixels</span>[y][x]
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This time, we still are working with an ordinary array of arrays to store the
+pixel data, and most of the work gets done as soon as the file is read in the
+constructor. Because I decided to support only a single image type, most of the
+work of reading the headers is just for validation purposes. In fact, the
+<code>read_bmp_header</code> method does nothing more than some basic sanity checking, as
+shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Reader</span>
+    <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span> = <span style="color:#00D">54</span>
+
+    <span style="color:#777"># ...other code as before ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">read_bmp_header</span>(file)
+      header = file.read(<span style="color:#00D">14</span>)
+      magic_number, file_size, reserved1,
+      reserved2, array_location = header.unpack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A2Vv2V</span><span style="color:#710">&quot;</span></span>)
+      
+      fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Not a bitmap file!</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> magic_number == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">BM</span><span style="color:#710">&quot;</span></span>
+
+      <span style="color:#080;font-weight:bold">unless</span> file.size == file_size
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Corrupted bitmap: File size is not as expected</span><span style="color:#710">&quot;</span></span> 
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">unless</span> array_location == <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span>
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Unsupported bitmap: pixel array does not start where expected</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The key thing to notice about this code is that it reads from the file just the bytes it needs in order to parse the header. This makes it possible to validate a very large file without loading much data into memory. Reading entire files into memory is rarely a good idea, and this is especially true when it comes to binary data because doing so will actually make your job harder rather than easier. </p>
+
+<p>Once the header data is loaded into a string, the <code>String#unpack</code> method is used to extract some values from it. Notice here how <code>String#unpack</code> uses the same template syntax as <code>Array#pack</code> and simply provides the inverse operation. While the <code>pack</code> operation converts an array of values into a string of binary data, the <code>unpack</code> operation converts a binary string into an array of processed values. This allows us to recover the information packed into the bitmap file header as Ruby strings and fixnums.</p>
+
+<p>Once these values have been converted into Ruby objects, it’s easy to do some
+ordinary comparisons to check to see if they’re what we’d expect them to be.
+Because they help detect corrupted files, clearly defined validations are an
+important part of writing any decoder for binary file formats. If you do not do
+this sort of sanity checking, you will inevitably run into 
+subtle processing errors later on that will be much harder to debug.</p>
+
+<p>As you might expect, the implementation of <code>read_dib_header</code> involves more of
+the same sort of extractions and validations. It also sets the <code>@width</code> and
+<code>@height</code> variables, which we use later to determine how to traverse the encoded
+pixel array.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Reader</span>
+    <span style="color:#777"># ... other code as before ...</span>
+
+    <span style="color:#036;font-weight:bold">BITS_PER_PIXEL</span>     = <span style="color:#00D">24</span>
+    <span style="color:#036;font-weight:bold">DIB_HEADER_SIZE</span>    = <span style="color:#00D">40</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">read_dib_header</span>(file)
+      header = file.read(<span style="color:#00D">40</span>)
+
+      header_size, width, height, planes, bits_per_pixel, 
+      compression_method, image_size, hres, 
+      vres, n_colors, i_colors = header.unpack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Vl&lt;2v2V2l&lt;2V2</span><span style="color:#710">&quot;</span></span>) 
+
+      <span style="color:#080;font-weight:bold">unless</span> header_size == <span style="color:#036;font-weight:bold">DIB_HEADER_SIZE</span>
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Corrupted bitmap: DIB header does not match expected size</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">unless</span> planes == <span style="color:#00D">1</span>
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Corrupted bitmap: Expected 1 plane, got </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>planes<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">unless</span> bits_per_pixel == <span style="color:#036;font-weight:bold">BITS_PER_PIXEL</span>
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>bits_per_pixel<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> bits per pixel bitmaps are not supported</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">unless</span> compression_method == <span style="color:#00D">0</span>
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Bitmap compression not supported</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">unless</span> image_size + <span style="color:#036;font-weight:bold">PIXEL_ARRAY_OFFSET</span> == file.size
+        fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Corrupted bitmap: pixel array size isn't as expected</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#33B">@width</span>, <span style="color:#33B">@height</span> = width, height
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Beyond what has already been said about this example and the DIB header itself, there isn’t much more to discuss about this particular method. That means we can finally take a look at how <code>BMP::Reader</code> converts the encoded pixel array into a nested Ruby array structure.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BMP</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Reader</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">read_pixels</span>(file)
+      <span style="color:#33B">@pixels</span> = <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#33B">@height</span>) { <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#33B">@width</span>) }
+
+      (<span style="color:#33B">@height</span>-<span style="color:#00D">1</span>).downto(<span style="color:#00D">0</span>) <span style="color:#080;font-weight:bold">do</span> |y|
+        <span style="color:#00D">0</span>.upto(<span style="color:#33B">@width</span> - <span style="color:#00D">1</span>) <span style="color:#080;font-weight:bold">do</span> |x|
+          <span style="color:#33B">@pixels</span>[y][x] = file.read(<span style="color:#00D">3</span>).unpack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">H6</span><span style="color:#710">&quot;</span></span>).first
+        <span style="color:#080;font-weight:bold">end</span>
+        advance_to_next_row(file)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">advance_to_next_row</span>(file)
+      padding_bytes = <span style="color:#33B">@width</span> % <span style="color:#00D">4</span>
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> padding_bytes == <span style="color:#00D">0</span>
+
+      file.pos += padding_bytes
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>One interesting aspect of this code is that it uses explicit numerical iterators. These are relatively rare in idiomatic Ruby, but I did not see a better way to approach this particular problem. Rows are listed in the pixel array from the bottom up, while the image itself still gets indexed from the top down (with 0 at the top). This makes it necessary to iterate over the row numbers in reverse order, and the use of <code>downto</code> is the best way I could find to do that.</p>
+
+<p>The other thing worth noticing about this code is that in the <code>advance_to_next_row</code> method, we actually move the pointer ahead in the file rather than reading the padding bytes between each row. This makes little difference when you’re dealing with a maximum of three bytes of padding per row (two in this case), but is a good practice for writing more efficient code that consumes less memory.</p>
+
+<p>When you take all these code examples and glue them together into a single class
+definition, you’ll end up with a <code>BMP::Reader</code> object that is capable giving you
+the width and height of a 24bit BMP image as well as the color of each and every
+pixel in the image. For those who’d like to experiment further, the <a href="https://gist.github.com/1352294">source code
+for BMP::Reader</a> is available.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>The thing that makes me appreciate binary file formats is that if you just learn
+a few basic computing concepts, there are few things that could be more
+fundamentally simple to work with. But simple does not necessarily mean easy, and in the process of writing this article I realized that some aspects of binary file processing are not quite as trivial or intuitive as I originally thought they were.</p>
+
+<p>What I can say is that this kind of work gets a whole lot easier with practice.
+Due to my work on <a href="http://prawnpdf.org">Prawn</a> I have written
+implementations for various different binary formats including PDF, PNG, JPG,
+and TTF. These formats each have their differences, but my experience tells me 
+that if you fully understand the examples in this article, then you are already 
+well on your way to tackling pretty much any binary file format.</p>
+
+<blockquote>
+  <p>NOTE: If you’d like to learn more about this topic, consider doing the Practicing Ruby self-guided course on <a href="https://practicingruby.com/articles/study-guide-1?u=dc2ab0f9bb">Streams, Files, and Sockets</a>. You’ve already completed one of its reading exercises by working through this article!</p>
+</blockquote>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To determine the storage space needed for the pixel array in BMP images, I used the computations described in the <a href="http://en.wikipedia.org/wiki/BMP_file_format#Pixel_storage">Wikipedia article on bitmap images</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+</body>
+</html>

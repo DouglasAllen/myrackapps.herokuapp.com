@@ -1,0 +1,1583 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-8">CHAPTER 8</h2>
+
+<h3 id="reflection-and-metaprogramming">Reflection and Metaprogramming</h3>
+
+<h4 id="ancestry-and-modules">8.1.1 Ancestry and Modules</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">A</span>; <span style="color:#080;font-weight:bold">end</span>                <span style="color:#777"># Empty module</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">B</span>; include <span style="color:#036;font-weight:bold">A</span>; <span style="color:#080;font-weight:bold">end</span>;    <span style="color:#777"># Module B includes A</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">C</span>; include <span style="color:#036;font-weight:bold">B</span>; <span style="color:#080;font-weight:bold">end</span>;     <span style="color:#777"># Class C includes module B</span>
+
+<span style="color:#036;font-weight:bold">C</span> &lt; <span style="color:#036;font-weight:bold">B</span>               <span style="color:#777"># =&gt; true: C includes B</span>
+<span style="color:#036;font-weight:bold">B</span> &lt; <span style="color:#036;font-weight:bold">A</span>               <span style="color:#777"># =&gt; true: B includes A</span>
+<span style="color:#036;font-weight:bold">C</span> &lt; <span style="color:#036;font-weight:bold">A</span>               <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">Fixnum</span> &lt; <span style="color:#036;font-weight:bold">Integer</span>    <span style="color:#777"># =&gt; true: all fixnums are integers</span>
+<span style="color:#036;font-weight:bold">Integer</span> &lt;<span style="color:#036;font-weight:bold">Comparable</span> <span style="color:#777"># =&gt; true: integers are comparable</span>
+<span style="color:#036;font-weight:bold">Integer</span> &lt; <span style="color:#036;font-weight:bold">Fixnum</span>    <span style="color:#777"># =&gt; false: not all integers are fixnums</span>
+<span style="color:#036;font-weight:bold">String</span> &lt; <span style="color:#036;font-weight:bold">Numeric</span>    <span style="color:#777"># =&gt; nil: strings are not numbers</span>
+
+<span style="color:#036;font-weight:bold">A</span>.ancestors         <span style="color:#777"># =&gt; [A]</span>
+<span style="color:#036;font-weight:bold">B</span>.ancestors         <span style="color:#777"># =&gt; [B, A]</span>
+<span style="color:#036;font-weight:bold">C</span>.ancestors         <span style="color:#777"># =&gt; [C, B, A, Object, Kernel]</span>
+<span style="color:#036;font-weight:bold">String</span>.ancestors    <span style="color:#777"># =&gt; [String, Enumerable, Comparable, Object, Kernel]</span>
+                    <span style="color:#777"># Note: in Ruby 1.9 String is no longer Enumerable</span>
+
+<span style="color:#036;font-weight:bold">C</span>.include?(<span style="color:#036;font-weight:bold">B</span>)       <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">C</span>.include?(<span style="color:#036;font-weight:bold">A</span>)       <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">B</span>.include?(<span style="color:#036;font-weight:bold">A</span>)       <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">A</span>.include?(<span style="color:#036;font-weight:bold">A</span>)       <span style="color:#777"># =&gt; false </span>
+<span style="color:#036;font-weight:bold">A</span>.include?(<span style="color:#036;font-weight:bold">B</span>)       <span style="color:#777"># =&gt; false</span>
+
+<span style="color:#036;font-weight:bold">A</span>.included_modules  <span style="color:#777"># =&gt; []</span>
+<span style="color:#036;font-weight:bold">B</span>.included_modules  <span style="color:#777"># =&gt; [A]</span>
+<span style="color:#036;font-weight:bold">C</span>.included_modules  <span style="color:#777"># =&gt; [B, A, Kernel]</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Greeter</span>; <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hi</span>; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">end</span>; <span style="color:#080;font-weight:bold">end</span> <span style="color:#777"># A silly module</span>
+s = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">string object</span><span style="color:#710">&quot;</span></span>
+s.extend(<span style="color:#036;font-weight:bold">Greeter</span>)       <span style="color:#777"># Add hi as a singleton method to s</span>
+s.hi                    <span style="color:#777"># =&gt; &quot;hello&quot;</span>
+<span style="color:#036;font-weight:bold">String</span>.extend(<span style="color:#036;font-weight:bold">Greeter</span>)  <span style="color:#777"># Add hi as a class method of String</span>
+<span style="color:#036;font-weight:bold">String</span>.hi               <span style="color:#777"># =&gt; &quot;hello&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">M</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">C</span>
+    <span style="color:#036;font-weight:bold">Module</span>.nesting   <span style="color:#777"># =&gt; [M::C, M]</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-classes-and-modules">8.1.2 Defining Classes and Modules</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">M</span> = <span style="color:#036;font-weight:bold">Module</span>.new      <span style="color:#777"># Define a new module M</span>
+<span style="color:#036;font-weight:bold">C</span> = <span style="color:#036;font-weight:bold">Class</span>.new       <span style="color:#777"># Define a new class C</span>
+<span style="color:#036;font-weight:bold">D</span> = <span style="color:#036;font-weight:bold">Class</span>.new(<span style="color:#036;font-weight:bold">C</span>) {  <span style="color:#777"># Define a subclass of C</span>
+  include <span style="color:#036;font-weight:bold">M</span>         <span style="color:#777"># that includes module M</span>
+}
+<span style="color:#036;font-weight:bold">D</span>.to_s              <span style="color:#777"># =&gt; &quot;D&quot;: class gets constant name by magic</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="evaluating-strings-and-blocks">8.2 Evaluating Strings and Blocks</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">1</span>
+eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x + 1</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># =&gt; 2</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="bindings-and-eval">8.2.1 Bindings and eval</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>     <span style="color:#777"># Open Object to add a new method</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bindings</span>   <span style="color:#777"># Note plural on this method</span>
+    binding      <span style="color:#777"># This is the predefined Kernel method</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Test</span>       <span style="color:#777"># A simple class with an instance variable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x); <span style="color:#33B">@x</span> = x; <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+t = <span style="color:#036;font-weight:bold">Test</span>.new(<span style="color:#00D">10</span>)       <span style="color:#777"># Create a test object</span>
+eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@x</span><span style="color:#710">&quot;</span></span>, t.bindings) <span style="color:#777"># =&gt; 10: We've peeked inside t</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="instanceeval-and-classeval">8.2.2 instance_eval and class_eval</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o.instance_eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@x</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># Return the value of o's instance variable @x</span>
+
+<span style="color:#777"># Define an instance method len of String to return string length</span>
+<span style="color:#036;font-weight:bold">String</span>.class_eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">def len; size; end</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777"># Here's another way to do that</span>
+<span style="color:#777"># The quoted code behaves just as if it was inside &quot;class String&quot; and &quot;end&quot;</span>
+<span style="color:#036;font-weight:bold">String</span>.class_eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alias len size</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777"># Use instance_eval to define class method String.empty</span>
+<span style="color:#777"># Note that quotes within quotes get a little tricky...</span>
+<span style="color:#036;font-weight:bold">String</span>.instance_eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">def empty; ''; end</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777">###########################</span>
+o.instance_eval { <span style="color:#33B">@x</span> }
+<span style="color:#036;font-weight:bold">String</span>.class_eval {
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">len</span>
+    size
+  <span style="color:#080;font-weight:bold">end</span>
+}
+<span style="color:#036;font-weight:bold">String</span>.class_eval { <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">len</span> <span style="color:#06B;font-weight:bold">size</span> }
+<span style="color:#036;font-weight:bold">String</span>.instance_eval { <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">empty</span>; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">end</span> }
+</pre></div>
+</div>
+</div>
+
+<h4 id="variables-and-constants">8.3 Variables and Constants</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>global_variables   <span style="color:#777"># =&gt; [&quot;$DEBUG&quot;, &quot;$SAFE&quot;, ...]</span>
+x = <span style="color:#00D">1</span>              <span style="color:#777"># Define a local variable</span>
+local_variables    <span style="color:#777"># =&gt; [&quot;x&quot;]</span>
+
+<span style="color:#777"># Define a simple class</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y); <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x,y; <span style="color:#080;font-weight:bold">end</span> <span style="color:#777"># Define instance variables</span>
+  <span style="color:#369">@@classvar</span> = <span style="color:#00D">1</span>                        <span style="color:#777"># Define a class variable</span>
+  <span style="color:#036;font-weight:bold">ORIGIN</span> = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)               <span style="color:#777"># Define a constant</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Point</span>::<span style="color:#036;font-weight:bold">ORIGIN</span>.instance_variables <span style="color:#777"># =&gt; [&quot;@y&quot;, &quot;@x&quot;]</span>
+<span style="color:#036;font-weight:bold">Point</span>.class_variables            <span style="color:#777"># =&gt; [&quot;@@classvar&quot;]</span>
+<span style="color:#036;font-weight:bold">Point</span>.constants                  <span style="color:#777"># =&gt; [&quot;ORIGIN&quot;]</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="querying-setting-and-testing-variables">8.3.1 Querying, Setting, and Testing Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>x = <span style="color:#00D">1</span>
+varname = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x</span><span style="color:#710">&quot;</span></span>
+eval(varname)           <span style="color:#777"># =&gt; 1</span>
+eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">varname = '$g'</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># Set varname to &quot;$g&quot;</span>
+eval(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>varname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> = x</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># Set $g to 1</span>
+eval(varname)           <span style="color:#777"># =&gt; 1</span>
+<span style="color:#777">###########################</span>
+o = <span style="color:#036;font-weight:bold">Object</span>.new
+o.instance_variable_set(<span style="color:#A60">:@x</span>, <span style="color:#00D">0</span>)   <span style="color:#777"># Note required @ prefix</span>
+o.instance_variable_get(<span style="color:#A60">:@x</span>)      <span style="color:#777"># =&gt; 0</span>
+o.instance_variable_defined?(<span style="color:#A60">:@x</span>) <span style="color:#777"># =&gt; true</span>
+
+<span style="color:#036;font-weight:bold">Object</span>.class_variable_set(<span style="color:#A60">:@@x</span>, <span style="color:#00D">1</span>)   <span style="color:#777"># Private in Ruby 1.8</span>
+<span style="color:#036;font-weight:bold">Object</span>.class_variable_get(<span style="color:#A60">:@@x</span>)      <span style="color:#777"># Private in Ruby 1.8</span>
+<span style="color:#036;font-weight:bold">Object</span>.class_variable_defined?(<span style="color:#A60">:@@x</span>) <span style="color:#777"># =&gt; true; Ruby 1.9 and later</span>
+
+<span style="color:#036;font-weight:bold">Math</span>.const_set(<span style="color:#A60">:EPI</span>, <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">E</span>*<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>)
+<span style="color:#036;font-weight:bold">Math</span>.const_get(<span style="color:#A60">:EPI</span>)             <span style="color:#777"># =&gt; 8.53973422267357</span>
+<span style="color:#036;font-weight:bold">Math</span>.const_defined? <span style="color:#A60">:EPI</span>         <span style="color:#777"># =&gt; true </span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">String</span>.class_eval { class_variable_set(<span style="color:#A60">:@@x</span>, <span style="color:#00D">1</span>) }  <span style="color:#777"># Set @@x in String</span>
+<span style="color:#036;font-weight:bold">String</span>.class_eval { class_variable_get(<span style="color:#A60">:@@x</span>) }     <span style="color:#777"># =&gt; 1</span>
+<span style="color:#777">###########################</span>
+o.instance_eval { remove_instance_variable <span style="color:#A60">:@x</span> }
+<span style="color:#036;font-weight:bold">String</span>.class_eval { remove_class_variable(<span style="color:#A60">:@@x</span>) }
+<span style="color:#036;font-weight:bold">Math</span>.send <span style="color:#A60">:remove_const</span>, <span style="color:#A60">:EPI</span>  <span style="color:#777"># Use send to invoke private method</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Symbol</span>.<span style="color:#06B;font-weight:bold">const_missing</span>(name)
+  name <span style="color:#777"># Return the constant name as a symbol</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#036;font-weight:bold">Symbol</span>::<span style="color:#036;font-weight:bold">Test</span>   <span style="color:#777"># =&gt; :Test: undefined constant evaluates to a Symbol</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="listing-and-testing-for-methods">8.4.1 Listing and Testing For Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a string</span><span style="color:#710">&quot;</span></span>
+o.methods                <span style="color:#777"># =&gt; [ names of all public methods ]</span>
+o.public_methods         <span style="color:#777"># =&gt; the same thing</span>
+o.public_methods(<span style="color:#069">false</span>)  <span style="color:#777"># Exclude inherited methods</span>
+o.protected_methods      <span style="color:#777"># =&gt; []: there aren't any</span>
+o.private_methods        <span style="color:#777"># =&gt; array of all private methods</span>
+o.private_methods(<span style="color:#069">false</span>) <span style="color:#777"># Exclude inherited private methods</span>
+<span style="color:#080;font-weight:bold">def</span> o.<span style="color:#06B;font-weight:bold">single</span>; <span style="color:#00D">1</span>; <span style="color:#080;font-weight:bold">end</span>     <span style="color:#777"># Define a singleton method</span>
+o.singleton_methods      <span style="color:#777"># =&gt; [&quot;single&quot;] (or [:single] in 1.9)</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">String</span>.instance_methods == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>.public_methods                <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">String</span>.instance_methods(<span style="color:#069">false</span>) == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>.public_methods(<span style="color:#069">false</span>)  <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">String</span>.public_instance_methods == <span style="color:#036;font-weight:bold">String</span>.instance_methods    <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">String</span>.protected_instance_methods       <span style="color:#777"># =&gt; []</span>
+<span style="color:#036;font-weight:bold">String</span>.private_instance_methods(<span style="color:#069">false</span>)  <span style="color:#777"># =&gt; [&quot;initialize_copy&quot;,</span>
+                                        <span style="color:#777">#     &quot;initialize&quot;]</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Math</span>.singleton_methods  <span style="color:#777"># =&gt; [&quot;acos&quot;, &quot;log10&quot;, &quot;atan2&quot;, ... ]</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">String</span>.public_method_defined? <span style="color:#A60">:reverse</span>     <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">String</span>.protected_method_defined? <span style="color:#A60">:reverse</span>  <span style="color:#777"># =&gt; false</span>
+<span style="color:#036;font-weight:bold">String</span>.private_method_defined? <span style="color:#A60">:initialize</span> <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">String</span>.method_defined? <span style="color:#A60">:upcase!</span>            <span style="color:#777"># =&gt; true</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="obtaining-method-objects">8.4.2 Obtaining Method Objects</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>.method(<span style="color:#A60">:reverse</span>)             <span style="color:#777"># =&gt; Method object </span>
+<span style="color:#036;font-weight:bold">String</span>.instance_method(<span style="color:#A60">:reverse</span>) <span style="color:#777"># =&gt; UnboundMethod object</span>
+</pre></div>
+</div>
+</div>
+
+<p>8.4.3 Invoking Methods</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.send <span style="color:#A60">:upcase</span>        <span style="color:#777"># =&gt; &quot;HELLO&quot;: invoke an instance method</span>
+<span style="color:#036;font-weight:bold">Math</span>.send(<span style="color:#A60">:sin</span>, <span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>/<span style="color:#00D">2</span>) <span style="color:#777"># =&gt; 1.0: invoke a class method</span>
+<span style="color:#777">###########################</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.send <span style="color:#A60">:puts</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span>         <span style="color:#777"># prints &quot;world&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.public_send <span style="color:#A60">:puts</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># raises NoMethodError</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-undefining-and-aliasing-methods">8.4.4 Defining, Undefining, and Aliasing Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Add an instance method named m to class c with body b </span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add_method</span>(c, m, &amp;b)
+  c.class_eval {
+    define_method(m, &amp;b)
+  }
+<span style="color:#080;font-weight:bold">end</span>
+
+add_method(<span style="color:#036;font-weight:bold">String</span>, <span style="color:#A60">:greet</span>) { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="color:#710">&quot;</span></span> + <span style="color:#069">self</span> }
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span>.greet   <span style="color:#777"># =&gt; &quot;Hello, world&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add_class_method</span>(c, m, &amp;b)
+  eigenclass = <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">c</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+  eigenclass.class_eval {
+    define_method(m, &amp;b)
+  }
+<span style="color:#080;font-weight:bold">end</span>
+
+add_class_method(<span style="color:#036;font-weight:bold">String</span>, <span style="color:#A60">:greet</span>) {|name| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="color:#710">&quot;</span></span> + name }
+
+<span style="color:#036;font-weight:bold">String</span>.greet(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># =&gt; &quot;Hello, world&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">String</span>.define_singleton_method(<span style="color:#A60">:greet</span>) {|name| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="color:#710">&quot;</span></span> + name }
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">plus</span> <span style="color:#06B;font-weight:bold">+</span>         <span style="color:#777"># Make &quot;plus&quot; a synonym for the + operator</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Create an alias for the method m in the class (or module) c</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">backup</span>(c, m, prefix=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">original</span><span style="color:#710">&quot;</span></span>)
+  n = <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>prefix<span style="font-weight:bold;color:#666">}</span></span><span style="color:#A60">_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#740">&quot;</span></span>    <span style="color:#777"># Compute the alias</span>
+  c.class_eval {           <span style="color:#777"># Because alias_method is private</span>
+    alias_method n, m      <span style="color:#777"># Make n an alias for m</span>
+  }
+<span style="color:#080;font-weight:bold">end</span>
+
+backup(<span style="color:#036;font-weight:bold">String</span>, <span style="color:#A60">:reverse</span>)
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>.original_reverse <span style="color:#777"># =&gt; &quot;tset&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="handling-undefined-methods">8.4.5 Handling Undefined Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Hash</span>
+  <span style="color:#777"># Allow hash values to be queried and set as if they were attributes.</span>
+  <span style="color:#777"># We simulate attribute getters and setters for any key.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(key, *args)
+    text = key.to_s
+
+    <span style="color:#080;font-weight:bold">if</span> text[<span style="color:#00D">-1</span>,<span style="color:#00D">1</span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=</span><span style="color:#710">&quot;</span></span>               <span style="color:#777"># If key ends with = set a value</span>
+      <span style="color:#069">self</span>[text.chop.to_sym] = args[<span style="color:#00D">0</span>] <span style="color:#777"># Strip = from key</span>
+    <span style="color:#080;font-weight:bold">else</span>                               <span style="color:#777"># Otherwise...</span>
+      <span style="color:#069">self</span>[key]                        <span style="color:#777"># ...just return the key value</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+h = {}         <span style="color:#777"># Create an empty hash object</span>
+h.one = <span style="color:#00D">1</span>      <span style="color:#777"># Same as h[:one] = 1</span>
+puts h.one     <span style="color:#777"># Prints 1. Same as puts h[:one]</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="setting-method-visibility">8.4.6 Setting Method Visibility</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">String</span>.class_eval { private <span style="color:#A60">:reverse</span> }
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>.reverse  <span style="color:#777"># NoMethodError: private method 'reverse'</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Make all Math methods private</span>
+<span style="color:#777"># Now we have to include Math in order to invoke its methods</span>
+<span style="color:#036;font-weight:bold">Math</span>.private_class_method *<span style="color:#036;font-weight:bold">Math</span>.singleton_methods
+</pre></div>
+</div>
+</div>
+
+<h4 id="hooks">8.5 Hooks</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Object</span>.<span style="color:#06B;font-weight:bold">inherited</span>(c)
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">class </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>c<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> &lt; </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Final</span>             <span style="color:#777"># A class that includes Final can't be subclassed</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">included</span>(c)   <span style="color:#777"># When included in class c</span>
+    c.instance_eval <span style="color:#080;font-weight:bold">do</span>   <span style="color:#777"># Define a class method of c</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">inherited</span>(sub) <span style="color:#777"># To detect subclasses</span>
+        raise <span style="color:#036;font-weight:bold">Exception</span>, <span style="color:#777"># And abort with an exception</span>
+              <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Attempt to create subclass </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>sub<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> of Final class </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">String</span>.<span style="color:#06B;font-weight:bold">method_added</span>(name) 
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">New instance method </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> added to String</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">String</span>.<span style="color:#06B;font-weight:bold">singleton_method_added</span>(name)
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">New class method </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> added to String</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Including this module in a class prevents instances of that class</span>
+<span style="color:#777"># from having singleton methods added to them. Any singleton methods added</span>
+<span style="color:#777"># are immediately removed again.</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Strict</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">singleton_method_added</span>(name)
+    <span style="color:#069">STDERR</span>.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Warning: singleton </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> added to a Strict object</span><span style="color:#710">&quot;</span></span>
+    eigenclass = <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+    eigenclass.class_eval { remove_method name }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="tracing">8.6 Tracing</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#069">STDERR</span>.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">__FILE__</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">__LINE__</span>): invalid data<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">
+###########################
+raise </span><span style="color:#710">&quot;</span></span><span style="color:#036;font-weight:bold">Assertion</span> failed <span style="color:#080;font-weight:bold">in</span> <span style="color:#777">#{__method__} at #{__FILE__}:#{__LINE__}&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">SCRIPT_LINES__</span> = {<span style="color:#069">__FILE__</span> =&gt; <span style="color:#036;font-weight:bold">File</span>.readlines(<span style="color:#069">__FILE__</span>)}
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">SCRIPT_LINES__</span>[<span style="color:#069">__FILE__</span>][<span style="color:#069">__LINE__</span>-<span style="color:#00D">1</span>]
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Print a message every time $SAFE changes</span>
+trace_var(<span style="color:#A60">:$SAFE</span>) {|v|
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">$SAFE set to </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>v<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> at </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>caller[<span style="color:#00D">1</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+}
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="objectspace-and-gc">8.7 ObjectSpace and GC</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Print out a list of all known classes</span>
+<span style="color:#036;font-weight:bold">ObjectSpace</span>.each_object(<span style="color:#036;font-weight:bold">Class</span>) {|c| puts c }
+</pre></div>
+</div>
+</div>
+
+<h4 id="delaying-and-repeating-execution-after-and-every">8.8.1 Delaying and Repeating Execution: after and every</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">afterevery</span><span style="color:#710">'</span></span>
+
+<span style="color:#00D">1</span>.upto(<span style="color:#00D">5</span>) {|i| after i { puts i} }  <span style="color:#777"># Slowly print the numbers 1 to 5</span>
+sleep(<span style="color:#00D">5</span>)                            <span style="color:#777"># Wait five seconds</span>
+every <span style="color:#00D">1</span>, <span style="color:#00D">6</span> <span style="color:#080;font-weight:bold">do</span> |count|               <span style="color:#777"># Now slowly print 6 to 10</span>
+  puts count
+  <span style="color:#080;font-weight:bold">break</span> <span style="color:#080;font-weight:bold">if</span> count == <span style="color:#00D">10</span>
+  count + <span style="color:#00D">1</span>                         <span style="color:#777"># The next value of count</span>
+<span style="color:#080;font-weight:bold">end</span>
+sleep(<span style="color:#00D">6</span>)                            <span style="color:#777"># Give the above time to run</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># Define Kernel methods after and every for deferring blocks of code.</span>
+<span style="color:#777"># Examples:</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   after 1 { puts &quot;done&quot; }</span>
+<span style="color:#777">#   every 60 { redraw_clock }</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># Both methods return Thread objects. Call kill on the returned objects</span>
+<span style="color:#777"># to cancel the execution of the code.</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># Note that this is a very naive implementation. A more robust</span>
+<span style="color:#777"># implementation would use a single global timer thread for all tasks,</span>
+<span style="color:#777"># would allow a way to retrieve the value of a deferred block, and would</span>
+<span style="color:#777"># provide a way to wait for all pending tasks to complete.</span>
+<span style="color:#777">#</span>
+
+<span style="color:#777"># Execute block after sleeping the specified number of seconds.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">after</span>(seconds, &amp;block)  
+  <span style="color:#036;font-weight:bold">Thread</span>.new <span style="color:#080;font-weight:bold">do</span>     <span style="color:#777"># In a new thread...</span>
+    sleep(seconds)  <span style="color:#777"># First sleep </span>
+    block.call      <span style="color:#777"># Then call the block</span>
+  <span style="color:#080;font-weight:bold">end</span>               <span style="color:#777"># Return the Thread object right away</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Repeatedly sleep and then execute the block.</span>
+<span style="color:#777"># Pass value to the block on the first invocation.  </span>
+<span style="color:#777"># On subsequent invocations, pass the value of the previous invocation.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">every</span>(seconds, value=<span style="color:#069">nil</span>, &amp;block)
+  <span style="color:#036;font-weight:bold">Thread</span>.new <span style="color:#080;font-weight:bold">do</span>                 <span style="color:#777"># In a new thread...</span>
+    loop <span style="color:#080;font-weight:bold">do</span>                     <span style="color:#777"># Loop forever (or until break in block)</span>
+      sleep(seconds)            <span style="color:#777"># Sleep</span>
+      value = block.call(value) <span style="color:#777"># And invoke block</span>
+    <span style="color:#080;font-weight:bold">end</span>                         <span style="color:#777"># Then repeat..</span>
+  <span style="color:#080;font-weight:bold">end</span>                           <span style="color:#777"># every returns the Thread</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="thread-safety-with-synchronized-blocks">8.8.2 Thread Safety with Synchronized Blocks</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">thread</span><span style="color:#710">'</span></span>  <span style="color:#777"># Ruby 1.8 keeps Mutex in this library</span>
+
+<span style="color:#777"># Obtain the Mutex associated with the object o, and then evaluate</span>
+<span style="color:#777"># the block under the protection of that Mutex.</span>
+<span style="color:#777"># This works like the synchronized keyword of Java.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">synchronized</span>(o)
+  o.mutex.synchronize { <span style="color:#080;font-weight:bold">yield</span> }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Object.mutex does not actually exist. We've got to define it.</span>
+<span style="color:#777"># This method returns a unique Mutex for every object, and</span>
+<span style="color:#777"># always returns the same Mutex for any particular object.</span>
+<span style="color:#777"># It creates Mutexes lazily, which requires synchronization for</span>
+<span style="color:#777"># thread safety.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#777"># Return the Mutex for this object, creating it if necessary.</span>
+  <span style="color:#777"># The tricky part is making sure that two threads don't call</span>
+  <span style="color:#777"># this at the same time and end up creating two different mutexes.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mutex</span>
+    <span style="color:#777"># If this object already has a mutex, just return it</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#33B">@__mutex</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@__mutex</span>
+    
+    <span style="color:#777"># Otherwise, we've got to create a mutex for the object.</span>
+    <span style="color:#777"># To do this safely we've got to synchronize on our class object.</span>
+    synchronized(<span style="color:#069">self</span>.class) {
+      <span style="color:#777"># Check again: by the time we enter this synchronized block,</span>
+      <span style="color:#777"># some other thread might have already created the mutex.</span>
+      <span style="color:#33B">@__mutex</span> = <span style="color:#33B">@__mutex</span> || <span style="color:#036;font-weight:bold">Mutex</span>.new
+    }
+    <span style="color:#777"># The return value is @__mutex</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># The Object.mutex method defined above needs to lock the class </span>
+<span style="color:#777"># if the object doesn't have a Mutex yet. If the class doesn't have</span>
+<span style="color:#777"># its own Mutex yet, then the class of the class (the Class object)</span>
+<span style="color:#777"># will be locked. In order to prevent infinite recursion, we must</span>
+<span style="color:#777"># ensure that the Class object has a mutex.</span>
+<span style="color:#036;font-weight:bold">Class</span>.instance_eval { <span style="color:#33B">@__mutex</span> = <span style="color:#036;font-weight:bold">Mutex</span>.new }
+</pre></div>
+</div>
+</div>
+
+<h4 id="unicode-codepoint-constants-with-constmissing">8.9.1 Unicode Codepoint Constants with const_missing</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This module provides constants that define the UTF-8 strings for</span>
+<span style="color:#777"># all Unicode codepoints. It uses const_missing to define them lazily.</span>
+<span style="color:#777"># Examples:</span>
+<span style="color:#777">#   copyright = Unicode::U00A9</span>
+<span style="color:#777">#   euro = Unicode::U20AC</span>
+<span style="color:#777">#   infinity = Unicode::U221E</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Unicode</span>
+  <span style="color:#777"># This method allows us to define Unicode codepoint constants lazily.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">const_missing</span>(name)  <span style="color:#777"># Undefined constant passed as a symbol</span>
+    <span style="color:#777"># Check that the constant name is of the right form.</span>
+    <span style="color:#777"># Capital U followed by a hex number between 0000 and 10FFFF.</span>
+    <span style="color:#080;font-weight:bold">if</span> name.to_s =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^U([0-9a-fA-F]{4,5}|10[0-9a-fA-F]{4})$</span><span style="color:#404">/</span></span>
+      <span style="color:#777"># $1 is the matched hexadecimal number. Convert to an integer.</span>
+      codepoint = <span style="color:#d70">$1</span>.to_i(<span style="color:#00D">16</span>)
+      <span style="color:#777"># Convert the number to a UTF-8 string with the magic of Array.pack.</span>
+      utf8 = [codepoint].pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">U</span><span style="color:#710">&quot;</span></span>)
+      <span style="color:#777"># Make the UTF-8 string immutable.</span>
+      utf8.freeze
+      <span style="color:#777"># Define a real constant for faster lookup next time, and return</span>
+      <span style="color:#777"># the UTF-8 text for this time.</span>
+      const_set(name, utf8)
+    <span style="color:#080;font-weight:bold">else</span> 
+      <span style="color:#777"># Raise an error for constants of the wrong form.</span>
+      raise <span style="color:#036;font-weight:bold">NameError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Uninitialized constant: Unicode::</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="tracing-method-invocations-with-methodmissing">8.9.2 Tracing Method Invocations with method_missing</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a = [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>].trace(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>)
+a.reverse
+puts a[<span style="color:#00D">2</span>]
+puts a.fetch(<span style="color:#00D">3</span>)
+<span style="color:#777">###########################</span>
+<span style="color:#606">Invoking</span>: a.reverse() at trace1.rb:<span style="color:#00D">66</span>
+<span style="color:#606">Returning</span>: [<span style="color:#00D">3</span>, <span style="color:#00D">2</span>, <span style="color:#00D">1</span>] from a.reverse to trace1.rb:<span style="color:#00D">66</span>
+<span style="color:#606">Invoking</span>: a.fetch(<span style="color:#00D">3</span>) at trace1.rb:<span style="color:#00D">67</span>
+<span style="color:#606">Raising</span>: <span style="color:#606">IndexError</span>:index <span style="color:#00D">3</span> out of array from a.fetch
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Call the trace method of any object to obtain a new object that</span>
+<span style="color:#777"># behaves just like the original, but which traces all method calls</span>
+<span style="color:#777"># on that object. If tracing more than one object, specify a name to</span>
+<span style="color:#777"># appear in the output. By default, messages will be sent to STDERR, </span>
+<span style="color:#777"># but you can specify any stream (or any object that accepts strings</span>
+<span style="color:#777"># as arguments to &lt;&lt;).</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">trace</span>(name=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>, stream=<span style="color:#069">STDERR</span>)
+    <span style="color:#777"># Return a TracedObject that traces and delegates everything else to us.</span>
+    <span style="color:#036;font-weight:bold">TracedObject</span>.new(<span style="color:#069">self</span>, name, stream)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This class uses method_missing to trace method invocations and</span>
+<span style="color:#777"># then delegate them to some other object. It deletes most of its own</span>
+<span style="color:#777"># instance methods so that they don't get in the way of method_missing.</span>
+<span style="color:#777"># Note that only methods invoked through the TracedObject will be traced.</span>
+<span style="color:#777"># If the delegate object calls methods on itself, those invocations</span>
+<span style="color:#777"># will not be traced.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TracedObject</span>
+  <span style="color:#777"># Undefine all of our noncritical public instance methods.</span>
+  <span style="color:#777"># Note the use of Module.instance_methods and Module.undef_method.</span>
+  instance_methods.each <span style="color:#080;font-weight:bold">do</span> |m|
+    m = m.to_sym  <span style="color:#777"># Ruby 1.8 returns strings, instead of symbols</span>
+    <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> m == <span style="color:#A60">:object_id</span> || m == <span style="color:#A60">:__id__</span> || m == <span style="color:#A60">:__send__</span>
+    undef_method m
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Initialize this TracedObject instance.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(o, name, stream)
+    <span style="color:#33B">@o</span> = o            <span style="color:#777"># The object we delegate to</span>
+    <span style="color:#33B">@n</span> = name         <span style="color:#777"># The object name to appear in tracing messages</span>
+    <span style="color:#33B">@trace</span> = stream   <span style="color:#777"># Where those tracing messages are sent</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This is the key method of TracedObject. It is invoked for just</span>
+  <span style="color:#777"># about any method invocation on a TracedObject.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(*args, &amp;block)
+    m = args.shift         <span style="color:#777"># First arg is the name of the method</span>
+    <span style="color:#080;font-weight:bold">begin</span>
+      <span style="color:#777"># Trace the invocation of the method.</span>
+      arglist = args.map {|a| a.inspect}.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">, </span><span style="color:#710">'</span></span>)
+      <span style="color:#33B">@trace</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Invoking: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>arglist<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">) at </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>caller[<span style="color:#00D">0</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#777"># Invoke the method on our delegate object and get the return value.</span>
+      r = <span style="color:#33B">@o</span>.send m, *args, &amp;block
+      <span style="color:#777"># Trace a normal return of the method.</span>
+      <span style="color:#33B">@trace</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Returning: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>r.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> from </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> to </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>caller[<span style="color:#00D">0</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#777"># Return whatever value the delegate object returned.</span>
+      r
+    <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">Exception</span> =&gt; e
+      <span style="color:#777"># Trace an abnormal return from the method.</span>
+      <span style="color:#33B">@trace</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Raising: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e.class<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> from </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#777"># And re-raise whatever exception the delegate object raised.</span>
+      raise
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Return the object we delegate to.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">__delegate</span>
+    <span style="color:#33B">@o</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="synchronized-objects-by-delegation">8.9.3 Synchronized Objects by Delegation</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">synchronized</span>(o)
+  o.mutex.synchronize { <span style="color:#080;font-weight:bold">yield</span> }
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">synchronized</span>(o)
+  <span style="color:#080;font-weight:bold">if</span> block_given?
+    o.mutex.synchronize { <span style="color:#080;font-weight:bold">yield</span> }
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#036;font-weight:bold">SynchronizedObject</span>.new(o)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># A delegating wrapper class using method_missing for thread safety</span>
+<span style="color:#777"># Instead of extending Object and deleting our methods we just extend</span>
+<span style="color:#777"># BasicObject, which is defined in Ruby 1.9. BasicObject does not </span>
+<span style="color:#777"># inherit from Object or Kernel, so the methods of a BasicObject cannot</span>
+<span style="color:#777"># invoke any top-level methods: they are just not there.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SynchronizedObject</span>  &lt; <span style="color:#036;font-weight:bold">BasicObject</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(o); <span style="color:#33B">@delegate</span> = o;  <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">__delegate</span>; <span style="color:#33B">@delegate</span>; <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(*args, &amp;block)
+    <span style="color:#33B">@delegate</span>.mutex.synchronize {
+      <span style="color:#33B">@delegate</span>.send *args, &amp;block
+    }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-methods-with-classeval">8.10.1 Defining Methods with class_eval</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Module</span>
+  private     <span style="color:#777"># The methods that follow are both private</span>
+
+  <span style="color:#777"># This method works like attr_reader, but has a shorter name</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">readonly</span>(*syms)
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> syms.size == <span style="color:#00D">0</span>  <span style="color:#777"># If no arguments, do nothing</span>
+    code = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>                 <span style="color:#777"># Start with an empty string of code</span>
+    <span style="color:#777"># Generate a string of Ruby code to define attribute reader methods.</span>
+    <span style="color:#777"># Notice how the symbol is interpolated into the string of code.</span>
+    syms.each <span style="color:#080;font-weight:bold">do</span> |s|                     <span style="color:#777"># For each symbol</span>
+      code &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; @</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; end</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># The method definition</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#777"># Finally, class_eval the generated code to create instance methods.</span>
+    class_eval code
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This method works like attr_accessor, but has a shorter name.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">readwrite</span>(*syms)
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> syms.size == <span style="color:#00D">0</span>
+    code = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+    syms.each <span style="color:#080;font-weight:bold">do</span> |s|
+      code &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">; @</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> end</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+      code &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">=(value); @</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>s<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> = value; end</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    class_eval code
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-methods-with-definemethod">8.10.2 Defining Methods with define_method</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attributes <span style="color:#A60">:x</span> =&gt; <span style="color:#00D">0</span>, <span style="color:#A60">:y</span> =&gt; <span style="color:#00D">0</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attributes <span style="color:#606">x</span>:<span style="color:#00D">0</span>, <span style="color:#606">y</span>:<span style="color:#00D">0</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Module</span>
+  <span style="color:#777"># This method defines attribute reader and writer methods for named</span>
+  <span style="color:#777"># attributes, but expects a hash argument mapping attribute names to</span>
+  <span style="color:#777"># default values. The generated attribute reader methods return the</span>
+  <span style="color:#777"># default value if the instance variable has not yet been defined.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">attributes</span>(hash)
+    hash.each_pair <span style="color:#080;font-weight:bold">do</span> |symbol, default|   <span style="color:#777"># For each attribute/default pair</span>
+      getter = symbol                     <span style="color:#777"># Name of the getter method</span>
+      setter = <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>symbol<span style="font-weight:bold;color:#666">}</span></span><span style="color:#A60">=</span><span style="color:#740">&quot;</span></span>              <span style="color:#777"># Name of the setter method</span>
+      variable = <span style="color:#A60"><span style="color:#A60">:</span><span style="color:#740">&quot;</span><span style="color:#A60">@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>symbol<span style="font-weight:bold;color:#666">}</span></span><span style="color:#740">&quot;</span></span>            <span style="color:#777"># Name of the instance variable</span>
+      define_method getter <span style="color:#080;font-weight:bold">do</span>             <span style="color:#777"># Define the getter method</span>
+        <span style="color:#080;font-weight:bold">if</span> instance_variable_defined? variable
+          instance_variable_get variable  <span style="color:#777"># Return variable, if defined</span>
+        <span style="color:#080;font-weight:bold">else</span>
+          default                         <span style="color:#777"># Otherwise return default</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      define_method setter <span style="color:#080;font-weight:bold">do</span> |value|     <span style="color:#777"># Define setter method</span>
+        instance_variable_set variable,   <span style="color:#777"># Set the instance variable</span>
+                              value       <span style="color:#777"># To the argument value</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This method works like attributes, but defines class methods instead</span>
+  <span style="color:#777"># by invoking attributes on the eigenclass instead of on self.</span>
+  <span style="color:#777"># Note that the defined methods use class instance variables</span>
+  <span style="color:#777"># instead of regular class variables.  </span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">class_attrs</span>(hash)
+    eigenclass = <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+    eigenclass.class_eval { attributes(hash) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Both methods are private</span>
+  private <span style="color:#A60">:attributes</span>, <span style="color:#A60">:class_attrs</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="tracing-files-loaded-and-classes-defined">8.11.1 Tracing Files Loaded and Classes Defined</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">classtrace</span><span style="color:#710">'</span></span>
+<span style="color:#777">###########################</span>
+ruby -rclasstrace my_program.rb  --traceout <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">tmp</span><span style="color:#404">/</span></span>trace
+<span style="color:#777">###########################</span>
+<span style="color:#777"># We define this module to hold the global state we require, so that</span>
+<span style="color:#777"># we don't alter the global namespace any more than necessary.</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ClassTrace</span>
+  <span style="color:#777"># This array holds our list of files loaded and classes defined.</span>
+  <span style="color:#777"># Each element is a subarray holding the class defined or the</span>
+  <span style="color:#777"># file loaded and the stack frame where it was defined or loaded.</span>
+  <span style="color:#036;font-weight:bold">T</span> = []  <span style="color:#777"># Array to hold the files loaded</span>
+
+  <span style="color:#777"># Now define the constant OUT to specify where tracing output goes.</span>
+  <span style="color:#777"># This defaults to STDERR, but can also come from command-line arguments</span>
+  <span style="color:#080;font-weight:bold">if</span> x = <span style="color:#069">ARGV</span>.index(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--traceout</span><span style="color:#710">&quot;</span></span>)    <span style="color:#777"># If argument exists</span>
+    <span style="color:#036;font-weight:bold">OUT</span> = <span style="color:#036;font-weight:bold">File</span>.open(<span style="color:#069">ARGV</span>[x+<span style="color:#00D">1</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777"># Open the specified file</span>
+    <span style="color:#069">ARGV</span>[x,<span style="color:#00D">2</span>] = <span style="color:#069">nil</span>                  <span style="color:#777"># And remove the arguments</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#036;font-weight:bold">OUT</span> = <span style="color:#069">STDERR</span>                     <span style="color:#777"># Otherwise default to STDERR</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Alias chaining step 1: define aliases for the original methods</span>
+<span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">original_require</span> <span style="color:#06B;font-weight:bold">require</span>
+<span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">original_load</span> <span style="color:#06B;font-weight:bold">load</span>
+
+<span style="color:#777"># Alias chaining step 2: define new versions of the methods </span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">require</span>(file)
+  <span style="color:#036;font-weight:bold">ClassTrace</span>::<span style="color:#036;font-weight:bold">T</span> &lt;&lt; [file,caller[<span style="color:#00D">0</span>]]     <span style="color:#777"># Remember what was loaded where</span>
+  original_require(file)                <span style="color:#777"># Invoke the original method</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">load</span>(*args)
+  <span style="color:#036;font-weight:bold">ClassTrace</span>::<span style="color:#036;font-weight:bold">T</span> &lt;&lt; [args[<span style="color:#00D">0</span>],caller[<span style="color:#00D">0</span>]]  <span style="color:#777"># Remember what was loaded where</span>
+  original_load(*args)                  <span style="color:#777"># Invoke the original method</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This hook method is invoked each time a new class is defined</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Object</span>.<span style="color:#06B;font-weight:bold">inherited</span>(c)
+  <span style="color:#036;font-weight:bold">ClassTrace</span>::<span style="color:#036;font-weight:bold">T</span> &lt;&lt; [c,caller[<span style="color:#00D">0</span>]]        <span style="color:#777"># Remember what was defined where</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Kernel.at_exit registers a block to be run when the program exits</span>
+<span style="color:#777"># We use it to report the file and class data we collected</span>
+at_exit {
+  o = <span style="color:#036;font-weight:bold">ClassTrace</span>::<span style="color:#036;font-weight:bold">OUT</span>
+  o.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=</span><span style="color:#710">&quot;</span></span>*<span style="color:#00D">60</span>
+  o.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Files Loaded and Classes Defined:</span><span style="color:#710">&quot;</span></span>
+  o.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=</span><span style="color:#710">&quot;</span></span>*<span style="color:#00D">60</span>
+  <span style="color:#036;font-weight:bold">ClassTrace</span>::<span style="color:#036;font-weight:bold">T</span>.each <span style="color:#080;font-weight:bold">do</span> |what,where|
+    <span style="color:#080;font-weight:bold">if</span> what.is_a? <span style="color:#036;font-weight:bold">Class</span>  <span style="color:#777"># Report class (with hierarchy) defined</span>
+      o.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Defined: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>what.ancestors.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&lt;-</span><span style="color:#710">'</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> at </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>where<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>                 <span style="color:#777"># Report file loaded</span>
+      o.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Loaded: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>what<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> at </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>where<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+}
+</pre></div>
+</div>
+</div>
+
+<h4 id="tracing-files-loaded-and-classes-defined-1">8.11.1 Tracing Files Loaded and Classes Defined</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Define a Module.synchronize_method that alias chains instance methods</span>
+<span style="color:#777"># so they synchronize on the instance before running.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Module</span>
+  <span style="color:#777"># This is a helper function for alias chaining.</span>
+  <span style="color:#777"># Given a method name (as a string or symbol) and a prefix, create</span>
+  <span style="color:#777"># a unique alias for the method, and return the name of the alias</span>
+  <span style="color:#777"># as a symbol. Any punctuation characters in the original method name</span>
+  <span style="color:#777"># will be converted to numbers so that operators can be aliased.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create_alias</span>(original, prefix=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alias</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#777"># Stick the prefix on the original name and convert punctuation</span>
+    aka = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>prefix<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>original<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    aka.gsub!(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">([</span><span style="color:#D20">\=</span><span style="color:#D20">\|</span><span style="color:#D20">\&amp;</span><span style="color:#D20">\+</span><span style="color:#D20">\-</span><span style="color:#D20">\*</span><span style="color:#D20">\/</span><span style="color:#D20">\^</span><span style="color:#D20">\!</span><span style="color:#D20">\?</span><span style="color:#D20">\~</span><span style="color:#D20">\%</span><span style="color:#D20">\&lt;</span><span style="color:#D20">\&gt;</span><span style="color:#D20">\[</span><span style="color:#D20">\]</span><span style="color:#808">])</span><span style="color:#404">/</span></span>) {
+      num = <span style="color:#d70">$1</span>[<span style="color:#00D">0</span>]                       <span style="color:#777"># Ruby 1.8 character -&gt; ordinal</span>
+      num = num.ord <span style="color:#080;font-weight:bold">if</span> num.is_a? <span style="color:#036;font-weight:bold">String</span> <span style="color:#777"># Ruby 1.9 character -&gt; ordinal</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">_</span><span style="color:#710">'</span></span> + num.to_s
+    }
+    
+    <span style="color:#777"># Keep appending underscores until we get a name that is not in use</span>
+    aka += <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">_</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">while</span> method_defined? aka <span style="color:#080;font-weight:bold">or</span> private_method_defined? aka
+
+    aka = aka.to_sym            <span style="color:#777"># Convert the alias name to a symbol</span>
+    alias_method aka, original  <span style="color:#777"># Actually create the alias</span>
+    aka                         <span style="color:#777"># Return the alias name</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Alias chain the named method to add synchronization</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">synchronize_method</span>(m)
+    <span style="color:#777"># First, make an alias for the unsynchronized version of the method.</span>
+    aka = create_alias(m, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">unsync</span><span style="color:#710">&quot;</span></span>) 
+    <span style="color:#777"># Now redefine the original to invoke the alias in a synchronized block.</span>
+    <span style="color:#777"># We want the defined  method to be able to accept blocks, so we</span>
+    <span style="color:#777"># can't use define_method, and must instead evaluate a string with </span>
+    <span style="color:#777"># class_eval. Note that everything between %Q{ and the matching } </span>
+    <span style="color:#777"># is a double-quoted string, not a block. </span>
+    class_eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20">
+      def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(*args, &amp;block)
+        synchronized(self) </span><span style="color:#D20">{</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>aka<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(*args, &amp;block) </span><span style="color:#D20">}</span><span style="color:#D20">
+      end
+    </span><span style="color:#710">}</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This global synchronized method can now be used in three different ways.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">synchronized</span>(*args)
+  <span style="color:#777"># Case 1: with one argument and a block, synchronize on the object</span>
+  <span style="color:#777"># and execute the block</span>
+  <span style="color:#080;font-weight:bold">if</span> args.size == <span style="color:#00D">1</span> &amp;&amp; block_given?
+    args[<span style="color:#00D">0</span>].mutex.synchronize { <span style="color:#080;font-weight:bold">yield</span> }
+
+  <span style="color:#777"># Case two: with one argument that is not a symbol and no block</span>
+  <span style="color:#777"># return a SynchronizedObject wrapper</span>
+  <span style="color:#080;font-weight:bold">elsif</span> args.size == <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> args[<span style="color:#00D">0</span>].is_a? <span style="color:#036;font-weight:bold">Symbol</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> block_given?
+    <span style="color:#036;font-weight:bold">SynchronizedObject</span>.new(args[<span style="color:#00D">0</span>])
+
+  <span style="color:#777"># Case three: when invoked on a module with no block, alias chain the</span>
+  <span style="color:#777"># named methods to add synchronization. Or, if there are no arguments, </span>
+  <span style="color:#777"># then alias chain the next method defined.</span>
+  <span style="color:#080;font-weight:bold">elsif</span> <span style="color:#069">self</span>.is_a? <span style="color:#036;font-weight:bold">Module</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> block_given?
+    <span style="color:#080;font-weight:bold">if</span> (args.size &gt; <span style="color:#00D">0</span>) <span style="color:#777"># Synchronize the named methods</span>
+      args.each {|m| <span style="color:#069">self</span>.synchronize_method(m) }
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#777"># If no methods are specified synchronize the next method defined</span>
+      eigenclass = <span style="color:#080;font-weight:bold">class</span>&lt;&lt;<span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span> 
+      eigenclass.class_eval <span style="color:#080;font-weight:bold">do</span> <span style="color:#777"># Use eigenclass to define class methods</span>
+        <span style="color:#777"># Define method_added for notification when next method is defined</span>
+        define_method <span style="color:#A60">:method_added</span> <span style="color:#080;font-weight:bold">do</span> |name|
+          <span style="color:#777"># First remove this hook method</span>
+          eigenclass.class_eval { remove_method <span style="color:#A60">:method_added</span> }
+          <span style="color:#777"># Next, synchronize the method that was just added</span>
+          <span style="color:#069">self</span>.synchronize_method name
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Case 4: any other invocation is an error</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Invalid arguments to synchronize()</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="chaining-methods-for-tracing">8.11.3 Chaining Methods for Tracing</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Define trace! and untrace! instance methods for all objects.</span>
+<span style="color:#777"># trace! &quot;chains&quot; the named methods by defining singleton methods</span>
+<span style="color:#777"># that add tracing functionality and then use super to call the original.</span>
+<span style="color:#777"># untrace! deletes the singleton methods to remove tracing.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#777"># Trace the specified methods, sending output to STDERR.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">trace!</span>(*methods)
+    <span style="color:#33B">@_traced</span> = <span style="color:#33B">@_traced</span> || []    <span style="color:#777"># Remember the set of traced methods</span>
+
+    <span style="color:#777"># If no methods were specified, use all public methods defined </span>
+    <span style="color:#777"># directly (not inherited) by the class of this object </span>
+    methods = public_methods(<span style="color:#069">false</span>) <span style="color:#080;font-weight:bold">if</span> methods.size == <span style="color:#00D">0</span>
+
+    methods.map! {|m| m.to_sym } <span style="color:#777"># Convert any strings to symbols</span>
+    methods -= <span style="color:#33B">@_traced</span>          <span style="color:#777"># Remove methods that are already traced</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> methods.empty?     <span style="color:#777"># Return early if there is nothing to do</span>
+    <span style="color:#33B">@_traced</span> |= methods          <span style="color:#777"># Add methods to set of traced methods</span>
+
+    <span style="color:#777"># Trace the fact that we're starting to trace these methods</span>
+    <span style="color:#069">STDERR</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Tracing </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>methods.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">, </span><span style="color:#710">'</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>object_id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># Singleton methods are defined in the eigenclass</span>
+    eigenclass = <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+
+    methods.each <span style="color:#080;font-weight:bold">do</span> |m|         <span style="color:#777"># For each method m</span>
+      <span style="color:#777"># Define a traced singleton version of the method m.</span>
+      <span style="color:#777"># Output tracing information and use super to invoke the</span>
+      <span style="color:#777"># instance method that it is tracing.</span>
+      <span style="color:#777"># We want the defined  methods to be able to accept blocks, so we</span>
+      <span style="color:#777"># can't use define_method, and must instead evaluate a string.</span>
+      <span style="color:#777"># Note that everything between %Q{ and the matching } is a </span>
+      <span style="color:#777"># double-quoted string, not a block. Also note that there are </span>
+      <span style="color:#777"># two levels of string interpolations here. #{} is interpolated</span>
+      <span style="color:#777"># when the singleton method is defined. And \#{} is interpolated </span>
+      <span style="color:#777"># when the singleton method is invoked.</span>
+      eigenclass.class_eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20">
+        def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(*args, &amp;block)
+          begin
+            STDERR &lt;&lt; &quot;Entering: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(</span><span style="color:#b0b">\#</span><span style="color:#D20">{</span><span style="color:#D20">args.join(', ')</span><span style="color:#D20">}</span><span style="color:#D20">)</span><span style="color:#b0b">\n</span><span style="color:#D20">&quot;
+            result = super
+            STDERR &lt;&lt; &quot;Exiting: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> with </span><span style="color:#b0b">\#</span><span style="color:#D20">{</span><span style="color:#D20">result</span><span style="color:#D20">}</span><span style="color:#b0b">\n</span><span style="color:#D20">&quot;
+            result
+          rescue
+            STDERR &lt;&lt; &quot;Aborting: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>m<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="color:#b0b">\#</span><span style="color:#D20">{</span><span style="color:#D20">$!.class</span><span style="color:#D20">}</span><span style="color:#D20">: </span><span style="color:#b0b">\#</span><span style="color:#D20">{</span><span style="color:#D20">$!.message</span><span style="color:#D20">}</span><span style="color:#D20">&quot;
+            raise
+          end
+        end
+      </span><span style="color:#710">}</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Untrace the specified methods or all traced methods</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">untrace!</span>(*methods)
+    <span style="color:#080;font-weight:bold">if</span> methods.size == <span style="color:#00D">0</span>    <span style="color:#777"># If no methods specified untrace</span>
+      methods = <span style="color:#33B">@_traced</span>    <span style="color:#777"># all currently traced methods</span>
+      <span style="color:#069">STDERR</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Untracing all methods on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>object_id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>                    <span style="color:#777"># Otherwise, untrace</span>
+      methods.map! {|m| m.to_sym }  <span style="color:#777"># Convert string to symbols</span>
+      methods &amp;= <span style="color:#33B">@_traced</span>   <span style="color:#777"># all specified methods that are traced</span>
+      <span style="color:#069">STDERR</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Untracing </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>methods.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">, </span><span style="color:#710">'</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>object_id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#33B">@_traced</span> -= methods     <span style="color:#777"># Remove them from our set of traced methods</span>
+
+    <span style="color:#777"># Remove the traced singleton methods from the eigenclass</span>
+    <span style="color:#777"># Note that we class_eval a block here, not a string</span>
+    (<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>).class_eval <span style="color:#080;font-weight:bold">do</span>
+      methods.each <span style="color:#080;font-weight:bold">do</span> |m|
+        remove_method m     <span style="color:#777"># undef_method would not work correctly</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># If no methods are traced anymore, remove our instance var </span>
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@_traced</span>.empty?
+      remove_instance_variable <span style="color:#A60">:@_traced</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="simple-xml-output-with-methodmissing">8.12.1 Simple XML Output with method_missing</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>pagetitle = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Test Page for XML.generate</span><span style="color:#710">&quot;</span></span>
+<span style="color:#036;font-weight:bold">XML</span>.generate(<span style="color:#069">STDOUT</span>) <span style="color:#080;font-weight:bold">do</span> 
+  html <span style="color:#080;font-weight:bold">do</span>
+    head <span style="color:#080;font-weight:bold">do</span>
+      title { pagetitle }
+      comment <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a test</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    body <span style="color:#080;font-weight:bold">do</span>
+      h1(<span style="color:#A60">:style</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">font-family:sans-serif</span><span style="color:#710">&quot;</span></span>) { pagetitle }
+      ul <span style="color:#A60">:type</span>=&gt;<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">square</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+        li { <span style="color:#036;font-weight:bold">Time</span>.now }
+        li { <span style="color:#069">RUBY_VERSION</span> }
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+ &lt;html&gt;
+ &lt;head&gt;
+ &lt;title&gt;<span style="color:#036;font-weight:bold">Test</span> <span style="color:#036;font-weight:bold">Page</span> <span style="color:#080;font-weight:bold">for</span> <span style="color:#036;font-weight:bold">XML</span>.generate&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">title&gt;
+ &lt;!-- This is a test --&gt;
+ &lt;</span><span style="color:#404">/</span></span>head&gt;
+ &lt;body&gt;&lt;h1 style=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">font-family:sans-serif</span><span style="color:#710">'</span></span>&gt;<span style="color:#036;font-weight:bold">Test</span> <span style="color:#036;font-weight:bold">Page</span> <span style="color:#080;font-weight:bold">for</span> <span style="color:#036;font-weight:bold">XML</span>.generate&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">h1&gt;
+ &lt;ul type='square'&gt;
+ &lt;li&gt;2007-08-19 16:19:58 -0700&lt;</span><span style="color:#404">/</span></span>li&gt;
+ &lt;li&gt;<span style="color:#60E">1.9</span>.<span style="color:#F00;background-color:#FAA">0</span>&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">li&gt;
+ &lt;</span><span style="color:#404">/</span><span style="color:#C2C">u</span></span>l&gt;
+ &lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">body&gt;
+ &lt;</span><span style="color:#404">/</span></span>html&gt;
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">XML</span>
+  <span style="color:#777"># Create an instance of this class, specifying a stream or object to</span>
+  <span style="color:#777"># hold the output. This can be any object that responds to &lt;&lt;(String).</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(out)
+    <span style="color:#33B">@out</span> = out  <span style="color:#777"># Remember where to send our output</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output the specified object as CDATA, return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">content</span>(text)
+    <span style="color:#33B">@out</span> &lt;&lt; text.to_s
+    <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output the specified object as a comment, return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">comment</span>(text)
+    <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;!-- </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> --&gt;</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output a tag with the specified name and attributes.</span>
+  <span style="color:#777"># If there is a block invoke it to output or return content.</span>
+  <span style="color:#777"># Return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">tag</span>(tagname, attributes={})
+    <span style="color:#777"># Output the tag name</span>
+    <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># Output the attributes</span>
+    attributes.each {|attr,value| <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>attr<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">='</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">'</span><span style="color:#710">&quot;</span></span> }
+    
+    <span style="color:#080;font-weight:bold">if</span> block_given?
+      <span style="color:#777"># This block has content</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&gt;</span><span style="color:#710">'</span></span>             <span style="color:#777"># End the opening tag</span>
+      content = <span style="color:#080;font-weight:bold">yield</span>         <span style="color:#777"># Invoke the block to output or return content</span>
+      <span style="color:#080;font-weight:bold">if</span> content              <span style="color:#777"># If any content returned</span>
+        <span style="color:#33B">@out</span> &lt;&lt; content.to_s  <span style="color:#777"># Output it as a string</span>
+      <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&gt;</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Close the tag</span>
+    <span style="color:#080;font-weight:bold">else</span> 
+      <span style="color:#777"># Otherwise, this is an empty tag, so just close it.</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/&gt;</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#069">nil</span> <span style="color:#777"># Tags output themselves, so they don't return any content</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># The code below is what changes this from an ordinary class into a DSL.</span>
+  <span style="color:#777"># First: any unknown method is treated as the name of a tag.</span>
+  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">method_missing</span> <span style="color:#06B;font-weight:bold">tag</span>
+
+  <span style="color:#777"># Second: run a block in a new instance of the class.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">generate</span>(out, &amp;block)
+    <span style="color:#036;font-weight:bold">XML</span>.new(out).instance_eval(&amp;block)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="validated-xml-output-with-method-generation">8.12.2 Validated XML Output with Method Generation</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HTMLForm</span> &lt; <span style="color:#036;font-weight:bold">XMLGrammar</span>
+  element <span style="color:#A60">:form</span>, <span style="color:#A60">:action</span> =&gt; <span style="color:#036;font-weight:bold">REQ</span>,
+                 <span style="color:#A60">:method</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GET</span><span style="color:#710">&quot;</span></span>,
+                 <span style="color:#A60">:enctype</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/x-www-form-urlencoded</span><span style="color:#710">&quot;</span></span>,
+                 <span style="color:#A60">:name</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>
+  element <span style="color:#A60">:input</span>, <span style="color:#A60">:type</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:name</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>, <span style="color:#A60">:value</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>,
+                  <span style="color:#A60">:maxlength</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>, <span style="color:#A60">:size</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>, <span style="color:#A60">:src</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>,
+                  <span style="color:#A60">:checked</span> =&gt; <span style="color:#036;font-weight:bold">BOOL</span>, <span style="color:#A60">:disabled</span> =&gt; <span style="color:#036;font-weight:bold">BOOL</span>, <span style="color:#A60">:readonly</span> =&gt; <span style="color:#036;font-weight:bold">BOOL</span>
+  element <span style="color:#A60">:textarea</span>, <span style="color:#A60">:rows</span> =&gt; <span style="color:#036;font-weight:bold">REQ</span>, <span style="color:#A60">:cols</span> =&gt; <span style="color:#036;font-weight:bold">REQ</span>, <span style="color:#A60">:name</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>,
+                     <span style="color:#A60">:disabled</span> =&gt; <span style="color:#036;font-weight:bold">BOOL</span>, <span style="color:#A60">:readonly</span> =&gt; <span style="color:#036;font-weight:bold">BOOL</span>
+  element <span style="color:#A60">:button</span>, <span style="color:#A60">:name</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>, <span style="color:#A60">:value</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>,
+                   <span style="color:#A60">:type</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">submit</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:disabled</span> =&gt; <span style="color:#036;font-weight:bold">OPT</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">HTMLForm</span>.generate(<span style="color:#069">STDOUT</span>) <span style="color:#080;font-weight:bold">do</span>
+  comment <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a simple HTML form</span><span style="color:#710">&quot;</span></span>
+  form <span style="color:#A60">:name</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">registration</span><span style="color:#710">&quot;</span></span>,
+       <span style="color:#A60">:action</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.example.com/register.cgi</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    content <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Name:</span><span style="color:#710">&quot;</span></span>
+    input <span style="color:#A60">:name</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span>
+    content <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Address:</span><span style="color:#710">&quot;</span></span>
+    textarea <span style="color:#A60">:name</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">address</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:rows</span>=&gt;<span style="color:#00D">6</span>, <span style="color:#A60">:cols</span>=&gt;<span style="color:#00D">40</span> <span style="color:#080;font-weight:bold">do</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please enter your mailing address here</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    button { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Submit</span><span style="color:#710">&quot;</span></span> }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">XMLGrammar</span>
+  <span style="color:#777"># Create an instance of this class, specifying a stream or object to</span>
+  <span style="color:#777"># hold the output. This can be any object that responds to &lt;&lt;(String).</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(out)
+    <span style="color:#33B">@out</span> = out  <span style="color:#777"># Remember where to send our output</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Invoke the block in an instance that outputs to the specified stream.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">generate</span>(out, &amp;block)
+    new(out).instance_eval(&amp;block)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Define an allowed element (or tag) in the grammar.</span>
+  <span style="color:#777"># This class method is the grammar-specification DSL</span>
+  <span style="color:#777"># and defines the methods that constitute the XML-output DSL.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">element</span>(tagname, attributes={})
+    <span style="color:#33B">@allowed_attributes</span> ||= {}
+    <span style="color:#33B">@allowed_attributes</span>[tagname] = attributes
+
+    class_eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20">
+      def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(attributes=</span><span style="color:#D20">{</span><span style="color:#D20">}</span><span style="color:#D20">, &amp;block)
+        tag(:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">,attributes,&amp;block)
+      end
+    </span><span style="color:#710">}</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># These are constants used when defining attribute values.</span>
+  <span style="color:#036;font-weight:bold">OPT</span> = <span style="color:#A60">:opt</span>     <span style="color:#777"># for optional attributes</span>
+  <span style="color:#036;font-weight:bold">REQ</span> = <span style="color:#A60">:req</span>     <span style="color:#777"># for required attributes</span>
+  <span style="color:#036;font-weight:bold">BOOL</span> = <span style="color:#A60">:bool</span>   <span style="color:#777"># for attributes whose value is their own name</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">allowed_attributes</span>
+    <span style="color:#33B">@allowed_attributes</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output the specified object as CDATA, return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">content</span>(text)
+    <span style="color:#33B">@out</span> &lt;&lt; text.to_s
+    <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output the specified object as a comment, return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">comment</span>(text)
+    <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;!-- </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> --&gt;</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Output a tag with the specified name and attribute.</span>
+  <span style="color:#777"># If there is a block, invoke it to output or return content.</span>
+  <span style="color:#777"># Return nil.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">tag</span>(tagname, attributes={})
+    <span style="color:#777"># Output the tag name</span>
+    <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># Get the allowed attributes for this tag.</span>
+    allowed = <span style="color:#069">self</span>.class.allowed_attributes[tagname]
+
+    <span style="color:#777"># First, make sure that each of the attributes is allowed.</span>
+    <span style="color:#777"># Assuming they are allowed, output all of the specified ones.</span>
+    attributes.each_pair <span style="color:#080;font-weight:bold">do</span> |key,value|
+      raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">unknown attribute: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> allowed.include?(key)
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">='</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">'</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># Now look through the allowed attributes, checking for </span>
+    <span style="color:#777"># required attributes that were omitted and for attributes with</span>
+    <span style="color:#777"># default values that we can output.</span>
+    allowed.each_pair <span style="color:#080;font-weight:bold">do</span> |key,value|
+      <span style="color:#777"># If this attribute was already output, do nothing.</span>
+      <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> attributes.has_key? key
+      <span style="color:#080;font-weight:bold">if</span> (value == <span style="color:#036;font-weight:bold">REQ</span>)
+        raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">required attribute '</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">' missing in &lt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&gt;</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">elsif</span> value.is_a? <span style="color:#036;font-weight:bold">String</span>
+        <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">='</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>value<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">'</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">if</span> block_given?
+      <span style="color:#777"># This block has content</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">&gt;</span><span style="color:#710">'</span></span>             <span style="color:#777"># End the opening tag</span>
+      content = <span style="color:#080;font-weight:bold">yield</span>         <span style="color:#777"># Invoke the block to output or return content</span>
+      <span style="color:#080;font-weight:bold">if</span> content              <span style="color:#777"># If any content returned</span>
+        <span style="color:#33B">@out</span> &lt;&lt; content.to_s  <span style="color:#777"># Output it as a string</span>
+      <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tagname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&gt;</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># Close the tag</span>
+    <span style="color:#080;font-weight:bold">else</span> 
+      <span style="color:#777"># Otherwise, this is an empty tag, so just close it.</span>
+      <span style="color:#33B">@out</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/&gt;</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#069">nil</span> <span style="color:#777"># Tags output themselves, so they don't return any content.</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

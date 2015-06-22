@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : IRB::OutputMethod  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:22:34 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: IRB::OutputMethod (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>irb/output-method.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-parse_printf_format">#parse_printf_format</a></li>
+          
+          <li><a href="#method-i-pp">#pp</a></li>
+          
+          <li><a href="#method-i-ppx">#ppx</a></li>
+          
+          <li><a href="#method-i-print">#print</a></li>
+          
+          <li><a href="#method-i-printf">#printf</a></li>
+          
+          <li><a href="#method-i-printn">#printn</a></li>
+          
+          <li><a href="#method-i-puts">#puts</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../IRB/Abort.html">IRB::Abort</a></li>
+        
+          
+          
+          <li><a href="../IRB/Context.html">IRB::Context</a></li>
+        
+          
+          
+          <li><a href="../IRB/ContextExtender.html">IRB::ContextExtender</a></li>
+        
+          
+          
+          <li><a href="../IRB/ExtendCommandBundle.html">IRB::ExtendCommandBundle</a></li>
+        
+          
+          
+          <li><a href="../IRB/FileInputMethod.html">IRB::FileInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/Frame.html">IRB::Frame</a></li>
+        
+          
+          
+          <li><a href="../IRB/InputMethod.html">IRB::InputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/Inspector.html">IRB::Inspector</a></li>
+        
+          
+          
+          <li><a href="../IRB/Irb.html">IRB::Irb</a></li>
+        
+          
+          
+          <li><a href="../IRB/IrbLoader.html">IRB::IrbLoader</a></li>
+        
+          
+          
+          <li><a href="../IRB/JobManager.html">IRB::JobManager</a></li>
+        
+          
+          
+          <li><a href="../IRB/LoadAbort.html">IRB::LoadAbort</a></li>
+        
+          
+          
+          <li><a href="../IRB/MethodExtender.html">IRB::MethodExtender</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier.html">IRB::Notifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/AbstractNotifier.html">IRB::Notifier::AbstractNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/CompositeNotifier.html">IRB::Notifier::CompositeNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/LeveledNotifier.html">IRB::Notifier::LeveledNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/NoMsgNotifier.html">IRB::Notifier::NoMsgNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/OutputMethod.html">IRB::OutputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/ReadlineInputMethod.html">IRB::ReadlineInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/StdioInputMethod.html">IRB::StdioInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/StdioOutputMethod.html">IRB::StdioOutputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/WorkSpace.html">IRB::WorkSpace</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../XMP.html">XMP</a></li>
+        
+          
+          
+          <li><a href="../XMP/StringInputMethod.html">XMP::StringInputMethod</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">IRB::OutputMethod</h1>
+
+    <div id="description" class="description">
+      
+<p>An abstract output class for IO in irb. This is mainly used internally by
+<a href="Notifier.html">IRB::Notifier</a>. You can define your own output
+method to use with <a href="Irb.html#method-c-new">IRB::Irb.new</a>, or <a
+href="Context.html#method-c-new">IRB::Context.new</a></p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="parse_printf_format-method" class="method-detail ">
+          <a name="method-i-parse_printf_format"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">parse_printf_format</span><span
+              class="method-args">(format, opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns an array of the given <code>format</code> and <code>opts</code> to
+be used by Kernel#sprintf, if there was a successful Regexp match in the
+given <code>format</code> from <a
+href="OutputMethod.html#method-i-printf">printf</a></p>
+
+<pre>%
+&lt;flag&gt;  [#0- +]
+&lt;minimum field width&gt; (\*|\*[1-9][0-9]*\$|[1-9][0-9]*)
+&lt;precision&gt;.(\*|\*[1-9][0-9]*\$|[1-9][0-9]*|)?
+#&lt;length modifier&gt;(hh|h|l|ll|L|q|j|z|t)
+&lt;conversion specifier&gt;[diouxXeEfgGcsb%]</pre>
+            
+
+            
+            <div class="method-source-code" id="parse_printf_format-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_printf_format</span>(<span class="ruby-identifier">format</span>, <span class="ruby-identifier">opts</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">format</span>, <span class="ruby-identifier">opts</span> <span class="ruby-keyword">if</span> <span class="ruby-node">$1</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- parse_printf_format-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- parse_printf_format-method -->
+      
+        <div id="pp-method" class="method-detail ">
+          <a name="method-i-pp"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pp</span><span
+              class="method-args">(*objs)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Prints the given <code>objs</code> calling Object#inspect on each.</p>
+
+<p>See <a href="OutputMethod.html#method-i-puts">puts</a> for more detail.</p>
+            
+
+            
+            <div class="method-source-code" id="pp-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pp</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">inspect</span>})
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- pp-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pp-method -->
+      
+        <div id="ppx-method" class="method-detail ">
+          <a name="method-i-ppx"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ppx</span><span
+              class="method-args">(prefix, *objs)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Prints the given <code>objs</code> calling Object#inspect on each and
+appending the given <code>prefix</code>.</p>
+
+<p>See <a href="OutputMethod.html#method-i-puts">puts</a> for more detail.</p>
+            
+
+            
+            <div class="method-source-code" id="ppx-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 77</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ppx</span>(<span class="ruby-identifier">prefix</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>)
+  <span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> <span class="ruby-identifier">prefix</span><span class="ruby-operator">+</span><span class="ruby-identifier">obj</span>.<span class="ruby-identifier">inspect</span>})
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- ppx-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ppx-method -->
+      
+        <div id="print-method" class="method-detail ">
+          <a name="method-i-print"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">print</span><span
+              class="method-args">(*opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Open this method to implement your own output method, raises a
+NotImplementedError if you don’t define <a
+href="OutputMethod.html#method-i-print">print</a> in your own class.</p>
+            
+
+            
+            <div class="method-source-code" id="print-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+  <span class="ruby-constant">OutputMethod</span>.<span class="ruby-constant">Raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-string">&quot;print&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- print-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- print-method -->
+      
+        <div id="printf-method" class="method-detail ">
+          <a name="method-i-printf"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">printf</span><span
+              class="method-args">(format, *opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Extends IO#printf to format the given <code>opts</code> for Kernel#sprintf
+using <a
+href="OutputMethod.html#method-i-parse_printf_format">parse_printf_format</a></p>
+            
+
+            
+            <div class="method-source-code" id="printf-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">printf</span>(<span class="ruby-identifier">format</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-regexp">/(%*)%I/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">format</span>
+    <span class="ruby-identifier">format</span>, <span class="ruby-identifier">opts</span> = <span class="ruby-identifier">parse_printf_format</span>(<span class="ruby-identifier">format</span>, <span class="ruby-identifier">opts</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-identifier">format</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- printf-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- printf-method -->
+      
+        <div id="printn-method" class="method-detail ">
+          <a name="method-i-printn"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">printn</span><span
+              class="method-args">(*opts)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Prints the given <code>opts</code>, with a newline delimiter.</p>
+            
+
+            
+            <div class="method-source-code" id="printn-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">printn</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+  <span class="ruby-identifier">print</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>), <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- printn-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- printn-method -->
+      
+        <div id="puts-method" class="method-detail ">
+          <a name="method-i-puts"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">puts</span><span
+              class="method-args">(*objs)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Calls <a href="OutputMethod.html#method-i-print">print</a> on each element
+in the given <code>objs</code>, followed by a newline character.</p>
+            
+
+            
+            <div class="method-source-code" id="puts-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/output-method.rb, line 59</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">puts</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">objs</span>)
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">obj</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">objs</span>
+    <span class="ruby-identifier">print</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">obj</span>)
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- puts-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- puts-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_OutputMethod_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_OutputMethod_versioned").load("/associated/2_2_0/OutputMethod.html");</script> <div id='tx_OutputMethod' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_OutputMethod").load("/associated/OutputMethod.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_OutputMethod.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

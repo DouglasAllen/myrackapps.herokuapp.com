@@ -1,0 +1,1300 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+double iauS06(double date1, double date2, double x, double y)
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - -
+**   i a u S 0 6
+**  - - - - - - -
+**
+**  The CIO locator s, positioning the Celestial Intermediate Origin on
+**  the equator of the Celestial Intermediate Pole, given the CIP's X,Y
+**  coordinates.  Compatible with IAU 2006</span><span style="color:#404">/</span></span><span style="color:#00D">2000</span><span style="color:#036;font-weight:bold">A</span> precession-nutation.
+**
+**  <span style="color:#606">Status</span>:  canonical model.
+**
+**  <span style="color:#606">Given</span>:
+**     date1,date2   double    <span style="color:#036;font-weight:bold">TT</span> as a <span style="color:#00D">2</span>-part <span style="color:#036;font-weight:bold">Julian</span> <span style="color:#036;font-weight:bold">Date</span> (<span style="color:#036;font-weight:bold">Note</span> <span style="color:#00D">1</span>)
+**     x,y           double    <span style="color:#036;font-weight:bold">CIP</span> coordinates (<span style="color:#036;font-weight:bold">Note</span> <span style="color:#00D">3</span>)
+**
+**  <span style="color:#036;font-weight:bold">Returned</span> (function value):
+**                   double    the <span style="color:#036;font-weight:bold">CIO</span> locator s <span style="color:#080;font-weight:bold">in</span> radians (<span style="color:#036;font-weight:bold">Note</span> <span style="color:#00D">2</span>)
+**
+**  <span style="color:#606">Notes</span>:
+**
+**  <span style="color:#00D">1</span>) <span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">TT</span> date date1+date2 is a <span style="color:#036;font-weight:bold">Julian</span> <span style="color:#036;font-weight:bold">Date</span>, apportioned <span style="color:#080;font-weight:bold">in</span> any
+**     convenient way between the two arguments.  For example,
+**     JD(<span style="color:#036;font-weight:bold">TT</span>)=<span style="color:#60E">2450123.7</span> could be expressed <span style="color:#080;font-weight:bold">in</span> any of these ways,
+**     among <span style="color:#606">others</span>:
+**
+**            date1          date2
+**
+**         <span style="color:#60E">2450123.7</span>           <span style="color:#60E">0.0</span>       (<span style="color:#036;font-weight:bold">JD</span> method)
+**         <span style="color:#60E">2451545.0</span>       -<span style="color:#60E">1421.3</span>       (<span style="color:#036;font-weight:bold">J2000</span> method)
+**         <span style="color:#60E">2400000.5</span>       <span style="color:#60E">50123.2</span>       (<span style="color:#036;font-weight:bold">MJD</span> method)
+**         <span style="color:#60E">2450123.5</span>           <span style="color:#60E">0.2</span>       (date &amp; time method)
+**
+**     <span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">JD</span> method is the most natural <span style="color:#080;font-weight:bold">and</span> convenient to use <span style="color:#080;font-weight:bold">in</span>
+**     cases where the loss of several decimal digits of resolution
+**     is acceptable.  The <span style="color:#036;font-weight:bold">J2000</span> method is best matched to the way
+**     the argument is handled internally <span style="color:#080;font-weight:bold">and</span> will deliver the
+**     optimum resolution.  The <span style="color:#036;font-weight:bold">MJD</span> method <span style="color:#080;font-weight:bold">and</span> the date &amp; time methods
+**     are both good compromises between resolution <span style="color:#080;font-weight:bold">and</span> convenience.
+**
+**  <span style="color:#00D">2</span>) <span style="color:#036;font-weight:bold">The</span> <span style="color:#036;font-weight:bold">CIO</span> locator s is the difference between the right ascensions
+**     of the same point <span style="color:#080;font-weight:bold">in</span> two <span style="color:#606">systems</span>:  the two systems are the <span style="color:#036;font-weight:bold">GCRS</span>
+**     <span style="color:#080;font-weight:bold">and</span> the <span style="color:#036;font-weight:bold">CIP</span>,<span style="color:#036;font-weight:bold">CIO</span>, <span style="color:#080;font-weight:bold">and</span> the point is the ascending node of the
+**     <span style="color:#036;font-weight:bold">CIP</span> equator.  The quantity s remains below <span style="color:#60E">0.1</span> arcsecond
+**     throughout <span style="color:#00D">1900</span>-<span style="color:#00D">2100</span>.
+**
+**  <span style="color:#00D">3</span>) <span style="color:#036;font-weight:bold">The</span> series used to compute s is <span style="color:#080;font-weight:bold">in</span> fact <span style="color:#080;font-weight:bold">for</span> s+<span style="color:#036;font-weight:bold">XY</span>/<span style="color:#00D">2</span>, where <span style="color:#036;font-weight:bold">X</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">Y</span>
+**     are the x <span style="color:#080;font-weight:bold">and</span> y components of the <span style="color:#036;font-weight:bold">CIP</span> unit vector;  this series
+**     is more compact than a direct series <span style="color:#080;font-weight:bold">for</span> s would be.  This
+**     function requires <span style="color:#036;font-weight:bold">X</span>,<span style="color:#036;font-weight:bold">Y</span> to be supplied by the caller, who is
+**     responsible <span style="color:#080;font-weight:bold">for</span> providing values that are consistent with the
+**     supplied date.
+**
+**  <span style="color:#00D">4</span>) <span style="color:#036;font-weight:bold">The</span> model is consistent with the <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">P03</span><span style="color:#710">&quot;</span></span> precession (<span style="color:#036;font-weight:bold">Capitaine</span> et
+**     al. <span style="color:#F00;background-color:#FAA">2003</span>), adopted by <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#00D">2006</span> <span style="color:#036;font-weight:bold">Resolution</span> <span style="color:#00D">1</span>, <span style="color:#00D">2006</span>, <span style="color:#080;font-weight:bold">and</span> the
+**     <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#00D">2000</span><span style="color:#036;font-weight:bold">A</span> nutation (with <span style="color:#036;font-weight:bold">P03</span> adjustments).
+**
+**  <span style="color:#606">Called</span>:
+**     iauFal03     mean anomaly of the <span style="color:#036;font-weight:bold">Moon</span>
+**     iauFalp03    mean anomaly of the <span style="color:#036;font-weight:bold">Sun</span>
+**     iauFaf03     mean argument of the latitude of the <span style="color:#036;font-weight:bold">Moon</span>
+**     iauFad03     mean elongation of the <span style="color:#036;font-weight:bold">Moon</span> from the <span style="color:#036;font-weight:bold">Sun</span>
+**     iauFaom03    mean longitude of the <span style="color:#036;font-weight:bold">Moon</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">s ascending node
+**     iauFave03    mean longitude of Venus
+**     iauFae03     mean longitude of Earth
+**     iauFapa03    general accumulated precession in longitude
+**
+**  References:
+**
+**     Capitaine, N., Wallace, P.T. &amp; Chapront, J., 2003, Astron.
+**     Astrophys. 432, 355
+**
+**     McCarthy, D.D., Petit, G. (eds.) 2004, IERS Conventions (2003),
+**     IERS Technical Note No. 32, BKG
+**
+**  This revision:  2009 December 17
+**
+**  Original version 2012-03-01
+**
+**  Copyright (C) 2013 Naoki Arita.  See notes at end.
+*/
+{
+/* Time since J2000.0, in Julian centuries */
+   double t;
+
+/* Miscellaneous */
+   int i, j;
+   double a, w0, w1, w2, w3, w4, w5;
+
+/* Fundamental arguments */
+   double fa[8];
+
+/* Returned value */
+   double s;
+
+/* --------------------- */
+/* The series for s+XY/2 */
+/* --------------------- */
+
+   typedef struct {
+      int nfa[8];      /* coefficients of l,l</span><span style="color:#710">'</span></span>,<span style="color:#036;font-weight:bold">F</span>,<span style="color:#036;font-weight:bold">D</span>,<span style="color:#036;font-weight:bold">Om</span>,<span style="color:#036;font-weight:bold">LVe</span>,<span style="color:#036;font-weight:bold">LE</span>,pA *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      double s, c;     </span><span style="color:#404">/</span></span>* sine <span style="color:#080;font-weight:bold">and</span> cosine coefficients *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   } TERM;
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Polynomial</span> coefficients *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const double sp[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span>-<span style="color:#00D">6</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+          94.00e-6,
+        3808.65e-6,
+        -122.68e-6,
+      -72574.11e-6,
+          27.98e-6,
+          15.62e-6
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Terms</span> of order t^<span style="color:#00D">0</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const TERM s0[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span>-<span style="color:#00D">10</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  0,  0,  1,  0,  0,  0}, -2640.73e-6,   0.39e-6 },
+      {{ 0,  0,  0,  0,  2,  0,  0,  0},   -63.53e-6,   0.02e-6 },
+      {{ 0,  0,  2, -2,  3,  0,  0,  0},   -11.75e-6,  -0.01e-6 },
+      {{ 0,  0,  2, -2,  1,  0,  0,  0},   -11.21e-6,  -0.01e-6 },
+      {{ 0,  0,  2, -2,  2,  0,  0,  0},     4.57e-6,   0.00e-6 },
+      {{ 0,  0,  2,  0,  3,  0,  0,  0},    -2.02e-6,   0.00e-6 },
+      {{ 0,  0,  2,  0,  1,  0,  0,  0},    -1.98e-6,   0.00e-6 },
+      {{ 0,  0,  0,  0,  3,  0,  0,  0},     1.72e-6,   0.00e-6 },
+      {{ 0,  1,  0,  0,  1,  0,  0,  0},     1.41e-6,   0.01e-6 },
+      {{ 0,  1,  0,  0, -1,  0,  0,  0},     1.26e-6,   0.01e-6 },
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">11</span>-<span style="color:#00D">20</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 1,  0,  0,  0, -1,  0,  0,  0},     0.63e-6,   0.00e-6 },
+      {{ 1,  0,  0,  0,  1,  0,  0,  0},     0.63e-6,   0.00e-6 },
+      {{ 0,  1,  2, -2,  3,  0,  0,  0},    -0.46e-6,   0.00e-6 },
+      {{ 0,  1,  2, -2,  1,  0,  0,  0},    -0.45e-6,   0.00e-6 },
+      {{ 0,  0,  4, -4,  4,  0,  0,  0},    -0.36e-6,   0.00e-6 },
+      {{ 0,  0,  1, -1,  1, -8, 12,  0},     0.24e-6,   0.12e-6 },
+      {{ 0,  0,  2,  0,  0,  0,  0,  0},    -0.32e-6,   0.00e-6 },
+      {{ 0,  0,  2,  0,  2,  0,  0,  0},    -0.28e-6,   0.00e-6 },
+      {{ 1,  0,  2,  0,  3,  0,  0,  0},    -0.27e-6,   0.00e-6 },
+      {{ 1,  0,  2,  0,  1,  0,  0,  0},    -0.26e-6,   0.00e-6 },
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">21</span>-<span style="color:#00D">30</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  2, -2,  0,  0,  0,  0},     0.21e-6,   0.00e-6 },
+      {{ 0,  1, -2,  2, -3,  0,  0,  0},    -0.19e-6,   0.00e-6 },
+      {{ 0,  1, -2,  2, -1,  0,  0,  0},    -0.18e-6,   0.00e-6 },
+      {{ 0,  0,  0,  0,  0,  8,-13, -1},     0.10e-6,  -0.05e-6 },
+      {{ 0,  0,  0,  2,  0,  0,  0,  0},    -0.15e-6,   0.00e-6 },
+      {{ 2,  0, -2,  0, -1,  0,  0,  0},     0.14e-6,   0.00e-6 },
+      {{ 0,  1,  2, -2,  2,  0,  0,  0},     0.14e-6,   0.00e-6 },
+      {{ 1,  0,  0, -2,  1,  0,  0,  0},    -0.14e-6,   0.00e-6 },
+      {{ 1,  0,  0, -2, -1,  0,  0,  0},    -0.14e-6,   0.00e-6 },
+      {{ 0,  0,  4, -2,  4,  0,  0,  0},    -0.13e-6,   0.00e-6 },
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">31</span>-<span style="color:#00D">33</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  2, -2,  4,  0,  0,  0},     0.11e-6,   0.00e-6 },
+      {{ 1,  0, -2,  0, -3,  0,  0,  0},    -0.11e-6,   0.00e-6 },
+      {{ 1,  0, -2,  0, -1,  0,  0,  0},    -0.11e-6,   0.00e-6 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Terms</span> of order t^<span style="color:#00D">1</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const TERM s1[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span> - <span style="color:#00D">3</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  0,  0,  2,  0,  0,  0},    -0.07e-6,   3.57e-6 },
+      {{ 0,  0,  0,  0,  1,  0,  0,  0},     1.73e-6,  -0.03e-6 },
+      {{ 0,  0,  2, -2,  3,  0,  0,  0},     0.00e-6,   0.48e-6 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Terms</span> of order t^<span style="color:#00D">2</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const TERM s2[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span>-<span style="color:#00D">10</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  0,  0,  1,  0,  0,  0},   743.52e-6,  -0.17e-6 },
+      {{ 0,  0,  2, -2,  2,  0,  0,  0},    56.91e-6,   0.06e-6 },
+      {{ 0,  0,  2,  0,  2,  0,  0,  0},     9.84e-6,  -0.01e-6 },
+      {{ 0,  0,  0,  0,  2,  0,  0,  0},    -8.85e-6,   0.01e-6 },
+      {{ 0,  1,  0,  0,  0,  0,  0,  0},    -6.38e-6,  -0.05e-6 },
+      {{ 1,  0,  0,  0,  0,  0,  0,  0},    -3.07e-6,   0.00e-6 },
+      {{ 0,  1,  2, -2,  2,  0,  0,  0},     2.23e-6,   0.00e-6 },
+      {{ 0,  0,  2,  0,  1,  0,  0,  0},     1.67e-6,   0.00e-6 },
+      {{ 1,  0,  2,  0,  2,  0,  0,  0},     1.30e-6,   0.00e-6 },
+      {{ 0,  1, -2,  2, -2,  0,  0,  0},     0.93e-6,   0.00e-6 },
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">11</span>-<span style="color:#00D">20</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 1,  0,  0, -2,  0,  0,  0,  0},     0.68e-6,   0.00e-6 },
+      {{ 0,  0,  2, -2,  1,  0,  0,  0},    -0.55e-6,   0.00e-6 },
+      {{ 1,  0, -2,  0, -2,  0,  0,  0},     0.53e-6,   0.00e-6 },
+      {{ 0,  0,  0,  2,  0,  0,  0,  0},    -0.27e-6,   0.00e-6 },
+      {{ 1,  0,  0,  0,  1,  0,  0,  0},    -0.27e-6,   0.00e-6 },
+      {{ 1,  0, -2, -2, -2,  0,  0,  0},    -0.26e-6,   0.00e-6 },
+      {{ 1,  0,  0,  0, -1,  0,  0,  0},    -0.25e-6,   0.00e-6 },
+      {{ 1,  0,  2,  0,  1,  0,  0,  0},     0.22e-6,   0.00e-6 },
+      {{ 2,  0,  0, -2,  0,  0,  0,  0},    -0.21e-6,   0.00e-6 },
+      {{ 2,  0, -2,  0, -1,  0,  0,  0},     0.20e-6,   0.00e-6 },
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">21</span>-<span style="color:#00D">25</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  2,  2,  2,  0,  0,  0},     0.17e-6,   0.00e-6 },
+      {{ 2,  0,  2,  0,  2,  0,  0,  0},     0.13e-6,   0.00e-6 },
+      {{ 2,  0,  0,  0,  0,  0,  0,  0},    -0.13e-6,   0.00e-6 },
+      {{ 1,  0,  2, -2,  2,  0,  0,  0},    -0.12e-6,   0.00e-6 },
+      {{ 0,  0,  2,  0,  0,  0,  0,  0},    -0.11e-6,   0.00e-6 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Terms</span> of order t^<span style="color:#00D">3</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const TERM s3[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span>-<span style="color:#00D">4</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  0,  0,  1,  0,  0,  0},     0.30e-6, -23.42e-6 },
+      {{ 0,  0,  2, -2,  2,  0,  0,  0},    -0.03e-6,  -1.46e-6 },
+      {{ 0,  0,  2,  0,  2,  0,  0,  0},    -0.01e-6,  -0.25e-6 },
+      {{ 0,  0,  0,  0,  2,  0,  0,  0},     0.00e-6,   0.23e-6 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Terms</span> of order t^<span style="color:#00D">4</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const TERM s4[] = {
+
+   </span><span style="color:#404">/</span></span>* <span style="color:#00D">1</span>-<span style="color:#00D">1</span> *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+      {{ 0,  0,  0,  0,  1,  0,  0,  0},    -0.26e-6,  -0.01e-6 }
+   };
+
+</span><span style="color:#404">/</span></span>* <span style="color:#036;font-weight:bold">Number</span> of terms <span style="color:#080;font-weight:bold">in</span> the series *<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">
+   static const int NS0 = (int) (sizeof s0 </span><span style="color:#404">/</span></span> sizeof (<span style="color:#036;font-weight:bold">TERM</span>));
+   static const int <span style="color:#036;font-weight:bold">NS1</span> = (int) (sizeof s1 / sizeof (<span style="color:#036;font-weight:bold">TERM</span>));
+   static const int <span style="color:#036;font-weight:bold">NS2</span> = (int) (sizeof s2 / sizeof (<span style="color:#036;font-weight:bold">TERM</span>));
+   static const int <span style="color:#036;font-weight:bold">NS3</span> = (int) (sizeof s3 / sizeof (<span style="color:#036;font-weight:bold">TERM</span>));
+   static const int <span style="color:#036;font-weight:bold">NS4</span> = (int) (sizeof s4 / sizeof (<span style="color:#036;font-weight:bold">TERM</span>));
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Interval between fundamental epoch J2000.0 and current date (JC). *</span><span style="color:#404">/</span></span>
+   t = ((date1 - <span style="color:#036;font-weight:bold">DJ00</span>) + date2) / <span style="color:#036;font-weight:bold">DJC</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Fundamental Arguments (from IERS Conventions 2003) *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean anomaly of the Moon. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">0</span>] = iauFal03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean anomaly of the Sun. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">1</span>] = iauFalp03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean longitude of the Moon minus that of the ascending node. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">2</span>] = iauFaf03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean elongation of the Moon from the Sun. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">3</span>] = iauFad03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean longitude of the ascending node of the Moon. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">4</span>] = iauFaom03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean longitude of Venus. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">5</span>] = iauFave03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean longitude of Earth. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">6</span>] = iauFae03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* General precession in longitude. *</span><span style="color:#404">/</span></span>
+   fa[<span style="color:#00D">7</span>] = iauFapa03(t);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Evaluate s. *</span><span style="color:#404">/</span></span>
+   w0 = sp[<span style="color:#00D">0</span>];
+   w1 = sp[<span style="color:#00D">1</span>];
+   w2 = sp[<span style="color:#00D">2</span>];
+   w3 = sp[<span style="color:#00D">3</span>];
+   w4 = sp[<span style="color:#00D">4</span>];
+   w5 = sp[<span style="color:#00D">5</span>];
+
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NS0</span>-<span style="color:#00D">1</span>; i &gt;= <span style="color:#00D">0</span>; i--) {
+   a = <span style="color:#60E">0.0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">0</span>; j &lt; <span style="color:#00D">8</span>; j++) {
+      a += (double)s0[i].nfa[j] * fa[j];
+   }
+   w0 += s0[i].s * sin(a) + s0[i].c * cos(a);
+   }
+
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NS1</span>-<span style="color:#00D">1</span>; i &gt;= <span style="color:#00D">0</span>; i--) {
+      a = <span style="color:#60E">0.0</span>;
+      <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">0</span>; j &lt; <span style="color:#00D">8</span>; j++) {
+         a += (double)s1[i].nfa[j] * fa[j];
+      }
+      w1 += s1[i].s * sin(a) + s1[i].c * cos(a);
+   }
+
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NS2</span>-<span style="color:#00D">1</span>; i &gt;= <span style="color:#00D">0</span>; i--) {
+      a = <span style="color:#60E">0.0</span>;
+      <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">0</span>; j &lt; <span style="color:#00D">8</span>; j++) {
+         a += (double)s2[i].nfa[j] * fa[j];
+      }
+      w2 += s2[i].s * sin(a) + s2[i].c * cos(a);
+   }
+
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NS3</span>-<span style="color:#00D">1</span>; i &gt;= <span style="color:#00D">0</span>; i--) {
+      a = <span style="color:#60E">0.0</span>;
+      <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">0</span>; j &lt; <span style="color:#00D">8</span>; j++) {
+         a += (double)s3[i].nfa[j] * fa[j];
+      }
+      w3 += s3[i].s * sin(a) + s3[i].c * cos(a);
+   }
+
+   <span style="color:#080;font-weight:bold">for</span> (i = <span style="color:#036;font-weight:bold">NS4</span>-<span style="color:#00D">1</span>; i &gt;= <span style="color:#00D">0</span>; i--) {
+      a = <span style="color:#60E">0.0</span>;
+      <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">0</span>; j &lt; <span style="color:#00D">8</span>; j++) {
+         a += (double)s4[i].nfa[j] * fa[j];
+      }
+      w4 += s4[i].s * sin(a) + s4[i].c * cos(a);
+   }
+
+   s = (w0 +
+       (w1 +
+       (w2 +
+       (w3 +
+       (w4 +
+        w5 * t) * t) * t) * t) * t) * <span style="color:#036;font-weight:bold">DAS2R</span> - x*y/<span style="color:#60E">2.0</span>;
+
+   <span style="color:#080;font-weight:bold">return</span> s;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http:</span><span style="color:#404">/</span></span>/www.iausofa.org/tandc.html).
+**
+**  <span style="color:#036;font-weight:bold">The</span> original library is available from <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#036;font-weight:bold">Standards</span> of
+**  <span style="color:#036;font-weight:bold">Fundamental</span> <span style="color:#036;font-weight:bold">Astronomy</span> (<span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>www.iausofa.org/).
+**
+**
+**
+**
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span>, <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>
+**  <span style="color:#036;font-weight:bold">All</span> rights reserved.
+**
+**  <span style="color:#036;font-weight:bold">Redistribution</span> <span style="color:#080;font-weight:bold">and</span> use <span style="color:#080;font-weight:bold">in</span> source <span style="color:#080;font-weight:bold">and</span> binary forms, with <span style="color:#080;font-weight:bold">or</span> without
+**  modification, are permitted provided that the following conditions
+**  are <span style="color:#606">met</span>:
+**
+**  <span style="color:#00D">1</span> <span style="color:#036;font-weight:bold">Redistributions</span> of source code must retain the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer.
+**
+**  <span style="color:#00D">2</span> <span style="color:#036;font-weight:bold">Redistributions</span> <span style="color:#080;font-weight:bold">in</span> binary form must reproduce the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer <span style="color:#080;font-weight:bold">in</span>
+**    the documentation <span style="color:#080;font-weight:bold">and</span><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+}
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

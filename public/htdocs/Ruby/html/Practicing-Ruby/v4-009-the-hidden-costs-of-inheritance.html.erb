@@ -1,0 +1,794 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>As a Ruby programmer, you almost certainly make use of inheritance-based object
+modeling on a daily basis. In fact, extending base classes and mixing
+modules into your objects may be so common for you that you rarely 
+need to think about the mechanics involved in doing so. If you are like 
+most Ruby programmers, your readiness to apply this complex design paradigm 
+throughout your projects is both a blessing and a curse.</p>
+
+<p>On the one hand, your ability to make good use of inheritance-based modeling
+without thinking about its complexity is a sign that it works well as an
+abstraction. But on the other hand, having this familiar tool constantly within
+reach makes it harder to recognize alternative approaches that may lead to
+greater simplicity in certain contexts. Because no one tool is a golden hammer,
+it is a good idea to understand the limitations of your preferred modeling
+techniques as well as their virtues.</p>
+
+<p>In this article, I will guide you through three properties of
+inheritance-based modeling that can lead to design complications unless they are
+given careful consideration. These are meant to be starting points for
+conversation more-so than tutorials on what to do and what not to do, so please
+attempt some of the homework exercises I’ve included at the bottom of the
+article!</p>
+
+<h3 id="problem-1-there-is-no-encapsulation-along-ancestry-chains">PROBLEM 1: There is no encapsulation along ancestry chains</h3>
+
+<p>Inheritance-based modeling is most commonly used for behavior sharing, but 
+what it actually provides is implementation sharing. Among other things,
+this means that no matter how many ancestors an object has, all of its 
+methods and state end up getting defined in a single namespace. If you 
+aren’t careful, this lack of encapsulation between objects in an 
+inheritance relationship can easily bite you.</p>
+
+<p>To test your understanding of this problem, see if you can spot the bug in the
+following example: </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prawn</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">StyledDocument</span> &lt; <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">style</span>(params)
+    <span style="color:#33B">@font_name</span> = params[<span style="color:#A60">:font</span>]
+    <span style="color:#33B">@font_size</span> = params[<span style="color:#A60">:size</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">styled_text</span>(content)
+    font(<span style="color:#33B">@font_name</span>) <span style="color:#080;font-weight:bold">do</span>
+      text(content, <span style="color:#A60">:size</span> =&gt; <span style="color:#33B">@font_size</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">StyledDocument</span>.generate(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">example.pdf</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> 
+  text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is the default font size and face</span><span style="color:#710">&quot;</span></span>
+
+  style(<span style="color:#A60">:font</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Courier</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">20</span>)
+
+  styled_text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This line should be in size 20 Courier</span><span style="color:#710">&quot;</span></span>
+
+  text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This line should be in the default font size and face</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This example runs without raising any sort of explicit error, but produces
+the following incorrect output:</p>
+
+<p><img src="http://i.imgur.com/xjOpU.png" alt="" /></p>
+
+<p>There aren’t a whole lot of things that can go wrong in this example,
+and so you have probably figured out the source of the problem by now:
+<code>StyledDocument</code> and <code>Prawn::Document</code> each define <code>@font_size</code>, but 
+they each use it for a completely different purpose. As a result, calling 
+<code>StyledDocument#style</code> triggers a side effect that leads to this
+subtle defect.</p>
+
+<p>To verify that a naming collision to blame for this problem, you can 
+try renaming the <code>@font_size</code> variable in <code>StyledDocument</code> to 
+something else, such as <code>@styled_font_size</code>. Making that tiny 
+change will cause the example to produce the correct output, 
+as shown below:</p>
+
+<p><img src="http://i.imgur.com/1O23U.png" alt="" /></p>
+
+<p>However, this is only a superficial fix, and does not address the root problem.
+The real issue is that without true subobjects with isolated state, the chance
+of clashing with a variable used by an ancestor increases as your
+ancestry chain grows. If you look at the mixins that <code>ActiveRecord::Base</code> 
+depends on, you’ll find examples of a 
+<a href="https://github.com/rails/rails/blob/master/activerecord/lib/active_record/transactions.rb#L327-345">scary lack of encapsulation</a>
+that will make you wonder how things don’t break more often.</p>
+
+<p>To make matters worse, the lack of encapsulation between objects in an
+inheritance relationship also means that methods can clash in the same way that
+variables can. A lack of true private methods in Ruby complicates the problem
+even further, because there simply isn’t a way to write a method in a parent
+object that a child object can’t clash with or override. One of the homework
+questions for this article addresses this issue, but is worth thinking 
+about for a moment before you read on.</p>
+
+<h3 id="problem-2-interfaces-tend-to-grow-rapidly-under-inheritance">PROBLEM 2: Interfaces tend to grow rapidly under inheritance</h3>
+
+<p>I am going to attempt a proof without words for this particular problem, and
+leave it up to you to figure out <em>why</em> this can be a source of maintenance
+headaches, but please share your thoughts in the comments:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; (<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.instance_methods | 
+    <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.private_instance_methods)
+=&gt; [<span style="color:#A60">:logger</span>, <span style="color:#A60">:configurations</span>, <span style="color:#A60">:default_timezone</span>, <span style="color:#A60">:schema_format</span>,
+<span style="color:#A60">:timestamped_migrations</span>, <span style="color:#A60">:init_with</span>, <span style="color:#A60">:initialize_dup</span>, <span style="color:#A60">:encode_with</span>, <span style="color:#A60">:==</span>, <span style="color:#A60">:eql?</span>,
+<span style="color:#A60">:hash</span>, <span style="color:#A60">:freeze</span>, <span style="color:#A60">:frozen?</span>, <span style="color:#A60">:&lt;=&gt;</span>, <span style="color:#A60">:readonly?</span>, <span style="color:#A60">:readonly!</span>, <span style="color:#A60">:inspect</span>, <span style="color:#A60">:to_yaml</span>,
+<span style="color:#A60">:yaml_initialize</span>, <span style="color:#A60">:_attr_readonly</span>, <span style="color:#A60">:_attr_readonly?</span>, <span style="color:#A60">:primary_key_prefix_type</span>,
+<span style="color:#A60">:table_name_prefix</span>, <span style="color:#A60">:table_name_prefix?</span>, <span style="color:#A60">:table_name_suffix</span>,
+<span style="color:#A60">:table_name_suffix?</span>, <span style="color:#A60">:pluralize_table_names</span>, <span style="color:#A60">:pluralize_table_names?</span>,
+<span style="color:#A60">:store_full_sti_class</span>, <span style="color:#A60">:store_full_sti_class?</span>, <span style="color:#A60">:store_full_sti_class=</span>,
+<span style="color:#A60">:default_scopes</span>, <span style="color:#A60">:default_scopes?</span>, <span style="color:#A60">:_accessible_attributes</span>,
+<span style="color:#A60">:_accessible_attributes?</span>, <span style="color:#A60">:_accessible_attributes=</span>, <span style="color:#A60">:_protected_attributes</span>,
+<span style="color:#A60">:_protected_attributes?</span>, <span style="color:#A60">:_protected_attributes=</span>, <span style="color:#A60">:_active_authorizer</span>,
+<span style="color:#A60">:_active_authorizer?</span>, <span style="color:#A60">:_active_authorizer=</span>, <span style="color:#A60">:_mass_assignment_sanitizer</span>,
+<span style="color:#A60">:_mass_assignment_sanitizer?</span>, <span style="color:#A60">:_mass_assignment_sanitizer=</span>, <span style="color:#A60">:validation_context</span>,
+<span style="color:#A60">:validation_context=</span>, <span style="color:#A60">:_validate_callbacks</span>, <span style="color:#A60">:_validate_callbacks?</span>,
+<span style="color:#A60">:_validate_callbacks=</span>, <span style="color:#A60">:_validators</span>, <span style="color:#A60">:_validators?</span>, <span style="color:#A60">:_validators=</span>,
+<span style="color:#A60">:lock_optimistically</span>, <span style="color:#A60">:attribute_method_matchers</span>, <span style="color:#A60">:attribute_method_matchers?</span>,
+<span style="color:#A60">:attribute_types_cached_by_default</span>, <span style="color:#A60">:time_zone_aware_attributes</span>,
+<span style="color:#A60">:skip_time_zone_conversion_for_attributes</span>,
+<span style="color:#A60">:skip_time_zone_conversion_for_attributes?</span>, <span style="color:#A60">:partial_updates</span>, <span style="color:#A60">:partial_updates?</span>,
+<span style="color:#A60">:partial_updates=</span>, <span style="color:#A60">:serialized_attributes</span>, <span style="color:#A60">:serialized_attributes?</span>,
+<span style="color:#A60">:serialized_attributes=</span>, <span style="color:#A60">:[]</span>, <span style="color:#A60">:[]=</span>, <span style="color:#A60">:record_timestamps</span>, <span style="color:#A60">:record_timestamps?</span>,
+<span style="color:#A60">:record_timestamps=</span>, <span style="color:#A60">:_validation_callbacks</span>, <span style="color:#A60">:_validation_callbacks?</span>,
+<span style="color:#A60">:_validation_callbacks=</span>, <span style="color:#A60">:_initialize_callbacks</span>, <span style="color:#A60">:_initialize_callbacks?</span>,
+<span style="color:#A60">:_initialize_callbacks=</span>, <span style="color:#A60">:_find_callbacks</span>, <span style="color:#A60">:_find_callbacks?</span>, <span style="color:#A60">:_find_callbacks=</span>,
+<span style="color:#A60">:_touch_callbacks</span>, <span style="color:#A60">:_touch_callbacks?</span>, <span style="color:#A60">:_touch_callbacks=</span>, <span style="color:#A60">:_save_callbacks</span>,
+<span style="color:#A60">:_save_callbacks?</span>, <span style="color:#A60">:_save_callbacks=</span>, <span style="color:#A60">:_create_callbacks</span>, <span style="color:#A60">:_create_callbacks?</span>,
+<span style="color:#A60">:_create_callbacks=</span>, <span style="color:#A60">:_update_callbacks</span>, <span style="color:#A60">:_update_callbacks?</span>,
+<span style="color:#A60">:_update_callbacks=</span>, <span style="color:#A60">:_destroy_callbacks</span>, <span style="color:#A60">:_destroy_callbacks?</span>,
+<span style="color:#A60">:_destroy_callbacks=</span>, <span style="color:#A60">:auto_explain_threshold_in_seconds</span>,
+<span style="color:#A60">:auto_explain_threshold_in_seconds?</span>, <span style="color:#A60">:nested_attributes_options</span>,
+<span style="color:#A60">:nested_attributes_options?</span>, <span style="color:#A60">:include_root_in_json</span>, <span style="color:#A60">:include_root_in_json?</span>,
+<span style="color:#A60">:include_root_in_json=</span>, <span style="color:#A60">:reflections</span>, <span style="color:#A60">:reflections?</span>, <span style="color:#A60">:reflections=</span>,
+<span style="color:#A60">:_commit_callbacks</span>, <span style="color:#A60">:_commit_callbacks?</span>, <span style="color:#A60">:_commit_callbacks=</span>,
+<span style="color:#A60">:_rollback_callbacks</span>, <span style="color:#A60">:_rollback_callbacks?</span>, <span style="color:#A60">:_rollback_callbacks=</span>,
+<span style="color:#A60">:connection_handler</span>, <span style="color:#A60">:connection_handler?</span>, <span style="color:#A60">:connection</span>,
+<span style="color:#A60">:clear_aggregation_cache</span>, <span style="color:#A60">:transaction</span>, <span style="color:#A60">:destroy</span>, <span style="color:#A60">:save</span>, <span style="color:#A60">:save!</span>,
+<span style="color:#A60">:rollback_active_record_state!</span>, <span style="color:#A60">:committed!</span>, <span style="color:#A60">:rolledback!</span>, <span style="color:#A60">:add_to_transaction</span>,
+<span style="color:#A60">:with_transaction_returning_status</span>, <span style="color:#A60">:remember_transaction_record_state</span>,
+<span style="color:#A60">:clear_transaction_record_state</span>, <span style="color:#A60">:restore_transaction_record_state</span>,
+<span style="color:#A60">:transaction_record_state</span>, <span style="color:#A60">:transaction_include_action?</span>, <span style="color:#A60">:serializable_hash</span>,
+<span style="color:#A60">:to_xml</span>, <span style="color:#A60">:from_xml</span>, <span style="color:#A60">:as_json</span>, <span style="color:#A60">:from_json</span>, <span style="color:#A60">:read_attribute_for_serialization</span>,
+<span style="color:#A60">:reload</span>, <span style="color:#A60">:mark_for_destruction</span>, <span style="color:#A60">:marked_for_destruction?</span>,
+<span style="color:#A60">:changed_for_autosave?</span>, <span style="color:#A60">:_destroy</span>, <span style="color:#A60">:reinit_with</span>, <span style="color:#A60">:clear_association_cache</span>,
+<span style="color:#A60">:association_cache</span>, <span style="color:#A60">:association</span>, <span style="color:#A60">:run_validations!</span>, <span style="color:#A60">:touch</span>, <span style="color:#A60">:_attribute</span>,
+<span style="color:#A60">:type_cast_attribute_for_write</span>, <span style="color:#A60">:read_attribute_before_type_cast</span>, <span style="color:#A60">:changed?</span>,
+<span style="color:#A60">:changed</span>, <span style="color:#A60">:changes</span>, <span style="color:#A60">:previous_changes</span>, <span style="color:#A60">:changed_attributes</span>, <span style="color:#A60">:to_key</span>, <span style="color:#A60">:id</span>, <span style="color:#A60">:id=</span>,
+<span style="color:#A60">:id?</span>, <span style="color:#A60">:query_attribute</span>, <span style="color:#A60">:attributes_before_type_cast</span>, <span style="color:#A60">:raw_write_attribute</span>,
+<span style="color:#A60">:read_attribute</span>, <span style="color:#A60">:method_missing</span>, <span style="color:#A60">:attribute_missing</span>, <span style="color:#A60">:respond_to?</span>,
+<span style="color:#A60">:has_attribute?</span>, <span style="color:#A60">:attribute_names</span>, <span style="color:#A60">:attributes</span>, <span style="color:#A60">:attribute_for_inspect</span>,
+<span style="color:#A60">:attribute_present?</span>, <span style="color:#A60">:column_for_attribute</span>, <span style="color:#A60">:clone_attributes</span>,
+<span style="color:#A60">:clone_attribute_value</span>, <span style="color:#A60">:arel_attributes_values</span>, <span style="color:#A60">:attribute_method?</span>,
+<span style="color:#A60">:respond_to_without_attributes?</span>, <span style="color:#A60">:locking_enabled?</span>, <span style="color:#A60">:lock!</span>, <span style="color:#A60">:with_lock</span>, <span style="color:#A60">:valid?</span>,
+<span style="color:#A60">:perform_validations</span>, <span style="color:#A60">:validates_acceptance_of</span>, <span style="color:#A60">:validates_confirmation_of</span>,
+<span style="color:#A60">:validates_exclusion_of</span>, <span style="color:#A60">:validates_format_of</span>, <span style="color:#A60">:validates_inclusion_of</span>,
+<span style="color:#A60">:validates_length_of</span>, <span style="color:#A60">:validates_size_of</span>, <span style="color:#A60">:validates_numericality_of</span>,
+<span style="color:#A60">:validates_presence_of</span>, <span style="color:#A60">:errors</span>, <span style="color:#A60">:invalid?</span>, <span style="color:#A60">:read_attribute_for_validation</span>,
+<span style="color:#A60">:validates_with</span>, <span style="color:#A60">:run_callbacks</span>, <span style="color:#A60">:to_model</span>, <span style="color:#A60">:to_param</span>, <span style="color:#A60">:to_partial_path</span>,
+<span style="color:#A60">:attributes=</span>, <span style="color:#A60">:assign_attributes</span>, <span style="color:#A60">:mass_assignment_options</span>,
+<span style="color:#A60">:mass_assignment_role</span>, <span style="color:#A60">:sanitize_for_mass_assignment</span>,
+<span style="color:#A60">:mass_assignment_authorizer</span>, <span style="color:#A60">:cache_key</span>, <span style="color:#A60">:quoted_id</span>,
+<span style="color:#A60">:populate_with_current_scope_attributes</span>, <span style="color:#A60">:new_record?</span>, <span style="color:#A60">:destroyed?</span>, <span style="color:#A60">:persisted?</span>,
+<span style="color:#A60">:delete</span>, <span style="color:#A60">:becomes</span>, <span style="color:#A60">:update_attribute</span>, <span style="color:#A60">:update_column</span>, <span style="color:#A60">:update_attributes</span>,
+<span style="color:#A60">:update_attributes!</span>, <span style="color:#A60">:increment</span>, <span style="color:#A60">:increment!</span>, <span style="color:#A60">:decrement</span>, <span style="color:#A60">:decrement!</span>, <span style="color:#A60">:toggle</span>,
+<span style="color:#A60">:toggle!</span>, <span style="color:#A60">:psych_to_yaml</span>, <span style="color:#A60">:to_yaml_properties</span>, <span style="color:#A60">:in?</span>, <span style="color:#A60">:blank?</span>, <span style="color:#A60">:present?</span>,
+<span style="color:#A60">:presence</span>, <span style="color:#A60">:acts_like?</span>, <span style="color:#A60">:try</span>, <span style="color:#A60">:duplicable?</span>, <span style="color:#A60">:to_json</span>, <span style="color:#A60">:instance_values</span>,
+<span style="color:#A60">:instance_variable_names</span>, <span style="color:#A60">:require_or_load</span>, <span style="color:#A60">:require_dependency</span>,
+<span style="color:#A60">:require_association</span>, <span style="color:#A60">:load_dependency</span>, <span style="color:#A60">:load</span>, <span style="color:#A60">:require</span>, <span style="color:#A60">:unloadable</span>, <span style="color:#A60">:nil?</span>,
+<span style="color:#A60">:===</span>, <span style="color:#A60">:=~</span>, <span style="color:#A60">:!~</span>, <span style="color:#A60">:class</span>, <span style="color:#A60">:singleton_class</span>, <span style="color:#A60">:clone</span>, <span style="color:#A60">:dup</span>, <span style="color:#A60">:initialize_clone</span>,
+<span style="color:#A60">:taint</span>, <span style="color:#A60">:tainted?</span>, <span style="color:#A60">:untaint</span>, <span style="color:#A60">:untrust</span>, <span style="color:#A60">:untrusted?</span>, <span style="color:#A60">:trust</span>, <span style="color:#A60">:to_s</span>, <span style="color:#A60">:methods</span>,
+<span style="color:#A60">:singleton_methods</span>, <span style="color:#A60">:protected_methods</span>, <span style="color:#A60">:private_methods</span>, <span style="color:#A60">:public_methods</span>,
+<span style="color:#A60">:instance_variables</span>, <span style="color:#A60">:instance_variable_get</span>, <span style="color:#A60">:instance_variable_set</span>,
+<span style="color:#A60">:instance_variable_defined?</span>, <span style="color:#A60">:instance_of?</span>, <span style="color:#A60">:kind_of?</span>, <span style="color:#A60">:is_a?</span>, <span style="color:#A60">:tap</span>, <span style="color:#A60">:send</span>,
+<span style="color:#A60">:public_send</span>, <span style="color:#A60">:respond_to_missing?</span>, <span style="color:#A60">:extend</span>, <span style="color:#A60">:display</span>, <span style="color:#A60">:method</span>, <span style="color:#A60">:public_method</span>,
+<span style="color:#A60">:define_singleton_method</span>, <span style="color:#A60">:object_id</span>, <span style="color:#A60">:to_enum</span>, <span style="color:#A60">:enum_for</span>, <span style="color:#A60">:psych_y</span>,
+<span style="color:#A60">:class_eval</span>, <span style="color:#A60">:silence_warnings</span>, <span style="color:#A60">:enable_warnings</span>, <span style="color:#A60">:with_warnings</span>,
+<span style="color:#A60">:silence_stderr</span>, <span style="color:#A60">:silence_stream</span>, <span style="color:#A60">:suppress</span>, <span style="color:#A60">:capture</span>, <span style="color:#A60">:silence</span>, <span style="color:#A60">:quietly</span>,
+<span style="color:#A60">:equal?</span>, <span style="color:#A60">:!</span>, <span style="color:#A60">:!=</span>, <span style="color:#A60">:instance_eval</span>, <span style="color:#A60">:instance_exec</span>, <span style="color:#A60">:__send__</span>, <span style="color:#A60">:__id__</span>,
+<span style="color:#A60">:initialize</span>, <span style="color:#A60">:to_ary</span>, <span style="color:#A60">:_run_validate_callbacks</span>, <span style="color:#A60">:_run_validation_callbacks</span>,
+<span style="color:#A60">:_run_initialize_callbacks</span>, <span style="color:#A60">:_run_find_callbacks</span>, <span style="color:#A60">:_run_touch_callbacks</span>,
+<span style="color:#A60">:_run_save_callbacks</span>, <span style="color:#A60">:_run_create_callbacks</span>, <span style="color:#A60">:_run_update_callbacks</span>,
+<span style="color:#A60">:_run_destroy_callbacks</span>, <span style="color:#A60">:_run_commit_callbacks</span>, <span style="color:#A60">:_run_rollback_callbacks</span>,
+<span style="color:#A60">:serializable_add_includes</span>, <span style="color:#A60">:associated_records_to_validate_or_save</span>,
+<span style="color:#A60">:nested_records_changed_for_autosave?</span>, <span style="color:#A60">:validate_single_association</span>,
+<span style="color:#A60">:validate_collection_association</span>, <span style="color:#A60">:association_valid?</span>,
+<span style="color:#A60">:before_save_collection_association</span>, <span style="color:#A60">:save_collection_association</span>,
+<span style="color:#A60">:save_has_one_association</span>, <span style="color:#A60">:save_belongs_to_association</span>,
+<span style="color:#A60">:assign_nested_attributes_for_one_to_one_association</span>,
+<span style="color:#A60">:assign_nested_attributes_for_collection_association</span>,
+<span style="color:#A60">:assign_to_or_mark_for_destruction</span>, <span style="color:#A60">:has_destroy_flag?</span>, <span style="color:#A60">:reject_new_record?</span>,
+<span style="color:#A60">:call_reject_if</span>, <span style="color:#A60">:raise_nested_attributes_record_not_found</span>, <span style="color:#A60">:unassignable_keys</span>,
+<span style="color:#A60">:association_instance_get</span>, <span style="color:#A60">:association_instance_set</span>, <span style="color:#A60">:create_or_update</span>,
+<span style="color:#A60">:create</span>, <span style="color:#A60">:update</span>, <span style="color:#A60">:notify_observers</span>, <span style="color:#A60">:should_record_timestamps?</span>,
+<span style="color:#A60">:timestamp_attributes_for_create_in_model</span>,
+<span style="color:#A60">:timestamp_attributes_for_update_in_model</span>, <span style="color:#A60">:all_timestamp_attributes_in_model</span>,
+<span style="color:#A60">:timestamp_attributes_for_update</span>, <span style="color:#A60">:timestamp_attributes_for_create</span>,
+<span style="color:#A60">:all_timestamp_attributes</span>, <span style="color:#A60">:current_time_from_proper_timezone</span>,
+<span style="color:#A60">:clear_timestamp_attributes</span>, <span style="color:#A60">:write_attribute</span>, <span style="color:#A60">:field_changed?</span>,
+<span style="color:#A60">:clone_with_time_zone_conversion_attribute?</span>, <span style="color:#A60">:attribute_changed?</span>,
+<span style="color:#A60">:attribute_change</span>, <span style="color:#A60">:attribute_was</span>, <span style="color:#A60">:attribute_will_change!</span>, <span style="color:#A60">:reset_attribute!</span>,
+<span style="color:#A60">:attribute?</span>, <span style="color:#A60">:attribute_before_type_cast</span>, <span style="color:#A60">:attribute=</span>,
+<span style="color:#A60">:convert_number_column_value</span>, <span style="color:#A60">:attribute</span>, <span style="color:#A60">:match_attribute_method?</span>,
+<span style="color:#A60">:missing_attribute</span>, <span style="color:#A60">:increment_lock</span>, <span style="color:#A60">:_merge_attributes</span>, <span style="color:#A60">:halted_callback_hook</span>,
+<span style="color:#A60">:assign_multiparameter_attributes</span>, <span style="color:#A60">:instantiate_time_object</span>,
+<span style="color:#A60">:execute_callstack_for_multiparameter_attributes</span>, <span style="color:#A60">:read_value_from_parameter</span>,
+<span style="color:#A60">:read_time_parameter_value</span>, <span style="color:#A60">:read_date_parameter_value</span>,
+<span style="color:#A60">:read_other_parameter_value</span>, <span style="color:#A60">:extract_max_param_for_multiparameter_attributes</span>,
+<span style="color:#A60">:extract_callstack_for_multiparameter_attributes</span>, <span style="color:#A60">:type_cast_attribute_value</span>,
+<span style="color:#A60">:find_parameter_position</span>, <span style="color:#A60">:quote_value</span>, <span style="color:#A60">:ensure_proper_type</span>,
+<span style="color:#A60">:destroy_associations</span>, <span style="color:#A60">:default_src_encoding</span>, <span style="color:#A60">:irb_binding</span>, <span style="color:#A60">:Digest</span>,
+<span style="color:#A60">:initialize_copy</span>, <span style="color:#A60">:remove_instance_variable</span>, <span style="color:#A60">:sprintf</span>, <span style="color:#A60">:format</span>, <span style="color:#A60">:Integer</span>,
+<span style="color:#A60">:Float</span>, <span style="color:#A60">:String</span>, <span style="color:#A60">:Array</span>, <span style="color:#A60">:warn</span>, <span style="color:#A60">:raise</span>, <span style="color:#A60">:fail</span>, <span style="color:#A60">:global_variables</span>, <span style="color:#A60">:__method__</span>,
+<span style="color:#A60">:__callee__</span>, <span style="color:#A60">:eval</span>, <span style="color:#A60">:local_variables</span>, <span style="color:#A60">:iterator?</span>, <span style="color:#A60">:block_given?</span>, <span style="color:#A60">:catch</span>, <span style="color:#A60">:throw</span>,
+<span style="color:#A60">:loop</span>, <span style="color:#A60">:caller</span>, <span style="color:#A60">:trace_var</span>, <span style="color:#A60">:untrace_var</span>, <span style="color:#A60">:at_exit</span>, <span style="color:#A60">:syscall</span>, <span style="color:#A60">:open</span>, <span style="color:#A60">:printf</span>,
+<span style="color:#A60">:print</span>, <span style="color:#A60">:putc</span>, <span style="color:#A60">:puts</span>, <span style="color:#A60">:gets</span>, <span style="color:#A60">:readline</span>, <span style="color:#A60">:select</span>, <span style="color:#A60">:readlines</span>, <span style="color:#A60">:`</span>, <span style="color:#A60">:p</span>, <span style="color:#A60">:test</span>,
+<span style="color:#A60">:srand</span>, <span style="color:#A60">:rand</span>, <span style="color:#A60">:trap</span>, <span style="color:#A60">:exec</span>, <span style="color:#A60">:fork</span>, <span style="color:#A60">:exit!</span>, <span style="color:#A60">:system</span>, <span style="color:#A60">:spawn</span>, <span style="color:#A60">:sleep</span>, <span style="color:#A60">:exit</span>,
+<span style="color:#A60">:abort</span>, <span style="color:#A60">:require_relative</span>, <span style="color:#A60">:autoload</span>, <span style="color:#A60">:autoload?</span>, <span style="color:#A60">:proc</span>, <span style="color:#A60">:lambda</span>, <span style="color:#A60">:binding</span>,
+<span style="color:#A60">:set_trace_func</span>, <span style="color:#A60">:Rational</span>, <span style="color:#A60">:Complex</span>, <span style="color:#A60">:gem</span>, <span style="color:#A60">:gem_original_require</span>, <span style="color:#A60">:BigDecimal</span>,
+<span style="color:#A60">:y</span>, <span style="color:#A60">:Pathname</span>, <span style="color:#A60">:j</span>, <span style="color:#A60">:jj</span>, <span style="color:#A60">:JSON</span>, <span style="color:#A60">:singleton_method_added</span>,
+<span style="color:#A60">:singleton_method_removed</span>, <span style="color:#A60">:singleton_method_undefined</span>]
+</pre></div>
+</div>
+</div>
+
+<p>There is a specific issue I have with interface explosion, and it isn’t so much
+to do with code organization as it is with state management. Can you 
+guess what my concern is?</p>
+
+<h3 id="problem-3-balancing-reuse-and-customization-can-be-tricky">PROBLEM 3: Balancing reuse and customization can be tricky</h3>
+
+<p>Some ancestors provide methods that are designed to be replaced by 
+their descendants. When executed well, this pattern provides a convenient
+balance between code reuse and customization. However, because it is 
+impossible to account for all possible customizations that descendants 
+of a base object will want to make, this approach has its
+limitations.</p>
+
+<p>This design problem is best explained by example, and you can find a great 
+one in Ruby itself. Start by considering the following trivial code, paying
+particular attention to its output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, email)
+    <span style="color:#33B">@name</span>  = name
+    <span style="color:#33B">@email</span> = email
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+person = <span style="color:#036;font-weight:bold">Person</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory@practicingruby.com</span><span style="color:#710">&quot;</span></span>)
+
+p person    <span style="color:#777">#=~</span>
+<span style="color:#777">#&lt;Person:0x0000010108bbf8 @name=&quot;Gregory Brown&quot;, </span>
+<span style="color:#777">#                         @email=&quot;gregory@practicingruby.com&quot;&gt;</span>
+
+puts person <span style="color:#777">#=~</span>
+<span style="color:#777">#&lt;Person:0x0000010108bbf8&gt;     </span>
+</pre></div>
+</div>
+</div>
+
+<p>Under the hood, <code>p</code> calls <code>person.inspect</code>, and <code>puts</code> calls
+<code>person.to_s</code>. What you see above is output from the default implementation 
+of each of those methods. Arguably, <code>Object#inspect</code> 
+provides useful debugging output, but <code>Object#to_s</code> is
+more of a template method that needs to be overridden in order to be useful. The
+following code shows how easy to customize things by simply adding your own <code>to_s</code>
+definition:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, email)
+    <span style="color:#33B">@name</span>  = name
+    <span style="color:#33B">@email</span> = email
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@name</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> &lt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@email</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&gt;</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+person = <span style="color:#036;font-weight:bold">Person</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory@practicingruby.com</span><span style="color:#710">&quot;</span></span>)
+
+puts person <span style="color:#777">#=~ Gregory Brown &lt;gregory@practicingruby.com&gt;  </span>
+</pre></div>
+</div>
+</div>
+
+<p>On the surface, there is nothing wrong with this code: this is exactly what a
+template-method based extension mechanism should look like. However, due to the
+weird way that <code>Object#inspect</code> works in Ruby 1.9, defining your own <code>to_s</code>
+implementation has some unpleasant side effects that are likely to surprise you:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>p person <span style="color:#777">#=~ Gregory Brown &lt;gregory@practicingruby.com&gt;  </span>
+</pre></div>
+</div>
+</div>
+
+<p>If you look at the <a href="https://github.com/ruby/ruby/blob/trunk/object.c#L486-511">definition of
+Object#inspect</a>,
+you’ll find that this behavior is by design. In a nutshell, the method is set
+up to provide its default output if <code>to_s</code> has not been overridden, but simply
+delegate to <code>to_s</code> if it has been. This is problematic, because <code>to_s</code> is meant
+to be used for humanized output such as what you saw in the previous
+example, not debugging output.</p>
+
+<p>The unfortunate consequence of this problem is that if you define <code>to_s</code> in your
+objects, you must also define a meaningful <code>inspect</code>, and if you want to 
+reproduce the same behavior as <code>Object#inspect</code>, you need to implement 
+it yourself. While this is mostly a problem of brittle code and it is not
+specifically related to inheritance, the problem is compounded by
+inheritance-based modeling. For example, suppose the <code>Person</code> class was defined
+as shown above, and you decided to subclass it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Employee</span> &lt; <span style="color:#036;font-weight:bold">Person</span> 
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, email, role)
+    <span style="color:#080;font-weight:bold">super</span>(name, email)
+    <span style="color:#33B">@role</span> = role
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If <code>Person</code> does define its own <code>inspect</code> method, <code>Employee</code> will inherit the
+same problem. On the other hand, if <code>Person</code> does implement <code>inspect</code>, it needs
+to take care to implement it in a way that’s suitably general to account for
+what its descendants might find useful. This invites the same design challenges
+that caused this problem in the first place, which means that <code>Employee</code> may end
+up cleaning up after its parent object in a similar way. Unfortunately,
+brittleness tends to cascade downwards throughout ancestry chains.</p>
+
+<h3 id="homework-exercises">Homework exercises</h3>
+
+<p>This article is on the short-side, and it also leaves out a lot of the story
+from each of these points. I did this intentionally to encourage you to
+participate in an active discussion on this topic. To get the most out of this
+article, please complete at least one of the following homework exercises:</p>
+
+<p>1) Show a realistic example of an accidental method naming collision, in a
+similar spirit to the state-based example shown in Problem #1. For bonus
+points, choose an example that involves private methods.</p>
+
+<p>2) Post a comment in response to the “interface explosion” example shown 
+in Problem #2. You can either try to guess what my main concern about 
+it is, or share your own concerns. If instead you feel that there is 
+nothing wrong with this kind of design, explain why you think that.</p>
+
+<p>3) Come up with another downside of inheritance-based modeling, and provide an
+example of it. If you have trouble coming up with your own, you may want to look
+into issues that can arise from overriding methods, or perhaps explore what
+happens when you mix traditional inheritance-based modeling with
+<code>method_missing</code>.</p>
+
+<p>4) Share an example of a library or project which is difficult to work with
+because of the way it uses inheritance-based modeling, or describe problems you’ve run
+into with your own projects due to inheritance.</p>
+
+<p>5) Share the conventions and guidelines you follow to avoid the problems
+described in this article, as well as other problems you’ve encountered with
+inheritance-based modeling.</p>
+
+<p>Looking forward to seeing your responses! Don’t worry about getting the <em>right</em>
+answers, discussion threads here on Practicing Ruby are about learning, not
+necessarily showing off what you already know.</p>
+
+  </div>
+</body>
+</html>

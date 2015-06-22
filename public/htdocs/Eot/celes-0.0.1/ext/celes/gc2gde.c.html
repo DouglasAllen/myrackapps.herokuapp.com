@@ -1,0 +1,1132 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+int iauGc2gde ( double a, double f, double xyz[<span style="color:#00D">3</span>],
+                double *elong, double *phi, double *height )
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - - - - -
+**   i a u G c 2 g d e
+**  - - - - - - - - - -
+**
+**  Transform geocentric coordinates to geodetic for a reference
+**  ellipsoid of specified form.
+**
+**  Status:  support function.
+**
+**  Given:
+**     a       double     equatorial radius (Notes 2,4)
+**     f       double     flattening (Note 3)
+**     xyz     double[3]  geocentric vector (Note 4)
+**
+**  Returned:
+**     elong   double     longitude (radians, east +ve)
+**     phi     double     latitude (geodetic, radians)
+**     height  double     height above ellipsoid (geodetic, Note 4)
+**
+**  Returned (function value):
+**             int        status:  0 = OK
+**                                -1 = illegal f
+**                                -2 = illegal a
+**
+**  Notes:
+**
+**  1) This function is based on the GCONV2H Fortran subroutine by
+**     Toshio Fukushima (see reference).
+**
+**  2) The equatorial radius, a, can be in any units, but meters is
+**     the conventional choice.
+**
+**  3) The flattening, f, is (for the Earth) a value around 0.00335,
+**     i.e. around 1</span><span style="color:#404">/</span></span><span style="color:#00D">298</span>.
+**
+**  <span style="color:#00D">4</span>) <span style="color:#036;font-weight:bold">The</span> equatorial radius, a, <span style="color:#080;font-weight:bold">and</span> the geocentric vector, xyz,
+**     must be given <span style="color:#080;font-weight:bold">in</span> the same units, <span style="color:#080;font-weight:bold">and</span> determine the units of
+**     the returned height, height.
+**
+**  <span style="color:#00D">5</span>) <span style="color:#036;font-weight:bold">If</span> an error occurs (status &lt; <span style="color:#00D">0</span>), elong, phi <span style="color:#080;font-weight:bold">and</span> height are
+**     unchanged.
+**
+**  <span style="color:#00D">6</span>) <span style="color:#036;font-weight:bold">The</span> inverse transformation is performed <span style="color:#080;font-weight:bold">in</span> the function
+**     iauGd2gce.
+**
+**  <span style="color:#00D">7</span>) <span style="color:#036;font-weight:bold">The</span> transformation <span style="color:#080;font-weight:bold">for</span> a standard ellipsoid (such as <span style="color:#036;font-weight:bold">WGS84</span>) can
+**     more conveniently be performed by calling iauGc2gd, which uses a
+**     numerical code to identify the required <span style="color:#036;font-weight:bold">A</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#036;font-weight:bold">F</span> values.
+**
+**  <span style="color:#606">Reference</span>:
+**
+**     <span style="color:#036;font-weight:bold">Fukushima</span>, <span style="color:#036;font-weight:bold">T</span>., <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Transformation from Cartesian to geodetic
+**     coordinates accelerated by Halley's method</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">J</span>.Geodesy (<span style="color:#00D">2006</span>)
+**     <span style="color:#00D">79</span>: <span style="color:#00D">689</span>-<span style="color:#00D">693</span>
+**
+**  <span style="color:#036;font-weight:bold">This</span> <span style="color:#606">revision</span>:  <span style="color:#00D">2012</span> <span style="color:#036;font-weight:bold">February</span> <span style="color:#00D">23</span>
+**
+**  <span style="color:#036;font-weight:bold">Original</span> version <span style="color:#00D">2012</span>-<span style="color:#00D">03</span>-<span style="color:#00D">01</span>
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span> <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>.  See notes at <span style="color:#080;font-weight:bold">end</span>.
+*/
+{
+   double aeps2, e2, e4t, ec2, ec, b, x, y, z, p2, absz, p, s0, pn, zc,
+                 c0, c02, c03, s02, s03, a02, a0, a03, d0, f0, b0, s1,
+                 cc, s12, cc2;
+
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ------------- *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Preliminaries *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ------------- *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Validate ellipsoid parameters. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> ( f &lt; <span style="color:#60E">0.0</span> || f &gt;= <span style="color:#60E">1.0</span> ) <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">-1</span>;
+   <span style="color:#080;font-weight:bold">if</span> ( a &lt;= <span style="color:#60E">0.0</span> ) <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">-2</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Functions of ellipsoid parameters (with further validation of f). *</span><span style="color:#404">/</span></span>
+   aeps2 = a*a * <span style="color:#60E">1e-32</span>;
+   e2 = (<span style="color:#60E">2.0</span> - f) * f;
+   e4t = e2*e2 * <span style="color:#60E">1.5</span>;
+   ec2 = <span style="color:#60E">1.0</span> - e2;
+   <span style="color:#080;font-weight:bold">if</span> ( ec2 &lt;= <span style="color:#60E">0.0</span> ) <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">-1</span>;
+   ec = sqrt(ec2);
+   b = a * ec;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Cartesian components. *</span><span style="color:#404">/</span></span>
+   x = xyz[<span style="color:#00D">0</span>];
+   y = xyz[<span style="color:#00D">1</span>];
+   z = xyz[<span style="color:#00D">2</span>];
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Distance from polar axis squared. *</span><span style="color:#404">/</span></span>
+   p2 = x*x + y*y;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Longitude. *</span><span style="color:#404">/</span></span>
+   *elong = p2 != <span style="color:#60E">0.0</span> ? atan2(y, x) : <span style="color:#60E">0.0</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Unsigned z-coordinate. *</span><span style="color:#404">/</span></span>
+   absz = fabs(z);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Proceed unless polar case. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> ( p2 &gt; aeps2 ) {
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Distance from polar axis. *</span><span style="color:#404">/</span></span>
+      p = sqrt(p2);
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Normalization. *</span><span style="color:#404">/</span></span>
+      s0 = absz / a;
+      pn = p / a;
+      zc = ec * s0;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Prepare Newton correction factors. *</span><span style="color:#404">/</span></span>
+      c0 = ec * pn;
+      c02 = c0 * c0;
+      c03 = c02 * c0;
+      s02 = s0 * s0;
+      s03 = s02 * s0;
+      a02 = c02 + s02;
+      a0 = sqrt(a02);
+      a03 = a02 * a0;
+      d0 = zc*a03 + e2*s03;
+      f0 = pn*a03 - e2*c03;
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Prepare Halley correction factor. *</span><span style="color:#404">/</span></span>
+      b0 = e4t * s02 * c02 * pn * (a0 - ec);
+      s1 = d0*f0 - b0*s0;
+      cc = ec * (f0*f0 - b0*c0);
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Evaluate latitude and height. *</span><span style="color:#404">/</span></span>
+      *phi = atan(s1/cc);
+      s12 = s1 * s1;
+      cc2 = cc * cc;
+      *height = (p*cc + absz*s1 - a * sqrt(ec2*s12 + cc2)) /
+                                                        sqrt(s12 + cc2);
+   } <span style="color:#080;font-weight:bold">else</span> {
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Exception: pole. *</span><span style="color:#404">/</span></span>
+      *phi = <span style="color:#036;font-weight:bold">DPI</span> / <span style="color:#60E">2.0</span>;
+      *height = absz - b;
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Restore sign of latitude. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">if</span> ( z &lt; <span style="color:#00D">0</span> ) *phi = -*phi;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* OK status. *</span><span style="color:#404">/</span></span>
+   <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">0</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http:</span><span style="color:#404">/</span></span>/www.iausofa.org/tandc.html).
+**
+**  <span style="color:#036;font-weight:bold">The</span> original library is available from <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#036;font-weight:bold">Standards</span> of
+**  <span style="color:#036;font-weight:bold">Fundamental</span> <span style="color:#036;font-weight:bold">Astronomy</span> (<span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>www.iausofa.org/).
+**
+**
+**
+**
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span>, <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>
+**  <span style="color:#036;font-weight:bold">All</span> rights reserved.
+**
+**  <span style="color:#036;font-weight:bold">Redistribution</span> <span style="color:#080;font-weight:bold">and</span> use <span style="color:#080;font-weight:bold">in</span> source <span style="color:#080;font-weight:bold">and</span> binary forms, with <span style="color:#080;font-weight:bold">or</span> without
+**  modification, are permitted provided that the following conditions
+**  are <span style="color:#606">met</span>:
+**
+**  <span style="color:#00D">1</span> <span style="color:#036;font-weight:bold">Redistributions</span> of source code must retain the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer.
+**
+**  <span style="color:#00D">2</span> <span style="color:#036;font-weight:bold">Redistributions</span> <span style="color:#080;font-weight:bold">in</span> binary form must reproduce the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer <span style="color:#080;font-weight:bold">in</span>
+**    the documentation <span style="color:#080;font-weight:bold">and</span><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+
+}
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

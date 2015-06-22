@@ -1,0 +1,1046 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>In Issue 2.10, I described the path I took <a href="http://practicingruby.com/articles/10">from requirements discovery to
+release</a> for a small game I created,
+including various corners I had cut to get an initial release out the door.
+While that article was very well received, it left an important question
+unanswered: <strong>How do you transform a prototype into a product?</strong></p>
+
+<p>To answer that question, I have built a new little game for us to play with. But
+this time around, rather than outlining the path from the idea phase to a basic
+proof-of-concept, I will instead focus on what it takes to turn a rough prototype into a
+game that might actually be fun to play. Because that is a pretty big topic, I
+have split this article into two parts. This first part describes the initial
+prototype and my plans for improving it, and the second part will reflect on the
+challenges I encountered while trying to make those improvements. </p>
+
+<h3 id="blind-a-minesweeper-inspired-game-with-a-massive-twist">Blind: A Minesweeper-inspired game with a massive twist</h3>
+
+<p>The game I created for this article is based on a very simple concept:
+Navigating a mine field in search of an exit. While the premise is a bit
+different from the classic Minesweeper game, the basic idea of carefully trying
+to figure out where the mines are without getting yourself blown up is
+preserved. The graphic below gives a rough approximation what the structure of
+the Blind world is like:</p>
+
+<div align="center">
+<img src="http://i.imgur.com/lvRaj.png" />
+</div>
+
+<p>The game starts with the player positioned at the center of the safe zone, a
+buffer zone that exists to prevent mines from being detonated as soon as the
+player spawns. Within the mine field itself, a large quantity of mines are
+randomly spawned and there is no way for the player to know in advance exactly
+where they will be. This area is also where the exit gets randomly positioned,
+forcing the player to navigate the mine field to find their way out of the
+level. </p>
+
+<p>There is one way to win and two ways to lose a game of Blind. As you might imagine,
+getting too close to a mine is one of the ways to lose; the other is to wander off
+the edge of the map into deep space. To do this, the player needs to ignore a
+pretty obvious warning sign, but this loss condition helps make sure the player
+stays within a well defined perimeter throughout the game. The only way to win
+is to find the exit, which can be easy or hard depending on the positions and
+quantities of mines in the minefield.</p>
+
+<p>From this description, you might be imagining some sort of simple
+two-dimensional arcade game, complete with a hard to control little ship
+(perhaps similar to Asteroids), but as I mentioned before, this game has a
+massive twist: It has no graphics at all! Instead, it relies entirely on
+<a href="http://en.wikipedia.org/wiki/3D_audio_effect">positional audio</a> to represent its world. To get a taste of what the gameplay is like, grab a pair of headphones and play the video shown below.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> I have turned on the debugging output so that this video can be played
+on mute by those who either dislike loud noises or are reading this article
+in a place where they can’t play audio. However, it is worth noting that the
+game is designed to be played without any visual feedback at all,
+and that while testing it I have typically played with my eyes closed! </p>
+</blockquote>
+
+https://www.youtube.com/watch?v=cM0WHWgdmQk
+
+<p>The “audio only” twist is enough to inject some excitement into a very boring
+game concept, but right now the game is not particularly enjoyable to play because it is poorly
+balanced. I will talk about ideas I have for improving that later, but for now
+we should move on to discuss the implementation code that got me to the point
+where I could make this short video.</p>
+
+<h3 id="an-overview-of-blinds-initial-implementation">An overview of Blind’s initial implementation</h3>
+
+<p>I was originally going to use Blind as a demonstration how to implement
+layered applications that have clean separation between their business logic and
+UI code, so the code quality is better than what I usually start out with in proof-of-concept projects. 
+While you might be able to read the <a href="">full implementation</a> without too much effort, 
+the following outline will give you an overview of how the codebase is structured without 
+dragging you too far out into the weeds.</p>
+
+<p><strong><a href="">Blind::Game</a> triggers events in response to the player’s movements</strong></p>
+
+<p>One decision I made early on in the process of building Blind was that I wanted
+the main <code>Blind::Game</code> object to be based on a publish/subscribe model. Whenever
+I have worked on games in the past, I have always struggled to figure out how to
+encapsulate the rules without writing extremely brittle code, and this time
+around I think I found a nice happy medium. </p>
+
+<p>If you look at the <code>Game#move</code>
+method below, you can see that while it captures all the different kinds of
+events that can occur within the game, it leaves it up to someone else to
+determine what should happen in response to those events. This flexibility will
+hopefully come in handy as the game rules evolve over time.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Game</span>
+    <span style="color:#777"># ...</span>
+    
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">move</span>(dx, dy)
+      x,y = world.current_position.to_a
+
+      r1 = world.current_region
+      r2 = world.move_to(x + dx, y + dy)
+
+      <span style="color:#080;font-weight:bold">if</span> r1 != r2
+        broadcast_event(<span style="color:#A60">:leave_region</span>, r1)
+        broadcast_event(<span style="color:#A60">:enter_region</span>, r2)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      mines = world.mine_positions
+
+      <span style="color:#080;font-weight:bold">if</span> mines.find { |e| world.distance(e) &lt; <span style="color:#036;font-weight:bold">MINE_DETONATION_RANGE</span> }
+        broadcast_event(<span style="color:#A60">:mine_detonated</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">if</span> world.distance(world.exit_position) &lt; <span style="color:#036;font-weight:bold">EXIT_ACTIVATION_RANGE</span>
+        broadcast_event(<span style="color:#A60">:exit_located</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While I will show some more examples of this event system when we discuss Blind’s
+presentation layer, the following tests hint at how the publish/subscribe
+system works. In a nutshell, the <code>Game#on_event</code> method sets up callbacks that get executed whenever <code>Game#broadcast_event</code> is called with a matching key.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">must trigger an event when a mine is detonated</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    detonated = <span style="color:#069">false</span>
+
+    game.on_event(<span style="color:#A60">:mine_detonated</span>) { detonated = <span style="color:#069">true</span> }
+
+    mine = world.mine_positions.first
+
+    game.move(mine.x - <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Game</span>::<span style="color:#036;font-weight:bold">MINE_DETONATION_RANGE</span>, mine.y)
+
+    refute detonated, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should not be detonated before </span><span style="color:#710">&quot;</span></span> +
+                      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">player is in the mine's range</span><span style="color:#710">&quot;</span></span>
+
+    game.move(<span style="color:#00D">1</span>, <span style="color:#00D">0</span>)
+
+    assert detonated, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should detonate when player is in the mine's range</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While I am fairly happy with the implementation of <code>Blind::Game</code>, both the
+implementation code and the tests hint at the current dependency on a pair of
+magic numbers stored in the <code>EXIT_ACTIVATION_RANGE</code> and
+<code>MINE_DETONATION_RANGE</code> constants. This was done purely for the sake of
+convenience, but I imagine they will need to be parameterized at some point in
+future to make the game rules more customizable.</p>
+
+<p>Another potential pitfall of this design is that its open-ended flexibility may
+prove to be a double edged sword. I will be looking at this closely as I
+increase the complexity of the game rules, but what I want to avoid is having a
+big chunk of the game logic spill over into the client code unnecessarily. This
+wasn’t a major concern with the initial implementation, but it is definitely
+something to look out for later.</p>
+
+<p>Lastly, the event system as it currently is implemented assumes that there is a
+single subscriber for each published event. This is an arbitrary limitation that
+can easily be lifted, but right now is a limitation to be aware that may
+need to be dealt with later.</p>
+
+<p><strong><a href="">Blind::World</a> models the layout of the game world</strong></p>
+
+<p>In practice, the <code>Blind::World</code> class has been working out reasonable well.
+However, it is a bit of a structural method due to its broad spectrum of
+responsibilities. In particular, <code>Blind::World</code> can be used to:</p>
+
+<ul>
+  <li>Track where the mines, exit, and player are in the world</li>
+  <li>Compute the distance between the player and any other object in the world</li>
+  <li>Determine the region the player is currently in</li>
+  <li>Move the player to an arbitrary location in the world</li>
+  <li>Generate random locations within the minefield</li>
+</ul>
+
+<p>While you might be able to group some of these concepts together, it is clear
+that when taken as a set, these features fail to represent a single cohesive
+object. In particular, the methods provided by this object don’t have much in
+common when it comes to the level of abstraction they operate at. For example,
+the <code>World#distance</code> method and the <code>World#random_minefield_position</code> have so
+little in common that it is hard to look at them side by side without getting
+a bit of a headache.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">World</span>
+
+    <span style="color:#777"># simple delegation to the underlying Point object</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">distance</span>(other)
+      current_position.distance(other)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ...</span>
+
+    <span style="color:#777"># a non-trivial trigonometric function</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">random_minefield_position</span>
+      angle = rand(<span style="color:#00D">0</span>..<span style="color:#00D">2</span>*<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>)
+      length = rand(<span style="color:#036;font-weight:bold">MINE_FIELD_RANGE</span>)
+
+      x = length*<span style="color:#036;font-weight:bold">Math</span>.cos(angle)
+      y = length*<span style="color:#036;font-weight:bold">Math</span>.sin(angle)
+
+      <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Point</span>.new(x.to_i,y.to_i)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Another major limitation of the <code>Blind::World</code> object is that similar to 
+<code>Blind::Game</code>, it is chock full of magic numbers representing the sizes
+and position of the various regions. While it might be reasonable to 
+provide sensible defaults, locking these values down to exact numbers
+will make world customization harder. I imagine this is something 
+I will need to refactor sooner rather than later if I want to make
+the game more interesting to play.</p>
+
+<p>With all of these structural problems, you might expect the <code>Blind::World</code>
+object to be quite cumbersome to work with, but so far I haven’t really
+had problems with it. I expect that the next round of improvements to Blind 
+will change that, but I prefer to refactor based on needs rather than
+gut feelings about what a good design might look like.</p>
+
+<p><strong><a href="">Blind::Point</a> implements a simple generic point structure</strong></p>
+
+<p>This object is simple enough where you can read its full implementation before we discuss it further:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">matrix</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+      <span style="color:#33B">@data</span> = <span style="color:#036;font-weight:bold">Vector</span>[x,y]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>
+      data[<span style="color:#00D">0</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">y</span>
+      data[<span style="color:#00D">1</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">distance</span>(other)
+      (<span style="color:#069">self</span>.data - other.data).r
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+      distance(other).zero?
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_a</span>
+      [x,y]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>x<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>y<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    protected
+    
+    attr_reader <span style="color:#A60">:data</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The idea of having a generic class for representing points makes perfect sense for this game, because we need to do point math all over the place. I like that <code>Blind::Point</code> is an immutable object, because it reduces the possibility for weird corruptions to happen. However, the current implementation is not really putting the dependency on Ruby’s <code>Vector</code> object to good use. I had originally built the class this way because I expected to be doing a lot of calculations, but then somehow got in the habit of manually doing the math on the individual components. </p>
+
+<p>I assume that as Blind gets more complex, I will do more and more point math, and that will inspire me to delegate a few more operations to the <code>Vector</code> object. I may also refactor several of Blind’s API calls to take <code>Blind::Point</code> objects rather than explicit x and y arguments, which would encourage better use of this object. This kind of inconsistency is common in the early stages any project, because the boundary lines between the various objects in the system have not quite solidified yet. The good news is that these tensions tend to work themselves out gradually over time.</p>
+
+<p><strong><a href="">Blind::UI::JukeBox</a> is responsible for constructing the various sounds used in the game</strong></p>
+
+<p>The highly dynamic nature of the sounds in Blind made it worthwhile to introduce a small abstraction for loading and manipulating audio files. The example below demonstrates how both simple and complex sounds can be created by <code>Blind::UI::JukeBox</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">UI</span>
+    <span style="color:#036;font-weight:bold">JukeBox</span> = <span style="color:#036;font-weight:bold">Object</span>.new
+    
+    <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">JukeBox</span> 
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">explosion</span>
+        new_sound(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">grenade</span><span style="color:#710">&quot;</span></span>)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">phone</span>(position)
+        new_sound(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">telephone</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |s|
+          s.pos     = [position.x, position.y, <span style="color:#00D">0</span>]
+          s.looping = <span style="color:#069">true</span>
+
+          s.play
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">mines</span>(positions)
+        step      = <span style="color:#00D">0</span>
+        step_size = <span style="color:#00D">1</span>/positions.count.to_f
+
+        positions.map <span style="color:#080;font-weight:bold">do</span> |pos|
+          new_sound(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">beep</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |s|
+            s.pos     = [pos.x, pos.y, <span style="color:#00D">1</span>]
+            s.looping = <span style="color:#069">true</span>
+            s.pitch   = step + rand(step_size)
+
+            s.play
+
+            step += step_size
+          <span style="color:#080;font-weight:bold">end</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># ... several other sounds</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>One thing I like about this code is that it gave me a chance to use one of my favorite techniques: hiding ugly code via block-based APIs. While it looks pretty, the <code>JukeBox#new_sound</code> method is in reality nothing more than a tiny bit of syntactic sugar built on top of the underlying <code>Ray::Sound</code> object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">UI</span>
+    <span style="color:#036;font-weight:bold">JukeBox</span> = <span style="color:#036;font-weight:bold">Object</span>.new
+    
+    <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">JukeBox</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new_sound</span>(name) 
+        filename = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">File</span>.dirname(<span style="color:#069">__FILE__</span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/../../../data/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.wav</span><span style="color:#710">&quot;</span></span>
+        
+        <span style="color:#036;font-weight:bold">Ray</span>::<span style="color:#036;font-weight:bold">Sound</span>.new(filename).tap <span style="color:#080;font-weight:bold">do</span> |s|
+          <span style="color:#080;font-weight:bold">yield</span> s <span style="color:#080;font-weight:bold">if</span> block_given?
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When I had first built this method, it was designed to store the <code>Ray::Sound</code> objects in a hash that was keyed by the sound name. However, I eventually ended up deciding that it’d be best to let the client determine if and how sound objects should be cached, and so this method (and the <code>JukeBox</code> object as a whole) became a bit more simple as a result of that. Of course, it does complicate things for the <code>Blind::UI::GamePresenter</code> object, which has essentially become a dumping ground for all the functionality that didn’t fit well in the other components that Blind is made up of.</p>
+
+<p><strong><a href="">Blind::UI::GamePresenter</a> bridges the gap between the game logic and the
+UI</strong></p>
+
+<p>Similar to <code>Blind::World</code>, the <code>Blind::UI::GamePresenter</code> object suffers from a
+bit of an identity crisis. On the one hand, some of its methods do look like
+simple presentation-related features:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">UI</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GamePresenter</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">lose_game</span>(message)
+        silence_sounds
+
+        sound = sounds[<span style="color:#A60">:explosion</span>]
+        sound.play
+
+        <span style="color:#069">self</span>.game_over_message = message
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">win_game</span>(message)
+        silence_sounds
+
+        sound = sounds[<span style="color:#A60">:celebration</span>]
+        sound.play
+
+        <span style="color:#069">self</span>.game_over_message = message
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, there are just as many examples of methods that seem to be tacked
+on to this object that perhaps would have been better off on another object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">UI</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GamePresenter</span>
+
+      <span style="color:#777"># requires domain knowledge about Blind::UI::JukeBox</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">silence_sounds</span>
+        sounds.each <span style="color:#080;font-weight:bold">do</span> |name, sound|
+          <span style="color:#080;font-weight:bold">case</span> name
+          <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:mines</span>
+            sound.each { |s| s.stop }
+          <span style="color:#080;font-weight:bold">else</span>
+            sound.stop
+          <span style="color:#080;font-weight:bold">end</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># touches every attribute provided by Blind::World</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Player position </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>world.current_position<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>+
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Region </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>world.current_region<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>+
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Mines</span><span style="color:#b0b">\n</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>world.mine_positions.each_slice(<span style="color:#00D">5</span>)
+                         .map { |e| e.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">, </span><span style="color:#710">&quot;</span></span>) }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>+
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Exit</span><span style="color:#b0b">\n</span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>world.exit_position<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>And just for good measure, <code>Blind::UI::GamePresenter</code> implements a few
+methods that seem to be closer to the logical layer rather than the
+presentation layer:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Blind</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">UI</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GamePresenter</span>
+      
+      <span style="color:#777"># if we want to change a game rule, we'd need to update</span>
+      <span style="color:#777"># the GamePresenter object. That seems a bit strange.</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">setup_events</span>
+        game.on_event(<span style="color:#A60">:enter_region</span>, <span style="color:#A60">:danger_zone</span>) <span style="color:#080;font-weight:bold">do</span>
+          <span style="color:#069">self</span>.in_danger_zone = <span style="color:#069">true</span>
+        <span style="color:#080;font-weight:bold">end</span>
+
+        game.on_event(<span style="color:#A60">:leave_region</span>, <span style="color:#A60">:danger_zone</span>) <span style="color:#080;font-weight:bold">do</span>
+          <span style="color:#069">self</span>.in_danger_zone = <span style="color:#069">false</span>
+        <span style="color:#080;font-weight:bold">end</span>
+
+        game.on_event(<span style="color:#A60">:enter_region</span>, <span style="color:#A60">:deep_space</span>) <span style="color:#080;font-weight:bold">do</span>
+          lose_game(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">you drifted off into deep space! you lose!</span><span style="color:#710">&quot;</span></span>)
+        <span style="color:#080;font-weight:bold">end</span>
+
+        game.on_event(<span style="color:#A60">:mine_detonated</span>) <span style="color:#080;font-weight:bold">do</span>
+          lose_game(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">you got blasted by a mine! you lose!</span><span style="color:#710">&quot;</span></span>)
+        <span style="color:#080;font-weight:bold">end</span>
+
+        game.on_event(<span style="color:#A60">:exit_located</span>) <span style="color:#080;font-weight:bold">do</span>
+          win_game(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">you found the exit! you win!</span><span style="color:#710">&quot;</span></span>)
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># this triggers a &quot;SURPRISE MATH ATTACK!&quot; as in Blind::World</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">detect_danger_zone</span>
+        <span style="color:#080;font-weight:bold">if</span> in_danger_zone
+          min = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">World</span>::<span style="color:#036;font-weight:bold">DANGER_ZONE_RANGE</span>.min
+          max = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">World</span>::<span style="color:#036;font-weight:bold">DANGER_ZONE_RANGE</span>.max
+
+          sounds[<span style="color:#A60">:siren</span>].volume = 
+            ((world.distance(world.center_position) - min) / max.to_f) * <span style="color:#00D">100</span>
+        <span style="color:#080;font-weight:bold">else</span>
+          sounds[<span style="color:#A60">:siren</span>].volume = <span style="color:#00D">0</span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This extremely messy design is a consequence of trying to make good design
+decisions elsewhere. Whenever I was in doubt about whether something was a
+logical concern or a presentation concern, I error on pushing the code out of
+the domain models and into the UI. This helped the objects which implemented
+pure game logic stay simple and lean, but without finding a good place for all
+this other code to go, it ended up getting slapped together in a haphazard 
+“procedural programming with objects” style. I am hoping to clean up this
+object eventually, but I didn’t have any brilliant ideas for how to do so
+before publishing this article.</p>
+
+<p><strong>The <a href="">bin/blind</a> executable implements trivial UI boilerplate code</strong></p>
+
+<p>The main benefit of the <code>Blind::UI::GamePresenter</code> class is that it makes it
+possible for the Ray-based UI code to be almost entirely logic-free. This 
+leads to a very clear main program loop:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>always <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">if</span> game.finished?
+    message = game.game_over_message
+  <span style="color:#080;font-weight:bold">else</span>
+    game.detect_danger_zone
+    
+    game.move( <span style="color:#60E">0.0</span>, <span style="color:#60E">-0.2</span>) <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:w</span>)
+    game.move( <span style="color:#60E">0.0</span>, <span style="color:#60E">0.2</span>)  <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:s</span>)
+    game.move(<span style="color:#60E">-0.2</span>, <span style="color:#60E">0.0</span>)  <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:a</span>)
+    game.move( <span style="color:#60E">0.2</span>, <span style="color:#60E">0.0</span>)  <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:d</span>)
+
+    position = game.player_position
+
+    <span style="color:#036;font-weight:bold">Ray</span>::<span style="color:#036;font-weight:bold">Audio</span>.pos = [position.x, position.y, <span style="color:#00D">0</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>My hope is that I will be able to preserve the simplicity of this runner file
+even if I end up having to radically restructure the <code>Blind::UI::GamePresenter</code>
+object. Because the interface used by this script is very narrow, I don’t expect
+that will be a problem.</p>
+
+<h3 id="what-would-make-blind-a-more-enjoyable-game">What would make Blind a more enjoyable game?</h3>
+
+<p>Now that I have given you a ton of context about the various strengths and
+weaknesses of Blind’s codebase, we can talk about some ways to improve its
+gameplay.</p>
+
+<p><strong>Customizable world maps</strong></p>
+
+<p>While randomization can help make games have a higher replay value, full
+randomization can result in a pretty inconsistent gaming experience. I would
+like to add either a mechanism for loading in pre-defined world maps, or
+build a more customizable random world generator that allows to define
+a bunch of different factors that affect gameplay.</p>
+
+<blockquote>
+  <p><strong>CHALLENGES:</strong>  In order to implement this feature, I am going to need to deal with reducing
+the dependency on hard-coded numeric values throughout the system. I will
+want to be able to control things like the size of the regions or the blast
+radius of a mine, and currently those things are not configurable at runtime.</p>
+</blockquote>
+
+<p><strong>Level-based organization</strong></p>
+
+<p>Once I have the ability to support multiple different maps in the game, I would
+like to be able to chain them together in a sequence to form levels. This will
+make it possible to start with easy maps and progress to harder ones, which may
+be a bit less of a disorienting experience for the player than the game
+currently is.</p>
+
+<blockquote>
+  <p><strong>CHALLENGES:</strong> This feature does not require a ton of rework to the base
+implementation, because we will be to easily modify the handler for the <code>:exit_located</code>
+event and have it advance to the next level rather than end the game. However, I
+want to make sure to re-think the <code>Blind::UI::GamePresenter</code> object before doing
+this so that I can avoid accumulating even more logic in the wrong place.</p>
+</blockquote>
+
+<p><strong>Multiple lives per game</strong></p>
+
+<p>Having to start over from the beginning will become more and more annoying as
+more levels are added, so I will introduce the concept of “lives” in some form
+or another. I haven’t decided yet exactly what the mechanics for this feature
+will be like, but it should make death somewhat less tragic and irritating
+for the player.</p>
+
+<blockquote>
+  <p><strong>CHALLENGES:</strong>  Similar to adding support for levels, this probably won’t 
+require many structural changes to the game’s current implementation. But as
+I mentioned before, we need a better home for our event handling code moving
+forward.</p>
+</blockquote>
+
+<p><strong>Moving enemies that chase the player</strong></p>
+
+<p>Having to slowly navigate a mine field in two dimensional space is
+nerve-wracking enough, but getting chased through one would be terrifying!
+I want to add some sort of flying baddies that will chase the player around
+the minefield. There are lots of different ways I could possibly implement
+this, but those are more game design questions moreso than technical questions.</p>
+
+<blockquote>
+  <p><strong>CHALLENGES:</strong> Adding more game elements that require their position to be 
+updated will force me to think harder about the limitations of the 
+current <code>Blind::Point</code> class and the overall design of 
+the <code>Blind::World</code> class. I may need to end up refactoring both of
+those objects, depending on how complex the functionality for these new
+game elements are. Additionally, new event types and event handlers will
+be created, and new sounds will need to be added. In other words, making
+this change will force me to touch pretty much every object in the system.</p>
+</blockquote>
+
+<p><strong>A defense mechanism for the player</strong></p>
+
+<p>I would like to add some way for the player to protect themselves from harm.
+This will likely be some sort of limited-use shield that is effective against
+mine detonations, flying baddies, or both.</p>
+
+<blockquote>
+  <p><strong>CHALLENGES:</strong> Adding this functionality will require some sort of new event
+type, and probably some modification to existing events. It will involve less
+rework than the flying baddies feature, but will require more changes to the
+existing system than most of the other features I have proposed. The good news
+is that apart from those changes, the feature itself should be easy to
+implement.</p>
+</blockquote>
+
+<p>I may not get around to implementing all of these features by the time Issue 4.3
+is published, but I will definitely tackle at least a few of them between now
+and then. Regardless of how things turn out, I think we will end up with some
+interesting problems to discuss.</p>
+
+<h3 id="some-things-you-can-do-to-help-me">Some things you can do to help me</h3>
+
+<p><strong>If you have a few seconds to spare</strong> and know someone who has some experience
+with game development, please share this article and ask them to get in touch
+with me.</p>
+
+<p><strong>If you have a few minutes to spare</strong>, please share your thoughts about this
+article. I would be happy to hear whatever is on your mind, whether it is about
+the game itself, its codebase, or just a gut reaction to something I have said
+in this article.</p>
+
+<p><strong>If you can spare an extra hour or two of your time</strong>, please pull down the
+code and try to get the game up and running, and then take a closer look
+at its implementation. Once you have done that, get in touch with me with
+any questions and suggestions about points I didn’t manage to cover in
+this article.</p>
+
+<p>And lastly, if you want to stay on top of changes as I work towards implementing
+the code that will be discussed in Issue 4.3, please hang out in the
+<strong>#mendicant</strong> channel on Freenode. I may occasionally ask the folks there to test things
+for me or give me feedback on small snippets of code while I am working.</p>
+
+  </div>
+</body>
+</html>

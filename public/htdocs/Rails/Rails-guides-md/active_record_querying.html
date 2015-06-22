@@ -1,0 +1,2021 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="active-record-query-interface">Active Record Query Interface</h1>
+
+<p>This guide covers different ways to retrieve data from the database using Active Record.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to find records using a variety of methods and conditions.</li>
+  <li>How to specify the order, retrieved attributes, grouping, and other properties of the found records.</li>
+  <li>How to use eager loading to reduce the number of database queries needed for data retrieval.</li>
+  <li>How to use dynamic finders methods.</li>
+  <li>How to check for the existence of particular records.</li>
+  <li>How to perform various calculations on Active Record models.</li>
+  <li>How to run EXPLAIN on relations.</li>
+</ul>
+
+<hr />
+
+<p>If you’re used to using raw SQL to find database records, then you will generally find that there are better ways to carry out the same operations in Rails. Active Record insulates you from the need to use SQL in most cases.</p>
+
+<p>Code examples throughout this guide will refer to one or more of the following models:</p>
+
+<p>TIP: All of the following models use <code>id</code> as the primary key, unless specified otherwise.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Client</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_one <span style="color:#A60">:address</span>
+  has_many <span style="color:#A60">:orders</span>
+  has_and_belongs_to_many <span style="color:#A60">:roles</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Address</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:client</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Order</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:client</span>, <span style="color:#606">counter_cache</span>: <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Role</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_and_belongs_to_many <span style="color:#A60">:clients</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Active Record will perform queries on the database for you and is compatible with most database systems (MySQL, PostgreSQL and SQLite to name a few). Regardless of which database system you’re using, the Active Record method format will always be the same.</p>
+
+<h2 id="retrieving-objects-from-the-database">Retrieving Objects from the Database</h2>
+
+<p>To retrieve objects from the database, Active Record provides several finder methods. Each finder method allows you to pass arguments into it to perform certain queries on your database without writing raw SQL.</p>
+
+<p>The methods are:</p>
+
+<ul>
+  <li><code>bind</code></li>
+  <li><code>create_with</code></li>
+  <li><code>eager_load</code></li>
+  <li><code>extending</code></li>
+  <li><code>from</code></li>
+  <li><code>group</code></li>
+  <li><code>having</code></li>
+  <li><code>includes</code></li>
+  <li><code>joins</code></li>
+  <li><code>limit</code></li>
+  <li><code>lock</code></li>
+  <li><code>none</code></li>
+  <li><code>offset</code></li>
+  <li><code>order</code></li>
+  <li><code>preload</code></li>
+  <li><code>readonly</code></li>
+  <li><code>references</code></li>
+  <li><code>reorder</code></li>
+  <li><code>reverse_order</code></li>
+  <li><code>select</code></li>
+  <li><code>distinct</code></li>
+  <li><code>uniq</code></li>
+  <li><code>where</code></li>
+</ul>
+
+<p>All of the above methods return an instance of <code>ActiveRecord::Relation</code>.</p>
+
+<p>The primary operation of <code>Model.find(options)</code> can be summarized as:</p>
+
+<ul>
+  <li>Convert the supplied options to an equivalent SQL query.</li>
+  <li>Fire the SQL query and retrieve the corresponding results from the database.</li>
+  <li>Instantiate the equivalent Ruby object of the appropriate model for every resulting row.</li>
+  <li>Run <code>after_find</code> callbacks, if any.</li>
+</ul>
+
+<h3 id="retrieving-a-single-object">Retrieving a Single Object</h3>
+
+<p>Active Record provides five different ways of retrieving a single object.</p>
+
+<h4 id="using-a-primary-key">Using a Primary Key</h4>
+
+<p>Using <code>Model.find(primary_key)</code>, you can retrieve the object corresponding to the specified <em>primary key</em> that matches any supplied options. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Find the client with primary key (id) 10.</span>
+client = <span style="color:#036;font-weight:bold">Client</span>.find(<span style="color:#00D">10</span>)
+<span style="color:#777"># =&gt; #&lt;Client id: 10, first_name: &quot;Ryan&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.id = <span style="color:#00D">10</span>) LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.find(primary_key)</code> will raise an <code>ActiveRecord::RecordNotFound</code> exception if no matching record is found.</p>
+
+<h4 id="take"><code>take</code></h4>
+
+<p><code>Model.take</code> retrieves a record without any implicit ordering. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.take
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.take</code> returns <code>nil</code> if no record is found and no exception will be raised.</p>
+
+<p>TIP: The retrieved record may vary depending on the database engine.</p>
+
+<h4 id="first"><code>first</code></h4>
+
+<p><code>Model.first</code> finds the first record ordered by the primary key. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.first
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> clients.id <span style="color:#088;font-weight:bold">ASC</span> LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.first</code> returns <code>nil</code> if no matching record is found and no exception will be raised.</p>
+
+<h4 id="last"><code>last</code></h4>
+
+<p><code>Model.last</code> finds the last record ordered by the primary key. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.last
+<span style="color:#777"># =&gt; #&lt;Client id: 221, first_name: &quot;Russel&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> clients.id <span style="color:#088;font-weight:bold">DESC</span> LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.last</code> returns <code>nil</code> if no matching record is found and no exception will be raised.</p>
+
+<h4 id="findby"><code>find_by</code></h4>
+
+<p><code>Model.find_by</code> finds the first record matching some conditions. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_by <span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Lifo</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+
+<span style="color:#036;font-weight:bold">Client</span>.find_by <span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Jon</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; nil</span>
+</pre></div>
+</div>
+</div>
+
+<p>It is equivalent to writing:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Lifo</span><span style="color:#710">'</span></span>).take
+</pre></div>
+</div>
+</div>
+
+<h4 id="take-1"><code>take!</code></h4>
+
+<p><code>Model.take!</code> retrieves a record without any implicit ordering. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.take!
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.take!</code> raises <code>ActiveRecord::RecordNotFound</code> if no matching record is found.</p>
+
+<h4 id="first-1"><code>first!</code></h4>
+
+<p><code>Model.first!</code> finds the first record ordered by the primary key. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.first!
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> clients.id <span style="color:#088;font-weight:bold">ASC</span> LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.first!</code> raises <code>ActiveRecord::RecordNotFound</code> if no matching record is found.</p>
+
+<h4 id="last-1"><code>last!</code></h4>
+
+<p><code>Model.last!</code> finds the last record ordered by the primary key. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.last!
+<span style="color:#777"># =&gt; #&lt;Client id: 221, first_name: &quot;Russel&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> clients.id <span style="color:#088;font-weight:bold">DESC</span> LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Model.last!</code> raises <code>ActiveRecord::RecordNotFound</code> if no matching record is found.</p>
+
+<h4 id="findby-1"><code>find_by!</code></h4>
+
+<p><code>Model.find_by!</code> finds the first record matching some conditions. It raises <code>ActiveRecord::RecordNotFound</code> if no matching record is found. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_by! <span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Lifo</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;</span>
+
+<span style="color:#036;font-weight:bold">Client</span>.find_by! <span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Jon</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; ActiveRecord::RecordNotFound</span>
+</pre></div>
+</div>
+</div>
+
+<p>It is equivalent to writing:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Lifo</span><span style="color:#710">'</span></span>).take!
+</pre></div>
+</div>
+</div>
+
+<h3 id="retrieving-multiple-objects">Retrieving Multiple Objects</h3>
+
+<h4 id="using-multiple-primary-keys">Using Multiple Primary Keys</h4>
+
+<p><code>Model.find(array_of_primary_key)</code> accepts an array of <em>primary keys</em>, returning an array containing all of the matching records for the supplied <em>primary keys</em>. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Find the clients with primary keys 1 and 10.</span>
+client = <span style="color:#036;font-weight:bold">Client</span>.find([<span style="color:#00D">1</span>, <span style="color:#00D">10</span>]) <span style="color:#777"># Or even Client.find(1, 10)</span>
+<span style="color:#777"># =&gt; [#&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;, #&lt;Client id: 10, first_name: &quot;Ryan&quot;&gt;]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.id <span style="color:#080;font-weight:bold">IN</span> (<span style="color:#00D">1</span>,<span style="color:#00D">10</span>))
+</pre></div>
+</div>
+</div>
+
+<p>WARNING: <code>Model.find(array_of_primary_key)</code> will raise an <code>ActiveRecord::RecordNotFound</code> exception unless a matching record is found for <strong>all</strong> of the supplied primary keys.</p>
+
+<h4 id="take-2">take</h4>
+
+<p><code>Model.take(limit)</code> retrieves the first number of records specified by <code>limit</code> without any explicit ordering:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.take(<span style="color:#00D">2</span>)
+<span style="color:#777"># =&gt; [#&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;,</span>
+      <span style="color:#777">#&lt;Client id: 2, first_name: &quot;Raf&quot;&gt;]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">2</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="first-2">first</h4>
+
+<p><code>Model.first(limit)</code> finds the first number of records specified by <code>limit</code> ordered by primary key:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.first(<span style="color:#00D">2</span>)
+<span style="color:#777"># =&gt; [#&lt;Client id: 1, first_name: &quot;Lifo&quot;&gt;,</span>
+      <span style="color:#777">#&lt;Client id: 2, first_name: &quot;Raf&quot;&gt;]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> id <span style="color:#088;font-weight:bold">ASC</span> LIMIT <span style="color:#00D">2</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="last-2">last</h4>
+
+<p><code>Model.last(limit)</code> finds the number of records specified by <code>limit</code> ordered by primary key in descending order:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.last(<span style="color:#00D">2</span>)
+<span style="color:#777"># =&gt; [#&lt;Client id: 10, first_name: &quot;Ryan&quot;&gt;,</span>
+      <span style="color:#777">#&lt;Client id: 9, first_name: &quot;John&quot;&gt;]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL equivalent of the above is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> id <span style="color:#088;font-weight:bold">DESC</span> LIMIT <span style="color:#00D">2</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="retrieving-multiple-objects-in-batches">Retrieving Multiple Objects in Batches</h3>
+
+<p>We often need to iterate over a large set of records, as when we send a newsletter to a large set of users, or when we export data.</p>
+
+<p>This may appear straightforward:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This is very inefficient when the users table has thousands of rows.</span>
+<span style="color:#036;font-weight:bold">User</span>.all.each <span style="color:#080;font-weight:bold">do</span> |user|
+  <span style="color:#036;font-weight:bold">NewsLetter</span>.weekly_deliver(user)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>But this approach becomes increasingly impractical as the table size increases, since <code>User.all.each</code> instructs Active Record to fetch <em>the entire table</em> in a single pass, build a model object per row, and then keep the entire array of model objects in memory. Indeed, if we have a large number of records, the entire collection may exceed the amount of memory available.</p>
+
+<p>Rails provides two methods that address this problem by dividing records into memory-friendly batches for processing. The first method, <code>find_each</code>, retrieves a batch of records and then yields <em>each</em> record to the block individually as a model. The second method, <code>find_in_batches</code>, retrieves a batch of records and then yields <em>the entire batch</em> to the block as an array of models.</p>
+
+<p>TIP: The <code>find_each</code> and <code>find_in_batches</code> methods are intended for use in the batch processing of a large number of records that wouldn’t fit in memory all at once. If you just need to loop over a thousand records the regular find methods are the preferred option.</p>
+
+<h4 id="findeach"><code>find_each</code></h4>
+
+<p>The <code>find_each</code> method retrieves a batch of records and then yields <em>each</em> record to the block individually as a model. In the following example, <code>find_each</code> will retrieve 1000 records (the current default for both <code>find_each</code> and <code>find_in_batches</code>) and then yield each record individually to the block as a model. This process is repeated until all of the records have been processed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.find_each <span style="color:#080;font-weight:bold">do</span> |user|
+  <span style="color:#036;font-weight:bold">NewsLetter</span>.weekly_deliver(user)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h5 id="options-for-findeach">Options for <code>find_each</code></h5>
+
+<p>The <code>find_each</code> method accepts most of the options allowed by the regular <code>find</code> method, except for <code>:order</code> and <code>:limit</code>, which are reserved for internal use by <code>find_each</code>.</p>
+
+<p>Two additional options, <code>:batch_size</code> and <code>:start</code>, are available as well.</p>
+
+<p><strong><code>:batch_size</code></strong></p>
+
+<p>The <code>:batch_size</code> option allows you to specify the number of records to be retrieved in each batch, before being passed individually to the block. For example, to retrieve records in batches of 5000:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.find_each(<span style="color:#606">batch_size</span>: <span style="color:#00D">5000</span>) <span style="color:#080;font-weight:bold">do</span> |user|
+  <span style="color:#036;font-weight:bold">NewsLetter</span>.weekly_deliver(user)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong><code>:start</code></strong></p>
+
+<p>By default, records are fetched in ascending order of the primary key, which must be an integer. The <code>:start</code> option allows you to configure the first ID of the sequence whenever the lowest ID is not the one you need. This would be useful, for example, if you wanted to resume an interrupted batch process, provided you saved the last processed ID as a checkpoint.</p>
+
+<p>For example, to send newsletters only to users with the primary key starting from 2000, and to retrieve them in batches of 5000:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.find_each(<span style="color:#606">start</span>: <span style="color:#00D">2000</span>, <span style="color:#606">batch_size</span>: <span style="color:#00D">5000</span>) <span style="color:#080;font-weight:bold">do</span> |user|
+  <span style="color:#036;font-weight:bold">NewsLetter</span>.weekly_deliver(user)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Another example would be if you wanted multiple workers handling the same processing queue. You could have each worker handle 10000 records by setting the appropriate <code>:start</code> option on each worker.</p>
+
+<h4 id="findinbatches"><code>find_in_batches</code></h4>
+
+<p>The <code>find_in_batches</code> method is similar to <code>find_each</code>, since both retrieve batches of records. The difference is that <code>find_in_batches</code> yields <em>batches</em> to the block as an array of models, instead of individually. The following example will yield to the supplied block an array of up to 1000 invoices at a time, with the final block containing any remaining invoices:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Give add_invoices an array of 1000 invoices at a time</span>
+<span style="color:#036;font-weight:bold">Invoice</span>.find_in_batches(<span style="color:#606">include</span>: <span style="color:#A60">:invoice_lines</span>) <span style="color:#080;font-weight:bold">do</span> |invoices|
+  export.add_invoices(invoices)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: The <code>:include</code> option allows you to name associations that should be loaded alongside with the models.</p>
+
+<h5 id="options-for-findinbatches">Options for <code>find_in_batches</code></h5>
+
+<p>The <code>find_in_batches</code> method accepts the same <code>:batch_size</code> and <code>:start</code> options as <code>find_each</code>, as well as most of the options allowed by the regular <code>find</code> method, except for <code>:order</code> and <code>:limit</code>, which are reserved for internal use by <code>find_in_batches</code>.</p>
+
+<h2 id="conditions">Conditions</h2>
+
+<p>The <code>where</code> method allows you to specify conditions to limit the records returned, representing the <code>WHERE</code>-part of the SQL statement. Conditions can either be specified as a string, array, or hash.</p>
+
+<h3 id="pure-string-conditions">Pure String Conditions</h3>
+
+<p>If you’d like to add conditions to your find, you could just specify them in there, just like <code>Client.where("orders_count = '2'")</code>. This will find all clients where the <code>orders_count</code> field’s value is 2.</p>
+
+<p>WARNING: Building your own conditions as pure strings can leave you vulnerable to SQL injection exploits. For example, <code>Client.where("first_name LIKE '%#{params[:first_name]}%'")</code> is not safe. See the next section for the preferred way to handle conditions using an array.</p>
+
+<h3 id="array-conditions">Array Conditions</h3>
+
+<p>Now what if that number could vary, say as an argument from somewhere? The find would then take the form:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count = ?</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:orders</span>])
+</pre></div>
+</div>
+</div>
+
+<p>Active Record will go through the first element in the conditions value and any additional elements will replace the question marks <code>(?)</code> in the first element.</p>
+
+<p>If you want to specify multiple conditions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count = ? AND locked = ?</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:orders</span>], <span style="color:#069">false</span>)
+</pre></div>
+</div>
+</div>
+
+<p>In this example, the first question mark will be replaced with the value in <code>params[:orders]</code> and the second will be replaced with the SQL representation of <code>false</code>, which depends on the adapter.</p>
+
+<p>This code is highly preferable:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count = ?</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:orders</span>])
+</pre></div>
+</div>
+</div>
+
+<p>to this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count = </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>params[<span style="color:#A60">:orders</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>because of argument safety. Putting the variable directly into the conditions string will pass the variable to the database <strong>as-is</strong>. This means that it will be an unescaped variable directly from a user who may have malicious intent. If you do this, you put your entire database at risk because once a user finds out he or she can exploit your database they can do just about anything to it. Never ever put your arguments directly inside the conditions string.</p>
+
+<p>TIP: For more information on the dangers of SQL injection, see the <a href="security.html#sql-injection">Ruby on Rails Security Guide</a>.</p>
+
+<h4 id="placeholder-conditions">Placeholder Conditions</h4>
+
+<p>Similar to the <code>(?)</code> replacement style of params, you can also specify keys/values hash in your array conditions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at &gt;= :start_date AND created_at &lt;= :end_date</span><span style="color:#710">&quot;</span></span>,
+  {<span style="color:#606">start_date</span>: params[<span style="color:#A60">:start_date</span>], <span style="color:#606">end_date</span>: params[<span style="color:#A60">:end_date</span>]})
+</pre></div>
+</div>
+</div>
+
+<p>This makes for clearer readability if you have a large number of variable conditions.</p>
+
+<h3 id="hash-conditions">Hash Conditions</h3>
+
+<p>Active Record also allows you to pass in hash conditions which can increase the readability of your conditions syntax. With hash conditions, you pass in a hash with keys of the fields you want conditionalised and the values of how you want to conditionalise them:</p>
+
+<p>NOTE: Only equality, range and subset checking are possible with Hash conditions.</p>
+
+<h4 id="equality-conditions">Equality Conditions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">locked</span>: <span style="color:#069">true</span>)
+</pre></div>
+</div>
+</div>
+
+<p>The field name can also be a string:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">locked</span><span style="color:#710">'</span></span> =&gt; <span style="color:#069">true</span>)
+</pre></div>
+</div>
+</div>
+
+<p>In the case of a belongs_to relationship, an association key can be used to specify the model if an Active Record object is used as the value. This method works with polymorphic relationships as well.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.where(<span style="color:#606">author</span>: author)
+<span style="color:#036;font-weight:bold">Author</span>.joins(<span style="color:#A60">:posts</span>).where(<span style="color:#606">posts</span>: {<span style="color:#606">author</span>: author})
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: The values cannot be symbols. For example, you cannot do <code>Client.where(status: :active)</code>.</p>
+
+<h4 id="range-conditions">Range Conditions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">created_at</span>: (<span style="color:#036;font-weight:bold">Time</span>.now.midnight - <span style="color:#00D">1</span>.day)..<span style="color:#036;font-weight:bold">Time</span>.now.midnight)
+</pre></div>
+</div>
+</div>
+
+<p>This will find all clients created yesterday by using a <code>BETWEEN</code> SQL statement:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.created_at <span style="color:#080;font-weight:bold">BETWEEN</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2008-12-21 00:00:00</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">AND</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2008-12-22 00:00:00</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This demonstrates a shorter syntax for the examples in <a href="#array-conditions">Array Conditions</a></p>
+
+<h4 id="subset-conditions">Subset Conditions</h4>
+
+<p>If you want to find records using the <code>IN</code> expression you can pass an array to the conditions hash:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">orders_count</span>: [<span style="color:#00D">1</span>,<span style="color:#00D">3</span>,<span style="color:#00D">5</span>])
+</pre></div>
+</div>
+</div>
+
+<p>This code will generate SQL like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.orders_count <span style="color:#080;font-weight:bold">IN</span> (<span style="color:#00D">1</span>,<span style="color:#00D">3</span>,<span style="color:#00D">5</span>))
+</pre></div>
+</div>
+</div>
+
+<h3 id="not-conditions">NOT Conditions</h3>
+
+<p><code>NOT</code> SQL queries can be built by <code>where.not</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.where.not(<span style="color:#606">author</span>: author)
+</pre></div>
+</div>
+</div>
+
+<p>In other words, this query can be generated by calling <code>where</code> with no argument, then immediately chain with <code>not</code> passing <code>where</code> conditions.</p>
+
+<h2 id="ordering">Ordering</h2>
+
+<p>To retrieve records from the database in a specific order, you can use the <code>order</code> method.</p>
+
+<p>For example, if you’re getting a set of records and want to order them in ascending order by the <code>created_at</code> field in your table:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>You could specify <code>ASC</code> or <code>DESC</code> as well:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at DESC</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># OR</span>
+<span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at ASC</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Or ordering by multiple fields:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count ASC, created_at DESC</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># OR</span>
+<span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count ASC</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at DESC</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>If you want to call <code>order</code> multiple times e.g. in different context, new order will prepend previous one</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count ASC</span><span style="color:#710">&quot;</span></span>).order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at DESC</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># SELECT * FROM clients ORDER BY created_at DESC, orders_count ASC</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="selecting-specific-fields">Selecting Specific Fields</h2>
+
+<p>By default, <code>Model.find</code> selects all the fields from the result set using <code>select *</code>.</p>
+
+<p>To select only a subset of fields from the result set, you can specify the subset via the <code>select</code> method.</p>
+
+<p>For example, to select only <code>viewable_by</code> and <code>locked</code> columns:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">viewable_by, locked</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>The SQL query used by this find call will be somewhat like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> viewable_by, locked <span style="color:#080;font-weight:bold">FROM</span> clients
+</pre></div>
+</div>
+</div>
+
+<p>Be careful because this also means you’re initializing a model object with only the fields that you’ve selected. If you attempt to access a field that is not in the initialized record you’ll receive:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ActiveModel::MissingAttributeError: missing attribute: &lt;attribute&gt;
+</pre></div>
+</div>
+</div>
+
+<p>Where <code>&lt;attribute&gt;</code> is the attribute you asked for. The <code>id</code> method will not raise the <code>ActiveRecord::MissingAttributeError</code>, so just be careful when working with associations because they need the <code>id</code> method to function properly.</p>
+
+<p>If you would like to only grab a single record per unique value in a certain field, you can use <code>distinct</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.select(<span style="color:#A60">:name</span>).distinct
+</pre></div>
+</div>
+</div>
+
+<p>This would generate SQL like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> <span style="color:#080;font-weight:bold">DISTINCT</span> name <span style="color:#080;font-weight:bold">FROM</span> clients
+</pre></div>
+</div>
+</div>
+
+<p>You can also remove the uniqueness constraint:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>query = <span style="color:#036;font-weight:bold">Client</span>.select(<span style="color:#A60">:name</span>).distinct
+<span style="color:#777"># =&gt; Returns unique names</span>
+
+query.distinct(<span style="color:#069">false</span>)
+<span style="color:#777"># =&gt; Returns all names, even if there are duplicates</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="limit-and-offset">Limit and Offset</h2>
+
+<p>To apply <code>LIMIT</code> to the SQL fired by the <code>Model.find</code>, you can specify the <code>LIMIT</code> using <code>limit</code> and <code>offset</code> methods on the relation.</p>
+
+<p>You can use <code>limit</code> to specify the number of records to be retrieved, and use <code>offset</code> to specify the number of records to skip before starting to return the records. For example</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.limit(<span style="color:#00D">5</span>)
+</pre></div>
+</div>
+</div>
+
+<p>will return a maximum of 5 clients and because it specifies no offset it will return the first 5 in the table. The SQL it executes looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">5</span>
+</pre></div>
+</div>
+</div>
+
+<p>Adding <code>offset</code> to that</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.limit(<span style="color:#00D">5</span>).offset(<span style="color:#00D">30</span>)
+</pre></div>
+</div>
+</div>
+
+<p>will return instead a maximum of 5 clients beginning with the 31st. The SQL looks like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">5</span> OFFSET <span style="color:#00D">30</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="group">Group</h2>
+
+<p>To apply a <code>GROUP BY</code> clause to the SQL fired by the finder, you can specify the <code>group</code> method on the find.</p>
+
+<p>For example, if you want to find a collection of the dates orders were created on:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Order</span>.select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">date(created_at) as ordered_date, sum(price) as total_price</span><span style="color:#710">&quot;</span></span>).group(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">date(created_at)</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>And this will give you a single <code>Order</code> object for each date where there are orders in the database.</p>
+
+<p>The SQL that would be executed would be something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> <span style="color:#0a8;font-weight:bold">date</span>(created_at) <span style="color:#080;font-weight:bold">as</span> ordered_date, <span style="color:#369;font-weight:bold">sum</span>(price) <span style="color:#080;font-weight:bold">as</span> total_price
+<span style="color:#080;font-weight:bold">FROM</span> orders
+<span style="color:#080;font-weight:bold">GROUP</span> <span style="color:#080;font-weight:bold">BY</span> <span style="color:#0a8;font-weight:bold">date</span>(created_at)
+</pre></div>
+</div>
+</div>
+
+<h2 id="having">Having</h2>
+
+<p>SQL uses the <code>HAVING</code> clause to specify conditions on the <code>GROUP BY</code> fields. You can add the <code>HAVING</code> clause to the SQL fired by the <code>Model.find</code> by adding the <code>:having</code> option to the find.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Order</span>.select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">date(created_at) as ordered_date, sum(price) as total_price</span><span style="color:#710">&quot;</span></span>).
+  group(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">date(created_at)</span><span style="color:#710">&quot;</span></span>).having(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sum(price) &gt; ?</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">100</span>)
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed would be something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> <span style="color:#0a8;font-weight:bold">date</span>(created_at) <span style="color:#080;font-weight:bold">as</span> ordered_date, <span style="color:#369;font-weight:bold">sum</span>(price) <span style="color:#080;font-weight:bold">as</span> total_price
+<span style="color:#080;font-weight:bold">FROM</span> orders
+<span style="color:#080;font-weight:bold">GROUP</span> <span style="color:#080;font-weight:bold">BY</span> <span style="color:#0a8;font-weight:bold">date</span>(created_at)
+<span style="color:#080;font-weight:bold">HAVING</span> <span style="color:#369;font-weight:bold">sum</span>(price) &gt; <span style="color:#00D">100</span>
+</pre></div>
+</div>
+</div>
+
+<p>This will return single order objects for each day, but only those that are ordered more than $100 in a day.</p>
+
+<h2 id="overriding-conditions">Overriding Conditions</h2>
+
+<h3 id="except"><code>except</code></h3>
+
+<p>You can specify certain conditions to be excepted by using the <code>except</code> method. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id &gt; 10</span><span style="color:#710">'</span></span>).limit(<span style="color:#00D">20</span>).order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id asc</span><span style="color:#710">'</span></span>).except(<span style="color:#A60">:order</span>)
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> posts <span style="color:#080;font-weight:bold">WHERE</span> id &gt; <span style="color:#00D">10</span> LIMIT <span style="color:#00D">20</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="unscope"><code>unscope</code></h3>
+
+<p>The <code>except</code> method does not work when the relation is merged. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.comments.except(<span style="color:#A60">:order</span>)
+</pre></div>
+</div>
+</div>
+
+<p>will still have an order if the order comes from a default scope on Comment. In order to remove all ordering, even from relations which are merged in, use unscope as follows:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id DESC</span><span style="color:#710">'</span></span>).limit(<span style="color:#00D">20</span>).unscope(<span style="color:#A60">:order</span>) = <span style="color:#036;font-weight:bold">Post</span>.limit(<span style="color:#00D">20</span>)
+<span style="color:#036;font-weight:bold">Post</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id DESC</span><span style="color:#710">'</span></span>).limit(<span style="color:#00D">20</span>).unscope(<span style="color:#A60">:order</span>, <span style="color:#A60">:limit</span>) = <span style="color:#036;font-weight:bold">Post</span>.all
+</pre></div>
+</div>
+</div>
+
+<p>You can additionally unscope specific where clauses. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.where(<span style="color:#A60">:id</span> =&gt; <span style="color:#00D">10</span>).limit(<span style="color:#00D">1</span>).unscope(<span style="color:#606">where</span>: <span style="color:#A60">:id</span>, <span style="color:#A60">:limit</span>).order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id DESC</span><span style="color:#710">'</span></span>) = <span style="color:#036;font-weight:bold">Post</span>.order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id DESC</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="only"><code>only</code></h3>
+
+<p>You can also override conditions using the <code>only</code> method. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id &gt; 10</span><span style="color:#710">'</span></span>).limit(<span style="color:#00D">20</span>).order(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">id desc</span><span style="color:#710">'</span></span>).only(<span style="color:#A60">:order</span>, <span style="color:#A60">:where</span>)
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> posts <span style="color:#080;font-weight:bold">WHERE</span> id &gt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> id <span style="color:#088;font-weight:bold">DESC</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="reorder"><code>reorder</code></h3>
+
+<p>The <code>reorder</code> method overrides the default scope order. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  ..
+  ..
+  has_many <span style="color:#A60">:comments</span>, <span style="color:#606">order</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">posted_at DESC</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Post</span>.find(<span style="color:#00D">10</span>).comments.reorder(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">name</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> posts <span style="color:#080;font-weight:bold">WHERE</span> id = <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> name
+</pre></div>
+</div>
+</div>
+
+<p>In case the <code>reorder</code> clause is not used, the SQL executed would be:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> posts <span style="color:#080;font-weight:bold">WHERE</span> id = <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> posted_at <span style="color:#088;font-weight:bold">DESC</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="reverseorder"><code>reverse_order</code></h3>
+
+<p>The <code>reverse_order</code> method reverses the ordering clause if specified.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count &gt; 10</span><span style="color:#710">&quot;</span></span>).order(<span style="color:#A60">:name</span>).reverse_order
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> orders_count &gt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> name <span style="color:#088;font-weight:bold">DESC</span>
+</pre></div>
+</div>
+</div>
+
+<p>If no ordering clause is specified in the query, the <code>reverse_order</code> orders by the primary key in reverse order.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count &gt; 10</span><span style="color:#710">&quot;</span></span>).reverse_order
+</pre></div>
+</div>
+</div>
+
+<p>The SQL that would be executed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> orders_count &gt; <span style="color:#00D">10</span> <span style="color:#080;font-weight:bold">ORDER</span> <span style="color:#080;font-weight:bold">BY</span> clients.id <span style="color:#088;font-weight:bold">DESC</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method accepts <strong>no</strong> arguments.</p>
+
+<h2 id="null-relation">Null Relation</h2>
+
+<p>The <code>none</code> method returns a chainable relation with no records. Any subsequent conditions chained to the returned relation will continue generating empty relations. This is useful in scenarios where you need a chainable response to a method or a scope that could return zero results.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.none <span style="color:#777"># returns an empty Relation and fires no queries.</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># The visible_posts method below is expected to return a Relation.</span>
+<span style="color:#33B">@posts</span> = current_user.visible_posts.where(<span style="color:#606">name</span>: params[<span style="color:#A60">:name</span>])
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">visible_posts</span>
+  <span style="color:#080;font-weight:bold">case</span> role
+  <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Country Manager</span><span style="color:#710">'</span></span>
+    <span style="color:#036;font-weight:bold">Post</span>.where(<span style="color:#606">country</span>: country)
+  <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Reviewer</span><span style="color:#710">'</span></span>
+    <span style="color:#036;font-weight:bold">Post</span>.published
+  <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Bad User</span><span style="color:#710">'</span></span>
+    <span style="color:#036;font-weight:bold">Post</span>.none <span style="color:#777"># =&gt; returning [] or nil breaks the caller code in this case</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="readonly-objects">Readonly Objects</h2>
+
+<p>Active Record provides <code>readonly</code> method on a relation to explicitly disallow modification of any of the returned objects. Any attempt to alter a readonly record will not succeed, raising an <code>ActiveRecord::ReadOnlyRecord</code> exception.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>client = <span style="color:#036;font-weight:bold">Client</span>.readonly.first
+client.visits += <span style="color:#00D">1</span>
+client.save
+</pre></div>
+</div>
+</div>
+
+<p>As <code>client</code> is explicitly set to be a readonly object, the above code will raise an <code>ActiveRecord::ReadOnlyRecord</code> exception when calling <code>client.save</code> with an updated value of <em>visits</em>.</p>
+
+<h2 id="locking-records-for-update">Locking Records for Update</h2>
+
+<p>Locking is helpful for preventing race conditions when updating records in the database and ensuring atomic updates.</p>
+
+<p>Active Record provides two locking mechanisms:</p>
+
+<ul>
+  <li>Optimistic Locking</li>
+  <li>Pessimistic Locking</li>
+</ul>
+
+<h3 id="optimistic-locking">Optimistic Locking</h3>
+
+<p>Optimistic locking allows multiple users to access the same record for edits, and assumes a minimum of conflicts with the data. It does this by checking whether another process has made changes to a record since it was opened. An <code>ActiveRecord::StaleObjectError</code> exception is thrown if that has occurred and the update is ignored.</p>
+
+<p><strong>Optimistic locking column</strong></p>
+
+<p>In order to use optimistic locking, the table needs to have a column called <code>lock_version</code> of type integer. Each time the record is updated, Active Record increments the <code>lock_version</code> column. If an update request is made with a lower value in the <code>lock_version</code> field than is currently in the <code>lock_version</code> column in the database, the update request will fail with an <code>ActiveRecord::StaleObjectError</code>. Example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>c1 = <span style="color:#036;font-weight:bold">Client</span>.find(<span style="color:#00D">1</span>)
+c2 = <span style="color:#036;font-weight:bold">Client</span>.find(<span style="color:#00D">1</span>)
+
+c1.first_name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Michael</span><span style="color:#710">&quot;</span></span>
+c1.save
+
+c2.name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should fail</span><span style="color:#710">&quot;</span></span>
+c2.save <span style="color:#777"># Raises an ActiveRecord::StaleObjectError</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’re then responsible for dealing with the conflict by rescuing the exception and either rolling back, merging, or otherwise apply the business logic needed to resolve the conflict.</p>
+
+<p>This behavior can be turned off by setting <code>ActiveRecord::Base.lock_optimistically = false</code>.</p>
+
+<p>To override the name of the <code>lock_version</code> column, <code>ActiveRecord::Base</code> provides a class attribute called <code>locking_column</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Client</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#069">self</span>.locking_column = <span style="color:#A60">:lock_client_column</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="pessimistic-locking">Pessimistic Locking</h3>
+
+<p>Pessimistic locking uses a locking mechanism provided by the underlying database. Using <code>lock</code> when building a relation obtains an exclusive lock on the selected rows. Relations using <code>lock</code> are usually wrapped inside a transaction for preventing deadlock conditions.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Item</span>.transaction <span style="color:#080;font-weight:bold">do</span>
+  i = <span style="color:#036;font-weight:bold">Item</span>.lock.first
+  i.name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Jones</span><span style="color:#710">'</span></span>
+  i.save
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The above session produces the following SQL for a MySQL backend:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>SQL (<span style="color:#60E">0.2</span>ms)   <span style="color:#B06;font-weight:bold">BEGIN</span>
+Item Load (<span style="color:#60E">0.3</span>ms)   <span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">`</span><span style="color:#D20">items</span><span style="color:#710">`</span></span> LIMIT <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">FOR</span> <span style="color:#B06;font-weight:bold">UPDATE</span>
+Item <span style="color:#B06;font-weight:bold">Update</span> (<span style="color:#60E">0.4</span>ms)   <span style="color:#B06;font-weight:bold">UPDATE</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">`</span><span style="color:#D20">items</span><span style="color:#710">`</span></span> <span style="color:#B06;font-weight:bold">SET</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">`</span><span style="color:#D20">updated_at</span><span style="color:#710">`</span></span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2009-02-07 18:05:56</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">`</span><span style="color:#D20">name</span><span style="color:#710">`</span></span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Jones</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">WHERE</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">`</span><span style="color:#D20">id</span><span style="color:#710">`</span></span> = <span style="color:#00D">1</span>
+SQL (<span style="color:#60E">0.8</span>ms)   <span style="color:#B06;font-weight:bold">COMMIT</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also pass raw SQL to the <code>lock</code> method for allowing different types of locks. For example, MySQL has an expression called <code>LOCK IN SHARE MODE</code> where you can lock a record but still allow other queries to read it. To specify this expression just pass it in as the lock option:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Item</span>.transaction <span style="color:#080;font-weight:bold">do</span>
+  i = <span style="color:#036;font-weight:bold">Item</span>.lock(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LOCK IN SHARE MODE</span><span style="color:#710">&quot;</span></span>).find(<span style="color:#00D">1</span>)
+  i.increment!(<span style="color:#A60">:views</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you already have an instance of your model, you can start a transaction and acquire the lock in one go using the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>item = <span style="color:#036;font-weight:bold">Item</span>.first
+item.with_lock <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#777"># This block is called within a transaction,</span>
+  <span style="color:#777"># item is already locked.</span>
+  item.increment!(<span style="color:#A60">:views</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="joining-tables">Joining Tables</h2>
+
+<p>Active Record provides a finder method called <code>joins</code> for specifying <code>JOIN</code> clauses on the resulting SQL. There are multiple ways to use the <code>joins</code> method.</p>
+
+<h3 id="using-a-string-sql-fragment">Using a String SQL Fragment</h3>
+
+<p>You can just supply the raw SQL specifying the <code>JOIN</code> clause to <code>joins</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.joins(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">LEFT OUTER JOIN addresses ON addresses.client_id = clients.id</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This will result in the following SQL:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> clients.* <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">LEFT</span> <span style="color:#080;font-weight:bold">OUTER</span> <span style="color:#080;font-weight:bold">JOIN</span> addresses <span style="color:#080;font-weight:bold">ON</span> addresses.client_id = clients.id
+</pre></div>
+</div>
+</div>
+
+<h3 id="using-arrayhash-of-named-associations">Using Array/Hash of Named Associations</h3>
+
+<p>WARNING: This method only works with <code>INNER JOIN</code>.</p>
+
+<p>Active Record lets you use the names of the <a href="association_basics.html">associations</a> defined on the model as a shortcut for specifying <code>JOIN</code> clause for those associations when using the <code>joins</code> method.</p>
+
+<p>For example, consider the following <code>Category</code>, <code>Post</code>, <code>Comments</code> and <code>Guest</code> models:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Category</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:posts</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:category</span>
+  has_many <span style="color:#A60">:comments</span>
+  has_many <span style="color:#A60">:tags</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Comment</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:post</span>
+  has_one <span style="color:#A60">:guest</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Guest</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:comment</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Tag</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:post</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now all of the following will produce the expected join queries using <code>INNER JOIN</code>:</p>
+
+<h4 id="joining-a-single-association">Joining a Single Association</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Category</span>.joins(<span style="color:#A60">:posts</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This produces:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> categories.* <span style="color:#080;font-weight:bold">FROM</span> categories
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> posts <span style="color:#080;font-weight:bold">ON</span> posts.category_id = categories.id
+</pre></div>
+</div>
+</div>
+
+<p>Or, in English: “return a Category object for all categories with posts”. Note that you will see duplicate categories if more than one post has the same category. If you want unique categories, you can use <code>Category.joins(:posts).uniq</code>.</p>
+
+<h4 id="joining-multiple-associations">Joining Multiple Associations</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.joins(<span style="color:#A60">:category</span>, <span style="color:#A60">:comments</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This produces:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> posts.* <span style="color:#080;font-weight:bold">FROM</span> posts
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> categories <span style="color:#080;font-weight:bold">ON</span> posts.category_id = categories.id
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> comments <span style="color:#080;font-weight:bold">ON</span> comments.post_id = posts.id
+</pre></div>
+</div>
+</div>
+
+<p>Or, in English: “return all posts that have a category and at least one comment”. Note again that posts with multiple comments will show up multiple times.</p>
+
+<h4 id="joining-nested-associations-single-level">Joining Nested Associations (Single Level)</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.joins(<span style="color:#606">comments</span>: <span style="color:#A60">:guest</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This produces:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> posts.* <span style="color:#080;font-weight:bold">FROM</span> posts
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> comments <span style="color:#080;font-weight:bold">ON</span> comments.post_id = posts.id
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> guests <span style="color:#080;font-weight:bold">ON</span> guests.comment_id = comments.id
+</pre></div>
+</div>
+</div>
+
+<p>Or, in English: “return all posts that have a comment made by a guest.”</p>
+
+<h4 id="joining-nested-associations-multiple-level">Joining Nested Associations (Multiple Level)</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Category</span>.joins(<span style="color:#606">posts</span>: [{<span style="color:#606">comments</span>: <span style="color:#A60">:guest</span>}, <span style="color:#A60">:tags</span>])
+</pre></div>
+</div>
+</div>
+
+<p>This produces:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> categories.* <span style="color:#080;font-weight:bold">FROM</span> categories
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> posts <span style="color:#080;font-weight:bold">ON</span> posts.category_id = categories.id
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> comments <span style="color:#080;font-weight:bold">ON</span> comments.post_id = posts.id
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> guests <span style="color:#080;font-weight:bold">ON</span> guests.comment_id = comments.id
+  <span style="color:#080;font-weight:bold">INNER</span> <span style="color:#080;font-weight:bold">JOIN</span> tags <span style="color:#080;font-weight:bold">ON</span> tags.post_id = posts.id
+</pre></div>
+</div>
+</div>
+
+<h3 id="specifying-conditions-on-the-joined-tables">Specifying Conditions on the Joined Tables</h3>
+
+<p>You can specify conditions on the joined tables using the regular <a href="#array-conditions">Array</a> and <a href="#pure-string-conditions">String</a> conditions. <a href="#hash-conditions">Hash conditions</a> provides a special syntax for specifying conditions for the joined tables:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>time_range = (<span style="color:#036;font-weight:bold">Time</span>.now.midnight - <span style="color:#00D">1</span>.day)..<span style="color:#036;font-weight:bold">Time</span>.now.midnight
+<span style="color:#036;font-weight:bold">Client</span>.joins(<span style="color:#A60">:orders</span>).where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">orders.created_at</span><span style="color:#710">'</span></span> =&gt; time_range)
+</pre></div>
+</div>
+</div>
+
+<p>An alternative and cleaner syntax is to nest the hash conditions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>time_range = (<span style="color:#036;font-weight:bold">Time</span>.now.midnight - <span style="color:#00D">1</span>.day)..<span style="color:#036;font-weight:bold">Time</span>.now.midnight
+<span style="color:#036;font-weight:bold">Client</span>.joins(<span style="color:#A60">:orders</span>).where(<span style="color:#606">orders</span>: {<span style="color:#606">created_at</span>: time_range})
+</pre></div>
+</div>
+</div>
+
+<p>This will find all clients who have orders that were created yesterday, again using a <code>BETWEEN</code> SQL expression.</p>
+
+<h2 id="eager-loading-associations">Eager Loading Associations</h2>
+
+<p>Eager loading is the mechanism for loading the associated records of the objects returned by <code>Model.find</code> using as few queries as possible.</p>
+
+<p><strong>N + 1 queries problem</strong></p>
+
+<p>Consider the following code, which finds 10 clients and prints their postcodes:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>clients = <span style="color:#036;font-weight:bold">Client</span>.limit(<span style="color:#00D">10</span>)
+
+clients.each <span style="color:#080;font-weight:bold">do</span> |client|
+  puts client.address.postcode
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code looks fine at the first sight. But the problem lies within the total number of queries executed. The above code executes 1 (to find 10 clients) + 10 (one per each client to load the address) = <strong>11</strong> queries in total.</p>
+
+<p><strong>Solution to N + 1 queries problem</strong></p>
+
+<p>Active Record lets you specify in advance all the associations that are going to be loaded. This is possible by specifying the <code>includes</code> method of the <code>Model.find</code> call. With <code>includes</code>, Active Record ensures that all of the specified associations are loaded using the minimum possible number of queries.</p>
+
+<p>Revisiting the above case, we could rewrite <code>Client.limit(10)</code> to use eager load addresses:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>clients = <span style="color:#036;font-weight:bold">Client</span>.includes(<span style="color:#A60">:address</span>).limit(<span style="color:#00D">10</span>)
+
+clients.each <span style="color:#080;font-weight:bold">do</span> |client|
+  puts client.address.postcode
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The above code will execute just <strong>2</strong> queries, as opposed to <strong>11</strong> queries in the previous case:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients LIMIT <span style="color:#00D">10</span>
+<span style="color:#B06;font-weight:bold">SELECT</span> addresses.* <span style="color:#080;font-weight:bold">FROM</span> addresses
+  <span style="color:#080;font-weight:bold">WHERE</span> (addresses.client_id <span style="color:#080;font-weight:bold">IN</span> (<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">6</span>,<span style="color:#00D">7</span>,<span style="color:#00D">8</span>,<span style="color:#00D">9</span>,<span style="color:#00D">10</span>))
+</pre></div>
+</div>
+</div>
+
+<h3 id="eager-loading-multiple-associations">Eager Loading Multiple Associations</h3>
+
+<p>Active Record lets you eager load any number of associations with a single <code>Model.find</code> call by using an array, hash, or a nested hash of array/hash with the <code>includes</code> method.</p>
+
+<h4 id="array-of-multiple-associations">Array of Multiple Associations</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.includes(<span style="color:#A60">:category</span>, <span style="color:#A60">:comments</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This loads all the posts and the associated category and comments for each post.</p>
+
+<h4 id="nested-associations-hash">Nested Associations Hash</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Category</span>.includes(<span style="color:#606">posts</span>: [{<span style="color:#606">comments</span>: <span style="color:#A60">:guest</span>}, <span style="color:#A60">:tags</span>]).find(<span style="color:#00D">1</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This will find the category with id 1 and eager load all of the associated posts, the associated posts’ tags and comments, and every comment’s guest association.</p>
+
+<h3 id="specifying-conditions-on-eager-loaded-associations">Specifying Conditions on Eager Loaded Associations</h3>
+
+<p>Even though Active Record lets you specify conditions on the eager loaded associations just like <code>joins</code>, the recommended way is to use <a href="#joining-tables">joins</a> instead.</p>
+
+<p>However if you must do this, you may use <code>where</code> as you would normally.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.includes(<span style="color:#A60">:comments</span>).where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">comments.visible</span><span style="color:#710">&quot;</span></span> =&gt; <span style="color:#069">true</span>)
+</pre></div>
+</div>
+</div>
+
+<p>This would generate a query which contains a <code>LEFT OUTER JOIN</code> whereas the <code>joins</code> method would generate one using the <code>INNER JOIN</code> function instead.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#036;font-weight:bold">SELECT</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">posts</span><span style="color:#710">&quot;</span></span>.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span> AS t0_r0, ... <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">comments</span><span style="color:#710">&quot;</span></span>.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">updated_at</span><span style="color:#710">&quot;</span></span> AS t1_r5 <span style="color:#036;font-weight:bold">FROM</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">posts</span><span style="color:#710">&quot;</span></span> <span style="color:#036;font-weight:bold">LEFT</span> <span style="color:#036;font-weight:bold">OUTER</span> <span style="color:#036;font-weight:bold">JOIN</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">comments</span><span style="color:#710">&quot;</span></span> <span style="color:#036;font-weight:bold">ON</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">comments</span><span style="color:#710">&quot;</span></span>.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_id</span><span style="color:#710">&quot;</span></span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">posts</span><span style="color:#710">&quot;</span></span>.<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span> WHERE (comments.visible = <span style="color:#00D">1</span>)
+</pre></div>
+</div>
+</div>
+
+<p>If there was no <code>where</code> condition, this would generate the normal set of two queries.</p>
+
+<p>If, in the case of this <code>includes</code> query, there were no comments for any posts, all the posts would still be loaded. By using <code>joins</code> (an INNER JOIN), the join conditions <strong>must</strong> match, otherwise no records will be returned.</p>
+
+<h2 id="scopes">Scopes</h2>
+
+<p>Scoping allows you to specify commonly-used queries which can be referenced as method calls on the association objects or models. With these scopes, you can use every method previously covered such as <code>where</code>, <code>joins</code> and <code>includes</code>. All scope methods will return an <code>ActiveRecord::Relation</code> object which will allow for further methods (such as other scopes) to be called on it.</p>
+
+<p>To define a simple scope, we use the <code>scope</code> method inside the class, passing the query that we’d like to run when this scope is called:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:published</span>, -&gt; { where(<span style="color:#606">published</span>: <span style="color:#069">true</span>) }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is exactly the same as defining a class method, and which you use is a matter of personal preference:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">published</span>
+    where(<span style="color:#606">published</span>: <span style="color:#069">true</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Scopes are also chainable within scopes:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:published</span>,               -&gt; { where(<span style="color:#606">published</span>: <span style="color:#069">true</span>) }
+  scope <span style="color:#A60">:published_and_commented</span>, -&gt; { published.where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">comments_count &gt; 0</span><span style="color:#710">&quot;</span></span>) }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To call this <code>published</code> scope we can call it on either the class:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.published <span style="color:#777"># =&gt; [published posts]</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or on an association consisting of <code>Post</code> objects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>category = <span style="color:#036;font-weight:bold">Category</span>.first
+category.posts.published <span style="color:#777"># =&gt; [published posts belonging to this category]</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="passing-in-arguments">Passing in arguments</h3>
+
+<p>Your scope can take arguments:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:created_before</span>, -&gt;(time) { where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at &lt; ?</span><span style="color:#710">&quot;</span></span>, time) }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This may then be called using this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.created_before(<span style="color:#036;font-weight:bold">Time</span>.zone.now)
+</pre></div>
+</div>
+</div>
+
+<p>However, this is just duplicating the functionality that would be provided to you by a class method.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">created_before</span>(time)
+    where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at &lt; ?</span><span style="color:#710">&quot;</span></span>, time)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Using a class method is the preferred way to accept arguments for scopes. These methods will still be accessible on the association objects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>category.posts.created_before(time)
+</pre></div>
+</div>
+</div>
+
+<h3 id="merging-of-scopes">Merging of scopes</h3>
+
+<p>Just like <code>where</code> clauses scopes are merged using <code>AND</code> conditions.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">User</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:active</span>, -&gt; { where <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">active</span><span style="color:#710">'</span></span> }
+  scope <span style="color:#A60">:inactive</span>, -&gt; { where <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">inactive</span><span style="color:#710">'</span></span> }
+<span style="color:#080;font-weight:bold">end</span>
+
+~~~ruby
+<span style="color:#036;font-weight:bold">User</span>.active.inactive
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'active' AND &quot;users&quot;.&quot;state&quot; = 'inactive'</span>
+</pre></div>
+</div>
+</div>
+
+<p>We can mix and match <code>scope</code> and <code>where</code> conditions and the final sql
+will have all conditions joined with <code>AND</code> .</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.active.where(<span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">finished</span><span style="color:#710">'</span></span>)
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'active' AND &quot;users&quot;.&quot;state&quot; = 'finished'</span>
+</pre></div>
+</div>
+</div>
+
+<p>If we do want the <code>last where clause</code> to win then <code>Relation#merge</code> can
+be used .</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.active.merge(<span style="color:#036;font-weight:bold">User</span>.inactive)
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'inactive'</span>
+</pre></div>
+</div>
+</div>
+
+<p>One important caveat is that <code>default_scope</code> will be overridden by
+<code>scope</code> and <code>where</code> conditions.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">User</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  default_scope  { where <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pending</span><span style="color:#710">'</span></span> }
+  scope <span style="color:#A60">:active</span>, -&gt; { where <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">active</span><span style="color:#710">'</span></span> }
+  scope <span style="color:#A60">:inactive</span>, -&gt; { where <span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">inactive</span><span style="color:#710">'</span></span> }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">User</span>.all
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'pending'</span>
+
+<span style="color:#036;font-weight:bold">User</span>.active
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'active'</span>
+
+<span style="color:#036;font-weight:bold">User</span>.where(<span style="color:#606">state</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">inactive</span><span style="color:#710">'</span></span>)
+<span style="color:#777"># =&gt; SELECT &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;state&quot; = 'inactive'</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see above the <code>default_scope</code> is being overridden by both
+<code>scope</code> and <code>where</code> conditions.</p>
+
+<h3 id="applying-a-default-scope">Applying a default scope</h3>
+
+<p>If we wish for a scope to be applied across all queries to the model we can use the
+<code>default_scope</code> method within the model itself.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Client</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  default_scope { where(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">removed_at IS NULL</span><span style="color:#710">&quot;</span></span>) }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When queries are executed on this model, the SQL query will now look something like
+this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> removed_at <span style="color:#080;font-weight:bold">IS</span> <span style="color:#069">NULL</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you need to do more complex things with a default scope, you can alternatively
+define it as a class method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Client</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">default_scope</span>
+    <span style="color:#777"># Should return an ActiveRecord::Relation.</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="removing-all-scoping">Removing All Scoping</h3>
+
+<p>If we wish to remove scoping for any reason we can use the <code>unscoped</code> method. This is
+especially useful if a <code>default_scope</code> is specified in the model and should not be
+applied for this particular query.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.unscoped.all
+</pre></div>
+</div>
+</div>
+
+<p>This method removes all scoping and will do a normal query on the table.</p>
+
+<p>Note that chaining <code>unscoped</code> with a <code>scope</code> does not work. In these cases, it is
+recommended that you use the block form of <code>unscoped</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.unscoped {
+  <span style="color:#036;font-weight:bold">Client</span>.created_before(<span style="color:#036;font-weight:bold">Time</span>.zone.now)
+}
+</pre></div>
+</div>
+</div>
+
+<h2 id="dynamic-finders">Dynamic Finders</h2>
+
+<p>NOTE: Dynamic finders have been deprecated in Rails 4.0 and will be
+removed in Rails 4.1. The best practice is to use Active Record scopes
+instead. You can find the deprecation gem at
+https://github.com/rails/activerecord-deprecated_finders</p>
+
+<p>For every field (also known as an attribute) you define in your table, Active Record provides a finder method. If you have a field called <code>first_name</code> on your <code>Client</code> model for example, you get <code>find_by_first_name</code> for free from Active Record. If you have a <code>locked</code> field on the <code>Client</code> model, you also get <code>find_by_locked</code> and methods.</p>
+
+<p>You can specify an exclamation point (<code>!</code>) on the end of the dynamic finders to get them to raise an <code>ActiveRecord::RecordNotFound</code> error if they do not return any records, like <code>Client.find_by_name!("Ryan")</code></p>
+
+<p>If you want to find both by name and locked, you can chain these finders together by simply typing “<code>and</code>” between the fields. For example, <code>Client.find_by_first_name_and_locked("Ryan", true)</code>.</p>
+
+<h2 id="find-or-build-a-new-object">Find or Build a New Object</h2>
+
+<p>It’s common that you need to find a record or create it if it doesn’t exist. You can do that with the <code>find_or_create_by</code> and <code>find_or_create_by!</code> methods.</p>
+
+<h3 id="findorcreateby"><code>find_or_create_by</code></h3>
+
+<p>The <code>find_or_create_by</code> method checks whether a record with the attributes exists. If it doesn’t, then <code>create</code> is called. Let’s see an example.</p>
+
+<p>Suppose you want to find a client named ‘Andy’, and if there’s none, create one. You can do so by running:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_or_create_by(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>)
+<span style="color:#777"># =&gt; #&lt;Client id: 1, first_name: &quot;Andy&quot;, orders_count: 0, locked: true, created_at: &quot;2011-08-30 06:09:27&quot;, updated_at: &quot;2011-08-30 06:09:27&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The SQL generated by this method looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.first_name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>) LIMIT <span style="color:#00D">1</span>
+<span style="color:#B06;font-weight:bold">BEGIN</span>
+<span style="color:#B06;font-weight:bold">INSERT</span> <span style="color:#B06;font-weight:bold">INTO</span> clients (created_at, first_name, locked, orders_count, updated_at) <span style="color:#080;font-weight:bold">VALUES</span> (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2011-08-30 05:22:57</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>, <span style="color:#00D">1</span>, <span style="color:#069">NULL</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2011-08-30 05:22:57</span><span style="color:#710">'</span></span>)
+<span style="color:#B06;font-weight:bold">COMMIT</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>find_or_create_by</code> returns either the record that already exists or the new record. In our case, we didn’t already have a client named Andy so the record is created and returned.</p>
+
+<p>The new record might not be saved to the database; that depends on whether validations passed or not (just like <code>create</code>).</p>
+
+<p>Suppose we want to set the ‘locked’ attribute to true if we’re
+creating a new record, but we don’t want to include it in the query. So
+we want to find the client named “Andy”, or if that client doesn’t
+exist, create a client named “Andy” which is not locked.</p>
+
+<p>We can achieve this in two ways. The first is to use <code>create_with</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.create_with(<span style="color:#606">locked</span>: <span style="color:#069">false</span>).find_or_create_by(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>The second way is using a block:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_or_create_by(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">do</span> |c|
+  c.locked = <span style="color:#069">false</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The block will only be executed if the client is being created. The
+second time we run this code, the block will be ignored.</p>
+
+<h3 id="findorcreateby-1"><code>find_or_create_by!</code></h3>
+
+<p>You can also use <code>find_or_create_by!</code> to raise an exception if the new record is invalid. Validations are not covered on this guide, but let’s assume for a moment that you temporarily add</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>validates <span style="color:#A60">:orders_count</span>, <span style="color:#606">presence</span>: <span style="color:#069">true</span>
+</pre></div>
+</div>
+</div>
+
+<p>to your <code>Client</code> model. If you try to create a new <code>Client</code> without passing an <code>orders_count</code>, the record will be invalid and an exception will be raised:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_or_create_by!(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Andy</span><span style="color:#710">'</span></span>)
+<span style="color:#777"># =&gt; ActiveRecord::RecordInvalid: Validation failed: Orders count can't be blank</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="findorinitializeby"><code>find_or_initialize_by</code></h3>
+
+<p>The <code>find_or_initialize_by</code> method will work just like
+<code>find_or_create_by</code> but it will call <code>new</code> instead of <code>create</code>. This
+means that a new model instance will be created in memory but won’t be
+saved to the database. Continuing with the <code>find_or_create_by</code> example, we
+now want the client named ‘Nick’:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>nick = <span style="color:#036;font-weight:bold">Client</span>.find_or_initialize_by(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nick</span><span style="color:#710">'</span></span>)
+<span style="color:#777"># =&gt; &lt;Client id: nil, first_name: &quot;Nick&quot;, orders_count: 0, locked: true, created_at: &quot;2011-08-30 06:09:27&quot;, updated_at: &quot;2011-08-30 06:09:27&quot;&gt;</span>
+
+nick.persisted?
+<span style="color:#777"># =&gt; false</span>
+
+nick.new_record?
+<span style="color:#777"># =&gt; true</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because the object is not yet stored in the database, the SQL generated looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> * <span style="color:#080;font-weight:bold">FROM</span> clients <span style="color:#080;font-weight:bold">WHERE</span> (clients.first_name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Nick</span><span style="color:#710">'</span></span>) LIMIT <span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p>When you want to save it to the database, just call <code>save</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>nick.save
+<span style="color:#777"># =&gt; true</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="finding-by-sql">Finding by SQL</h2>
+
+<p>If you’d like to use your own SQL to find records in a table you can use <code>find_by_sql</code>. The <code>find_by_sql</code> method will return an array of objects even if the underlying query returns just a single record. For example you could run this query:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.find_by_sql(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SELECT * FROM clients
+  INNER JOIN orders ON clients.id = orders.client_id
+  ORDER clients.created_at desc</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p><code>find_by_sql</code> provides you with a simple way of making custom calls to the database and retrieving instantiated objects.</p>
+
+<h3 id="selectall"><code>select_all</code></h3>
+
+<p><code>find_by_sql</code> has a close relative called <code>connection#select_all</code>. <code>select_all</code> will retrieve objects from the database using custom SQL just like <code>find_by_sql</code> but will not instantiate them. Instead, you will get an array of hashes where each hash indicates a record.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.connection.select_all(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SELECT * FROM clients WHERE id = '1'</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="pluck"><code>pluck</code></h3>
+
+<p><code>pluck</code> can be used to query a single or multiple columns from the underlying table of a model. It accepts a list of column names as argument and returns an array of values of the specified columns with the corresponding data type.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">active</span>: <span style="color:#069">true</span>).pluck(<span style="color:#A60">:id</span>)
+<span style="color:#777"># SELECT id FROM clients WHERE active = 1</span>
+<span style="color:#777"># =&gt; [1, 2, 3]</span>
+
+<span style="color:#036;font-weight:bold">Client</span>.distinct.pluck(<span style="color:#A60">:role</span>)
+<span style="color:#777"># SELECT DISTINCT role FROM clients</span>
+<span style="color:#777"># =&gt; ['admin', 'member', 'guest']</span>
+
+<span style="color:#036;font-weight:bold">Client</span>.pluck(<span style="color:#A60">:id</span>, <span style="color:#A60">:name</span>)
+<span style="color:#777"># SELECT clients.id, clients.name FROM clients</span>
+<span style="color:#777"># =&gt; [[1, 'David'], [2, 'Jeremy'], [3, 'Jose']]</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>pluck</code> makes it possible to replace code like</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.select(<span style="color:#A60">:id</span>).map { |c| c.id }
+<span style="color:#777"># or</span>
+<span style="color:#036;font-weight:bold">Client</span>.select(<span style="color:#A60">:id</span>).map(&amp;<span style="color:#A60">:id</span>)
+<span style="color:#777"># or</span>
+<span style="color:#036;font-weight:bold">Client</span>.select(<span style="color:#A60">:id</span>, <span style="color:#A60">:name</span>).map { |c| [c.id, c.name] }
+</pre></div>
+</div>
+</div>
+
+<p>with</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.pluck(<span style="color:#A60">:id</span>)
+<span style="color:#777"># or</span>
+<span style="color:#036;font-weight:bold">Client</span>.pluck(<span style="color:#A60">:id</span>, <span style="color:#A60">:name</span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="ids"><code>ids</code></h3>
+
+<p><code>ids</code> can be used to pluck all the IDs for the relation using the table’s primary key.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Person</span>.ids
+<span style="color:#777"># SELECT id FROM people</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#069">self</span>.primary_key = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_id</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Person</span>.ids
+<span style="color:#777"># SELECT person_id FROM people</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="existence-of-objects">Existence of Objects</h2>
+
+<p>If you simply want to check for the existence of the object there’s a method called <code>exists?</code>. This method will query the database using the same query as <code>find</code>, but instead of returning an object or collection of objects it will return either <code>true</code> or <code>false</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.exists?(<span style="color:#00D">1</span>)
+</pre></div>
+</div>
+</div>
+
+<p>The <code>exists?</code> method also takes multiple ids, but the catch is that it will return true if any one of those records exists.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.exists?(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>)
+<span style="color:#777"># or</span>
+<span style="color:#036;font-weight:bold">Client</span>.exists?([<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>])
+</pre></div>
+</div>
+</div>
+
+<p>It’s even possible to use <code>exists?</code> without any arguments on a model or a relation.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ryan</span><span style="color:#710">'</span></span>).exists?
+</pre></div>
+</div>
+</div>
+
+<p>The above returns <code>true</code> if there is at least one client with the <code>first_name</code> ‘Ryan’ and <code>false</code> otherwise.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.exists?
+</pre></div>
+</div>
+</div>
+
+<p>The above returns <code>false</code> if the <code>clients</code> table is empty and <code>true</code> otherwise.</p>
+
+<p>You can also use <code>any?</code> and <code>many?</code> to check for existence on a model or relation.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># via a model</span>
+<span style="color:#036;font-weight:bold">Post</span>.any?
+<span style="color:#036;font-weight:bold">Post</span>.many?
+
+<span style="color:#777"># via a named scope</span>
+<span style="color:#036;font-weight:bold">Post</span>.recent.any?
+<span style="color:#036;font-weight:bold">Post</span>.recent.many?
+
+<span style="color:#777"># via a relation</span>
+<span style="color:#036;font-weight:bold">Post</span>.where(<span style="color:#606">published</span>: <span style="color:#069">true</span>).any?
+<span style="color:#036;font-weight:bold">Post</span>.where(<span style="color:#606">published</span>: <span style="color:#069">true</span>).many?
+
+<span style="color:#777"># via an association</span>
+<span style="color:#036;font-weight:bold">Post</span>.first.categories.any?
+<span style="color:#036;font-weight:bold">Post</span>.first.categories.many?
+</pre></div>
+</div>
+</div>
+
+<h2 id="calculations">Calculations</h2>
+
+<p>This section uses count as an example method in this preamble, but the options described apply to all sub-sections.</p>
+
+<p>All calculation methods work directly on a model:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.count
+<span style="color:#777"># SELECT count(*) AS count_all FROM clients</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or on a relation:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.where(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ryan</span><span style="color:#710">'</span></span>).count
+<span style="color:#777"># SELECT count(*) AS count_all FROM clients WHERE (first_name = 'Ryan')</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also use various finder methods on a relation for performing complex calculations:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.includes(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders</span><span style="color:#710">&quot;</span></span>).where(<span style="color:#606">first_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ryan</span><span style="color:#710">'</span></span>, <span style="color:#606">orders</span>: {<span style="color:#606">status</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">received</span><span style="color:#710">'</span></span>}).count
+</pre></div>
+</div>
+</div>
+
+<p>Which will execute:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#B06;font-weight:bold">SELECT</span> <span style="color:#369;font-weight:bold">count</span>(<span style="color:#080;font-weight:bold">DISTINCT</span> clients.id) <span style="color:#080;font-weight:bold">AS</span> count_all <span style="color:#080;font-weight:bold">FROM</span> clients
+  <span style="color:#080;font-weight:bold">LEFT</span> <span style="color:#080;font-weight:bold">OUTER</span> <span style="color:#080;font-weight:bold">JOIN</span> orders <span style="color:#080;font-weight:bold">ON</span> orders.client_id = client.id <span style="color:#080;font-weight:bold">WHERE</span>
+  (clients.first_name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ryan</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">AND</span> orders.status = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">received</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="count">Count</h3>
+
+<p>If you want to see how many records are in your model’s table you could call <code>Client.count</code> and that will return the number. If you want to be more specific and find all the clients with their age present in the database you can use <code>Client.count(:age)</code>.</p>
+
+<p>For options, please see the parent section, <a href="#calculations">Calculations</a>.</p>
+
+<h3 id="average">Average</h3>
+
+<p>If you want to see the average of a certain number in one of your tables you can call the <code>average</code> method on the class that relates to the table. This method call will look something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.average(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This will return a number (possibly a floating point number such as 3.14159265) representing the average value in the field.</p>
+
+<p>For options, please see the parent section, <a href="#calculations">Calculations</a>.</p>
+
+<h3 id="minimum">Minimum</h3>
+
+<p>If you want to find the minimum value of a field in your table you can call the <code>minimum</code> method on the class that relates to the table. This method call will look something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.minimum(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">age</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>For options, please see the parent section, <a href="#calculations">Calculations</a>.</p>
+
+<h3 id="maximum">Maximum</h3>
+
+<p>If you want to find the maximum value of a field in your table you can call the <code>maximum</code> method on the class that relates to the table. This method call will look something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.maximum(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">age</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>For options, please see the parent section, <a href="#calculations">Calculations</a>.</p>
+
+<h3 id="sum">Sum</h3>
+
+<p>If you want to find the sum of a field for all records in your table you can call the <code>sum</code> method on the class that relates to the table. This method call will look something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Client</span>.sum(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">orders_count</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>For options, please see the parent section, <a href="#calculations">Calculations</a>.</p>
+
+<h2 id="running-explain">Running EXPLAIN</h2>
+
+<p>You can run EXPLAIN on the queries triggered by relations. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.where(<span style="color:#606">id</span>: <span style="color:#00D">1</span>).joins(<span style="color:#A60">:posts</span>).explain
+</pre></div>
+</div>
+</div>
+
+<p>may yield</p>
+
+<pre><code>EXPLAIN for: SELECT `users`.* FROM `users` INNER JOIN `posts` ON `posts`.`user_id` = `users`.`id` WHERE `users`.`id` = 1
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra       |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+|  1 | SIMPLE      | users | const | PRIMARY       | PRIMARY | 4       | const |    1 |             |
+|  1 | SIMPLE      | posts | ALL   | NULL          | NULL    | NULL    | NULL  |    1 | Using where |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------------+
+2 rows in set (0.00 sec)
+</code></pre>
+
+<p>under MySQL.</p>
+
+<p>Active Record performs a pretty printing that emulates the one of the database
+shells. So, the same query running with the PostgreSQL adapter would yield instead</p>
+
+<pre><code>EXPLAIN for: SELECT "users".* FROM "users" INNER JOIN "posts" ON "posts"."user_id" = "users"."id" WHERE "users"."id" = 1
+                                  QUERY PLAN
+------------------------------------------------------------------------------
+ Nested Loop Left Join  (cost=0.00..37.24 rows=8 width=0)
+   Join Filter: (posts.user_id = users.id)
+   -&gt;  Index Scan using users_pkey on users  (cost=0.00..8.27 rows=1 width=4)
+         Index Cond: (id = 1)
+   -&gt;  Seq Scan on posts  (cost=0.00..28.88 rows=8 width=4)
+         Filter: (posts.user_id = 1)
+(6 rows)
+</code></pre>
+
+<p>Eager loading may trigger more than one query under the hood, and some queries
+may need the results of previous ones. Because of that, <code>explain</code> actually
+executes the query, and then asks for the query plans. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">User</span>.where(<span style="color:#606">id</span>: <span style="color:#00D">1</span>).includes(<span style="color:#A60">:posts</span>).explain
+</pre></div>
+</div>
+</div>
+
+<p>yields</p>
+
+<pre><code>EXPLAIN for: SELECT `users`.* FROM `users`  WHERE `users`.`id` = 1
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+| id | select_type | table | type  | possible_keys | key     | key_len | ref   | rows | Extra |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+|  1 | SIMPLE      | users | const | PRIMARY       | PRIMARY | 4       | const |    1 |       |
++----+-------------+-------+-------+---------------+---------+---------+-------+------+-------+
+1 row in set (0.00 sec)
+
+EXPLAIN for: SELECT `posts`.* FROM `posts`  WHERE `posts`.`user_id` IN (1)
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+| id | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra       |
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+|  1 | SIMPLE      | posts | ALL  | NULL          | NULL | NULL    | NULL |    1 | Using where |
++----+-------------+-------+------+---------------+------+---------+------+------+-------------+
+1 row in set (0.00 sec)
+</code></pre>
+
+<p>under MySQL.</p>
+
+<h3 id="interpreting-explain">Interpreting EXPLAIN</h3>
+
+<p>Interpretation of the output of EXPLAIN is beyond the scope of this guide. The
+following pointers may be helpful:</p>
+
+<ul>
+  <li>
+    <p>SQLite3: <a href="http://www.sqlite.org/eqp.html">EXPLAIN QUERY PLAN</a></p>
+  </li>
+  <li>
+    <p>MySQL: <a href="http://dev.mysql.com/doc/refman/5.6/en/explain-output.html">EXPLAIN Output Format</a></p>
+  </li>
+  <li>
+    <p>PostgreSQL: <a href="http://www.postgresql.org/docs/current/static/using-explain.html">Using EXPLAIN</a></p>
+  </li>
+</ul>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="rails-nested-model-forms">Rails nested model forms</h1>
+
+<p>Creating a form for a model <em>and</em> its associations can become quite tedious. Therefore Rails provides helpers to assist in dealing with the complexities of generating these forms <em>and</em> the required CRUD operations to create, update, and destroy associations.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>do stuff.</li>
+</ul>
+
+<hr />
+
+<p>NOTE: This guide assumes the user knows how to use the <a href="form_helpers.html">Rails form helpers</a> in general. Also, it’s <strong>not</strong> an API reference. For a complete reference please visit <a href="http://api.rubyonrails.org/">the Rails API documentation</a>.</p>
+
+<h2 id="model-setup">Model setup</h2>
+
+<p>To be able to use the nested model functionality in your forms, the model will need to support some basic operations.</p>
+
+<p>First of all, it needs to define a writer method for the attribute that corresponds to the association you are building a nested model form for. The <code>fields_for</code> form helper will look for this method to decide whether or not a nested model form should be build.</p>
+
+<p>If the associated object is an array a form builder will be yielded for each object, else only a single form builder will be yielded.</p>
+
+<p>Consider a Person model with an associated Address. When asked to yield a nested FormBuilder for the <code>:address</code> attribute, the <code>fields_for</code> form helper will look for a method on the Person instance named <code>address_attributes=</code>.</p>
+
+<h3 id="activerecordbase-model">ActiveRecord::Base model</h3>
+
+<p>For an ActiveRecord::Base model and association this writer method is commonly defined with the <code>accepts_nested_attributes_for</code> class method:</p>
+
+<h4 id="hasone">has_one</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_one <span style="color:#A60">:address</span>
+  accepts_nested_attributes_for <span style="color:#A60">:address</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="belongsto">belongs_to</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:firm</span>
+  accepts_nested_attributes_for <span style="color:#A60">:firm</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="hasmany--hasandbelongstomany">has_many / has_and_belongs_to_many</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:projects</span>
+  accepts_nested_attributes_for <span style="color:#A60">:projects</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="custom-model">Custom model</h3>
+
+<p>As you might have inflected from this explanation, you <em>don’t</em> necessarily need an ActiveRecord::Base model to use this functionality. The following examples are sufficient to enable the nested model form behavior:</p>
+
+<h4 id="single-associated-object">Single associated object</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">address</span>
+    <span style="color:#036;font-weight:bold">Address</span>.new
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">address_attributes=</span>(attributes)
+    <span style="color:#777"># ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="association-collection">Association collection</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">projects</span>
+    [<span style="color:#036;font-weight:bold">Project</span>.new, <span style="color:#036;font-weight:bold">Project</span>.new]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">projects_attributes=</span>(attributes)
+    <span style="color:#777"># ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: See (TODO) in the advanced section for more information on how to deal with the CRUD operations in your custom model.</p>
+
+<h2 id="views">Views</h2>
+
+<h3 id="controller-code">Controller code</h3>
+
+<p>A nested model form will <em>only</em> be built if the associated object(s) exist. This means that for a new model instance you would probably want to build the associated object(s) first.</p>
+
+<p>Consider the following typical RESTful controller which will prepare a new Person instance and its <code>address</code> and <code>projects</code> associations before rendering the <code>new</code> template:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PeopleController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new</span>
+    <span style="color:#33B">@person</span> = <span style="color:#036;font-weight:bold">Person</span>.new
+    <span style="color:#33B">@person</span>.built_address
+    <span style="color:#00D">2</span>.times { <span style="color:#33B">@person</span>.projects.build }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#33B">@person</span> = <span style="color:#036;font-weight:bold">Person</span>.new(params[<span style="color:#A60">:person</span>])
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@person</span>.save
+      <span style="color:#777"># ...</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: Obviously the instantiation of the associated object(s) can become tedious and not DRY, so you might want to move that into the model itself. ActiveRecord::Base provides an <code>after_initialize</code> callback which is a good way to refactor this.</p>
+
+<h3 id="form-code">Form code</h3>
+
+<p>Now that you have a model instance, with the appropriate methods and associated object(s), you can start building the nested model form.</p>
+
+<h4 id="standard-form">Standard form</h4>
+
+<p>Start out with a regular RESTful form:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for <span style="color:#33B">@person</span> <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This will generate the following html:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/people</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="nested-form-for-a-single-associated-object">Nested form for a single associated object</h4>
+
+<p>Now add a nested form for the <code>address</code> association:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for <span style="color:#33B">@person</span> <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.fields_for <span style="color:#A60">:address</span> <span style="color:#080;font-weight:bold">do</span> |af| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+    <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> af.text_field <span style="color:#A60">:street</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This generates:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/people</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_address_attributes_street</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[address_attributes][street]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice that <code>fields_for</code> recognized the <code>address</code> as an association for which a nested model form should be built by the way it has namespaced the <code>name</code> attribute.</p>
+
+<p>When this form is posted the Rails parameter parser will construct a hash like the following:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span> =&gt; {
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Eloy Duran</span><span style="color:#710">&quot;</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">address_attributes</span><span style="color:#710">&quot;</span></span> =&gt; {
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">street</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Nieuwe Prinsengracht</span><span style="color:#710">&quot;</span></span>
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
+
+<p>That’s it. The controller will simply pass this hash on to the model from the <code>create</code> action. The model will then handle building the <code>address</code> association for you and automatically save it when the parent (<code>person</code>) is saved.</p>
+
+<h4 id="nested-form-for-a-collection-of-associated-objects">Nested form for a collection of associated objects</h4>
+
+<p>The form code for an association collection is pretty similar to that of a single associated object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for <span style="color:#33B">@person</span> <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.fields_for <span style="color:#A60">:projects</span> <span style="color:#080;font-weight:bold">do</span> |pf| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+    <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> pf.text_field <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Which generates:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/people</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_person</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_projects_attributes_0_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[projects_attributes][0][name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_projects_attributes_1_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[projects_attributes][1][name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see it has generated 2 <code>project name</code> inputs, one for each new <code>project</code> that was built in the controller’s <code>new</code> action. Only this time the <code>name</code> attribute of the input contains a digit as an extra namespace. This will be parsed by the Rails parameter parser as:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span> =&gt; {
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Eloy Duran</span><span style="color:#710">&quot;</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">projects_attributes</span><span style="color:#710">&quot;</span></span> =&gt; {
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0</span><span style="color:#710">&quot;</span></span> =&gt; { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Project 1</span><span style="color:#710">&quot;</span></span> },
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> =&gt; { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Project 2</span><span style="color:#710">&quot;</span></span> }
+    }
+  }
+}
+</pre></div>
+</div>
+</div>
+
+<p>You can basically see the <code>projects_attributes</code> hash as an array of attribute hashes, one for each model instance.</p>
+
+<p>NOTE: The reason that <code>fields_for</code> constructed a form which would result in a hash instead of an array is that it won’t work for any forms nested deeper than one level deep.</p>
+
+<p>TIP: You <em>can</em> however pass an array to the writer method generated by <code>accepts_nested_attributes_for</code> if you’re using plain Ruby or some other API access. See (TODO) for more info and example.</p>
+
+    </div>
+  </body>
+</html>

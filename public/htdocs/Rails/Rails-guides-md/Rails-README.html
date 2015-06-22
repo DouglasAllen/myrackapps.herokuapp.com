@@ -1,0 +1,520 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h2 id="welcome-to-rails">Welcome to Rails</h2>
+
+<p>Rails is a web-application framework that includes everything needed to
+create database-backed web applications according to the
+<a href="http://en.wikipedia.org/wiki/Model-view-controller">Model-View-Controller (MVC)</a>
+pattern.</p>
+
+<p>Understanding the MVC pattern is key to understanding Rails. MVC divides your
+application into three layers, each with a specific responsibility.</p>
+
+<p>The <em>Model layer</em> represents your domain model (such as Account, Product,
+Person, Post, etc.) and encapsulates the business logic that is specific to
+your application. In Rails, database-backed model classes are derived from
+<code>ActiveRecord::Base</code>. Active Record allows you to present the data from
+database rows as objects and embellish these data objects with business logic
+methods. You can read more about Active Record in its <a href="activerecord/README.rdoc">README</a>.
+Although most Rails models are backed by a database, models can also be ordinary
+Ruby classes, or Ruby classes that implement a set of interfaces as provided by
+the Active Model module. You can read more about Active Model in its <a href="activemodel/README.rdoc">README</a>.</p>
+
+<p>The <em>Controller layer</em> is responsible for handling incoming HTTP requests and
+providing a suitable response. Usually this means returning HTML, but Rails controllers
+can also generate XML, JSON, PDFs, mobile-specific views, and more. Controllers load and
+manipulate models, and render view templates in order to generate the appropriate HTTP response.
+In Rails, incoming requests are routed by Action Dispatch to an appropriate controller, and
+controller classes are derived from <code>ActionController::Base</code>. Action Dispatch and Action Controller
+are bundled together in Action Pack. You can read more about Action Pack in its
+<a href="actionpack/README.rdoc">README</a>.</p>
+
+<p>The <em>View layer</em> is composed of “templates” that are responsible for providing
+appropriate representations of your application’s resources. Templates can
+come in a variety of formats, but most view templates are HTML with embedded
+Ruby code (ERB files). Views are typically rendered to generate a controller response,
+or to generate the body of an email. In Rails, View generation is handled by Action View.
+You can read more about Action View in its <a href="actionview/README.rdoc">README</a>.</p>
+
+<p>Active Record, Action Pack, and Action View can each be used independently outside Rails.
+In addition to them, Rails also comes with Action Mailer (<a href="actionmailer/README.rdoc">README</a>), a library
+to generate and send emails; Active Job (<a href="activejob/README.md">README</a>), a
+framework for declaring jobs and making them run on a variety of queueing
+backends; and Active Support (<a href="activesupport/README.rdoc">README</a>), a collection
+of utility classes and standard library extensions that are useful for Rails,
+and may also be used independently outside Rails.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+
+<ol>
+  <li>
+    <p>Install Rails at the command prompt if you haven’t yet:</p>
+
+    <pre><code> gem install rails
+</code></pre>
+  </li>
+  <li>
+    <p>At the command prompt, create a new Rails application:</p>
+
+    <pre><code> rails new myapp
+</code></pre>
+
+    <p>where “myapp” is the application name.</p>
+  </li>
+  <li>
+    <p>Change directory to <code>myapp</code> and start the web server:</p>
+
+    <pre><code> cd myapp
+ rails server
+</code></pre>
+
+    <p>Run with <code>--help</code> or <code>-h</code> for options.</p>
+  </li>
+  <li>
+    <p>Using a browser, go to <code>http://localhost:3000</code> and you’ll see:
+“Welcome aboard: You’re riding Ruby on Rails!”</p>
+  </li>
+  <li>
+    <p>Follow the guidelines to start developing your application. You may find
+the following resources handy:</p>
+    <ul>
+      <li><a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Rails</a></li>
+      <li><a href="http://guides.rubyonrails.org">Ruby on Rails Guides</a></li>
+      <li><a href="http://api.rubyonrails.org">The API Documentation</a></li>
+      <li><a href="http://www.railstutorial.org/book">Ruby on Rails Tutorial</a></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>We encourage you to contribute to Ruby on Rails! Please check out the
+<a href="http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html">Contributing to Ruby on Rails guide</a> for guidelines about how to proceed. <a href="http://contributors.rubyonrails.org">Join us!</a></p>
+
+<h2 id="code-status">Code Status</h2>
+
+<ul>
+  <li><a href="https://travis-ci.org/rails/rails"><img src="https://travis-ci.org/rails/rails.svg?branch=4-2-stable" alt="Build Status" /></a></li>
+</ul>
+
+<h2 id="license">License</h2>
+
+<p>Ruby on Rails is released under the <a href="http://www.opensource.org/licenses/MIT">MIT License</a>.</p>
+
+  </div>
+</body>
+</html>

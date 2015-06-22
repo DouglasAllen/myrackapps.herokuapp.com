@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : Profiler__  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:23:57 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: Profiler__ (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>profiler.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-print_profile">#print_profile</a></li>
+          
+          <li><a href="#method-i-start_profile">#start_profile</a></li>
+          
+          <li><a href="#method-i-stop_profile">#stop_profile</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./Profiler__.html">Profiler__</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">Profiler__</h1>
+
+    <div id="description" class="description">
+      
+<p>Profile provides a way to Profile your Ruby application.</p>
+
+<p>Profiling your program is a way of determining which methods are called and
+how long each method takes to complete.  This way you can detect which
+methods are possible bottlenecks.</p>
+
+<p>Profiling your program will slow down your execution time considerably, so
+activate it only when you need it.  Don’t confuse benchmarking with
+profiling.</p>
+
+<p>There are two ways to activate Profiling:</p>
+
+<h2 id="module-Profiler__-label-Command+line">Command line<span><a href="#module-Profiler__-label-Command+line">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Run your Ruby script with <code>-rprofile</code>:</p>
+
+<pre>ruby -rprofile example.rb</pre>
+
+<p>If you’re profiling an executable in your <code>$PATH</code> you can use
+<code>ruby -S</code>:</p>
+
+<pre>ruby -rprofile -S some_executable</pre>
+
+<h2 id="module-Profiler__-label-From+code">From code<span><a href="#module-Profiler__-label-From+code">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Just require ‘profile’:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'profile'</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">slow_method</span>
+  <span class="ruby-value">5000</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-value">9999999999999999</span><span class="ruby-operator">*</span><span class="ruby-value">999999999</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">fast_method</span>
+  <span class="ruby-value">5000</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-value">9999999999999999</span><span class="ruby-operator">+</span><span class="ruby-value">999999999</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">slow_method</span>
+<span class="ruby-identifier">fast_method</span>
+</pre>
+
+<p>The output in both cases is a report when the execution is over:</p>
+
+<pre>ruby -rprofile example.rb
+
+  %   cumulative   self              self     total
+ time   seconds   seconds    calls  ms/call  ms/call  name
+ 68.42     0.13      0.13        2    65.00    95.00  Integer#times
+ 15.79     0.16      0.03     5000     0.01     0.01  Fixnum#*
+ 15.79     0.19      0.03     5000     0.01     0.01  Fixnum#+
+  0.00     0.19      0.00        2     0.00     0.00  IO#set_encoding
+  0.00     0.19      0.00        1     0.00   100.00  Object#slow_method
+  0.00     0.19      0.00        2     0.00     0.00  Module#method_added
+  0.00     0.19      0.00        1     0.00    90.00  Object#fast_method
+  0.00     0.19      0.00        1     0.00   190.00  #toplevel</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="print_profile-method" class="method-detail ">
+          <a name="method-i-print_profile"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">print_profile</span><span
+              class="method-args">(f)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Outputs the results from the profiler.</p>
+
+<p>See <a href="Profiler__.html">Profiler__</a> for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="print_profile-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File profiler.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">print_profile</span>(<span class="ruby-identifier">f</span>)
+  <span class="ruby-identifier">stop_profile</span>
+  <span class="ruby-identifier">total</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">times</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">-</span> <span class="ruby-identifier">@@start</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">total</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">total</span> = <span class="ruby-value">0.01</span> <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">totals</span> = {}
+  <span class="ruby-identifier">@@maps</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">threadmap</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">threadmap</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">total_data</span> = (<span class="ruby-identifier">totals</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> [<span class="ruby-value">0</span>, <span class="ruby-value">0.0</span>, <span class="ruby-value">0.0</span>, <span class="ruby-identifier">key</span>])
+      <span class="ruby-identifier">total_data</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">total_data</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">total_data</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">data</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Maybe we should show a per thread output and a totals view?</span>
+
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">totals</span>.<span class="ruby-identifier">values</span>
+  <span class="ruby-identifier">data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">sort_by</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-operator">-</span><span class="ruby-identifier">x</span>[<span class="ruby-value">2</span>]}
+  <span class="ruby-identifier">sum</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;  %%   cumulative   self              self     total\n&quot;</span>
+  <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot; time   seconds   seconds    calls  ms/call  ms/call  name\n&quot;</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">d</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">data</span>
+    <span class="ruby-identifier">sum</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;%6.2f %8.2f  %8.2f %8d &quot;</span>, <span class="ruby-identifier">d</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">/</span><span class="ruby-identifier">total</span><span class="ruby-operator">*</span><span class="ruby-value">100</span>, <span class="ruby-identifier">sum</span>, <span class="ruby-identifier">d</span>[<span class="ruby-value">2</span>], <span class="ruby-identifier">d</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;%8.2f %8.2f  %s\n&quot;</span>, <span class="ruby-identifier">d</span>[<span class="ruby-value">2</span>]<span class="ruby-operator">*</span><span class="ruby-value">1000</span><span class="ruby-operator">/</span><span class="ruby-identifier">d</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">d</span>[<span class="ruby-value">1</span>]<span class="ruby-operator">*</span><span class="ruby-value">1000</span><span class="ruby-operator">/</span><span class="ruby-identifier">d</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">d</span>[<span class="ruby-value">3</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;%6.2f %8.2f  %8.2f %8d &quot;</span>, <span class="ruby-value">0.0</span>, <span class="ruby-identifier">total</span>, <span class="ruby-value">0.0</span>, <span class="ruby-value">1</span>     <span class="ruby-comment"># ???</span>
+  <span class="ruby-identifier">f</span>.<span class="ruby-identifier">printf</span> <span class="ruby-string">&quot;%8.2f %8.2f  %s\n&quot;</span>, <span class="ruby-value">0.0</span>, <span class="ruby-identifier">total</span><span class="ruby-operator">*</span><span class="ruby-value">1000</span>, <span class="ruby-node">&quot;#toplevel&quot;</span> <span class="ruby-comment"># ???</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- print_profile-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- print_profile-method -->
+      
+        <div id="start_profile-method" class="method-detail ">
+          <a name="method-i-start_profile"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">start_profile</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Starts the profiler.</p>
+
+<p>See <a href="Profiler__.html">Profiler__</a> for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="start_profile-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File profiler.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_profile</span>
+  <span class="ruby-identifier">@@start</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">times</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">@@stacks</span> = {}
+  <span class="ruby-identifier">@@maps</span> = {}
+  <span class="ruby-constant">PROFILE_CALL_PROC</span>.<span class="ruby-identifier">enable</span>
+  <span class="ruby-constant">PROFILE_RETURN_PROC</span>.<span class="ruby-identifier">enable</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- start_profile-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- start_profile-method -->
+      
+        <div id="stop_profile-method" class="method-detail ">
+          <a name="method-i-stop_profile"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">stop_profile</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Stops the profiler.</p>
+
+<p>See <a href="Profiler__.html">Profiler__</a> for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="stop_profile-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File profiler.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">stop_profile</span>
+  <span class="ruby-constant">PROFILE_CALL_PROC</span>.<span class="ruby-identifier">disable</span>
+  <span class="ruby-constant">PROFILE_RETURN_PROC</span>.<span class="ruby-identifier">disable</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- stop_profile-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- stop_profile-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_Profiler___versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Profiler___versioned").load("/associated/2_2_0/Profiler__.html");</script> <div id='tx_Profiler__' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Profiler__").load("/associated/Profiler__.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_Profiler__.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

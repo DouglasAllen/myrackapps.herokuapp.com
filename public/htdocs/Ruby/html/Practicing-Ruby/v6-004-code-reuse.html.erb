@@ -1,0 +1,1047 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>% Code reuse in Ruby – It’s complicated 
+% Gregory Brown (practicingruby.com)
+% February 12, 2013</p>
+
+<p>\begin{abstract} 
+Ruby provides at least seven common ways of reusing code, all of them with their
+own strengths and weaknesses. However, the main thing that separates these
+various techniques is whether they are a form of \emph{implementation sharing} or a
+form of \emph{behavior sharing}. This article explains what distinguishes those
+two categories, the kinds of complexities that can arise from each of
+them, and some practical recommendations that you can apply to reusing code
+within your own projects.
+\end{abstract}</p>
+
+<h1 id="introduction">1. Introduction</h1>
+
+<p>As a deeply object-oriented programming language, Ruby permits code reuse in
+more ways than most languages. When put in the right hands, Ruby’s flexibility
+is extremely powerful, allowing us to model our systems any way we want.
+But with great power comes great responsibility.</p>
+
+<p>If not used carefully, Ruby’s code reuse mechanisms can quickly erode most (if
+not all) of the benefits that object-oriented design is meant to offer us. The
+larger our systems get, the easier it is for things to spiral out of control.
+But the truth is that most codebases don’t start out as an unmaintainable mess, 
+nor do they suddenly turn bad overnight.
+Instead, they erode gradually – one poor decision at a time.</p>
+
+<p>In this article, we’ll discuss the various pitfalls of Ruby’s code reuse
+methods. My hope is that by studying these issues, you’ll be more aware of the 
+risks involved in certain modeling decisions, and that will help you better 
+understand the compromises you must make while designing your projects.</p>
+
+<h1 id="common-methods-of-code-reuse">2. Common methods of code reuse</h1>
+
+<p>Ruby’s code sharing methods can be divided into two groups: those that
+provide direct access to the internals of the shared component (<em>implementation
+sharing</em>), and those that do not (<em>behavior sharing</em>). While each approach has
+its own set of costs and benefits, a lot can be said about the
+complexity of a technique by knowing which reuse category it belongs to.</p>
+
+<h2 id="implementation-sharing-techniques">2.1 Implementation sharing techniques</h2>
+
+<p>The following techniques reuse code in ways that provide
+direct access to internals:</p>
+
+<ul>
+  <li><strong>inheriting</strong> from a superclass</li>
+  <li><strong>including</strong> a module into a class</li>
+  <li><strong>extending</strong> an individual object using a module</li>
+  <li><strong>patching</strong> a class or individual object directly</li>
+  <li><strong>evaluating</strong> code in the context of a class or individual object</li>
+</ul>
+
+<h2 id="behavior-sharing-techniques">2.2 Behavior sharing techniques</h2>
+
+<p>The following techniques rely on message passing
+between distinct objects for code sharing, limiting 
+direct access to internals:</p>
+
+<ul>
+  <li><strong>decorating</strong> an object using a dynamic proxy</li>
+  <li><strong>composing</strong> objects using simple aggregation</li>
+</ul>
+
+<h2 id="reference-examples">2.3 Reference examples</h2>
+
+<p>Our goal is only to discuss the complexities
+of implementation sharing and behavior sharing in general,
+so you don’t need to be familiar with all seven methods
+of code reuse listed above in order to understand
+the rest of this article.</p>
+
+<p>However, if you want some additional clarification about what
+each of these terms mean, you can check out <a href="https://gist.github.com/sandal/4755113">this set of
+code-reuse examples</a>.</p>
+
+<h1 id="complexities-of-implementation-sharing">3. Complexities of implementation sharing</h1>
+
+<p>An entire book can be written about the complexities involved in sharing
+functionality without proper encapsulation between components. However,
+since we don’t have room for that level of detail in this article, I’ve
+attempted to group the common issues together into three broad areas 
+of concern to look out for: shared instance variables, shared method
+definitions, and combinatorial effects.</p>
+
+<h2 id="shared-instance-variables">3.1 Shared instance variables</h2>
+
+<p>Each object has a single set of instance variables, even if it
+has a very complex ancestry chain. For example,
+the following code references an instance variable that was
+defined by its superclass:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ostruct</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PrettyStruct</span> &lt; <span style="color:#036;font-weight:bold">OpenStruct</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">inspect</span>
+    <span style="color:#33B">@table</span>.map { |k,v| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>k<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> = </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>v.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+struct = <span style="color:#036;font-weight:bold">PrettyStruct</span>.new(<span style="color:#A60">:a</span> =&gt; <span style="color:#00D">3</span>, <span style="color:#A60">:b</span> =&gt; <span style="color:#00D">4</span>, <span style="color:#A60">:c</span> =&gt; <span style="color:#00D">5</span>)
+p struct
+
+<span style="color:#777"># a = 3</span>
+<span style="color:#777"># b = 4</span>
+<span style="color:#777"># c = 5</span>
+</pre></div>
+</div>
+</div>
+
+<p>When two or more shared components reference the same
+instance variable, it may be intentional or unintentional.
+It goes without saying that unintentional variable name
+collisions can lead to defects that are hard to debug, but
+intentional shared access (such as in the snippet above)
+has more subtle issues to consider. </p>
+
+<p>Whenever we directly access a variable rather than using 
+a public accessor, we may be skipping validations, 
+transformations, caching features, or concurrency-related 
+features that are meant to keep the underlying data
+consistent and synchronized. Is a simple read-only reference
+such as the one we’ve done here really that risky? The
+truth is, there’s no way to know without reading the <code>OpenStruct</code>
+source code.</p>
+
+<p>Unfortunately, the only way to know for sure what instance variables 
+will be defined, accessed, and modified at runtime for <em>any</em>
+Ruby object is to read the source of every single class and
+module that is in its ancestry chain, both at the
+individual object and class definition level. Because new variables 
+can spring into existence any time a method is called, this kind 
+of static analyis is not practical for most non-trivial programs. </p>
+
+<p>At the extreme end of the spectrum, you have objects that inherit
+from <code>ActiveRecord::Base</code>; they exist at the tail end of
+an ancestry chain that provides several instance variables and
+hundreds of methods through dozens of modules, and that’s assuming 
+that you haven’t installed any third-party plugins. If you aren’t 
+convinced by the trivial example I’ve shown in this article, spend 
+some time with the Rails source code and you’ll surely get the point.</p>
+
+<h2 id="shared-method-definitions">3.2 Shared method definitions</h2>
+
+<p>Even when reusing an ancestor’s public API, it can be challenging to 
+avoid strange inconsistencies. Bob Martin provided a classic example
+of this problem in an article on the <a href="http://www.objectmentor.com/resources/articles/lsp.pdf">Liskov Substitution
+Principle</a>.
+Consider a <code>Rectangle</code> class with a <code>Square</code> subclass, as shown
+below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Rectangle</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(width, height)
+    <span style="color:#069">self</span>.width   = width
+    <span style="color:#069">self</span>.height  = height
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_accessor <span style="color:#A60">:width</span>, <span style="color:#A60">:height</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">area</span>
+    width * height
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Square</span> &lt; <span style="color:#036;font-weight:bold">Rectangle</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(size)
+    <span style="color:#080;font-weight:bold">super</span>(size, size)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>On the surface, this implementation looks simple, and seems to work 
+as expected:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>square = <span style="color:#036;font-weight:bold">Square</span>.new(<span style="color:#00D">5</span>)
+
+p square.area                   <span style="color:#777">#=&gt; 25</span>
+p [square.width, square.height] <span style="color:#777">#=&gt; [5, 5]</span>
+</pre></div>
+</div>
+</div>
+
+<p>But there is also the potential for bad behavior here, because the <code>Square</code> class
+also inherits <code>Rectangle#width=</code> and <code>Rectangle#height=</code>, which can lead
+to inconsistent data in the <code>Square</code> object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>square.width = <span style="color:#00D">10</span>
+
+p [square.width, square.height] <span style="color:#777">#=&gt; [10, 5] -- not a square!</span>
+</pre></div>
+</div>
+</div>
+
+<p>One way to resolve this issue would be to override <code>Rectangle#width=</code> 
+and <code>Rectangle#height=</code> so that the two values are synchronized:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Square</span> &lt; <span style="color:#036;font-weight:bold">Rectangle</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(size)
+    <span style="color:#080;font-weight:bold">super</span>(size, size)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">width=</span>(size)
+    <span style="color:#33B">@width</span>   = size
+    <span style="color:#33B">@height</span>  = size
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">height=</span>(size)
+    <span style="color:#33B">@width</span>   = size
+    <span style="color:#33B">@height</span>  = size
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+square = <span style="color:#036;font-weight:bold">Square</span>.new(<span style="color:#00D">5</span>)
+
+square.width = <span style="color:#00D">10</span>
+p [square.width, square.height] <span style="color:#777">#=&gt; [10, 10]</span>
+p square.area                   <span style="color:#777">#=&gt; 100</span>
+</pre></div>
+</div>
+</div>
+
+<p>This change enables the kind of behavior you might expect from a <code>Square</code>,
+and if you are simply reusing code to keep things DRY, that might be good
+enough. However, there may still be some subtle issues in code which assumes
+that a rectangle’s height can vary independently of its width, such as in
+this test code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_area</span>
+  rect.width  = <span style="color:#00D">5</span>
+  rect.height = <span style="color:#00D">10</span>
+
+  assert <span style="color:#00D">50</span>, rect.area
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Arguably, this test is written poorly if it is meant to be used as a shared
+example for all descendents of the <code>Rectangle</code> object. The problem is that at a
+first glance, the flaw is not at all obvious. And that essentially is the
+core challenge in inheritance-based modeling: ancestors must
+guess about the kinds of ways that they will be extended, and descendents need
+to guess about whether their extensions will break upstream features. With
+some practice and careful design thought this is possible, but it certainly
+is not <em>easy</em> to reason about.</p>
+
+<h2 id="combinatorial-effects">3.3 Combinatorial effects</h2>
+
+<p>Shared method definitions and shared instance variables are at the root of what
+makes implementation sharing complex, but that complexity is compounded by the 
+fact that ancestry chains can grow arbitrarily long. Module mixins in particular
+tend to cause this problem, because they are typically viewed by Ruby programmers
+as a tool for implementing orthogonal <em>plugins</em>, but are functionally more similar 
+to <em>multiple inheritance</em>.</p>
+
+<p>Consider an arbitrary class C, with four modules mixed into it: M~1~,
+M~2~, M~3~, and M~4~. Typically, each of these modules will provide some
+features to C and perhaps require that C implement a few methods to enable those
+features. Since each of these modules is meant to be used standalone, they
+aren’t directly aware of one another, nor do they depend on each other’s
+features. </p>
+
+<p>In this scenario, each module might need to make
+calls to C’s public API and vice-versa, but there would be no need for the
+modules to be able to call each other’s public methods directly. Furthermore,
+in an ideal situation, C and its mixed-in modules would communicate entirely via
+public method calls, allowing each to have their own private methods and
+internal state. If these constraints were enforced at the language level, it’d be 
+possible to model mixins as a simple, horizontal lookup path that would be 
+trivial to reason about.</p>
+
+<p>From our perspective as Ruby users, the scenario described above might cover 90%
+of what we use modules for on a day to day basis. But because modules are
+actually a much more powerful and generalized construct, we cannot expect that
+simplistic mental model to be a good fit for how they actually work. In reality,
+every module we mix into a class has direct access to the variables and methods
+defined by every other mixed in module in that class, resulting in a
+combinatorial explosion of possible interactions.</p>
+
+<p>The following graph attempts to illustrate the difference between our typical
+way of thinking about (and using) modules, and how they actually work:</p>
+
+<p><strong>(see next page)</strong></p>
+
+<p>\newpage</p>
+
+<p><img src="topology.png" alt="" /></p>
+
+<p>What you see above is just one small slice of the total method lookup path, but
+it illustrates the general problem that repeats itself along the whole chain:
+every ancestor can access the internals of every other, and the number of 
+possibilities expands greatly with each new component added to the chain.</p>
+
+<p>In practice, when concerns really are orthogonal, most of the combinatorial
+effects between components can safely be ignored as long as you apply some
+informal reasoning. But as an object gets larger, it becomes more likely
+that some pair of ancestors will accidentally develop conflicting
+definitions of what a method or variable is meant to be used for, and those
+issues can be very difficult to debug. Furthermore, each new ancestor
+also makes it harder to add new functionality to an object without 
+accidentally breaking existing features.</p>
+
+<p>This issue can be mitigated by the use of mixins at the individual object level,
+which can allow different bits of reusable functionality to be used in isolation
+of one another by only mixing in one module at at a time. However, this technique
+only works around the issue – it does not eliminate it entirely.</p>
+
+<h1 id="complexities-of-behavior-sharing">4. Complexities of behavior sharing</h1>
+
+<p>Behavior sharing techniques do not suffer from any of the issues we’ve
+discussed so far, and that alone makes them worth considering as a better
+default approach. However, they do have their own share of problems, 
+so you need to be aware of what the tradeoffs are when deciding how to 
+model your systems.</p>
+
+<h2 id="indirect-access">4.1 Indirect access</h2>
+
+<p>When access to an object’s internals is truly necessary, it isn’t practical
+to use composition based techniques. For example, consider the following
+mixin-based code which implements a memoization routine for caching method
+return values:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Cached</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache</span>(*method_names)
+    method_names.each <span style="color:#080;font-weight:bold">do</span> |m|
+      original = instance_method(m)
+      results  = {}
+
+      define_method(m) <span style="color:#080;font-weight:bold">do</span> |*a|
+        results[a] ||= original.bind(<span style="color:#069">self</span>).call(*a) 
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777">## EXAMPLE USAGE:</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Numbers</span>
+  extend <span style="color:#036;font-weight:bold">Cached</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">fib</span>(n)
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">0</span>
+    <span style="color:#080;font-weight:bold">return</span> n <span style="color:#080;font-weight:bold">if</span> n &lt; <span style="color:#00D">2</span>
+
+    fib(n - <span style="color:#00D">1</span>) + fib(n - <span style="color:#00D">2</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  cache <span style="color:#A60">:fib</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+n = <span style="color:#036;font-weight:bold">Numbers</span>.new
+  
+(<span style="color:#00D">0</span>..<span style="color:#00D">100</span>).each { |e| p [e, n.fib(e)] }
+</pre></div>
+</div>
+</div>
+
+<p>A naive attempt to refactor the <code>Cached</code> module into a <code>ComposedCache</code> class
+might end up looking something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ComposedCache</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(target)
+    <span style="color:#33B">@target</span> = target
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache</span>(*method_names)
+    method_names.each <span style="color:#080;font-weight:bold">do</span> |m|
+      results = {}
+
+      define_singleton_method(m) <span style="color:#080;font-weight:bold">do</span> |*a|
+        results[a] ||= <span style="color:#33B">@target</span>.send(m, *a)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+n = <span style="color:#036;font-weight:bold">ComposedCache</span>.new(<span style="color:#036;font-weight:bold">Numbers</span>.new)
+n.cache(<span style="color:#A60">:fib</span>)
+  
+(<span style="color:#00D">0</span>..<span style="color:#00D">100</span>).each { |e| p [e, n.fib(e)] }
+</pre></div>
+</div>
+</div>
+
+<p>Unfortunately, this code has a critical flaw in it that makes it unsuitable 
+for general use: It caches calls made through the <code>ComposedCache</code> proxy, but
+it does not cache internal calls made within the objects it wraps. In 
+practice, this makes it absolutely useless for optimizing the performance of
+recursive functions such as the <code>fib()</code> method we’re working with here.</p>
+
+<p>There is no way around this problem without modifying the wrapped object.
+In order to stick with composition-based modeling and still get proper
+caching behavior, here’s what we’d need to do: </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ComposedCache</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(target)
+    <span style="color:#33B">@target</span>  = target
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache</span>(*method_names)
+    method_names.each <span style="color:#080;font-weight:bold">do</span> |m|
+      original = <span style="color:#33B">@target</span>.method(m)
+      results  = {}
+
+      <span style="color:#33B">@target</span>.define_singleton_method(m) <span style="color:#080;font-weight:bold">do</span> |*a|
+        results[a] ||= original.call(*a)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      define_singleton_method(m) { |*a| <span style="color:#33B">@target</span>.send(m, *a) }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+n = <span style="color:#036;font-weight:bold">ComposedCache</span>.new(<span style="color:#036;font-weight:bold">Numbers</span>.new)
+n.cache(<span style="color:#A60">:fib</span>)
+  
+(<span style="color:#00D">0</span>..<span style="color:#00D">100</span>).each { |e| p [e, n.fib(e)] }
+</pre></div>
+</div>
+</div>
+
+<p>Such a design <em>would</em> prevent a new ancestor from being introduced
+into the <code>Numbers</code> object’s lookup path, and it would externalize
+the code that actually understands how to handle the caching. However,
+because <code>ComposedCache</code> still directly modifies the behavior of
+the <code>Numbers</code> objects it wraps, it loses the benefit of encapsulation
+that typically comes along with composition based modeling.</p>
+
+<p>We also end up with an interface that feels awkward: defining what
+methods ought to be cached via an instance method call does not
+feel nearly as natural as using a class-level macro, and might
+be cumbersome to integrate within a real project. There are ways
+to improve this interface, but that would require us to jump through
+a few more hoops, increasing the complexity of the implementation.</p>
+
+<p>Because the <code>ComposedCache</code> expects all cached methods to be explicitly
+declared and it does not support automatic delegation to the underlying
+object, it might be cumbersome to work with – it would either need
+to be modified to forward all uncached method calls to the object it
+wraps (losing the benefits of a narrow surface), or the caller would
+need to keep both a reference to the original object and the composed 
+cache object around (which is very awkward and confusing!).</p>
+
+<p>Good composition-based modeling produces code that is simpler than
+the sum of its parts, as a direct result of strong encapsulation
+and well-defined interactions between collaborators. Unfortunately,
+our implementation of the <code>ComposedCache</code> class has none of those 
+benefits, and so it serves as a useful (if pathological) example 
+of the downsides of composition-based modeling.</p>
+
+<h2 id="self-schizophrenia">4.2 Self-schizophrenia</h2>
+
+<p>When sharing behavior via decorators, it can sometimes be tricky to remember
+what <code>self</code> refers to. This can happen both on the proxy side (a reference to
+<code>self</code> accidentally refers to the proxy rather than the target), and
+within the target object (a reference to <code>self</code> accidentally exposes the
+target rather than the proxy). This common mistake can lead to subtle bugs 
+that are tricky to detect.</p>
+
+<p>A clear example of this problem can be found in the Celluloid concurrency
+framework. Pay attention to the lines marked #1 and #2 in the following
+code:</p>
+
+<p><strong>(see next page)</strong>
+\newpage</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">celluloid</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Alert</span>
+  include <span style="color:#036;font-weight:bold">Celluloid</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(message, delay)
+    <span style="color:#33B">@message</span> = message
+    <span style="color:#33B">@delay</span>   = delay
+    <span style="color:#33B">@display</span> = <span style="color:#036;font-weight:bold">Display</span>.new
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:message</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">run</span>
+    loop <span style="color:#080;font-weight:bold">do</span>
+      sleep <span style="color:#33B">@delay</span>
+
+      <span style="color:#33B">@display</span>.async.render(<span style="color:#036;font-weight:bold">Actor</span>.current)  <span style="color:#777"># 1</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Display</span>
+  include <span style="color:#036;font-weight:bold">Celluloid</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">render</span>(actor)
+    puts actor.message
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+alert = <span style="color:#036;font-weight:bold">Alert</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Foo</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">5</span>)
+alert.async.run <span style="color:#777"># 2</span>
+
+sleep
+</pre></div>
+</div>
+</div>
+
+<p>In the line marked #1, the <code>Actor.current</code> method is called, rather than
+referring to <code>self</code>. This is a direct effect of Celluloid relying on a proxy
+mechanism for handling its fault tolerance and concurrency functionality.</p>
+
+<p>When <code>alert.async.run</code> is called on the line marked #2, <code>Alert#run</code> is not
+executed directly, but instead gets scheduled to be run indirectly by a proxy object.
+However, once the method is actually executed, <code>self</code> refers to the <code>Alert</code>
+object, not the proxy object that enables it to be used in a
+concurrent, thread-safe way. Celluloid ensures that the <code>Actor.current</code> method
+will return a reference to that proxy object, and this is how you can safely pass 
+a reference to an object that you’re using Celluloid with.</p>
+
+<p>If this design technique sounds awkward, it’s because it is. However, there
+isn’t really a better composition-based workaround: this kind of complexity
+arises from the indirect access problem that we discussed in the previous section, and
+is worsened by the automatic delegation that is meant to make two distinct
+objects appear as if they were one single coherent entity.</p>
+
+<p>When faced with the self-schizophrenia issue, it’s important to consider how
+much benefit is gained by encapsulating implementation details. In the case of
+Celluloid, the benefit of not mixing complicated concurrency mechanics into
+ordinary objects is probably well worth it, but in other cases it may make
+sense to use an implementation sharing approach instead.</p>
+
+<p><em>NOTE: The self-schizophrenia problem also can occur when using the <strong>eval</strong>
+implementation sharing approach. However, since it not a general problem for
+that category, I’ve categorized it as more of a behavior sharing problem.</em></p>
+
+<h2 id="lack-of-established-design-practices">4.3 Lack of established design practices</h2>
+
+<p>Although it is not a technical issue, one of the main barriers to making
+effective use of behavior sharing in Ruby is that most
+developers are simply not comfortable with using aggregation as a primary
+modeling technique. Ruby has lots of tools that make this style of programming
+easier, but they tend to take a back seat to module mixins and eval-based 
+domain-specific interfaces.</p>
+
+<p>Decorators and simple composition are definitely gaining in popularity due to
+the encapsulation and understandability benefits that they offer, but in many
+cases they are used as direct replacements for inheritance-based modeling. This
+leads to somewhat high-ceremony and awkward interfaces that aren’t necessarily
+convenient or comfortable to use.</p>
+
+<p>In other words, we haven’t yet established idioms or practices that truly allow
+composition based modeling to shine: most of our libraries and frameworks still
+heavily rely on implementation sharing techniques, and until that changes, our
+applications will tend to follow in their footsteps.</p>
+
+<p>This is an issue that will hopefully be resolved in time, but for now I think
+it’s only fair to include a lack of familiarity with behavior sharing methods as
+something that makes code that uses them more complicated to reason about.</p>
+
+<h1 id="notes-and-recommendations">5. Notes and recommendations</h1>
+
+<p>Implementation sharing is very powerful, and that makes it a good deal more
+complex than behavior sharing by default. To decide which style of code reuse is
+better to use in a given situation, it makes sense to ask yourself whether your
+code actually needs direct access to the internals of its ancestors.</p>
+
+<p>In the rare cases where direct access is needed, it makes sense to use as weak
+of a form of implementation sharing as possible. Techniques which limit global
+effects are most desireable, e.g. individual object mixins, eval-based domain
+specific interfaces, and adding methods directly to individual objects. But
+if you find that the setup for these techniques ends up introducing needless
+complexity, including a module into a class or
+inheriting from a base class is still an option. No matter what
+technique you choose, it’s best to not directly rely on instance variables or
+private methods from ancestors, just to play it safe.</p>
+
+<p>However, you might find that most of the problems you currently solve with
+implementation sharing methods could fairly easily be solved with a
+behavior sharing approach. If a little extra work is
+likely to save you maintenance effort in the future, and it makes the code
+easier to reason about, it makes sense to reach for simple composition based
+modeling by default. Using a dynamic decorator can also offer a reasonable 
+middle ground when you are trying to build an object that can serve as a
+drop-in replacement for some other component.</p>
+
+<p>If you try to go the behavior sharing route and find it’s too complicated or
+that it has obvious drawbacks (such as in the caching example we discussed in
+this article), you can always go back to implementation sharing techniques.
+However, since most of the issues with behavior sharing tend to happen along the
+edge cases, and the issues with implementation sharing are baked into its core,
+it does make sense to try to avoid the latter where possible.</p>
+
+<p>Much more research into this problem is needed. If you’d like to discuss it with
+me, don’t hesitate to drop a message on the conversation thread over at
+practicingruby.com, or email me at <strong>gregory@practicingruby.com</strong>.</p>
+
+<h1 id="further-reading">6. Further reading</h1>
+
+<p>There are three papers I’d recommend if you want to study these issues further:</p>
+
+<ul>
+  <li><em>Disciplined inheritance, M. Sakkinen 1989</em></li>
+  <li><em>A behavioral notion of subtyping, Liskov / Wing 1994</em></li>
+  <li><em>Out of the tar pit, Moseley 2006</em></li>
+</ul>
+
+<p>The first two papers deal squarely with the issues of implementation sharing vs.
+behavior sharing in code reuse, and the third provides a more general inquiry
+into what makes our programs difficult to reason about. All three are more
+formal than this article, but also much more in-depth.</p>
+
+<p>For a Ruby-centric summary of the first two papers, see <a href="https://practicingruby.com/articles/shared/uvgdkprzmoqf">Issue
+3.7</a> and <a href="https://practicingruby.com/articles/shared/lxgettcjiggh">Issue
+3.8</a> of Practicing
+Ruby. However, please note that these articles only reveal a small portion of
+the insight to be gained from the papers listed above.</p>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : WEBrick::HTTPStatus  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:31:55 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Module: WEBrick::HTTPStatus (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>webrick/httpstatus.rb</li>      
+            
+          
+          <li class='in-file'>webrick/httputils.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+      <!-- Namespace Contents -->
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/ClientError.html">WEBrick::HTTPStatus::ClientError</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/EOFError.html">WEBrick::HTTPStatus::EOFError</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/Error.html">WEBrick::HTTPStatus::Error</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/Info.html">WEBrick::HTTPStatus::Info</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/Redirect.html">WEBrick::HTTPStatus::Redirect</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/ServerError.html">WEBrick::HTTPStatus::ServerError</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/Status.html">WEBrick::HTTPStatus::Status</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="HTTPStatus/Success.html">WEBrick::HTTPStatus::Success</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-5B-5D">::[]</a></li>
+          
+          <li><a href="#method-c-client_error-3F">::client_error?</a></li>
+          
+          <li><a href="#method-c-error-3F">::error?</a></li>
+          
+          <li><a href="#method-c-info-3F">::info?</a></li>
+          
+          <li><a href="#method-c-reason_phrase">::reason_phrase</a></li>
+          
+          <li><a href="#method-c-redirect-3F">::redirect?</a></li>
+          
+          <li><a href="#method-c-server_error-3F">::server_error?</a></li>
+          
+          <li><a href="#method-c-success-3F">::success?</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../Dir.html">Dir</a></li>
+        
+          
+          
+          <li><a href="../Errno.html">Errno</a></li>
+        
+          
+          
+          <li><a href="../Errno/ECONNABORTED.html">Errno::ECONNABORTED</a></li>
+        
+          
+          
+          <li><a href="../Errno/ECONNRESET.html">Errno::ECONNRESET</a></li>
+        
+          
+          
+          <li><a href="../Errno/EPROTO.html">Errno::EPROTO</a></li>
+        
+          
+          
+          <li><a href="../File.html">File</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../WEBrick.html">WEBrick</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/AccessLog.html">WEBrick::AccessLog</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/AccessLog/AccessLogError.html">WEBrick::AccessLog::AccessLogError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/BasicLog.html">WEBrick::BasicLog</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/CGI.html">WEBrick::CGI</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Config.html">WEBrick::Config</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Config/OpenSSL.html">WEBrick::Config::OpenSSL</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Cookie.html">WEBrick::Cookie</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Daemon.html">WEBrick::Daemon</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/GenericServer.html">WEBrick::GenericServer</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTMLUtils.html">WEBrick::HTMLUtils</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth.html">WEBrick::HTTPAuth</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/Authenticator.html">WEBrick::HTTPAuth::Authenticator</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/BasicAuth.html">WEBrick::HTTPAuth::BasicAuth</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/DigestAuth.html">WEBrick::HTTPAuth::DigestAuth</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/Htdigest.html">WEBrick::HTTPAuth::Htdigest</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/Htgroup.html">WEBrick::HTTPAuth::Htgroup</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/Htpasswd.html">WEBrick::HTTPAuth::Htpasswd</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/ProxyAuthenticator.html">WEBrick::HTTPAuth::ProxyAuthenticator</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/ProxyBasicAuth.html">WEBrick::HTTPAuth::ProxyBasicAuth</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/ProxyDigestAuth.html">WEBrick::HTTPAuth::ProxyDigestAuth</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPAuth/UserDB.html">WEBrick::HTTPAuth::UserDB</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPProxyServer.html">WEBrick::HTTPProxyServer</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPRequest.html">WEBrick::HTTPRequest</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPResponse.html">WEBrick::HTTPResponse</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServer.html">WEBrick::HTTPServer</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServerError.html">WEBrick::HTTPServerError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet.html">WEBrick::HTTPServlet</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/AbstractServlet.html">WEBrick::HTTPServlet::AbstractServlet</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/CGIHandler.html">WEBrick::HTTPServlet::CGIHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/DefaultFileHandler.html">WEBrick::HTTPServlet::DefaultFileHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/ERBHandler.html">WEBrick::HTTPServlet::ERBHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/FileHandler.html">WEBrick::HTTPServlet::FileHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/HTTPServletError.html">WEBrick::HTTPServlet::HTTPServletError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPServlet/ProcHandler.html">WEBrick::HTTPServlet::ProcHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus.html">WEBrick::HTTPStatus</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/ClientError.html">WEBrick::HTTPStatus::ClientError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/EOFError.html">WEBrick::HTTPStatus::EOFError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/Error.html">WEBrick::HTTPStatus::Error</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/Info.html">WEBrick::HTTPStatus::Info</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/Redirect.html">WEBrick::HTTPStatus::Redirect</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/ServerError.html">WEBrick::HTTPStatus::ServerError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/Status.html">WEBrick::HTTPStatus::Status</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPStatus/Success.html">WEBrick::HTTPStatus::Success</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPUtils.html">WEBrick::HTTPUtils</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPUtils/FormData.html">WEBrick::HTTPUtils::FormData</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/HTTPVersion.html">WEBrick::HTTPVersion</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Log.html">WEBrick::Log</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/ServerError.html">WEBrick::ServerError</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/SimpleServer.html">WEBrick::SimpleServer</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Utils.html">WEBrick::Utils</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Utils/TimeoutHandler.html">WEBrick::Utils::TimeoutHandler</a></li>
+        
+          
+          
+          <li><a href="../WEBrick/Utils/TimeoutHandler/Thread.html">WEBrick::Utils::TimeoutHandler::Thread</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">WEBrick::HTTPStatus</h1>
+
+    <div id="description" class="description">
+      
+<p>This module is used to manager HTTP status codes.</p>
+
+<p>See <a
+href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a>
+for more information.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="5B-5D-method" class="method-detail ">
+          <a name="method-c-5B-5D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the status class corresponding to <code>code</code></p>
+
+<pre>WEBrick::HTTPStatus[302]
+=&gt; WEBrick::HTTPStatus::NotFound</pre>
+            
+
+            
+            <div class="method-source-code" id="5B-5D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-constant">CodeToError</span>[<span class="ruby-identifier">code</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- 5B-5D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-method -->
+      
+        <div id="client_error-3F-method" class="method-detail ">
+          <a name="method-c-client_error-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">client_error?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> a client error status?</p>
+            
+
+            
+            <div class="method-source-code" id="client_error-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 172</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">client_error?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">400</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">500</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- client_error-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- client_error-3F-method -->
+      
+        <div id="error-3F-method" class="method-detail ">
+          <a name="method-c-error-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">error?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> an error status?</p>
+            
+
+            
+            <div class="method-source-code" id="error-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">error?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">400</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">600</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- error-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- error-3F-method -->
+      
+        <div id="info-3F-method" class="method-detail ">
+          <a name="method-c-info-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">info?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> an informational status?</p>
+            
+
+            
+            <div class="method-source-code" id="info-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">info?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">100</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">200</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- info-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- info-3F-method -->
+      
+        <div id="reason_phrase-method" class="method-detail ">
+          <a name="method-c-reason_phrase"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">reason_phrase</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the description corresponding to the HTTP status <code>code</code></p>
+
+<pre>WEBrick::HTTPStatus.reason_phrase 404
+=&gt; &quot;Not Found&quot;</pre>
+            
+
+            
+            <div class="method-source-code" id="reason_phrase-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reason_phrase</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-constant">StatusMessage</span>[<span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- reason_phrase-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- reason_phrase-method -->
+      
+        <div id="redirect-3F-method" class="method-detail ">
+          <a name="method-c-redirect-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">redirect?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> a redirection status?</p>
+            
+
+            
+            <div class="method-source-code" id="redirect-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">redirect?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">300</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">400</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- redirect-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- redirect-3F-method -->
+      
+        <div id="server_error-3F-method" class="method-detail ">
+          <a name="method-c-server_error-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">server_error?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> a server error status?</p>
+            
+
+            
+            <div class="method-source-code" id="server_error-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">server_error?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">500</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">600</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- server_error-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- server_error-3F-method -->
+      
+        <div id="success-3F-method" class="method-detail ">
+          <a name="method-c-success-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">success?</span><span
+              class="method-args">(code)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is <code>code</code> a successful status?</p>
+            
+
+            
+            <div class="method-source-code" id="success-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File webrick/httpstatus.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">success?</span>(<span class="ruby-identifier">code</span>)
+  <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">200</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">code</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">300</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- success-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- success-3F-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_HTTPStatus_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_HTTPStatus_versioned").load("/associated/2_2_0/HTTPStatus.html");</script> <div id='tx_HTTPStatus' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_HTTPStatus").load("/associated/HTTPStatus.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Hack your world.  Feed your head.  Live curious</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_HTTPStatus.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

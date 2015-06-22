@@ -1,0 +1,739 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>NOTE:</strong> This issue of Practicing Ruby was one of several content experiments 
+that was run in Volume 6. It uses a cookbook format (e.g. problem -&gt; solution -&gt; discussion)
+instead of the traditional long-form article format we use in most Practicing Ruby articles.</p>
+</blockquote>
+
+<p><strong>Problem: An adhoc script has devolved into an unmaintainable mess</strong></p>
+
+<p>Imagine that you’re working on a shipping cost estimation program for a small
+business that uses a courier service for regional deliveries. Part of the task
+for building that tool would involve importing pricing information from
+some data source, such as this CSV file:</p>
+
+<pre><code>06770,$12.00
+06512,$14.00
+06510,$15.30
+06701,$12.15
+</code></pre>
+
+<p>A real dataset would be more complex, but this minimal example exposes the
+information we’re interested in: what it costs to ship something from our
+facility to somewhere else, based on the destination’s zip code.</p>
+
+<p>Now suppose that we want to build a simple data store which will be updated
+daily with the latest pricing information. We then could easily write a script
+using a few of Ruby’s standard libraries (<code>PStore</code>, <code>BigDecimal</code>, and <code>CSV</code>),
+which would normalize the data in a way that could be used by the user-facing
+cost estimation program. If we could assume the source CSV data was validated
+before we processed it, the program could be as simple as what you see below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">csv</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pstore</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bigdecimal</span><span style="color:#710">&quot;</span></span>
+
+store = <span style="color:#036;font-weight:bold">PStore</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shipping_rates.store</span><span style="color:#710">&quot;</span></span>)
+
+store.transaction <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#036;font-weight:bold">CSV</span>.foreach(<span style="color:#069">ARGV</span>[<span style="color:#00D">0</span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rates.csv</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |r|
+    zip    = r[<span style="color:#00D">0</span>]
+    amount = <span style="color:#036;font-weight:bold">BigDecimal</span>.new(r[<span style="color:#00D">1</span>][<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>])
+    
+    store[zip] = amount
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>But in reality, most businesses environments do not make things like this easy
+for you. You’d probably quickly discover that the source data could have
+any number of problems with it, ranging from duplicate entries to inconsistently
+formatted fields. Because this kind of data often originates from people who are
+entering information into Excel by hand, they can even be littered with typos!</p>
+
+<p>To help mitigate these issues somewhat, you need a combination of
+sanity-checking validations and basic logging so that when something goes wrong
+you know why it happened. After adding those features, your simple script might
+collapse into the mess you see below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">csv</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pstore</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bigdecimal</span><span style="color:#710">&quot;</span></span>
+
+store = <span style="color:#036;font-weight:bold">PStore</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shipping_rates.store</span><span style="color:#710">&quot;</span></span>)
+
+store.transaction <span style="color:#080;font-weight:bold">do</span>
+  processed_zipcodes  = []
+  
+  <span style="color:#036;font-weight:bold">CSV</span>.foreach(<span style="color:#069">ARGV</span>[<span style="color:#00D">0</span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rates.csv</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |r|
+    raise <span style="color:#080;font-weight:bold">unless</span> r[<span style="color:#00D">0</span>][<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\d</span><span style="color:#808">{5}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>]
+    raise <span style="color:#080;font-weight:bold">unless</span> r[<span style="color:#00D">1</span>][<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\$</span><span style="color:#D20">\d</span><span style="color:#808">+</span><span style="color:#D20">\.</span><span style="color:#D20">\d</span><span style="color:#808">{2}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>]
+    
+    zip    = r[<span style="color:#00D">0</span>]
+    amount = <span style="color:#036;font-weight:bold">BigDecimal</span>.new(r[<span style="color:#00D">1</span>][<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>])
+
+    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">duplicate entry: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>zip<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> processed_zipcodes.include?(zip)
+    processed_zipcodes &lt;&lt; zip
+    
+    <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> store[zip] == amount
+
+    <span style="color:#080;font-weight:bold">if</span> store[zip].nil?
+      <span style="color:#069">STDERR</span>.puts(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Adding new entry for </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>zip<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">%.2f</span><span style="color:#710">'</span></span> % amount<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">elsif</span> store[zip] != amount
+      <span style="color:#069">STDERR</span>.puts(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Updating entry for </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>zip<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="color:#710">&quot;</span></span>+
+                  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">was </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">%.2f</span><span style="color:#710">'</span></span> % store[zip]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, now </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">%.2f</span><span style="color:#710">'</span></span> % amount<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+    
+    store[zip] = <span style="color:#036;font-weight:bold">BigDecimal</span>.new(amount)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Once your code ends up like this, it becomes increasingly difficult to 
+add new features or make any sort of change without breaking 
+something. Because this style of program is fairly difficult to test,
+the maintenance problems can be made even worse by the fact that bugs may 
+end up not being discovered until long after they’re introduced.</p>
+
+<p>Procedural scripts are great when you can throwaway the code once you’ve
+completed your task, or for solving simple problems that you are reasonably
+sure the requirements will never change for. For everything else,
+more structure pays off in the long run. It’s clear that this program
+is in the latter category, so how do we fix it?</p>
+
+<hr />
+
+<p><strong>Solution: Redesign the script as an object-oriented program</strong></p>
+
+<p>The thing that makes ad-hoc scripts complicated to reason about
+as they grow is that they blend all their concerns together – both 
+logically and conceptually. For that reason, it is worthwhile to
+start thinking in terms of functions and objects as soon as your
+program exceeds more than a paragraph or two of code.</p>
+
+<p>Imagine that the script portion of your importer tool was reduced
+to the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">csv</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#036;font-weight:bold">Importer</span>.update(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shipping_rates.store</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |store|
+  <span style="color:#036;font-weight:bold">CSV</span>.foreach(<span style="color:#069">ARGV</span>[<span style="color:#00D">0</span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rates.csv</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |r|
+    info = <span style="color:#036;font-weight:bold">PriceInformation</span>.new(<span style="color:#606">zipcode</span>: r[<span style="color:#00D">0</span>], <span style="color:#606">shipping_rate</span>: r[<span style="color:#00D">1</span>])
+    
+    store[info.zipcode] = info.shipping_rate
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This brings us back to about the same level of detail expressed in the
+naïve implementation of the importer script, albeit with a few custom classes
+thrown into the mix. It hides a lot of detail
+from the reader, but its core purpose is obvious: it iterates over a CSV file
+to create a mapping of zipcodes to shipping rates in a datastore. </p>
+
+<p>To see where the real work is being done, we need to look at the
+<code>PriceInformation</code> and <code>Importer</code> class definitions. We’ll start by taking a
+look at the former, because it has fewer moving parts to consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bigdecimal</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PriceInformation</span>
+  <span style="color:#036;font-weight:bold">ZIPCODE_MATCHER</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\d</span><span style="color:#808">{5}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>
+  <span style="color:#036;font-weight:bold">PRICE_MATCHER</span>   = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#D20">\$</span><span style="color:#D20">\d</span><span style="color:#808">+</span><span style="color:#D20">\.</span><span style="color:#D20">\d</span><span style="color:#808">{2}</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(<span style="color:#606">zipcode</span>: raise, <span style="color:#606">shipping_rate</span>: raise)
+    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Zipcode validation failed</span><span style="color:#710">&quot;</span></span>       <span style="color:#080;font-weight:bold">unless</span> zipcode[<span style="color:#036;font-weight:bold">ZIPCODE_MATCHER</span>]
+    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Shipping rate validation failed</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> shipping_rate[<span style="color:#036;font-weight:bold">PRICE_MATCHER</span>]
+    
+    <span style="color:#33B">@zipcode</span>       = zipcode 
+    <span style="color:#33B">@shipping_rate</span> = <span style="color:#036;font-weight:bold">BigDecimal</span>.new(shipping_rate[<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:zipcode</span>, <span style="color:#A60">:shipping_rate</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Here we see that <code>PriceInformation</code> applies the same validations and
+transformations as shown in the script version of this program, but
+encapsulates them in its constructor. This makes sure that a <code>PriceInformation</code>
+object will either represent valid data or not be instantiated at all, 
+which makes it so that the main script does not need to concern itself 
+with these issues. Even if these validations or transformations become
+more complex over time, the calling code should not need to change.</p>
+
+<p>In a similar vein, the <code>Importer</code> class attempts to encapsulate the details
+about some lower level concepts at a higher level of abstraction. It’s
+functionality is a bit more involved than the <code>PriceInformation</code> class,
+so take a few minutes to study it before moving on:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pstore</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Importer</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">update</span>(filename)
+    store = <span style="color:#036;font-weight:bold">PStore</span>.new(filename)
+
+    store.transaction <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#080;font-weight:bold">yield</span> new(store)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(store)
+    <span style="color:#069">self</span>.store    = store
+    <span style="color:#069">self</span>.imported = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(key, new_value)
+    raise_if_duplicate(key)
+
+    old_value = store[key]
+
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> old_value == new_value <span style="color:#777"># nothing to do!</span>
+
+    <span style="color:#080;font-weight:bold">if</span> old_value.nil?
+      <span style="color:#036;font-weight:bold">ChangeLog</span>.new_record(key, new_value)
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#036;font-weight:bold">ChangeLog</span>.updated_record(key, old_value, new_value)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    store[key] = new_value
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_accessor <span style="color:#A60">:store</span>, <span style="color:#A60">:imported</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">raise_if_duplicate</span>(key)
+    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Duplicate key in import data: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> imported.include?(key)
+    imported &lt;&lt; key
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Despite the complexity of its implementation, this class presents a very minimal
+user interface, consisting of only <code>Importer.update</code> and <code>Importer#[]=</code>. The
+<code>Importer.update</code> method is responsible for instantiating a <code>PStore</code> object,
+initiating a transaction, and then wrapping it in an <code>Importer</code> instance to
+limit access to its internals. From there, the only method available to the user
+is <code>Importer#[]=</code>, which wraps <code>PStore#[]=</code> with two important features:</p>
+
+<ol>
+  <li>
+    <p>Single-assignment semantics: once a key has been set to particular value, it
+cannot be reset from within the same <code>Importer</code> instance. This is because we
+want to raise an exception whenever we encounter duplicate keys in the data
+we’re importing.</p>
+  </li>
+  <li>
+    <p>Update notifications: For debugging purposes, we want to know whether a
+record is introducing a new key, or updating the value associated with
+an old one. Rather than cluttering up this class with the particular log
+messages associated with those events, we delegate to a <code>ChangeLog</code> helper
+object, which is shown below:</p>
+  </li>
+</ol>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> &lt;&lt; (<span style="color:#036;font-weight:bold">ChangeLog</span> = <span style="color:#036;font-weight:bold">Object</span>.new)
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new_record</span>(key, value)
+    <span style="color:#069">STDERR</span>.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Adding </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>f(value)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">updated_record</span>(key, old_value, new_value)
+    <span style="color:#069">STDERR</span>.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Updating </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>key<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">: Was </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>f(old_value)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, Now </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>f(new_value)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">f</span>(value)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">%.2f</span><span style="color:#710">'</span></span> % value
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With this last detail exposed, you’ve walked through the complete 
+object-oriented solution to this problem. It is much longer than the
+script version, but also much more organized. Before we wrap things up, 
+let’s talk a bit more about the costs and benefits involved in introducing
+more structure into your programs.</p>
+
+<hr />
+
+<p><strong>Discussion</strong></p>
+
+<p>The best thing about unstructured code is that nothing is hidden from view. 
+To understand a script, you start at the top of the file and read downwards, 
+mentally evaluating the state changes and iterators you encounter along the way.</p>
+
+<p>Object-oriented programs are much more logically complex, because they 
+represent a network of collaborators rather than a linear set of instructions.
+For example, whenever we make a call to <code>Importer#[]=</code>, messages are sent to the
+<code>ChangeLog</code> helper object as well as to an instance of <code>PStore</code>, but these
+details are not at all visible when you read the caller code. The more objects
+that exist within a system, the more complex their interactions get, and so
+it is not uncommon to end up with call graphs that are both wide and deep.</p>
+
+<p>But when it comes to visibility, the strength of scripted solutions is also their 
+weakness, and the weakness of object-oriented programs is also their strength:</p>
+
+<ul>
+  <li>
+    <p>In an adhoc script, you cannot make simple decisions about your code
+without considering the entire program. Even something as straightforward
+as renaming a variable used for temporary storage must be carefully considered,
+because everything exists within a single namespace; anything more involved
+than that is simply inviting trouble unless you can keep the entire program
+in your head at once.</p>
+  </li>
+  <li>
+    <p>In an object-oriented program, the walls erected between different objects give
+you freedom to make sweeping changes to internal structures, as long as their
+interfaces are preserved. You can even rewire entire subnetworks of functionality
+from your programs, as long as you know what features depend on them. When
+done well, the fact that you cannot keep an entire object-oriented program
+in your head is not much of a concern, because the layered abstractions
+make it so you don’t have to.</p>
+  </li>
+</ul>
+
+<p>The real challenge involved in writing object-oriented programs is that they’ll
+only be as useful as the mental model they represent. This is why it can
+actually be helpful to start off with less structure (even none at all!), and
+gradually work your way towards something more organized. After all,
+there is nothing worse than an abstract solution in search of a concrete problem!</p>
+
+  </div>
+</body>
+</html>

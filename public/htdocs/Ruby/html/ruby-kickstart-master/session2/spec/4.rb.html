@@ -1,0 +1,438 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">get_squares</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  [ [[<span style="color:#00D">9</span>],                      []],
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    [[<span style="color:#00D">9</span>,<span style="color:#00D">3</span>],                    [<span style="color:#00D">3</span>]],
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    [[<span style="color:#00D">9</span>,<span style="color:#00D">3</span>,<span style="color:#00D">81</span>],                 [<span style="color:#00D">3</span>, <span style="color:#00D">9</span>]],
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    [[<span style="color:#00D">25</span>, <span style="color:#00D">4</span>, <span style="color:#00D">9</span>, <span style="color:#00D">6</span>, <span style="color:#00D">50</span>, <span style="color:#00D">16</span>, <span style="color:#00D">5</span>], [<span style="color:#00D">4</span>, <span style="color:#00D">5</span>]],
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    [[<span style="color:#00D">3</span>,<span style="color:#00D">9</span>,<span style="color:#00D">3</span>],                  [<span style="color:#00D">3</span>,<span style="color:#00D">3</span>]],
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    [[<span style="color:#00D">489</span>, <span style="color:#00D">566</span>, <span style="color:#00D">256036</span>, <span style="color:#00D">36864</span>, <span style="color:#00D">919</span>, <span style="color:#00D">354</span>, <span style="color:#00D">459684</span>, <span style="color:#00D">420</span>, <span style="color:#00D">353</span>, <span style="color:#00D">641</span>, <span style="color:#00D">516</span>, <span style="color:#00D">289444</span>, <span style="color:#00D">354025</span>, <span style="color:#00D">317</span>, <span style="color:#00D">570</span>, <span style="color:#00D">393</span>, <span style="color:#00D">174724</span>, <span style="color:#00D">14</span>, <span style="color:#00D">497</span>, <span style="color:#00D">587</span>, <span style="color:#00D">148</span>, <span style="color:#00D">685584</span>, <span style="color:#00D">29929</span>, <span style="color:#00D">811</span>, <span style="color:#00D">588289</span>, <span style="color:#00D">225</span>, <span style="color:#00D">589</span>, <span style="color:#00D">892</span>, <span style="color:#00D">64009</span>, <span style="color:#00D">862</span>, <span style="color:#00D">902500</span>, <span style="color:#00D">719104</span>, <span style="color:#00D">88209</span>, <span style="color:#00D">660</span>, <span style="color:#00D">967</span>, <span style="color:#00D">761</span>, <span style="color:#00D">143</span>, <span style="color:#00D">51</span>, <span style="color:#00D">194481</span>, <span style="color:#00D">463</span>, <span style="color:#00D">171</span>, <span style="color:#00D">239</span>, <span style="color:#00D">325</span>, <span style="color:#00D">857476</span>, <span style="color:#00D">74</span>, <span style="color:#00D">514</span>, <span style="color:#00D">830</span>, <span style="color:#00D">176</span>, <span style="color:#00D">969</span>, <span style="color:#00D">652864</span>, <span style="color:#00D">380689</span>, <span style="color:#00D">141</span>, <span style="color:#00D">264</span>, <span style="color:#00D">168</span>, <span style="color:#00D">60</span>, <span style="color:#00D">57</span>, <span style="color:#00D">337</span>, <span style="color:#00D">508369</span>, <span style="color:#00D">3136</span>, <span style="color:#00D">87616</span>, <span style="color:#00D">508</span>, <span style="color:#00D">11449</span>, <span style="color:#00D">461041</span>, <span style="color:#00D">234</span>, <span style="color:#00D">534361</span>, <span style="color:#00D">262</span>, <span style="color:#00D">801025</span>, <span style="color:#00D">160</span>, <span style="color:#00D">324</span>, <span style="color:#00D">284</span>, <span style="color:#00D">696</span>, <span style="color:#00D">26569</span>, <span style="color:#00D">641601</span>, <span style="color:#00D">677329</span>, <span style="color:#00D">590</span>, <span style="color:#00D">549</span>, <span style="color:#00D">75076</span>, <span style="color:#00D">410881</span>, <span style="color:#00D">287296</span>, <span style="color:#00D">294</span>, <span style="color:#00D">154449</span>, <span style="color:#00D">560</span>, <span style="color:#00D">874</span>, <span style="color:#00D">825</span>, <span style="color:#00D">272</span>, <span style="color:#00D">718</span>, <span style="color:#00D">282</span>, <span style="color:#00D">348100</span>, <span style="color:#00D">80656</span>, <span style="color:#00D">273</span>, <span style="color:#00D">184041</span>, <span style="color:#00D">846</span>, <span style="color:#00D">66049</span>, <span style="color:#00D">700</span>, <span style="color:#00D">359</span>, <span style="color:#00D">533</span>, <span style="color:#00D">859</span>, <span style="color:#00D">355</span>, <span style="color:#00D">26</span>, <span style="color:#00D">520</span>, <span style="color:#00D">147</span>, <span style="color:#00D">115600</span>, <span style="color:#00D">528529</span>, <span style="color:#00D">344</span>, <span style="color:#00D">688900</span>, <span style="color:#00D">893</span>, <span style="color:#00D">873</span>, <span style="color:#00D">833</span>, <span style="color:#00D">66</span>, <span style="color:#00D">374</span>, <span style="color:#00D">192</span>, <span style="color:#00D">851</span>, <span style="color:#00D">611</span>, <span style="color:#00D">90000</span>, <span style="color:#00D">519</span>, <span style="color:#00D">199</span>, <span style="color:#00D">261</span>, <span style="color:#00D">105</span>, <span style="color:#00D">163216</span>, <span style="color:#00D">305</span>, <span style="color:#00D">707281</span>, <span style="color:#00D">720801</span>, <span style="color:#00D">740</span>, <span style="color:#00D">777</span>, <span style="color:#00D">727</span>, <span style="color:#00D">896</span>, <span style="color:#00D">155</span>, <span style="color:#00D">839</span>, <span style="color:#00D">360</span>, <span style="color:#00D">396900</span>, <span style="color:#00D">212</span>, <span style="color:#00D">108241</span>, <span style="color:#00D">897</span>, <span style="color:#00D">107</span>, <span style="color:#00D">174</span>, <span style="color:#00D">879</span>, <span style="color:#00D">753</span>, <span style="color:#00D">781</span>, <span style="color:#00D">405</span>, <span style="color:#00D">540225</span>, <span style="color:#00D">616</span>, <span style="color:#00D">164025</span>, <span style="color:#00D">5476</span>, <span style="color:#00D">694</span>, <span style="color:#00D">58564</span>, <span style="color:#00D">619369</span>, <span style="color:#00D">484416</span>, <span style="color:#00D">290</span>, <span style="color:#00D">614</span>, <span style="color:#00D">23716</span>, <span style="color:#00D">225</span>, <span style="color:#00D">191844</span>, <span style="color:#00D">165</span>, <span style="color:#00D">300</span>, <span style="color:#00D">678</span>, <span style="color:#00D">97344</span>, <span style="color:#00D">245</span>, <span style="color:#00D">271</span>, <span style="color:#00D">189</span>, <span style="color:#00D">274</span>, <span style="color:#00D">866</span>, <span style="color:#00D">602176</span>, <span style="color:#00D">252004</span>, <span style="color:#00D">318</span>, <span style="color:#00D">390625</span>, <span style="color:#00D">532</span>, <span style="color:#00D">518</span>, <span style="color:#00D">925444</span>, <span style="color:#00D">932</span>, <span style="color:#00D">83</span>, <span style="color:#00D">578</span>, <span style="color:#00D">12544</span>, <span style="color:#00D">202</span>, <span style="color:#00D">39204</span>, <span style="color:#00D">926</span>, <span style="color:#00D">223</span>, <span style="color:#00D">595</span>, <span style="color:#00D">25</span>, <span style="color:#00D">134689</span>, <span style="color:#00D">699</span>, <span style="color:#00D">596</span>, <span style="color:#00D">487</span>, <span style="color:#00D">774</span>, <span style="color:#00D">315844</span>, <span style="color:#00D">319</span>, <span style="color:#00D">411</span>, <span style="color:#00D">483</span>, <span style="color:#00D">240</span>, <span style="color:#00D">164</span>, <span style="color:#00D">871</span>, <span style="color:#00D">547</span>, <span style="color:#00D">418</span>, <span style="color:#00D">486</span>, <span style="color:#00D">931</span>, <span style="color:#00D">400689</span>, <span style="color:#00D">672</span>, <span style="color:#00D">41</span>, <span style="color:#00D">822</span>, <span style="color:#00D">16</span>, <span style="color:#00D">676</span>, <span style="color:#00D">491401</span>, <span style="color:#00D">126025</span>, <span style="color:#00D">433</span>, <span style="color:#00D">498436</span>, <span style="color:#00D">311</span>, <span style="color:#00D">293</span>, <span style="color:#00D">906304</span>, <span style="color:#00D">657721</span>, <span style="color:#00D">702</span>, <span style="color:#00D">248004</span>, <span style="color:#00D">698896</span>, <span style="color:#00D">687241</span>, <span style="color:#00D">340</span>, <span style="color:#00D">599</span>, <span style="color:#00D">319225</span>, <span style="color:#00D">34225</span>, <span style="color:#00D">544644</span>, <span style="color:#00D">981</span>, <span style="color:#00D">935089</span>, <span style="color:#00D">972196</span>, <span style="color:#00D">968</span>, <span style="color:#00D">244</span>, <span style="color:#00D">445</span>, <span style="color:#00D">439</span>, <span style="color:#00D">109561</span>, <span style="color:#00D">373321</span>, <span style="color:#00D">60025</span>, <span style="color:#00D">78</span>, <span style="color:#00D">546</span>, <span style="color:#00D">506</span>, <span style="color:#00D">972</span>, <span style="color:#00D">671</span>, <span style="color:#00D">755</span>, <span style="color:#00D">437</span>, <span style="color:#00D">684</span>, <span style="color:#00D">447</span>, <span style="color:#00D">650</span>, <span style="color:#00D">68121</span>, <span style="color:#00D">5929</span>, <span style="color:#00D">579</span>, <span style="color:#00D">194</span>, <span style="color:#00D">276676</span>, <span style="color:#00D">299209</span>, <span style="color:#00D">485</span>, <span style="color:#00D">828100</span>, <span style="color:#00D">115</span>, <span style="color:#00D">387</span>, <span style="color:#00D">936</span>, <span style="color:#00D">624</span>, <span style="color:#00D">82369</span>, <span style="color:#00D">495</span>, <span style="color:#00D">735</span>, <span style="color:#00D">988036</span>, <span style="color:#00D">782</span>, <span style="color:#00D">332</span>, <span style="color:#00D">687</span>, <span style="color:#00D">955</span>, <span style="color:#00D">823</span>, <span style="color:#00D">821</span>, <span style="color:#00D">185761</span>, <span style="color:#00D">723</span>, <span style="color:#00D">749</span>, <span style="color:#00D">99225</span>, <span style="color:#00D">407044</span>, <span style="color:#00D">100</span>, <span style="color:#00D">441</span>, <span style="color:#00D">751689</span>, <span style="color:#00D">876096</span>, <span style="color:#00D">23</span>, <span style="color:#00D">15</span>, <span style="color:#00D">970225</span>, <span style="color:#00D">372</span>, <span style="color:#00D">562</span>, <span style="color:#00D">835</span>, <span style="color:#00D">801</span>, <span style="color:#00D">220900</span>, <span style="color:#00D">962</span>, <span style="color:#00D">161604</span>, <span style="color:#00D">446</span>, <span style="color:#00D">95</span>, <span style="color:#00D">701</span>, <span style="color:#00D">260</span>, <span style="color:#00D">18</span>, <span style="color:#00D">40</span>, <span style="color:#00D">737</span>, <span style="color:#00D">542</span>, <span style="color:#00D">567009</span>, <span style="color:#00D">857</span>, <span style="color:#00D">754</span>, <span style="color:#00D">606</span>, <span style="color:#00D">797</span>, <span style="color:#00D">526</span>, <span style="color:#00D">33856</span>, <span style="color:#00D">13225</span>, <span style="color:#00D">635209</span>, <span style="color:#00D">536</span>, <span style="color:#00D">102400</span>, <span style="color:#00D">356409</span>, <span style="color:#00D">4489</span>, <span style="color:#00D">5</span>, <span style="color:#00D">884</span>, <span style="color:#00D">930</span>, <span style="color:#00D">81796</span>, <span style="color:#00D">25600</span>, <span style="color:#00D">257</span>, <span style="color:#00D">83521</span>, <span style="color:#00D">87</span>, <span style="color:#00D">1000000</span>, <span style="color:#00D">880</span>, <span style="color:#00D">147456</span>, <span style="color:#00D">790321</span>, <span style="color:#00D">1000</span>, <span style="color:#00D">346921</span>, <span style="color:#00D">891</span>, <span style="color:#00D">386884</span>, <span style="color:#00D">253</span>, <span style="color:#00D">957</span>, <span style="color:#00D">950</span>, <span style="color:#00D">712336</span>, <span style="color:#00D">430</span>, <span style="color:#00D">608</span>, <span style="color:#00D">441</span>, <span style="color:#00D">134</span>, <span style="color:#00D">303</span>, <span style="color:#00D">999</span>, <span style="color:#00D">421</span>, <span style="color:#00D">128</span>, <span style="color:#00D">54</span>, <span style="color:#00D">112</span>, <span style="color:#00D">845</span>, <span style="color:#00D">184</span>, <span style="color:#00D">327184</span>, <span style="color:#00D">632</span>, <span style="color:#00D">7744</span>, <span style="color:#00D">842</span>, <span style="color:#00D">431</span>, <span style="color:#00D">246</span>, <span style="color:#00D">722500</span>, <span style="color:#00D">440</span>, <span style="color:#00D">296</span>, <span style="color:#00D">498</span>, <span style="color:#00D">795664</span>, <span style="color:#00D">804</span>, <span style="color:#00D">958441</span>, <span style="color:#00D">496</span>, <span style="color:#00D">367236</span>, <span style="color:#00D">521</span>, <span style="color:#00D">77</span>, <span style="color:#00D">458329</span>, <span style="color:#00D">622</span>, <span style="color:#00D">887</span>, <span style="color:#00D">422500</span>, <span style="color:#00D">524</span>, <span style="color:#00D">848</span>, <span style="color:#00D">555025</span>, <span style="color:#00D">666</span>, <span style="color:#00D">943</span>, <span style="color:#00D">96721</span>, <span style="color:#00D">706</span>, <span style="color:#00D">409</span>, <span style="color:#00D">104</span>, <span style="color:#00D">246016</span>, <span style="color:#00D">367</span>, <span style="color:#00D">946729</span>, <span style="color:#00D">503</span>, <span style="color:#00D">471</span>, <span style="color:#00D">426409</span>, <span style="color:#00D">513</span>, <span style="color:#00D">828</span>, <span style="color:#00D">895</span>, <span style="color:#00D">933</span>, <span style="color:#00D">168921</span>, <span style="color:#00D">484</span>, <span style="color:#00D">104329</span>, <span style="color:#00D">91</span>, <span style="color:#00D">776</span>, <span style="color:#00D">315</span>, <span style="color:#00D">44521</span>, <span style="color:#00D">582</span>, <span style="color:#00D">169</span>, <span style="color:#00D">804609</span>, <span style="color:#00D">534</span>, <span style="color:#00D">750</span>, <span style="color:#00D">214369</span>, <span style="color:#00D">518400</span>, <span style="color:#00D">313600</span>, <span style="color:#00D">32</span>, <span style="color:#00D">358</span>, <span style="color:#00D">557</span>, <span style="color:#00D">33</span>, <span style="color:#00D">429</span>, <span style="color:#00D">299</span>, <span style="color:#00D">751</span>, <span style="color:#00D">739</span>, <span style="color:#00D">300304</span>, <span style="color:#00D">68644</span>, <span style="color:#00D">286</span>, <span style="color:#00D">546121</span>, <span style="color:#00D">572</span>, <span style="color:#00D">846400</span>, <span style="color:#00D">877</span>, <span style="color:#00D">481</span>, <span style="color:#00D">110889</span>, <span style="color:#00D">661</span>, <span style="color:#00D">166464</span>, <span style="color:#00D">817</span>, <span style="color:#00D">209764</span>, <span style="color:#00D">500</span>, <span style="color:#00D">786</span>, <span style="color:#00D">868</span>, <span style="color:#00D">88</span>, <span style="color:#00D">847</span>, <span style="color:#00D">681</span>, <span style="color:#00D">31329</span>, <span style="color:#00D">331</span>, <span style="color:#00D">914</span>, <span style="color:#00D">150</span>, <span style="color:#00D">979</span>, <span style="color:#00D">131</span>, <span style="color:#00D">377</span>, <span style="color:#00D">952576</span>, <span style="color:#00D">824</span>, <span style="color:#00D">509</span>, <span style="color:#00D">235225</span>, <span style="color:#00D">100489</span>, <span style="color:#00D">975</span>, <span style="color:#00D">831</span>, <span style="color:#00D">837</span>, <span style="color:#00D">312</span>, <span style="color:#00D">389</span>, <span style="color:#00D">130</span>, <span style="color:#00D">177</span>, <span style="color:#00D">224</span>, <span style="color:#00D">984</span>, <span style="color:#00D">291</span>, <span style="color:#00D">342</span>, <span style="color:#00D">309136</span>, <span style="color:#00D">19321</span>, <span style="color:#00D">228</span>, <span style="color:#00D">787</span>, <span style="color:#00D">434281</span>, <span style="color:#00D">297</span>, <span style="color:#00D">179</span>, <span style="color:#00D">19044</span>, <span style="color:#00D">227</span>, <span style="color:#00D">417</span>, <span style="color:#00D">139</span>, <span style="color:#00D">864</span>, <span style="color:#00D">829</span>, <span style="color:#00D">56</span>, <span style="color:#00D">705600</span>, <span style="color:#00D">642</span>, <span style="color:#00D">163</span>, <span style="color:#00D">145</span>, <span style="color:#00D">713</span>, <span style="color:#00D">609</span>, <span style="color:#00D">268324</span>, <span style="color:#00D">154</span>, <span style="color:#00D">986</span>, <span style="color:#00D">659</span>, <span style="color:#00D">623</span>, <span style="color:#00D">849</span>, <span style="color:#00D">17956</span>, <span style="color:#00D">351</span>, <span style="color:#00D">937024</span>, <span style="color:#00D">288</span>, <span style="color:#00D">181</span>, <span style="color:#00D">902</span>, <span style="color:#00D">352</span>, <span style="color:#00D">483025</span>, <span style="color:#00D">438</span>, <span style="color:#00D">743</span>, <span style="color:#00D">465</span>, <span style="color:#00D">371</span>, <span style="color:#00D">625</span>, <span style="color:#00D">738</span>, <span style="color:#00D">51984</span>, <span style="color:#00D">34</span>, <span style="color:#00D">111</span>, <span style="color:#00D">25</span>, <span style="color:#00D">249</span>, <span style="color:#00D">397</span>, <span style="color:#00D">732</span>, <span style="color:#00D">864900</span>, <span style="color:#00D">1521</span>, <span style="color:#00D">883</span>, <span style="color:#00D">120</span>, <span style="color:#00D">617</span>, <span style="color:#00D">709</span>, <span style="color:#00D">770</span>, <span style="color:#00D">649</span>, <span style="color:#00D">51076</span>, <span style="color:#00D">612</span>, <span style="color:#00D">6889</span>, <span style="color:#00D">744</span>, <span style="color:#00D">93025</span>, <span style="color:#00D">415</span>, <span style="color:#00D">565</span>, <span style="color:#00D">235</span>, <span style="color:#00D">548</span>, <span style="color:#00D">901</span>, <span style="color:#00D">136161</span>, <span style="color:#00D">149769</span>, <span style="color:#00D">404</span>, <span style="color:#00D">424</span>, <span style="color:#00D">841</span>, <span style="color:#00D">556</span>, <span style="color:#00D">20</span>, <span style="color:#00D">361</span>, <span style="color:#00D">4</span>, <span style="color:#00D">81225</span>, <span style="color:#00D">88804</span>, <span style="color:#00D">570025</span>, <span style="color:#00D">103</span>, <span style="color:#00D">693889</span>, <span style="color:#00D">289</span>, <span style="color:#00D">458</span>, <span style="color:#00D">29241</span>, <span style="color:#00D">427</span>, <span style="color:#00D">576</span>, <span style="color:#00D">67</span>, <span style="color:#00D">72</span>, <span style="color:#00D">633</span>, <span style="color:#00D">584</span>, <span style="color:#00D">86</span>, <span style="color:#00D">677</span>, <span style="color:#00D">82</span>, <span style="color:#00D">44</span>, <span style="color:#00D">256</span>, <span style="color:#00D">795</span>, <span style="color:#00D">586</span>, <span style="color:#00D">964</span>, <span style="color:#00D">490000</span>, <span style="color:#00D">481636</span>, <span style="color:#00D">30976</span>, <span style="color:#00D">138</span>, <span style="color:#00D">121</span>, <span style="color:#00D">86436</span>, <span style="color:#00D">870489</span>, <span style="color:#00D">21</span>, <span style="color:#00D">685</span>, <span style="color:#00D">1681</span>, <span style="color:#00D">998001</span>, <span style="color:#00D">159201</span>, <span style="color:#00D">553536</span>, <span style="color:#00D">186</span>, <span style="color:#00D">730</span>, <span style="color:#00D">226</span>, <span style="color:#00D">980</span>, <span style="color:#00D">110224</span>, <span style="color:#00D">889249</span>, <span style="color:#00D">603729</span>, <span style="color:#00D">385</span>, <span style="color:#00D">426</span>, <span style="color:#00D">766</span>, <span style="color:#00D">867</span>, <span style="color:#00D">951</span>, <span style="color:#00D">668</span>, <span style="color:#00D">601</span>, <span style="color:#00D">139876</span>, <span style="color:#00D">258064</span>, <span style="color:#00D">133</span>, <span style="color:#00D">670</span>, <span style="color:#00D">16641</span>, <span style="color:#00D">962361</span>, <span style="color:#00D">502</span>, <span style="color:#00D">129</span>, <span style="color:#00D">809</span>, <span style="color:#00D">184900</span>, <span style="color:#00D">973</span>, <span style="color:#00D">860</span>, <span style="color:#00D">779</span>, <span style="color:#00D">289</span>, <span style="color:#00D">543169</span>, <span style="color:#00D">101761</span>, <span style="color:#00D">198</span>, <span style="color:#00D">44944</span>, <span style="color:#00D">482</span>, <span style="color:#00D">443556</span>, <span style="color:#00D">592900</span>, <span style="color:#00D">9</span>, <span style="color:#00D">968256</span>, <span style="color:#00D">597</span>, <span style="color:#00D">333</span>, <span style="color:#00D">211</span>, <span style="color:#00D">775</span>, <span style="color:#00D">466</span>, <span style="color:#00D">109</span>, <span style="color:#00D">204</span>, <span style="color:#00D">920</span>, <span style="color:#00D">731</span>, <span style="color:#00D">952</span>, <span style="color:#00D">996</span>, <span style="color:#00D">451584</span>, <span style="color:#00D">607</span>, <span style="color:#00D">6084</span>, <span style="color:#00D">413</span>, <span style="color:#00D">384</span>, <span style="color:#00D">679</span>, <span style="color:#00D">771</span>, <span style="color:#00D">554</span>, <span style="color:#00D">630</span>, <span style="color:#00D">412</span>, <span style="color:#00D">653</span>, <span style="color:#00D">242</span>, <span style="color:#00D">185</span>, <span style="color:#00D">364</span>, <span style="color:#00D">889</span>, <span style="color:#00D">592</span>, <span style="color:#00D">462</span>, <span style="color:#00D">844</span>, <span style="color:#00D">714025</span>, <span style="color:#00D">778</span>, <span style="color:#00D">399424</span>, <span style="color:#00D">364816</span>, <span style="color:#00D">691</span>, <span style="color:#00D">17</span>, <span style="color:#00D">850</span>, <span style="color:#00D">734</span>, <span style="color:#00D">910</span>, <span style="color:#00D">717409</span>, <span style="color:#00D">958</span>, <span style="color:#00D">16</span>, <span style="color:#00D">917764</span>, <span style="color:#00D">662</span>, <span style="color:#00D">195</span>, <span style="color:#00D">768</span>, <span style="color:#00D">460</span>, <span style="color:#00D">65536</span>, <span style="color:#00D">808</span>, <span style="color:#00D">414736</span>, <span style="color:#00D">802</span>, <span style="color:#00D">753424</span>, <span style="color:#00D">350464</span>, <span style="color:#00D">298</span>, <span style="color:#00D">123904</span>, <span style="color:#00D">997</span>, <span style="color:#00D">285</span>, <span style="color:#00D">604</span>, <span style="color:#00D">654</span>, <span style="color:#00D">767</span>, <span style="color:#00D">844561</span>, <span style="color:#00D">369</span>, <span style="color:#00D">73441</span>, <span style="color:#00D">985</span>, <span style="color:#00D">552049</span>, <span style="color:#00D">54756</span>, <span style="color:#00D">302</span>, <span style="color:#00D">929296</span>, <span style="color:#00D">769129</span>, <span style="color:#00D">838</span>, <span style="color:#00D">323</span>, <span style="color:#00D">256</span>, <span style="color:#00D">858</span>, <span style="color:#00D">733</span>, <span style="color:#00D">271441</span>, <span style="color:#00D">74529</span>, <span style="color:#00D">772641</span>, <span style="color:#00D">852</span>, <span style="color:#00D">136</span>, <span style="color:#00D">12</span>, <span style="color:#00D">313</span>, <span style="color:#00D">329</span>, <span style="color:#00D">550</span>, <span style="color:#00D">176400</span>, <span style="color:#00D">674041</span>, <span style="color:#00D">591</span>, <span style="color:#00D">708964</span>, <span style="color:#00D">538</span>, <span style="color:#00D">287</span>, <span style="color:#00D">39</span>, <span style="color:#00D">123201</span>, <span style="color:#00D">345</span>, <span style="color:#00D">320</span>, <span style="color:#00D">399</span>, <span style="color:#00D">470</span>, <span style="color:#00D">89401</span>, <span style="color:#00D">274576</span>, <span style="color:#00D">388</span>, <span style="color:#00D">827</span>, <span style="color:#00D">38416</span>, <span style="color:#00D">588</span>, <span style="color:#00D">695</span>, <span style="color:#00D">950625</span>, <span style="color:#00D">98</span>, <span style="color:#00D">811801</span>, <span style="color:#00D">51529</span>, <span style="color:#00D">45</span>, <span style="color:#00D">150544</span>, <span style="color:#00D">894</span>, <span style="color:#00D">469225</span>, <span style="color:#00D">994</span>, <span style="color:#00D">173</span>, <span style="color:#00D">421201</span>, <span style="color:#00D">577</span>, <span style="color:#00D">196</span>, <span style="color:#00D">330</span>, <span style="color:#00D">638</span>, <span style="color:#00D">840</span>, <span style="color:#00D">625</span>, <span style="color:#00D">758641</span>, <span style="color:#00D">71</span>, <span style="color:#00D">836</span>, <span style="color:#00D">976</span>, <span style="color:#00D">524176</span>, <span style="color:#00D">605</span>, <span style="color:#00D">402</span>, <span style="color:#00D">34596</span>, <span style="color:#00D">644</span>, <span style="color:#00D">53</span>, <span style="color:#00D">720</span>, <span style="color:#00D">745</span>, <span style="color:#00D">724</span>, <span style="color:#00D">963</span>, <span style="color:#00D">408</span>, <span style="color:#00D">512</span>],
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>     [<span style="color:#00D">4</span>, <span style="color:#00D">5</span>, <span style="color:#00D">14</span>, <span style="color:#00D">15</span>, <span style="color:#00D">16</span>, <span style="color:#00D">16</span>, <span style="color:#00D">17</span>, <span style="color:#00D">18</span>, <span style="color:#00D">21</span>, <span style="color:#00D">25</span>, <span style="color:#00D">25</span>, <span style="color:#00D">26</span>, <span style="color:#00D">39</span>, <span style="color:#00D">41</span>, <span style="color:#00D">56</span>, <span style="color:#00D">67</span>, <span style="color:#00D">74</span>, <span style="color:#00D">77</span>, <span style="color:#00D">78</span>, <span style="color:#00D">83</span>, <span style="color:#00D">88</span>, <span style="color:#00D">107</span>, <span style="color:#00D">112</span>, <span style="color:#00D">115</span>, <span style="color:#00D">129</span>, <span style="color:#00D">134</span>, <span style="color:#00D">138</span>, <span style="color:#00D">139</span>, <span style="color:#00D">154</span>, <span style="color:#00D">160</span>, <span style="color:#00D">163</span>, <span style="color:#00D">171</span>, <span style="color:#00D">173</span>, <span style="color:#00D">176</span>, <span style="color:#00D">177</span>, <span style="color:#00D">184</span>, <span style="color:#00D">185</span>, <span style="color:#00D">186</span>, <span style="color:#00D">192</span>, <span style="color:#00D">196</span>, <span style="color:#00D">198</span>, <span style="color:#00D">211</span>, <span style="color:#00D">212</span>, <span style="color:#00D">226</span>, <span style="color:#00D">227</span>, <span style="color:#00D">228</span>, <span style="color:#00D">234</span>, <span style="color:#00D">242</span>, <span style="color:#00D">245</span>, <span style="color:#00D">253</span>, <span style="color:#00D">256</span>, <span style="color:#00D">256</span>, <span style="color:#00D">257</span>, <span style="color:#00D">261</span>, <span style="color:#00D">262</span>, <span style="color:#00D">271</span>, <span style="color:#00D">273</span>, <span style="color:#00D">274</span>, <span style="color:#00D">284</span>, <span style="color:#00D">285</span>, <span style="color:#00D">286</span>, <span style="color:#00D">287</span>, <span style="color:#00D">289</span>, <span style="color:#00D">289</span>, <span style="color:#00D">294</span>, <span style="color:#00D">296</span>, <span style="color:#00D">297</span>, <span style="color:#00D">298</span>, <span style="color:#00D">299</span>, <span style="color:#00D">300</span>, <span style="color:#00D">305</span>, <span style="color:#00D">311</span>, <span style="color:#00D">312</span>, <span style="color:#00D">315</span>, <span style="color:#00D">317</span>, <span style="color:#00D">319</span>, <span style="color:#00D">320</span>, <span style="color:#00D">323</span>, <span style="color:#00D">329</span>, <span style="color:#00D">331</span>, <span style="color:#00D">332</span>, <span style="color:#00D">333</span>, <span style="color:#00D">340</span>, <span style="color:#00D">351</span>, <span style="color:#00D">352</span>, <span style="color:#00D">355</span>, <span style="color:#00D">367</span>, <span style="color:#00D">369</span>, <span style="color:#00D">374</span>, <span style="color:#00D">384</span>, <span style="color:#00D">387</span>, <span style="color:#00D">388</span>, <span style="color:#00D">393</span>, <span style="color:#00D">399</span>, <span style="color:#00D">402</span>, <span style="color:#00D">404</span>, <span style="color:#00D">405</span>, <span style="color:#00D">408</span>, <span style="color:#00D">411</span>, <span style="color:#00D">418</span>, <span style="color:#00D">420</span>, <span style="color:#00D">429</span>, <span style="color:#00D">430</span>, <span style="color:#00D">431</span>, <span style="color:#00D">438</span>, <span style="color:#00D">441</span>, <span style="color:#00D">441</span>, <span style="color:#00D">458</span>, <span style="color:#00D">463</span>, <span style="color:#00D">470</span>, <span style="color:#00D">485</span>, <span style="color:#00D">496</span>, <span style="color:#00D">498</span>, <span style="color:#00D">502</span>, <span style="color:#00D">506</span>, <span style="color:#00D">508</span>, <span style="color:#00D">518</span>, <span style="color:#00D">521</span>, <span style="color:#00D">524</span>, <span style="color:#00D">526</span>, <span style="color:#00D">536</span>, <span style="color:#00D">538</span>, <span style="color:#00D">547</span>, <span style="color:#00D">548</span>, <span style="color:#00D">556</span>, <span style="color:#00D">560</span>, <span style="color:#00D">562</span>, <span style="color:#00D">565</span>, <span style="color:#00D">572</span>, <span style="color:#00D">589</span>, <span style="color:#00D">590</span>, <span style="color:#00D">592</span>, <span style="color:#00D">595</span>, <span style="color:#00D">597</span>, <span style="color:#00D">604</span>, <span style="color:#00D">606</span>, <span style="color:#00D">611</span>, <span style="color:#00D">617</span>, <span style="color:#00D">622</span>, <span style="color:#00D">625</span>, <span style="color:#00D">625</span>, <span style="color:#00D">630</span>, <span style="color:#00D">632</span>, <span style="color:#00D">633</span>, <span style="color:#00D">638</span>, <span style="color:#00D">641</span>, <span style="color:#00D">644</span>, <span style="color:#00D">649</span>, <span style="color:#00D">650</span>, <span style="color:#00D">653</span>, <span style="color:#00D">659</span>, <span style="color:#00D">666</span>, <span style="color:#00D">672</span>, <span style="color:#00D">677</span>, <span style="color:#00D">678</span>, <span style="color:#00D">679</span>, <span style="color:#00D">685</span>, <span style="color:#00D">694</span>, <span style="color:#00D">695</span>, <span style="color:#00D">696</span>, <span style="color:#00D">700</span>, <span style="color:#00D">701</span>, <span style="color:#00D">706</span>, <span style="color:#00D">713</span>, <span style="color:#00D">720</span>, <span style="color:#00D">724</span>, <span style="color:#00D">727</span>, <span style="color:#00D">731</span>, <span style="color:#00D">735</span>, <span style="color:#00D">737</span>, <span style="color:#00D">738</span>, <span style="color:#00D">739</span>, <span style="color:#00D">743</span>, <span style="color:#00D">744</span>, <span style="color:#00D">745</span>, <span style="color:#00D">753</span>, <span style="color:#00D">755</span>, <span style="color:#00D">767</span>, <span style="color:#00D">770</span>, <span style="color:#00D">776</span>, <span style="color:#00D">777</span>, <span style="color:#00D">787</span>, <span style="color:#00D">797</span>, <span style="color:#00D">801</span>, <span style="color:#00D">808</span>, <span style="color:#00D">811</span>, <span style="color:#00D">821</span>, <span style="color:#00D">823</span>, <span style="color:#00D">828</span>, <span style="color:#00D">829</span>, <span style="color:#00D">830</span>, <span style="color:#00D">833</span>, <span style="color:#00D">836</span>, <span style="color:#00D">840</span>, <span style="color:#00D">841</span>, <span style="color:#00D">842</span>, <span style="color:#00D">844</span>, <span style="color:#00D">845</span>, <span style="color:#00D">847</span>, <span style="color:#00D">848</span>, <span style="color:#00D">849</span>, <span style="color:#00D">850</span>, <span style="color:#00D">867</span>, <span style="color:#00D">868</span>, <span style="color:#00D">871</span>, <span style="color:#00D">877</span>, <span style="color:#00D">879</span>, <span style="color:#00D">889</span>, <span style="color:#00D">892</span>, <span style="color:#00D">895</span>, <span style="color:#00D">897</span>, <span style="color:#00D">901</span>, <span style="color:#00D">910</span>, <span style="color:#00D">919</span>, <span style="color:#00D">920</span>, <span style="color:#00D">926</span>, <span style="color:#00D">930</span>, <span style="color:#00D">933</span>, <span style="color:#00D">936</span>, <span style="color:#00D">943</span>, <span style="color:#00D">950</span>, <span style="color:#00D">952</span>, <span style="color:#00D">958</span>, <span style="color:#00D">962</span>, <span style="color:#00D">964</span>, <span style="color:#00D">967</span>, <span style="color:#00D">968</span>, <span style="color:#00D">973</span>, <span style="color:#00D">975</span>, <span style="color:#00D">976</span>, <span style="color:#00D">979</span>, <span style="color:#00D">981</span>, <span style="color:#00D">984</span>, <span style="color:#00D">985</span>, <span style="color:#00D">986</span>, <span style="color:#00D">994</span>, <span style="color:#00D">999</span>, <span style="color:#00D">1000</span>]],
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  ].each <span style="color:#080;font-weight:bold">do</span> |input, output|
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>    specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">get_squares(</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>input.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">) returns </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>output.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>      expect(get_squares input).to eq output
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

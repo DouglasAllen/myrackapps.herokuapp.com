@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : ThWait  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:27:16 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Class: ThWait (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>thwait.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-all_waits">::all_waits</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-all_waits">#all_waits</a></li>
+          
+          <li><a href="#method-i-empty-3F">#empty?</a></li>
+          
+          <li><a href="#method-i-finished-3F">#finished?</a></li>
+          
+          <li><a href="#method-i-join">#join</a></li>
+          
+          <li><a href="#method-i-join_nowait">#join_nowait</a></li>
+          
+          <li><a href="#method-i-next_wait">#next_wait</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="./ThWait.html">ThWait</a></li>
+        
+          
+          
+          <li><a href="./ThreadsWait.html">ThreadsWait</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">ThWait</h1>
+
+    <div id="description" class="description">
+      
+<p>This class watches for termination of multiple threads.  Basic
+functionality (wait until specified threads have terminated) can be
+accessed through the class method <a
+href="ThreadsWait.html#method-c-all_waits">ThreadsWait.all_waits</a>. 
+Finer control can be gained using instance methods.</p>
+
+<p>Example:</p>
+
+<pre>ThreadsWait.all_waits(thr1, thr2, ...) do |t|
+  STDERR.puts &quot;Thread #{t} has terminated.&quot;
+end
+
+th = ThreadsWait.new(thread1,...)
+th.next_wait # next one to be done</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="threads-attribute-method" class="method-detail">
+          <a name="threads"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">threads</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Returns the array of threads that have not terminated yet.</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="all_waits-method" class="method-detail ">
+          <a name="method-c-all_waits"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">all_waits</span><span
+              class="method-args">(*threads)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Waits until all specified threads have terminated.  If a block is provided,
+it is executed for each thread as they terminate.</p>
+            
+
+            
+            <div class="method-source-code" id="all_waits-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">ThreadsWait</span>.<span class="ruby-identifier">all_waits</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>) <span class="ruby-comment"># :yield: thread</span>
+  <span class="ruby-identifier">tw</span> = <span class="ruby-constant">ThreadsWait</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">tw</span>.<span class="ruby-identifier">all_waits</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">th</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">yield</span> <span class="ruby-identifier">th</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">tw</span>.<span class="ruby-identifier">all_waits</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- all_waits-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- all_waits-method -->
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(*threads)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Creates a <a href="ThreadsWait.html">ThreadsWait</a> object, specifying the
+threads to wait on. Non-blocking.</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>)
+  <span class="ruby-ivar">@threads</span> = []
+  <span class="ruby-ivar">@wait_queue</span> = <span class="ruby-constant">Queue</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">join_nowait</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="all_waits-method" class="method-detail ">
+          <a name="method-i-all_waits"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">all_waits</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Waits until all of the specified threads are terminated.  If a block is
+supplied for the method, it is executed for each thread termination.</p>
+
+<p>Raises exceptions in the same manner as <code>next_wait</code>.</p>
+            
+
+            
+            <div class="method-source-code" id="all_waits-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_waits</span>
+  <span class="ruby-keyword">until</span> <span class="ruby-ivar">@threads</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">th</span> = <span class="ruby-identifier">next_wait</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">th</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- all_waits-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- all_waits-method -->
+      
+        <div id="empty-3F-method" class="method-detail ">
+          <a name="method-i-empty-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">empty?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns <code>true</code> if there are no threads in the pool still
+running.</p>
+            
+
+            
+            <div class="method-source-code" id="empty-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
+  <span class="ruby-ivar">@threads</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- empty-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- empty-3F-method -->
+      
+        <div id="finished-3F-method" class="method-detail ">
+          <a name="method-i-finished-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">finished?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns <code>true</code> if any thread has terminated and is ready to be
+collected.</p>
+            
+
+            
+            <div class="method-source-code" id="finished-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">finished?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@wait_queue</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- finished-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- finished-3F-method -->
+      
+        <div id="join-method" class="method-detail ">
+          <a name="method-i-join"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">join</span><span
+              class="method-args">(*threads)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Waits for specified threads to terminate, and returns when one of the
+threads terminated.</p>
+            
+
+            
+            <div class="method-source-code" id="join-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">join</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>)
+  <span class="ruby-identifier">join_nowait</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>)
+  <span class="ruby-identifier">next_wait</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- join-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- join-method -->
+      
+        <div id="join_nowait-method" class="method-detail ">
+          <a name="method-i-join_nowait"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">join_nowait</span><span
+              class="method-args">(*threads)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Specifies the threads that this object will wait for, but does not actually
+wait.</p>
+            
+
+            
+            <div class="method-source-code" id="join_nowait-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">join_nowait</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">threads</span>)
+  <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">flatten!</span>
+  <span class="ruby-ivar">@threads</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">threads</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">th</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">threads</span>
+    <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">start</span>(<span class="ruby-identifier">th</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>
+      <span class="ruby-keyword">ensure</span>
+        <span class="ruby-ivar">@wait_queue</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">t</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- join_nowait-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- join_nowait-method -->
+      
+        <div id="next_wait-method" class="method-detail ">
+          <a name="method-i-next_wait"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">next_wait</span><span
+              class="method-args">(nonblock = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Waits until any of the specified threads has terminated, and returns the
+one that does.</p>
+
+<p>If there is no thread to wait, raises <code>ErrNoWaitingThread</code>.  If
+<code>nonblock</code> is true, and there is no terminated thread, raises
+<code>ErrNoFinishedThread</code>.</p>
+            
+
+            
+            <div class="method-source-code" id="next_wait-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File thwait.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">next_wait</span>(<span class="ruby-identifier">nonblock</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-constant">ThreadsWait</span>.<span class="ruby-identifier">fail</span> <span class="ruby-constant">ErrNoWaitingThread</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@threads</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@threads</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">th</span> = <span class="ruby-ivar">@wait_queue</span>.<span class="ruby-identifier">pop</span>(<span class="ruby-identifier">nonblock</span>))
+    <span class="ruby-identifier">th</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ThreadError</span>
+    <span class="ruby-constant">ThreadsWait</span>.<span class="ruby-identifier">fail</span> <span class="ruby-constant">ErrNoFinishedThread</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- next_wait-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- next_wait-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_ThWait_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_ThWait_versioned").load("/associated/2_2_0/ThWait.html");</script> <div id='tx_ThWait' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_ThWait").load("/associated/ThWait.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Maximum R+D</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_ThWait.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

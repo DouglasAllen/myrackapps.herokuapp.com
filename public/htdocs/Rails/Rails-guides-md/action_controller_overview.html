@@ -1,0 +1,1208 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="action-controller-overview">Action Controller Overview</h1>
+
+<p>In this guide you will learn how controllers work and how they fit into the request cycle in your application.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to follow the flow of a request through a controller.</li>
+  <li>How to restrict parameters passed to your controller.</li>
+  <li>Why and how to store data in the session or cookies.</li>
+  <li>How to work with filters to execute code during request processing.</li>
+  <li>How to use Action Controller’s built-in HTTP authentication.</li>
+  <li>How to stream data directly to the user’s browser.</li>
+  <li>How to filter sensitive parameters so they do not appear in the application’s log.</li>
+  <li>How to deal with exceptions that may be raised during request processing.</li>
+</ul>
+
+<hr />
+
+<h2 id="what-does-a-controller-do">What Does a Controller Do?</h2>
+
+<p>Action Controller is the C in MVC. After routing has determined which controller to use for a request, your controller is responsible for making sense of the request and producing the appropriate output. Luckily, Action Controller does most of the groundwork for you and uses smart conventions to make this as straightforward as possible.</p>
+
+<p>For most conventional <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> applications, the controller will receive the request (this is invisible to you as the developer), fetch or save data from a model and use a view to create HTML output. If your controller needs to do things a little differently, that’s not a problem, this is just the most common way for a controller to work.</p>
+
+<p>A controller can thus be thought of as a middle man between models and views. It makes the model data available to the view so it can display that data to the user, and it saves or updates data from the user to the model.</p>
+
+<p>NOTE: For more details on the routing process, see <a href="routing.html">Rails Routing from the Outside In</a>.</p>
+
+<h2 id="controller-naming-convention">Controller Naming Convention</h2>
+
+<p>The naming convention of controllers in Rails favors pluralization of the last word in the controller’s name, although it is not strictly required (e.g. <code>ApplicationController</code>). For example, <code>ClientsController</code> is preferable to <code>ClientController</code>, <code>SiteAdminsController</code> is preferable to <code>SiteAdminController</code> or <code>SitesAdminsController</code>, and so on.</p>
+
+<p>Following this convention will allow you to use the default route generators (e.g. <code>resources</code>, etc) without needing to qualify each <code>:path</code> or <code>:controller</code>, and keeps URL and path helpers’ usage consistent throughout your application. See <a href="layouts_and_rendering.html">Layouts &amp; Rendering Guide</a> for more details.</p>
+
+<p>NOTE: The controller naming convention differs from the naming convention of models, which expected to be named in singular form.</p>
+
+<h2 id="methods-and-actions">Methods and Actions</h2>
+
+<p>A controller is a Ruby class which inherits from <code>ApplicationController</code> and has methods just like any other class. When your application receives a request, the routing will determine which controller and action to run, then Rails creates an instance of that controller and runs the method with the same name as the action.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As an example, if a user goes to <code>/clients/new</code> in your application to add a new client, Rails will create an instance of <code>ClientsController</code> and run the <code>new</code> method. Note that the empty method from the example above would work just fine because Rails will by default render the <code>new.html.erb</code> view unless the action says otherwise. The <code>new</code> method could make available to the view a <code>@client</code> instance variable by creating a new <code>Client</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new</span>
+  <span style="color:#33B">@client</span> = <span style="color:#036;font-weight:bold">Client</span>.new
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <a href="layouts_and_rendering.html">Layouts &amp; Rendering Guide</a> explains this in more detail.</p>
+
+<p><code>ApplicationController</code> inherits from <code>ActionController::Base</code>, which defines a number of helpful methods. This guide will cover some of these, but if you’re curious to see what’s in there, you can see all of them in the API documentation or in the source itself.</p>
+
+<p>Only public methods are callable as actions. It is a best practice to lower the visibility of methods which are not intended to be actions, like auxiliary methods or filters.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>You will probably want to access data sent in by the user or other parameters in your controller actions. There are two kinds of parameters possible in a web application. The first are parameters that are sent as part of the URL, called query string parameters. The query string is everything after “?” in the URL. The second type of parameter is usually referred to as POST data. This information usually comes from an HTML form which has been filled in by the user. It’s called POST data because it can only be sent as part of an HTTP POST request. Rails does not make any distinction between query string parameters and POST parameters, and both are available in the <code>params</code> hash in your controller:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># This action uses query string parameters because it gets run</span>
+  <span style="color:#777"># by an HTTP GET request, but this does not make any difference</span>
+  <span style="color:#777"># to the way in which the parameters are accessed. The URL for</span>
+  <span style="color:#777"># this action would look like this in order to list activated</span>
+  <span style="color:#777"># clients: /clients?status=activated</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">index</span>
+    <span style="color:#080;font-weight:bold">if</span> params[<span style="color:#A60">:status</span>] == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">activated</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#33B">@clients</span> = <span style="color:#036;font-weight:bold">Client</span>.activated
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#33B">@clients</span> = <span style="color:#036;font-weight:bold">Client</span>.inactivated
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This action uses POST parameters. They are most likely coming</span>
+  <span style="color:#777"># from an HTML form which the user has submitted. The URL for</span>
+  <span style="color:#777"># this RESTful request will be &quot;/clients&quot;, and the data will be</span>
+  <span style="color:#777"># sent as part of the request body.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#33B">@client</span> = <span style="color:#036;font-weight:bold">Client</span>.new(params[<span style="color:#A60">:client</span>])
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@client</span>.save
+      redirect_to <span style="color:#33B">@client</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#777"># This line overrides the default rendering behavior, which</span>
+      <span style="color:#777"># would have been to render the &quot;create&quot; view.</span>
+      render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="hash-and-array-parameters">Hash and Array Parameters</h3>
+
+<p>The <code>params</code> hash is not limited to one-dimensional keys and values. It can contain arrays and (nested) hashes. To send an array of values, append an empty pair of square brackets “[]” to the key name:</p>
+
+<pre><code>GET /clients?ids[]=1&amp;ids[]=2&amp;ids[]=3
+</code></pre>
+
+<p>NOTE: The actual URL in this example will be encoded as “/clients?ids%5b%5d=1&amp;ids%5b%5d=2&amp;ids%5b%5d=3” as “[” and “]” are not allowed in URLs. Most of the time you don’t have to worry about this because the browser will take care of it for you, and Rails will decode it back when it receives it, but if you ever find yourself having to send those requests to the server manually you have to keep this in mind.</p>
+
+<p>The value of <code>params[:ids]</code> will now be <code>["1", "2", "3"]</code>. Note that parameter values are always strings; Rails makes no attempt to guess or cast the type.</p>
+
+<p>To send a hash you include the key name inside the brackets:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">accept-charset</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UTF-8</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/clients</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">client[name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Acme</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">client[phone]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">client[address][postcode]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">client[address][city]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Carrot City</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>When this form is submitted, the value of <code>params[:client]</code> will be <code>{ "name" =&gt; "Acme", "phone" =&gt; "12345", "address" =&gt; { "postcode" =&gt; "12345", "city" =&gt; "Carrot City" } }</code>. Note the nested hash in <code>params[:client][:address]</code>.</p>
+
+<p>Note that the <code>params</code> hash is actually an instance of <code>ActiveSupport::HashWithIndifferentAccess</code>, which acts like a hash but lets you use symbols and strings interchangeably as keys.</p>
+
+<h3 id="json-parameters">JSON parameters</h3>
+
+<p>If you’re writing a web service application, you might find yourself more comfortable accepting parameters in JSON format. Rails will automatically convert your parameters into the <code>params</code> hash, which you can access as you would normally.</p>
+
+<p>So for example, if you are sending this JSON content:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{ <span style="color:#606"><span style="color:#404">&quot;</span><span>company</span><span style="color:#404">&quot;</span></span>: { <span style="color:#606"><span style="color:#404">&quot;</span><span>name</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">acme</span><span style="color:#710">&quot;</span></span>, <span style="color:#606"><span style="color:#404">&quot;</span><span>address</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">123 Carrot Street</span><span style="color:#710">&quot;</span></span> } }
+</pre></div>
+</div>
+</div>
+
+<p>You’ll get <code>params[:company]</code> as <code>{ "name" =&gt; "acme", "address" =&gt; "123 Carrot Street" }</code>.</p>
+
+<p>Also, if you’ve turned on <code>config.wrap_parameters</code> in your initializer or calling <code>wrap_parameters</code> in your controller, you can safely omit the root element in the JSON parameter. The parameters will be cloned and wrapped in the key according to your controller’s name by default. So the above parameter can be written as:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{ <span style="color:#606"><span style="color:#404">&quot;</span><span>name</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">acme</span><span style="color:#710">&quot;</span></span>, <span style="color:#606"><span style="color:#404">&quot;</span><span>address</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">123 Carrot Street</span><span style="color:#710">&quot;</span></span> }
+</pre></div>
+</div>
+</div>
+
+<p>And assume that you’re sending the data to <code>CompaniesController</code>, it would then be wrapped in <code>:company</code> key like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{ <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">acme</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">address</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">123 Carrot Street</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">company</span>: { <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">acme</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">address</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">123 Carrot Street</span><span style="color:#710">&quot;</span></span> } }
+</pre></div>
+</div>
+</div>
+
+<p>You can customize the name of the key or specific parameters you want to wrap by consulting the <a href="http://api.rubyonrails.org/classes/ActionController/ParamsWrapper.html">API documentation</a></p>
+
+<p>NOTE: Support for parsing XML parameters has been extracted into a gem named <code>actionpack-xml_parser</code></p>
+
+<h3 id="routing-parameters">Routing Parameters</h3>
+
+<p>The <code>params</code> hash will always contain the <code>:controller</code> and <code>:action</code> keys, but you should use the methods <code>controller_name</code> and <code>action_name</code> instead to access these values. Any other parameters defined by the routing, such as <code>:id</code> will also be available. As an example, consider a listing of clients where the list can show either active or inactive clients. We can add a route which captures the <code>:status</code> parameter in a “pretty” URL:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>match <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/clients/:status</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clients#index</span><span style="color:#710">'</span></span>, <span style="color:#606">foo</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bar</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>In this case, when a user opens the URL <code>/clients/active</code>, <code>params[:status]</code> will be set to “active”. When this route is used, <code>params[:foo]</code> will also be set to “bar” just like it was passed in the query string. In the same way <code>params[:action]</code> will contain “index”.</p>
+
+<h3 id="defaulturloptions"><code>default_url_options</code></h3>
+
+<p>You can set global default parameters for URL generation by defining a method called <code>default_url_options</code> in your controller. Such a method must return a hash with the desired defaults, whose keys must be symbols:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">default_url_options</span>
+    { <span style="color:#606">locale</span>: <span style="color:#036;font-weight:bold">I18n</span>.locale }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>These options will be used as a starting point when generating URLs, so it’s possible they’ll be overridden by the options passed in <code>url_for</code> calls.</p>
+
+<p>If you define <code>default_url_options</code> in <code>ApplicationController</code>, as in the example above, it would be used for all URL generation. The method can also be defined in one specific controller, in which case it only affects URLs generated there.</p>
+
+<h3 id="strong-parameters">Strong Parameters</h3>
+
+<p>With strong parameters, Action Controller parameters are forbidden to
+be used in Active Model mass assignments until they have been
+whitelisted. This means you’ll have to make a conscious choice about
+which attributes to allow for mass updating and thus prevent
+accidentally exposing that which shouldn’t be exposed.</p>
+
+<p>In addition, parameters can be marked as required and flow through a
+predefined raise/rescue flow to end up as a 400 Bad Request with no
+effort.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PeopleController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#777"># This will raise an ActiveModel::ForbiddenAttributes exception</span>
+  <span style="color:#777"># because it's using mass assignment without an explicit permit</span>
+  <span style="color:#777"># step.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#036;font-weight:bold">Person</span>.create(params[<span style="color:#A60">:person</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This will pass with flying colors as long as there's a person key</span>
+  <span style="color:#777"># in the parameters, otherwise it'll raise a</span>
+  <span style="color:#777"># ActionController::ParameterMissing exception, which will get</span>
+  <span style="color:#777"># caught by ActionController::Base and turned into that 400 Bad</span>
+  <span style="color:#777"># Request reply.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">update</span>
+    person = current_account.people.find(params[<span style="color:#A60">:id</span>])
+    person.update_attributes!(person_params)
+    redirect_to person
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+    <span style="color:#777"># Using a private method to encapsulate the permissible parameters</span>
+    <span style="color:#777"># is just a good pattern since you'll be able to reuse the same</span>
+    <span style="color:#777"># permit list between create and update. Also, you can specialize</span>
+    <span style="color:#777"># this method with per-user checking of permissible attributes.</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">person_params</span>
+      params.require(<span style="color:#A60">:person</span>).permit(<span style="color:#A60">:name</span>, <span style="color:#A60">:age</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="permitted-scalar-values">Permitted Scalar Values</h4>
+
+<p>Given</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>params.permit(<span style="color:#A60">:id</span>)
+</pre></div>
+</div>
+</div>
+
+<p>the key <code>:id</code> will pass the whitelisting if it appears in <code>params</code> and
+it has a permitted scalar value associated. Otherwise the key is going
+to be filtered out, so arrays, hashes, or any other objects cannot be
+injected.</p>
+
+<p>The permitted scalar types are <code>String</code>, <code>Symbol</code>, <code>NilClass</code>,
+<code>Numeric</code>, <code>TrueClass</code>, <code>FalseClass</code>, <code>Date</code>, <code>Time</code>, <code>DateTime</code>,
+<code>StringIO</code>, <code>IO</code>, <code>ActionDispatch::Http::UploadedFile</code> and
+<code>Rack::Test::UploadedFile</code>.</p>
+
+<p>To declare that the value in <code>params</code> must be an array of permitted
+scalar values map the key to an empty array:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>params.permit(<span style="color:#606">id</span>: [])
+</pre></div>
+</div>
+</div>
+
+<p>To whitelist an entire hash of parameters, the <code>permit!</code> method can be
+used:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>params.require(<span style="color:#A60">:log_entry</span>).permit!
+</pre></div>
+</div>
+</div>
+
+<p>This will mark the <code>:log_entry</code> parameters hash and any subhash of it
+permitted.  Extreme care should be taken when using <code>permit!</code> as it
+will allow all current and future model attributes to be
+mass-assigned.</p>
+
+<h4 id="nested-parameters">Nested Parameters</h4>
+
+<p>You can also use permit on nested parameters, like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>params.permit(<span style="color:#A60">:name</span>, { <span style="color:#606">emails</span>: [] },
+              <span style="color:#606">friends</span>: [ <span style="color:#A60">:name</span>,
+                         { <span style="color:#606">family</span>: [ <span style="color:#A60">:name</span> ], <span style="color:#606">hobbies</span>: [] }])
+</pre></div>
+</div>
+</div>
+
+<p>This declaration whitelists the <code>name</code>, <code>emails</code> and <code>friends</code>
+attributes. It is expected that <code>emails</code> will be an array of permitted
+scalar values and that <code>friends</code> will be an array of resources with
+specific attributes : they should have a <code>name</code> attribute (any
+permitted scalar values allowed), a <code>hobbies</code> attribute as an array of
+permitted scalar values, and a <code>family</code> attribute which is restricted
+to having a <code>name</code> (any permitted scalar values allowed, too).</p>
+
+<h4 id="more-examples">More Examples</h4>
+
+<p>You want to also use the permitted attributes in the <code>new</code>
+action. This raises the problem that you can’t use <code>require</code> on the
+root key because normally it does not exist when calling <code>new</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># using `fetch` you can supply a default and use</span>
+<span style="color:#777"># the Strong Parameters API from there.</span>
+params.fetch(<span style="color:#A60">:blog</span>, {}).permit(<span style="color:#A60">:title</span>, <span style="color:#A60">:author</span>)
+</pre></div>
+</div>
+</div>
+
+<p><code>accepts_nested_attributes_for</code> allows you to update and destroy
+associated records. This is based on the <code>id</code> and <code>_destroy</code>
+parameters:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># permit :id and :_destroy</span>
+params.require(<span style="color:#A60">:author</span>).permit(<span style="color:#A60">:name</span>, <span style="color:#606">books_attributes</span>: [<span style="color:#A60">:title</span>, <span style="color:#A60">:id</span>, <span style="color:#A60">:_destroy</span>])
+</pre></div>
+</div>
+</div>
+
+<p>Hashes with integer keys are treated differently and you can declare
+the attributes as if they were direct children. You get these kinds of
+parameters when you use <code>accepts_nested_attributes_for</code> in combination
+with a <code>has_many</code> association:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># To whitelist the following data:</span>
+<span style="color:#777"># {&quot;book&quot; =&gt; {&quot;title&quot; =&gt; &quot;Some Book&quot;,</span>
+<span style="color:#777">#             &quot;chapters_attributes&quot; =&gt; { &quot;1&quot; =&gt; {&quot;title&quot; =&gt; &quot;First Chapter&quot;},</span>
+<span style="color:#777">#                                        &quot;2&quot; =&gt; {&quot;title&quot; =&gt; &quot;Second Chapter&quot;}}}}</span>
+
+params.require(<span style="color:#A60">:book</span>).permit(<span style="color:#A60">:title</span>, <span style="color:#606">chapters_attributes</span>: [<span style="color:#A60">:title</span>])
+</pre></div>
+</div>
+</div>
+
+<h4 id="outside-the-scope-of-strong-parameters">Outside the Scope of Strong Parameters</h4>
+
+<p>The strong parameter API was designed with the most common use cases
+in mind. It is not meant as a silver bullet to handle all your
+whitelisting problems. However you can easily mix the API with your
+own code to adapt to your situation.</p>
+
+<p>Imagine a scenario where you want to whitelist an attribute
+containing a hash with any keys. Using strong parameters you can’t
+allow a hash with any keys but you can use a simple assignment to get
+the job done:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">product_params</span>
+  params.require(<span style="color:#A60">:product</span>).permit(<span style="color:#A60">:name</span>).tap <span style="color:#080;font-weight:bold">do</span> |whitelisted|
+    whitelisted[<span style="color:#A60">:data</span>] = params[<span style="color:#A60">:product</span>][<span style="color:#A60">:data</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="session">Session</h2>
+
+<p>Your application has a session for each user in which you can store small amounts of data that will be persisted between requests. The session is only available in the controller and the view and can use one of a number of different storage mechanisms:</p>
+
+<ul>
+  <li><code>ActionDispatch::Session::CookieStore</code> - Stores everything on the client.</li>
+  <li><code>ActionDispatch::Session::CacheStore</code> - Stores the data in the Rails cache.</li>
+  <li><code>ActionDispatch::Session::ActiveRecordStore</code> - Stores the data in a database using Active Record. (require <code>activerecord-session_store</code> gem).</li>
+  <li><code>ActionDispatch::Session::MemCacheStore</code> - Stores the data in a memcached cluster (this is a legacy implementation; consider using CacheStore instead).</li>
+</ul>
+
+<p>All session stores use a cookie to store a unique ID for each session (you must use a cookie, Rails will not allow you to pass the session ID in the URL as this is less secure).</p>
+
+<p>For most stores, this ID is used to look up the session data on the server, e.g. in a database table. There is one exception, and that is the default and recommended session store - the CookieStore - which stores all session data in the cookie itself (the ID is still available to you if you need it). This has the advantage of being very lightweight and it requires zero setup in a new application in order to use the session. The cookie data is cryptographically signed to make it tamper-proof, but it is not encrypted, so anyone with access to it can read its contents but not edit it (Rails will not accept it if it has been edited).</p>
+
+<p>The CookieStore can store around 4kB of data — much less than the others — but this is usually enough. Storing large amounts of data in the session is discouraged no matter which session store your application uses. You should especially avoid storing complex objects (anything other than basic Ruby objects, the most common example being model instances) in the session, as the server might not be able to reassemble them between requests, which will result in an error.</p>
+
+<p>If your user sessions don’t store critical data or don’t need to be around for long periods (for instance if you just use the flash for messaging), you can consider using ActionDispatch::Session::CacheStore. This will store sessions using the cache implementation you have configured for your application. The advantage of this is that you can use your existing cache infrastructure for storing sessions without requiring any additional setup or administration. The downside, of course, is that the sessions will be ephemeral and could disappear at any time.</p>
+
+<p>Read more about session storage in the <a href="security.html">Security Guide</a>.</p>
+
+<p>If you need a different session storage mechanism, you can change it in the <code>config/initializers/session_store.rb</code> file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Use the database for sessions instead of the cookie-based default,</span>
+<span style="color:#777"># which shouldn't be used to store highly confidential information</span>
+<span style="color:#777"># (create the session table with &quot;rails g active_record:session_migration&quot;)</span>
+<span style="color:#777"># YourApp::Application.config.session_store :active_record_store</span>
+</pre></div>
+</div>
+</div>
+
+<p>Rails sets up a session key (the name of the cookie) when signing the session data. These can also be changed in <code>config/initializers/session_store.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Be sure to restart your server when you modify this file.</span>
+<span style="color:#036;font-weight:bold">YourApp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.session_store <span style="color:#A60">:cookie_store</span>, <span style="color:#606">key</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">_your_app_session</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also pass a <code>:domain</code> key and specify the domain name for the cookie:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Be sure to restart your server when you modify this file.</span>
+<span style="color:#036;font-weight:bold">YourApp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.session_store <span style="color:#A60">:cookie_store</span>, <span style="color:#606">key</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">_your_app_session</span><span style="color:#710">'</span></span>, <span style="color:#606">domain</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.example.com</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Rails sets up (for the CookieStore) a secret key used for signing the session data. This can be changed in <code>config/initializers/secret_token.rb</code></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Be sure to restart your server when you modify this file.</span>
+
+<span style="color:#777"># Your secret key for verifying the integrity of signed cookies.</span>
+<span style="color:#777"># If you change this key, all old signed cookies will become invalid!</span>
+<span style="color:#777"># Make sure the secret is at least 30 characters and all random,</span>
+<span style="color:#777"># no regular words or you'll be exposed to dictionary attacks.</span>
+<span style="color:#036;font-weight:bold">YourApp</span>::<span style="color:#036;font-weight:bold">Application</span>.config.secret_key_base = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">49d3f3de9ed86c74b94ad6bd0...</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: Changing the secret when using the <code>CookieStore</code> will invalidate all existing sessions.</p>
+
+<h3 id="accessing-the-session">Accessing the Session</h3>
+
+<p>In your controller you can access the session through the <code>session</code> instance method.</p>
+
+<p>NOTE: Sessions are lazily loaded. If you don’t access sessions in your action’s code, they will not be loaded. Hence you will never need to disable sessions, just not accessing them will do the job.</p>
+
+<p>Session values are stored using key/value pairs like a hash:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+
+  private
+
+  <span style="color:#777"># Finds the User with the ID stored in the session with the key</span>
+  <span style="color:#777"># :current_user_id This is a common way to handle user login in</span>
+  <span style="color:#777"># a Rails application; logging in sets the session value and</span>
+  <span style="color:#777"># logging out removes it.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">current_user</span>
+    <span style="color:#33B">@_current_user</span> ||= session[<span style="color:#A60">:current_user_id</span>] &amp;&amp;
+      <span style="color:#036;font-weight:bold">User</span>.find_by_id(session[<span style="color:#A60">:current_user_id</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To store something in the session, just assign it to the key like a hash:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LoginsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># &quot;Create&quot; a login, aka &quot;log the user in&quot;</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#080;font-weight:bold">if</span> user = <span style="color:#036;font-weight:bold">User</span>.authenticate(params[<span style="color:#A60">:username</span>], params[<span style="color:#A60">:password</span>])
+      <span style="color:#777"># Save the user ID in the session so it can be used in</span>
+      <span style="color:#777"># subsequent requests</span>
+      session[<span style="color:#A60">:current_user_id</span>] = user.id
+      redirect_to root_url
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To remove something from the session, assign that key to be <code>nil</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LoginsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># &quot;Delete&quot; a login, aka &quot;log the user out&quot;</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">destroy</span>
+    <span style="color:#777"># Remove the user id from the session</span>
+    <span style="color:#33B">@_current_user</span> = session[<span style="color:#A60">:current_user_id</span>] = <span style="color:#069">nil</span>
+    redirect_to root_url
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To reset the entire session, use <code>reset_session</code>.</p>
+
+<h3 id="the-flash">The Flash</h3>
+
+<p>The flash is a special part of the session which is cleared with each request. This means that values stored there will only be available in the next request, which is useful for passing error messages etc.</p>
+
+<p>It is accessed in much the same way as the session, as a hash (it’s a <a href="http://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html">FlashHash</a> instance).</p>
+
+<p>Let’s use the act of logging out as an example. The controller can send a message which will be displayed to the user on the next request:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LoginsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">destroy</span>
+    session[<span style="color:#A60">:current_user_id</span>] = <span style="color:#069">nil</span>
+    flash[<span style="color:#A60">:notice</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have successfully logged out.</span><span style="color:#710">&quot;</span></span>
+    redirect_to root_url
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note that it is also possible to assign a flash message as part of the redirection. You can assign <code>:notice</code>, <code>:alert</code> or the general purpose <code>:flash</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>redirect_to root_url, <span style="color:#606">notice</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have successfully logged out.</span><span style="color:#710">&quot;</span></span>
+redirect_to root_url, <span style="color:#606">alert</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You're stuck here!</span><span style="color:#710">&quot;</span></span>
+redirect_to root_url, <span style="color:#606">flash</span>: { <span style="color:#606">referral_code</span>: <span style="color:#00D">1234</span> }
+</pre></div>
+</div>
+</div>
+
+<p>The <code>destroy</code> action redirects to the application’s <code>root_url</code>, where the message will be displayed. Note that it’s entirely up to the next action to decide what, if anything, it will do with what the previous action put in the flash. It’s conventional to display any error alerts or notices from the flash in the application’s layout:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;html&gt;</span>
+  <span style="color:#777">&lt;!-- &lt;head/&gt; --&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;body&gt;</span>
+    <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> flash.each <span style="color:#080;font-weight:bold">do</span> |name, msg| <span style="font-weight:bold;color:#666">-%&gt;</span></span>
+      <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> content_tag <span style="color:#A60">:div</span>, msg, <span style="color:#606">class</span>: name <span style="font-weight:bold;color:#666">%&gt;</span></span>
+    <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">-%&gt;</span></span>
+
+    <span style="color:#777">&lt;!-- more content --&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/body&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/html&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>This way, if an action sets a notice or an alert message, the layout will display it automatically.</p>
+
+<p>You can pass anything that the session can store; you’re not limited to notices and alerts:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">if</span> flash[<span style="color:#A60">:just_signed_up</span>] <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="color:#070;font-weight:bold">&lt;p</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">welcome</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Welcome to our site!<span style="color:#070;font-weight:bold">&lt;/p&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>If you want a flash value to be carried over to another request, use the <code>keep</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MainController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># Let's say this action corresponds to root_url, but you want</span>
+  <span style="color:#777"># all requests here to be redirected to UsersController#index.</span>
+  <span style="color:#777"># If an action sets the flash and redirects here, the values</span>
+  <span style="color:#777"># would normally be lost when another redirect happens, but you</span>
+  <span style="color:#777"># can use 'keep' to make it persist for another request.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">index</span>
+    <span style="color:#777"># Will persist all flash values.</span>
+    flash.keep
+
+    <span style="color:#777"># You can also use a key to keep only some kind of value.</span>
+    <span style="color:#777"># flash.keep(:notice)</span>
+    redirect_to users_url
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="flashnow"><code>flash.now</code></h4>
+
+<p>By default, adding values to the flash will make them available to the next request, but sometimes you may want to access those values in the same request. For example, if the <code>create</code> action fails to save a resource and you render the <code>new</code> template directly, that’s not going to result in a new request, but you may still want to display a message using the flash. To do this, you can use <code>flash.now</code> in the same way you use the normal <code>flash</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#33B">@client</span> = <span style="color:#036;font-weight:bold">Client</span>.new(params[<span style="color:#A60">:client</span>])
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@client</span>.save
+      <span style="color:#777"># ...</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      flash.now[<span style="color:#A60">:error</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Could not save client</span><span style="color:#710">&quot;</span></span>
+      render <span style="color:#606">action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="cookies">Cookies</h2>
+
+<p>Your application can store small amounts of data on the client — called cookies — that will be persisted across requests and even sessions. Rails provides easy access to cookies via the <code>cookies</code> method, which — much like the <code>session</code> — works like a hash:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CommentsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new</span>
+    <span style="color:#777"># Auto-fill the commenter's name if it has been stored in a cookie</span>
+    <span style="color:#33B">@comment</span> = <span style="color:#036;font-weight:bold">Comment</span>.new(<span style="color:#606">author</span>: cookies[<span style="color:#A60">:commenter_name</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#33B">@comment</span> = <span style="color:#036;font-weight:bold">Comment</span>.new(params[<span style="color:#A60">:comment</span>])
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@comment</span>.save
+      flash[<span style="color:#A60">:notice</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Thanks for your comment!</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">if</span> params[<span style="color:#A60">:remember_name</span>]
+        <span style="color:#777"># Remember the commenter's name.</span>
+        cookies[<span style="color:#A60">:commenter_name</span>] = <span style="color:#33B">@comment</span>.author
+      <span style="color:#080;font-weight:bold">else</span>
+        <span style="color:#777"># Delete cookie for the commenter's name cookie, if any.</span>
+        cookies.delete(<span style="color:#A60">:commenter_name</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+      redirect_to <span style="color:#33B">@comment</span>.article
+    <span style="color:#080;font-weight:bold">else</span>
+      render <span style="color:#606">action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note that while for session values you set the key to <code>nil</code>, to delete a cookie value you should use <code>cookies.delete(:key)</code>.</p>
+
+<h2 id="rendering-xml-and-json-data">Rendering xml and json data</h2>
+
+<p>ActionController makes it extremely easy to render <code>xml</code> or <code>json</code> data. If you’ve generated a controller using scaffolding, it would look something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">UsersController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">index</span>
+    <span style="color:#33B">@users</span> = <span style="color:#036;font-weight:bold">User</span>.all
+    respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+      format.html <span style="color:#777"># index.html.erb</span>
+      format.xml  { render <span style="color:#606">xml</span>: <span style="color:#33B">@users</span>}
+      format.json { render <span style="color:#606">json</span>: <span style="color:#33B">@users</span>}
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You may notice in the above code that we’re using <code>render xml: @users</code>, not <code>render xml: @users.to_xml</code>. If the object is not a String, then Rails will automatically invoke <code>to_xml</code> for us.</p>
+
+<h2 id="filters">Filters</h2>
+
+<p>Filters are methods that are run before, after or “around” a controller action.</p>
+
+<p>Filters are inherited, so if you set a filter on <code>ApplicationController</code>, it will be run on every controller in your application.</p>
+
+<p>“Before” filters may halt the request cycle. A common “before” filter is one which requires that a user is logged in for an action to be run. You can define the filter method this way:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  before_action <span style="color:#A60">:require_login</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">require_login</span>
+    <span style="color:#080;font-weight:bold">unless</span> logged_in?
+      flash[<span style="color:#A60">:error</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You must be logged in to access this section</span><span style="color:#710">&quot;</span></span>
+      redirect_to new_login_url <span style="color:#777"># halts request cycle</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The method simply stores an error message in the flash and redirects to the login form if the user is not logged in. If a “before” filter renders or redirects, the action will not run. If there are additional filters scheduled to run after that filter, they are also cancelled.</p>
+
+<p>In this example the filter is added to <code>ApplicationController</code> and thus all controllers in the application inherit it. This will make everything in the application require the user to be logged in in order to use it. For obvious reasons (the user wouldn’t be able to log in in the first place!), not all controllers or actions should require this. You can prevent this filter from running before particular actions with <code>skip_before_action</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LoginsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  skip_before_action <span style="color:#A60">:require_login</span>, <span style="color:#606">only</span>: [<span style="color:#A60">:new</span>, <span style="color:#A60">:create</span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now, the <code>LoginsController</code>’s <code>new</code> and <code>create</code> actions will work as before without requiring the user to be logged in. The <code>:only</code> option is used to only skip this filter for these actions, and there is also an <code>:except</code> option which works the other way. These options can be used when adding filters too, so you can add a filter which only runs for selected actions in the first place.</p>
+
+<h3 id="after-filters-and-around-filters">After Filters and Around Filters</h3>
+
+<p>In addition to “before” filters, you can also run filters after an action has been executed, or both before and after.</p>
+
+<p>“After” filters are similar to “before” filters, but because the action has already been run they have access to the response data that’s about to be sent to the client. Obviously, “after” filters cannot stop the action from running.</p>
+
+<p>“Around” filters are responsible for running their associated actions by yielding, similar to how Rack middlewares work.</p>
+
+<p>For example, in a website where changes have an approval workflow an administrator could be able to preview them easily, just apply them within a transaction:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ChangesController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  around_action <span style="color:#A60">:wrap_in_transaction</span>, <span style="color:#606">only</span>: <span style="color:#A60">:show</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">wrap_in_transaction</span>
+    <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.transaction <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#080;font-weight:bold">begin</span>
+        <span style="color:#080;font-weight:bold">yield</span>
+      <span style="color:#080;font-weight:bold">ensure</span>
+        raise <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Rollback</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note that an “around” filter also wraps rendering. In particular, if in the example above, the view itself reads from the database (e.g. via a scope), it will do so within the transaction and thus present the data to preview.</p>
+
+<p>You can choose not to yield and build the response yourself, in which case the action will not be run.</p>
+
+<h3 id="other-ways-to-use-filters">Other Ways to Use Filters</h3>
+
+<p>While the most common way to use filters is by creating private methods and using *_action to add them, there are two other ways to do the same thing.</p>
+
+<p>The first is to use a block directly with the *_action methods. The block receives the controller as an argument, and the <code>require_login</code> filter from above could be rewritten to use a block:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  before_action <span style="color:#080;font-weight:bold">do</span> |controller|
+    redirect_to new_login_url <span style="color:#080;font-weight:bold">unless</span> controller.send(<span style="color:#A60">:logged_in?</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note that the filter in this case uses <code>send</code> because the <code>logged_in?</code> method is private and the filter is not run in the scope of the controller. This is not the recommended way to implement this particular filter, but in more simple cases it might be useful.</p>
+
+<p>The second way is to use a class (actually, any object that responds to the right methods will do) to handle the filtering. This is useful in cases that are more complex and can not be implemented in a readable and reusable way using the two other methods. As an example, you could rewrite the login filter again to use a class:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  before_action <span style="color:#036;font-weight:bold">LoginFilter</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LoginFilter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">filter</span>(controller)
+    <span style="color:#080;font-weight:bold">unless</span> controller.send(<span style="color:#A60">:logged_in?</span>)
+      controller.flash[<span style="color:#A60">:error</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You must be logged in</span><span style="color:#710">&quot;</span></span>
+      controller.redirect_to controller.new_login_url
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Again, this is not an ideal example for this filter, because it’s not run in the scope of the controller but gets the controller passed as an argument. The filter class has a class method <code>filter</code> which gets run before or after the action, depending on if it’s a before or after filter. Classes used as around filters can also use the same <code>filter</code> method, which will get run in the same way. The method must <code>yield</code> to execute the action. Alternatively, it can have both a <code>before</code> and an <code>after</code> method that are run before and after the action.</p>
+
+<h2 id="request-forgery-protection">Request Forgery Protection</h2>
+
+<p>Cross-site request forgery is a type of attack in which a site tricks a user into making requests on another site, possibly adding, modifying or deleting data on that site without the user’s knowledge or permission.</p>
+
+<p>The first step to avoid this is to make sure all “destructive” actions (create, update and destroy) can only be accessed with non-GET requests. If you’re following RESTful conventions you’re already doing this. However, a malicious site can still send a non-GET request to your site quite easily, and that’s where the request forgery protection comes in. As the name says, it protects from forged requests.</p>
+
+<p>The way this is done is to add a non-guessable token which is only known to your server to each request. This way, if a request comes in without the proper token, it will be denied access.</p>
+
+<p>If you generate a form like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for <span style="color:#33B">@user</span> <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:username</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:password</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>You will see how the token gets added as a hidden field:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">accept-charset</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UTF-8</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/users/1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hidden</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">67250ab105eb5ad10851c00a5621854a23af5489</span><span style="color:#710">&quot;</span></span>
+       <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authenticity_token</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#777">&lt;!-- fields --&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Rails adds this token to every form that’s generated using the <a href="form_helpers.html">form helpers</a>, so most of the time you don’t have to worry about it. If you’re writing a form manually or need to add the token for another reason, it’s available through the method <code>form_authenticity_token</code>:</p>
+
+<p>The <code>form_authenticity_token</code> generates a valid authentication token. That’s useful in places where Rails does not add it automatically, like in custom Ajax calls.</p>
+
+<p>The <a href="security.html">Security Guide</a> has more about this and a lot of other security-related issues that you should be aware of when developing a web application.</p>
+
+<h2 id="the-request-and-response-objects">The Request and Response Objects</h2>
+
+<p>In every controller there are two accessor methods pointing to the request and the response objects associated with the request cycle that is currently in execution. The <code>request</code> method contains an instance of <code>AbstractRequest</code> and the <code>response</code> method returns a response object representing what is going to be sent back to the client.</p>
+
+<h3 id="the-request-object">The <code>request</code> Object</h3>
+
+<p>The request object contains a lot of useful information about the request coming in from the client. To get a full list of the available methods, refer to the <a href="http://api.rubyonrails.org/classes/ActionDispatch/Request.html">API documentation</a>. Among the properties that you can access on this object are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property of <code>request</code></th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>host</td>
+      <td>The hostname used for this request.</td>
+    </tr>
+    <tr>
+      <td>domain(n=2)</td>
+      <td>The hostname’s first <code>n</code> segments, starting from the right (the TLD).</td>
+    </tr>
+    <tr>
+      <td>format</td>
+      <td>The content type requested by the client.</td>
+    </tr>
+    <tr>
+      <td>method</td>
+      <td>The HTTP method used for the request.</td>
+    </tr>
+    <tr>
+      <td>get?, post?, patch?, put?, delete?, head?</td>
+      <td>Returns true if the HTTP method is GET/POST/PATCH/PUT/DELETE/HEAD.</td>
+    </tr>
+    <tr>
+      <td>headers</td>
+      <td>Returns a hash containing the headers associated with the request.</td>
+    </tr>
+    <tr>
+      <td>port</td>
+      <td>The port number (integer) used for the request.</td>
+    </tr>
+    <tr>
+      <td>protocol</td>
+      <td>Returns a string containing the protocol used plus “://”, for example “http://”.</td>
+    </tr>
+    <tr>
+      <td>query_string</td>
+      <td>The query string part of the URL, i.e., everything after “?”.</td>
+    </tr>
+    <tr>
+      <td>remote_ip</td>
+      <td>The IP address of the client.</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td>The entire URL used for the request.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="pathparameters-queryparameters-and-requestparameters"><code>path_parameters</code>, <code>query_parameters</code>, and <code>request_parameters</code></h4>
+
+<p>Rails collects all of the parameters sent along with the request in the <code>params</code> hash, whether they are sent as part of the query string or the post body. The request object has three accessors that give you access to these parameters depending on where they came from. The <code>query_parameters</code> hash contains parameters that were sent as part of the query string while the <code>request_parameters</code> hash contains parameters sent as part of the post body. The <code>path_parameters</code> hash contains parameters that were recognized by the routing as being part of the path leading to this particular controller and action.</p>
+
+<h3 id="the-response-object">The <code>response</code> Object</h3>
+
+<p>The response object is not usually used directly, but is built up during the execution of the action and rendering of the data that is being sent back to the user, but sometimes - like in an after filter - it can be useful to access the response directly. Some of these accessor methods also have setters, allowing you to change their values.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property of <code>response</code></th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>body</td>
+      <td>This is the string of data being sent back to the client. This is most often HTML.</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>The HTTP status code for the response, like 200 for a successful request or 404 for file not found.</td>
+    </tr>
+    <tr>
+      <td>location</td>
+      <td>The URL the client is being redirected to, if any.</td>
+    </tr>
+    <tr>
+      <td>content_type</td>
+      <td>The content type of the response.</td>
+    </tr>
+    <tr>
+      <td>charset</td>
+      <td>The character set being used for the response. Default is “utf-8”.</td>
+    </tr>
+    <tr>
+      <td>headers</td>
+      <td>Headers used for the response.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="setting-custom-headers">Setting Custom Headers</h4>
+
+<p>If you want to set custom headers for a response then <code>response.headers</code> is the place to do it. The headers attribute is a hash which maps header names to their values, and Rails will set some of them automatically. If you want to add or change a header, just assign it to <code>response.headers</code> this way:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>response.headers[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type</span><span style="color:#710">&quot;</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/pdf</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Note: in the above case it would make more sense to use the <code>content_type</code> setter directly.</p>
+
+<h2 id="http-authentications">HTTP Authentications</h2>
+
+<p>Rails comes with two built-in HTTP authentication mechanisms:</p>
+
+<ul>
+  <li>Basic Authentication</li>
+  <li>Digest Authentication</li>
+</ul>
+
+<h3 id="http-basic-authentication">HTTP Basic Authentication</h3>
+
+<p>HTTP basic authentication is an authentication scheme that is supported by the majority of browsers and other HTTP clients. As an example, consider an administration section which will only be available by entering a username and a password into the browser’s HTTP basic dialog window. Using the built-in authentication is quite easy and only requires you to use one method, <code>http_basic_authenticate_with</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AdminsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  http_basic_authenticate_with <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">humbaba</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">password</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">5baa61e4</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With this in place, you can create namespaced controllers that inherit from <code>AdminController</code>. The filter will thus be run for all actions in those controllers, protecting them with HTTP basic authentication.</p>
+
+<h3 id="http-digest-authentication">HTTP Digest Authentication</h3>
+
+<p>HTTP digest authentication is superior to the basic authentication as it does not require the client to send an unencrypted password over the network (though HTTP basic authentication is safe over HTTPS). Using digest authentication with Rails is quite easy and only requires using one method, <code>authenticate_or_request_with_http_digest</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AdminsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#036;font-weight:bold">USERS</span> = { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lifo</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span> }
+
+  before_action <span style="color:#A60">:authenticate</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">authenticate</span>
+    authenticate_or_request_with_http_digest <span style="color:#080;font-weight:bold">do</span> |username|
+      <span style="color:#036;font-weight:bold">USERS</span>[username]
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As seen in the example above, the <code>authenticate_or_request_with_http_digest</code> block takes only one argument - the username. And the block returns the password. Returning <code>false</code> or <code>nil</code> from the <code>authenticate_or_request_with_http_digest</code> will cause authentication failure.</p>
+
+<h2 id="streaming-and-file-downloads">Streaming and File Downloads</h2>
+
+<p>Sometimes you may want to send a file to the user instead of rendering an HTML page. All controllers in Rails have the <code>send_data</code> and the <code>send_file</code> methods, which will both stream data to the client. <code>send_file</code> is a convenience method that lets you provide the name of a file on the disk and it will stream the contents of that file for you.</p>
+
+<p>To stream data to the client, use <code>send_data</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prawn</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># Generates a PDF document with information on the client and</span>
+  <span style="color:#777"># returns it. The user will get the PDF as a file download.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">download_pdf</span>
+    client = <span style="color:#036;font-weight:bold">Client</span>.find(params[<span style="color:#A60">:id</span>])
+    send_data generate_pdf(client),
+              <span style="color:#606">filename</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>client.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.pdf</span><span style="color:#710">&quot;</span></span>,
+              <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/pdf</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">generate_pdf</span>(client)
+    <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>.new <span style="color:#080;font-weight:bold">do</span>
+      text client.name, <span style="color:#606">align</span>: <span style="color:#A60">:center</span>
+      text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Address: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>client.address<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+      text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Email: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>client.email<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>.render
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>download_pdf</code> action in the example above will call a private method which actually generates the PDF document and returns it as a string. This string will then be streamed to the client as a file download and a filename will be suggested to the user. Sometimes when streaming files to the user, you may not want them to download the file. Take images, for example, which can be embedded into HTML pages. To tell the browser a file is not meant to be downloaded, you can set the <code>:disposition</code> option to “inline”. The opposite and default value for this option is “attachment”.</p>
+
+<h3 id="sending-files">Sending Files</h3>
+
+<p>If you want to send a file that already exists on disk, use the <code>send_file</code> method.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># Stream a file that has already been generated and stored on disk.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">download_pdf</span>
+    client = <span style="color:#036;font-weight:bold">Client</span>.find(params[<span style="color:#A60">:id</span>])
+    send_file(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Rails</span>.root<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/files/clients/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>client.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.pdf</span><span style="color:#710">&quot;</span></span>,
+              <span style="color:#606">filename</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>client.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.pdf</span><span style="color:#710">&quot;</span></span>,
+              <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/pdf</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This will read and stream the file 4kB at the time, avoiding loading the entire file into memory at once. You can turn off streaming with the <code>:stream</code> option or adjust the block size with the <code>:buffer_size</code> option.</p>
+
+<p>If <code>:type</code> is not specified, it will be guessed from the file extension specified in <code>:filename</code>. If the content type is not registered for the extension, <code>application/octet-stream</code> will be used.</p>
+
+<p>WARNING: Be careful when using data coming from the client (params, cookies, etc.) to locate the file on disk, as this is a security risk that might allow someone to gain access to files they are not meant to.</p>
+
+<p>TIP: It is not recommended that you stream static files through Rails if you can instead keep them in a public folder on your web server. It is much more efficient to let the user download the file directly using Apache or another web server, keeping the request from unnecessarily going through the whole Rails stack.</p>
+
+<h3 id="restful-downloads">RESTful Downloads</h3>
+
+<p>While <code>send_data</code> works just fine, if you are creating a RESTful application having separate actions for file downloads is usually not necessary. In REST terminology, the PDF file from the example above can be considered just another representation of the client resource. Rails provides an easy and quite sleek way of doing “RESTful downloads”. Here’s how you can rewrite the example so that the PDF download is a part of the <code>show</code> action, without any streaming:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># The user can request to receive this resource as HTML or PDF.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">show</span>
+    <span style="color:#33B">@client</span> = <span style="color:#036;font-weight:bold">Client</span>.find(params[<span style="color:#A60">:id</span>])
+
+    respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+      format.html
+      format.pdf { render <span style="color:#606">pdf</span>: generate_pdf(<span style="color:#33B">@client</span>) }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In order for this example to work, you have to add the PDF MIME type to Rails. This can be done by adding the following line to the file <code>config/initializers/mime_types.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Mime</span>::<span style="color:#036;font-weight:bold">Type</span>.register <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/pdf</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:pdf</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: Configuration files are not reloaded on each request, so you have to restart the server in order for their changes to take effect.</p>
+
+<p>Now the user can request to get a PDF version of a client just by adding “.pdf” to the URL:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>GET /clients/1.pdf
+</pre></div>
+</div>
+</div>
+
+<h2 id="log-filtering">Log Filtering</h2>
+
+<p>Rails keeps a log file for each environment in the <code>log</code> folder. These are extremely useful when debugging what’s actually going on in your application, but in a live application you may not want every bit of information to be stored in the log file.</p>
+
+<h3 id="parameters-filtering">Parameters Filtering</h3>
+
+<p>You can filter certain request parameters from your log files by appending them to <code>config.filter_parameters</code> in the application configuration. These parameters will be marked [FILTERED] in the log.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.filter_parameters &lt;&lt; <span style="color:#A60">:password</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="redirects-filtering">Redirects Filtering</h3>
+
+<p>Sometimes it’s desirable to filter out from log files some sensible locations your application is redirecting to.
+You can do that by using the <code>config.filter_redirect</code> configuration option:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.filter_redirect &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">s3.amazonaws.com</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>You can set it to a String, a Regexp, or an array of both.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.filter_redirect.concat [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">s3.amazonaws.com</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">private_path</span><span style="color:#404">/</span></span>]
+</pre></div>
+</div>
+</div>
+
+<p>Matching URLs will be marked as ‘[FILTERED]’.</p>
+
+<h2 id="rescue">Rescue</h2>
+
+<p>Most likely your application is going to contain bugs or otherwise throw an exception that needs to be handled. For example, if the user follows a link to a resource that no longer exists in the database, Active Record will throw the <code>ActiveRecord::RecordNotFound</code> exception.</p>
+
+<p>Rails’ default exception handling displays a “500 Server Error” message for all exceptions. If the request was made locally, a nice traceback and some added information gets displayed so you can figure out what went wrong and deal with it. If the request was remote Rails will just display a simple “500 Server Error” message to the user, or a “404 Not Found” if there was a routing error or a record could not be found. Sometimes you might want to customize how these errors are caught and how they’re displayed to the user. There are several levels of exception handling available in a Rails application:</p>
+
+<h3 id="the-default-500-and-404-templates">The Default 500 and 404 Templates</h3>
+
+<p>By default a production application will render either a 404 or a 500 error message. These messages are contained in static HTML files in the <code>public</code> folder, in <code>404.html</code> and <code>500.html</code> respectively. You can customize these files to add some extra information and layout, but remember that they are static; i.e. you can’t use RHTML or layouts in them, just plain HTML.</p>
+
+<h3 id="rescuefrom"><code>rescue_from</code></h3>
+
+<p>If you want to do something a bit more elaborate when catching errors, you can use <code>rescue_from</code>, which handles exceptions of a certain type (or multiple types) in an entire controller and its subclasses.</p>
+
+<p>When an exception occurs which is caught by a <code>rescue_from</code> directive, the exception object is passed to the handler. The handler can be a method or a <code>Proc</code> object passed to the <code>:with</code> option. You can also use a block directly instead of an explicit <code>Proc</code> object.</p>
+
+<p>Here’s how you can use <code>rescue_from</code> to intercept all <code>ActiveRecord::RecordNotFound</code> errors and do something with them.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  rescue_from <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">RecordNotFound</span>, <span style="color:#606">with</span>: <span style="color:#A60">:record_not_found</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">record_not_found</span>
+    render <span style="color:#606">text</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">404 Not Found</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">status</span>: <span style="color:#00D">404</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Of course, this example is anything but elaborate and doesn’t improve on the default exception handling at all, but once you can catch all those exceptions you’re free to do whatever you want with them. For example, you could create custom exception classes that will be thrown when a user doesn’t have access to a certain section of your application:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ApplicationController</span> &lt; <span style="color:#036;font-weight:bold">ActionController</span>::<span style="color:#036;font-weight:bold">Base</span>
+  rescue_from <span style="color:#036;font-weight:bold">User</span>::<span style="color:#036;font-weight:bold">NotAuthorized</span>, <span style="color:#606">with</span>: <span style="color:#A60">:user_not_authorized</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">user_not_authorized</span>
+    flash[<span style="color:#A60">:error</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You don't have access to this section.</span><span style="color:#710">&quot;</span></span>
+    redirect_to <span style="color:#A60">:back</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ClientsController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#777"># Check that the user has the right authorization to access clients.</span>
+  before_action <span style="color:#A60">:check_authorization</span>
+
+  <span style="color:#777"># Note how the actions don't have to worry about all the auth stuff.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">edit</span>
+    <span style="color:#33B">@client</span> = <span style="color:#036;font-weight:bold">Client</span>.find(params[<span style="color:#A60">:id</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#777"># If the user is not authorized, just throw the exception.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_authorization</span>
+    raise <span style="color:#036;font-weight:bold">User</span>::<span style="color:#036;font-weight:bold">NotAuthorized</span> <span style="color:#080;font-weight:bold">unless</span> current_user.admin?
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>NOTE: Certain exceptions are only rescuable from the <code>ApplicationController</code> class, as they are raised before the controller gets initialized and the action gets executed. See Pratik Naik’s <a href="http://m.onkey.org/2008/7/20/rescue-from-dispatching">article</a> on the subject for more information.</p>
+
+<h2 id="force-https-protocol">Force HTTPS protocol</h2>
+
+<p>Sometime you might want to force a particular controller to only be accessible via an HTTPS protocol for security reasons. You can use the <code>force_ssl</code> method in your controller to enforce that:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DinnerController</span>
+  force_ssl
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Just like the filter, you could also pass <code>:only</code> and <code>:except</code> to enforce the secure connection only to specific actions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DinnerController</span>
+  force_ssl <span style="color:#606">only</span>: <span style="color:#A60">:cheeseburger</span>
+  <span style="color:#777"># or</span>
+  force_ssl <span style="color:#606">except</span>: <span style="color:#A60">:cheeseburger</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Please note that if you find yourself adding <code>force_ssl</code> to many controllers, you may want to force the whole application to use HTTPS instead. In that case, you can set the <code>config.force_ssl</code> in your environment file.</p>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : Base64  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:21:15 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: Base64 (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>base64.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-decode64">#decode64</a></li>
+          
+          <li><a href="#method-i-encode64">#encode64</a></li>
+          
+          <li><a href="#method-i-strict_decode64">#strict_decode64</a></li>
+          
+          <li><a href="#method-i-strict_encode64">#strict_encode64</a></li>
+          
+          <li><a href="#method-i-urlsafe_decode64">#urlsafe_decode64</a></li>
+          
+          <li><a href="#method-i-urlsafe_encode64">#urlsafe_encode64</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./Base64.html">Base64</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">Base64</h1>
+
+    <div id="description" class="description">
+      
+<p>The <a href="Base64.html">Base64</a> module provides for the encoding
+(#encode64, <a
+href="Base64.html#method-i-strict_encode64">strict_encode64</a>, <a
+href="Base64.html#method-i-urlsafe_encode64">urlsafe_encode64</a>) and
+decoding (#decode64, <a
+href="Base64.html#method-i-strict_decode64">strict_decode64</a>, <a
+href="Base64.html#method-i-urlsafe_decode64">urlsafe_decode64</a>) of
+binary data using a <a href="Base64.html">Base64</a> representation.</p>
+
+<h2 id="module-Base64-label-Example">Example<span><a href="#module-Base64-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>A simple encoding and decoding.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;base64&quot;</span>
+
+<span class="ruby-identifier">enc</span>   = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-string">'Send reinforcements'</span>)
+                    <span class="ruby-comment"># -&gt; &quot;U2VuZCByZWluZm9yY2VtZW50cw==\n&quot;</span>
+<span class="ruby-identifier">plain</span> = <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-identifier">enc</span>)
+                    <span class="ruby-comment"># -&gt; &quot;Send reinforcements&quot;</span>
+</pre>
+
+<p>The purpose of using base64 to encode data is that it translates any binary
+data into purely printable characters.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="decode64-method" class="method-detail ">
+          <a name="method-i-decode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">decode64</span><span
+              class="method-args">(str)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-decoded version of <code>str</code>. This method
+complies with RFC 2045. Characters outside the base alphabet are ignored.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'base64'</span>
+<span class="ruby-identifier">str</span> = <span class="ruby-string">'VGhpcyBpcyBsaW5lIG9uZQpUaGlzIG'</span> <span class="ruby-operator">+</span>
+      <span class="ruby-string">'lzIGxpbmUgdHdvClRoaXMgaXMgbGlu'</span> <span class="ruby-operator">+</span>
+      <span class="ruby-string">'ZSB0aHJlZQpBbmQgc28gb24uLi4K'</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-constant">Base64</span>.<span class="ruby-identifier">decode64</span>(<span class="ruby-identifier">str</span>)
+</pre>
+
+<p><em>Generates:</em></p>
+
+<pre>This is line one
+This is line two
+This is line three
+And so on...</pre>
+            
+
+            
+            <div class="method-source-code" id="decode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">decode64</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;m&quot;</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- decode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- decode64-method -->
+      
+        <div id="encode64-method" class="method-detail ">
+          <a name="method-i-encode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">encode64</span><span
+              class="method-args">(bin)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-encoded version of <code>bin</code>. This method
+complies with RFC 2045. Line feeds are added to every 60 encoded
+characters.</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'base64'</span>
+<span class="ruby-constant">Base64</span>.<span class="ruby-identifier">encode64</span>(<span class="ruby-string">&quot;Now is the time for all good coders\nto learn Ruby&quot;</span>)
+</pre>
+
+<p><em>Generates:</em></p>
+
+<pre>Tm93IGlzIHRoZSB0aW1lIGZvciBhbGwgZ29vZCBjb2RlcnMKdG8gbGVhcm4g
+UnVieQ==</pre>
+            
+
+            
+            <div class="method-source-code" id="encode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">encode64</span>(<span class="ruby-identifier">bin</span>)
+  [<span class="ruby-identifier">bin</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;m&quot;</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- encode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- encode64-method -->
+      
+        <div id="strict_decode64-method" class="method-detail ">
+          <a name="method-i-strict_decode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">strict_decode64</span><span
+              class="method-args">(str)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-decoded version of <code>str</code>. This method
+complies with RFC 4648. ArgumentError is raised if <code>str</code> is
+incorrectly padded or contains non-alphabet characters.  Note that CR or LF
+are also rejected.</p>
+            
+
+            
+            <div class="method-source-code" id="strict_decode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">strict_decode64</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;m0&quot;</span>).<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- strict_decode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- strict_decode64-method -->
+      
+        <div id="strict_encode64-method" class="method-detail ">
+          <a name="method-i-strict_encode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">strict_encode64</span><span
+              class="method-args">(bin)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-encoded version of <code>bin</code>. This method
+complies with RFC 4648. No line feeds are added.</p>
+            
+
+            
+            <div class="method-source-code" id="strict_encode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">strict_encode64</span>(<span class="ruby-identifier">bin</span>)
+  [<span class="ruby-identifier">bin</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-string">&quot;m0&quot;</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- strict_encode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- strict_encode64-method -->
+      
+        <div id="urlsafe_decode64-method" class="method-detail ">
+          <a name="method-i-urlsafe_decode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">urlsafe_decode64</span><span
+              class="method-args">(str)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-decoded version of <code>str</code>. This method
+complies with “Base 64 Encoding with URL and Filename Safe Alphabet” in RFC
+4648. The alphabet uses ‘-’ instead of ‘+’ and ‘_’ instead of ‘/’.</p>
+            
+
+            
+            <div class="method-source-code" id="urlsafe_decode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">urlsafe_decode64</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-identifier">strict_decode64</span>(<span class="ruby-identifier">str</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;-_&quot;</span>, <span class="ruby-string">&quot;+/&quot;</span>))
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- urlsafe_decode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- urlsafe_decode64-method -->
+      
+        <div id="urlsafe_encode64-method" class="method-detail ">
+          <a name="method-i-urlsafe_encode64"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">urlsafe_encode64</span><span
+              class="method-args">(bin)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the Base64-encoded version of <code>bin</code>. This method
+complies with “Base 64 Encoding with URL and Filename Safe Alphabet” in RFC
+4648. The alphabet uses ‘-’ instead of ‘+’ and ‘_’ instead of ‘/’.</p>
+            
+
+            
+            <div class="method-source-code" id="urlsafe_encode64-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File base64.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">urlsafe_encode64</span>(<span class="ruby-identifier">bin</span>)
+  <span class="ruby-identifier">strict_encode64</span>(<span class="ruby-identifier">bin</span>).<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;+/&quot;</span>, <span class="ruby-string">&quot;-_&quot;</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- urlsafe_encode64-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- urlsafe_encode64-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_Base64_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Base64_versioned").load("/associated/2_2_0/Base64.html");</script> <div id='tx_Base64' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Base64").load("/associated/Base64.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_Base64.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

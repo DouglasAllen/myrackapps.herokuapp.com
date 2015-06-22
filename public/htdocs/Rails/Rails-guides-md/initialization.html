@@ -1,0 +1,631 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="the-rails-initialization-process">The Rails Initialization Process</h1>
+
+<p>This guide explains the internals of the initialization process in Rails
+as of Rails 4. It is an extremely in-depth guide and recommended for advanced Rails developers.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to use <code>rails server</code>.</li>
+</ul>
+
+<hr />
+
+<p>This guide goes through every method call that is
+required to boot up the Ruby on Rails stack for a default Rails 4
+application, explaining each part in detail along the way. For this
+guide, we will be focusing on what happens when you execute +rails
+server+ to boot your app.</p>
+
+<p>NOTE: Paths in this guide are relative to Rails or a Rails application unless otherwise specified.</p>
+
+<p>TIP: If you want to follow along while browsing the Rails <a href="https://github.com/rails/rails">source
+code</a>, we recommend that you use the <code>t</code>
+key binding to open the file finder inside GitHub and find files
+quickly.</p>
+
+<h2 id="launch">Launch!</h2>
+
+<p>Now we finally boot and initialize the app. It all starts with your app’s
+<code>bin/rails</code> executable. A Rails application is usually started by running
+<code>rails console</code> or <code>rails server</code>.</p>
+
+<h3 id="binrails"><code>bin/rails</code></h3>
+
+<p>This file is as follows:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#34b">#!/usr/bin/env ruby</span>
+<span style="color:#036;font-weight:bold">APP_PATH</span> = <span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../../config/application</span><span style="color:#710">'</span></span>,  <span style="color:#069">__FILE__</span>)
+require <span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../../config/boot</span><span style="color:#710">'</span></span>,  <span style="color:#069">__FILE__</span>)
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rails/commands</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>APP_PATH</code> constant will be used later in <code>rails/commands</code>. The <code>config/boot</code> file referenced here is the <code>config/boot.rb</code> file in our application which is responsible for loading Bundler and setting it up.</p>
+
+<h3 id="configbootrb"><code>config/boot.rb</code></h3>
+
+<p><code>config/boot.rb</code> contains:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Set up gems listed in the Gemfile.</span>
+<span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">BUNDLE_GEMFILE</span><span style="color:#710">'</span></span>] ||= <span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../../Gemfile</span><span style="color:#710">'</span></span>, <span style="color:#069">__FILE__</span>)
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bundler/setup</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">File</span>.exists?(<span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">BUNDLE_GEMFILE</span><span style="color:#710">'</span></span>])
+</pre></div>
+</div>
+</div>
+
+<p>In a standard Rails application, there’s a <code>Gemfile</code> which declares all
+dependencies of the application. <code>config/boot.rb</code> sets
+<code>ENV['BUNDLE_GEMFILE']</code> to the location of this file. If the Gemfile
+exists, <code>bundler/setup</code> is then required.</p>
+
+<p>A standard Rails application depends on several gems, specifically:</p>
+
+<ul>
+  <li>abstract</li>
+  <li>actionmailer</li>
+  <li>actionpack</li>
+  <li>activemodel</li>
+  <li>activerecord</li>
+  <li>activesupport</li>
+  <li>arel</li>
+  <li>builder</li>
+  <li>bundler</li>
+  <li>erubis</li>
+  <li>i18n</li>
+  <li>mail</li>
+  <li>mime-types</li>
+  <li>polyglot</li>
+  <li>rack</li>
+  <li>rack-cache</li>
+  <li>rack-mount</li>
+  <li>rack-test</li>
+  <li>rails</li>
+  <li>railties</li>
+  <li>rake</li>
+  <li>sqlite3-ruby</li>
+  <li>thor</li>
+  <li>treetop</li>
+  <li>tzinfo</li>
+</ul>
+
+<h3 id="railscommandsrb"><code>rails/commands.rb</code></h3>
+
+<p>Once <code>config/boot.rb</code> has finished, the next file that is required is <code>rails/commands</code> which will execute a command based on the arguments passed in. In this case, the <code>ARGV</code> array simply contains <code>server</code> which is extracted into the <code>command</code> variable using these lines:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#069">ARGV</span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">--help</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">ARGV</span>.empty?
+
+aliases = {
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">g</span><span style="color:#710">&quot;</span></span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">generate</span><span style="color:#710">&quot;</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">d</span><span style="color:#710">&quot;</span></span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">destroy</span><span style="color:#710">&quot;</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">c</span><span style="color:#710">&quot;</span></span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">console</span><span style="color:#710">&quot;</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">server</span><span style="color:#710">&quot;</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">db</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dbconsole</span><span style="color:#710">&quot;</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>  =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">runner</span><span style="color:#710">&quot;</span></span>
+}
+
+command = <span style="color:#069">ARGV</span>.shift
+command = aliases[command] || command
+</pre></div>
+</div>
+</div>
+
+<p>TIP: As you can see, an empty ARGV list will make Rails show the help
+snippet.</p>
+
+<p>If we used <code>s</code> rather than <code>server</code>, Rails will use the <code>aliases</code> defined in the file and match them to their respective commands. With the <code>server</code> command, Rails will run this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">server</span><span style="color:#710">'</span></span>
+  <span style="color:#777"># Change to the application's path if there is no config.ru file in current dir.</span>
+  <span style="color:#777"># This allows us to run `rails server` from other directories, but still get</span>
+  <span style="color:#777"># the main config.ru and properly set the tmp directory.</span>
+  <span style="color:#036;font-weight:bold">Dir</span>.chdir(<span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../../</span><span style="color:#710">'</span></span>, <span style="color:#036;font-weight:bold">APP_PATH</span>)) <span style="color:#080;font-weight:bold">unless</span> <span style="color:#036;font-weight:bold">File</span>.exists?(<span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">config.ru</span><span style="color:#710">&quot;</span></span>))
+
+  require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rails/commands/server</span><span style="color:#710">'</span></span>
+  <span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Server</span>.new.tap <span style="color:#080;font-weight:bold">do</span> |server|
+    <span style="color:#777"># We need to require application after the server sets environment,</span>
+    <span style="color:#777"># otherwise the --environment option given to the server won't propagate.</span>
+    require <span style="color:#036;font-weight:bold">APP_PATH</span>
+    <span style="color:#036;font-weight:bold">Dir</span>.chdir(<span style="color:#036;font-weight:bold">Rails</span>.application.root)
+    server.start
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This file will change into the Rails root directory (a path two directories up from <code>APP_PATH</code> which points at <code>config/application.rb</code>), but only if the <code>config.ru</code> file isn’t found. This then requires <code>rails/commands/server</code> which sets up the <code>Rails::Server</code> class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">fileutils</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">optparse</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">action_dispatch</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Rails</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Server</span> &lt; ::<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Server</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>fileutils</code> and <code>optparse</code> are standard Ruby libraries which provide helper functions for working with files and parsing options.</p>
+
+<h3 id="actionpacklibactiondispatchrb"><code>actionpack/lib/action_dispatch.rb</code></h3>
+
+<p>Action Dispatch is the routing component of the Rails framework.
+It adds functionality like routing, session, and common middlewares.</p>
+
+<h3 id="railscommandsserverrb"><code>rails/commands/server.rb</code></h3>
+
+<p>The <code>Rails::Server</code> class is defined in this file by inheriting from <code>Rack::Server</code>. When <code>Rails::Server.new</code> is called, this calls the <code>initialize</code> method in <code>rails/commands/server.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*)
+  <span style="color:#080;font-weight:bold">super</span>
+  set_environment
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Firstly, <code>super</code> is called which calls the <code>initialize</code> method on <code>Rack::Server</code>.</p>
+
+<h3 id="rack-librackserverrb">Rack: <code>lib/rack/server.rb</code></h3>
+
+<p><code>Rack::Server</code> is responsible for providing a common server interface for all Rack-based applications, which Rails is now a part of.</p>
+
+<p>The <code>initialize</code> method in <code>Rack::Server</code> simply sets a couple of variables:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(options = <span style="color:#069">nil</span>)
+  <span style="color:#33B">@options</span> = options
+  <span style="color:#33B">@app</span> = options[<span style="color:#A60">:app</span>] <span style="color:#080;font-weight:bold">if</span> options &amp;&amp; options[<span style="color:#A60">:app</span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this case, <code>options</code> will be <code>nil</code> so nothing happens in this method.</p>
+
+<p>After <code>super</code> has finished in <code>Rack::Server</code>, we jump back to <code>rails/commands/server.rb</code>. At this point, <code>set_environment</code> is called within the context of the <code>Rails::Server</code> object and this method doesn’t appear to do much at first glance:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">set_environment</span>
+  <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RAILS_ENV</span><span style="color:#710">&quot;</span></span>] ||= options[<span style="color:#A60">:environment</span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In fact, the <code>options</code> method here does quite a lot. This method is defined in <code>Rack::Server</code> like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">options</span>
+  <span style="color:#33B">@options</span> ||= parse_options(<span style="color:#069">ARGV</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then <code>parse_options</code> is defined like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">parse_options</span>(args)
+  options = default_options
+
+  <span style="color:#777"># Don't evaluate CGI ISINDEX parameters.</span>
+  <span style="color:#777"># http://hoohoo.ncsa.uiuc.edu/cgi/cl.html</span>
+  args.clear <span style="color:#080;font-weight:bold">if</span> <span style="color:#069">ENV</span>.include?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">REQUEST_METHOD</span><span style="color:#710">&quot;</span></span>)
+
+  options.merge! opt_parser.parse! args
+  options[<span style="color:#A60">:config</span>] = ::<span style="color:#036;font-weight:bold">File</span>.expand_path(options[<span style="color:#A60">:config</span>])
+  <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RACK_ENV</span><span style="color:#710">&quot;</span></span>] = options[<span style="color:#A60">:environment</span>]
+  options
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With the <code>default_options</code> set to this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">default_options</span>
+  {
+    <span style="color:#A60">:environment</span> =&gt; <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">RACK_ENV</span><span style="color:#710">'</span></span>] || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">development</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:pid</span>         =&gt; <span style="color:#069">nil</span>,
+    <span style="color:#A60">:Port</span>        =&gt; <span style="color:#00D">9292</span>,
+    <span style="color:#A60">:Host</span>        =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0.0.0.0</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:AccessLog</span>   =&gt; [],
+    <span style="color:#A60">:config</span>      =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">config.ru</span><span style="color:#710">&quot;</span></span>
+  }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>There is no <code>REQUEST_METHOD</code> key in <code>ENV</code> so we can skip over that line. The next line merges in the options from <code>opt_parser</code> which is defined plainly in <code>Rack::Server</code></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">opt_parser</span>
+  <span style="color:#036;font-weight:bold">Options</span>.new
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The class <strong>is</strong> defined in <code>Rack::Server</code>, but is overwritten in <code>Rails::Server</code> to take different arguments. Its <code>parse!</code> method begins like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">parse!</span>(args)
+  args, options = args.dup, {}
+
+  opt_parser = <span style="color:#036;font-weight:bold">OptionParser</span>.new <span style="color:#080;font-weight:bold">do</span> |opts|
+    opts.banner = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Usage: rails server [mongrel, thin, etc] [options]</span><span style="color:#710">&quot;</span></span>
+    opts.on(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-p</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--port=port</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Integer</span>,
+            <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Runs Rails on the specified port.</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default: 3000</span><span style="color:#710">&quot;</span></span>) { |v| options[<span style="color:#A60">:Port</span>] = v }
+  ...
+</pre></div>
+</div>
+</div>
+
+<p>This method will set up keys for the <code>options</code> which Rails will then be
+able to use to determine how its server should run. After <code>initialize</code>
+has finished, we jump back into <code>rails/server</code> where <code>APP_PATH</code> (which was
+set earlier) is required.</p>
+
+<h3 id="configapplication"><code>config/application</code></h3>
+
+<p>When <code>require APP_PATH</code> is executed, <code>config/application.rb</code> is loaded.
+This file exists in your app and it’s free for you to change based
+on your needs.</p>
+
+<h3 id="railsserverstart"><code>Rails::Server#start</code></h3>
+
+<p>After <code>config/application</code> is loaded, <code>server.start</code> is called. This method is defined like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start</span>
+  url = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>options[<span style="color:#A60">:SSLEnable</span>] ? <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https</span><span style="color:#710">'</span></span> : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http</span><span style="color:#710">'</span></span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">://</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>options[<span style="color:#A60">:Host</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>options[<span style="color:#A60">:Port</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=&gt; Booting </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Inflector</span>.demodulize(server)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=&gt; Rails </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Rails</span>.version<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> application starting in </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Rails</span>.env<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>url<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=&gt; Run `rails server -h` for more startup options</span><span style="color:#710">&quot;</span></span>
+  trap(<span style="color:#A60">:INT</span>) { exit }
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=&gt; Ctrl-C to shutdown server</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> options[<span style="color:#A60">:daemonize</span>]
+
+  <span style="color:#777">#Create required tmp directories if not found</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">cache pids sessions sockets</span><span style="color:#710">)</span></span>.each <span style="color:#080;font-weight:bold">do</span> |dir_to_make|
+    <span style="color:#036;font-weight:bold">FileUtils</span>.mkdir_p(<span style="color:#036;font-weight:bold">Rails</span>.root.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tmp</span><span style="color:#710">'</span></span>, dir_to_make))
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">unless</span> options[<span style="color:#A60">:daemonize</span>]
+    wrapped_app <span style="color:#777"># touch the app so the logger is set up</span>
+
+    console = <span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Logger</span>.new(<span style="color:#d70">$stdout</span>)
+    console.formatter = <span style="color:#036;font-weight:bold">Rails</span>.logger.formatter
+
+    <span style="color:#036;font-weight:bold">Rails</span>.logger.extend(<span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Logger</span>.broadcast(console))
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">super</span>
+<span style="color:#080;font-weight:bold">ensure</span>
+  <span style="color:#777"># The '-h' option calls exit before @options is set.</span>
+  <span style="color:#777"># If we call 'options' with it unset, we get double help banners.</span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Exiting</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#33B">@options</span> &amp;&amp; options[<span style="color:#A60">:daemonize</span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is where the first output of the Rails initialization happens. This
+method creates a trap for <code>INT</code> signals, so if you <code>CTRL-C</code> the server,
+it will exit the process. As we can see from the code here, it will
+create the <code>tmp/cache</code>, <code>tmp/pids</code>, <code>tmp/sessions</code> and <code>tmp/sockets</code>
+directories. It then calls <code>wrapped_app</code> which is responsible for
+creating the Rack app, before creating and assigning an
+instance of <code>ActiveSupport::Logger</code>.</p>
+
+<p>The <code>super</code> method will call <code>Rack::Server.start</code> which begins its definition like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start</span> &amp;blk
+  <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:warn</span>]
+    <span style="color:#d70">$-w</span> = <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">if</span> includes = options[<span style="color:#A60">:include</span>]
+    <span style="color:#d70">$LOAD_PATH</span>.unshift(*includes)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">if</span> library = options[<span style="color:#A60">:require</span>]
+    require library
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:debug</span>]
+    <span style="color:#d70">$DEBUG</span> = <span style="color:#069">true</span>
+    require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pp</span><span style="color:#710">'</span></span>
+    p options[<span style="color:#A60">:server</span>]
+    pp wrapped_app
+    pp app
+  <span style="color:#080;font-weight:bold">end</span>
+
+  check_pid! <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:pid</span>]
+
+  <span style="color:#777"># Touch the wrapped app, so that the config.ru is loaded before</span>
+  <span style="color:#777"># daemonization (i.e. before chdir, etc).</span>
+  wrapped_app
+
+  daemonize_app <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:daemonize</span>]
+
+  write_pid <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:pid</span>]
+
+  trap(<span style="color:#A60">:INT</span>) <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#080;font-weight:bold">if</span> server.respond_to?(<span style="color:#A60">:shutdown</span>)
+      server.shutdown
+    <span style="color:#080;font-weight:bold">else</span>
+      exit
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  server.run wrapped_app, options, &amp;blk
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The interesting part for a Rails app is the last line, <code>server.run</code>. Here we encounter the <code>wrapped_app</code> method again, which this time
+we’re going to explore more (even though it was executed before, and
+thus memorized by now).</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#33B">@wrapped_app</span> ||= build_app app
+</pre></div>
+</div>
+</div>
+
+<p>The <code>app</code> method here is defined like so:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">app</span>
+  <span style="color:#33B">@app</span> ||= <span style="color:#080;font-weight:bold">begin</span>
+    <span style="color:#080;font-weight:bold">if</span> !::<span style="color:#036;font-weight:bold">File</span>.exist? options[<span style="color:#A60">:config</span>]
+      abort <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">configuration </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>options[<span style="color:#A60">:config</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    app, options = <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Builder</span>.parse_file(<span style="color:#069">self</span>.options[<span style="color:#A60">:config</span>], opt_parser)
+    <span style="color:#069">self</span>.options.merge! options
+    app
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>options[:config]</code> value defaults to <code>config.ru</code> which contains this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This file is used by Rack-based servers to start the application.</span>
+
+require ::<span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../config/environment</span><span style="color:#710">'</span></span>,  <span style="color:#069">__FILE__</span>)
+run &lt;<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%=</span><span style="color:#D20"> app_const %&gt;
+</span></span></pre></div>
+</div>
+</div>
+
+<p>The <code>Rack::Builder.parse_file</code> method here takes the content from this <code>config.ru</code> file and parses it using this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>app = eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Rack::Builder.new {( </span><span style="color:#710">&quot;</span></span> + cfgfile + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20"> )}.to_app</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#069">TOPLEVEL_BINDING</span>, config
+</pre></div>
+</div>
+</div>
+
+<p>The <code>initialize</code> method of <code>Rack::Builder</code> will take the block here and execute it within an instance of <code>Rack::Builder</code>. This is where the majority of the initialization process of Rails happens. The <code>require</code> line for <code>config/environment.rb</code> in <code>config.ru</code> is the first to run:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require ::<span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../config/environment</span><span style="color:#710">'</span></span>,  <span style="color:#069">__FILE__</span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="configenvironmentrb"><code>config/environment.rb</code></h3>
+
+<p>This file is the common file required by <code>config.ru</code> (<code>rails server</code>) and Passenger. This is where these two ways to run the server meet; everything before this point has been Rack and Rails setup.</p>
+
+<p>This file begins with requiring <code>config/application.rb</code>.</p>
+
+<h3 id="configapplicationrb"><code>config/application.rb</code></h3>
+
+<p>This file requires <code>config/boot.rb</code>, but only if it hasn’t been required before, which would be the case in <code>rails server</code> but <strong>wouldn’t</strong> be the case with Passenger.</p>
+
+<p>Then the fun begins!</p>
+
+<h2 id="loading-rails">Loading Rails</h2>
+
+<p>The next line in <code>config/application.rb</code> is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rails/all</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="railtieslibrailsallrb"><code>railties/lib/rails/all.rb</code></h3>
+
+<p>This file is responsible for requiring all the individual frameworks of Rails:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rails</span><span style="color:#710">&quot;</span></span>
+
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">
+    active_record
+    action_controller
+    action_mailer
+    rails/test_unit
+    sprockets
+</span><span style="color:#710">)</span></span>.each <span style="color:#080;font-weight:bold">do</span> |framework|
+  <span style="color:#080;font-weight:bold">begin</span>
+    require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>framework<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/railtie</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">LoadError</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is where all the Rails frameworks are loaded and thus made
+available to the application. We won’t go into detail of what happens
+inside each of those frameworks, but you’re encouraged to try and
+explore them on your own.</p>
+
+<p>For now, just keep in mind that common functionality like Rails engines,
+I18n and Rails configuration are all being defined here.</p>
+
+<h3 id="back-to-configenvironmentrb">Back to <code>config/environment.rb</code></h3>
+
+<p>When <code>config/application.rb</code> has finished loading Rails, and defined
+the application namespace, we go back to <code>config/environment.rb</code>,
+where the application is initialized. For example, if the application was called
+<code>Blog</code>, here we would find <code>Blog::Application.initialize!</code>, which is
+defined in <code>rails/application.rb</code></p>
+
+<h3 id="railtieslibrailsapplicationrb"><code>railties/lib/rails/application.rb</code></h3>
+
+<p>The <code>initialize!</code> method looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize!</span>(group=<span style="color:#A60">:default</span>) <span style="color:#777">#:nodoc:</span>
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Application has been already initialized.</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@initialized</span>
+  run_initializers(group, <span style="color:#069">self</span>)
+  <span style="color:#33B">@initialized</span> = <span style="color:#069">true</span>
+  <span style="color:#069">self</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, you can only initialize an app once. This is also where the initializers are run.</p>
+
+<p>TODO: review this</p>
+
+<p>The initializers code itself is tricky. What Rails is doing here is it
+traverses all the class ancestors looking for an <code>initializers</code> method,
+sorting them and running them. For example, the <code>Engine</code> class will make
+all the engines available by providing the <code>initializers</code> method.</p>
+
+<p>After this is done we go back to <code>Rack::Server</code></p>
+
+<h3 id="rack-librackserverrb-1">Rack: lib/rack/server.rb</h3>
+
+<p>Last time we left when the <code>app</code> method was being defined:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">app</span>
+  <span style="color:#33B">@app</span> ||= <span style="color:#080;font-weight:bold">begin</span>
+    <span style="color:#080;font-weight:bold">if</span> !::<span style="color:#036;font-weight:bold">File</span>.exist? options[<span style="color:#A60">:config</span>]
+      abort <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">configuration </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>options[<span style="color:#A60">:config</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    app, options = <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Builder</span>.parse_file(<span style="color:#069">self</span>.options[<span style="color:#A60">:config</span>], opt_parser)
+    <span style="color:#069">self</span>.options.merge! options
+    app
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>At this point <code>app</code> is the Rails app itself (a middleware), and what
+happens next is Rack will call all the provided middlewares:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">build_app</span>(app)
+  middleware[options[<span style="color:#A60">:environment</span>]].reverse_each <span style="color:#080;font-weight:bold">do</span> |middleware|
+    middleware = middleware.call(<span style="color:#069">self</span>) <span style="color:#080;font-weight:bold">if</span> middleware.respond_to?(<span style="color:#A60">:call</span>)
+    <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">unless</span> middleware
+    klass = middleware.shift
+    app = klass.new(app, *middleware)
+  <span style="color:#080;font-weight:bold">end</span>
+  app
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Remember, <code>build_app</code> was called (by wrapped_app) in the last line of <code>Server#start</code>.
+Here’s how it looked like when we left:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>server.run wrapped_app, options, &amp;blk
+</pre></div>
+</div>
+</div>
+
+<p>At this point, the implementation of <code>server.run</code> will depend on the
+server you’re using. For example, if you were using Mongrel, here’s what
+the <code>run</code> method would look like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">run</span>(app, options={})
+  server = ::<span style="color:#036;font-weight:bold">Mongrel</span>::<span style="color:#036;font-weight:bold">HttpServer</span>.new(
+    options[<span style="color:#A60">:Host</span>]           || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0.0.0.0</span><span style="color:#710">'</span></span>,
+    options[<span style="color:#A60">:Port</span>]           || <span style="color:#00D">8080</span>,
+    options[<span style="color:#A60">:num_processors</span>] || <span style="color:#00D">950</span>,
+    options[<span style="color:#A60">:throttle</span>]       || <span style="color:#00D">0</span>,
+    options[<span style="color:#A60">:timeout</span>]        || <span style="color:#00D">60</span>)
+  <span style="color:#777"># Acts like Rack::URLMap, utilizing Mongrel's own path finding methods.</span>
+  <span style="color:#777"># Use is similar to #run, replacing the app argument with a hash of</span>
+  <span style="color:#777"># { path=&gt;app, ... } or an instance of Rack::URLMap.</span>
+  <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:map</span>]
+    <span style="color:#080;font-weight:bold">if</span> app.is_a? <span style="color:#036;font-weight:bold">Hash</span>
+      app.each <span style="color:#080;font-weight:bold">do</span> |path, appl|
+        path = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>+path <span style="color:#080;font-weight:bold">unless</span> path[<span style="color:#00D">0</span>] == <span style="color:#00D">?/</span>
+        server.register(path, <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Handler</span>::<span style="color:#036;font-weight:bold">Mongrel</span>.new(appl))
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">elsif</span> app.is_a? <span style="color:#036;font-weight:bold">URLMap</span>
+      app.instance_variable_get(<span style="color:#A60">:@mapping</span>).each <span style="color:#080;font-weight:bold">do</span> |(host, path, appl)|
+       <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> !host.nil? &amp;&amp; !options[<span style="color:#A60">:Host</span>].nil? &amp;&amp; options[<span style="color:#A60">:Host</span>] != host
+       path = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>+path <span style="color:#080;font-weight:bold">unless</span> path[<span style="color:#00D">0</span>] == <span style="color:#00D">?/</span>
+       server.register(path, <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Handler</span>::<span style="color:#036;font-weight:bold">Mongrel</span>.new(appl))
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">first argument should be a Hash or URLMap</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    server.register(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>, <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Handler</span>::<span style="color:#036;font-weight:bold">Mongrel</span>.new(app))
+  <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">yield</span> server  <span style="color:#080;font-weight:bold">if</span> block_given?
+  server.run.join
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We won’t dig into the server configuration itself, but this is
+the last piece of our journey in the Rails initialization process.</p>
+
+<p>This high level overview will help you understand when your code is
+executed and how, and overall become a better Rails developer. If you
+still want to know more, the Rails source code itself is probably the
+best place to go next.</p>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : YAML  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:32:10 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: YAML (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>yaml.rb</li>      
+            
+          
+          <li class='in-file'>yaml/dbm.rb</li>      
+            
+          
+          <li class='in-file'>yaml/store.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+      <!-- Namespace Contents -->
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li><span class="type">CLASS</span> <a href="YAML/DBM.html">YAML::DBM</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="YAML/Store.html">YAML::Store</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="./YAML.html">YAML</a></li>
+        
+          
+          
+          <li><a href="./YAML/DBM.html">YAML::DBM</a></li>
+        
+          
+          
+          <li><a href="./YAML/Store.html">YAML::Store</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">YAML</h1>
+
+    <div id="description" class="description">
+      
+<p><a href="YAML.html">YAML</a> Ain't Markup Language</p>
+
+<p>This module provides a Ruby interface for data serialization in <a
+href="YAML.html">YAML</a> format.</p>
+
+<p>The underlying implementation is the libyaml wrapper Psych.</p>
+
+<h2 id="module-YAML-label-Usage">Usage<span><a href="#module-YAML-label-Usage">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Working with <a href="YAML.html">YAML</a> can be very simple, for example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'yaml'</span>
+<span class="ruby-comment"># Parse a YAML string</span>
+<span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-string">&quot;--- foo&quot;</span>) <span class="ruby-comment">#=&gt; &quot;foo&quot;</span>
+
+<span class="ruby-comment"># Emit some YAML</span>
+<span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-string">&quot;foo&quot;</span>)     <span class="ruby-comment"># =&gt; &quot;--- foo\n...\n&quot;</span>
+{ :<span class="ruby-identifier">a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'b'</span>}.<span class="ruby-identifier">to_yaml</span>  <span class="ruby-comment"># =&gt; &quot;---\n:a: b\n&quot;</span>
+</pre>
+
+<h2 id="module-YAML-label-Security">Security<span><a href="#module-YAML-label-Security">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Do not use <a href="YAML.html">YAML</a> to load untrusted data. Doing so is
+unsafe and could allow malicious input to execute arbitrary code inside
+your application. Please see doc/security.rdoc for more information.</p>
+
+<h2 id="module-YAML-label-History">History<span><a href="#module-YAML-label-History">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Syck was the original for <a href="YAML.html">YAML</a> implementation in
+Ruby’s standard library developed by why the lucky stiff.</p>
+
+<p>You can still use Syck, if you prefer, for parsing and emitting <a
+href="YAML.html">YAML</a>, but you must install the ‘syck’ gem now in order
+to use it.</p>
+
+<p>In older Ruby versions, ie. &lt;= 1.9, Syck is still provided, however it
+was completely removed with the release of Ruby 2.0.0.</p>
+
+<h2 id="module-YAML-label-More+info">More info<span><a href="#module-YAML-label-More+info">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>For more advanced details on the implementation see Psych, and also check
+out <a href="http://yaml.org">yaml.org</a> for spec details and other
+helpful information.</p>
+
+<p>Pysch is maintained by Aaron Patterson on github: <a
+href="https://github.com/tenderlove/psych">github.com/tenderlove/psych</a></p>
+
+<p>Syck can also be found on github: <a
+href="https://github.com/tenderlove/syck">github.com/tenderlove/syck</a></p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_YAML_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_YAML_versioned").load("/associated/2_2_0/YAML.html");</script> <div id='tx_YAML' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_YAML").load("/associated/YAML.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Hack your world.  Feed your head.  Live curious</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_YAML.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

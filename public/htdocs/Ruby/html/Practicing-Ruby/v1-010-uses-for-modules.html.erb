@@ -1,0 +1,731 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p>Note: This article series on modules is also available as a <a href="https://github.com/elm-city-craftworks/pr-monthly/blob/gh-pages/b5e5a89847701c4aa7c170cf/sept-2012-modules.pdf?raw=true">PDF download</a>. The
+PDF version has been revised and is more up-to-date than what you see here.</p>
+</blockquote>
+
+<p>In the last two issues, we covered mixins and namespacing, two of the most common uses for modules. In the second half of this series, we’ll look at some other ways to use modules that are not quite so obvious.</p>
+
+<p>We can now focus on the question that caused me to write this series in the
+first place. Many readers were confused by my use of <code>extend self</code> within
+earlier Practicing Ruby articles, and this lead to a number of interesting
+questions on the mailing list at the time these articles were originally
+published. While I tried my best to answer them directly, I think we’re in better
+shape to study this topic now that the last two articles have laid a 
+foundation for us.</p>
+
+<h3 id="review-of-how-extend-works">Review of how <code>extend()</code> works</h3>
+
+<p>To understand this trick of mixing modules into themselves, one first must understand how <code>extend()</code> works. We covered this concept at the end of the last article, but we can touch on it again for good measure. Start by considering the trivial module shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Greeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span> 
+</pre></div>
+</div>
+</div>
+
+<p>We had shown that unlike <code>include()</code> which is especially designed for augmenting class definitions so that a mixin can add instance methods to some target class, <code>extend()</code> has a much more simple behavior and works with any object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>obj = <span style="color:#036;font-weight:bold">Object</span>.new
+obj.extend(<span style="color:#036;font-weight:bold">Greeter</span>)
+obj.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>From this, we can see that mixing in a module by using extend simply mixes the methods defined by the module directly at that object’s level. In this way, the methods defined by the module are mixed into the receiver, no matter what that object is.</p>
+
+<p>In Ruby, classes and modules are ordinary objects. We can confirm this by doing a tiny bit of introspection on <code>Greeter</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">Greeter</span>.object_id
+=&gt; <span style="color:#00D">212500</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">Greeter</span>.class
+=&gt; <span style="color:#036;font-weight:bold">Module</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">Greeter</span>.respond_to?(<span style="color:#A60">:extend</span>)
+=&gt; <span style="color:#069">true</span>
+</pre></div>
+</div>
+</div>
+
+<p>While this may be a mental leap for some, you might be able to find peace with it by considering the ordinary module definition syntax to be a bit of sugar that is functionally equivalent to the following bit of code.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Greeter</span> = <span style="color:#036;font-weight:bold">Module</span>.new <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When written in this way, it becomes far more obvious that <code>Greeter</code> is actually just an instance of the class Module, making it an ordinary Ruby object at its core. Once you feel that you understand this point, consider what happens when the following line of code is run.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Greeter</span>.extend(<span style="color:#036;font-weight:bold">Greeter</span>)
+</pre></div>
+</div>
+</div>
+
+<p>If we compare this to previous examples of <code>extend()</code>, it should be clear now that despite the seemingly circular reference, this line does exactly what it would if called on any other object: It mixes the methods defined by <code>Greeter</code> directly into the <code>Greeter</code> object itself. A simple test confirms this to be true.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Greeter</span>.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If we unravel things a bit, we find that we could have written our <code>extend()</code> call slightly differently, by doing it from within the module definition itself:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Greeter</span>
+  extend <span style="color:#036;font-weight:bold">Greeter</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The reason <code>extend()</code> works here is because <code>self == Greeter</code> in this context.
+Noticing this detail allows us to use slightly more dynamic approach, resulting
+in the following code.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Greeter</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’ll find this new code to be functionally identical to the previous example, but slightly more flexible. Now, if we change the name of our module, we won’t need to update our <code>extend()</code> call. This is why folks tend to write <code>extend self</code> rather than <code>extend TheCurrentModule</code>.</p>
+
+<p>Hopefully by now, it is clear that this trick does not involve any sort of special casing for modules, and is an ordinary application of the <code>extend()</code> method provided by every Ruby object. The only thing that might be confusing is the seemingly recursive nature of the technique, but this issue disappears when you recognize that modules are not mixed into anything by default, and that modules themselves are not directly related to the methods they define. If you understand the difference between class and instance methods in Ruby, this isn’t a far stretch from that concept.</p>
+
+<p>While the inner workings of modules are an interesting academic topic, my emphasis is always firmly set on practical applications of programming techniques rather than detached conceptual theory. So now that we’ve answered ‘how does this work?’, let’s focus on the much more interesting ‘how can I use it?’ topic.</p>
+
+<h3 id="self-mixins-as-function-bags">Self-Mixins as Function Bags</h3>
+
+<p>A fascinating thing about Ruby is the wide range of different software design paradigms it supports. While object-oriented design is heavily favored, Ruby can do a surprisingly good job of emulating everything from procedure programming to prototype-based programming. But the one area that Ruby overlaps most with is functional programming.</p>
+
+<p>Now, before you retire your parenthesis for good and herald Ruby as a replacement for LISP, be warned: There is a lot about Ruby’s design that makes it a horrible language for functional programming. But when used sparingly, techniques from the functional world fit surprisingly well in Ruby programs. The technique I find most useful is the ability to organize related functions together under a single namespace.</p>
+
+<p>When we create class definitions, we tend to think of the objects we’re building as little structures which manage state and provide behaviors which manipulate that state. But sometimes, a more stateless model makes sense. The closer you get to pure mathematics, the more a pure functional model makes sense. We need to look no farther than Ruby’s own <code>Math</code> module for an example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">Math</span>.sin(<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">PI</span>/<span style="color:#60E">2.0</span>)
+=&gt; <span style="color:#60E">1.0</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">Math</span>.log(<span style="color:#036;font-weight:bold">Math</span>::<span style="color:#036;font-weight:bold">E</span>)
+=&gt; <span style="color:#60E">1.0</span>
+</pre></div>
+</div>
+</div>
+
+<p>It seems unlikely that we’d want to create an instance of a <code>Math</code> object, since
+it doesn’t really deal with any state that persists beyond a single function
+call. But it might be desirable to mix this functionality into another object so
+that you can call math functions without repeating the <code>Math</code> constant
+excessively. For this reason, Ruby implements <code>Math</code> as a module.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">Math</span>.class
+=&gt; <span style="color:#036;font-weight:bold">Module</span>
+</pre></div>
+</div>
+</div>
+
+<p>For another great example of modular code design in Ruby itself, be sure to check out the <code>FileUtils</code> standard library, which allows you to execute basic *nix file operations as if they were just ordinary function calls.</p>
+
+<p>After seeing how Ruby is using this technique, I didn’t find it hard to stumble upon scenarios in my own code that could benefit from a similar design. For example, when I was working on building out the backend for a trivia website, I was given some logic for normalizing user input so that it could be compared against a predetermined pattern.</p>
+
+<p>While I could have stuck this logic in a number of different places, I decided I wanted to put it within a module of its own, because its logic did not rely on any persistent state and could be defined independently of the way our questions and quizzes were modeled. The following code is what I came up with:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">MinimalAnswer</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">match?</span>(pattern, input)
+    pattern.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">,</span><span style="color:#404">/</span></span>).any? <span style="color:#080;font-weight:bold">do</span> |e| 
+      normalize(input) =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\b</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>normalize(e)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#404">/</span><span style="color:#C2C">i</span></span> 
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">normalize</span>(input)
+    input.downcase.strip.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>).gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">[?.!</span><span style="color:#D20">\-</span><span style="color:#808">,:'&quot;]</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The nice thing about the code above is that using a modular design doesn’t force you to give up things like private methods. This allows you to keep your user facing API narrow while still being able to break things out into helper methods.</p>
+
+<p>Here is a simple example of how my <code>MinimalAnswer</code> module is used within the application:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">MinimalAnswer</span>.match?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cop,Police Officer</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">COP</span><span style="color:#710">&quot;</span></span>)
+=&gt; <span style="color:#069">true</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">MinimalAnswer</span>.match?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cop,Police Officer</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">police officer</span><span style="color:#710">&quot;</span></span>)
+=&gt; <span style="color:#069">true</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">MinimalAnswer</span>.match?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cop,Police Officer</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">police office</span><span style="color:#710">&quot;</span></span>)
+=&gt; <span style="color:#069">false</span>
+&gt;&gt; <span style="color:#036;font-weight:bold">MinimalAnswer</span>.match?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cop,Police Officer</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">police officer.</span><span style="color:#710">&quot;</span></span>)
+=&gt; <span style="color:#069">true</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now as I said before, this is a minor bit of functionality and could probably be shelved onto something like a <code>Question</code> object or somewhere else within the system. But the downside of that approach would be that as this <code>MinimalAnswer</code> logic began to get more complex, it would begin to stretch the scope of whatever object you attached this logic to. By breaking it out into a module right away, we give this code its own namespace to grow in, and also make it possible to test the logic in isolation, rather than trying to bootstrap a potentially much more complex object in order to test it.</p>
+
+<p>So whenever you have a bit of logic that seems to not have many state dependencies between its functions, you might consider this approach. But since stateless code is rare in Ruby, you may wonder if learning about self-mixins really bought us that much.</p>
+
+<p>As it turns out, the technique can also be used in more stateful scenarios when you recognize that Ruby modules are objects themselves, and like any object, can contain instance data.</p>
+
+<h3 id="self-mixins-for-implementing-singleton-pattern">Self-Mixins for Implementing Singleton Pattern</h3>
+
+<p>Ruby overloads the term ‘singleton object’, so we need to be careful about terminology here. What I’m about to show you is how to use these self-mixed modules to implement something similar to the <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton design pattern</a>.</p>
+
+<p>I’ve found in object design that objects typically need zero, one, or many instances. When an object doesn’t really need to be instantiated at all because it has no data in common between its behaviors, the modular approach we just reviewed often works best. The vast majority of the remaining cases fall into ordinary class definitions which facilitate many instances. Virtually everything we model fits into this category, so it’s not worth discussing in detail. However, there are some cases in which a single object is really all we need. In particular, configuration systems come to mind.</p>
+
+<p>The following example shows a simple DSL I wrote for the trivia application I had mentioned earlier. It may look familiar, and that is because it appeared in our discussion on writing configuration systems some weeks ago. This time around, our focus will be on how this system actually works rather than what purpose it serves.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">AccessControl</span>.configure <span style="color:#080;font-weight:bold">do</span>
+  role <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">basic</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:permissions</span> =&gt; [<span style="color:#A60">:read_answers</span>, <span style="color:#A60">:answer_questions</span>]
+
+  role <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">premium</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:parent</span>      =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">basic</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:permissions</span> =&gt; [<span style="color:#A60">:hide_advertisements</span>]
+
+  role <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">manager</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:parent</span>      =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">premium</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:permissions</span> =&gt; [<span style="color:#A60">:create_quizzes</span>, <span style="color:#A60">:edit_quizzes</span>]
+
+  role <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">owner</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:parent</span>      =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">manager</span><span style="color:#710">&quot;</span></span>,
+    <span style="color:#A60">:permissions</span> =&gt; [<span style="color:#A60">:edit_users</span>, <span style="color:#A60">:deactivate_users</span>]
+<span style="color:#080;font-weight:bold">end</span> 
+</pre></div>
+</div>
+</div>
+
+<p>To implement code that allows the definitions above to be modeled internally, we need to consider how this system will be used. While it is easy to imagine roles shifting over time, getting added and removed as needed, it’s hard to imagine what the utility of having more than one <code>AccessControl</code> object would be.</p>
+
+<p>For this reason, it’s safe to say that <code>AccessControl</code> configuration data is global information, and so does not need the data segregation that creating instances of a class provides.</p>
+
+<p>By modeling <code>AccessControl</code> as a module rather than class, we end up with an object that we can store data on that can’t be instantiated.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">AccessControl</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">configure</span>(&amp;block)
+    instance_eval(&amp;block)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">definitions</span>
+    <span style="color:#33B">@definitions</span> ||= {}
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Role definition omitted, replace with a stub if you want to test</span>
+  <span style="color:#777"># or refer to Practicing Ruby Issue #4</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">role</span>(level, options={})
+    definitions[level] = <span style="color:#036;font-weight:bold">Role</span>.new(level, options)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">roles_with_permission</span>(permission)
+    definitions.select { |k,v| v.allows?(permission) }.map { |k,_| k }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(level)
+    definitions[level]
+  <span style="color:#080;font-weight:bold">end</span> 
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>There are two minor points of potential confusion in this code worth discussing, the first is the use of <code>instance_eval</code> in <code>configure()</code>, and the second is that the <code>definitions()</code> method refers to instance variables. This is where we need to remind ourselves that the scope of methods defined by a module cannot be determined until it is mixed into something.</p>
+
+<p>Once we recognize these key points, a bit of introspection shows us what is really going on.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">AccessControl</span>.configure { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span>.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }
+=&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am AccessControl</span><span style="color:#710">&quot;</span></span>
+&gt;&gt; <span style="color:#036;font-weight:bold">AccessControl</span>.instance_eval { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span>.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }
+=&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am AccessControl</span><span style="color:#710">&quot;</span></span>
+&gt;&gt; <span style="color:#036;font-weight:bold">AccessControl</span>.instance_variables
+=&gt; [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@definitions</span><span style="color:#710">&quot;</span></span>]
+</pre></div>
+</div>
+</div>
+
+<p>Since <code>AccessControl</code> is an ordinary Ruby object, it has ordinary instance variables and can make use of <code>instance_eval</code> just like any other object. The key difference here is that <code>AccessControl</code> is a module, not a class, and so cannot be used as a factory for creating more instances. In fact, calling <code>AccessControl.new</code> raises a <code>NoMethodError</code>.</p>
+
+<p>In a traditional implementation of Singleton Pattern, you have a class which disables instantiation through the ordinary means, and creates a single instance that is accessible through the class method <code>instance()</code>. However, this seems a bit superfluous in a language in which classes are full blown objects, and so isn’t necessary in Ruby.</p>
+
+<p>For cases like the configuration system we’ve shown here, choosing to use this approach is reasonable. That having been said, the reason why I don’t have another example that I can easily show you is that with the exception of this narrow application for configuration objects, I find it relatively rare to have a legitimate need for the Singleton Pattern. I’m sure if I thought long and hard on it, I could dig some other examples up, but upon looking at recent projects I find that variants of the above are all I use this technique for.</p>
+
+<p>However, if you work with other people’s code, it is likely that you’ll run into someone implementing Singleton Pattern this way. Now, rather than scratching your head, you will have a solid understanding of how this technique works, and why someone might want to use it.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>In Issue 11, we’ll wrap up with some even more specialized uses for modules, showing how they can be used to build plugin systems as well as how they can be used as a replacement for monkey patching. But before we close the books on today’s lesson, I’d like to share some thoughts that were rattling around in the back of my mind while I was preparing this article.</p>
+
+<p>The techniques I’ve shown today can be useful in certain edge case scenarios
+where an ordinary class definition might not be the best tool to use. In my own
+code, I tend to use the first technique of creating function bags often but sparingly, 
+and the second technique of building singleton objects rarely and typically only 
+for configuration systems.</p>
+
+<p>Upon reflection, I wonder to myself whether the upsides of these techniques outweigh the cost of explaining them. I don’t really have a definitive answer to that question, but it’s really something I think about often.</p>
+
+<p>On the one hand, I feel that users of Ruby should have an ingrained understanding of its object system. After all, these are actually fairly straightforward techniques once you understand how things work under the hood. It’s also true that you can’t really claim to understand Ruby’s object system without fully understanding these examples. Having a weak understanding of how Ruby’s objects work is sure to rob you of the joy of working in Ruby, so for this reason, I feel like ‘dumbing down’ our code would be a bad thing.</p>
+
+<p>On the other hand, I think that for the small gains yielded by using these techniques, we require those who are reading our code to understand a whole score of details that are unique to Ruby. When you consider that by changing a couple lines of code, you can have a design which is not much worse but is understandable by pretty much anyone who has programmed in an OO language before, it’s certainly tempting to cater to the lowest common denominator.</p>
+
+<p>But this sort of split-mindedness is inevitable in Ruby, and comes up in many scenarios. The truth of the matter is that it’s going to take many more years before Ruby is truly understood by the programming community at large. But as more people dive deeper into Ruby, Ruby is starting to come into its own, and the mindset that things should be done as they are in other languages is not nearly as common as it was several years ago. For this reason, it’s important to stop thinking of Ruby in terms of whatever language you’ve come from, and start thinking of it as its own thing. As soon as you do that, a whole range of possibilities open up.</p>
+
+<p>At least, that’s what I think. What about you?</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/040-issue-10-uses-for-modules.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+
+  </div>
+</body>
+</html>

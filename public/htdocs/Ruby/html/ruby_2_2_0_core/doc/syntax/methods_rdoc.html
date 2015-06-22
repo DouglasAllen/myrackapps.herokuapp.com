@@ -1,0 +1,1085 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- RD version: 0.32.0  -->
+    <!--  filepage  -->
+  <meta charset="utf-8">
+          
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <!-- meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" -->
+
+
+	<title>File: methods.rdoc [Ruby 2.2.0]</title>
+  <link rel="stylesheet" href="../../css/inuit.css" >
+  <link rel="stylesheet" href="../../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../../css/rdoc.css" type="text/css" >
+  <!-- rel_prefix  = '../..' -->
+    
+  <!-- rel_prefix = '../..'   asset_rel_prefix = '../..'  --> 
+
+</head>
+
+<body class="file">
+<div id='actionbar' >
+<div class='wrapper'>
+<ul class='grids g0'></ul></div>
+</div> <!-- end action bar -->
+<!-- VERSION HEADER for 2.2.0 NOT FOUND -->          <div class='wrapper'>
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <header>
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+        </h3>
+      </div>
+      </header>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/globals_rdoc.html">globals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/security_rdoc.html">security.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../sample/drb/README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" ></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" class="quicksearch-field" >
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ArgumentError.html">ArgumentError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Array.html">Array</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../BasicObject.html">BasicObject</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Bignum.html">Bignum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Binding.html">Binding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Class.html">Class</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Comparable.html">Comparable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Complex.html">Complex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Complex/compatible.html">Complex::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ConditionVariable.html">ConditionVariable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Continuation.html">Continuation</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Data.html">Data</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Dir.html">Dir</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ENV.html">ENV</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../EOFError.html">EOFError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding.html">Encoding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/Converter.html">Encoding::Converter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../EncodingError.html">EncodingError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerable.html">Enumerable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator.html">Enumerator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Generator.html">Enumerator::Generator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Errno.html">Errno</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Exception.html">Exception</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FalseClass.html">FalseClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Fiber.html">Fiber</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FiberError.html">FiberError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File.html">File</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File/Constants.html">File::Constants</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../File/Stat.html">File::Stat</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FileTest.html">FileTest</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Fixnum.html">Fixnum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Float.html">Float</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../FloatDomainError.html">FloatDomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../GC.html">GC</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../GC/Profiler.html">GC::Profiler</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Hash.html">Hash</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO.html">IO</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/WaitReadable.html">IO::WaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IO/WaitWritable.html">IO::WaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IOError.html">IOError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../IndexError.html">IndexError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Integer.html">Integer</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Interrupt.html">Interrupt</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Kernel.html">Kernel</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../KeyError.html">KeyError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../LoadError.html">LoadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../LocalJumpError.html">LocalJumpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Marshal.html">Marshal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../MatchData.html">MatchData</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Math.html">Math</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Math/DomainError.html">Math::DomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Method.html">Method</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Module.html">Module</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Mutex.html">Mutex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NameError.html">NameError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NilClass.html">NilClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NoMemoryError.html">NoMemoryError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NoMethodError.html">NoMethodError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../NotImplementedError.html">NotImplementedError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Numeric.html">Numeric</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Object.html">Object</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ObjectSpace.html">ObjectSpace</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Proc.html">Proc</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process.html">Process</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/GID.html">Process::GID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Status.html">Process::Status</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Sys.html">Process::Sys</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/UID.html">Process::UID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Process/Waiter.html">Process::Waiter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Queue.html">Queue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Random.html">Random</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Range.html">Range</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RangeError.html">RangeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Rational.html">Rational</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Rational/compatible.html">Rational::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Regexp.html">Regexp</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RegexpError.html">RegexpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM.html">RubyVM</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM/Env.html">RubyVM::Env</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../RuntimeError.html">RuntimeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ScriptError.html">ScriptError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SecurityError.html">SecurityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Signal.html">Signal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SignalException.html">SignalException</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SizedQueue.html">SizedQueue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../StandardError.html">StandardError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../StopIteration.html">StopIteration</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../String.html">String</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Struct.html">Struct</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Symbol.html">Symbol</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SyntaxError.html">SyntaxError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemCallError.html">SystemCallError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemExit.html">SystemExit</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../SystemStackError.html">SystemStackError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Thread.html">Thread</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ThreadError.html">ThreadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ThreadGroup.html">ThreadGroup</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../Time.html">Time</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TracePoint.html">TracePoint</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TrueClass.html">TrueClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../TypeError.html">TypeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../UnboundMethod.html">UnboundMethod</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../UncaughtThrowError.html">UncaughtThrowError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../ZeroDivisionError.html">ZeroDivisionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../fatal.html">fatal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../unknown.html">unknown</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+  <div class='adzbox'  id="azk83167">
+      
+  </div> 
+	<div id="documentation">
+		
+<h1 id="label-Methods">Methods<span><a href="#label-Methods">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Methods implement the functionality of your program.  Here is a simple
+method definition:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">one_plus_one</span>
+  <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>A method definition consists of the <code>def</code> keyword, a method
+name, the body of the method, <code>return</code> value and the
+<code>end</code> keyword.  When called the method will execute the body of
+the method.  This method returns <code>2</code>.</p>
+
+<p>This section only covers defining methods.  See also the syntax
+documentation on calling methods.</p>
+
+<h2 id="label-Method+Names"><a href="../../Method.html">Method</a> Names<span><a href="#label-Method+Names">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p><a href="../../Method.html">Method</a> names may be one of the operators or
+must start a letter or a character with the eight bit set. It may contain
+letters, numbers, an <code>_</code> (underscore or low line) or a character
+with the eight bit set. The convention is to use underscores to separate
+words in a multiword method name:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">method_name</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;use underscores to separate words&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Ruby programs must be written in a US-ASCII-compatible character set such
+as UTF-8, ISO-8859-1 etc. In such character sets if the eight bit is set it
+indicates an extended character. Ruby allows method names and other
+identifiers to contain such characters. Ruby programs cannot contain some
+characters like ASCII NUL (&lt;code&gt;x00&lt;code&gt;).</p>
+
+<p>The following are the examples of valid ruby methods:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>
+  <span class="ruby-string">&quot;hello&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">こんにちは</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;means hello in Japanese&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Typically method names are US-ASCII compatible since the keys to type them
+exist on all keyboards.</p>
+
+<p><a href="../../Method.html">Method</a> names may end with a <code>!</code>
+(bang or exclamation mark), a <code>?</code> (question mark) or
+<code>=</code> equals sign.</p>
+
+<p>The bang methods(<code>!</code> at the end of method name) are called and
+executed just like any other method. However, by convention, a method with
+an exclamation point or bang is considered dangerous. In ruby core library
+the dangerous method implies that when a method ends with a
+bang(<code>!</code>), it indicates that unlike its non-bang equivalent,
+permanently modifies its receiver. Almost always, Ruby core library will
+have a non-bang counterpart(method name which does NOT end with
+<code>!</code>) of every bang method (method name which does end with
+<code>!</code>) that has does not modify the receiver. This convention is
+typically true for ruby core libary but may/may not hold true for other
+ruby libraries.</p>
+
+<p>Methods that end with a question mark by convention return boolean. But
+they may not always return just <code>true</code> or <code>false</code>. 
+Often they will may return an object to indicate a true value (or “truthy”
+value).</p>
+
+<p>Methods that end with an equals sign indicate an assignment method.  For
+assignment methods the return value is ignored, the arguments are returned
+instead.</p>
+
+<p>These are method names for the various ruby operators.  Each of these
+operators accept only one argument.  Following the operator is the typical
+use or name of the operator.  Creating an alternate meaning for the
+operator may lead to confusion as the user expects plus to add things,
+minus to subtract things, etc.  Additionally, you cannot alter the
+precedence of the operators.</p>
+<dl class="rdoc-list note-list"><dt><code>+</code>   
+<dd>
+<p>add</p>
+</dd><dt><code>-</code>   
+<dd>
+<p>subtract</p>
+</dd><dt><code>*</code>   
+<dd>
+<p>multiply</p>
+</dd><dt><code>**</code>  
+<dd>
+<p>power</p>
+</dd><dt><code>/</code>   
+<dd>
+<p>divide</p>
+</dd><dt><code>%</code>   
+<dd>
+<p>modulus division, <a href="../../String.html#method-i-25">String#%</a></p>
+</dd><dt><code>&amp;</code>   
+<dd>
+<p>AND</p>
+</dd><dt><code>^</code>   
+<dd>
+<p>XOR (exclusive OR)</p>
+</dd><dt><code>&gt;&gt;</code>  
+<dd>
+<p>right-shift</p>
+</dd><dt><code>&lt;&lt;</code>  
+<dd>
+<p>left-shift, append</p>
+</dd><dt><code>==</code>  
+<dd>
+<p>equal</p>
+</dd><dt><code>!=</code>  
+<dd>
+<p>not equal</p>
+</dd><dt><code>===</code> 
+<dd>
+<p>case equality.  See <a
+href="../../Object.html#method-i-3D-3D-3D">Object#===</a></p>
+</dd><dt><code>=~</code>  
+<dd>
+<p>pattern match.  (Not just for regular expressions)</p>
+</dd><dt><code>!~</code>  
+<dd>
+<p>does not match</p>
+</dd><dt><code>&lt;=&gt;</code> 
+<dd>
+<p>comparison aka spaceship operator.  See <a
+href="../../Comparable.html">Comparable</a></p>
+</dd><dt><code>&lt;</code>   
+<dd>
+<p>less-than</p>
+</dd><dt><code>&lt;=</code>  
+<dd>
+<p>less-than or equal</p>
+</dd><dt><code>&gt;</code>   
+<dd>
+<p>greater-than</p>
+</dd><dt><code>&gt;=</code>  
+<dd>
+<p>greater-than or equal</p>
+</dd></dl>
+
+<p>To define unary methods minus, plus, tilde and not (<code>!</code>) follow
+the operator with an <code>@</code> as in <code>+@</code> or
+<code>!@</code>:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-operator">-@</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;you inverted this object&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">obj</span> = <span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-operator">-</span><span class="ruby-identifier">obj</span> <span class="ruby-comment"># prints &quot;you inverted this object&quot;</span>
+</pre>
+
+<p>Unary methods accept zero arguments.</p>
+
+<p>Additionally, methods for element reference and assignment may be defined:
+<code>[]</code> and <code>[]=</code> respectively. Both can take one or
+more arguments, and element reference can take none.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span>)
+    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">a</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">obj</span> = <span class="ruby-constant">C</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-identifier">obj</span>[<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]     <span class="ruby-comment"># prints &quot;5&quot;</span>
+<span class="ruby-identifier">obj</span>[<span class="ruby-value">2</span>, <span class="ruby-value">3</span>] = <span class="ruby-value">4</span> <span class="ruby-comment"># prints &quot;10&quot;</span>
+</pre>
+
+<h2 id="label-Return+Values">Return Values<span><a href="#label-Return+Values">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>By default, a method returns the last expression that was evaluated in the
+body of the method.  In the example above, the last (and only) expression
+evaluated was the simple sum <code>1 + 1</code>.  The <code>return</code>
+keyword can be used to make it explicit that a method returns a value.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">one_plus_one</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>It can also be used to make a method return before the last expression is
+evaluated.</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">two_plus_two</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-value">2</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>
+  <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>  <span class="ruby-comment"># this expression is never evaluated</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Note that for assignment methods the return value will always be ignored.
+Instead the argument will be returned:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">a=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">p</span>(<span class="ruby-identifier">a</span> = <span class="ruby-value">5</span>) <span class="ruby-comment"># prints 5</span>
+</pre>
+
+<h2 id="label-Scope">Scope<span><a href="#label-Scope">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The standard syntax to define a method:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+  <span class="ruby-comment"># ...</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>adds the method to a class.  You can define an instance method on a
+specific class with the <code>class</code> keyword:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+    <span class="ruby-comment"># ...</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>A method may be defined on another object.  You may define a “class method”
+(a method that is defined on the class, not an instance of the class) like
+this:</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">C</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">my_method</span>
+    <span class="ruby-comment"># ...</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>However, this is simply a special case of a greater syntactical power in
+Ruby, the ability to add methods to any object.  Classes are objects, so
+adding class methods is simply adding methods to the <a
+href="../../Class.html">Class</a> object.</p>
+
+<p>The syntax for adding a method to an object is as follows:</p>
+
+<pre class="ruby"><span class="ruby-identifier">greeting</span> = <span class="ruby-string">&quot;Hello&quot;</span>
+
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">greeting</span>.<span class="ruby-identifier">broaden</span>
+  <span class="ruby-keyword">self</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;, world!&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">greeting</span>.<span class="ruby-identifier">broaden</span> <span class="ruby-comment"># returns &quot;Hello, world!&quot;</span>
+</pre>
+
+<p><code>self</code> is a keyword referring to the current object under
+consideration by the compiler, which might make the use of
+<code>self</code> in defining a class method above a little clearer. 
+Indeed, the example of adding a <code>hello</code> method to the class
+<code>String</code> can be rewritten thus:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-constant">String</span>.<span class="ruby-identifier">hello</span>
+  <span class="ruby-string">&quot;Hello, world!&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>A method defined like this is called a “singleton method”. 
+<code>broaden</code> will only exist on the string instance
+<code>greeting</code>.  Other strings will not have <code>broaden</code>.</p>
+
+<h2 id="label-Overriding">Overriding<span><a href="#label-Overriding">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>When Ruby encounters the <code>def</code> keyword, it doesn’t consider it
+an error if the method already exists: it simply redefines it.  This is
+called <em>overriding</em>.  Rather like extending core classes, this is a
+potentially dangerous ability, and should be used sparingly because it can
+cause unexpected results.  For example, consider this irb session:</p>
+
+<pre>&gt;&gt; &quot;43&quot;.to_i
+=&gt; 43
+&gt;&gt; class String
+&gt;&gt;   def to_i
+&gt;&gt;     42
+&gt;&gt;   end
+&gt;&gt; end
+=&gt; nil
+&gt;&gt; &quot;43&quot;.to_i
+=&gt; 42</pre>
+
+<p>This will effectively sabotage any code which makes use of the method
+<code>String#to_i</code> to parse numbers from strings.</p>
+
+<h2 id="label-Arguments">Arguments<span><a href="#label-Arguments">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>A method may accept arguments.  The argument list follows the method name:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_one</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>When called, the user of the <code>add_one</code> method must provide an
+argument.  The argument is a local variable in the method body.  The method
+will then add one to this argument and return the value.  If given
+<code>1</code> this method will return <code>2</code>.</p>
+
+<p>The parentheses around the arguments are optional:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_one</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-identifier">value</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Multiple arguments are separated by a comma:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_values</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+  <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>When called, the arguments must be provided in the exact order.  In other
+words, the arguments are positional.</p>
+
+<h3 id="label-Default+Values">Default Values<span><a href="#label-Default+Values">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Arguments may have default values:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_values</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span> = <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>The default value does not need to appear first, but arguments with
+defaults must be grouped together.  This is ok:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">add_values</span>(<span class="ruby-identifier">a</span> = <span class="ruby-value">1</span>, <span class="ruby-identifier">b</span> = <span class="ruby-value">2</span>, <span class="ruby-identifier">c</span>)
+  <span class="ruby-identifier">a</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">b</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>This will raise a SyntaxError:</p>
+
+<pre>def add_values(a = 1, b, c = 1)
+  a + b + c
+end</pre>
+
+<h3 id="label-Array+Decomposition"><a href="../../Array.html">Array</a> Decomposition<span><a href="#label-Array+Decomposition">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>You can decompose (unpack or extract values from) an <a
+href="../../Array.html">Array</a> using extra parentheses in the arguments:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>((<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>))
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">my_method</span>([<span class="ruby-value">1</span>, <span class="ruby-value">2</span>])
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby">{:<span class="ruby-identifier">a=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>, :<span class="ruby-identifier">b=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2</span>}
+</pre>
+
+<p>If the argument has extra elements in the <a
+href="../../Array.html">Array</a> they will be ignored:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>((<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>))
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">my_method</span>([<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>])
+</pre>
+
+<p>This has the same output as above.</p>
+
+<p>You can use a <code>*</code> to collect the remaining arguments.  This
+splits an <a href="../../Array.html">Array</a> into a first element and the
+rest:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>((<span class="ruby-identifier">a</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">b</span>))
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">my_method</span>([<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>])
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby">{:<span class="ruby-identifier">a=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>, :<span class="ruby-identifier">b=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value">2</span>, <span class="ruby-value">3</span>]}
+</pre>
+
+<p>The argument will be decomposed if it responds to to_ary.  You should only
+define to_ary if you can use your object in place of an <a
+href="../../Array.html">Array</a>.</p>
+
+<p>Use of the inner parentheses only uses one of the sent arguments.  If the
+argument is not an <a href="../../Array.html">Array</a> it will be assigned
+to the first argument in the decomposition and the remaining arguments in
+the decomposition will be <code>nil</code>:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>(<span class="ruby-identifier">a</span>, (<span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span>), <span class="ruby-identifier">d</span>)
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">:</span> <span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span><span class="ruby-operator">:</span> <span class="ruby-identifier">c</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">:</span> <span class="ruby-identifier">d</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">my_method</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>)
+</pre>
+
+<p>This prints:</p>
+
+<pre class="ruby">{:<span class="ruby-identifier">a=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span>, :<span class="ruby-identifier">b=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2</span>, :<span class="ruby-identifier">c=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">nil</span>, :<span class="ruby-identifier">d=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">3</span>}
+</pre>
+
+<p>You can nest decomposition arbitrarily:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>(((<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>), <span class="ruby-identifier">c</span>))
+  <span class="ruby-comment"># ...</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-Array-2FHash+Argument">Array/Hash Argument<span><a href="#label-Array-2FHash+Argument">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Prefixing an argument with <code>*</code> causes any remaining arguments to
+be converted to an Array:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">gather_arguments</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">arguments</span>)
+  <span class="ruby-identifier">p</span> <span class="ruby-identifier">arguments</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">gather_arguments</span> <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span> <span class="ruby-comment"># prints [1, 2, 3]</span>
+</pre>
+
+<p>The array argument must be the last positional argument, it must appear
+before any keyword arguments.</p>
+
+<p>The array argument will capture a <a href="../../Hash.html">Hash</a> as the
+last entry if a hash was sent by the caller after all positional arguments.</p>
+
+<pre class="ruby"><span class="ruby-identifier">gather_arguments</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">a</span><span class="ruby-operator">:</span> <span class="ruby-value">2</span> <span class="ruby-comment"># prints [1, {:a=&gt;2}]</span>
+</pre>
+
+<p>However, this only occurs if the method does not declare any keyword
+arguments.</p>
+
+<pre>def gather_arguments_keyword(*positional, keyword: nil)
+ p positional: positional, keyword: keyword
+end
+
+gather_arguments_keyword 1, 2, three: 3
+#=&gt; raises: unknown keyword: three (ArgumentError)</pre>
+
+<p>Also, note that a bare <code>*</code> can be used to ignore arguments:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">ignore_arguments</span>(<span class="ruby-operator">*</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-Keyword+Arguments">Keyword Arguments<span><a href="#label-Keyword+Arguments">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Keyword arguments are similar to positional arguments with default values:</p>
+
+<pre>def add_values(first: 1, second: 2)
+  first + second
+end</pre>
+
+<p>Arbitrary keyword arguments will be accepted with <code>**</code>:</p>
+
+<pre>def gather_arguments(first: nil, **rest)
+  p first, rest
+end
+
+gather_arguments first: 1, second: 2, third: 3
+# prints 1 then {:second=&gt;2, :third=&gt;3}</pre>
+
+<p>When calling a method with keyword arguments the arguments may appear in
+any order.  If an unknown keyword argument is sent by the caller an <a
+href="../../ArgumentError.html">ArgumentError</a> is raised.</p>
+
+<p>When mixing keyword arguments and positional arguments, all positional
+arguments must appear before any keyword arguments.</p>
+
+<h2 id="label-Block+Argument">Block Argument<span><a href="#label-Block+Argument">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The block argument is indicated by <code>&amp;</code> and must come last:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">my_block</span>)
+  <span class="ruby-identifier">my_block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>Most frequently the block argument is used to pass a block to another
+method:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">each_item</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@items</span>.<span class="ruby-identifier">each</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>If you are only going to call the block and will not otherwise manipulate
+it or send it to another method using <code>yield</code> without an
+explicit block parameter is preferred.  This method is equivalent to the
+first method in this section:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>There is also a performance benefit to using yield over a calling a block
+parameter.  When a block argument is assigned to a variable a <a
+href="../../Proc.html">Proc</a> object is created which holds the block. 
+When using yield this <a href="../../Proc.html">Proc</a> object is not
+created.</p>
+
+<p>If you only need to use the block sometimes you can use <a
+href="../../Proc.html#method-c-new">Proc.new</a> to create a proc from the
+block that was passed to your method.  See <a
+href="../../Proc.html#method-c-new">Proc.new</a> for further details.</p>
+
+<h2 id="label-Exception+Handling"><a href="../../Exception.html">Exception</a> Handling<span><a href="#label-Exception+Handling">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Methods have an implied exception handling block so you do not need to use
+<code>begin</code> or <code>end</code> to handle exceptions.  This:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-comment"># code that may raise an exception</span>
+  <span class="ruby-keyword">rescue</span>
+    <span class="ruby-comment"># handle exception</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>May be written as:</p>
+
+<pre class="ruby"><span class="ruby-keyword">def</span> <span class="ruby-identifier">my_method</span>
+  <span class="ruby-comment"># code that may raise an exception</span>
+<span class="ruby-keyword">rescue</span>
+  <span class="ruby-comment"># handle exception</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<p>If you wish to rescue an exception for only part of your method use
+<code>begin</code> and <code>end</code>.  For more details see the page on
+exception handling.</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small>Generated with Rubydoc Rdoc Generator 0.32.0</small>.</p>
+	</div>
+
+    
+
+
+</body>
+
+</html>
+

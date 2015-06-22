@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta charset="UTF-8">
+   <title>
+   </title>
+   <meta name="description" content="" />
+   <meta name="keywords" content="" />
+ </head>
+ <body>
+   <ul> 
+   <% @arr.each do |page| %>
+     <li>
+       <a href="/sinatra/markdown/posts/md/<%= page%>"><%= formatter(page) %></a>
+     </li>
+   <% end %>
+   </ul>
+ </body>
+</html>
+
+    
+  

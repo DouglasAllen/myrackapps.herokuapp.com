@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : Rake::SshFreshDirPublisher  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:24:15 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: Rake::SshFreshDirPublisher (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>rake/contrib/sshpublisher.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="SshDirPublisher.html">Rake::SshDirPublisher</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-upload">#upload</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../FileUtils.html">FileUtils</a></li>
+        
+          
+          
+          <li><a href="../Module.html">Module</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../Pathname.html">Pathname</a></li>
+        
+          
+          
+          <li><a href="../Rake/Application.html">Rake::Application</a></li>
+        
+          
+          
+          <li><a href="../Rake/CompositePublisher.html">Rake::CompositePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/DSL.html">Rake::DSL</a></li>
+        
+          
+          
+          <li><a href="../Rake/DefaultLoader.html">Rake::DefaultLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/EarlyTime.html">Rake::EarlyTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileCreationTask.html">Rake::FileCreationTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileList.html">Rake::FileList</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileTask.html">Rake::FileTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileUtilsExt.html">Rake::FileUtilsExt</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain.html">Rake::InvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain/EmptyInvocationChain.html">Rake::InvocationChain::EmptyInvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationExceptionMixin.html">Rake::InvocationExceptionMixin</a></li>
+        
+          
+          
+          <li><a href="../Rake/LateTime.html">Rake::LateTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList.html">Rake::LinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList/EmptyLinkedList.html">Rake::LinkedList::EmptyLinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/MakefileLoader.html">Rake::MakefileLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/MultiTask.html">Rake::MultiTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/NameSpace.html">Rake::NameSpace</a></li>
+        
+          
+          
+          <li><a href="../Rake/PackageTask.html">Rake::PackageTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/PrivateReader.html">Rake::PrivateReader</a></li>
+        
+          
+          
+          <li><a href="../Rake/RuleRecursionOverflowError.html">Rake::RuleRecursionOverflowError</a></li>
+        
+          
+          
+          <li><a href="../Rake/Scope.html">Rake::Scope</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshDirPublisher.html">Rake::SshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFilePublisher.html">Rake::SshFilePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFreshDirPublisher.html">Rake::SshFreshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/Task.html">Rake::Task</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArgumentError.html">Rake::TaskArgumentError</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArguments.html">Rake::TaskArguments</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskLib.html">Rake::TaskLib</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskManager.html">Rake::TaskManager</a></li>
+        
+          
+          
+          <li><a href="../Rake/TestTask.html">Rake::TestTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/Win32.html">Rake::Win32</a></li>
+        
+          
+          
+          <li><a href="../String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">Rake::SshFreshDirPublisher</h1>
+
+    <div id="description" class="description">
+      
+<p>Publish an entire directory to a fresh remote directory using SSH.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="upload-method" class="method-detail ">
+          <a name="method-i-upload"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">upload</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Uploads the files after removing the existing remote directory.</p>
+            
+
+            
+            <div class="method-source-code" id="upload-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/contrib/sshpublisher.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">upload</span>
+  <span class="ruby-identifier">sh</span> <span class="ruby-string">&quot;ssh&quot;</span>, <span class="ruby-ivar">@host</span>, <span class="ruby-string">&quot;rm&quot;</span>, <span class="ruby-string">&quot;-rf&quot;</span>, <span class="ruby-ivar">@remote_dir</span> <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">sh</span> <span class="ruby-string">&quot;ssh&quot;</span>, <span class="ruby-ivar">@host</span>, <span class="ruby-string">&quot;mkdir&quot;</span>,     <span class="ruby-ivar">@remote_dir</span>
+  <span class="ruby-keyword">super</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- upload-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- upload-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_SshFreshDirPublisher_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_SshFreshDirPublisher_versioned").load("/associated/2_2_0/SshFreshDirPublisher.html");</script> <div id='tx_SshFreshDirPublisher' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_SshFreshDirPublisher").load("/associated/SshFreshDirPublisher.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, a <a href="http://www.neurogami.com">software development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_SshFreshDirPublisher.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

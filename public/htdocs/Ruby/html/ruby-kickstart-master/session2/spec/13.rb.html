@@ -1,0 +1,558 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">helper</span><span style="color:#710">'</span></span>
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span><span style="color:#777"># make the date readable for when it gets stuck in output</span>
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Date</span>
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">inspect</span>
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>    to_s
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span>
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">User</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a username</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span>    expect(lissa.username).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span>    lissa.username = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Programmer Superstar</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span>    expect(lissa.username).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Programmer Superstar</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span>
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span>
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Blog</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">has a date, user, and text</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span>    date  = <span style="color:#036;font-weight:bold">Date</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span>    blog  = <span style="color:#036;font-weight:bold">Blog</span>.new date, lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span>    expect(blog.date).to eq date
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span>    expect(blog.user).to eq lissa
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span>    expect(blog.text).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span>
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#summary returns the first ten words of the text</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span>    date  = <span style="color:#036;font-weight:bold">Date</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span>    blog  = <span style="color:#036;font-weight:bold">Blog</span>.new date, lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one two three four five six seven eight nine ten eleven twelve</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span>    expect(blog.summary).to    eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one two three four five six seven eight nine ten</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span>    expect(blog.text).to       eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">one two three four five six seven eight nine ten eleven twelve</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span>
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#entry returns the username, date, and text</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>    date  = <span style="color:#036;font-weight:bold">Date</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2010-05-28</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span>    blog  = <span style="color:#036;font-weight:bold">Blog</span>.new date, lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-BLOG_ENTRY</span></span>.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci nunc, porta non tristique eu, auctor tincidunt mauris.</span></span>
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vitae nibh sapien. Curabitur</span></span>
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      eget eros bibendum justo congue auctor non at turpis. Aenean feugiat vestibulum mi ac pulvinar. Fusce ut felis justo, in</span></span>
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      porta lectus.</span><span style="color:#710"></span></span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">    BLOG_ENTRY</span></span>
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span>    expect(blog.entry).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-EXPECTED_OUTPUT</span></span>.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      QTSort 2010-05-28</span></span>
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci nunc, porta non tristique eu, auctor tincidunt mauris.</span></span>
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vitae nibh sapien. Curabitur</span></span>
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      eget eros bibendum justo congue auctor non at turpis. Aenean feugiat vestibulum mi ac pulvinar. Fusce ut felis justo, in</span></span>
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      porta lectus.</span><span style="color:#710"></span></span>
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">    EXPECTED_OUTPUT</span></span>
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">returns the correct entry, even if the blog changes</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span>    date  = <span style="color:#036;font-weight:bold">Date</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2010-05-28</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span>    blog  = <span style="color:#036;font-weight:bold">Blog</span>.new date, lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-BLOG_ENTRY</span></span>.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci nunc, porta non tristique eu, auctor tincidunt mauris.</span></span>
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vitae nibh sapien. Curabitur</span></span>
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      eget eros bibendum justo congue auctor non at turpis. Aenean feugiat vestibulum mi ac pulvinar. Fusce ut felis justo, in</span></span>
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      porta lectus.</span><span style="color:#710"></span></span>
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">    BLOG_ENTRY</span></span>
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span>    expect(blog.entry).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-EXPECTED_OUTPUT</span></span>.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      QTSort 2010-05-28</span></span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce orci nunc, porta non tristique eu, auctor tincidunt mauris.</span></span>
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vitae nibh sapien. Curabitur</span></span>
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      eget eros bibendum justo congue auctor non at turpis. Aenean feugiat vestibulum mi ac pulvinar. Fusce ut felis justo, in</span></span>
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      porta lectus.</span><span style="color:#710"></span></span>
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">    EXPECTED_OUTPUT</span></span>
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span>    blog.date = <span style="color:#036;font-weight:bold">Date</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2009-01-02</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span>    blog.user = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">disloyalist.party</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span>    blog.text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">From the school of revision, Comes the standard inventor's rule, Books of subtle notation Compositions, all original</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> \
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span>                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am a pioneer, synthetic engineer, On the brink of discovery, On the eve of historic light, Worked in secret for decades,</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> \
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span>                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">All my labor will be lost with time</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span>    expect(blog.entry).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-EXPECTED_OUTPUT</span></span>.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20"></span></span>
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      disloyalist.party 2009-01-02</span></span>
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      From the school of revision, Comes the standard inventor's rule, Books of subtle notation Compositions, all original</span></span>
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      I am a pioneer, synthetic engineer, On the brink of discovery, On the eve of historic light, Worked in secret for decades,</span></span>
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">      All my labor will be lost with time</span><span style="color:#710"></span></span>
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">    EXPECTED_OUTPUT</span></span>
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span>
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">is equal to another blog, if they have the same user, date, and text</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>    josh  = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Josh</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span>
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span>    blog1 = <span style="color:#036;font-weight:bold">Blog</span>.new(<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>), lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span>    blog2 = <span style="color:#036;font-weight:bold">Blog</span>.new(<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>), lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span>    blog3 = <span style="color:#036;font-weight:bold">Blog</span>.new(<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2011-11-11</span><span style="color:#710">&quot;</span></span>), lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span>    blog4 = <span style="color:#036;font-weight:bold">Blog</span>.new(<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>), josh,  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span>    blog5 = <span style="color:#036;font-weight:bold">Blog</span>.new(<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>), lissa, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my least favourite</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span>    expect(blog1).to     eq blog2 <span style="color:#777"># eq uses the == method</span>
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span>    expect(blog1).to_not eq blog3
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span>    expect(blog1).to_not eq blog4
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span>    expect(blog1).to_not eq blog5
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span>
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span>
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">User</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span>  specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A new user has no blogs</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span>    user = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span>    expect(user.blogs).to eq <span style="color:#036;font-weight:bold">Array</span>.new
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span>
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">can add blogs</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span>    user = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span>    user.add_blog(<span style="color:#036;font-weight:bold">Date</span>.today, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span>    expect(user.blogs.size).to       eq <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>    expect(user.blogs.first.date).to eq <span style="color:#036;font-weight:bold">Date</span>.today
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span>    expect(user.blogs.first.text).to eq <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span>
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">can retrieve its added blogs</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span>    user = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span>    blog = user.add_blog(<span style="color:#036;font-weight:bold">Date</span>.today, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>)
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span>    expect(user.blogs.first).to eq blog
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span>
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span>  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">returns its blogs in order of date</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span>    lissa = <span style="color:#036;font-weight:bold">User</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">QTSort</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span>    blog1 = lissa.add_blog <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-05-28</span><span style="color:#710">&quot;</span></span>), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Sailor Venus is my favourite</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span>    blog2 = lissa.add_blog <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2007-01-02</span><span style="color:#710">&quot;</span></span>), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Going dancing!</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span>    blog3 = lissa.add_blog <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2006-01-02</span><span style="color:#710">&quot;</span></span>), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">For the last time, fuck facebook &gt;.&lt;</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span>    blog4 = lissa.add_blog <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2010-01-02</span><span style="color:#710">&quot;</span></span>), <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Got a new job, cuz I'm pretty much the best ^_^</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span>    expect(lissa.blogs.size).to eq <span style="color:#00D">4</span>
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span>    blog_dates = lissa.blogs.map { |blog| blog.date }
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>    expect(blog_dates).to eq [<span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2010-05-28</span><span style="color:#710">'</span></span>), <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2010-01-02</span><span style="color:#710">'</span></span>), <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2007-01-02</span><span style="color:#710">'</span></span>), <span style="color:#036;font-weight:bold">Date</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2006-01-02</span><span style="color:#710">'</span></span>)]
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span>    expect(lissa.blogs).to eq [blog1, blog4, blog2, blog3]
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

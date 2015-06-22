@@ -1,0 +1,1181 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-this--object-prototypes">You Don’t Know JS: <em>this</em> &amp; Object Prototypes</h1>
+<p># Appendix A: ES6 <code>class</code></p>
+
+<p>If there’s any take-away message from the second half of this book (Chapters 4-6), it’s that classes are an optional design pattern for code (not a necessary given), and that furthermore they are often quite awkward to implement in a <code>[[Prototype]]</code> language like JavaScript.</p>
+
+<p>This awkwardness is <em>not</em> just about syntax, although that’s a big part of it. Chapters 4 and 5 examined quite a bit of syntactic ugliness, from verbosity of <code>.prototype</code> references cluttering the code, to <em>explicit pseudo-polymorphism</em> (see Chapter 4) when you give methods the same name at different levels of the chain and try to implement a polymorphic reference from a lower-level method to a higher-level method. <code>.constructor</code> being wrongly interpreted as “was constructed by” and yet being unreliable for that definition is yet another syntactic ugly.</p>
+
+<p>But the problems with class design are much deeper. Chapter 4 points out that classes in traditional class-oriented languages actually produce a <em>copy</em> action from parent to child to instance, whereas in <code>[[Prototype]]</code>, the action is <strong>not</strong> a copy, but rather the opposite – a delegation link.</p>
+
+<p>When compared to the simplicity of OLOO-style code and behavior delegation (see Chapter 6), which embrace <code>[[Prototype]]</code> rather than hide from it, classes stand out as a sore thumb in JS.</p>
+
+<h2 id="class"><code>class</code></h2>
+
+<p>But we <em>don’t</em> need to re-argue that case again. I re-mention those issues briefly only so that you keep them fresh in your mind now that we turn our attention to the ES6 <code>class</code> mechanism. We’ll demonstrate here how it works, and look at whether or not <code>class</code> does anything substantial to address any of those “class” concerns.</p>
+
+<p>Let’s revisit the <code>Widget</code> / <code>Button</code> example from Chapter 6:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> Widget {
+        constructor(width,height) {
+                <span style="color:#950">this</span>.width = width || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.height = height || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#069">null</span>;
+        }
+        render(<span style="color:#369;font-weight:bold">$where</span>){
+                <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>) {
+                        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.css( {
+                                <span style="color:#606">width</span>: <span style="color:#950">this</span>.width + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>,
+                                <span style="color:#606">height</span>: <span style="color:#950">this</span>.height + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>
+                        } ).appendTo( <span style="color:#369;font-weight:bold">$where</span> );
+                }
+        }
+}
+
+<span style="color:#080;font-weight:bold">class</span> Button <span style="color:#080;font-weight:bold">extends</span> Widget {
+        constructor(width,height,label) {
+                <span style="color:#080;font-weight:bold">super</span>( width, height );
+                <span style="color:#950">this</span>.label = label || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default</span><span style="color:#710">&quot;</span></span>;
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#369;font-weight:bold">$</span>( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;button&gt;</span><span style="color:#710">&quot;</span></span> ).text( <span style="color:#950">this</span>.label );
+        }
+        render(<span style="color:#369;font-weight:bold">$where</span>) {
+                <span style="color:#080;font-weight:bold">super</span>( <span style="color:#369;font-weight:bold">$where</span> );
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.click( <span style="color:#950">this</span>.onClick.bind( <span style="color:#950">this</span> ) );
+        }
+        onClick(evt) {
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Button '</span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.label + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">' clicked!</span><span style="color:#710">&quot;</span></span> );
+        }
+}
+</pre></div>
+</div>
+</div>
+
+<p>Beyond this syntax <em>looking</em> nicer, what problems does ES6 solve?</p>
+
+<ol>
+  <li>There’s no more (well, sorta, see below!) references to <code>.prototype</code> cluttering the code.</li>
+  <li><code>Button</code> is declared directly to “inherit from” (aka <code>extends</code>) <code>Widget</code>, instead of needing to use <code>Object.create(..)</code> to replace a <code>.prototype</code> object that’s linked, or having to set with <code>.__proto__</code> or <code>Object.setPrototypeOf(..)</code>.</li>
+  <li><code>super(..)</code> now gives us a very helpful <strong>relative polymorphism</strong> capability, so that any method at one level of the chain can refer relatively one level up the chain to a method of the same name. This includes a solution to the note from Chapter 4 about the weirdness of constructors not belonging to their class, and so being unrelated – <code>super()</code> works inside constructors exactly as you’d expect.</li>
+  <li><code>class</code> literal syntax has no affordance for specifying properties (only methods). This might seem limiting to some, but it’s expected that the vast majority of cases where a property (state) exists elsewhere but the end-chain “instances”, this is usually a mistake and surprising (as it’s state that’s implicitly “shared” among all “instances”). So, one <em>could</em> say the <code>class</code> syntax is protecting you from mistakes.</li>
+  <li><code>extends</code> lets you extend even built-in object (sub)types, like <code>Array</code> or <code>RegExp</code>, in a very natural way. Doing so without <code>class .. extends</code> has long been an exceedingly complex and frustrating task, one that only the most adept of framework authors have ever been able to accurately tackle. Now, it will be rather trivial!</li>
+</ol>
+
+<p>In all fairness, those are some substantial solutions to many of the most obvious (syntactic) issues and surprises people have with classical prototype-style code.</p>
+
+<h2 id="class-gotchas"><code>class</code> Gotchas</h2>
+
+<p>It’s not all bubblegum and roses, though. There are still some deep and profoundly troubling issues with using “classes” as a design pattern in JS.</p>
+
+<p>Firstly, the <code>class</code> syntax may convince you a new “class” mechanism exists in JS as of ES6. <strong>Not so.</strong> <code>class</code> is, mostly, just syntactic sugar on top of the existing <code>[[Prototype]]</code> (delegation!) mechanism.</p>
+
+<p>That means <code>class</code> is not actually copying definitions statically at declaration time the way it does in traditional class-oriented languages. If you change/replace a method (on purpose or by accident) on the parent “class”, the child “class” and/or instances will still be “affected”, in that they didn’t get copies at declaration time, they are all still using the live-delegation model based on <code>[[Prototype]]</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> C {
+        constructor() {
+                <span style="color:#950">this</span>.num = Math.random();
+        }
+        rand() {
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Random: </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.num );
+        }
+}
+
+<span style="color:#080;font-weight:bold">var</span> c1 = <span style="color:#080;font-weight:bold">new</span> C();
+c1.rand(); <span style="color:#777">// &quot;Random: 0.4324299...&quot;</span>
+
+C.prototype.<span style="color:#06B;font-weight:bold">rand</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Random: </span><span style="color:#710">&quot;</span></span> + Math.round( <span style="color:#950">this</span>.num * <span style="color:#00D">1000</span> ));
+};
+
+<span style="color:#080;font-weight:bold">var</span> c2 = <span style="color:#080;font-weight:bold">new</span> C();
+c2.rand(); <span style="color:#777">// &quot;Random: 867&quot;</span>
+
+c1.rand(); <span style="color:#777">// &quot;Random: 432&quot; -- oops!!!</span>
+</pre></div>
+</div>
+</div>
+
+<p>This only seems like reasonable behavior <em>if you already know</em> about the delegation nature of things, rather than expecting <em>copies</em> from “real classes”. So the question to ask yourself is, why are you choosing <code>class</code> syntax for something fundamentally different from classes?</p>
+
+<p>Doesn’t the ES6 <code>class</code> syntax <strong>just make it harder</strong> to see and understand the difference between traditional classes and delegated objects?</p>
+
+<p><code>class</code> syntax <em>does not</em> provide a way to declare class member properties (only methods). So if you need to do that to track shared state among instances, then you end up going back to the ugly <code>.prototype</code> syntax, like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> C {
+        constructor() {
+                <span style="color:#777">// make sure to modify the shared state,</span>
+                <span style="color:#777">// not set a shadowed property on the</span>
+                <span style="color:#777">// instances!</span>
+                C.prototype.count++;
+
+                <span style="color:#777">// here, `this.count` works as expected</span>
+                <span style="color:#777">// via delegation</span>
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello: </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.count );
+        }
+}
+
+<span style="color:#777">// add a property for shared state directly to</span>
+<span style="color:#777">// prototype object</span>
+C.prototype.count = <span style="color:#00D">0</span>;
+
+<span style="color:#080;font-weight:bold">var</span> c1 = <span style="color:#080;font-weight:bold">new</span> C();
+<span style="color:#777">// Hello: 1</span>
+
+<span style="color:#080;font-weight:bold">var</span> c2 = <span style="color:#080;font-weight:bold">new</span> C();
+<span style="color:#777">// Hello: 2</span>
+
+c1.count === <span style="color:#00D">2</span>; <span style="color:#777">// true</span>
+c1.count === c2.count; <span style="color:#777">// true</span>
+</pre></div>
+</div>
+</div>
+
+<p>The biggest problem here is that it betrays the <code>class</code> syntax by exposing (leakage!) <code>.prototype</code> as an implementation detail.</p>
+
+<p>But, we also still have the surprise gotcha that <code>this.count++</code> would implicitly create a separate shadowed <code>.count</code> property on both <code>c1</code> and <code>c2</code> objects, rather than updating the shared state. <code>class</code> offers us no consolation from that issue, except (presumably) to imply by lack of syntactic support that you shouldn’t be doing that <em>at all</em>.</p>
+
+<p>Moreover, accidental shadowing is still a hazard:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> C {
+        constructor(id) {
+                <span style="color:#777">// oops, gotcha, we're shadowing `id()` method</span>
+                <span style="color:#777">// with a property value on the instance</span>
+                <span style="color:#950">this</span>.id = id;
+        }
+        id() {
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Id: </span><span style="color:#710">&quot;</span></span> + id );
+        }
+}
+
+<span style="color:#080;font-weight:bold">var</span> c1 = <span style="color:#080;font-weight:bold">new</span> C( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">c1</span><span style="color:#710">&quot;</span></span> );
+c1.id(); <span style="color:#777">// TypeError -- `c1.id` is now the string &quot;c1&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>There’s also some very subtle nuanced issues with how <code>super</code> works. You might assume that <code>super</code> would be bound in an analogous way to how <code>this</code> gets bound (see Chapter 2), which is that <code>super</code> would always be bound to one level higher than whatever the current method’s position in the <code>[[Prototype]]</code> chain is.</p>
+
+<p>However, for performance reasons (<code>this</code> binding is already expensive), <code>super</code> is not bound dynamically. It’s bound sort of “statically”, as declaration time. No big deal, right?</p>
+
+<p>Ehh… maybe, maybe not. If you, like most JS devs, start assigning functions around to different objects (which came from <code>class</code> definitions), in various different ways, you probably won’t be very aware that in all those cases, the <code>super</code> mechanism under the covers is having to be re-bound each time.</p>
+
+<p>And depending on what sorts of syntactic approaches you take to these assignments, there may very well be cases where the <code>super</code> can’t be properly bound (at least, not where you suspect), so you may (at time of writing, TC39 discussion is ongoing on the topic) have to manually bind <code>super</code> with <code>toMethod(..)</code> (kinda like you have to do <code>bind(..)</code> for <code>this</code> – see Chapter 2).</p>
+
+<p>You’re used to being able to assign around methods to different objects to <em>automatically</em> take advantage of the dynamicism of <code>this</code> via the <em>implicit binding</em> rule (see Chapter 2). But the same will likely not be true with methods that use <code>super</code>.</p>
+
+<p>Consider what <code>super</code> should do here (against <code>D</code> and <code>E</code>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> P {
+        foo() { console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">P.foo</span><span style="color:#710">&quot;</span></span> ); }
+}
+
+<span style="color:#080;font-weight:bold">class</span> C <span style="color:#080;font-weight:bold">extends</span> P {
+        foo() {
+                <span style="color:#080;font-weight:bold">super</span>();
+        }
+}
+
+<span style="color:#080;font-weight:bold">var</span> c1 = <span style="color:#080;font-weight:bold">new</span> C();
+c1.foo(); <span style="color:#777">// &quot;P.foo&quot;</span>
+
+<span style="color:#080;font-weight:bold">var</span> D = {
+        <span style="color:#06B;font-weight:bold">foo</span>: <span style="color:#080;font-weight:bold">function</span>() { console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">D.foo</span><span style="color:#710">&quot;</span></span> ); }
+};
+
+<span style="color:#080;font-weight:bold">var</span> E = {
+        <span style="color:#606">foo</span>: C.prototype.foo
+};
+
+<span style="color:#777">// Link E to D for delegation</span>
+Object.setPrototypeOf( E, D );
+
+E.foo(); <span style="color:#777">// &quot;P.foo&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you were thinking (quite reasonably!) that <code>super</code> would be bound dynamically at call-time, you might expect that <code>super()</code> would automatically recognize that <code>E</code> delegates to <code>D</code>, so <code>E.foo()</code> using <code>super()</code> should call to <code>D.foo()</code>.</p>
+
+<p><strong>Not so.</strong> For performance pragmatism reasons, <code>super</code> is not <em>late bound</em> (aka, dynamically bound) like <code>this</code> is. Instead it’s derived at call-time from <code>[[HomeObject]].[[Prototype]]</code>, where <code>[[HomeObject]]</code> is statically bound at creation time.</p>
+
+<p>In this particular case, <code>super()</code> is still resolving to <code>P.foo()</code>, since the method’s <code>[[HomeObject]]</code> is still <code>C</code> and <code>C.[[Prototype]]</code> is <code>P</code>.</p>
+
+<p>There will <em>probably</em> be ways to manually address such gotchas. Using <code>toMethod(..)</code> to bind/rebind a method’s <code>[[HomeObject]]</code> (along with setting the <code>[[Prototype]]</code> of that object!) appears to work in this scenario:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> D = {
+        <span style="color:#06B;font-weight:bold">foo</span>: <span style="color:#080;font-weight:bold">function</span>() { console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">D.foo</span><span style="color:#710">&quot;</span></span> ); }
+};
+
+<span style="color:#777">// Link E to D for delegation</span>
+<span style="color:#080;font-weight:bold">var</span> E = Object.create( D );
+
+<span style="color:#777">// manually bind `foo`s `[[HomeObject]]` as</span>
+<span style="color:#777">// `E`, and `E.[[Prototype]]` is `D`, so thus</span>
+<span style="color:#777">// `super()` is `D.foo()`</span>
+E.foo = C.prototype.foo.toMethod( E, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span> );
+
+E.foo(); <span style="color:#777">// &quot;D.foo&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> <code>toMethod(..)</code> clones the method, and takes <code>homeObject</code> as its first parameter (which is why we pass <code>E</code>), and the second parameter (optionally) sets a <code>name</code> for the new method (which keep at “foo”).</p>
+
+<p>It remains to be seen if there are other corner case gotchas that devs will run into beyond this scenario. Regardless, you will have to be diligent and stay aware of which places the engine automatically figures out <code>super</code> for you, and which places you have to manually take care of it. <strong>Ugh!</strong></p>
+
+<h1 id="static--dynamic">Static &gt; Dynamic?</h1>
+
+<p>But the biggest problem of all about ES6 <code>class</code> is that all these various gotchas mean <code>class</code> sorta opts you into a syntax which seems to imply (like traditional classes) that once you declare a <code>class</code>, it’s a static definition of a (future instantiated) thing. You completely lose sight of the fact <code>C</code> is an object, a concrete thing, which you can directly interact with.</p>
+
+<p>In traditional class-oriented languages, you never adjust the definition of a class later, so the class design pattern doesn’t suggest such capabilities. But <strong>one of the most powerful parts</strong> of JS is that it <em>is</em> dynamic, and the definition of any object is (unless you make it immutable) a fluid and mutable <em>thing</em>.</p>
+
+<p><code>class</code> seems to imply you shouldn’t do such things, by forcing you into the uglier <code>.prototype</code> syntax to do so, or forcing you think about <code>super</code> gotchas, etc. It also offers <em>very little</em> support for any of the pitfalls that this dynamicism can bring.</p>
+
+<p>In other words, it’s as if <code>class</code> is telling you: “dynamic is too hard, so it’s probably not a good idea. Here’s a static-looking syntax, so code your stuff statically.”</p>
+
+<p>What a sad commentary on JavaScript: <strong>dynamic is too hard, let’s pretend to be (but not actually be!) static</strong>.</p>
+
+<p>These are the reasons why ES6 <code>class</code> is masquerading as a nice solution to syntactic headaches, but it’s actually muddying the waters further and making things worse for JS and for clear and concise understanding.</p>
+
+<p><strong>Note:</strong> If you use the <code>.bind(..)</code> utility to make a hard-bound function (see Chapter 2), the function created is not subclassable with ES6 <code>extend</code> like normal functions are.</p>
+
+<h2 id="review-tldr">Review (TL;DR)</h2>
+
+<p><code>class</code> does a very good job of pretending to fix the problems with the class/inheritance design pattern in JS. But it actually does the opposite: <strong>it hides many of the problems, and introduces other subtle but dangerous ones</strong>.</p>
+
+<p><code>class</code> contributes to the ongoing confusion of “class” in JavaScript which has plagued the language for nearly two decades. In some respects, it asks more questions than it answers, and it feels in totality like a very unnatural fit on top of the elegant simplicity of the <code>[[Prototype]]</code> mechanism.</p>
+
+<p>Bottom line: if ES6 <code>class</code> makes it harder to robustly leverage <code>[[Prototype]]</code>, and hides the most important nature of the JS object mechanism – <strong>the live delegation links between objects</strong> – shouldn’t we see <code>class</code> as creating more troubles than it solves, and just relegate it to an anti-pattern?</p>
+
+<p>I can’t really answer that question for you. But I hope this book has fully explored the issue at a deeper level than you’ve ever gone before, and has given you the information you need <em>to answer it yourself</em>.</p>
+
+    </div>
+  </body>
+</html>

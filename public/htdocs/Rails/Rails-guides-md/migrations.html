@@ -1,0 +1,1238 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="active-record-migrations">Active Record Migrations</h1>
+
+<p>Migrations are a feature of Active Record that allows you to evolve your
+database schema over time. Rather than write schema modifications in pure SQL,
+migrations allow you to use an easy Ruby DSL to describe changes to your
+tables.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>The generators you can use to create them.</li>
+  <li>The methods Active Record provides to manipulate your database.</li>
+  <li>The Rake tasks that manipulate migrations and your schema.</li>
+  <li>How migrations relate to <code>schema.rb</code>.</li>
+</ul>
+
+<hr />
+
+<h2 id="migration-overview">Migration Overview</h2>
+
+<p>Migrations are a convenient way to alter your database schema over time in a
+consistent and easy way. They use a Ruby DSL so that you don’t have to write
+SQL by hand, allowing your schema and changes to be database independent.</p>
+
+<p>You can think of each migration as being a new ‘version’ of the database. A
+schema starts off with nothing in it, and each migration modifies it to add or
+remove tables, columns, or entries. Active Record knows how to update your
+schema along this timeline, bringing it from whatever point it is in the
+history to the latest version. Active Record will also update your
+<code>db/schema.rb</code> file to match the up-to-date structure of your database.</p>
+
+<p>Here’s an example of a migration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CreateProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.string <span style="color:#A60">:name</span>
+      t.text <span style="color:#A60">:description</span>
+
+      t.timestamps
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This migration adds a table called <code>products</code> with a string column called
+<code>name</code> and a text column called <code>description</code>. A primary key column called <code>id</code>
+will also be added implicitly, as it’s the default primary key for all Active
+Record models. The <code>timestamps</code> macro adds two columns, <code>created_at</code> and
+<code>updated_at</code>. These special columns are automatically managed by Active Record
+if they exist.</p>
+
+<p>Note that we define the change that we want to happen moving forward in time.
+Before this migration is run, there will be no table. After, the table will
+exist. Active Record knows how to reverse this migration as well: if we roll
+this migration back, it will remove the table.</p>
+
+<p>On databases that support transactions with statements that change the schema,
+migrations are wrapped in a transaction. If the database does not support this
+then when a migration fails the parts of it that succeeded will not be rolled
+back. You will have to rollback the changes that were made by hand.</p>
+
+<p>NOTE: There are certain queries that can’t run inside a transaction. If your
+adapter supports DDL transactions you can use <code>disable_ddl_transaction!</code> to
+disable them for a single migration.</p>
+
+<p>If you wish for a migration to do something that Active Record doesn’t know how
+to reverse, you can use <code>reversible</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ChangeProductsPrice</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      change_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+        dir.up   { t.change <span style="color:#A60">:price</span>, <span style="color:#A60">:string</span> }
+        dir.down { t.change <span style="color:#A60">:price</span>, <span style="color:#A60">:integer</span> }
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Alternatively, you can use <code>up</code> and <code>down</code> instead of <code>change</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ChangeProductsPrice</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">up</span>
+    change_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.change <span style="color:#A60">:price</span>, <span style="color:#A60">:string</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">down</span>
+    change_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.change <span style="color:#A60">:price</span>, <span style="color:#A60">:integer</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="creating-a-migration">Creating a Migration</h2>
+
+<h3 id="creating-a-standalone-migration">Creating a Standalone Migration</h3>
+
+<p>Migrations are stored as files in the <code>db/migrate</code> directory, one for each
+migration class. The name of the file is of the form
+<code>YYYYMMDDHHMMSS_create_products.rb</code>, that is to say a UTC timestamp
+identifying the migration followed by an underscore followed by the name
+of the migration. The name of the migration class (CamelCased version)
+should match the latter part of the file name. For example
+<code>20080906120000_create_products.rb</code> should define class <code>CreateProducts</code> and
+<code>20080906120001_add_details_to_products.rb</code> should define
+<code>AddDetailsToProducts</code>. Rails uses this timestamp to determine which migration
+should be run and in what order, so if you’re copying a migration from another
+application or generate a file yourself, be aware of its position in the order.</p>
+
+<p>Of course, calculating timestamps is no fun, so Active Record provides a
+generator to handle making it for you:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddPartNumberToProducts
+</pre></div>
+</div>
+</div>
+
+<p>This will create an empty but appropriately named migration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddPartNumberToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If the migration name is of the form “AddXXXToYYY” or “RemoveXXXFromYYY” and is
+followed by a list of column names and types then a migration containing the
+appropriate <code>add_column</code> and <code>remove_column</code> statements will be created.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddPartNumberToProducts part_number:string
+</pre></div>
+</div>
+</div>
+
+<p>will generate</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddPartNumberToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:part_number</span>, <span style="color:#A60">:string</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you’d like to add an index on the new column, you can do that as well:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddPartNumberToProducts part_number:string:index
+</pre></div>
+</div>
+</div>
+
+<p>will generate</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddPartNumberToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:part_number</span>, <span style="color:#A60">:string</span>
+    add_index <span style="color:#A60">:products</span>, <span style="color:#A60">:part_number</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Similarly, you can generate a migration to remove a column from the command line:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration RemovePartNumberFromProducts part_number:string
+</pre></div>
+</div>
+</div>
+
+<p>generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">RemovePartNumberFromProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    remove_column <span style="color:#A60">:products</span>, <span style="color:#A60">:part_number</span>, <span style="color:#A60">:string</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You are not limited to one magically generated column. For example</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddDetailsToProducts part_number:string price:decimal
+</pre></div>
+</div>
+</div>
+
+<p>generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddDetailsToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:part_number</span>, <span style="color:#A60">:string</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:price</span>, <span style="color:#A60">:decimal</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If the migration name is of the form “CreateXXX” and is
+followed by a list of column names and types then a migration creating the table
+XXX with the columns listed will be generated. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration CreateProducts name:string part_number:string
+</pre></div>
+</div>
+</div>
+
+<p>generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CreateProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.string <span style="color:#A60">:name</span>
+      t.string <span style="color:#A60">:part_number</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As always, what has been generated for you is just a starting point. You can add
+or remove from it as you see fit by editing the
+<code>db/migrate/YYYYMMDDHHMMSS_add_details_to_products.rb</code> file.</p>
+
+<p>Also, the generator accepts column type as <code>references</code>(also available as
+<code>belongs_to</code>). For instance</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddUserRefToProducts user:references
+</pre></div>
+</div>
+</div>
+
+<p>generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddUserRefToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_reference <span style="color:#A60">:products</span>, <span style="color:#A60">:user</span>, <span style="color:#606">index</span>: <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This migration will create a <code>user_id</code> column and appropriate index.</p>
+
+<p>There is also a generator which will produce join tables if <code>JoinTable</code> is part of the name:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rails g migration CreateJoinTableCustomerProduct customer product
+</pre></div>
+</div>
+</div>
+
+<p>will produce the following migration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CreateJoinTableCustomerProduct</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    create_join_table <span style="color:#A60">:customers</span>, <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      <span style="color:#777"># t.index [:customer_id, :product_id]</span>
+      <span style="color:#777"># t.index [:product_id, :customer_id]</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="model-generators">Model Generators</h3>
+
+<p>The model and scaffold generators will create migrations appropriate for adding
+a new model. This migration will already contain instructions for creating the
+relevant table. If you tell Rails what columns you want, then statements for
+adding these columns will also be created. For example, running</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate model Product name:string description:text
+</pre></div>
+</div>
+</div>
+
+<p>will create a migration that looks like this</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CreateProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.string <span style="color:#A60">:name</span>
+      t.text <span style="color:#A60">:description</span>
+
+      t.timestamps
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can append as many column name/type pairs as you want.</p>
+
+<h3 id="supported-type-modifiers">Supported Type Modifiers</h3>
+
+<p>You can also specify some options just after the field type between curly
+braces. You can use the following modifiers:</p>
+
+<ul>
+  <li><code>limit</code>        Sets the maximum size of the <code>string/text/binary/integer</code> fields</li>
+  <li><code>precision</code>    Defines the precision for the <code>decimal</code> fields</li>
+  <li><code>scale</code>        Defines the scale for the <code>decimal</code> fields</li>
+  <li><code>polymorphic</code>  Adds a <code>type</code> column for <code>belongs_to</code> associations</li>
+</ul>
+
+<p>For instance, running</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate migration AddDetailsToProducts price:decimal{5,2} supplier:references{polymorphic}
+</pre></div>
+</div>
+</div>
+
+<p>will produce a migration that looks like this</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddDetailsToProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:price</span>, <span style="color:#606">precision</span>: <span style="color:#00D">5</span>, <span style="color:#606">scale</span>: <span style="color:#00D">2</span>
+    add_reference <span style="color:#A60">:products</span>, <span style="color:#A60">:user</span>, <span style="color:#606">polymorphic</span>: <span style="color:#069">true</span>, <span style="color:#606">index</span>: <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="writing-a-migration">Writing a Migration</h2>
+
+<p>Once you have created your migration using one of the generators it’s time to
+get to work!</p>
+
+<h3 id="creating-a-table">Creating a Table</h3>
+
+<p>The <code>create_table</code> method is one of the most fundamental, but most of the time,
+will be generated for you from using a model or scaffold generator. A typical
+use would be</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.string <span style="color:#A60">:name</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>which creates a <code>products</code> table with a column called <code>name</code> (and as discussed
+below, an implicit <code>id</code> column).</p>
+
+<p>By default, <code>create_table</code> will create a primary key called <code>id</code>. You can change
+the name of the primary key with the <code>:primary_key</code> option (don’t forget to
+update the corresponding model) or, if you don’t want a primary key at all, you
+can pass the option <code>id: false</code>. If you need to pass database specific options
+you can place an SQL fragment in the <code>:options</code> option. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_table <span style="color:#A60">:products</span>, <span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ENGINE=BLACKHOLE</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.string <span style="color:#A60">:name</span>, <span style="color:#606">null</span>: <span style="color:#069">false</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>will append <code>ENGINE=BLACKHOLE</code> to the SQL statement used to create the table
+(when using MySQL, the default is <code>ENGINE=InnoDB</code>).</p>
+
+<h3 id="creating-a-join-table">Creating a Join Table</h3>
+
+<p>Migration method <code>create_join_table</code> creates a HABTM join table. A typical use
+would be</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_join_table <span style="color:#A60">:products</span>, <span style="color:#A60">:categories</span>
+</pre></div>
+</div>
+</div>
+
+<p>which creates a <code>categories_products</code> table with two columns called
+<code>category_id</code> and <code>product_id</code>. These columns have the option <code>:null</code> set to
+<code>false</code> by default.</p>
+
+<p>You can pass the option <code>:table_name</code> with you want to customize the table
+name. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_join_table <span style="color:#A60">:products</span>, <span style="color:#A60">:categories</span>, <span style="color:#606">table_name</span>: <span style="color:#A60">:categorization</span>
+</pre></div>
+</div>
+</div>
+
+<p>will create a <code>categorization</code> table.</p>
+
+<p>By default, <code>create_join_table</code> will create two columns with no options, but
+you can specify these options using the <code>:column_options</code> option. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_join_table <span style="color:#A60">:products</span>, <span style="color:#A60">:categories</span>, <span style="color:#606">column_options</span>: {<span style="color:#606">null</span>: <span style="color:#069">true</span>}
+</pre></div>
+</div>
+</div>
+
+<p>will create the <code>product_id</code> and <code>category_id</code> with the <code>:null</code> option as
+<code>true</code>.</p>
+
+<p><code>create_join_table</code> also accepts a block, which you can use to add indices
+(which are not created by default) or additional columns:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>create_join_table <span style="color:#A60">:products</span>, <span style="color:#A60">:categories</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.index <span style="color:#A60">:product_id</span>
+  t.index <span style="color:#A60">:category_id</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="changing-tables">Changing Tables</h3>
+
+<p>A close cousin of <code>create_table</code> is <code>change_table</code>, used for changing existing
+tables. It is used in a similar fashion to <code>create_table</code> but the object
+yielded to the block knows more tricks. For example</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>change_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+  t.remove <span style="color:#A60">:description</span>, <span style="color:#A60">:name</span>
+  t.string <span style="color:#A60">:part_number</span>
+  t.index <span style="color:#A60">:part_number</span>
+  t.rename <span style="color:#A60">:upccode</span>, <span style="color:#A60">:upc_code</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>removes the <code>description</code> and <code>name</code> columns, creates a <code>part_number</code> string
+column and adds an index on it. Finally it renames the <code>upccode</code> column.</p>
+
+<h3 id="when-helpers-arent-enough">When Helpers aren’t Enough</h3>
+
+<p>If the helpers provided by Active Record aren’t enough you can use the <code>execute</code>
+method to execute arbitrary SQL:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Products</span>.connection.execute(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">UPDATE `products` SET `price`=`free` WHERE 1</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>For more details and examples of individual methods, check the API documentation.
+In particular the documentation for
+<a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html"><code>ActiveRecord::ConnectionAdapters::SchemaStatements</code></a>
+(which provides the methods available in the <code>change</code>, <code>up</code> and <code>down</code> methods),
+<a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html"><code>ActiveRecord::ConnectionAdapters::TableDefinition</code></a>
+(which provides the methods available on the object yielded by <code>create_table</code>)
+and
+<a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html"><code>ActiveRecord::ConnectionAdapters::Table</code></a>
+(which provides the methods available on the object yielded by <code>change_table</code>).</p>
+
+<h3 id="using-the-change-method">Using the <code>change</code> Method</h3>
+
+<p>The <code>change</code> method is the primary way of writing migrations. It works for the
+majority of cases, where Active Record knows how to reverse the migration
+automatically. Currently, the <code>change</code> method supports only these migration
+definitions:</p>
+
+<ul>
+  <li><code>add_column</code></li>
+  <li><code>add_index</code></li>
+  <li><code>add_reference</code></li>
+  <li><code>add_timestamps</code></li>
+  <li><code>create_table</code></li>
+  <li><code>create_join_table</code></li>
+  <li><code>drop_table</code> (must supply a block)</li>
+  <li><code>drop_join_table</code>  (must supply a block)</li>
+  <li><code>remove_timestamps</code></li>
+  <li><code>rename_column</code></li>
+  <li><code>rename_index</code></li>
+  <li><code>remove_reference</code></li>
+  <li><code>rename_table</code></li>
+</ul>
+
+<p><code>change_table</code> is also reversible, as long as the block does not call <code>change</code>,
+<code>change_default</code> or <code>remove</code>.</p>
+
+<p>If you’re going to need to use any other methods, you should use <code>reversible</code>
+or write the <code>up</code> and <code>down</code> methods instead of using the <code>change</code> method.</p>
+
+<h3 id="using-reversible">Using <code>reversible</code></h3>
+
+<p>Complex migrations may require processing that Active Record doesn’t know how
+to reverse. You can use <code>reversible</code> to specify what to do when running a
+migration what else to do when reverting it. For example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ExampleMigration</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.references <span style="color:#A60">:category</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up <span style="color:#080;font-weight:bold">do</span>
+        <span style="color:#777">#add a foreign key</span>
+        execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+          ALTER TABLE products
+            ADD CONSTRAINT fk_products_categories
+            FOREIGN KEY (category_id)
+            REFERENCES categories(id)</span><span style="color:#710">
+        SQL</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+      dir.down <span style="color:#080;font-weight:bold">do</span>
+        execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+          ALTER TABLE products
+            DROP FOREIGN KEY fk_products_categories</span><span style="color:#710">
+        SQL</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    add_column <span style="color:#A60">:users</span>, <span style="color:#A60">:home_page_url</span>, <span style="color:#A60">:string</span>
+    rename_column <span style="color:#A60">:users</span>, <span style="color:#A60">:email</span>, <span style="color:#A60">:email_address</span>
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Using <code>reversible</code> will ensure that the instructions are executed in the
+right order too. If the previous example migration is reverted,
+the <code>down</code> block will be run after the <code>home_page_url</code> column is removed and
+right before the table <code>products</code> is dropped.</p>
+
+<p>Sometimes your migration will do something which is just plain irreversible; for
+example, it might destroy some data. In such cases, you can raise
+<code>ActiveRecord::IrreversibleMigration</code> in your <code>down</code> block. If someone tries
+to revert your migration, an error message will be displayed saying that it
+can’t be done.</p>
+
+<h3 id="using-the-updown-methods">Using the <code>up</code>/<code>down</code> Methods</h3>
+
+<p>You can also use the old style of migration using <code>up</code> and <code>down</code> methods
+instead of the <code>change</code> method.
+The <code>up</code> method should describe the transformation you’d like to make to your
+schema, and the <code>down</code> method of your migration should revert the
+transformations done by the <code>up</code> method. In other words, the database schema
+should be unchanged if you do an <code>up</code> followed by a <code>down</code>. For example, if you
+create a table in the <code>up</code> method, you should drop it in the <code>down</code> method. It
+is wise to reverse the transformations in precisely the reverse order they were
+made in the <code>up</code> method. The example in the <code>reversible</code> section is equivalent to:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ExampleMigration</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">up</span>
+    create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+      t.references <span style="color:#A60">:category</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># add a foreign key</span>
+    execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+      ALTER TABLE products
+        ADD CONSTRAINT fk_products_categories
+        FOREIGN KEY (category_id)
+        REFERENCES categories(id)</span><span style="color:#710">
+    SQL</span></span>
+
+    add_column <span style="color:#A60">:users</span>, <span style="color:#A60">:home_page_url</span>, <span style="color:#A60">:string</span>
+    rename_column <span style="color:#A60">:users</span>, <span style="color:#A60">:email</span>, <span style="color:#A60">:email_address</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">down</span>
+    rename_column <span style="color:#A60">:users</span>, <span style="color:#A60">:email_address</span>, <span style="color:#A60">:email</span>
+    remove_column <span style="color:#A60">:users</span>, <span style="color:#A60">:home_page_url</span>
+
+    execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+      ALTER TABLE products
+        DROP FOREIGN KEY fk_products_categories</span><span style="color:#710">
+    SQL</span></span>
+
+    drop_table <span style="color:#A60">:products</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If your migration is irreversible, you should raise
+<code>ActiveRecord::IrreversibleMigration</code> from your <code>down</code> method. If someone tries
+to revert your migration, an error message will be displayed saying that it
+can’t be done.</p>
+
+<h3 id="reverting-previous-migrations">Reverting Previous Migrations</h3>
+
+<p>You can use Active Record’s ability to rollback migrations using the <code>revert</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">2012121212_example_migration</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FixupExampleMigration</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    revert <span style="color:#036;font-weight:bold">ExampleMigration</span>
+
+    create_table(<span style="color:#A60">:apples</span>) <span style="color:#080;font-weight:bold">do</span> |t|
+      t.string <span style="color:#A60">:variety</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>revert</code> method also accepts a block of instructions to reverse.
+This could be useful to revert selected parts of previous migrations.
+For example, let’s imagine that <code>ExampleMigration</code> is committed and it
+is later decided it would be best to serialize the product list instead.
+One could write:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SerializeProductListMigration</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:categories</span>, <span style="color:#A60">:product_list</span>
+
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up <span style="color:#080;font-weight:bold">do</span>
+        <span style="color:#777"># transfer data from Products to Category#product_list</span>
+      <span style="color:#080;font-weight:bold">end</span>
+      dir.down <span style="color:#080;font-weight:bold">do</span>
+        <span style="color:#777"># create Products from Category#product_list</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    revert <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#777"># copy-pasted code from ExampleMigration</span>
+      create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+        t.references <span style="color:#A60">:category</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+        dir.up <span style="color:#080;font-weight:bold">do</span>
+          <span style="color:#777">#add a foreign key</span>
+          execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+            ALTER TABLE products
+              ADD CONSTRAINT fk_products_categories
+              FOREIGN KEY (category_id)
+              REFERENCES categories(id)</span><span style="color:#710">
+          SQL</span></span>
+        <span style="color:#080;font-weight:bold">end</span>
+        dir.down <span style="color:#080;font-weight:bold">do</span>
+          execute <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-SQL</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+            ALTER TABLE products
+              DROP FOREIGN KEY fk_products_categories</span><span style="color:#710">
+          SQL</span></span>
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># The rest of the migration was ok</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The same migration could also have been written without using <code>revert</code>
+but this would have involved a few more steps: reversing the order
+of <code>create_table</code> and <code>reversible</code>, replacing <code>create_table</code>
+by <code>drop_table</code>, and finally replacing <code>up</code> by <code>down</code> and vice-versa.
+This is all taken care of by <code>revert</code>.</p>
+
+<h2 id="running-migrations">Running Migrations</h2>
+
+<p>Rails provides a set of Rake tasks to run certain sets of migrations.</p>
+
+<p>The very first migration related Rake task you will use will probably be
+<code>rake db:migrate</code>. In its most basic form it just runs the <code>change</code> or <code>up</code>
+method for all the migrations that have not yet been run. If there are
+no such migrations, it exits. It will run these migrations in order based
+on the date of the migration.</p>
+
+<p>Note that running the <code>db:migrate</code> also invokes the <code>db:schema:dump</code> task, which
+will update your <code>db/schema.rb</code> file to match the structure of your database.</p>
+
+<p>If you specify a target version, Active Record will run the required migrations
+(change, up, down) until it has reached the specified version. The version
+is the numerical prefix on the migration’s filename. For example, to migrate
+to version 20080906120000 run</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:migrate VERSION=20080906120000
+</pre></div>
+</div>
+</div>
+
+<p>If version 20080906120000 is greater than the current version (i.e., it is
+migrating upwards), this will run the <code>change</code> (or <code>up</code>) method
+on all migrations up to and
+including 20080906120000, and will not execute any later migrations. If
+migrating downwards, this will run the <code>down</code> method on all the migrations
+down to, but not including, 20080906120000.</p>
+
+<h3 id="rolling-back">Rolling Back</h3>
+
+<p>A common task is to rollback the last migration. For example, if you made a
+mistake in it and wish to correct it. Rather than tracking down the version
+number associated with the previous migration you can run</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:rollback
+</pre></div>
+</div>
+</div>
+
+<p>This will rollback the latest migration, either by reverting the <code>change</code>
+method or by running the <code>down</code> method. If you need to undo
+several migrations you can provide a <code>STEP</code> parameter:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:rollback STEP=3
+</pre></div>
+</div>
+</div>
+
+<p>will revert the last 3 migrations.</p>
+
+<p>The <code>db:migrate:redo</code> task is a shortcut for doing a rollback and then migrating
+back up again. As with the <code>db:rollback</code> task, you can use the <code>STEP</code> parameter
+if you need to go more than one version back, for example</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:migrate:redo STEP=3
+</pre></div>
+</div>
+</div>
+
+<p>Neither of these Rake tasks do anything you could not do with <code>db:migrate</code>. They
+are simply more convenient, since you do not need to explicitly specify the
+version to migrate to.</p>
+
+<h3 id="resetting-the-database">Resetting the Database</h3>
+
+<p>The <code>rake db:reset</code> task will drop the database, recreate it and load the
+current schema into it.</p>
+
+<p>NOTE: This is not the same as running all the migrations. It will only use the
+contents of the current schema.rb file. If a migration can’t be rolled back,
+‘rake db:reset’ may not help you. To find out more about dumping the schema see
+‘<a href="#schema-dumping-and-you">schema dumping and you</a>.’</p>
+
+<h3 id="running-specific-migrations">Running Specific Migrations</h3>
+
+<p>If you need to run a specific migration up or down, the <code>db:migrate:up</code> and
+<code>db:migrate:down</code> tasks will do that. Just specify the appropriate version and
+the corresponding migration will have its <code>change</code>, <code>up</code> or <code>down</code> method
+invoked, for example,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:migrate:up VERSION=20080906120000
+</pre></div>
+</div>
+</div>
+
+<p>will run the 20080906120000 migration by running the <code>change</code> method (or the
+<code>up</code> method). This task will
+first check whether the migration is already performed and will do nothing if
+Active Record believes that it has already been run.</p>
+
+<h3 id="running-migrations-in-different-environments">Running Migrations in Different Environments</h3>
+
+<p>By default running <code>rake db:migrate</code> will run in the <code>development</code> environment.
+To run migrations against another environment you can specify it using the
+<code>RAILS_ENV</code> environment variable while running the command. For example to run
+migrations against the <code>test</code> environment you could run:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake db:migrate RAILS_ENV=test
+</pre></div>
+</div>
+</div>
+
+<h3 id="changing-the-output-of-running-migrations">Changing the Output of Running Migrations</h3>
+
+<p>By default migrations tell you exactly what they’re doing and how long it took.
+A migration creating a table and adding an index might produce output like this</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>==  CreateProducts: migrating =================================================
+-- create_table(:products)
+   -&gt; 0.0028s
+==  CreateProducts: migrated (0.0028s) ========================================
+</pre></div>
+</div>
+</div>
+
+<p>Several methods are provided in migrations that allow you to control all this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>suppress_messages</td>
+      <td>Takes a block as an argument and suppresses any output generated by the block.</td>
+    </tr>
+    <tr>
+      <td>say</td>
+      <td>Takes a message argument and outputs it as is. A second boolean argument can be passed to specify whether to indent or not.</td>
+    </tr>
+    <tr>
+      <td>say_with_time</td>
+      <td>Outputs text along with how long it took to run its block. If the block returns an integer it assumes it is the number of rows affected.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For example, this migration</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CreateProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    suppress_messages <span style="color:#080;font-weight:bold">do</span>
+      create_table <span style="color:#A60">:products</span> <span style="color:#080;font-weight:bold">do</span> |t|
+        t.string <span style="color:#A60">:name</span>
+        t.text <span style="color:#A60">:description</span>
+        t.timestamps
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    say <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Created a table</span><span style="color:#710">&quot;</span></span>
+
+    suppress_messages {add_index <span style="color:#A60">:products</span>, <span style="color:#A60">:name</span>}
+    say <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">and an index!</span><span style="color:#710">&quot;</span></span>, <span style="color:#069">true</span>
+
+    say_with_time <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Waiting for a while</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+      sleep <span style="color:#00D">10</span>
+      <span style="color:#00D">250</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>generates the following output</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>==  CreateProducts: migrating =================================================
+-- Created a table
+   -&gt; and an index!
+-- Waiting for a while
+   -&gt; 10.0013s
+   -&gt; 250 rows
+==  CreateProducts: migrated (10.0054s) =======================================
+</pre></div>
+</div>
+</div>
+
+<p>If you want Active Record to not output anything, then running <code>rake db:migrate
+VERBOSE=false</code> will suppress all output.</p>
+
+<h2 id="changing-existing-migrations">Changing Existing Migrations</h2>
+
+<p>Occasionally you will make a mistake when writing a migration. If you have
+already run the migration then you cannot just edit the migration and run the
+migration again: Rails thinks it has already run the migration and so will do
+nothing when you run <code>rake db:migrate</code>. You must rollback the migration (for
+example with <code>rake db:rollback</code>), edit your migration and then run
+<code>rake db:migrate</code> to run the corrected version.</p>
+
+<p>In general, editing existing migrations is not a good idea. You will be
+creating extra work for yourself and your co-workers and cause major headaches
+if the existing version of the migration has already been run on production
+machines. Instead, you should write a new migration that performs the changes
+you require. Editing a freshly generated migration that has not yet been
+committed to source control (or, more generally, which has not been propagated
+beyond your development machine) is relatively harmless.</p>
+
+<p>The <code>revert</code> method can be helpful when writing a new migration to undo
+previous migrations in whole or in part
+(see <a href="#reverting-previous-migrations">Reverting Previous Migrations</a> above).</p>
+
+<h2 id="using-models-in-your-migrations">Using Models in Your Migrations</h2>
+
+<p>When creating or updating data in a migration it is often tempting to use one
+of your models. After all, they exist to provide easy access to the underlying
+data. This can be done, but some caution should be observed.</p>
+
+<p>For example, problems occur when the model uses database columns which are (1)
+not currently in the database and (2) will be created by this or a subsequent
+migration.</p>
+
+<p>Consider this example, where Alice and Bob are working on the same code base
+which contains a <code>Product</code> model:</p>
+
+<p>Bob goes on vacation.</p>
+
+<p>Alice creates a migration for the <code>products</code> table which adds a new column and
+initializes it. She also adds a validation to the <code>Product</code> model for the new
+column.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20100513121110_add_flag_to_product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddFlagToProduct</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:flag</span>, <span style="color:#A60">:boolean</span>
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up { <span style="color:#036;font-weight:bold">Product</span>.update_all <span style="color:#606">flag</span>: <span style="color:#069">false</span> }
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#036;font-weight:bold">Product</span>.update_all <span style="color:#606">flag</span>: <span style="color:#069">false</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># app/models/product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Product</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  validates <span style="color:#A60">:flag</span>, <span style="color:#606">presence</span>: <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Alice adds a second migration which adds and initializes another column to the
+<code>products</code> table and also adds a validation to the <code>Product</code> model for the new
+column.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20100515121110_add_fuzz_to_product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddFuzzToProduct</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:fuzz</span>, <span style="color:#A60">:string</span>
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up { <span style="color:#036;font-weight:bold">Product</span>.update_all <span style="color:#606">fuzz</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">fuzzy</span><span style="color:#710">'</span></span> }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># app/models/product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Product</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  validates <span style="color:#A60">:flag</span>, <span style="color:#A60">:fuzz</span>, <span style="color:#606">presence</span>: <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Both migrations work for Alice.</p>
+
+<p>Bob comes back from vacation and:</p>
+
+<ul>
+  <li>Updates the source - which contains both migrations and the latest version
+of the Product model.</li>
+  <li>Runs outstanding migrations with <code>rake db:migrate</code>, which
+includes the one that updates the <code>Product</code> model.</li>
+</ul>
+
+<p>The migration crashes because when the model attempts to save, it tries to
+validate the second added column, which is not in the database when the <em>first</em>
+migration runs:</p>
+
+<pre><code>rake aborted!
+An error has occurred, this and all later migrations canceled:
+
+undefined method `fuzz' for #&lt;Product:0x000001049b14a0&gt;
+</code></pre>
+
+<p>A fix for this is to create a local model within the migration. This keeps
+Rails from running the validations, so that the migrations run to completion.</p>
+
+<p>When using a local model, it’s a good idea to call
+<code>Product.reset_column_information</code> to refresh the <code>ActiveRecord</code> cache for the
+<code>Product</code> model prior to updating data in the database.</p>
+
+<p>If Alice had done this instead, there would have been no problem:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20100513121110_add_flag_to_product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddFlagToProduct</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Product</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:flag</span>, <span style="color:#A60">:boolean</span>
+    <span style="color:#036;font-weight:bold">Product</span>.reset_column_information
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up { <span style="color:#036;font-weight:bold">Product</span>.update_all <span style="color:#606">flag</span>: <span style="color:#069">false</span> }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># db/migrate/20100515121110_add_fuzz_to_product.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddFuzzToProduct</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Product</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">change</span>
+    add_column <span style="color:#A60">:products</span>, <span style="color:#A60">:fuzz</span>, <span style="color:#A60">:string</span>
+    <span style="color:#036;font-weight:bold">Product</span>.reset_column_information
+    reversible <span style="color:#080;font-weight:bold">do</span> |dir|
+      dir.up { <span style="color:#036;font-weight:bold">Product</span>.update_all <span style="color:#606">fuzz</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">fuzzy</span><span style="color:#710">'</span></span> }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>There are other ways in which the above example could have gone badly.</p>
+
+<p>For example, imagine that Alice creates a migration that selectively
+updates the <code>description</code> field on certain products. She runs the
+migration, commits the code, and then begins working on the next feature,
+which is to add a new column <code>fuzz</code> to the products table.</p>
+
+<p>She creates two migrations for this new feature, one which adds the new
+column, and a second which selectively updates the <code>fuzz</code> column based on
+other product attributes.</p>
+
+<p>These migrations run just fine, but when Bob comes back from his vacation
+and calls <code>rake db:migrate</code> to run all the outstanding migrations, he gets a
+subtle bug: The descriptions have defaults, and the <code>fuzz</code> column is present,
+but <code>fuzz</code> is nil on all products.</p>
+
+<p>The solution is again to use <code>Product.reset_column_information</code> before
+referencing the Product model in a migration, ensuring the Active Record’s
+knowledge of the table structure is current before manipulating data in those
+records.</p>
+
+<h2 id="schema-dumping-and-you">Schema Dumping and You</h2>
+
+<h3 id="what-are-schema-files-for">What are Schema Files for?</h3>
+
+<p>Migrations, mighty as they may be, are not the authoritative source for your
+database schema. That role falls to either <code>db/schema.rb</code> or an SQL file which
+Active Record generates by examining the database. They are not designed to be
+edited, they just represent the current state of the database.</p>
+
+<p>There is no need (and it is error prone) to deploy a new instance of an app by
+replaying the entire migration history. It is much simpler and faster to just
+load into the database a description of the current schema.</p>
+
+<p>For example, this is how the test database is created: the current development
+database is dumped (either to <code>db/schema.rb</code> or <code>db/structure.sql</code>) and then
+loaded into the test database.</p>
+
+<p>Schema files are also useful if you want a quick look at what attributes an
+Active Record object has. This information is not in the model’s code and is
+frequently spread across several migrations, but the information is nicely
+summed up in the schema file. The
+<a href="https://github.com/ctran/annotate_models">annotate_models</a> gem automatically
+adds and updates comments at the top of each model summarizing the schema if
+you desire that functionality.</p>
+
+<h3 id="types-of-schema-dumps">Types of Schema Dumps</h3>
+
+<p>There are two ways to dump the schema. This is set in <code>config/application.rb</code>
+by the <code>config.active_record.schema_format</code> setting, which may be either <code>:sql</code>
+or <code>:ruby</code>.</p>
+
+<p>If <code>:ruby</code> is selected then the schema is stored in <code>db/schema.rb</code>. If you look
+at this file you’ll find that it looks an awful lot like one very big
+migration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Schema</span>.define(<span style="color:#606">version</span>: <span style="color:#00D">20080906171750</span>) <span style="color:#080;font-weight:bold">do</span>
+  create_table <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authors</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">force</span>: <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">do</span> |t|
+    t.string   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span>
+    t.datetime <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at</span><span style="color:#710">&quot;</span></span>
+    t.datetime <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">updated_at</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  create_table <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">products</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">force</span>: <span style="color:#069">true</span> <span style="color:#080;font-weight:bold">do</span> |t|
+    t.string   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span>
+    t.text <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">description</span><span style="color:#710">&quot;</span></span>
+    t.datetime <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">created_at</span><span style="color:#710">&quot;</span></span>
+    t.datetime <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">updated_at</span><span style="color:#710">&quot;</span></span>
+    t.string <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">part_number</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In many ways this is exactly what it is. This file is created by inspecting the
+database and expressing its structure using <code>create_table</code>, <code>add_index</code>, and so
+on. Because this is database-independent, it could be loaded into any database
+that Active Record supports. This could be very useful if you were to
+distribute an application that is able to run against multiple databases.</p>
+
+<p>There is however a trade-off: <code>db/schema.rb</code> cannot express database specific
+items such as foreign key constraints, triggers, or stored procedures. While in
+a migration you can execute custom SQL statements, the schema dumper cannot
+reconstitute those statements from the database. If you are using features like
+this, then you should set the schema format to <code>:sql</code>.</p>
+
+<p>Instead of using Active Record’s schema dumper, the database’s structure will
+be dumped using a tool specific to the database (via the <code>db:structure:dump</code>
+Rake task) into <code>db/structure.sql</code>. For example, for PostgreSQL, the <code>pg_dump</code>
+utility is used. For MySQL, this file will contain the output of <code>SHOW CREATE
+TABLE</code> for the various tables.</p>
+
+<p>Loading these schemas is simply a question of executing the SQL statements they
+contain. By definition, this will create a perfect copy of the database’s
+structure. Using the <code>:sql</code> schema format will, however, prevent loading the
+schema into a RDBMS other than the one used to create it.</p>
+
+<h3 id="schema-dumps-and-source-control">Schema Dumps and Source Control</h3>
+
+<p>Because schema dumps are the authoritative source for your database schema, it
+is strongly recommended that you check them into source control.</p>
+
+<h2 id="active-record-and-referential-integrity">Active Record and Referential Integrity</h2>
+
+<p>The Active Record way claims that intelligence belongs in your models, not in
+the database. As such, features such as triggers or foreign key constraints,
+which push some of that intelligence back into the database, are not heavily
+used.</p>
+
+<p>Validations such as <code>validates :foreign_key, uniqueness: true</code> are one way in
+which models can enforce data integrity. The <code>:dependent</code> option on
+associations allows models to automatically destroy child objects when the
+parent is destroyed. Like anything which operates at the application level,
+these cannot guarantee referential integrity and so some people augment them
+with foreign key constraints in the database.</p>
+
+<p>Although Active Record does not provide any tools for working directly with
+such features, the <code>execute</code> method can be used to execute arbitrary SQL. You
+could also use some gem like
+<a href="https://github.com/matthuhiggins/foreigner">foreigner</a> which add foreign key
+support to Active Record (including support for dumping foreign keys in
+<code>db/schema.rb</code>).</p>
+
+<h2 id="migrations-and-seed-data">Migrations and Seed Data</h2>
+
+<p>Some people use migrations to add data to the database:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AddInitialProducts</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Migration</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">up</span>
+    <span style="color:#00D">5</span>.times <span style="color:#080;font-weight:bold">do</span> |i|
+      <span style="color:#036;font-weight:bold">Product</span>.create(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Product #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>, <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A product.</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">down</span>
+    <span style="color:#036;font-weight:bold">Product</span>.delete_all
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, Rails has a ‘seeds’ feature that should be used for seeding a database
+with initial data. It’s a really simple feature: just fill up <code>db/seeds.rb</code>
+with some Ruby code, and run <code>rake db:seed</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#00D">5</span>.times <span style="color:#080;font-weight:bold">do</span> |i|
+  <span style="color:#036;font-weight:bold">Product</span>.create(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Product #</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>, <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A product.</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is generally a much cleaner way to set up the database of a blank
+application.</p>
+
+    </div>
+  </body>
+</html>

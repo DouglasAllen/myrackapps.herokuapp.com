@@ -1,0 +1,884 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- RD version: 0.32.0  -->
+    <!--  filepage  -->
+  <meta charset="utf-8">
+          
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <!-- meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" -->
+
+
+	<title>File: marshal.rdoc [Ruby 2.2.0]</title>
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+  <!-- rel_prefix  = '..' -->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+
+</head>
+
+<body class="file">
+<div id='actionbar' >
+<div class='wrapper'>
+<ul class='grids g0'></ul></div>
+</div> <!-- end action bar -->
+<!-- VERSION HEADER for 2.2.0 NOT FOUND -->          <div class='wrapper'>
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <header>
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+      </header>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/globals_rdoc.html">globals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/security_rdoc.html">security.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../sample/drb/README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" ></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" class="quicksearch-field" >
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ArgumentError.html">ArgumentError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Array.html">Array</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../BasicObject.html">BasicObject</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Bignum.html">Bignum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Binding.html">Binding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Class.html">Class</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Comparable.html">Comparable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Complex.html">Complex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Complex/compatible.html">Complex::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ConditionVariable.html">ConditionVariable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Continuation.html">Continuation</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Data.html">Data</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Dir.html">Dir</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ENV.html">ENV</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../EOFError.html">EOFError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding.html">Encoding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/Converter.html">Encoding::Converter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../EncodingError.html">EncodingError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerable.html">Enumerable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator.html">Enumerator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Generator.html">Enumerator::Generator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Errno.html">Errno</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Exception.html">Exception</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FalseClass.html">FalseClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Fiber.html">Fiber</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FiberError.html">FiberError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File.html">File</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File/Constants.html">File::Constants</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../File/Stat.html">File::Stat</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FileTest.html">FileTest</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Fixnum.html">Fixnum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Float.html">Float</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../FloatDomainError.html">FloatDomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../GC.html">GC</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../GC/Profiler.html">GC::Profiler</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Hash.html">Hash</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO.html">IO</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/WaitReadable.html">IO::WaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IO/WaitWritable.html">IO::WaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IOError.html">IOError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../IndexError.html">IndexError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Integer.html">Integer</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Interrupt.html">Interrupt</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Kernel.html">Kernel</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../KeyError.html">KeyError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../LoadError.html">LoadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../LocalJumpError.html">LocalJumpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Marshal.html">Marshal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../MatchData.html">MatchData</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Math.html">Math</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Math/DomainError.html">Math::DomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Method.html">Method</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Module.html">Module</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Mutex.html">Mutex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NameError.html">NameError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NilClass.html">NilClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NoMemoryError.html">NoMemoryError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NoMethodError.html">NoMethodError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../NotImplementedError.html">NotImplementedError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Numeric.html">Numeric</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Object.html">Object</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Proc.html">Proc</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process.html">Process</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/GID.html">Process::GID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Status.html">Process::Status</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Sys.html">Process::Sys</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/UID.html">Process::UID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Process/Waiter.html">Process::Waiter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Queue.html">Queue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Random.html">Random</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Range.html">Range</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RangeError.html">RangeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Rational.html">Rational</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Rational/compatible.html">Rational::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Regexp.html">Regexp</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RegexpError.html">RegexpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM.html">RubyVM</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM/Env.html">RubyVM::Env</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../RuntimeError.html">RuntimeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ScriptError.html">ScriptError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SecurityError.html">SecurityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Signal.html">Signal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SignalException.html">SignalException</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SizedQueue.html">SizedQueue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../StandardError.html">StandardError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../StopIteration.html">StopIteration</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../String.html">String</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Struct.html">Struct</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Symbol.html">Symbol</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SyntaxError.html">SyntaxError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemCallError.html">SystemCallError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemExit.html">SystemExit</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../SystemStackError.html">SystemStackError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Thread.html">Thread</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ThreadError.html">ThreadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ThreadGroup.html">ThreadGroup</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../Time.html">Time</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TracePoint.html">TracePoint</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TrueClass.html">TrueClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../TypeError.html">TypeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../UncaughtThrowError.html">UncaughtThrowError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../ZeroDivisionError.html">ZeroDivisionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../fatal.html">fatal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../unknown.html">unknown</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+  <div class='adzbox'  id="azk83167">
+      
+  </div> 
+	<div id="documentation">
+		
+<h1 id="label-Marshal+Format"><a href="../Marshal.html">Marshal</a> Format<span><a href="#label-Marshal+Format">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>The <a href="../Marshal.html">Marshal</a> format is used to serialize ruby
+objects.  The format can store arbitrary objects through three user-defined
+extension mechanisms.</p>
+
+<p>For documentation on using <a href="../Marshal.html">Marshal</a> to
+serialize and deserialize objects, see the <a
+href="../Marshal.html">Marshal</a> module.</p>
+
+<p>This document calls a serialized set of objects a stream.  The Ruby
+implementation can load a set of objects from a <a
+href="../String.html">String</a>, an <a href="../IO.html">IO</a> or an
+object that implements a <code>getc</code> method.</p>
+
+<h2 id="label-Stream+Format">Stream Format<span><a href="#label-Stream+Format">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The first two bytes of the stream contain the major and minor version, each
+as a single byte encoding a digit.  The version implemented in Ruby is 4.8
+(stored as “x04x08”) and is supported by ruby 1.8.0 and newer.</p>
+
+<p>Different major versions of the <a href="../Marshal.html">Marshal</a>
+format are not compatible and cannot be understood by other major versions.
+Lesser minor versions of the format can be understood by newer minor
+versions.  Format 4.7 can be loaded by a 4.8 implementation but format 4.8
+cannot be loaded by a 4.7 implementation.</p>
+
+<p>Following the version bytes is a stream describing the serialized object. 
+The stream contains nested objects (the same as a Ruby object) but objects
+in the stream do not necessarily have a direct mapping to the Ruby object
+model.</p>
+
+<p>Each object in the stream is described by a byte indicating its type
+followed by one or more bytes describing the object.  When “object” is
+mentioned below it means any of the types below that defines a Ruby object.</p>
+
+<h3 id="label-true-2C+false-2C+nil">true, false, nil<span><a href="#label-true-2C+false-2C+nil">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>These objects are each one byte long.  “T” is represents <code>true</code>,
+“F” represents <code>false</code> and “0” represents <code>nil</code>.</p>
+
+<h3 id="label-Fixnum+and+long"><a href="../Fixnum.html">Fixnum</a> and long<span><a href="#label-Fixnum+and+long">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“i” represents a signed 32 bit value using a packed format.  One through
+five bytes follows the type.  The value loaded will always be a <a
+href="../Fixnum.html">Fixnum</a>.  On 32 bit platforms (where the precision
+of a <a href="../Fixnum.html">Fixnum</a> is less than 32 bits) loading
+large values will cause overflow on CRuby.</p>
+
+<p>The fixnum type is used to represent both ruby <a
+href="../Fixnum.html">Fixnum</a> objects and the sizes of marshaled arrays,
+hashes, instance variables and other types.  In the following sections
+“long” will mean the format described below, which supports full 32 bit
+precision.</p>
+
+<p>The first byte has the following special values:</p>
+<dl class="rdoc-list note-list"><dt>“x00”
+<dd>
+<p>The value of the integer is 0.  No bytes follow.</p>
+</dd><dt>“x01”
+<dd>
+<p>The total size of the integer is two bytes.  The following byte is a
+positive integer in the range of 0 through 255.  Only values between 123
+and 255 should be represented this way to save bytes.</p>
+</dd><dt>“xff”
+<dd>
+<p>The total size of the integer is two bytes.  The following byte is a
+negative integer in the range of -1 through -256.</p>
+</dd><dt>“x02”
+<dd>
+<p>The total size of the integer is three bytes.  The following two bytes are
+a positive little-endian integer.</p>
+</dd><dt>“xfe”
+<dd>
+<p>The total size of the integer is three bytes.  The following two bytes are
+a negative little-endian integer.</p>
+</dd><dt>“x03”
+<dd>
+<p>The total size of the integer is four bytes.  The following three bytes are
+a positive little-endian integer.</p>
+</dd><dt>“xfd”
+<dd>
+<p>The total size of the integer is two bytes.  The following three bytes are
+a negative little-endian integer.</p>
+</dd><dt>“x04”
+<dd>
+<p>The total size of the integer is five bytes.  The following four bytes are
+a positive little-endian integer.  For compatibility with 32 bit ruby, only
+Fixnums less than 1073741824 should be represented this way.  For sizes of
+stream objects full precision may be used.</p>
+</dd><dt>“xfc”
+<dd>
+<p>The total size of the integer is two bytes.  The following four bytes are a
+negative little-endian integer.  For compatibility with 32 bit ruby, only
+Fixnums greater than -10737341824 should be represented this way.  For
+sizes of stream objects full precision may be used.</p>
+</dd></dl>
+
+<p>Otherwise the first byte is a sign-extended eight-bit value with an offset.
+If the value is positive the value is determined by subtracting 5 from the
+value.  If the value is negative the value is determined by adding 5 to the
+value.</p>
+
+<p>There are multiple representations for many values.  CRuby always outputs
+the shortest representation possible.</p>
+
+<h3 id="label-Symbols+and+Byte+Sequence">Symbols and Byte Sequence<span><a href="#label-Symbols+and+Byte+Sequence">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“:” represents a real symbol.  A real symbol contains the data needed to
+define the symbol for the rest of the stream as future occurrences in the
+stream will instead be references (a symbol link) to this one.  The
+reference is a zero-indexed 32 bit value (so the first occurrence of
+<code>:hello</code> is 0).</p>
+
+<p>Following the type byte is byte sequence which consists of a long
+indicating the number of bytes in the sequence followed by that many bytes
+of data.  Byte sequences have no encoding.</p>
+
+<p>For example, the following stream contains the <a
+href="../Symbol.html">Symbol</a> <code>:hello</code>:</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;\x04\x08:\x0ahello&quot;</span>
+</pre>
+
+<p>“;” represents a <a href="../Symbol.html">Symbol</a> link which references
+a previously defined <a href="../Symbol.html">Symbol</a>. Following the
+type byte is a long containing the index in the lookup table for the linked
+(referenced) <a href="../Symbol.html">Symbol</a>.</p>
+
+<p>For example, the following stream contains <code>[:hello, :hello]</code>:</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;\x04\b[\a:\nhello;\x00&quot;</span>
+</pre>
+
+<p>When a “symbol” is referenced below it may be either a real symbol or a
+symbol link.</p>
+
+<h3 id="label-Object+References"><a href="../Object.html">Object</a> References<span><a href="#label-Object+References">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Separate from but similar to symbol references, the stream contains only
+one copy of each object (as determined by object_id) for all objects except
+true, false, nil, Fixnums and Symbols (which are stored separately as
+described above) a one-indexed 32 bit value will be stored and reused when
+the object is encountered again.  (The first object has an index of 1).</p>
+
+<p>“@” represents an object link.  Following the type byte is a long giving
+the index of the object.</p>
+
+<p>For example, the following stream contains an <a
+href="../Array.html">Array</a> of the object <code>&quot;hello&quot;</code>
+twice:</p>
+
+<pre class="ruby"><span class="ruby-string">&quot;\004\b[\a\&quot;\nhello@\006&quot;</span>
+</pre>
+
+<h3 id="label-Instance+Variables">Instance Variables<span><a href="#label-Instance+Variables">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“I” indicates that instance variables follow the next object.  An object
+follows the type byte.  Following the object is a length indicating the
+number of instance variables for the object.  Following the length is a set
+of name-value pairs.  The names are symbols while the values are objects. 
+The symbols must be instance variable names (<code>:@name</code>).</p>
+
+<p>An <a href="../Object.html">Object</a> (“o” type, described below) uses the
+same format for its instance variables as described here.</p>
+
+<p>For a <a href="../String.html">String</a> and <a
+href="../Regexp.html">Regexp</a> (described below) a special instance
+variable <code>:E</code> is used to indicate the <a
+href="../Encoding.html">Encoding</a>.</p>
+
+<h3 id="label-Extended">Extended<span><a href="#label-Extended">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“e” indicates that the next object is extended by a module.  An object
+follows the type byte.  Following the object is a symbol that contains the
+name of the module the object is extended by.</p>
+
+<h3 id="label-Array"><a href="../Array.html">Array</a><span><a href="#label-Array">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“[” represents an <a href="../Array.html">Array</a>.  Following the type
+byte is a long indicating the number of objects in the array.  The given
+number of objects follow the length.</p>
+
+<h3 id="label-Bignum"><a href="../Bignum.html">Bignum</a><span><a href="#label-Bignum">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“l” represents a <a href="../Bignum.html">Bignum</a> which is composed of
+three parts:</p>
+<dl class="rdoc-list note-list"><dt>sign
+<dd>
+<p>A single byte containing “+” for a positive value or “-” for a negative
+value.</p>
+</dd><dt>length
+<dd>
+<p>A long indicating the number of bytes of <a
+href="../Bignum.html">Bignum</a> data follows, divided by two.  Multiply
+the length by two to determine the number of bytes of data that follow.</p>
+</dd><dt>data
+<dd>
+<p>Bytes of <a href="../Bignum.html">Bignum</a> data representing the number.</p>
+</dd></dl>
+
+<p>The following ruby code will reconstruct the <a
+href="../Bignum.html">Bignum</a> value from an array of bytes:</p>
+
+<pre class="ruby"><span class="ruby-identifier">result</span> = <span class="ruby-value">0</span>
+
+<span class="ruby-identifier">bytes</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">byte</span>, <span class="ruby-identifier">exp</span><span class="ruby-operator">|</span>
+ <span class="ruby-identifier">result</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">byte</span> <span class="ruby-operator">*</span> <span class="ruby-value">2</span> <span class="ruby-operator">**</span> (<span class="ruby-identifier">exp</span> <span class="ruby-operator">*</span> <span class="ruby-value">8</span>))
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="label-Class+and+Module"><a href="../Class.html">Class</a> and <a href="../Module.html">Module</a><span><a href="#label-Class+and+Module">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“c” represents a <a href="../Class.html">Class</a> object, “m” represents a
+<a href="../Module.html">Module</a> and “M” represents either a class or
+module (this is an old-style for compatibility).  No class or module
+content is included, this type is only a reference.  Following the type
+byte is a byte sequence which is used to look up an existing class or
+module, respectively.</p>
+
+<p>Instance variables are not allowed on a class or module.</p>
+
+<p>If no class or module exists an exception should be raised.</p>
+
+<p>For “c” and “m” types, the loaded object must be a class or module,
+respectively.</p>
+
+<h3 id="label-Data"><a href="../Data.html">Data</a><span><a href="#label-Data">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“d” represents a <a href="../Data.html">Data</a> object.  (Data objects are
+wrapped pointers from ruby extensions.)  Following the type byte is a
+symbol indicating the class for the <a href="../Data.html">Data</a> object
+and an object that contains the state of the <a
+href="../Data.html">Data</a> object.</p>
+
+<p>To dump a <a href="../Data.html">Data</a> object Ruby calls _dump_data.  To
+load a <a href="../Data.html">Data</a> object Ruby calls _load_data with
+the state of the object on a newly allocated instance.</p>
+
+<h3 id="label-Float"><a href="../Float.html">Float</a><span><a href="#label-Float">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“f” represents a <a href="../Float.html">Float</a> object.  Following the
+type byte is a byte sequence containing the float value.  The following
+values are special:</p>
+<dl class="rdoc-list note-list"><dt>“inf”
+<dd>
+<p>Positive infinity</p>
+</dd><dt>“-inf”
+<dd>
+<p>Negative infinity</p>
+</dd><dt>“nan”
+<dd>
+<p>Not a Number</p>
+</dd></dl>
+
+<p>Otherwise the byte sequence contains a C double (loadable by strtod(3)).
+Older minor versions of <a href="../Marshal.html">Marshal</a> also stored
+extra mantissa bits to ensure portability across platforms but 4.8 does not
+include these.  See</p>
+<dl class="rdoc-list label-list"><dt>ruby-talk:69518
+<dd>
+<p>for some explanation.</p>
+</dd></dl>
+
+<h3 id="label-Hash+and+Hash+with+Default+Value"><a href="../Hash.html">Hash</a> and <a href="../Hash.html">Hash</a> with Default Value<span><a href="#label-Hash+and+Hash+with+Default+Value">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“{” represents a <a href="../Hash.html">Hash</a> object while “}”
+represents a <a href="../Hash.html">Hash</a> with a default value set
+(<code>Hash.new 0</code>).  Following the type byte is a long indicating
+the number of key-value pairs in the <a href="../Hash.html">Hash</a>, the
+size.  Double the given number of objects follow the size.</p>
+
+<p>For a <a href="../Hash.html">Hash</a> with a default value, the default
+value follows all the pairs.</p>
+
+<h3 id="label-Module+and+Old+Module"><a href="../Module.html">Module</a> and Old <a href="../Module.html">Module</a><span><a href="#label-Module+and+Old+Module">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<h3 id="label-Object"><a href="../Object.html">Object</a><span><a href="#label-Object">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“o” represents an object that doesn’t have any other special form (such as
+a user-defined or built-in format).  Following the type byte is a symbol
+containing the class name of the object.  Following the class name is a
+long indicating the number of instance variable names and values for the
+object. Double the given number of pairs of objects follow the size.</p>
+
+<p>The keys in the pairs must be symbols containing instance variable names.</p>
+
+<h3 id="label-Regular+Expression">Regular Expression<span><a href="#label-Regular+Expression">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“/” represents a regular expression.  Following the type byte is a byte
+sequence containing the regular expression source.  Following the type byte
+is a byte containing the regular expression options (case-insensitive,
+etc.) as a signed 8-bit value.</p>
+
+<p>Regular expressions can have an encoding attached through instance
+variables (see above).  If no encoding is attached escapes for the
+following regexp specials not present in ruby 1.8 must be removed: g-m,
+o-q, u, y, E, F, H-L, N-V, X, Y.</p>
+
+<h3 id="label-String"><a href="../String.html">String</a><span><a href="#label-String">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>‘“’ represents a <a href="../String.html">String</a>.  Following the type
+byte is a byte sequence containing the string content.  When dumped from
+ruby 1.9 an encoding instance variable (<code>:E</code> see above) should
+be included unless the encoding is binary.</p>
+
+<h3 id="label-Struct"><a href="../Struct.html">Struct</a><span><a href="#label-Struct">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“S” represents a <a href="../Struct.html">Struct</a>.  Following the type
+byte is a symbol containing the name of the struct.  Following the name is
+a long indicating the number of members in the struct.  Double the number
+of objects follow the member count. Each member is a pair containing the
+member’s symbol and an object for the value of that member.</p>
+
+<p>If the struct name does not match a <a href="../Struct.html">Struct</a>
+subclass in the running ruby an exception should be raised.</p>
+
+<p>If there is a mismatch between the struct in the currently running ruby and
+the member count in the marshaled struct an exception should be raised.</p>
+
+<h3 id="label-User+Class">User <a href="../Class.html">Class</a><span><a href="#label-User+Class">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“C” represents a subclass of a <a href="../String.html">String</a>, <a
+href="../Regexp.html">Regexp</a>, <a href="../Array.html">Array</a> or <a
+href="../Hash.html">Hash</a>.  Following the type byte is a symbol
+containing the name of the subclass.  Following the name is the wrapped
+object.</p>
+
+<h3 id="label-User+Defined">User Defined<span><a href="#label-User+Defined">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“u” represents an object with a user-defined serialization format using the
+<code>_dump</code> instance method and <code>_load</code> class method. 
+Following the type byte is a symbol containing the class name.  Following
+the class name is a byte sequence containing the user-defined
+representation of the object.</p>
+
+<p>The class method <code>_load</code> is called on the class with a string
+created from the byte-sequence.</p>
+
+<h3 id="label-User+Marshal">User <a href="../Marshal.html">Marshal</a><span><a href="#label-User+Marshal">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>“U” represents an object with a user-defined serialization format using the
+<code>marshal_dump</code> and <code>marshal_load</code> instance methods. 
+Following the type byte is a symbol containing the class name.  Following
+the class name is an object containing the data.</p>
+
+<p>Upon loading a new instance must be allocated and <code>marshal_load</code>
+must be called on the instance with the data.</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small>Generated with Rubydoc Rdoc Generator 0.32.0</small>.</p>
+	</div>
+
+    
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html class="  "><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>GitInfo: Rack middleware example</title>
+
+  <meta content="authenticity_token" name="csrf-param">
+<meta content="hZt6dXh8bLMPtGO53/5YmQY+i7hOY5wEtxlmlDYN/HtvyjI7qGlh+bSEJkdrFktCMNahPM677pz1WjiIHCxX4Q==" name="csrf-token">
+  <meta name="viewport" content="width=960">
+
+
+    <link type="text/plain" rel="author" href="https://github.com/humans.txt">
+    <meta content="gist" name="octolytics-app-id"><meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="3281F5B0:2422:2475EF4:54F38A80" name="octolytics-dimension-request_id"><meta content="887598" name="octolytics-actor-id"><meta content="DouglasAllen" name="octolytics-actor-login"><meta content="6895d9251bb49ebc2b6a933b1e4d4767a6eacd5abaf212897347db6f73119d6f" name="octolytics-actor-hash">
+  <link rel="assets" href="https://gist-assets.github.com/">
+  <link rel="zeroclipboard-assets" href="GitInfo:%20Rack%20middleware%20example_files/ZeroClipboard-aeb54c213f0d09883fed5a0947132da9.swf">
+  <link rel="editor-assets" href="https://gist-assets.github.com/assets/editor-cac2d04c8f22b5ffe38f6bc97dc54f54.js">
+  <link rel="mount-point" href="https://gist.github.com/">
+
+
+  <link href="GitInfo:%20Rack%20middleware%20example_files/application-0622f4c051642df21ab90d3eb66a52b8.css" media="screen, print" rel="stylesheet">
+  <script src="GitInfo:%20Rack%20middleware%20example_files/analytics.js" async=""></script><script src="GitInfo:%20Rack%20middleware%20example_files/application-9441728a90e54c65c8d4079bfabcbff5.js"></script>
+
+      <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@github">
+  <meta property="og:title" content="karmi/.gitignore">
+  <meta property="og:type" content="githubog:gist">
+  <meta property="og:url" content="https://gist.github.com/karmi/423746">
+  <meta property="og:image" content="https://avatars1.githubusercontent.com/u/4790?s=140">
+  <meta property="og:site_name" content="GitHub Gists">
+  <meta property="og:description" content="GitInfo: Rack middleware example - Gist is a simple way to share snippets of text and code with others.">
+  <meta name="description" content="GitInfo: Rack middleware example - Gist is a simple way to share snippets of text and code with others.">
+
+
+<script src="GitInfo:%20Rack%20middleware%20example_files/api.js"></script></head>
+
+<body class="logged_in " data-plan="free">
+
+  <div id="wrapper">
+    
+
+    <div id="header" class="header header-logged-in">
+      <div class="container clearfix">
+        <a class="header-logo-wordmark" href="https://gist.github.com/">
+          <span class="octicon octicon-logo-github"></span>
+          <span class="octicon-logo octicon-logo-gist"></span>
+        </a>
+
+        <div class="divider-vertical"></div>
+        <div class="topsearch">
+  <form id="top_search_form" action="/search" data-pjax-remote="push" accept-charset="UTF-8">
+    <div class="search">
+      <input class="search js-search js-navigation-enable js-quick-search" name="q" placeholder="Search…" data-hotkey="/" autocomplete="off" autocorrect="off" type="text">
+
+      <div class="search-results js-search-results js-navigation-container"></div>
+    </div>
+    <div class="divider-vertical"></div>
+  </form>
+  <ul class="top-nav">
+    <li class="explore"><a href="https://gist.github.com/discover">All Gists</a></li>
+  </ul>
+</div>
+
+        <ul id="user-links">
+  <li>
+  <a href="https://gist.github.com/DouglasAllen" class="name">
+    <img src="GitInfo:%20Rack%20middleware%20example_files/887598.jpeg" height="20" width="20"> DouglasAllen
+  </a>
+  </li>
+  <li>
+  <a href="https://gist.github.com/" id="new_gist" class="tooltipped tooltipped-s" aria-label="New Gist">
+    <span class="octicon octicon-gist-new"></span>
+  </a>
+  </li>
+  <li>
+  <a href="https://github.com/" class="tooltipped tooltipped-s" aria-label="Go to GitHub" data-skip-pjax="">
+    <span class="octicon octicon-octoface"></span>
+  </a>
+  </li>
+  <li>
+  <form action="/logout" method="post">
+    <input name="authenticity_token" value="rZ5m9knHR9K1n+D7rLY4BdO7rCe0ssYCdrddYrlqePpHzy64mdJKmA6vpQUYXive5VOGozRqtJo09AN+k0vTYA==" type="hidden">
+    <button class="logout-button tooltipped tooltipped-s" id="logout" type="submit" aria-label="Sign out">
+      <span class="octicon octicon-log-out"></span>
+    </button>
+  </form>
+  </li>
+</ul>
+
+      </div>
+    </div>
+
+    <div class="site-content" id="js-pjax-container" data-pjax-container="">
+      <div id="js-flash-container" class="site-container js-site-container" data-url="/karmi/423746">
+  
+  
+
+<meta content="true" name="octolytics-dimension-public"><meta content="423746" name="octolytics-dimension-gist_id"><meta content="423746" name="octolytics-dimension-gist_name"><meta content="false" name="octolytics-dimension-anonymous"><meta content="4790" name="octolytics-dimension-owner_id"><meta content="karmi" name="octolytics-dimension-owner_login"><meta content="false" name="octolytics-dimension-forked">
+
+<div class="pagehead repohead">
+  <div class="container">
+    <div class="title-actions-bar">
+      <ul class="pagehead-actions">
+            <li>
+              <div class="gist-advanced-options select-menu js-menu-container js-select-menu">
+
+                <span class="minibutton select-menu-button js-menu-target">
+                  <span class="octicon octicon-gear"></span>
+                </span>
+
+                <div class="select-menu-modal-holder js-menu-content js-navigation-container js-select-menu-pane">
+                  <div class="select-menu-modal">
+                    <div class="select-menu-header">
+                      <span class="select-menu-title">Advanced options</span>
+                      <span class="octicon octicon-x js-menu-close"></span>
+                    </div> <!-- /.select-menu-header -->
+
+                    <div class="select-menu-list">
+
+                      <div class="select-menu-item js-navigation-item">
+                        <div class="select-menu-item-text js-navigation-open">
+                          <a href="https://gist.github.com/karmi/423746/report" data-method="post" data-skip-pjax="">Report as abuse</a>
+                        </div>
+                      </div> <!-- /.select-menu-item -->
+
+                    </div> <!-- /.select-menu-list -->
+
+                  </div> <!-- /.select-menu-modal -->
+                </div> <!-- /.select-menu-modal-holder -->
+              </div> <!-- /.select-menu -->
+            </li>
+          <li>
+              <form action="/karmi/423746/star" data-pjax-remote="replace" method="post" accept-charset="UTF-8">
+                <input name="authenticity_token" value="1Z+XROOfEZokarKxE6vULDocxWEGl99P5ZuFoWFY7gc/zt8KM4oc0J9a90+nQ8f3DPTv5YZPrden2Nu9S3lFnQ==" type="hidden">
+                <button class="minibutton with-count" type="submit"><span class="octicon octicon-star"></span>Star</button>
+                  <a class="social-count js-social-count" href="https://gist.github.com/karmi/423746/stars">1</a>
+              </form>
+          </li>
+          <li>
+            <form action="/karmi/423746/fork" data-method="post" method="post" accept-charset="UTF-8">
+              <button class="minibutton with-count fork-button" type="submit"><span class="octicon octicon-repo-forked"></span>Fork</button>
+              <a class="social-count js-social-count" href="https://gist.github.com/karmi/423746/forks">2</a>
+            </form>
+          </li>
+
+      </ul>
+      <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title ">
+  <div class="meta">
+    <div class="gist-author">
+      <img src="GitInfo:%20Rack%20middleware%20example_files/4790.jpeg" height="26" width="26">
+        <span class="author vcard">
+            <span itemprop="title"><a href="https://gist.github.com/karmi">karmi</a></span>
+        </span> /
+      <strong><a href="https://gist.github.com/karmi/423746" class="js-current-repository">.gitignore</a></strong>
+    </div>
+    <div class="gist-timestamp">
+        <span class="datetime">Created <time title="Jun 3, 2010, 5:58 AM CDT" datetime="2010-06-03T10:58:24Z" is="relative-time">on Jun 3, 2010</time></span>
+    </div>
+</div></h1>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="gist js-gist-container gist-with-sidebar with-full-navigation" data-version="4c74bec79056e771e14f08bb6d46544008aaf2ae" data-created="false" data-updated="false">
+
+      <div class="gist-sidebar clearfix">
+  <div class="sunken-menu vertical-right repo-nav js-repo-nav js-repository-container-pjax js-octicon-loaders">
+    <div class="sunken-menu-contents">
+      <ul class="sunken-menu-group">
+        <li class="tooltipped tooltipped-w" aria-label="Code">
+          <a aria-label="Code" class="sunken-menu-item selected" data-pjax="true" href="https://gist.github.com/karmi/423746">
+            <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+            <img alt="" class="mini-loader" src="GitInfo:%20Rack%20middleware%20example_files/octocat-spinner-32-ad13d0fd1814c3fda3b5018da94432ea.gif" height="16" width="16">
+</a>        </li>
+
+          <li class="tooltipped tooltipped-w" aria-label="Revisions">
+            <a aria-label="Revisions" class="sunken-menu-item" data-pjax="true" href="https://gist.github.com/karmi/423746/revisions">
+              <span class="octicon octicon-git-commit"></span> <span class="full-word">Revisions</span>
+              <img alt="" class="mini-loader" src="GitInfo:%20Rack%20middleware%20example_files/octocat-spinner-32-ad13d0fd1814c3fda3b5018da94432ea.gif" height="16" width="16">
+              <span class="counter">4</span>
+</a>          </li>
+
+          <li class="tooltipped tooltipped-w" aria-label="Stars">
+            <a aria-label="Stars" class="sunken-menu-item" data-pjax="true" href="https://gist.github.com/karmi/423746/stars">
+              <span class="octicon octicon-star"></span> <span class="full-word">Stars</span>
+              <img alt="" class="mini-loader" src="GitInfo:%20Rack%20middleware%20example_files/octocat-spinner-32-ad13d0fd1814c3fda3b5018da94432ea.gif" height="16" width="16">
+              <span class="counter">1</span>
+</a>          </li>
+
+          <li class="tooltipped tooltipped-w" aria-label="Forks">
+            <a aria-label="Forks" class="sunken-menu-item" data-pjax="true" href="https://gist.github.com/karmi/423746/forks">
+              <span class="octicon octicon-git-branch"></span> <span class="full-word">Forks</span>
+              <img alt="" class="mini-loader" src="GitInfo:%20Rack%20middleware%20example_files/octocat-spinner-32-ad13d0fd1814c3fda3b5018da94432ea.gif" height="16" width="16">
+              <span class="counter">2</span>
+</a>          </li>
+      </ul>
+    </div><!-- /.sunken-menu-group -->
+  </div><!-- /.sunken-menu-contents -->
+
+  <div class="only-with-full-nav">
+
+    <div class="embed-url open" style="display: block;">
+      <h3><strong>Embed</strong> URL</h3>
+      <div class="clone-url-box">
+        <input class="clone js-url-field" value="&lt;script src=&quot;https://gist.github.com/karmi/423746.js&quot;&gt;&lt;/script&gt;" readonly="readonly" type="text">
+        <span class="url-box-clippy">
+          <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="&lt;script src=&quot;https://gist.github.com/karmi/423746.js&quot;&gt;&lt;/script&gt;" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+        </span>
+      </div>
+    </div>
+    <p class="clone-options"></p>
+
+      
+<div class="clone-url open" data-protocol-type="http" data-url="https://gist.github.com/423746.git">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input class="clone url-field js-url-field" value="https://gist.github.com/423746.git" readonly="readonly" type="text">
+    <span class="url-box-clippy">
+      <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="https://gist.github.com/423746.git" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url " data-protocol-type="ssh" data-url="git@gist.github.com:/423746.git">
+  <h3><strong>SSH</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input class="clone url-field js-url-field" value="git@gist.github.com:/423746.git" readonly="readonly" type="text">
+    <span class="url-box-clippy">
+      <button aria-label="copy to clipboard" class="js-zeroclipboard minibutton zeroclipboard-button" data-clipboard-text="git@gist.github.com:/423746.git" data-copied-hint="copied!" type="button"><span class="octicon octicon-clippy"></span></button>
+    </span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="#" class="js-clone-selector" data-skip-pjax="" data-protocol="http">HTTPS</a>
+      or <a href="#" class="js-clone-selector" data-skip-pjax="" data-protocol="ssh">SSH</a>.
+</p>
+
+
+    <a aria-label="Download .gitignore as a zip file" class="minibutton sidebar-button" href="https://gist.github.com/karmi/423746/download" rel="nofollow" title="Download .gitignore as a zip file">
+      <span class="octicon octicon-cloud-download"></span>
+      Download Gist
+</a>  </div><!-- /.only-with-full-nav -->
+
+</div>
+
+
+    <div class="gist-content">
+          <div class="gist-meta">
+            <div class="gist-description">
+              <p></p><div>GitInfo: Rack middleware example</div><p></p>
+            </div>
+          </div>
+
+      <div class="files">
+            <div id="file-gitignore" class="file ">
+    <a href="https://gist.github.com/karmi/423746" class="link-overlay">
+    <span class="link">View <strong>.gitignore</strong> <span class="octicon octicon-arrow-right"></span></span>
+  </a>
+  <div class="meta clearfix">
+    <div class="info file-name">
+      <span class="icon">
+        <b class="octicon octicon-gist"></b>
+      </span>
+      <a aria-label="Permalink" href="#file-gitignore" class="tooltipped tooltipped-s permalink"><strong class="file-name js-selectable-text">.gitignore</strong></a>
+    </div>
+    <div class="actions">
+      <div class="button-group">
+        <a aria-label="View Raw" href="https://gist.github.com/karmi/423746/raw/9fa88ac4d3771d31825dd02855e71afc986d8784/.gitignore" data-skip-pjax="" class="minibutton raw-url js-view-raw">Raw</a>
+      </div>
+    </div>
+  </div>
+  <div class="suppressed">
+    <a class="js-show-suppressed-file">File suppressed. Click to show.</a>
+  </div>
+  <div class="blob-wrapper data type-text js-blob-data">
+    
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-gitignore-L1" rel="file-gitignore-L1">1</span>
+            <span class="line-number" id="file-gitignore-L2" rel="file-gitignore-L2">2</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-gitignore-LC1">.DS_Store
+</div><div class="line" id="file-gitignore-LC2">*.log
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  </div>
+</div>
+
+            <div id="file-application-rb" class="file ">
+    <a href="https://gist.github.com/karmi/423746" class="link-overlay">
+    <span class="link">View <strong>.gitignore</strong> <span class="octicon octicon-arrow-right"></span></span>
+  </a>
+  <div class="meta clearfix">
+    <div class="info file-name">
+      <span class="icon">
+        <b class="octicon octicon-gist"></b>
+      </span>
+      <a aria-label="Permalink" href="#file-application-rb" class="tooltipped tooltipped-s permalink"><strong class="file-name js-selectable-text">application.rb</strong></a>
+    </div>
+    <div class="actions">
+      <div class="button-group">
+        <a aria-label="View Raw" href="https://gist.github.com/karmi/423746/raw/271e21d86d00bebcab56d92f41571fc0350831b4/application.rb" data-skip-pjax="" class="minibutton raw-url js-view-raw">Raw</a>
+      </div>
+    </div>
+  </div>
+  <div class="suppressed">
+    <a class="js-show-suppressed-file">File suppressed. Click to show.</a>
+  </div>
+  <div class="blob-wrapper data type-ruby js-blob-data">
+    
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-application-rb-L1" rel="file-application-rb-L1">1</span>
+            <span class="line-number" id="file-application-rb-L2" rel="file-application-rb-L2">2</span>
+            <span class="line-number" id="file-application-rb-L3" rel="file-application-rb-L3">3</span>
+            <span class="line-number" id="file-application-rb-L4" rel="file-application-rb-L4">4</span>
+            <span class="line-number" id="file-application-rb-L5" rel="file-application-rb-L5">5</span>
+            <span class="line-number" id="file-application-rb-L6" rel="file-application-rb-L6">6</span>
+            <span class="line-number" id="file-application-rb-L7" rel="file-application-rb-L7">7</span>
+            <span class="line-number" id="file-application-rb-L8" rel="file-application-rb-L8">8</span>
+            <span class="line-number" id="file-application-rb-L9" rel="file-application-rb-L9">9</span>
+            <span class="line-number" id="file-application-rb-L10" rel="file-application-rb-L10">10</span>
+            <span class="line-number" id="file-application-rb-L11" rel="file-application-rb-L11">11</span>
+            <span class="line-number" id="file-application-rb-L12" rel="file-application-rb-L12">12</span>
+            <span class="line-number" id="file-application-rb-L13" rel="file-application-rb-L13">13</span>
+            <span class="line-number" id="file-application-rb-L14" rel="file-application-rb-L14">14</span>
+            <span class="line-number" id="file-application-rb-L15" rel="file-application-rb-L15">15</span>
+            <span class="line-number" id="file-application-rb-L16" rel="file-application-rb-L16">16</span>
+            <span class="line-number" id="file-application-rb-L17" rel="file-application-rb-L17">17</span>
+            <span class="line-number" id="file-application-rb-L18" rel="file-application-rb-L18">18</span>
+            <span class="line-number" id="file-application-rb-L19" rel="file-application-rb-L19">19</span>
+            <span class="line-number" id="file-application-rb-L20" rel="file-application-rb-L20">20</span>
+            <span class="line-number" id="file-application-rb-L21" rel="file-application-rb-L21">21</span>
+            <span class="line-number" id="file-application-rb-L22" rel="file-application-rb-L22">22</span>
+            <span class="line-number" id="file-application-rb-L23" rel="file-application-rb-L23">23</span>
+            <span class="line-number" id="file-application-rb-L24" rel="file-application-rb-L24">24</span>
+            <span class="line-number" id="file-application-rb-L25" rel="file-application-rb-L25">25</span>
+            <span class="line-number" id="file-application-rb-L26" rel="file-application-rb-L26">26</span>
+            <span class="line-number" id="file-application-rb-L27" rel="file-application-rb-L27">27</span>
+            <span class="line-number" id="file-application-rb-L28" rel="file-application-rb-L28">28</span>
+            <span class="line-number" id="file-application-rb-L29" rel="file-application-rb-L29">29</span>
+            <span class="line-number" id="file-application-rb-L30" rel="file-application-rb-L30">30</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-application-rb-LC1"><span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>rubygems<span class="pl-pds">'</span></span>
+</div><div class="line" id="file-application-rb-LC2"><span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>sinatra<span class="pl-pds">'</span></span>
+</div><div class="line" id="file-application-rb-LC3">&nbsp;
+</div><div class="line" id="file-application-rb-LC4"><span class="pl-c"># LET'S USE OUT MIDDLEWARE ----------------------------------------------&gt;</span>
+</div><div class="line" id="file-application-rb-LC5"><span class="pl-k">require</span> <span class="pl-s1"><span class="pl-pds">'</span>rack/gitinfo<span class="pl-pds">'</span></span>
+</div><div class="line" id="file-application-rb-LC6">use <span class="pl-s3">Rack</span>::<span class="pl-vo">GitInfo</span>
+</div><div class="line" id="file-application-rb-LC7"><span class="pl-c"># use Rack::GitInfo, :path =&gt; '/Users/karmi/Playground/Rails/rails'</span>
+</div><div class="line" id="file-application-rb-LC8"><span class="pl-c"># &lt;-----------------------------------------------------------------------</span>
+</div><div class="line" id="file-application-rb-LC9">&nbsp;
+</div><div class="line" id="file-application-rb-LC10">get <span class="pl-s1"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+</div><div class="line" id="file-application-rb-LC11">  erb <span class="pl-c1">:index</span>
+</div><div class="line" id="file-application-rb-LC12"><span class="pl-k">end</span>
+</div><div class="line" id="file-application-rb-LC13">&nbsp;
+</div><div class="line" id="file-application-rb-LC14"><span class="pl-s1">__END__</span>
+</div><div class="line" id="file-application-rb-LC15">&nbsp;
+</div><div class="line" id="file-application-rb-LC16">@@ layout
+</div><div class="line" id="file-application-rb-LC17">&lt;!DOCTYPE html&gt;
+</div><div class="line" id="file-application-rb-LC18">&lt;<span class="pl-ent">html</span>&gt;
+</div><div class="line" id="file-application-rb-LC19">&lt;<span class="pl-ent">head</span>&gt;
+</div><div class="line" id="file-application-rb-LC20">  &lt;<span class="pl-ent">title</span>&gt;Rack::GitInfo Example&lt;/<span class="pl-ent">title</span>&gt;
+</div><div class="line" id="file-application-rb-LC21">  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s1"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>&gt;
+</div><div class="line" id="file-application-rb-LC22"><span class="pl-s2">  &lt;<span class="pl-ent">style</span>&gt;<span class="pl-ent">body</span> { <span class="pl-mp"><span class="pl-s3">font-family</span></span>: <span class="pl-sc">sans-serif</span>; <span class="pl-mp"><span class="pl-s3">margin</span></span>: <span class="pl-c1">4<span class="pl-k">em</span></span>; } <span class="pl-ent">small</span> { <span class="pl-mp"><span class="pl-s3">color</span></span>: <span class="pl-c1">#333</span>; }&lt;/<span class="pl-ent">style</span>&gt;</span>
+</div><div class="line" id="file-application-rb-LC23">&lt;/<span class="pl-ent">head</span>&gt;
+</div><div class="line" id="file-application-rb-LC24">&lt;<span class="pl-ent">body</span>&gt;
+</div><div class="line" id="file-application-rb-LC25">&lt;%= yield %&gt;
+</div><div class="line" id="file-application-rb-LC26">&lt;/<span class="pl-ent">body</span>&gt;
+</div><div class="line" id="file-application-rb-LC27">&lt;/<span class="pl-ent">html</span>&gt;
+</div><div class="line" id="file-application-rb-LC28">&nbsp;
+</div><div class="line" id="file-application-rb-LC29">@@index
+</div><div class="line" id="file-application-rb-LC30">&lt;<span class="pl-ent">p</span>&gt;Hey, am I in Git?&lt;/<span class="pl-ent">p</span>&gt;
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  </div>
+</div>
+
+            <div id="file-rack-gitinfo-rb" class="file ">
+    <a href="https://gist.github.com/karmi/423746" class="link-overlay">
+    <span class="link">View <strong>.gitignore</strong> <span class="octicon octicon-arrow-right"></span></span>
+  </a>
+  <div class="meta clearfix">
+    <div class="info file-name">
+      <span class="icon">
+        <b class="octicon octicon-gist"></b>
+      </span>
+      <a aria-label="Permalink" href="#file-rack-gitinfo-rb" class="tooltipped tooltipped-s permalink"><strong class="file-name js-selectable-text">rack/gitinfo.rb</strong></a>
+    </div>
+    <div class="actions">
+      <div class="button-group">
+        <a aria-label="View Raw" href="https://gist.github.com/karmi/423746/raw/c8d995aaa9d892a48405de85726e96949d031c34/rack/gitinfo.rb" data-skip-pjax="" class="minibutton raw-url js-view-raw">Raw</a>
+      </div>
+    </div>
+  </div>
+  <div class="suppressed">
+    <a class="js-show-suppressed-file">File suppressed. Click to show.</a>
+  </div>
+  <div class="blob-wrapper data type-ruby js-blob-data">
+    
+
+
+
+    <div class="file-data">
+      <table class="lines highlight" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-rack-gitinfo-rb-L1" rel="file-rack-gitinfo-rb-L1">1</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L2" rel="file-rack-gitinfo-rb-L2">2</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L3" rel="file-rack-gitinfo-rb-L3">3</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L4" rel="file-rack-gitinfo-rb-L4">4</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L5" rel="file-rack-gitinfo-rb-L5">5</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L6" rel="file-rack-gitinfo-rb-L6">6</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L7" rel="file-rack-gitinfo-rb-L7">7</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L8" rel="file-rack-gitinfo-rb-L8">8</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L9" rel="file-rack-gitinfo-rb-L9">9</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L10" rel="file-rack-gitinfo-rb-L10">10</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L11" rel="file-rack-gitinfo-rb-L11">11</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L12" rel="file-rack-gitinfo-rb-L12">12</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L13" rel="file-rack-gitinfo-rb-L13">13</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L14" rel="file-rack-gitinfo-rb-L14">14</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L15" rel="file-rack-gitinfo-rb-L15">15</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L16" rel="file-rack-gitinfo-rb-L16">16</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L17" rel="file-rack-gitinfo-rb-L17">17</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L18" rel="file-rack-gitinfo-rb-L18">18</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L19" rel="file-rack-gitinfo-rb-L19">19</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L20" rel="file-rack-gitinfo-rb-L20">20</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L21" rel="file-rack-gitinfo-rb-L21">21</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L22" rel="file-rack-gitinfo-rb-L22">22</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L23" rel="file-rack-gitinfo-rb-L23">23</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L24" rel="file-rack-gitinfo-rb-L24">24</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L25" rel="file-rack-gitinfo-rb-L25">25</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L26" rel="file-rack-gitinfo-rb-L26">26</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L27" rel="file-rack-gitinfo-rb-L27">27</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L28" rel="file-rack-gitinfo-rb-L28">28</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L29" rel="file-rack-gitinfo-rb-L29">29</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L30" rel="file-rack-gitinfo-rb-L30">30</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L31" rel="file-rack-gitinfo-rb-L31">31</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L32" rel="file-rack-gitinfo-rb-L32">32</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L33" rel="file-rack-gitinfo-rb-L33">33</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L34" rel="file-rack-gitinfo-rb-L34">34</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L35" rel="file-rack-gitinfo-rb-L35">35</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L36" rel="file-rack-gitinfo-rb-L36">36</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L37" rel="file-rack-gitinfo-rb-L37">37</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L38" rel="file-rack-gitinfo-rb-L38">38</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L39" rel="file-rack-gitinfo-rb-L39">39</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L40" rel="file-rack-gitinfo-rb-L40">40</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L41" rel="file-rack-gitinfo-rb-L41">41</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L42" rel="file-rack-gitinfo-rb-L42">42</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L43" rel="file-rack-gitinfo-rb-L43">43</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L44" rel="file-rack-gitinfo-rb-L44">44</span>
+            <span class="line-number" id="file-rack-gitinfo-rb-L45" rel="file-rack-gitinfo-rb-L45">45</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-rack-gitinfo-rb-LC1"><span class="pl-c"># = Rack::GitInfo</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC2"><span class="pl-c">#</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC3"><span class="pl-c"># Example Rack middleware to show revision info from Git</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC4"><span class="pl-c">#</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC5"><span class="pl-c"># For a more advanced library have a look at http://github.com/sickill/rack-revision-info</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC6">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC7"><span class="pl-k">module</span> <span class="pl-en">Rack</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC8">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC9">  <span class="pl-k">class</span> <span class="pl-en">GitInfo</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC10">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC11">    <span class="pl-k">def</span> <span class="pl-en">initialize</span>(<span class="pl-vpf">app</span>, <span class="pl-vpf">options</span><span class="pl-k">=</span>{})
+</div><div class="line" id="file-rack-gitinfo-rb-LC12">      <span class="pl-vo">@app</span>  <span class="pl-k">=</span> app
+</div><div class="line" id="file-rack-gitinfo-rb-LC13">      <span class="pl-vo">@path</span> <span class="pl-k">=</span> options[<span class="pl-c1">:path</span>] <span class="pl-k">||</span> ::<span class="pl-s3">File</span>.expand_path(<span class="pl-s1"><span class="pl-pds">'</span>../<span class="pl-pds">'</span></span>, <span class="pl-vo">$0</span>)
+</div><div class="line" id="file-rack-gitinfo-rb-LC14">    <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC15">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC16">    <span class="pl-k">def</span> <span class="pl-en">call</span>(<span class="pl-vpf">env</span>)
+</div><div class="line" id="file-rack-gitinfo-rb-LC17">      status, headers, body <span class="pl-k">=</span> <span class="pl-vo">@app</span>.call(env)
+</div><div class="line" id="file-rack-gitinfo-rb-LC18">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC19">      <span class="pl-k">if</span> headers[<span class="pl-s1"><span class="pl-pds">'</span>Content-Type<span class="pl-pds">'</span></span>].to_s.include?(<span class="pl-s1"><span class="pl-pds">'</span>text/html<span class="pl-pds">'</span></span>) <span class="pl-c"># Only update HTML bodies</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC20">        body <span class="pl-k">=</span> (body <span class="pl-k">&lt;&lt;</span> message).to_a.join(<span class="pl-s1"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>)
+</div><div class="line" id="file-rack-gitinfo-rb-LC21">        headers[<span class="pl-s1"><span class="pl-pds">'</span>Content-Length<span class="pl-pds">'</span></span>]     <span class="pl-k">=</span> <span class="pl-s3">Rack</span>::<span class="pl-s3">Utils</span>.bytesize(body.to_s).to_s
+</div><div class="line" id="file-rack-gitinfo-rb-LC22">        headers[<span class="pl-s1"><span class="pl-pds">'</span>X-Git-Revision-ID<span class="pl-pds">'</span></span>]  <span class="pl-k">=</span> <span class="pl-vo">@sha</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC23">      <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC24">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC25">      [status, headers, body]
+</div><div class="line" id="file-rack-gitinfo-rb-LC26">    <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC27">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC28">    <span class="pl-k">private</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC29">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC30">    <span class="pl-k">def</span> <span class="pl-en">git_revision_info</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC31">      output <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">%x[</span>( GIT_DIR=<span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@path</span></span><span class="pl-pse"><span class="pl-s2">}</span></span>/.git git log -1 --no-color --pretty=format:'%H~~~%ai~~~%an~~~%s' 2&gt;&amp;1)<span class="pl-pds">]</span></span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC32">      output <span class="pl-k">=~</span> <span class="pl-sr"><span class="pl-pds">/</span><span class="pl-sr">(fatal)</span>|<span class="pl-sr">(no such file)</span><span class="pl-pds">/i</span></span> <span class="pl-k">?</span> <span class="pl-c1">nil</span> : output
+</div><div class="line" id="file-rack-gitinfo-rb-LC33">    <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC34">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC35">    <span class="pl-k">def</span> <span class="pl-en">message</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC36">      <span class="pl-vo">@sha</span>, date, author, message <span class="pl-k">=</span> git_revision_info.split(<span class="pl-s1"><span class="pl-pds">'</span>~~~<span class="pl-pds">'</span></span>)
+</div><div class="line" id="file-rack-gitinfo-rb-LC37">      <span class="pl-s1"><span class="pl-pds">"</span>&lt;p&gt;&lt;small&gt;Revision info: <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@sha</span></span><span class="pl-pse"><span class="pl-s2">}</span></span> from <span class="pl-pse">#{</span><span class="pl-s2">date</span><span class="pl-pse"><span class="pl-s2">}</span></span> by <span class="pl-pse">#{</span><span class="pl-s2">author</span><span class="pl-pse"><span class="pl-s2">}</span></span> : <span class="pl-pse">#{</span><span class="pl-s2">message</span><span class="pl-pse"><span class="pl-s2">}</span></span>&lt;/small&gt;&lt;/p&gt;<span class="pl-pds">"</span></span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC38">    <span class="pl-k">rescue</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC39">      <span class="pl-vo">@sha</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>N/A<span class="pl-pds">'</span></span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC40">      <span class="pl-s1"><span class="pl-pds">"</span>&lt;p&gt;&lt;small&gt;Cannot get Git revision info&lt;/small&gt;&lt;/p&gt;<span class="pl-pds">"</span></span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC41">    <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC42">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC43">  <span class="pl-k">end</span>
+</div><div class="line" id="file-rack-gitinfo-rb-LC44">&nbsp;
+</div><div class="line" id="file-rack-gitinfo-rb-LC45"><span class="pl-k">end</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+  </div>
+</div>
+
+
+        <div class="discussion-timeline js-quote-selection-container">
+
+          <div class="js-discussion">
+            
+          </div>
+
+          <div class="discussion-timeline-actions">
+              <div class="timeline-comment-wrapper timeline-new-comment js-comment-container">
+  <a href="https://gist.github.com/DouglasAllen"><img class="timeline-comment-avatar" src="GitInfo:%20Rack%20middleware%20example_files/887598.jpeg" height="48" width="48"></a>
+
+  <form accept-charset="UTF-8" action="/karmi/423746/comments" class="js-new-comment-form js-comment-form" method="post"><div style="display:none"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="fF6KClNyz8iBZyo4hTJoF/x+wt5SHmYAROirlR9TlMuWD8JEg2fCgjpXb8Yx2nvMypboWtLGFJgGq/WJNXI/UQ==" type="hidden"></div>
+    <div class="timeline-comment">
+      <input name="gist" value="423746" type="hidden">
+
+      <div id="js-new-comment-form-actions">
+        
+<div class="js-previewable-comment-form previewable-comment-form write-selected" data-preview-url="/preview">
+  <div class="comment-form-head tabnav">
+    <ul class="tabnav-tabs">
+      <li><a href="#comment_body_894_write_bucket" class="tabnav-tab write-tab js-write-tab selected" data-skip-pjax="">Write</a></li>
+      <li><a href="#comment_body_894_preview_bucket" class="tabnav-tab preview-tab js-preview-tab" data-skip-pjax="">Preview</a></li>
+    </ul>
+    <span class="tabnav-right">
+      <a class="tabnav-widget text tabnav-extras" href="https://help.github.com/articles/github-flavored-markdown" target="_blank">
+        <span class="octicon octicon-markdown"></span>
+        Parsed as Markdown
+      </a>
+      
+<a href="#fullscreen_comment_body_894" class="enable-fullscreen js-enable-fullscreen tooltipped-n
+  tabnav-widget text tabnav-extras">
+  <span class="octicon octicon-screen-full"></span>
+  Edit in fullscreen
+</a>
+
+
+    </span>
+  </div>
+
+
+  <div id="comment_body_894_write_bucket" class="write-content js-write-bucket ">
+    <textarea name="comment[body]" tabindex="1" id="comment_body_894" placeholder="Leave a comment" class="comment-form-textarea js-comment-field js-size-to-fit js-quote-selection-target input-with-fullscreen-icon" data-suggester="comment_body_894_suggestions" required=""></textarea><img style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0px ! important; margin: 0px ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important; left: 771px ! important; top: 1914px ! important;" title="It's All Text!" src="GitInfo:%20Rack%20middleware%20example_files/gumdrop.png">
+
+    
+
+  </div>
+  <div id="comment_body_894_preview_bucket" class="preview-content js-preview-bucket">
+    <div class="comment-body markdown-body  js-comment-body">
+    </div>
+  </div>
+
+
+  <div class="suggester-container">
+    <div class="suggester js-navigation-container" id="comment_body_894_suggestions" data-url="/karmi/423746/suggestions">
+    </div>
+  </div>
+</div>
+
+        <div class="form-actions">
+          <button disabled="disabled" type="submit" class="button primary js-comment-submit" tabindex="2" data-disable-with="" data-disable-invalid="">
+            Comment
+          </button>
+        </div>
+      </div>
+    </div>
+</form></div>
+  
+
+          </div>
+        </div><!-- /.discussion-timeline -->
+      </div><!-- /.gist-content -->
+    </div>
+  </div>
+</div><!-- /.container -->
+
+  <div class="context-overlay"></div>
+</div>
+
+    </div>
+    <div class="slow-loading-overlay"></div>
+  </div>
+
+  <div id="ajax-error-message" class="flash flash-error">
+    <div class="container">
+      <span class="octicon octicon-alert"></span>
+      Something went wrong with that request. Please try again.
+      <a href="#" class="octicon octicon-x ajax-error-dismiss"></a>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com/">API</a></li>
+      <li><a href="https://github.com/blog">Blog</a></li>
+      <li><a href="https://github.com/about">About</a></li>
+
+    </ul>
+
+    <a href="https://gist.github.com/">
+      <span class="mega-octicon octicon-mark-github" title="GitHub "></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>© 2015 <span title="0.02726s from github-fe102-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy">Privacy</a></li>
+        <li><a href="https://github.com/security">Security</a></li>
+        <li><a href="https://github.com/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+  </footer>
+
+  <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea><img style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0px ! important; margin: 0px ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important;" title="It's All Text!" src="GitInfo:%20Rack%20middleware%20example_files/gumdrop.png">
+        <div class="suggester-container">
+            <div class="suggester fullscreen-suggester js-navigation-container" id="fullscreen_suggester" data-url="/karmi/423746/suggestions">
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w" aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+
+<div style="position: absolute; left: 0px; top: -9999px; width: 1px; height: 1px; z-index: 999999999;" class="global-zeroclipboard-container" id="global-zeroclipboard-html-bridge"><object id="global-zeroclipboard-flash-bridge" name="global-zeroclipboard-flash-bridge" type="application/x-shockwave-flash" data="GitInfo:%20Rack%20middleware%20example_files/ZeroClipboard-aeb54c213f0d09883fed5a0947132da9.swf" height="100%" width="100%"><param name="allowScriptAccess" value="always"><param name="allowNetworking" value="all"><param name="menu" value="false"><param name="wmode" value="transparent"><param name="flashvars" value="trustedOrigins=gist.github.com%2C%2F%2Fgist.github.com%2Chttps%3A%2F%2Fgist.github.com&amp;swfObjectId=global-zeroclipboard-flash-bridge"></object></div></body></html>

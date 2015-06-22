@@ -1,0 +1,2634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : FileUtils  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:22:16 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: FileUtils (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>fileutils.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+      <!-- Namespace Contents -->
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li><span class="type">MODULE</span> <a href="FileUtils/DryRun.html">FileUtils::DryRun</a></li>
+          
+          <li><span class="type">MODULE</span> <a href="FileUtils/LowMethods.html">FileUtils::LowMethods</a></li>
+          
+          <li><span class="type">MODULE</span> <a href="FileUtils/NoWrite.html">FileUtils::NoWrite</a></li>
+          
+          <li><span class="type">MODULE</span> <a href="FileUtils/StreamUtils_.html">FileUtils::StreamUtils_</a></li>
+          
+          <li><span class="type">MODULE</span> <a href="FileUtils/Verbose.html">FileUtils::Verbose</a></li>
+          
+          <li><span class="type">CLASS</span> <a href="FileUtils/Entry_.html">FileUtils::Entry_</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-cd">::cd</a></li>
+          
+          <li><a href="#method-c-chdir">::chdir</a></li>
+          
+          <li><a href="#method-c-chmod">::chmod</a></li>
+          
+          <li><a href="#method-c-chmod_R">::chmod_R</a></li>
+          
+          <li><a href="#method-c-chown">::chown</a></li>
+          
+          <li><a href="#method-c-chown_R">::chown_R</a></li>
+          
+          <li><a href="#method-c-cmp">::cmp</a></li>
+          
+          <li><a href="#method-c-compare_file">::compare_file</a></li>
+          
+          <li><a href="#method-c-compare_stream">::compare_stream</a></li>
+          
+          <li><a href="#method-c-copy">::copy</a></li>
+          
+          <li><a href="#method-c-copy_entry">::copy_entry</a></li>
+          
+          <li><a href="#method-c-copy_file">::copy_file</a></li>
+          
+          <li><a href="#method-c-copy_stream">::copy_stream</a></li>
+          
+          <li><a href="#method-c-cp">::cp</a></li>
+          
+          <li><a href="#method-c-cp_r">::cp_r</a></li>
+          
+          <li><a href="#method-c-getwd">::getwd</a></li>
+          
+          <li><a href="#method-c-identical-3F">::identical?</a></li>
+          
+          <li><a href="#method-c-install">::install</a></li>
+          
+          <li><a href="#method-c-link">::link</a></li>
+          
+          <li><a href="#method-c-ln">::ln</a></li>
+          
+          <li><a href="#method-c-ln_s">::ln_s</a></li>
+          
+          <li><a href="#method-c-ln_sf">::ln_sf</a></li>
+          
+          <li><a href="#method-c-makedirs">::makedirs</a></li>
+          
+          <li><a href="#method-c-mkdir">::mkdir</a></li>
+          
+          <li><a href="#method-c-mkdir_p">::mkdir_p</a></li>
+          
+          <li><a href="#method-c-mkpath">::mkpath</a></li>
+          
+          <li><a href="#method-c-move">::move</a></li>
+          
+          <li><a href="#method-c-mv">::mv</a></li>
+          
+          <li><a href="#method-c-pwd">::pwd</a></li>
+          
+          <li><a href="#method-c-remove">::remove</a></li>
+          
+          <li><a href="#method-c-remove_dir">::remove_dir</a></li>
+          
+          <li><a href="#method-c-remove_entry">::remove_entry</a></li>
+          
+          <li><a href="#method-c-remove_entry_secure">::remove_entry_secure</a></li>
+          
+          <li><a href="#method-c-remove_file">::remove_file</a></li>
+          
+          <li><a href="#method-c-rm">::rm</a></li>
+          
+          <li><a href="#method-c-rm_f">::rm_f</a></li>
+          
+          <li><a href="#method-c-rm_r">::rm_r</a></li>
+          
+          <li><a href="#method-c-rm_rf">::rm_rf</a></li>
+          
+          <li><a href="#method-c-rmdir">::rmdir</a></li>
+          
+          <li><a href="#method-c-rmtree">::rmtree</a></li>
+          
+          <li><a href="#method-c-safe_unlink">::safe_unlink</a></li>
+          
+          <li><a href="#method-c-symlink">::symlink</a></li>
+          
+          <li><a href="#method-c-touch">::touch</a></li>
+          
+          <li><a href="#method-c-uptodate-3F">::uptodate?</a></li>
+          
+          <li><a href="#method-i-apply_mask">#apply_mask</a></li>
+          
+          <li><a href="#method-i-remove_tailing_slash">#remove_tailing_slash</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><a class="include" href="FileUtils/StreamUtils_.html">FileUtils::StreamUtils_</a></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./FileUtils.html">FileUtils</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/DryRun.html">FileUtils::DryRun</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/Entry_.html">FileUtils::Entry_</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/Entry_/File.html">FileUtils::Entry_::File</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/LowMethods.html">FileUtils::LowMethods</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/NoWrite.html">FileUtils::NoWrite</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/StreamUtils_.html">FileUtils::StreamUtils_</a></li>
+        
+          
+          
+          <li><a href="./FileUtils/Verbose.html">FileUtils::Verbose</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">FileUtils</h1>
+
+    <div id="description" class="description">
+      
+<h1 id="module-FileUtils-label-fileutils.rb">fileutils.rb<span><a href="#module-FileUtils-label-fileutils.rb">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p>Copyright © 2000-2007 Minero Aoki</p>
+
+<p>This program is free software. You can distribute/modify this program under
+the same terms of ruby.</p>
+
+<h2 id="module-FileUtils-label-module+FileUtils">module <a href="FileUtils.html">FileUtils</a><span><a href="#module-FileUtils-label-module+FileUtils">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Namespace for several file utility methods for copying, moving, removing,
+etc.</p>
+
+<h3 id="module-FileUtils-label-Module+Functions">Module Functions<span><a href="#module-FileUtils-label-Module+Functions">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<pre>require 'fileutils'
+
+FileUtils.cd(dir, options)
+FileUtils.cd(dir, options) {|dir| .... }
+FileUtils.pwd()
+FileUtils.mkdir(dir, options)
+FileUtils.mkdir(list, options)
+FileUtils.mkdir_p(dir, options)
+FileUtils.mkdir_p(list, options)
+FileUtils.rmdir(dir, options)
+FileUtils.rmdir(list, options)
+FileUtils.ln(old, new, options)
+FileUtils.ln(list, destdir, options)
+FileUtils.ln_s(old, new, options)
+FileUtils.ln_s(list, destdir, options)
+FileUtils.ln_sf(src, dest, options)
+FileUtils.cp(src, dest, options)
+FileUtils.cp(list, dir, options)
+FileUtils.cp_r(src, dest, options)
+FileUtils.cp_r(list, dir, options)
+FileUtils.mv(src, dest, options)
+FileUtils.mv(list, dir, options)
+FileUtils.rm(list, options)
+FileUtils.rm_r(list, options)
+FileUtils.rm_rf(list, options)
+FileUtils.install(src, dest, mode = &lt;src's&gt;, options)
+FileUtils.chmod(mode, list, options)
+FileUtils.chmod_R(mode, list, options)
+FileUtils.chown(user, group, list, options)
+FileUtils.chown_R(user, group, list, options)
+FileUtils.touch(list, options)</pre>
+
+<p>The <code>options</code> parameter is a hash of options, taken from the
+list <code>:force</code>, <code>:noop</code>, <code>:preserve</code>, and
+<code>:verbose</code>. <code>:noop</code> means that no changes are made. 
+The other two are obvious. Each method documents the options that it
+honours.</p>
+
+<p>All methods that have the concept of a “source” file or directory can take
+either one file or a list of files in that argument.  See the method
+documentation for examples.</p>
+
+<p>There are some `low level’ methods, which do not accept any option:</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">copy_entry</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">preserve</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">dereference</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">copy_file</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">preserve</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">dereference</span> = <span class="ruby-keyword">true</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">copy_stream</span>(<span class="ruby-identifier">srcstream</span>, <span class="ruby-identifier">deststream</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">remove_entry</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">remove_entry_secure</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">remove_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">compare_file</span>(<span class="ruby-identifier">path_a</span>, <span class="ruby-identifier">path_b</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">compare_stream</span>(<span class="ruby-identifier">stream_a</span>, <span class="ruby-identifier">stream_b</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">uptodate?</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">cmp_list</span>)
+</pre>
+
+<h2 id="module-FileUtils-label-module+FileUtils-3A-3AVerbose">module <a href="FileUtils/Verbose.html">FileUtils::Verbose</a><span><a href="#module-FileUtils-label-module+FileUtils-3A-3AVerbose">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>This module has all methods of <a href="FileUtils.html">FileUtils</a>
+module, but it outputs messages before acting.  This equates to passing the
+<code>:verbose</code> flag to methods in <a
+href="FileUtils.html">FileUtils</a>.</p>
+
+<h2 id="module-FileUtils-label-module+FileUtils-3A-3ANoWrite">module <a href="FileUtils/NoWrite.html">FileUtils::NoWrite</a><span><a href="#module-FileUtils-label-module+FileUtils-3A-3ANoWrite">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>This module has all methods of <a href="FileUtils.html">FileUtils</a>
+module, but never changes files/directories.  This equates to passing the
+<code>:noop</code> flag to methods in <a
+href="FileUtils.html">FileUtils</a>.</p>
+
+<h2 id="module-FileUtils-label-module+FileUtils-3A-3ADryRun">module <a href="FileUtils/DryRun.html">FileUtils::DryRun</a><span><a href="#module-FileUtils-label-module+FileUtils-3A-3ADryRun">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>This module has all methods of <a href="FileUtils.html">FileUtils</a>
+module, but never changes files/directories.  This equates to passing the
+<code>:noop</code> and <code>:verbose</code> flags to methods in <a
+href="FileUtils.html">FileUtils</a>.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="LOW_METHODS">LOW_METHODS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="METHODS">METHODS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="cd-method" class="method-detail ">
+          <a name="method-c-cd"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cd</span><span
+              class="method-args">(dir, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: verbose</p>
+
+<p>Changes the current directory to the directory <code>dir</code>.</p>
+
+<p>If this method is called with block, resumes to the old working directory
+after the block execution finished.</p>
+
+<pre>FileUtils.cd('/', :verbose =&gt; true)   # chdir and report it
+
+FileUtils.cd('/') do  # chdir
+  [...]               # do something
+end                   # return to original directory</pre>
+            
+
+            
+            <div class="method-source-code" id="cd-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cd</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment"># :yield: dir</span>
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'cd'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;cd #{dir}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-string">'cd -'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>] <span class="ruby-keyword">and</span> <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- cd-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-chdir">chdir</a>
+          </div>
+          
+
+          
+        </div><!-- cd-method -->
+      
+        <div id="chdir-method" class="method-detail method-alias">
+          <a name="method-c-chdir"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chdir</span><span
+              class="method-args">(dir, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-cd">cd</a>
+          </div>
+          
+        </div><!-- chdir-method -->
+      
+        <div id="chmod-method" class="method-detail ">
+          <a name="method-c-chmod"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chmod</span><span
+              class="method-args">(mode, list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose</p>
+
+<p>Changes permission bits on the named files (in <code>list</code>) to the
+bit pattern represented by <code>mode</code>.</p>
+
+<p><code>mode</code> is the symbolic and absolute mode can be used.</p>
+
+<p>Absolute mode is</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-value">0755</span>, <span class="ruby-string">'somecommand'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-value">0644</span>, <span class="ruby-node">%w(my.rb your.rb his.rb her.rb)</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-value">0755</span>, <span class="ruby-string">'/usr/bin/ruby'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+
+<p>Symbolic mode is</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-string">&quot;u=wrx,go=rx&quot;</span>, <span class="ruby-string">'somecommand'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-string">&quot;u=wr,go=rr&quot;</span>, <span class="ruby-node">%w(my.rb your.rb his.rb her.rb)</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-string">&quot;u=wrx,go=rx&quot;</span>, <span class="ruby-string">'/usr/bin/ruby'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+<dl class="rdoc-list note-list"><dt>“a” 
+<dd>
+<p>is user, group, other mask.</p>
+</dd><dt>“u” 
+<dd>
+<p>is user’s mask.</p>
+</dd><dt>“g” 
+<dd>
+<p>is group’s mask.</p>
+</dd><dt>“o” 
+<dd>
+<p>is other’s mask.</p>
+</dd><dt>“w” 
+<dd>
+<p>is write permission.</p>
+</dd><dt>“r” 
+<dd>
+<p>is read permission.</p>
+</dd><dt>“x” 
+<dd>
+<p>is execute permission.</p>
+</dd><dt>“X” 
+<dd>
+<p>is execute permission for directories only, must be used in conjunction
+with “+”</p>
+</dd><dt>“s” 
+<dd>
+<p>is uid, gid.</p>
+</dd><dt>“t” 
+<dd>
+<p>is sticky bit.</p>
+</dd><dt>“+” 
+<dd>
+<p>is added to a class given the specified mode.</p>
+</dd><dt>“-” 
+<dd>
+<p>Is removed from a given class given mode.</p>
+</dd><dt>“=” 
+<dd>
+<p>Is the exact nature of the class will be given a specified mode.</p>
+</dd></dl>
+            
+
+            
+            <div class="method-source-code" id="chmod-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 993</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chmod</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'chmod'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'chmod %s %s'</span>, <span class="ruby-identifier">mode_to_s</span>(<span class="ruby-identifier">mode</span>), <span class="ruby-identifier">list</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">chmod</span>(<span class="ruby-identifier">fu_mode</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">path</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- chmod-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- chmod-method -->
+      
+        <div id="chmod_R-method" class="method-detail ">
+          <a name="method-c-chmod_R"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chmod_R</span><span
+              class="method-args">(mode, list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose force</p>
+
+<p>Changes permission bits on the named files (in <code>list</code>) to the
+bit pattern represented by <code>mode</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod_R</span> <span class="ruby-value">0700</span>, <span class="ruby-node">&quot;/tmp/app.#{$$}&quot;</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chmod_R</span> <span class="ruby-string">&quot;u=wrx&quot;</span>, <span class="ruby-node">&quot;/tmp/app.#{$$}&quot;</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="chmod_R-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 1015</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chmod_R</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'chmod_R'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'chmod -R%s %s %s'</span>,
+                            (<span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>] <span class="ruby-operator">?</span> <span class="ruby-string">'f'</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>),
+                            <span class="ruby-identifier">mode_to_s</span>(<span class="ruby-identifier">mode</span>), <span class="ruby-identifier">list</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">root</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">root</span>).<span class="ruby-identifier">traverse</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">chmod</span>(<span class="ruby-identifier">fu_mode</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">path</span>))
+      <span class="ruby-keyword">rescue</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- chmod_R-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- chmod_R-method -->
+      
+        <div id="chown-method" class="method-detail ">
+          <a name="method-c-chown"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chown</span><span
+              class="method-args">(user, group, list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose</p>
+
+<p>Changes owner and group on the named files (in <code>list</code>) to the
+user <code>user</code> and the group <code>group</code>.  <code>user</code>
+and <code>group</code> may be an ID (Integer/String) or a name (String). If
+<code>user</code> or <code>group</code> is nil, this method does not change
+the attribute.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chown</span> <span class="ruby-string">'root'</span>, <span class="ruby-string">'staff'</span>, <span class="ruby-string">'/usr/local/bin/ruby'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chown</span> <span class="ruby-keyword">nil</span>, <span class="ruby-string">'bin'</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'/usr/bin/*'</span>), :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="chown-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 1048</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chown</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">group</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'chown'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'chown %s %s'</span>,
+                            (<span class="ruby-identifier">group</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{user}:#{group}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">||</span> <span class="ruby-string">':'</span>),
+                            <span class="ruby-identifier">list</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">uid</span> = <span class="ruby-identifier">fu_get_uid</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">gid</span> = <span class="ruby-identifier">fu_get_gid</span>(<span class="ruby-identifier">group</span>)
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">chown</span> <span class="ruby-identifier">uid</span>, <span class="ruby-identifier">gid</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- chown-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- chown-method -->
+      
+        <div id="chown_R-method" class="method-detail ">
+          <a name="method-c-chown_R"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">chown_R</span><span
+              class="method-args">(user, group, list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose force</p>
+
+<p>Changes owner and group on the named files (in <code>list</code>) to the
+user <code>user</code> and the group <code>group</code> recursively.
+<code>user</code> and <code>group</code> may be an ID (Integer/String) or a
+name (String).  If <code>user</code> or <code>group</code> is nil, this
+method does not change the attribute.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chown_R</span> <span class="ruby-string">'www'</span>, <span class="ruby-string">'www'</span>, <span class="ruby-string">'/var/www/htdocs'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">chown_R</span> <span class="ruby-string">'cvs'</span>, <span class="ruby-string">'cvs'</span>, <span class="ruby-string">'/var/cvs'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="chown_R-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 1077</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chown_R</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">group</span>, <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'chown_R'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'chown -R%s %s %s'</span>,
+                            (<span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>] <span class="ruby-operator">?</span> <span class="ruby-string">'f'</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>),
+                            (<span class="ruby-identifier">group</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{user}:#{group}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">||</span> <span class="ruby-string">':'</span>),
+                            <span class="ruby-identifier">list</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">uid</span> = <span class="ruby-identifier">fu_get_uid</span>(<span class="ruby-identifier">user</span>)
+  <span class="ruby-identifier">gid</span> = <span class="ruby-identifier">fu_get_gid</span>(<span class="ruby-identifier">group</span>)
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">root</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">root</span>).<span class="ruby-identifier">traverse</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">chown</span> <span class="ruby-identifier">uid</span>, <span class="ruby-identifier">gid</span>
+      <span class="ruby-keyword">rescue</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- chown_R-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- chown_R-method -->
+      
+        <div id="cmp-method" class="method-detail method-alias">
+          <a name="method-c-cmp"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cmp</span><span
+              class="method-args">(a, b)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-compare_file">compare_file</a>
+          </div>
+          
+        </div><!-- cmp-method -->
+      
+        <div id="compare_file-method" class="method-detail ">
+          <a name="method-c-compare_file"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">compare_file</span><span
+              class="method-args">(a, b)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns true if the contents of a file A and a file B are identical.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">compare_file</span>(<span class="ruby-string">'somefile'</span>, <span class="ruby-string">'somefile'</span>)  <span class="ruby-comment">#=&gt; true</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">compare_file</span>(<span class="ruby-string">'/bin/cp'</span>, <span class="ruby-string">'/bin/mv'</span>)    <span class="ruby-comment">#=&gt; maybe false</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="compare_file-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 814</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">compare_file</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">size</span>(<span class="ruby-identifier">a</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">size</span>(<span class="ruby-identifier">b</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">a</span>, <span class="ruby-string">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fa</span><span class="ruby-operator">|</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">b</span>, <span class="ruby-string">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fb</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">compare_stream</span>(<span class="ruby-identifier">fa</span>, <span class="ruby-identifier">fb</span>)
+    }
+  }
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- compare_file-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-identical-3F">identical?</a>, <a href="FileUtils.html#method-i-cmp">cmp</a>
+          </div>
+          
+
+          
+        </div><!-- compare_file-method -->
+      
+        <div id="compare_stream-method" class="method-detail ">
+          <a name="method-c-compare_stream"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">compare_stream</span><span
+              class="method-args">(a, b)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns true if the contents of a stream <code>a</code> and <code>b</code>
+are identical.</p>
+            
+
+            
+            <div class="method-source-code" id="compare_stream-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 832</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">compare_stream</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+  <span class="ruby-identifier">bsize</span> = <span class="ruby-identifier">fu_stream_blksize</span>(<span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>)
+  <span class="ruby-identifier">sa</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">sb</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">a</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">bsize</span>, <span class="ruby-identifier">sa</span>)
+    <span class="ruby-identifier">b</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">bsize</span>, <span class="ruby-identifier">sb</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sa</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">sb</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">while</span> <span class="ruby-identifier">sa</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sb</span>
+  <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- compare_stream-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- compare_stream-method -->
+      
+        <div id="copy-method" class="method-detail method-alias">
+          <a name="method-c-copy"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">copy</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-cp">cp</a>
+          </div>
+          
+        </div><!-- copy-method -->
+      
+        <div id="copy_entry-method" class="method-detail ">
+          <a name="method-c-copy_entry"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">copy_entry</span><span
+              class="method-args">(src, dest, preserve = false, dereference_root = false, remove_destination = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Copies a file system entry <code>src</code> to <code>dest</code>. If
+<code>src</code> is a directory, this method copies its contents
+recursively. This method preserves file types, c.f. symlink, directory…
+(FIFO, device files and etc. are not supported yet)</p>
+
+<p>Both of <code>src</code> and <code>dest</code> must be a path name.
+<code>src</code> must exist, <code>dest</code> must not exist.</p>
+
+<p>If <code>preserve</code> is true, this method preserves owner, group, and
+modified time.  Permissions are copied regardless <code>preserve</code>.</p>
+
+<p>If <code>dereference_root</code> is true, this method dereference tree
+root.</p>
+
+<p>If <code>remove_destination</code> is true, this method removes each
+destination file before copy.</p>
+            
+
+            
+            <div class="method-source-code" id="copy_entry-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 467</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">copy_entry</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">preserve</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">dereference_root</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">remove_destination</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">src</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">dereference_root</span>).<span class="ruby-identifier">wrap_traverse</span>(<span class="ruby-identifier">proc</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">destent</span> = <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">rel</span>, <span class="ruby-keyword">false</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span> <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">path</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">remove_destination</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">destent</span>.<span class="ruby-identifier">path</span>)
+    <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">copy</span> <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">path</span>
+  <span class="ruby-keyword">end</span>, <span class="ruby-identifier">proc</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">destent</span> = <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dest</span>, <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">rel</span>, <span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">copy_metadata</span> <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">path</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">preserve</span>
+  <span class="ruby-keyword">end</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- copy_entry-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- copy_entry-method -->
+      
+        <div id="copy_file-method" class="method-detail ">
+          <a name="method-c-copy_file"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">copy_file</span><span
+              class="method-args">(src, dest, preserve = false, dereference = true)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Copies file contents of <code>src</code> to <code>dest</code>. Both of
+<code>src</code> and <code>dest</code> must be a path name.</p>
+            
+
+            
+            <div class="method-source-code" id="copy_file-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 483</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">copy_file</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">preserve</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">dereference</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-identifier">ent</span> = <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">src</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">dereference</span>)
+  <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">copy_file</span> <span class="ruby-identifier">dest</span>
+  <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">copy_metadata</span> <span class="ruby-identifier">dest</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">preserve</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- copy_file-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- copy_file-method -->
+      
+        <div id="copy_stream-method" class="method-detail ">
+          <a name="method-c-copy_stream"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">copy_stream</span><span
+              class="method-args">(src, dest)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Copies stream <code>src</code> to <code>dest</code>. <code>src</code> must
+respond to read(n) and <code>dest</code> must respond to write(str).</p>
+            
+
+            
+            <div class="method-source-code" id="copy_stream-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 495</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">copy_stream</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>)
+  <span class="ruby-constant">IO</span>.<span class="ruby-identifier">copy_stream</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- copy_stream-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- copy_stream-method -->
+      
+        <div id="cp-method" class="method-detail ">
+          <a name="method-c-cp"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cp</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: preserve noop verbose</p>
+
+<p>Copies a file content <code>src</code> to <code>dest</code>.  If
+<code>dest</code> is a directory, copies <code>src</code> to
+<code>dest/src</code>.</p>
+
+<p>If <code>src</code> is a list of files, then <code>dest</code> must be a
+directory.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-string">'eval.c'</span>, <span class="ruby-string">'eval.c.org'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-node">%w(cgi.rb complex.rb date.rb)</span>, <span class="ruby-string">'/usr/lib/ruby/1.6'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-node">%w(cgi.rb complex.rb date.rb)</span>, <span class="ruby-string">'/usr/lib/ruby/1.6'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-string">'symlink'</span>, <span class="ruby-string">'dest'</span>   <span class="ruby-comment"># copy content, &quot;dest&quot; is not a symlink</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="cp-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 397</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cp</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'cp'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;cp#{options[:preserve] ? ' -p' : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">fu_each_src_dest</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">copy_file</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:preserve</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- cp-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-copy">copy</a>
+          </div>
+          
+
+          
+        </div><!-- cp-method -->
+      
+        <div id="cp_r-method" class="method-detail ">
+          <a name="method-c-cp_r"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cp_r</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: preserve noop verbose dereference_root remove_destination</p>
+
+<p>Copies <code>src</code> to <code>dest</code>. If <code>src</code> is a
+directory, this method copies all its contents recursively. If
+<code>dest</code> is a directory, copies <code>src</code> to
+<code>dest/src</code>.</p>
+
+<p><code>src</code> can be a list of files.</p>
+
+<pre class="ruby"><span class="ruby-comment"># Installing Ruby library &quot;mylib&quot; under the site_ruby</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_r</span> <span class="ruby-identifier">site_ruby</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/mylib'</span>, :<span class="ruby-identifier">force</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp_r</span> <span class="ruby-string">'lib/'</span>, <span class="ruby-identifier">site_ruby</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/mylib'</span>
+
+<span class="ruby-comment"># Examples of copying several files to target directory.</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp_r</span> <span class="ruby-node">%w(mail.rb field.rb debug/)</span>, <span class="ruby-identifier">site_ruby</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/tmail'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp_r</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'*.rb'</span>), <span class="ruby-string">'/home/aamine/lib/ruby'</span>, :<span class="ruby-identifier">noop</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+
+<span class="ruby-comment"># If you want to copy all contents of a directory instead of the</span>
+<span class="ruby-comment"># directory itself, c.f. src/x -&gt; dest/x, src/y -&gt; dest/y,</span>
+<span class="ruby-comment"># use following code.</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp_r</span> <span class="ruby-string">'src/.'</span>, <span class="ruby-string">'dest'</span>     <span class="ruby-comment"># cp_r('src', 'dest') makes dest/src,</span>
+                                   <span class="ruby-comment"># but this doesn't.</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="cp_r-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 436</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cp_r</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'cp_r'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;cp -r#{options[:preserve] ? 'p' : ''}#{options[:remove_destination] ? ' --remove-destination' : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:dereference_root</span>] = <span class="ruby-keyword">true</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:dereference_root</span>)
+  <span class="ruby-identifier">fu_each_src_dest</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">copy_entry</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:preserve</span>], <span class="ruby-identifier">options</span>[<span class="ruby-value">:dereference_root</span>], <span class="ruby-identifier">options</span>[<span class="ruby-value">:remove_destination</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- cp_r-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cp_r-method -->
+      
+        <div id="getwd-method" class="method-detail method-alias">
+          <a name="method-c-getwd"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">getwd</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-pwd">pwd</a>
+          </div>
+          
+        </div><!-- getwd-method -->
+      
+        <div id="identical-3F-method" class="method-detail method-alias">
+          <a name="method-c-identical-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">identical?</span><span
+              class="method-args">(a, b)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-compare_file">compare_file</a>
+          </div>
+          
+        </div><!-- identical-3F-method -->
+      
+        <div id="install-method" class="method-detail ">
+          <a name="method-c-install"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">install</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: mode preserve noop verbose</p>
+
+<p>If <code>src</code> is not same as <code>dest</code>, copies it and changes
+the permission mode to <code>mode</code>.  If <code>dest</code> is a
+directory, destination is <code>dest</code>/<code>src</code>. This method
+removes destination before copy.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">install</span> <span class="ruby-string">'ruby'</span>, <span class="ruby-string">'/usr/local/bin/ruby'</span>, :<span class="ruby-identifier">mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0755</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">install</span> <span class="ruby-string">'lib.rb'</span>, <span class="ruby-string">'/usr/local/lib/ruby/site_ruby'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="install-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 855</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">install</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'install'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;install -c#{options[:preserve] &amp;&amp; ' -p'}#{options[:mode] ? (' -m 0%o' % options[:mode]) : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">fu_each_src_dest</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">st</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">stat</span>(<span class="ruby-identifier">s</span>)
+    <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">d</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">compare_file</span>(<span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>)
+      <span class="ruby-identifier">remove_file</span> <span class="ruby-identifier">d</span>, <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">copy_file</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">utime</span> <span class="ruby-identifier">st</span>.<span class="ruby-identifier">atime</span>, <span class="ruby-identifier">st</span>.<span class="ruby-identifier">mtime</span>, <span class="ruby-identifier">d</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:preserve</span>]
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:mode</span>], <span class="ruby-identifier">d</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:mode</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- install-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- install-method -->
+      
+        <div id="link-method" class="method-detail method-alias">
+          <a name="method-c-link"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">link</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-ln">ln</a>
+          </div>
+          
+        </div><!-- link-method -->
+      
+        <div id="ln-method" class="method-detail ">
+          <a name="method-c-ln"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ln</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: force noop verbose</p>
+
+<p><strong><code>ln(old, new, options = {})</code></strong></p>
+
+<p>Creates a hard link <code>new</code> which points to <code>old</code>. If
+<code>new</code> already exists and it is a directory, creates a link
+<code>new/old</code>. If <code>new</code> already exists and it is not a
+directory, raises Errno::EEXIST. But if :force option is set, overwrite
+<code>new</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln</span> <span class="ruby-string">'gcc'</span>, <span class="ruby-string">'cc'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln</span> <span class="ruby-string">'/usr/bin/emacs21'</span>, <span class="ruby-string">'/usr/bin/emacs'</span>
+</pre>
+
+<p><strong><code>ln(list, destdir, options = {})</code></strong></p>
+
+<p>Creates several hard links in a directory, with each one pointing to the
+item in <code>list</code>.  If <code>destdir</code> is not a directory,
+raises Errno::ENOTDIR.</p>
+
+<pre class="ruby"><span class="ruby-identifier">include</span> <span class="ruby-constant">FileUtils</span>
+<span class="ruby-identifier">cd</span> <span class="ruby-string">'/sbin'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln</span> <span class="ruby-node">%w(cp mv mkdir)</span>, <span class="ruby-string">'/bin'</span>   <span class="ruby-comment"># Now /sbin/cp and /bin/cp are linked.</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="ln-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 312</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ln</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'ln'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;ln#{options[:force] ? ' -f' : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">fu_each_src_dest0</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">remove_file</span> <span class="ruby-identifier">d</span>, <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">link</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- ln-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-link">link</a>
+          </div>
+          
+
+          
+        </div><!-- ln-method -->
+      
+        <div id="ln_s-method" class="method-detail ">
+          <a name="method-c-ln_s"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ln_s</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: force noop verbose</p>
+
+<p><strong><code>ln_s(old, new, options = {})</code></strong></p>
+
+<p>Creates a symbolic link <code>new</code> which points to <code>old</code>. 
+If <code>new</code> already exists and it is a directory, creates a
+symbolic link <code>new/old</code>.  If <code>new</code> already exists and
+it is not a directory, raises Errno::EEXIST.  But if :force option is set,
+overwrite <code>new</code>.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln_s</span> <span class="ruby-string">'/usr/bin/ruby'</span>, <span class="ruby-string">'/usr/local/bin/ruby'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln_s</span> <span class="ruby-string">'verylongsourcefilename.c'</span>, <span class="ruby-string">'c'</span>, :<span class="ruby-identifier">force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+
+<p><strong><code>ln_s(list, destdir, options = {})</code></strong></p>
+
+<p>Creates several symbolic links in a directory, with each one pointing to
+the item in <code>list</code>.  If <code>destdir</code> is not a directory,
+raises Errno::ENOTDIR.</p>
+
+<p>If <code>destdir</code> is not a directory, raises Errno::ENOTDIR.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">ln_s</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'bin/*.rb'</span>), <span class="ruby-string">'/home/aamine/bin'</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="ln_s-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 351</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ln_s</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'ln_s'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;ln -s#{options[:force] ? 'f' : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">fu_each_src_dest0</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">remove_file</span> <span class="ruby-identifier">d</span>, <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">symlink</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- ln_s-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-symlink">symlink</a>
+          </div>
+          
+
+          
+        </div><!-- ln_s-method -->
+      
+        <div id="ln_sf-method" class="method-detail ">
+          <a name="method-c-ln_sf"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">ln_sf</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose</p>
+
+<p>Same as</p>
+
+<pre class="ruby"><span class="ruby-comment">#ln_s(src, dest, :force =&gt; true)</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="ln_sf-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 374</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ln_sf</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'ln_sf'</span>]
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>] = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">ln_s</span> <span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- ln_sf-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- ln_sf-method -->
+      
+        <div id="makedirs-method" class="method-detail method-alias">
+          <a name="method-c-makedirs"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">makedirs</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-mkdir_p">mkdir_p</a>
+          </div>
+          
+        </div><!-- makedirs-method -->
+      
+        <div id="mkdir-method" class="method-detail ">
+          <a name="method-c-mkdir"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mkdir</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: mode noop verbose</p>
+
+<p>Creates one or more directories.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-string">'test'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-node">%w( tmp data )</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-string">'notexist'</span>, :<span class="ruby-identifier">noop</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>  <span class="ruby-comment"># Does not really create.</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-string">'tmp'</span>, :<span class="ruby-identifier">mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0700</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="mkdir-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mkdir</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'mkdir'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;mkdir #{options[:mode] ? ('-m %03o ' % options[:mode]) : ''}#{list.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">fu_mkdir</span> <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:mode</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- mkdir-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- mkdir-method -->
+      
+        <div id="mkdir_p-method" class="method-detail ">
+          <a name="method-c-mkdir_p"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mkdir_p</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: mode noop verbose</p>
+
+<p>Creates a directory and all its parent directories. For example,</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-string">'/usr/local/lib/ruby'</span>
+</pre>
+
+<p>causes to make following directories, if it does not exist.</p>
+
+<pre>* /usr
+* /usr/local
+* /usr/local/lib
+* /usr/local/lib/ruby</pre>
+
+<p>You can pass several directories at a time in a list.</p>
+            
+
+            
+            <div class="method-source-code" id="mkdir_p-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'mkdir_p'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;mkdir -p #{options[:mode] ? ('-m %03o ' % options[:mode]) : ''}#{list.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-operator">*</span><span class="ruby-identifier">list</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">remove_tailing_slash</span>(<span class="ruby-identifier">path</span>)}.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment"># optimize for the most common case</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">fu_mkdir</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:mode</span>]
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SystemCallError</span>
+      <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">stack</span> = []
+    <span class="ruby-keyword">until</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">last</span>   <span class="ruby-comment"># dirname(&quot;/&quot;)==&quot;/&quot;, dirname(&quot;C:/&quot;)==&quot;C:/&quot;</span>
+      <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">path</span>
+      <span class="ruby-identifier">path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">fu_mkdir</span> <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:mode</span>]
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SystemCallError</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">dir</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-operator">*</span><span class="ruby-identifier">list</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- mkdir_p-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-mkpath">mkpath</a>, <a href="FileUtils.html#method-i-makedirs">makedirs</a>
+          </div>
+          
+
+          
+        </div><!-- mkdir_p-method -->
+      
+        <div id="mkpath-method" class="method-detail method-alias">
+          <a name="method-c-mkpath"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mkpath</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-mkdir_p">mkdir_p</a>
+          </div>
+          
+        </div><!-- mkpath-method -->
+      
+        <div id="move-method" class="method-detail method-alias">
+          <a name="method-c-move"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">move</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-mv">mv</a>
+          </div>
+          
+        </div><!-- move-method -->
+      
+        <div id="mv-method" class="method-detail ">
+          <a name="method-c-mv"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">mv</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: force noop verbose</p>
+
+<p>Moves file(s) <code>src</code> to <code>dest</code>.  If <code>file</code>
+and <code>dest</code> exist on the different disk partition, the file is
+copied then the original file is removed.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span> <span class="ruby-string">'badname.rb'</span>, <span class="ruby-string">'goodname.rb'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span> <span class="ruby-string">'stuff.rb'</span>, <span class="ruby-string">'/notexist/lib/ruby'</span>, :<span class="ruby-identifier">force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>  <span class="ruby-comment"># no error</span>
+
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span> <span class="ruby-node">%w(junk.txt dust.txt)</span>, <span class="ruby-string">'/home/aamine/.trash/'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mv</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'test*.rb'</span>), <span class="ruby-string">'test'</span>, :<span class="ruby-identifier">noop</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="mv-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 512</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mv</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'mv'</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;mv#{options[:force] ? ' -f' : ''} #{[src,dest].flatten.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">fu_each_src_dest</span>(<span class="ruby-identifier">src</span>, <span class="ruby-identifier">dest</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">destent</span> = <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">d</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">true</span>)
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">exist?</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">directory?</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EEXIST</span>, <span class="ruby-identifier">dest</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">destent</span>.<span class="ruby-identifier">remove_file</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">rename_cannot_overwrite_file?</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">rename</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EXDEV</span>
+        <span class="ruby-identifier">copy_entry</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">d</span>, <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:secure</span>]
+          <span class="ruby-identifier">remove_entry_secure</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">remove_entry</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SystemCallError</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- mv-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-move">move</a>
+          </div>
+          
+
+          
+        </div><!-- mv-method -->
+      
+        <div id="pwd-method" class="method-detail ">
+          <a name="method-c-pwd"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pwd</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: (none)</p>
+
+<p>Returns the name of the current directory.</p>
+            
+
+            
+            <div class="method-source-code" id="pwd-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pwd</span>
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- pwd-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-getwd">getwd</a>
+          </div>
+          
+
+          
+        </div><!-- pwd-method -->
+      
+        <div id="remove-method" class="method-detail method-alias">
+          <a name="method-c-remove"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-rm">rm</a>
+          </div>
+          
+        </div><!-- remove-method -->
+      
+        <div id="remove_dir-method" class="method-detail ">
+          <a name="method-c-remove_dir"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_dir</span><span
+              class="method-args">(path, force = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Removes a directory <code>dir</code> and its contents recursively. This
+method ignores StandardError if <code>force</code> is true.</p>
+            
+
+            
+            <div class="method-source-code" id="remove_dir-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 803</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_dir</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">remove_entry</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span>   <span class="ruby-comment"># FIXME?? check if it is a directory</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- remove_dir-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_dir-method -->
+      
+        <div id="remove_entry-method" class="method-detail ">
+          <a name="method-c-remove_entry"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_entry</span><span
+              class="method-args">(path, force = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>This method removes a file system entry <code>path</code>.
+<code>path</code> might be a regular file, a directory, or something. If
+<code>path</code> is a directory, remove it recursively.</p>
+
+<p>See also remove_entry_secure.</p>
+            
+
+            
+            <div class="method-source-code" id="remove_entry-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 775</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_entry</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">postorder_traverse</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">remove</span>
+    <span class="ruby-keyword">rescue</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">force</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">force</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- remove_entry-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_entry-method -->
+      
+        <div id="remove_entry_secure-method" class="method-detail ">
+          <a name="method-c-remove_entry_secure"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_entry_secure</span><span
+              class="method-args">(path, force = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>This method removes a file system entry <code>path</code>. 
+<code>path</code> shall be a regular file, a directory, or something.  If
+<code>path</code> is a directory, remove it recursively.  This method is
+required to avoid TOCTTOU (time-of-check-to-time-of-use) local security
+vulnerability of rm_r. rm_r causes security hole when:</p>
+
+<pre>* Parent directory is world writable (including /tmp).
+* Removing directory tree includes world writable directory.
+* The system has symbolic link.</pre>
+
+<p>To avoid this security hole, this method applies special preprocess. If
+<code>path</code> is a directory, this method chown(2) and chmod(2) all
+removing directories.  This requires the current process is the owner of
+the removing whole directory tree, or is the super user (root).</p>
+
+<p>WARNING: You must ensure that <strong>ALL</strong> parent directories
+cannot be moved by other untrusted users.  For example, parent directories
+should not be owned by untrusted users, and should not be world writable
+except when the sticky bit set.</p>
+
+<p>WARNING: Only the owner of the removing directory tree, or Unix super user
+(root) should invoke this method.  Otherwise this method does not work.</p>
+
+<p>For details of this security vulnerability, see Perl’s case:</p>
+
+<pre>http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0448
+http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2004-0452</pre>
+
+<p>For fileutils.rb, this vulnerability is reported in [ruby-dev:26100].</p>
+            
+
+            
+            <div class="method-source-code" id="remove_entry_secure-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 698</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_entry_secure</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">fu_have_symlink?</span>
+    <span class="ruby-identifier">remove_entry</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">fullpath</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">st</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">lstat</span>(<span class="ruby-identifier">fullpath</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">st</span>.<span class="ruby-identifier">directory?</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span> <span class="ruby-identifier">fullpath</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># is a directory.</span>
+  <span class="ruby-identifier">parent_st</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">stat</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">fullpath</span>))
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent_st</span>.<span class="ruby-identifier">world_writable?</span>
+    <span class="ruby-identifier">remove_entry</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent_st</span>.<span class="ruby-identifier">sticky?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;parent directory is world writable, FileUtils#remove_entry_secure does not work; abort: #{path.inspect} (parent directory mode #{'%o' % parent_st.mode})&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># freeze tree root</span>
+  <span class="ruby-identifier">euid</span> = <span class="ruby-constant">Process</span>.<span class="ruby-identifier">euid</span>
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fullpath</span> <span class="ruby-operator">+</span> <span class="ruby-string">'/.'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">fu_stat_identical_entry?</span>(<span class="ruby-identifier">st</span>, <span class="ruby-identifier">f</span>.<span class="ruby-identifier">stat</span>)
+      <span class="ruby-comment"># symlink (TOC-to-TOU attack?)</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span> <span class="ruby-identifier">fullpath</span>
+      <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chown</span> <span class="ruby-identifier">euid</span>, <span class="ruby-value">-1</span>
+    <span class="ruby-identifier">f</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-value">0700</span>
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">fu_stat_identical_entry?</span>(<span class="ruby-identifier">st</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">lstat</span>(<span class="ruby-identifier">fullpath</span>))
+      <span class="ruby-comment"># TOC-to-TOU attack?</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span> <span class="ruby-identifier">fullpath</span>
+      <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+  }
+  <span class="ruby-comment"># ---- tree root is frozen ----</span>
+  <span class="ruby-identifier">root</span> = <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">preorder_traverse</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">directory?</span>
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">chown</span> <span class="ruby-identifier">euid</span>, <span class="ruby-value">-1</span>
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">chmod</span> <span class="ruby-value">0700</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">postorder_traverse</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">remove</span>
+    <span class="ruby-keyword">rescue</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">force</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">force</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- remove_entry_secure-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_entry_secure-method -->
+      
+        <div id="remove_file-method" class="method-detail ">
+          <a name="method-c-remove_file"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_file</span><span
+              class="method-args">(path, force = false)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Removes a file <code>path</code>. This method ignores StandardError if
+<code>force</code> is true.</p>
+            
+
+            
+            <div class="method-source-code" id="remove_file-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 792</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">force</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-constant">Entry_</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">remove_file</span>
+<span class="ruby-keyword">rescue</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">force</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- remove_file-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_file-method -->
+      
+        <div id="rm-method" class="method-detail ">
+          <a name="method-c-rm"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rm</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: force noop verbose</p>
+
+<p>Remove file(s) specified in <code>list</code>.  This method cannot remove
+directories. All StandardErrors are ignored when the :force option is set.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span> <span class="ruby-node">%w( junk.txt dust.txt )</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'*.so'</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm</span> <span class="ruby-string">'NotExistFile'</span>, :<span class="ruby-identifier">force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>   <span class="ruby-comment"># never raises exception</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="rm-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 564</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rm</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'rm'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;rm#{options[:force] ? ' -f' : ''} #{list.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">remove_file</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- rm-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-remove">remove</a>
+          </div>
+          
+
+          
+        </div><!-- rm-method -->
+      
+        <div id="rm_f-method" class="method-detail ">
+          <a name="method-c-rm_f"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rm_f</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose</p>
+
+<p>Equivalent to</p>
+
+<pre class="ruby"><span class="ruby-comment">#rm(list, :force =&gt; true)</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="rm_f-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 589</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rm_f</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'rm_f'</span>]
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>] = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">rm</span> <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- rm_f-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-safe_unlink">safe_unlink</a>
+          </div>
+          
+
+          
+        </div><!-- rm_f-method -->
+      
+        <div id="rm_r-method" class="method-detail ">
+          <a name="method-c-rm_r"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rm_r</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: force noop verbose secure</p>
+
+<p>remove files <code>list[0]</code> <code>list[1]</code>… If
+<code>list[n]</code> is a directory, removes its all contents recursively.
+This method ignores StandardError when :force option is set.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_r</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'/tmp/*'</span>)
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_r</span> <span class="ruby-string">'/'</span>, :<span class="ruby-identifier">force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>          <span class="ruby-comment">#  :-)</span>
+</pre>
+
+<p>WARNING: This method causes local vulnerability if one of parent
+directories or removing directory tree are world writable (including /tmp,
+whose permission is 1777), and the current process has strong privilege
+such as Unix super user (root), and the system has symbolic link.  For
+secure removing, read the documentation of remove_entry_secure carefully,
+and set :secure option to true. Default is :secure=&gt;false.</p>
+
+<p>NOTE: This method calls remove_entry_secure if :secure option is set. See
+also remove_entry_secure.</p>
+            
+
+            
+            <div class="method-source-code" id="rm_r-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 624</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rm_r</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'rm_r'</span>]
+  <span class="ruby-comment"># options[:secure] = true unless options.key?(:secure)</span>
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;rm -r#{options[:force] ? 'f' : ''} #{list.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:secure</span>]
+      <span class="ruby-identifier">remove_entry_secure</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">remove_entry</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- rm_r-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- rm_r-method -->
+      
+        <div id="rm_rf-method" class="method-detail ">
+          <a name="method-c-rm_rf"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rm_rf</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose secure</p>
+
+<p>Equivalent to</p>
+
+<pre class="ruby"><span class="ruby-comment">#rm_r(list, :force =&gt; true)</span>
+</pre>
+
+<p>WARNING: This method causes local vulnerability. Read the documentation of
+rm_r first.</p>
+            
+
+            
+            <div class="method-source-code" id="rm_rf-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 652</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rm_rf</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'rm_rf'</span>]
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:force</span>] = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">rm_r</span> <span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- rm_rf-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="FileUtils.html#method-i-rmtree">rmtree</a>
+          </div>
+          
+
+          
+        </div><!-- rm_rf-method -->
+      
+        <div id="rmdir-method" class="method-detail ">
+          <a name="method-c-rmdir"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rmdir</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: parents, noop, verbose</p>
+
+<p>Removes one or more directories.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rmdir</span> <span class="ruby-string">'somedir'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rmdir</span> <span class="ruby-node">%w(somedir anydir otherdir)</span>
+<span class="ruby-comment"># Does not really remove directory; outputs message.</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rmdir</span> <span class="ruby-string">'somedir'</span>, :<span class="ruby-identifier">verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, :<span class="ruby-identifier">noop</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="rmdir-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 267</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">rmdir</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'rmdir'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">parents</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:parents</span>]
+  <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;rmdir #{parents ? '-p ' : ''}#{list.join ' '}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">rmdir</span>(<span class="ruby-identifier">dir</span> = <span class="ruby-identifier">remove_tailing_slash</span>(<span class="ruby-identifier">dir</span>))
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">parents</span>
+        <span class="ruby-keyword">until</span> (<span class="ruby-identifier">parent</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">dir</span>)) <span class="ruby-operator">==</span> <span class="ruby-string">'.'</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">parent</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dir</span>
+          <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">parent</span>
+          <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">rmdir</span>(<span class="ruby-identifier">dir</span>)
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOTEMPTY</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EEXIST</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- rmdir-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- rmdir-method -->
+      
+        <div id="rmtree-method" class="method-detail method-alias">
+          <a name="method-c-rmtree"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">rmtree</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-rm_rf">rm_rf</a>
+          </div>
+          
+        </div><!-- rmtree-method -->
+      
+        <div id="safe_unlink-method" class="method-detail method-alias">
+          <a name="method-c-safe_unlink"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">safe_unlink</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-rm_f">rm_f</a>
+          </div>
+          
+        </div><!-- safe_unlink-method -->
+      
+        <div id="symlink-method" class="method-detail method-alias">
+          <a name="method-c-symlink"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">symlink</span><span
+              class="method-args">(src, dest, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="FileUtils.html#method-i-ln_s">ln_s</a>
+          </div>
+          
+        </div><!-- symlink-method -->
+      
+        <div id="touch-method" class="method-detail ">
+          <a name="method-c-touch"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">touch</span><span
+              class="method-args">(list, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: noop verbose mtime nocreate</p>
+
+<p>Updates modification time (mtime) and access time (atime) of file(s) in
+<code>list</code>.  Files are created if they don’t exist.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">touch</span> <span class="ruby-string">'timestamp'</span>
+<span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">touch</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">'*.c'</span>);  <span class="ruby-identifier">system</span> <span class="ruby-string">'make'</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="touch-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 1141</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">touch</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">fu_check_options</span> <span class="ruby-identifier">options</span>, <span class="ruby-constant">OPT_TABLE</span>[<span class="ruby-string">'touch'</span>]
+  <span class="ruby-identifier">list</span> = <span class="ruby-identifier">fu_list</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">nocreate</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:nocreate</span>]
+  <span class="ruby-identifier">t</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:mtime</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+    <span class="ruby-identifier">fu_output_message</span> <span class="ruby-node">&quot;touch #{nocreate ? '-c ' : ''}#{t ? t.strftime('-t %Y%m%d%H%M.%S ') : ''}#{list.join ' '}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:noop</span>]
+  <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">created</span> = <span class="ruby-identifier">nocreate</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">utime</span>(<span class="ruby-identifier">t</span>, <span class="ruby-identifier">t</span>, <span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">created</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-string">'a'</span>) {
+        ;
+      }
+      <span class="ruby-identifier">created</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">retry</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- touch-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- touch-method -->
+      
+        <div id="uptodate-3F-method" class="method-detail ">
+          <a name="method-c-uptodate-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">uptodate?</span><span
+              class="method-args">(new, old_list)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Options: (none)</p>
+
+<p>Returns true if <code>new</code> is newer than all <code>old_list</code>.
+Non-existent files are older than any file.</p>
+
+<pre class="ruby"><span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">uptodate?</span>(<span class="ruby-string">'hello.o'</span>, <span class="ruby-node">%w(hello.c hello.h)</span>) <span class="ruby-keyword">or</span>      <span class="ruby-identifier">system</span> <span class="ruby-string">'make hello.o'</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="uptodate-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">uptodate?</span>(<span class="ruby-identifier">new</span>, <span class="ruby-identifier">old_list</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">new</span>)
+  <span class="ruby-identifier">new_time</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">mtime</span>(<span class="ruby-identifier">new</span>)
+  <span class="ruby-identifier">old_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">old</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">old</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">new_time</span> <span class="ruby-operator">&gt;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">mtime</span>(<span class="ruby-identifier">old</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- uptodate-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- uptodate-3F-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="apply_mask-method" class="method-detail ">
+          <a name="method-i-apply_mask"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">apply_mask</span><span
+              class="method-args">(mode, user_mask, op, mode_mask)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="apply_mask-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 891</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_mask</span>(<span class="ruby-identifier">mode</span>, <span class="ruby-identifier">user_mask</span>, <span class="ruby-identifier">op</span>, <span class="ruby-identifier">mode_mask</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">op</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'='</span>
+    (<span class="ruby-identifier">mode</span> <span class="ruby-operator">&amp;</span> <span class="ruby-operator">~</span><span class="ruby-identifier">user_mask</span>) <span class="ruby-operator">|</span> (<span class="ruby-identifier">user_mask</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">mode_mask</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'+'</span>
+    <span class="ruby-identifier">mode</span> <span class="ruby-operator">|</span> (<span class="ruby-identifier">user_mask</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">mode_mask</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'-'</span>
+    <span class="ruby-identifier">mode</span> <span class="ruby-operator">&amp;</span> <span class="ruby-operator">~</span>(<span class="ruby-identifier">user_mask</span> <span class="ruby-operator">&amp;</span> <span class="ruby-identifier">mode_mask</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- apply_mask-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- apply_mask-method -->
+      
+        <div id="remove_tailing_slash-method" class="method-detail ">
+          <a name="method-i-remove_tailing_slash"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">remove_tailing_slash</span><span
+              class="method-args">(dir)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="remove_tailing_slash-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fileutils.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_tailing_slash</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">dir</span> <span class="ruby-operator">==</span> <span class="ruby-string">'/'</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">dir</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-value">?/</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- remove_tailing_slash-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- remove_tailing_slash-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_FileUtils_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_FileUtils_versioned").load("/associated/2_2_0/FileUtils.html");</script> <div id='tx_FileUtils' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_FileUtils").load("/associated/FileUtils.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Maximum R+D</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_FileUtils.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

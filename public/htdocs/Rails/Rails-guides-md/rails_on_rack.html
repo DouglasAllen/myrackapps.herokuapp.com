@@ -1,0 +1,459 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="rails-on-rack">Rails on Rack</h1>
+
+<p>This guide covers Rails integration with Rack and interfacing with other Rack components.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to create Rails Metal applications.</li>
+  <li>How to use Rack Middlewares in your Rails applications.</li>
+  <li>Action Pack’s internal Middleware stack.</li>
+  <li>How to define a custom Middleware stack.</li>
+</ul>
+
+<hr />
+
+<p>WARNING: This guide assumes a working knowledge of Rack protocol and Rack concepts such as middlewares, url maps and <code>Rack::Builder</code>.</p>
+
+<h2 id="introduction-to-rack">Introduction to Rack</h2>
+
+<p>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby. By wrapping HTTP requests and responses in the simplest way possible, it unifies and distills the API for web servers, web frameworks, and software in between (the so-called middleware) into a single method call.</p>
+
+<ul>
+  <li><a href="http://rack.rubyforge.org/doc/">Rack API Documentation</a></li>
+</ul>
+
+<p>Explaining Rack is not really in the scope of this guide. In case you are not familiar with Rack’s basics, you should check out the <a href="#resources">Resources</a> section below.</p>
+
+<h2 id="rails-on-rack-1">Rails on Rack</h2>
+
+<h3 id="rails-applications-rack-object">Rails Application’s Rack Object</h3>
+
+<p><code>ApplicationName::Application</code> is the primary Rack application object of a Rails
+application. Any Rack compliant web server should be using
+<code>ApplicationName::Application</code> object to serve a Rails
+application. <code>Rails.application</code> refers to the same application object.</p>
+
+<h3 id="rails-server"><code>rails server</code></h3>
+
+<p><code>rails server</code> does the basic job of creating a <code>Rack::Server</code> object and starting the webserver.</p>
+
+<p>Here’s how <code>rails server</code> creates an instance of <code>Rack::Server</code></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Server</span>.new.tap <span style="color:#080;font-weight:bold">do</span> |server|
+  require <span style="color:#036;font-weight:bold">APP_PATH</span>
+  <span style="color:#036;font-weight:bold">Dir</span>.chdir(<span style="color:#036;font-weight:bold">Rails</span>.application.root)
+  server.start
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>Rails::Server</code> inherits from <code>Rack::Server</code> and calls the <code>Rack::Server#start</code> method this way:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Server</span> &lt; ::<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Server</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start</span>
+    ...
+    <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Here’s how it loads the middlewares:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">middleware</span>
+  middlewares = []
+  middlewares &lt;&lt; [<span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Debugger</span>] <span style="color:#080;font-weight:bold">if</span> options[<span style="color:#A60">:debugger</span>]
+  middlewares &lt;&lt; [::<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">ContentLength</span>]
+  <span style="color:#036;font-weight:bold">Hash</span>.new(middlewares)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Rails::Rack::Debugger</code> is primarily useful only in the development environment. The following table explains the usage of the loaded middlewares:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Middleware</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Rails::Rack::Debugger</code></td>
+      <td>Starts Debugger</td>
+    </tr>
+    <tr>
+      <td><code>Rack::ContentLength</code></td>
+      <td>Counts the number of bytes in the response and set the HTTP Content-Length header</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="rackup"><code>rackup</code></h3>
+
+<p>To use <code>rackup</code> instead of Rails’ <code>rails server</code>, you can put the following inside <code>config.ru</code> of your Rails application’s root directory:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Rails.root/config.ru</span>
+require ::<span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">../config/environment</span><span style="color:#710">'</span></span>,  <span style="color:#069">__FILE__</span>)
+
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Debugger</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">ContentLength</span>
+run <span style="color:#036;font-weight:bold">Rails</span>.application
+</pre></div>
+</div>
+</div>
+
+<p>And start the server:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rackup config.ru
+</pre></div>
+</div>
+</div>
+
+<p>To find out more about different <code>rackup</code> options:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rackup --help
+</pre></div>
+</div>
+</div>
+
+<h2 id="action-dispatcher-middleware-stack">Action Dispatcher Middleware Stack</h2>
+
+<p>Many of Action Dispatcher’s internal components are implemented as Rack middlewares. <code>Rails::Application</code> uses <code>ActionDispatch::MiddlewareStack</code> to combine various internal and external middlewares to form a complete Rails Rack application.</p>
+
+<p>NOTE: <code>ActionDispatch::MiddlewareStack</code> is Rails equivalent of <code>Rack::Builder</code>, but built for better flexibility and more features to meet Rails’ requirements.</p>
+
+<h3 id="inspecting-middleware-stack">Inspecting Middleware Stack</h3>
+
+<p>Rails has a handy rake task for inspecting the middleware stack in use:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake middleware
+</pre></div>
+</div>
+</div>
+
+<p>For a freshly generated Rails application, this might produce something like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Static</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Lock</span>
+use <span style="color:#777">#&lt;ActiveSupport::Cache::Strategy::LocalCache::Middleware:0x000000029a0838&gt;</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Runtime</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">MethodOverride</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">RequestId</span>
+use <span style="color:#036;font-weight:bold">Rails</span>::<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Logger</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">ShowExceptions</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">DebugExceptions</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">RemoteIp</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Reloader</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Callbacks</span>
+use <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">ConnectionAdapters</span>::<span style="color:#036;font-weight:bold">ConnectionManagement</span>
+use <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">QueryCache</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Cookies</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Session</span>::<span style="color:#036;font-weight:bold">CookieStore</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">Flash</span>
+use <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">ParamsParser</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Head</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">ConditionalGet</span>
+use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">ETag</span>
+run <span style="color:#036;font-weight:bold">MyApp</span>::<span style="color:#036;font-weight:bold">Application</span>.routes
+</pre></div>
+</div>
+</div>
+
+<p>Purpose of each of this middlewares is explained in the <a href="#internal-middleware-stack">Internal Middlewares</a> section.</p>
+
+<h3 id="configuring-middleware-stack">Configuring Middleware Stack</h3>
+
+<p>Rails provides a simple configuration interface <code>config.middleware</code> for adding, removing and modifying the middlewares in the middleware stack via <code>application.rb</code> or the environment specific configuration file <code>environments/&lt;environment&gt;.rb</code>.</p>
+
+<h4 id="adding-a-middleware">Adding a Middleware</h4>
+
+<p>You can add a new middleware to the middleware stack using any of the following methods:</p>
+
+<ul>
+  <li>
+    <p><code>config.middleware.use(new_middleware, args)</code> - Adds the new middleware at the bottom of the middleware stack.</p>
+  </li>
+  <li>
+    <p><code>config.middleware.insert_before(existing_middleware, new_middleware, args)</code> - Adds the new middleware before the specified existing middleware in the middleware stack.</p>
+  </li>
+  <li>
+    <p><code>config.middleware.insert_after(existing_middleware, new_middleware, args)</code> - Adds the new middleware after the specified existing middleware in the middleware stack.</p>
+  </li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+
+<span style="color:#777"># Push Rack::BounceFavicon at the bottom</span>
+config.middleware.use <span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">BounceFavicon</span>
+
+<span style="color:#777"># Add Lifo::Cache after ActiveRecord::QueryCache.</span>
+<span style="color:#777"># Pass { page_cache: false } argument to Lifo::Cache.</span>
+config.middleware.insert_after <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">QueryCache</span>, <span style="color:#036;font-weight:bold">Lifo</span>::<span style="color:#036;font-weight:bold">Cache</span>, <span style="color:#606">page_cache</span>: <span style="color:#069">false</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="swapping-a-middleware">Swapping a Middleware</h4>
+
+<p>You can swap an existing middleware in the middleware stack using <code>config.middleware.swap</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+
+<span style="color:#777"># Replace ActionDispatch::ShowExceptions with Lifo::ShowExceptions</span>
+config.middleware.swap <span style="color:#036;font-weight:bold">ActionDispatch</span>::<span style="color:#036;font-weight:bold">ShowExceptions</span>, <span style="color:#036;font-weight:bold">Lifo</span>::<span style="color:#036;font-weight:bold">ShowExceptions</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="middleware-stack-is-an-enumerable">Middleware Stack is an Enumerable</h4>
+
+<p>The middleware stack behaves just like a normal <code>Enumerable</code>. You can use any <code>Enumerable</code> methods to manipulate or interrogate the stack. The middleware stack also implements some <code>Array</code> methods including <code>[]</code>, <code>unshift</code> and <code>delete</code>. Methods described in the section above are just convenience methods.</p>
+
+<p>Append following lines to your application configuration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+config.middleware.delete <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Rack::Lock</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>And now if you inspect the middleware stack, you’ll find that <code>Rack::Lock</code> will not be part of it.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake middleware
+(in /Users/lifo/Rails/blog)
+use ActionDispatch::Static
+use #&lt;ActiveSupport::Cache::Strategy::LocalCache::Middleware:0x00000001c304c8&gt;
+use Rack::Runtime
+...
+run Blog::Application.routes
+</pre></div>
+</div>
+</div>
+
+<p>If you want to remove session related middleware, do the following:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+config.middleware.delete <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ActionDispatch::Cookies</span><span style="color:#710">&quot;</span></span>
+config.middleware.delete <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ActionDispatch::Session::CookieStore</span><span style="color:#710">&quot;</span></span>
+config.middleware.delete <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ActionDispatch::Flash</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>And to remove browser related middleware,</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+config.middleware.delete <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Rack::MethodOverride</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="internal-middleware-stack">Internal Middleware Stack</h3>
+
+<p>Much of Action Controller’s functionality is implemented as Middlewares. The following list explains the purpose of each of them:</p>
+
+<p><strong><code>ActionDispatch::Static</code></strong></p>
+
+<ul>
+  <li>Used to serve static assets. Disabled if <code>config.serve_static_assets</code> is true.</li>
+</ul>
+
+<p><strong><code>Rack::Lock</code></strong></p>
+
+<ul>
+  <li>Sets <code>env["rack.multithread"]</code> flag to <code>false</code> and wraps the application within a Mutex.</li>
+</ul>
+
+<p><strong><code>ActiveSupport::Cache::Strategy::LocalCache::Middleware</code></strong></p>
+
+<ul>
+  <li>Used for memory caching. This cache is not thread safe.</li>
+</ul>
+
+<p><strong><code>Rack::Runtime</code></strong></p>
+
+<ul>
+  <li>Sets an X-Runtime header, containing the time (in seconds) taken to execute the request.</li>
+</ul>
+
+<p><strong><code>Rack::MethodOverride</code></strong></p>
+
+<ul>
+  <li>Allows the method to be overridden if <code>params[:_method]</code> is set. This is the middleware which supports the PUT and DELETE HTTP method types.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::RequestId</code></strong></p>
+
+<ul>
+  <li>Makes a unique <code>X-Request-Id</code> header available to the response and enables the <code>ActionDispatch::Request#uuid</code> method.</li>
+</ul>
+
+<p><strong><code>Rails::Rack::Logger</code></strong></p>
+
+<ul>
+  <li>Notifies the logs that the request has began. After request is complete, flushes all the logs.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::ShowExceptions</code></strong></p>
+
+<ul>
+  <li>Rescues any exception returned by the application and calls an exceptions app that will wrap it in a format for the end user.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::DebugExceptions</code></strong></p>
+
+<ul>
+  <li>Responsible for logging exceptions and showing a debugging page in case the request is local.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::RemoteIp</code></strong></p>
+
+<ul>
+  <li>Checks for IP spoofing attacks.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Reloader</code></strong></p>
+
+<ul>
+  <li>Provides prepare and cleanup callbacks, intended to assist with code reloading during development.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Callbacks</code></strong></p>
+
+<ul>
+  <li>Runs the prepare callbacks before serving the request.</li>
+</ul>
+
+<p><strong><code>ActiveRecord::ConnectionAdapters::ConnectionManagement</code></strong></p>
+
+<ul>
+  <li>Cleans active connections after each request, unless the <code>rack.test</code> key in the request environment is set to <code>true</code>.</li>
+</ul>
+
+<p><strong><code>ActiveRecord::QueryCache</code></strong></p>
+
+<ul>
+  <li>Enables the Active Record query cache.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Cookies</code></strong></p>
+
+<ul>
+  <li>Sets cookies for the request.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Session::CookieStore</code></strong></p>
+
+<ul>
+  <li>Responsible for storing the session in cookies.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Flash</code></strong></p>
+
+<ul>
+  <li>Sets up the flash keys. Only available if <code>config.action_controller.session_store</code> is set to a value.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::ParamsParser</code></strong></p>
+
+<ul>
+  <li>Parses out parameters from the request into <code>params</code>.</li>
+</ul>
+
+<p><strong><code>ActionDispatch::Head</code></strong></p>
+
+<ul>
+  <li>Converts HEAD requests to <code>GET</code> requests and serves them as so.</li>
+</ul>
+
+<p><strong><code>Rack::ConditionalGet</code></strong></p>
+
+<ul>
+  <li>Adds support for “Conditional <code>GET</code>” so that server responds with nothing if page wasn’t changed.</li>
+</ul>
+
+<p><strong><code>Rack::ETag</code></strong></p>
+
+<ul>
+  <li>Adds ETag header on all String bodies. ETags are used to validate cache.</li>
+</ul>
+
+<p>TIP: It’s possible to use any of the above middlewares in your custom Rack stack.</p>
+
+<h3 id="using-rack-builder">Using Rack Builder</h3>
+
+<p>The following shows how to replace use <code>Rack::Builder</code> instead of the Rails supplied <code>MiddlewareStack</code>.</p>
+
+<p><strong>Clear the existing Rails middleware stack</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config/application.rb</span>
+config.middleware.clear
+</pre></div>
+</div>
+</div>
+
+<p><br />
+<strong>Add a <code>config.ru</code> file to <code>Rails.root</code></strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># config.ru</span>
+use <span style="color:#036;font-weight:bold">MyOwnStackFromScratch</span>
+run <span style="color:#036;font-weight:bold">Rails</span>.application
+</pre></div>
+</div>
+</div>
+
+<h2 id="resources">Resources</h2>
+
+<h3 id="learning-rack">Learning Rack</h3>
+
+<ul>
+  <li><a href="http://rack.github.io">Official Rack Website</a></li>
+  <li><a href="http://chneukirchen.org/blog/archive/2007/02/introducing-rack.html">Introducing Rack</a></li>
+  <li><a href="http://m.onkey.org/ruby-on-rack-1-hello-rack">Ruby on Rack #1 - Hello Rack!</a></li>
+  <li><a href="http://m.onkey.org/ruby-on-rack-2-the-builder">Ruby on Rack #2 - The Builder</a></li>
+</ul>
+
+<h3 id="understanding-middlewares">Understanding Middlewares</h3>
+
+<ul>
+  <li><a href="http://railscasts.com/episodes/151-rack-middleware">Railscast on Rack Middlewares</a></li>
+</ul>
+
+    </div>
+  </body>
+</html>

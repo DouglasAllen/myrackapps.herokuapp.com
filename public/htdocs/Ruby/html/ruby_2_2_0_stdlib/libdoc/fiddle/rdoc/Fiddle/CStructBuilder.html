@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : Fiddle::CStructBuilder  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:22:13 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Module: Fiddle::CStructBuilder (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>fiddle/lib/fiddle/struct.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-create">::create</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../Fiddle.html">Fiddle</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/BasicTypes.html">Fiddle::BasicTypes</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CParser.html">Fiddle::CParser</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CStruct.html">Fiddle::CStruct</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CStructBuilder.html">Fiddle::CStructBuilder</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CStructEntity.html">Fiddle::CStructEntity</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CUnion.html">Fiddle::CUnion</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CUnionEntity.html">Fiddle::CUnionEntity</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Closure.html">Fiddle::Closure</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Closure/BlockCaller.html">Fiddle::Closure::BlockCaller</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/CompositeHandler.html">Fiddle::CompositeHandler</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/DLError.html">Fiddle::DLError</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Function.html">Fiddle::Function</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Handle.html">Fiddle::Handle</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Importer.html">Fiddle::Importer</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Pointer.html">Fiddle::Pointer</a></li>
+        
+          
+          
+          <li><a href="../Fiddle/Win32Types.html">Fiddle::Win32Types</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">Fiddle::CStructBuilder</h1>
+
+    <div id="description" class="description">
+      
+<p>Used to construct C classes (CUnion, <a href="CStruct.html">CStruct</a>,
+etc)</p>
+
+<p><a href="Importer.html#method-i-struct">Fiddle::Importer#struct</a> and <a
+href="Importer.html#method-i-union">Fiddle::Importer#union</a> wrap this
+functionality in an easy-to-use manner.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="create-method" class="method-detail ">
+          <a name="method-c-create"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">create</span><span
+              class="method-args">(klass, types, members)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Construct a new class given a C:</p>
+<ul><li>
+<p>class <code>klass</code> (CUnion, <a href="CStruct.html">CStruct</a>, or
+other that provide an entity_class)</p>
+</li><li>
+<p><code>types</code> (Fiddle::TYPE_INT, Fiddle::TYPE_SIZE_T, etc., see the C
+types constants)</p>
+</li><li>
+<p>corresponding <code>members</code></p>
+</li></ul>
+
+<p><a href="Importer.html#method-i-struct">Fiddle::Importer#struct</a> and <a
+href="Importer.html#method-i-union">Fiddle::Importer#union</a> wrap this
+functionality in an easy-to-use manner.</p>
+
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'fiddle/struct'</span>
+<span class="ruby-identifier">require</span> <span class="ruby-string">'fiddle/cparser'</span>
+
+<span class="ruby-identifier">include</span> <span class="ruby-constant">Fiddle</span><span class="ruby-operator">::</span><span class="ruby-constant">CParser</span>
+
+<span class="ruby-identifier">types</span>, <span class="ruby-identifier">members</span> = <span class="ruby-identifier">parse_struct_signature</span>([<span class="ruby-string">'int i'</span>,<span class="ruby-string">'char c'</span>])
+
+<span class="ruby-constant">MyStruct</span> = <span class="ruby-constant">Fiddle</span><span class="ruby-operator">::</span><span class="ruby-constant">CStructBuilder</span>.<span class="ruby-identifier">create</span>(<span class="ruby-constant">Fiddle</span><span class="ruby-operator">::</span><span class="ruby-constant">CUnion</span>, <span class="ruby-identifier">types</span>, <span class="ruby-identifier">members</span>)
+
+<span class="ruby-identifier">obj</span> = <span class="ruby-constant">MyStruct</span>.<span class="ruby-identifier">allocate</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="create-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File fiddle/lib/fiddle/struct.rb, line 50</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">types</span>, <span class="ruby-identifier">members</span>)
+      <span class="ruby-identifier">new_class</span> = <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">klass</span>){
+        <span class="ruby-identifier">define_method</span>(<span class="ruby-value">:initialize</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">addr</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@entity</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">entity_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">addr</span>, <span class="ruby-identifier">types</span>)
+          <span class="ruby-ivar">@entity</span>.<span class="ruby-identifier">assign_names</span>(<span class="ruby-identifier">members</span>)
+        }
+        <span class="ruby-identifier">define_method</span>(<span class="ruby-value">:to_ptr</span>){ <span class="ruby-ivar">@entity</span> }
+        <span class="ruby-identifier">define_method</span>(<span class="ruby-value">:to_i</span>){ <span class="ruby-ivar">@entity</span>.<span class="ruby-identifier">to_i</span> }
+        <span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span>){ <span class="ruby-ivar">@entity</span>[<span class="ruby-identifier">name</span>] }
+          <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;=&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@entity</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">val</span> }
+        }
+      }
+      <span class="ruby-identifier">size</span> = <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">entity_class</span>.<span class="ruby-identifier">size</span>(<span class="ruby-identifier">types</span>)
+      <span class="ruby-identifier">new_class</span>.<span class="ruby-identifier">module_eval</span>(<span class="ruby-string">&quot;        def new_class.size()
+          #{size}
+        end
+        def new_class.malloc()
+          addr = Fiddle.malloc(#{size})
+          new(addr)
+        end
+&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+      <span class="ruby-keyword">return</span> <span class="ruby-identifier">new_class</span>
+    <span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- create-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- create-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_CStructBuilder_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_CStructBuilder_versioned").load("/associated/2_2_0/CStructBuilder.html");</script> <div id='tx_CStructBuilder' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_CStructBuilder").load("/associated/CStructBuilder.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Maximum R+D</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_CStructBuilder.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

@@ -1,0 +1,954 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>CREDIT:</strong> Although this article is my own work, it is based on ideas I got from
+a very different but interesting <a href="http://www.subelsky.com/2012/11/ruby-dependencies-notifications-and.html">early draft</a> from Practicing Ruby reader
+<a href="http://www.subelsky.com/">Mike Subelsky</a>. I owe him a huge hat tip for suggesting that we cover
+this topic and for helping me get started with it.</p>
+</blockquote>
+
+<p>The challenge of sensibly connecting a set of objects together to perform a
+complex task is one that confounds programmers of all skill levels. In fact, 
+it is hard to reason about the relationships between objects without getting 
+trapped by analysis paralysis. With that in mind, it is no surprise that so
+many of us struggle with this particular aspect of object-oriented programming. </p>
+
+<p>But like so many other problems we encounter in our work, this one can
+be simplified greatly by introducing a common vocabulary and some rough
+heuristics that make thinking and communicating about our code easier.
+For reasoning about this particular design challenge, the 
+“Object Peer Stereotypes” described in <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided
+by Tests</a> give us some very useful conceptual tools 
+to work with.</p>
+
+<p>In this article, we will explore the three stereotypical relationships 
+between an object and its peers that were described in GOOS: 
+dependencies, notifications, and adjustments. Taken together, these 
+rough categorizations do a good job of identifying the kinds of
+connections that exist between objects, which makes it easier
+to develop a more nuanced view of how they communicate with each other.</p>
+
+<p>The specific examples in this article are based on code from 
+<a href="https://github.com/elm-city-craftworks/newman">Newman</a> (my experimental email-based microframework), but the
+general concepts that we’ll discuss are relevant to all object-oriented 
+software. If you keep your own projects in the back of your mind as you
+read on, you’ll easily find similarities between Newman’s design 
+challenges and your own.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<blockquote>
+  <p>Services that the object requires from its peers so it can perform its
+responsibilities. The object cannot function without these services. It should
+not be possible to create the object without them. (GOOS, pg. 52)</p>
+</blockquote>
+
+<p>Whether they are internal or external, dependency relationships need to be
+carefully managed in order to prevent brittleness. 
+Alistair Cockburn’s <a href="http://alistair.cockburn.us/Hexagonal+architecture">ports and adapters</a> pattern provides
+one way of dealing with this problem: define abstract <em>ports</em> in the 
+application’s domain language that covers slices of functionality, and then build 
+implementation-specific <em>adapters</em> with compatible interfaces. This approach allows dependencies 
+to be reasoned about at a higher level of abstraction and makes it so that systems 
+can be easily changed.</p>
+
+<p>We applied this pattern (albeit without recognizing it by name) when thinking
+through how Newman should handle its email dependency. We knew from the outset
+that we’d need to support some sort of test mailer and that it should be a
+drop-in replacement for its real mailer. We also anticipated that down the line
+we might want to support delivery mechanisms other than the <code>mail</code> gem and
+figured that some sort of adapter-based approach would be a good fit.</p>
+
+<p>Constructing a port involves thinking through the various ways a 
+subsystem will be used within your application and then 
+mapping a protocol to those use cases. In Newman, we expected that
+our email dependency would need to support the following requirements:</p>
+
+<p>1) Read configuration data from a <code>Newman::Settings</code> object if necessary.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>mailer = <span style="color:#036;font-weight:bold">AnyMailAdapter</span>.new(settings)
+</pre></div>
+</div>
+</div>
+
+<p>2) Retrieve all messages from an inbox, deleting them from the server in the
+process.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>mailer.messages.each <span style="color:#080;font-weight:bold">do</span> |message|
+  do_something_exciting(message) 
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>3) Construct a complete message and deliver it immediately.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>mailer.deliver_message(<span style="color:#A60">:to</span>      =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test@test.com</span><span style="color:#710">&quot;</span></span>,
+                       <span style="color:#A60">:from</span>    =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory@practicingruby.com</span><span style="color:#710">&quot;</span></span>,
+                       <span style="color:#A60">:subject</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A special offer for you!!!</span><span style="color:#710">&quot;</span></span>,
+                       <span style="color:#A60">:body</span>    =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Send me your credit card number, plz!</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>4) Construct a message incrementally and then deliver it later, if at all. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>message = mailer.new_message(<span style="color:#A60">:to</span>   =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test@test.com</span><span style="color:#710">&quot;</span></span>,
+                             <span style="color:#A60">:from</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory@practicingruby.com</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#080;font-weight:bold">if</span> bank_account.balance &lt; <span style="color:#00D">1_000_000_000</span>
+  message.subject = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Can I interest you in some prescription painkillers?</span><span style="color:#710">&quot;</span></span>
+  message.body    = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Best prices anywhere on the internets!!!</span><span style="color:#710">&quot;</span></span>
+  messsage.deliver
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although you can make an educated guess about how to implement adapters
+for this port based on the previous examples, there are many
+unanswered questions lurking just beneath the surface. This is where
+the difference between <em>interfaces</em> and <em>protocols</em> becomes important:</p>
+
+<blockquote>
+  <p>An interface defines whether two things can fit together, a protocol 
+defines whether two things can <em>work together</em> (GOOS, pg. 58)</p>
+</blockquote>
+
+<p>If you revisit the code examples shown above, you’ll notice that the interface
+requirements for a Newman-compatible mail adapter are roughly as follows:</p>
+
+<ul>
+  <li>The constructor accepts one argument (the settings object).</li>
+  <li>The <code>messages</code> method returns an collection that responds to <code>each</code> and yields
+an object for each message in the inbox.</li>
+  <li>The <code>deliver_message</code> accepts one argument (a parameters hash).</li>
+  <li>The <code>new_message</code> method accepts a parameters hash and returns
+an object representing the message. At a minimum, the object allows certain fields
+to be set (i.e., <code>subject</code> and <code>body</code>) and responds to a <code>deliver</code> method.</li>
+</ul>
+
+<p>Building an object that satisfies these requirements is trivial, but there is
+no guarantee that doing so will result in an adapter that conforms to the
+<em>protocol</em> that Newman expects. Unfortunately, protocols are much harder
+to reason about and define than interfaces are.</p>
+
+<p>Like many Ruby libraries, Newman relies on loose <a href="http://en.wikipedia.org/wiki/Duck_typing">duck typing</a> 
+rather than a formal behavioral contract to determine whether one adapter can 
+serve as a drop-in replacement for another. The <code>Newman::Mailer</code> object is used
+by default, so it defines the canonical implementation that 
+other adapters are expected to mimic at the functional level – even if they 
+handle things very differently under the hood. This implicit contract makes 
+it possible for <code>Newman::TestMailer</code> to stand in for 
+a <code>Newman::Mailer</code> object, even though it stores all incoming and 
+outgoing messages in memory rather than relying on SMTP and IMAP. Because
+the two objects respond to the same messages in similar ways, the systems
+that depend on them are unaware of their differences in implementation – they
+are just two different adapters that both fit in the same port.</p>
+
+<p>If you read through the source of the <a href="http://elm-city-craftworks.github.com/newman/lib/newman/mailer.html">Newman::Mailer</a> 
+and <a href="http://elm-city-craftworks.github.com/newman/lib/newman/test_mailer.html">Newman::TestMailer</a> objects, you will find that
+several compromises have been made for the sake of convenience:</p>
+
+<ol>
+  <li>
+    <p>Arguments for the <code>new_message</code> and <code>deliver_message</code> methods on both 
+adapters are directly delegated to the <code>Mail::Message</code> constructor, and the
+return value of <code>messages</code> on both adapters is a collection 
+of <code>Mail::Message</code> objects. This design implicitly ties the interface of those 
+methods to the mail gem; it’s what GOOS calls a <em>hidden dependency</em>.</p>
+  </li>
+  <li>
+    <p>The <code>Newman::TestMailer</code> object is a singleton object, but it
+implements a fake constructor in order to maintain interface compatibility 
+with <code>Newman::Mailer</code>. This is an example of how constraints 
+from dependencies can spill over into client code.</p>
+  </li>
+  <li>
+    <p>Configuration data is completely ignored by <code>Newman::TestMailer</code>. Because
+all of its operations are done in memory, it has no need for SMTP and IMAP
+settings, but it needs to accept the settings object anyway for the 
+sake of maintaining interface compatibility.</p>
+  </li>
+</ol>
+
+<p>All of these warts stem from protocol issues. The first issue is due to
+underspecification: Newman has a clear protocol for creating, retrieving, and
+sending messages, but it does not clearly define what it expects the messages
+themselves to look like. The coupling between the interface of <code>Newman::Mailer</code>
+and that of <code>Mail::Message</code> makes it so that other adapters must also inherit
+this hidden dependency. Because <code>Newman::TestMailer</code> also explicitly depends 
+upon <code>Mail::Message</code>, this constraint does not complicate its implementation,
+but it certainly does make it harder to build adapters that aren’t dependent 
+on the mail gem.</p>
+
+<p>On the flip side, the second and third issues are a result of 
+overspecification. We didn’t want to make <code>Newman::TestMailer</code> a singleton, 
+but because the underlying <code>Mail::TestMailer</code> is implemented that way,
+we didn’t have much of a choice. Our decision to implement a fake constructor
+in order to maintain compatibility with <code>Newman::Mailer</code> is something I was
+never happy with, but I also couldn’t think of a better
+alternative. I am somewhat less concerned about <code>Mailer::TestMailer</code> having to
+accept a settings object that it doesn’t actually use, but it does feel like one
+extra hoop to jump through simply for the sake of consistency.</p>
+
+<p>Despite these rough edges, Newman’s way of handling its email dependency is a
+good example of the <a href="http://alistair.cockburn.us/Hexagonal+architecture">ports and adapters</a> pattern in the 
+wild. If anything, it serves as a reminder that the hard part of writing loosely
+coupled code is not in the creation of duck-typed adapters, but in clearly
+defining the protocol for our ports. This concept takes us beyond the idea of “coding to
+an interface rather than an implementation” and is worth ruminating
+over.</p>
+
+<h2 id="notifications">Notifications</h2>
+
+<blockquote>
+  <p>Peers that need to be kept up to date with the object’s activity. The object
+will notify interested peers whenever it changes state or performs a
+significant action. Notifications are ‘fire and forget’; the object neither
+knows nor cares which peers are listening. (GOOS, pg. 52)</p>
+</blockquote>
+
+<p>Because Ruby is a message-oriented programming language, it is easy to model
+many kinds of object relationships as notifications. Doing so greatly reduces
+the coupling between objects and helps establish a straight-line flow from a 
+system’s inputs to its outputs.</p>
+
+<p>Notification-based modeling is especially useful when designing framework code,
+because it is important for frameworks to know as little as possible about the
+applications that are built on top of them. The general design of
+the extremely popular <a href="http://rack.github.com/">rack web server interface</a> leverages these ideas to
+great effect; it assumes that its applications implement a meaningful
+<code>call</code> method, but otherwise remains blissfully ignorant of their behaviors.</p>
+
+<p>We have designed Newman using a similar
+strategy, and the general idea can be understood by tracing the execution of
+the <code>Newman::Server#tick</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Newman</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Server</span>
+    <span style="color:#777"># NOTE: the mailer, apps, logger, and settings dependencies</span>
+    <span style="color:#777"># are initialized when a Server instance is instantiated</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">tick</span>
+      mailer.messages.each <span style="color:#080;font-weight:bold">do</span> |request|
+        response = mailer.new_message(<span style="color:#A60">:to</span>   =&gt; request.from,
+                                      <span style="color:#A60">:from</span> =&gt; settings.service.default_sender)
+
+        process_request(request, response) &amp;&amp; response.deliver
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#777"># ... error handling code omitted</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">process_request</span>(request, response)
+      apps.each <span style="color:#080;font-weight:bold">do</span> |app|
+        app.call(<span style="color:#A60">:request</span>  =&gt; request,
+                 <span style="color:#A60">:response</span> =&gt; response,
+                 <span style="color:#A60">:settings</span> =&gt; settings,
+                 <span style="color:#A60">:logger</span>   =&gt; logger)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>
+
+      <span style="color:#777"># ... error handling code omitted</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Did you figure out how it works? Let’s walk through the process step by step to
+confirm:</p>
+
+<ol>
+  <li>
+    <p>The <code>tick</code> method walks over each incoming message currently queued by the
+<code>mailer</code> object (i.e., the <code>request</code>).</p>
+  </li>
+  <li>
+    <p>A <code>response</code> message is constructed and addressed to the sender of
+the <code>request</code>.</p>
+  </li>
+  <li>
+    <p>The <code>process_request</code> method is called, which iterates over a
+collection, executing the <code>call</code> method on each element and passing along
+several dependencies that can be used to finish building a meaningful
+<code>response</code> message.</p>
+  </li>
+  <li>
+    <p>Once <code>process_request</code> completes successfully, the response is delivered.</p>
+  </li>
+</ol>
+
+<p>Because <code>Newman::Server</code> has a notification-based relationship with its
+<code>apps</code> collection, it does not know or care about the structure of those
+objects. In fact, the contract is so simple that a trivial <code>Proc</code> object 
+can serve as a fully functioning Newman application:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Greeter</span> = -&gt;(params) { |params| params[<span style="color:#A60">:response</span>].subject = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World!</span><span style="color:#710">&quot;</span></span> }
+
+server.apps = [<span style="color:#036;font-weight:bold">Greeter</span>]
+server.tick
+</pre></div>
+</div>
+</div>
+
+<p>If we wanted to make things a bit more interesting, we could add request
+and response logging into the mix, using Newman’s built-in features:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Greeter</span> = -&gt;(params) { |params| params[<span style="color:#A60">:response</span>].subject = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World!</span><span style="color:#710">&quot;</span></span> }
+
+server.apps = [<span style="color:#036;font-weight:bold">Newman</span>::<span style="color:#036;font-weight:bold">RequestLogger</span>, <span style="color:#036;font-weight:bold">Greeter</span>, <span style="color:#036;font-weight:bold">Newman</span>::<span style="color:#036;font-weight:bold">ResponseLogger</span>]
+server.tick
+</pre></div>
+</div>
+</div>
+
+<p>These objects make use of a mixin that simplifies email logging, but as you can
+see from the following code, they have no knowledge of the <code>Newman::Server</code>
+object and rely entirely on the parameters being passed into their <code>#call</code>
+method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Newman</span>
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; (<span style="color:#036;font-weight:bold">RequestLogger</span> = <span style="color:#036;font-weight:bold">Object</span>.new)
+    include <span style="color:#036;font-weight:bold">EmailLogger</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(params)
+      log_email(params[<span style="color:#A60">:logger</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">REQUEST</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:request</span>]) 
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; (<span style="color:#036;font-weight:bold">ResponseLogger</span> = <span style="color:#036;font-weight:bold">Object</span>.new)
+    include <span style="color:#036;font-weight:bold">EmailLogger</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(params)
+      log_email(params[<span style="color:#A60">:logger</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RESPONSE</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:response</span>])
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Taken together, these four objects combined form a cohesive workflow:</p>
+
+<ol>
+  <li>
+    <p>The server receives incoming emails and passes them on to its <code>apps</code> for
+processing, along with a placeholder <code>response</code> object.</p>
+  </li>
+  <li>
+    <p>The request logger inspects the incoming email and records debugging 
+information.</p>
+  </li>
+  <li>
+    <p>The greeter sets the subject of the outgoing response to “Hello World”.</p>
+  </li>
+  <li>
+    <p>The response logger inspects the outgoing email and records debugging
+information.</p>
+  </li>
+  <li>
+    <p>The server sends the response email.</p>
+  </li>
+</ol>
+
+<p>The remarkable thing is not this semimundane process, but that the
+objects involved know virtually nothing about their collaborators and are unaware of their position in the sequence of events. Context-independence
+(<em>GOOS, pg. 54</em>) is a powerful thing, because it allows each object to be reasoned
+about, tested, and developed in isolation.</p>
+
+<p>The implications of notification-based modeling extend far beyond
+context independence, but it wouldn’t be easy to summarize them in 
+a few short sentences. Fortunately, this topic has been covered 
+extensively in other Practicing Ruby articles, particularly in 
+<a href="https://practicingruby.com/articles/64">Issue 4.11</a> and <a href="https://practicingruby.com/articles/71">Issue 5.2</a>. Be sure to
+read those articles if you haven’t already; they are among the finest in our
+collection.</p>
+
+<h2 id="adjustments">Adjustments</h2>
+
+<blockquote>
+  <p>Peers that adjust the object’s behavior to the wider needs of the system. This
+includes policy objects that make decisions on the object’s behalf . . . and
+component parts of the object if it’s a composite. (GOOS, pg. 52)</p>
+</blockquote>
+
+<p>Adjustment relationships are hard to summarize, because they can exist in so 
+many forms. But regardless of the form they take on, adjustments tend to be
+used to bridge the gap between different levels of abstraction. Some are used
+to raise the level of abstraction by wrapping a specific object in a more
+generic interface, and others are designed to do the opposite. </p>
+
+<p>For an example of climbing down the ladder of abstraction, consider 
+<code>Newman::EmailLogger</code>. It is implemented as a module in Newman for convenience,
+but it could easily be reimagined as a stateless peer object of <code>RequestLogger</code>
+and <code>ResponseLogger</code>. Such a redesign would yield something similar to the
+following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Newman</span>
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; (<span style="color:#036;font-weight:bold">EmailLogger</span> = <span style="color:#036;font-weight:bold">Object</span>.new)
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">log_email</span>(logger, prefix, email)
+      logger.debug(prefix) { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>email<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }
+      logger.info(prefix) { email_summary(email) }
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">email_summary</span>(email)
+      { <span style="color:#A60">:from</span>     =&gt; email.from,
+        <span style="color:#A60">:to</span>       =&gt; email.to,
+        <span style="color:#A60">:bcc</span>      =&gt; email.bcc,
+        <span style="color:#A60">:subject</span>  =&gt; email.subject,
+        <span style="color:#A60">:reply_to</span> =&gt; email.reply_to }
+    <span style="color:#080;font-weight:bold">end</span>    
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#036;font-weight:bold">RequestLogger</span> = -&gt;(params) {  
+    <span style="color:#036;font-weight:bold">EmailLogger</span>.log_email(params[<span style="color:#A60">:logger</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">REQUEST</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:request</span>])
+  }
+
+  <span style="color:#036;font-weight:bold">ResponseLogger</span> = -&gt;(params) {
+    <span style="color:#036;font-weight:bold">EmailLogger</span>.log_email(params[<span style="color:#A60">:logger</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RESPONSE</span><span style="color:#710">&quot;</span></span>, params[<span style="color:#A60">:response</span>])
+  }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Though this is a subtle change, it lifts up and centralizes the concept of
+“email logging” into a single object, rather than mixing helper methods into
+various objects that need that functionality. This adjustment helps define the borders
+between distinct concepts within the code and establishes <code>EmailLogger</code> as an
+adjustment to the much more general <code>Logger</code> object it depends upon.</p>
+
+<p>The philosophical distinction between these two objects is what matters here. 
+A <code>Logger</code> has very abstract responsibilities: it must record arbitrary strings 
+at various levels of severity and then format and output them to various 
+streams. <code>EmailLogger</code>, on the other hand, is extremely concrete in its
+responsibilities: it uses a <code>Logger</code> to report debugging information about
+an email message. The details of how the actual logging happens are hidden from
+<code>EmailLogger</code>’s clients, making it easier to treat as a black box.</p>
+
+<p>Simple designs can also emerge from climbing the ladder of abstraction, 
+that is, moving from a very specific context to a much more general one. For
+example, it might not be a bad idea to introduce an object into Newman 
+that encapsulates the concept of an email message but leaves the exact
+delivery mechanism up to the individual adapters:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># this code would be in an adapter or application code</span>
+message = <span style="color:#036;font-weight:bold">Newman</span>::<span style="color:#036;font-weight:bold">Message</span>.new { |params| <span style="color:#036;font-weight:bold">Mail</span>::<span style="color:#036;font-weight:bold">Message</span>.new(params).deliver }
+
+<span style="color:#777"># elsewhere, no knowledge of the dependency on the mail gem would be necessary:</span>
+message.to      = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test@test.com</span><span style="color:#710">&quot;</span></span>
+message.from    = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory@practicingruby.com</span><span style="color:#710">&quot;</span></span>
+message.subject = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have won twenty bazillion dollars!</span><span style="color:#710">&quot;</span></span>
+message.body    = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please send us a hair sample to confirm your ID</span><span style="color:#710">&quot;</span></span>
+
+message.deliver
+</pre></div>
+</div>
+</div>
+
+<p>This kind of object is trivial to implement because it is nothing more
+than a value object with a simple callback mechanism bolted on top of it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Newman</span> 
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Message</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(&amp;delivery_callback)
+      <span style="color:#069">self</span>.delivery_callback = delivery_callback
+    <span style="color:#080;font-weight:bold">end</span>
+
+    attr_accessor <span style="color:#A60">:to</span>, <span style="color:#A60">:from</span>, <span style="color:#A60">:subject</span>, <span style="color:#A60">:body</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">deliver</span>
+      raise <span style="color:#036;font-weight:bold">NotImplementedError</span> <span style="color:#080;font-weight:bold">unless</span> delivery_callback
+
+      delivery_callback.(<span style="color:#A60">:to</span>      =&gt; to,      <span style="color:#A60">:from</span> =&gt; from, 
+                         <span style="color:#A60">:subject</span> =&gt; subject, <span style="color:#A60">:body</span> =&gt; body)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:delivery_callback</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Despite its simplicity, this object provides a useful benefit: it explicitly
+separates the protocol of message delivery from its implementation. If all
+mail adapters for Newman were expected to return only <code>Newman::Message</code> objects, 
+then any message-processing code within Newman (either in the server or in
+application code) would have a well-defined interface to work against. Although
+this requirement would make adapters slightly more cumbersome to write, it would
+completely eliminate the hidden dependency issue discussed earlier.</p>
+
+<p>Regardless of which direction they are pointed in, adjustment relationships are
+very closely related to the concept of object composition in general. With that
+in mind, the authors of GOOS have a useful rule to consider when designing 
+composite objects:</p>
+
+<blockquote>
+  <p>The API of a composite object should not be more complicated than that of any
+of its components. (GOOS, pg. 54)</p>
+</blockquote>
+
+<p>Notice that in both the <code>Newman::EmailLogger</code> example and the <code>Newman::Message</code>
+object, the result of composition is that a more complex system is being wrapped
+by something with fewer methods and concepts to worry about. When applied
+repeatedly, this kind of design causes software to become more simple as it
+grows.</p>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>The benefit I have gained from being able to explicitly label various 
+object relationships as dependencies, notifications, and adjustments is that
+it forces me to think about my code in a more fine-grained way. Each
+kind of object relationship comes with benefits and costs that are easier to
+reason about when you recognize them for what they are.</p>
+
+<p>As with most ideas from <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software, Guided by Tests</a>,
+I have not yet had a chance to apply this particular set of heuristics
+frequently enough to know the full extent of their usefulness. However, it never
+hurts to have specific words to describe ideas that previously were hard for me
+to express without relying heavily on intuition.</p>
+
+<p>I would love to hear from you if you can think of ways to connect these ideas
+back to your own projects or to the open source projects you’ve worked with. If
+you have an interesting story to share, please leave a comment!</p>
+
+
+  </div>
+</body>
+</html>

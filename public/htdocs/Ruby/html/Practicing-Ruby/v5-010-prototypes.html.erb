@@ -1,0 +1,1289 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was written by Avdi Grimm. Avdi is a <a href="http://rubyrogues.com/">Ruby Rogue</a>, a
+consulting pair programmer, and the head chef at <a href="http://devblog.avdi.org/rubytapas/">RubyTapas</a>. He writes
+about software development at <a href="http://devblog.avdi.org/">Virtuous Code.</a></em></p>
+
+<p>When you think of the term <em>object-oriented programming</em>, one of the
+first associated words that springs to mind is probably <em>classes</em>. For
+most of its history, the OOP paradigm has been almost inextricably
+linked with the idea of classes. Classes serve as <em>object factories</em>:
+they hold the blueprint for new objects, and can be called upon to
+manufacture as many as needed. Each object, or <em>instance</em>, has its
+state, but each derives its behavior from the class. Classes, in turn,
+share behavior through inheritance. In most OO programs, the class
+structure is the primary organizing principle.</p>
+
+<p>Even though classes have gone hand-in-hand with OOP for decades, they
+aren’t the only way to build families of objects with shared behavior.
+The most common alternative to <em>class-based</em> programming is
+<em>prototype-based</em> programming. Languages that use prototypes rather than
+classes include <a href="http://en.wikipedia.org/wiki/Self_(programming_language">Self</a>, <a href="http://en.wikipedia.org/wiki/Io_(programming_language)">Io</a>, and (most well known of all) JavaScript.</p>
+
+<p>Ruby comes from the class-based school of OO language design. But it’s
+flexible enough that with a little cleverness, we can experiment with
+prototype-style coding. In this article that’s just what we’ll do.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>So how do we write OO programs without classes? Let’s explore this
+question in Ruby. We’ll use the example of a text-adventure game in the
+style of “<a href="http://en.wikipedia.org/wiki/Colossal_Cave_Adventure">Colossal Cave
+Adventure</a>”. This
+is one of my favorite programming examples for object-oriented systems,
+since it involves modeling a virtual world of interacting objects,
+including characters, items, and interconnected rooms.</p>
+
+<p>We open up an interactive Ruby session, and start typing. We begin with
+an <code>adventurer</code> object. This object will serve as our avatar in the
+game’s world, translating our commands into interactions between
+objects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>adventurer = <span style="color:#036;font-weight:bold">Object</span>.new
+</pre></div>
+</div>
+</div>
+
+<p>The first ability we give to our adventurer is the ability to look at
+its surroundings. The <code>look</code> command will cause the adventurer to output
+a description of its current location:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">adventurer</span>
+  attr_accessor <span style="color:#A60">:location</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">look</span>
+    puts location.description
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then we add a starting location, called <code>end_of_road</code>, and put the
+adventurer in that location:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>end_of_road = <span style="color:#036;font-weight:bold">Object</span>.new
+<span style="color:#080;font-weight:bold">def</span> end_of_road.<span style="color:#06B;font-weight:bold">description</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;END</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.</span><span style="color:#710">
+END</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+adventurer.location = end_of_road
+</pre></div>
+</div>
+</div>
+
+<p>Now we can tell our adventurer to take a look around:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt; adventurer.look
+
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.
+</pre></div>
+</div>
+</div>
+
+<h2 id="adding-some-conveniences">Adding some conveniences</h2>
+
+<p>So far we’ve created an adventurer and a starting room without any kind
+of <code>Adventurer</code> or <code>Room</code> classes. This adventure is getting off to a
+good start! Although, if we’re going to be creating a lot of these
+objects we’d like for the process to be a little less verbose. We decide
+to take a step back and build some syntax sugar before moving onward.</p>
+
+<p>We start with an <code>ObjectBuilder</code> helper class. Yes, this is a class, when
+we are supposed to be using only prototypes. However, Ruby doesn’t offer
+a lot of support for prototype-based programming out of the box. So we
+have to build our tools with the class-oriented materials at hand. This
+is intended to be behind-the-scenes support code. In other words, pay no
+attention to the man behind the green curtain!</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ObjectBuilder</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(object)
+    <span style="color:#33B">@object</span> = object
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">respond_to_missing?</span>(missing_method, include_private=<span style="color:#069">false</span>)
+    missing_method =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">=</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(missing_method, *args, &amp;block)
+    <span style="color:#080;font-weight:bold">if</span> respond_to_missing?(missing_method)
+      method_name = missing_method.to_s.sub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">=</span><span style="color:#D20">\z</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>)
+      value       = args.first
+      ivar_name   = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>method_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+     <span style="color:#080;font-weight:bold">if</span> value.is_a?(<span style="color:#036;font-weight:bold">Proc</span>)
+        define_code_method(method_name, ivar_name, value)
+      <span style="color:#080;font-weight:bold">else</span>
+        define_value_method(method_name, ivar_name, value)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#080;font-weight:bold">super</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">define_value_method</span>(method_name, ivar_name, value)
+    <span style="color:#33B">@object</span>.instance_variable_set(ivar_name, value)
+    <span style="color:#33B">@object</span>.define_singleton_method(method_name) <span style="color:#080;font-weight:bold">do</span>
+      instance_variable_get(ivar_name)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">define_code_method</span>(method_name, ivar_name, implementation)
+    <span style="color:#33B">@object</span>.instance_variable_set(ivar_name, implementation)
+    <span style="color:#33B">@object</span>.define_singleton_method(method_name) <span style="color:#080;font-weight:bold">do</span> |*args|
+      instance_exec(*args, &amp;instance_variable_get(ivar_name))
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>There’s a lot going on in this class. Going over it line-by-line might
+be interesting in its own right, but it wouldn’t advance our
+understanding of prototype-based programming all that much. Suffice to
+say for now that this class can help us add new attributes and methods
+to a singleton object using a concise assignment-style syntax. This will
+make more sense when we start to make use of it.</p>
+
+<p>We add another bit of syntax sugar: a global method named <code>Object</code> (not
+to be confused with the class of the same name):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">Object</span>(&amp;definition)
+  obj = <span style="color:#036;font-weight:bold">Object</span>.new
+  obj.singleton_class.instance_exec(<span style="color:#036;font-weight:bold">ObjectBuilder</span>.new(obj), &amp;definition)
+  obj
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method takes a block, instantiates a new object, and evaluates the
+block in the context of the object’s singleton class, passing an
+<code>ObjectBuilder</code> as a block argument. Then it returns the new object.</p>
+
+<p>Now we recreate our adventurer using this new helper:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>adventurer = <span style="color:#036;font-weight:bold">Object</span> { |o|
+  o.location = end_of_road
+
+  attr_writer <span style="color:#A60">:location</span>
+
+  o.look = -&gt;(*args) {
+    puts location.description
+  }
+}
+</pre></div>
+</div>
+</div>
+
+<p>The combination of the <code>Object</code> factory method and the <code>ObjectBuilder</code>
+gives us a convenient, powerful notation for creating new ad-hoc
+objects. We can create attribute reader methods and assign the value of
+the attribute all at once:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o.location = end_of_road
+</pre></div>
+</div>
+</div>
+
+<p>We can use standard Ruby class-level code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>attr_writer <span style="color:#A60">:location</span>
+</pre></div>
+</div>
+</div>
+
+<p>And finally we can define new methods by assigning a lambda to an 
+attribute:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o.look = -&gt;(*args) { puts location.description }
+</pre></div>
+</div>
+</div>
+
+<p>We’ve deliberately avoided defining methods using <code>def</code> or
+<code>define_method</code>. We’ll get into the reasons for that later on.</p>
+
+<p>Before we move on, let’s take a moment to make sure our shiny new adventurer still works the
+same as before:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt; adventurer.look
+
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.
+</pre></div>
+</div>
+</div>
+
+<h2 id="moving-around">Moving around</h2>
+
+<p>It’s time to let our adventurer object stretch its legs a bit.
+We want to give it the ability to move from location to location. First,
+we make a small modification to our <code>Object()</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">Object</span>(object=<span style="color:#069">nil</span>, &amp;definition)
+  obj = object || <span style="color:#036;font-weight:bold">Object</span>.new
+  obj.singleton_class.instance_exec(<span style="color:#036;font-weight:bold">ObjectBuilder</span>.new(obj), &amp;definition)
+  obj
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now along with creating new objects, <code>Object()</code> can also augment an
+existing object which is passed in as an argument.</p>
+
+<p>We pass the <code>adventurer</code> to <code>Object()</code>, and add a new <code>#go</code> method. This
+method will take a direction (like <code>:east</code>), and attempt to move to the
+new location using the <code>exits</code> association on its current location:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(adventurer) { |o|
+  o.go = -&gt;(direction){
+    <span style="color:#080;font-weight:bold">if</span>(destination = location.exits[direction])
+      <span style="color:#069">self</span>.location = destination
+      puts location.description
+    <span style="color:#080;font-weight:bold">else</span>
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You can't go that way</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  }
+}
+</pre></div>
+</div>
+</div>
+
+<p>We add a destination room to the system:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>wellhouse = <span style="color:#036;font-weight:bold">Object</span> { |o|
+  o.description = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;END</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+You are inside a small building, a wellhouse for a large spring.</span><span style="color:#710">
+END</span></span>
+}
+</pre></div>
+</div>
+</div>
+
+<p>Then we add an <code>exits</code> Hash to <code>end_of_road</code>, with an entry saying that
+the <code>wellhouse</code> is to the <code>:north</code> of it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(end_of_road) { |o| o.exits = {<span style="color:#606">north</span>: wellhouse} }
+</pre></div>
+</div>
+</div>
+
+<p>With that done, we are now ready to set off on our journey!</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt; adventurer.go(:north)
+
+You are inside a small building, a wellhouse for a large spring.
+</pre></div>
+</div>
+</div>
+
+<h2 id="cloning-prototypes">Cloning prototypes</h2>
+
+<p>We try to go north again, expecting to see the admonition “You can’t go
+that way” as we bump into the wall:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt; adventurer.go(:north)
+</pre></div>
+</div>
+</div>
+
+<p>Instead, we get an exception:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>-:82:in `block (2 levels) in &lt;main&gt;': undefined method `exits' for 
+#&lt;Object:0x0000000434d768&gt; (NoMethodError)
+        from -:56:in `instance_exec'
+        from -:56:in `block (2 levels) in define_code_method'
+        from -:100:in `&lt;main&gt;'
+</pre></div>
+</div>
+</div>
+
+<p>This is because we never got around to adding an <code>exits</code> Hash to
+<code>wellhouse</code>. We could go ahead and do that now. But as we think about
+it, we realize that now that our adventurer is capable of travel, it
+would make sense if all rooms started out with an empty <code>exits</code> Hash,
+instead of us having to add it manually every time.</p>
+
+<p>Toward that end, we create a <em>prototypical room</em>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>room = <span style="color:#036;font-weight:bold">Object</span> { |o| o.exits = {} }
+</pre></div>
+</div>
+</div>
+
+<p>We then experiment with creating a new <code>wellhouse</code>, this one based on
+the <code>room</code> prototype. We do this by simply cloning the <code>room</code> object. We
+use <code>#clone</code> rather than <code>#dup</code> because <code>#clone</code> copies singleton class
+methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>new_wellhouse = room.clone
+
+new_wellhouse.exits[<span style="color:#A60">:south</span>] = end_of_road
+</pre></div>
+</div>
+</div>
+
+<p>We quickly uncover a problem with this naive cloning technique. Because
+Ruby’s <code>#clone</code> (as well as <code>#dup</code>) are <em>shallow copies</em>, <code>room</code> and
+<code>new_wellhouse</code> now share the same <code>exits</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pp</span><span style="color:#710">'</span></span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_wellhouse exits:</span><span style="color:#710">&quot;</span></span>
+pp new_wellhouse.exits
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">room exits:</span><span style="color:#710">&quot;</span></span>
+pp room.exits
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>new_wellhouse exits:
+{:south=&gt;
+  #&lt;Object:0x0000000482c8d8
+   @exits=
+    {:north=&gt;
+      #&lt;Object:0x0000000482bcd0
+       @description=
+        &quot;You are inside a small building, a wellhouse for a large spring.\n&quot;&gt;}&gt;}
+room exits:
+{:south=&gt;
+  #&lt;Object:0x0000000482c8d8
+   @exits=
+    {:north=&gt;
+      #&lt;Object:0x0000000482bcd0
+       @description=
+        &quot;You are inside a small building, a wellhouse for a large spring.\n&quot;&gt;}&gt;}
+</pre></div>
+</div>
+</div>
+
+<p>To fix this, we could possibly customize the way Ruby does cloning by overriding
+the <a href="http://jonathanleighton.com/articles/2011/initialize_clone-initialize_dup-and-initialize_copy-in-ruby/">Object#initialize_clone</a>
+method, but that would be an invasive change with broad reaching effects.
+Because extending core objects is a bit safer than modifying them, we opt to
+define our own <code>Object#copy</code> method which does a one-level-deep copying of
+instance variables:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">copy</span>
+    prototype = clone
+
+    instance_variables.each <span style="color:#080;font-weight:bold">do</span> |ivar_name|
+      prototype.instance_variable_set(
+        ivar_name,
+        instance_variable_get(ivar_name).clone)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    prototype
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then we recreate <code>room</code> and <code>new_wellhouse</code>, and confirm that they no
+longer share exits:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>room = <span style="color:#036;font-weight:bold">Object</span> { |o| o.exits = {} }
+
+<span style="color:#777"># Use the newly defined Object#copy here instead of Object#clone</span>
+new_wellhouse = room.copy
+
+new_wellhouse.exits[<span style="color:#A60">:south</span>] = end_of_road
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_wellhouse exits:</span><span style="color:#710">&quot;</span></span>
+pp new_wellhouse.exits
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">room exits:</span><span style="color:#710">&quot;</span></span>
+pp room.exits
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>new_wellhouse exits:
+{:south=&gt;
+  #&lt;Object:0x00000002ea85d8
+   @exits=
+    {:north=&gt;
+      #&lt;Object:0x00000002ea79d0
+       @description=
+        &quot;You are inside a small building, a wellhouse for a large spring.\n&quot;&gt;}&gt;}
+room exits:
+{}
+</pre></div>
+</div>
+</div>
+
+<p>Cloning a prototypical object in order to create new
+objects is the most basic form of prototype-based programming. In fact,
+the “Kevo” research language (I’d link to it, but all the information
+about it seems to have fallen off the Internet) used copying as the sole
+way to share behavior between objects.</p>
+
+<h2 id="building-dynamic-prototypes">Building dynamic prototypes</h2>
+
+<p>There are drawbacks to copying, however. It’s a very static way to share
+behavior between objects. Clones of <code>room</code> only share the behavior which
+was defined at the time of the copy. If we were to modify <code>room</code>, we’d
+have to recreate the <code>new_wellhouse</code> object once again in order to take
+advantage of any new methods added to it.</p>
+
+<p>Cloning also implies single inheritance. An object can only be a clone
+of one “parent” object.</p>
+
+<p>Finally, we also can’t add any new behavior to our existing <code>wellhouse</code>
+object this way. We’d have to throw away our program’s state and rebuild
+it, this time cloning our <code>end_of_road</code> and <code>wellhouse</code> objects from
+<code>room</code>.</p>
+
+<p>In Ruby, we’re used to being able to make changes to a live session and
+see how they play out. Thus far, we’ve done this all in a live
+interpreter session. It seems a shame to have to lose our state and
+start again. So we decide to find out if we can come up with a more
+dynamic form of prototypical inheritance than plain copying.</p>
+
+<p>We start by adding a helper method called <code>#implementation_of</code> to
+Object. Given a method name that the object supports, it will return a
+<code>Proc</code> object containing the code of that method. We make it aware of
+the style of method definition used in <code>ObjectBuilder</code>, where the
+implementation <code>Procs</code> of new methods were stored in instance variables
+named for the methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">implementation_of</span>(method_name)
+    <span style="color:#080;font-weight:bold">if</span> respond_to?(method_name)
+      implementation = instance_variable_get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>method_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+      <span style="color:#080;font-weight:bold">if</span> implementation.is_a?(<span style="color:#036;font-weight:bold">Proc</span>)
+        implementation
+      <span style="color:#080;font-weight:bold">elsif</span> instance_variable_defined?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>method_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+        <span style="color:#777"># Assume the method is a reader</span>
+        -&gt;{ instance_variable_get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>method_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>) }
+      <span style="color:#080;font-weight:bold">else</span>
+        method(method_name).to_proc
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We then define a new kind of <code>Module</code>, called <code>Prototype</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Prototype</span> &lt; <span style="color:#036;font-weight:bold">Module</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(target)
+    <span style="color:#33B">@target</span> = target
+    <span style="color:#080;font-weight:bold">super</span>() <span style="color:#080;font-weight:bold">do</span>
+      define_method(<span style="color:#A60">:respond_to_missing?</span>) <span style="color:#080;font-weight:bold">do</span> |missing_method, include_private|
+        target.respond_to?(missing_method)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      define_method(<span style="color:#A60">:method_missing</span>) <span style="color:#080;font-weight:bold">do</span> |missing_method, *args, &amp;block|
+        <span style="color:#080;font-weight:bold">if</span> target.respond_to?(missing_method)
+          implementation = target.implementation_of(missing_method)
+          instance_exec(*args, &amp;implementation)
+        <span style="color:#080;font-weight:bold">else</span>
+          <span style="color:#080;font-weight:bold">super</span>(missing_method, *args, &amp;block)
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>A <code>Prototype</code> is instantiated with a prototypical object. When a
+<code>Prototype</code> instance is added to an object using <code>#extend</code>, it makes the
+methods of the prototype available to the extended object. It does this
+by implementing <code>#method_missing?</code> (and the associated
+<code>#respond_to_missing?</code>). When a message is sent to the extended object
+that matches a method on the prototype object, the <code>Prototype</code> grabs the
+implementation <code>Proc</code> from the prototype. Then it uses <code>#instance_exec</code>
+to evaluate the <code>prototype</code>’s method in the context of the extended
+object. In effect, the extended object “borrows” a method from the
+prototype object for just long enough to execute it.</p>
+
+<p>Note that this is different from delegation. In delegation, one object
+hands off a message to be handled by another object. If object <code>a</code>
+delegates a <code>#foo</code> message to object <code>b</code>, using, for instance, Ruby’s
+<code>forwardable</code> library, <code>self</code> in that method will be object <code>b</code>. This is
+easily demonstrated:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">forwardable</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">A</span>
+  extend <span style="color:#036;font-weight:bold">Forwardable</span>
+  attr_accessor <span style="color:#A60">:b</span>
+  def_delegator <span style="color:#A60">:b</span>, <span style="color:#A60">:foo</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">B</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">foo</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">executing #foo in </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+a = <span style="color:#036;font-weight:bold">A</span>.new
+a.b = <span style="color:#036;font-weight:bold">B</span>.new
+a.foo
+<span style="color:#777"># &gt;&gt; executing #foo in #&lt;B:0x00000003295e20&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>But delegation is not what we want. We want to execute the methods from
+prototypes as if they had been defined on the inheriting object. We want
+this because we want them to work with the instance variables of the
+inheriting object. If we send <code>wellhouse.exits</code>, we want the reader
+method to show us the content of <code>wellhouse</code>’s <code>@exits</code> instance
+variable, not <code>room</code>’s instance variable.</p>
+
+<p>Remember how, in <code>ObjectBuilder</code>, we stored the implementations of
+methods as <code>Procs</code> in instance variables rather than defining them
+directly as methods? This need to call prototype methods on the
+inheriting object is the reason for that. In Ruby, it is not possible to
+execute a method from class A on an instance of unrelated class B. Since
+in this program we are using the singleton classes of objects to define
+all of their methods, Ruby considers all of our objects as belonging to
+different classes for the purposes of method binding. We can see this if
+we try to rebind a method from <code>room</code> onto <code>wellhouse</code> and then call it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>room.method(<span style="color:#A60">:exits</span>).unbind.bind(wellhouse)
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>-:115:in `bind': singleton method called for a different object (TypeError)
+        from -:115:in `&lt;main&gt;'
+</pre></div>
+</div>
+</div>
+
+<p>By storing the implementation of methods as raw <code>Procs</code>, without any
+association to a specific class, we are able to take the implementations
+and <code>instance_exec</code> them in other contexts.</p>
+
+<p>The last change we make to support dynamic prototype inheritance is to
+add a new <code>#prototype</code> method to our <code>ObjectBuilder</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ObjectBuilder</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">prototype</span>(proto)
+    <span style="color:#777"># Leave method implementations on the proto object</span>
+    ivars = proto.instance_variables.reject{ |ivar_name|
+      proto.respond_to?(ivar_name.to_s[<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>]) &amp;&amp;
+      proto.instance_variable_get(ivar_name).is_a?(<span style="color:#036;font-weight:bold">Proc</span>)
+    }
+    ivars.each <span style="color:#080;font-weight:bold">do</span> |ivar_name|
+      <span style="color:#080;font-weight:bold">unless</span> <span style="color:#33B">@object</span>.instance_variable_defined?(ivar_name)
+        <span style="color:#33B">@object</span>.instance_variable_set(
+          ivar_name,
+          proto.instance_variable_get(ivar_name).dup)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#33B">@object</span>.extend(<span style="color:#036;font-weight:bold">Prototype</span>.new(proto))
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method does two things:</p>
+
+<ol>
+  <li>It copies instance variables from a prototype object to the object
+being built.</li>
+  <li>It extends the object being built with a <code>Prototype</code> module
+referencing the prototype object.</li>
+</ol>
+
+<p>We can now use all of this new machinery to dynamically add <code>room</code> as a
+prototype of <code>wellhouse</code>. We are then able to set the south exit to
+point back to <code>end_of_road</code>, using the <code>exits</code> association that
+<code>wellhouse</code> now inherits from <code>room</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(wellhouse) { |o| o.prototype room }
+
+wellhouse.exits[<span style="color:#A60">:south</span>] = end_of_road
+
+adventurer.location = wellhouse
+</pre></div>
+</div>
+</div>
+
+<p>Then we can move around again to make sure things are working as expected:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* trying to go north from wellhouse</span><span style="color:#710">&quot;</span></span>
+adventurer.go(<span style="color:#A60">:north</span>)
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* going back south</span><span style="color:#710">&quot;</span></span>
+adventurer.go(<span style="color:#A60">:south</span>)
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>* trying to go north from wellhouse
+You can't go that way
+* going back south
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.
+</pre></div>
+</div>
+</div>
+
+<h2 id="carrying-items-around">Carrying items around</h2>
+
+<p>We now have some powerful tools at our disposal for composing objects
+from prototypes. We quickly proceed to implement the ability to pick up
+and drop items to our game. We start by creating a prototypical
+“container” object, which has an array of items and the ability to
+transfer an item from itself to another container:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>container = <span style="color:#036;font-weight:bold">Object</span> { |o|
+  o.items = []
+  o.transfer_item = -&gt;(item, recipient) {
+    recipient.items &lt;&lt; items.delete(item)
+  }
+}  
+</pre></div>
+</div>
+</div>
+
+<p>We then make the <code>adventurer</code> a container, and add some commands for
+taking items, dropping items, and listing the adventurer’s current
+inventory:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(adventurer) {|o|
+  o.prototype container
+
+  o.look = -&gt; {
+    puts location.description
+    location.items.each <span style="color:#080;font-weight:bold">do</span> |item|
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">There is </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> here.</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  }
+
+  o.take = -&gt;(item_name) {
+    item = location.items.detect{|item| item.include?(item_name) }
+    <span style="color:#080;font-weight:bold">if</span> item
+      location.transfer_item(item, <span style="color:#069">self</span>)
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You take </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You see no </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> here</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  }
+
+  o.drop = -&gt;(item_name) {
+    item = items.detect{|item| item.include?(item_name) }
+    <span style="color:#080;font-weight:bold">if</span> item
+      transfer_item(item, location)
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You drop </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You are not carrying </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  }
+
+  o.inventory = -&gt; {
+    items.each <span style="color:#080;font-weight:bold">do</span> |item|
+      puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You have </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>item<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  }
+}
+</pre></div>
+</div>
+</div>
+
+<p>For convenience, we’ve implemented <code>#take</code> and <code>#drop</code> so that they can
+accept any substring of the intended object’s name.</p>
+
+<p>Next we make <code>wellhouse</code> a container, and add a list of starting items
+to it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(wellhouse) { |o|
+  o.prototype container
+  o.items = [
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a shiny brass lamp</span><span style="color:#710">&quot;</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">some food</span><span style="color:#710">&quot;</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a bottle of water</span><span style="color:#710">&quot;</span></span>
+  ]
+  o.exits = {<span style="color:#606">south</span>: end_of_road}
+}
+</pre></div>
+</div>
+</div>
+
+<p>As you may recall, <code>wellhouse</code> already has a prototype: <code>room</code>. But this
+is not a problem. One of the advantages of our dynamic prototyping
+system is that objects may have any number of prototypes. Since
+prototyping is implemented using specialized modules, when an object is
+sent a message that it can’t handle itself, Ruby will keep searching up an
+object’s ancestor chain, from one <code>Prototype</code> to the next, looking for a
+matching method. (This also puts us one-up on JavaScript’s
+single-inheritance prototype system!)</p>
+
+<p>Finally, we make <code>end_of_road</code> a container:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object(end_of_road) { |o| o.prototype(container) }
+</pre></div>
+</div>
+</div>
+
+<p>We then proceed to tell our adventurer to pick up a bottle of water from
+the wellhouse, and put it down at the end of the road:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt; adventurer.go(:north)
+You are inside a small building, a wellhouse for a large spring.
+&gt; adventurer.take(&quot;water&quot;)
+You take a bottle of water.
+&gt; adventurer.inventory
+You have a bottle of water
+&gt; adventurer.look
+You are inside a small building, a wellhouse for a large spring.
+There is a shiny brass lamp here.
+There is some food here.
+&gt; adventurer.go(:south)
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.
+&gt; adventurer.drop(&quot;water&quot;)
+You drop a bottle of water.
+&gt; adventurer.look
+You are standing at the end of a road before a small brick building.
+Around you is a forest.  A small stream flows out of the building and
+down a gully.
+There is a bottle of water here.
+</pre></div>
+</div>
+</div>
+
+<p>And with that, we now have a small but functional system which allows us to move
+around the game world and interact with it.</p>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>We’ve written the beginnings of a text adventure game in a
+prototype-based style. Now, let’s take a step back and talk about what
+the point of this exercise was.</p>
+
+<p>There is a strong argument to be made that prototype-based inheritance
+more closely maps to how humans normally think through problems than
+does class-based inheritance. Quoting the paper “<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.56.4713">Classes vs.
+Prototypes: Some Philosophical and Historical
+Observations</a>”:</p>
+
+<blockquote>
+  <p>A typical argument in favor of prototypes is that people seem to be a
+lot better at dealing with specific examples first, then generalizing
+from them, than they are at absorbing general abstract principles
+first and later applying them in particular cases, … the ability to
+modify and evolve objects at the level of individual objects reduces
+the need for a priori classification and encourages a more iterative
+programming and design style.</p>
+</blockquote>
+
+<p>As we built up our adventure game, we immediately added concrete objects
+to the system as soon as we thought them up. We added an <code>adventurer</code>,
+and then an <code>end_of_road</code> for the adventurer to start out in. Then
+later, as we added more objects, we generalized out commonalities into
+objects like <code>room</code> and <code>container</code>. Our program design emerged
+completely organically, and our abstractions emerged as soon as we
+needed them, but no sooner. This kind of emergent, organic design
+process is one of the ideals of agile software development, and
+prototype-based systems seem to encourage it.</p>
+
+<p>Of course, the way we jammed prototypes into a class-based language here
+is a horrendous hack: please don’t use it in a production system!
+But the experience of writing code in a prototyped style can teach
+us a lot. We can use what we’ve learned to influence our daily
+coding. We might prototype (heh) a system’s design by writing one-off
+objects at first, adding methods to their singleton classes. Then, as
+patterns of interaction emerge, we might capture the design using
+classes. Prototypes can also teach us to do more with delegation and
+composition, building families of collaborating objects rather than
+hierarchies of related behavior.</p>
+
+<p>Now that we’ve reached the end of our journey, I hope you’ve found 
+this trip through prototype-land illuminating and thought-provoking. 
+I’m still a relative newb to this way of thinking, so if you
+have anything to add‚ i.e. other benefits of using prototypes; subtle gotchas;
+experiences from prototype-based languages, or alternative implementations of
+any of the code above, please don’t hesitate to pipe up in the comments. Also,
+if you want clarifications about any of the gnarly metaprogramming I used to
+bash Ruby into a semblance of a prototype-based language, feel free to ask –
+but I can’t guarantee that the answers will make any more sense than the
+code :-)</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> If you had fun reading this article, you may also enjoy reading Advi’s 
+blog post on the <a href="http://devblog.avdi.org/?p=5560">Prototype Pattern</a>, a design pattern that takes 
+ideas from prototype-based programming and applies them to class-based
+modeling. That post started as a section of this article that gained a life
+of its own.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

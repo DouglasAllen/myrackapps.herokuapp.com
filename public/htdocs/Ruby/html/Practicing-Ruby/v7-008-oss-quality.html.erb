@@ -1,0 +1,1086 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p>This article was written in collaboration with Eric Hodel
+(<a href="http://twitter.com/drbrain">@drbrain</a>), a developer from Seattle. 
+Eric is a Ruby core team member, and he also maintains RubyGems 
+and RDoc. </p>
+</blockquote>
+
+<p>A big challenge in managing open source projects is that their codebases tend
+to decay as they grow. This isn’t due to a lack of technically skilled
+contributors, but instead is a result of the gradual loss of understandability 
+that comes along with any long-term and open-ended project 
+that has an distributed team of volunteers supporting it.</p>
+
+<p>Once a project becomes more useful, it naturally attracts a more
+diverse group of developers who are interested in adapting the codebase to
+meet their own needs. Patches are submitted by contributors who do not fully 
+understand a project’s implementation, and maintainers merge these patches 
+without fully understanding the needs of their contributors. Maintainers 
+may also struggle to remember the reasoning behind any of their own code that they 
+haven’t touched in a while, but they still need to be able to work with it.</p>
+
+<p>As a result of both of these influencing factors, mistaken assumptions tend to 
+proliferate as a project grows, and with them come bugs and undefined behaviors. 
+When direct knowledge of the codebase becomes limited and unreliable, it’s easy to 
+let code quality standards slip without fully realizing the potential
+for future problems. </p>
+
+<p>If bad code continues to accumulate in this fashion, improving one part of a 
+a project usually means breaking something else in the 
+process. Once a maintainer starts spending most of their time fixing bugs, 
+it gets hard to move their project forward in meaningful 
+ways. This is where open source development stops being fun, and starts feeling 
+like a painful chore.</p>
+
+<p>Not all projects need to end up this way, though. As long as project maintainers 
+make sure to keep the quality arrow pointing upwards over the long haul, 
+any bad code that temporarily accumulates in a project can always be replaced with 
+better code whenever things start getting painful. The real challenge is to 
+establish healthy maintenance practices that address quality issues 
+in a consistent and sustainable way. </p>
+
+<h3 id="developing-a-process-oriented-approach-towards-quality">Developing a process-oriented approach towards quality</h3>
+
+<p>In this article, we’ll discuss three specific tactics we’ve used in 
+our own projects that can be applied at any stage in the software 
+development lifecycle. These are not quick fixes; they are helpful 
+habits that drive up understandability and code quality more and more
+as you continue to practice them. The good news is that even though 
+it might be challenging to keep up with these efforts on a daily basis, 
+the recommendations themselves are very simple:</p>
+
+<ol>
+  <li>Let external changes drive incremental quality improvements</li>
+  <li>Treat all code with inadequate testing as legacy code</li>
+  <li>Expand functionality via well-defined extension points </li>
+</ol>
+
+<p>We’ll now take a look at each of these guidelines individually and walk 
+you through some examples of how we’ve put them into practice in RDoc, 
+RubyGems, and Prawn – three projects that have had their own share of 
+quality issues over the years, but continue to serve very diverse 
+communities of users and contributors.</p>
+
+<h3 id="let-external-changes-drive-incremental-quality-improvements">1) Let external changes drive incremental quality improvements</h3>
+
+<p>Although there is often an endless amount of cleanup work that can
+be done in mature software projects, there is rarely enough
+available development time to invest in these efforts. For programmers 
+working on open source in their spare time, it is hard enough
+to keep up with new incoming requests, so most preventative maintenance 
+work ends up being deferred indefinitely. When cleanup efforts do happen,
+they tend to be done in concentrated bursts and then things go back
+to business-as-usual from there.</p>
+
+<p>A better approach is to pay down technical debts little by little, not as a
+distinct activity but as part of responding to ordinary change requests. There
+are only two rules to remember when applying this technique in your daily work:</p>
+
+<ul>
+  <li>Try to avoid making the codebase worse with each new change, or at least
+minimize new maintenance costs as much as possible.</li>
+  <li>If there is an easy way to improve the code while doing everyday work, 
+go ahead and invest a little bit of effort now to make future changes easier. </li>
+</ul>
+
+<p>The amount of energy spent on meeting these two guidelines should be proportional
+to the perceived risks and rewards of the change request itself, but typically
+it doesn’t take a lot of extra effort. It may mean spending an extra 10 minutes on a
+patch that would take an hour to develop, or an extra hour on a patch that would
+take a day to prepare. In any case, it should feel like an obviously good
+investment that is well worth the cost you are paying for it.</p>
+
+<p>There is a great example in Prawn that illustrates this technique being used,
+and if you want to see it in its raw form, you can check out <a href="https://github.com/prawnpdf/prawn/pull/587">this pull
+request</a> from Matt Patterson.</p>
+
+<p>Matt’s request was to change the way that Prawn’s image loading
+feature detected whether it was working with an I/O object or a path to
+a file on disk. Initially Prawn assumed that any object responding to <code>read</code> 
+would be treated as an I/O object, but this was too loose of a test and
+caused some subtle failures when working with <code>Pathname</code> objects.</p>
+
+<p>The technical details of the change are not important here, so don’t worry if
+you don’t understand them. Instead, just look at the method that would need to
+be altered to fix this problem, and ask yourself whether you would feel
+comfortable making a change to it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">build_image_object</span>(file)
+  file.rewind  <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:rewind</span>)
+  file.binmode <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:binmode</span>)
+
+  <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:read</span>)
+    image_content = file.read
+  <span style="color:#080;font-weight:bold">else</span>
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>file<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#036;font-weight:bold">File</span>.file?(file)  
+    image_content = <span style="color:#036;font-weight:bold">File</span>.binread(file)
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  image_sha1 = <span style="color:#036;font-weight:bold">Digest</span>::<span style="color:#036;font-weight:bold">SHA1</span>.hexdigest(image_content)
+
+  <span style="color:#080;font-weight:bold">if</span> image_registry[image_sha1]
+    info = image_registry[image_sha1][<span style="color:#A60">:info</span>]
+    image_obj = image_registry[image_sha1][<span style="color:#A60">:obj</span>]
+  <span style="color:#080;font-weight:bold">else</span>
+    info = <span style="color:#036;font-weight:bold">Prawn</span>.image_handler.find(image_content).new(image_content)
+
+    min_version(info.min_pdf_version) <span style="color:#080;font-weight:bold">if</span> info.respond_to?(<span style="color:#A60">:min_pdf_version</span>)
+
+    image_obj = info.build_pdf_object(<span style="color:#069">self</span>)
+    image_registry[image_sha1] = {<span style="color:#A60">:obj</span> =&gt; image_obj, <span style="color:#A60">:info</span> =&gt; info}
+  <span style="color:#080;font-weight:bold">end</span>
+
+  [image_obj, info]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although this probably isn’t the absolute worst code you have ever seen, 
+it isn’t very easy to read. Because it takes on many responsibilities,
+it’s hard to even summarize what it is supposed to do! Fortunately for Matt,
+the part that he would need to change was only the first few lines of the 
+method, which are reasonably easy to group together:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">build_image_object</span>(file)
+  file.rewind  <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:rewind</span>)
+  file.binmode <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:binmode</span>)
+
+  <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:read</span>)
+    image_content = file.read
+  <span style="color:#080;font-weight:bold">else</span>
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>file<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#036;font-weight:bold">File</span>.file?(file)  
+    image_content = <span style="color:#036;font-weight:bold">File</span>.binread(file)
+  <span style="color:#080;font-weight:bold">end</span>
+
+   <span style="color:#777"># ... everything else </span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The quick fix would have been to edit these lines directly, but Matt recognized
+the opportunity to isolate a bit of related functionality and make the code a
+little bit better in the process of doing so. Pushing these lines of code down
+into a helper method and tweaking them slightly resulted in the following
+cleanup to the <code>build_image_object</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">build_image_object</span>(file)
+  io = verify_and_open_image(file)
+  image_content = io.read
+
+  <span style="color:#777"># ... everything else</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In the newly created helper method, Matt introduced his desired change, 
+which is much easier to understand in isolation than it would have been in the 
+original <code>build_image_object</code> method definition. In particular, he changed
+the duck typing test to look for <code>rewind</code> rather than <code>read</code>, in the hopes
+that it would be a more reliable way to detect I/O-like objects. Everything 
+else would be wrapped in a <code>Pathname</code> instance:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">verify_and_open_image</span>(io_or_path)
+  <span style="color:#080;font-weight:bold">if</span> io_or_path.respond_to?(<span style="color:#A60">:rewind</span>)
+    io = io_or_path
+
+    io.rewind
+
+    io.binmode <span style="color:#080;font-weight:bold">if</span> io.respond_to?(<span style="color:#A60">:binmode</span>)
+    <span style="color:#080;font-weight:bold">return</span> io
+  <span style="color:#080;font-weight:bold">end</span>
+
+  io_or_path = <span style="color:#036;font-weight:bold">Pathname</span>.new(io_or_path)
+  raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>io_or_path<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> io_or_path.file?
+  
+  io_or_path.open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rb</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>At this point, he could have submitted a pull request, because the tests were
+still green and the new behavior was working as expected. However, the issue
+he had set out to fix in the first place wasn’t causing Prawn’s tests to fail,
+and that was a sign that there was some undefined behavior at the root of
+this problem. Although Prawn had some tests for reading images referenced by
+<code>Pathname</code> objects, it only had done its checks at a high level, and did not
+verify that the PDF output was being rendered correctly.</p>
+
+<p>A test would be needed at the lower level to verify that the output was no
+longer corrupted, but this kind of testing is slightly tedious to do in Prawn.
+Noticing this rough spot, Matt created an RSpec matcher to make this kind of
+testing easier to do in the future:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">RSpec</span>::<span style="color:#036;font-weight:bold">Matchers</span>.define <span style="color:#A60">:have_parseable_xobjects</span> <span style="color:#080;font-weight:bold">do</span>
+  match <span style="color:#080;font-weight:bold">do</span> |actual|
+    expect { <span style="color:#036;font-weight:bold">PDF</span>::<span style="color:#036;font-weight:bold">Inspector</span>::<span style="color:#036;font-weight:bold">XObject</span>.analyze(actual.render) }.not_to raise_error
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  failure_message_for_should <span style="color:#080;font-weight:bold">do</span> |actual|
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">expected that </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>actual<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">'s XObjects could be successfully parsed</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Finally, he provided a few test cases to demonstrate that his patch
+fixed the problem he was interested in, and also covered some other 
+common use cases as well:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>context <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">setting the length of the bytestream</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should correctly work with images from Pathname objects</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    info = <span style="color:#33B">@pdf</span>.image(<span style="color:#036;font-weight:bold">Pathname</span>.new(<span style="color:#33B">@filename</span>))
+    expect(<span style="color:#33B">@pdf</span>).to have_parseable_xobjects
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should correctly work with images from IO objects</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    info = <span style="color:#33B">@pdf</span>.image(<span style="color:#036;font-weight:bold">File</span>.open(<span style="color:#33B">@filename</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rb</span><span style="color:#710">'</span></span>))
+    expect(<span style="color:#33B">@pdf</span>).to have_parseable_xobjects
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should correctly work with images from IO objects not set to mode rb</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    info = <span style="color:#33B">@pdf</span>.image(<span style="color:#036;font-weight:bold">File</span>.open(<span style="color:#33B">@filename</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">r</span><span style="color:#710">'</span></span>))
+    expect(<span style="color:#33B">@pdf</span>).to have_parseable_xobjects
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When you put all of these changes together, the total value of this patch
+is much greater than the somewhat obscure bug it fixed. By addressing
+some minor pain points as he worked, Matt also improved Prawn in the
+following ways:</p>
+
+<ul>
+  <li>
+    <p>The <code>build_image_object</code> method is now more understandable because one 
+of its responsibilities has been broken out into its own method.</p>
+  </li>
+  <li>
+    <p>The <code>verify_and_open_image</code> method allows us to group together all the
+basic guard clauses for determining how to read the image data, 
+making it easier to see exactly what those rules are.</p>
+  </li>
+  <li>
+    <p>The added tests clarify the intended behavior of Prawn’s image loading
+mechanism.</p>
+  </li>
+  <li>
+    <p>The newly added RSpec matcher will help us to do more
+PDF-level checks in future tests.</p>
+  </li>
+</ul>
+
+<p>None of these changes required a specific and focused effort of refactoring or redesign,
+it just involved a bit of attention to detail and a willingness to make minor
+improvements that would pay off for someone else in the future.</p>
+
+<p>As a project maintainer, you cannot expect contributors to put this level of
+effort into their patches – Matt really went above and beyond here. However, 
+you can definitely look for these kind of opportunities yourself during review 
+time, and either ask the contributor to make some revisions, or make them yourself 
+before you merge in new changes. No matter who ends up doing the work, little by
+little these kinds of incremental cleanup efforts can turn a rough codebase into
+something pleasant to work with.</p>
+
+<h3 id="treat-all-code-without-adequate-testing-as-legacy-code">2) Treat all code without adequate testing as legacy code</h3>
+
+<p>Historically, we’ve defined legacy code as code that was written long before our
+time, without any consideration for our current needs. However, any untested
+code can also be considered legacy code<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, because it often
+has many of the same characteristics that make outdated systems difficult to
+work with. Open source projects evolve quickly, and even very clean code
+can cause a lot of headaches if its intended behavior is left undefined.</p>
+
+<p>To guard against the negative impacts of legacy code, it helps 
+to continuously update your project’s test suite so 
+that it constantly reflects your current understanding of the problem domain
+you are working in. A good starting point is to make sure that your project
+has good code coverage and that you keep your builds green in CI.
+Once you’ve done that, the next step is to go beyond the idea of just having
+lots of tests and start focusing on making your test suite more capable 
+of catching problems before they leak out into released code.</p>
+
+<p>Here are some things to keep in mind when considering the potential 
+impact that new changes will have on your project’s stability:</p>
+
+<ul>
+  <li>
+    <p>Any behavior change introduced without test
+coverage has a good chance of causing a defect or 
+accidentally breaking backwards-compatibility in a future release.</p>
+  </li>
+  <li>
+    <p>A passing test suite is not proof that a change is well-defined
+and defect-free.</p>
+  </li>
+  <li>
+    <p>The only reliable way to verify that existing features have 
+well-defined behavior and good test coverage is to
+review their code manually.</p>
+  </li>
+  <li>
+    <p>Contributors often don’t understand your project’s problem domain 
+or its codebase well enough to know how to write good tests for
+their changes without some guidance.</p>
+  </li>
+</ul>
+
+<p>These points are not meant to imply that each and every pull request
+ought to be gone over with a fine-tooth comb – they’re only meant to 
+serve as a reminder that maintaining a high quality test suite is
+a harder problem than we often make it out to be. The same ideas
+of favoring incremental improvements over heroic efforts that
+we discussed earlier also apply here. There is no need to
+rush towards a perfect test suite all at once, as long as it improves
+on average over time.</p>
+
+<p>We’ll now look at a <a href="https://github.com/rubygems/rubygems/pull/781/files">pull request</a> 
+that Brian Fletcher submitted to
+RubyGems for a good example of how these ideas can be applied 
+in practice.</p>
+
+<p>Brian’s request was to add support for Base64 encoded usernames and
+passwords in gem request URLs. Because RubyGems already supported
+the use of HTTP Basic Auth with unencoded usernames and passwords in
+URLs, this was an easy change to make. The desired URL decoding functionality
+was already implemented by <code>Gem::UriFormatter</code>, so the
+initial commit for this pull request involved changing just a single line 
+of code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>     request = @request_class.new @uri.request_uri
+ 
+     unless @uri.nil? || @uri.user.nil? || @uri.user.empty? then
+<span style="background:hsla(0,100%,50%,0.12)" class="line"><span style="color:#c00;background:transparent;font-weight:bold">-</span>      request.basic_auth @uri.user, @uri.password</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>      request.basic_auth Gem::UriFormatter.new(@uri.user).unescape,</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>                         Gem::UriFormatter.new(@uri.password).unescape</span>
+     end
+ 
+     request.add_field 'User-Agent', @user_agent
+</pre></div>
+</div>
+</div>
+
+<p>On the surface, this looks like a fairly safe change to make. Because it only
+adds support for a new edge case, it should preserve the original behavior
+for URLs that did not need to be unescaped. No new test failures were introduced
+by this patch, and a quick look at the test suite shows that <code>Gem::UriFormatter</code>
+has some tests covering its behavior.</p>
+
+<p>As far as changes go, this one is definitely low risk. But if you dig in a
+little bit deeper, you can find a few things to worry about: </p>
+
+<ul>
+  <li>
+    <p>Even though only a single line of code was changed, that line of code
+was at the beginning of a method that is almost 90 lines long. This isn’t
+necessarily a problem, but it should at least be a warning sign to slow
+down and take a closer look at things.</p>
+  </li>
+  <li>
+    <p>A quick look at the test suite reveals that although there were tests
+for the <code>unescape</code> method provided by <code>GemUri::Formatter</code>, there were no tests 
+for the use of Basic Auth in gem request URLs, which means the behavior
+this patch was modifying was not formally defined. Because of this, we can’t
+be sure that a subtle incompatibility wasn’t introduced by this patch, 
+and we wouldn’t know if one was introduced later due to a change to
+<code>GemUri::Formatter</code>, either.</p>
+  </li>
+  <li>
+    <p>The new behavior introduced by this patch also wasn’t verified, which
+means that it could have possibly been accidentally removed in a future 
+refactoring or feature patch. Another contributor could easily assume 
+that URL decoding was incidental rather than intentional without
+tests that indicated otherwise.</p>
+  </li>
+</ul>
+
+<p>These are the kind of problems that a detailed review can discover 
+which are often invisible at the surface level. However, a much more
+efficient maintenance policy is to simply assume one or more of the 
+above problems exist whenever a change is introduced without tests, 
+and then either add tests yourself or ask contributors to add them
+before merging. </p>
+
+<p>In this case, Eric asked Brian to add a test after giving him some guidance 
+on how to go about implementing it. For reference, this was his exact request:</p>
+
+<blockquote>
+  <p>Can you add a test for this to test/rubygems/test_gem_request.rb?</p>
+
+  <p>You should be able to examine the request object through the block #fetch yields to.</p>
+</blockquote>
+
+<p>In response, Brian dug in and noticed that the base case of
+using HTTP Basic Auth wasn’t covered by the tests. So rather than simply 
+adding a test for the new behavior he added, he went ahead and wrote tests 
+for both cases:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">TestGemRequest</span> &lt; <span style="color:#036;font-weight:bold">Gem</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+ <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_fetch_basic_auth</span>
+    uri = <span style="color:#036;font-weight:bold">URI</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://user:pass@example.rubygems/specs.</span><span style="color:#710">&quot;</span></span> +
+                     <span style="color:#036;font-weight:bold">Gem</span>.marshal_version
+    <span style="color:#33B">@request</span> = <span style="color:#036;font-weight:bold">Gem</span>::<span style="color:#036;font-weight:bold">Request</span>.new(uri, <span style="color:#036;font-weight:bold">Net</span>::<span style="color:#036;font-weight:bold">HTTP</span>::<span style="color:#036;font-weight:bold">Get</span>, <span style="color:#069">nil</span>, <span style="color:#069">nil</span>)
+    conn = util_stub_connection_for <span style="color:#A60">:body</span> =&gt; <span style="color:#A60">:junk</span>, <span style="color:#A60">:code</span> =&gt; <span style="color:#00D">200</span>
+
+    response = <span style="color:#33B">@request</span>.fetch
+
+    auth_header = conn.payload[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Authorization</span><span style="color:#710">'</span></span>]
+
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Basic </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Base64</span>.encode64(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">user:pass</span><span style="color:#710">'</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>.strip, auth_header
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_fetch_basic_auth_encoded</span>
+    uri = <span style="color:#036;font-weight:bold">URI</span>.parse <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://user:%7BDEScede%7Dpass@example.rubygems/specs.</span><span style="color:#710">&quot;</span></span> +
+                    <span style="color:#036;font-weight:bold">Gem</span>.marshal_version
+    <span style="color:#33B">@request</span> = <span style="color:#036;font-weight:bold">Gem</span>::<span style="color:#036;font-weight:bold">Request</span>.new(uri, <span style="color:#036;font-weight:bold">Net</span>::<span style="color:#036;font-weight:bold">HTTP</span>::<span style="color:#036;font-weight:bold">Get</span>, <span style="color:#069">nil</span>, <span style="color:#069">nil</span>)
+    conn = util_stub_connection_for <span style="color:#A60">:body</span> =&gt; <span style="color:#A60">:junk</span>, <span style="color:#A60">:code</span> =&gt; <span style="color:#00D">200</span>
+
+    response = <span style="color:#33B">@request</span>.fetch
+
+    auth_header = conn.payload[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Authorization</span><span style="color:#710">'</span></span>]
+
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Basic </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Base64</span>.encode64(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">user:{DEScede}pass</span><span style="color:#710">'</span></span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>.strip, 
+                 auth_header
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>It is hard to overstate the difference between a patch with these tests
+added to it and one without tests. The original commit introduced a new
+dependency and more complex logic into a feature that lacked formal definition
+of its behavior. But as soon as these tests are added to the change request,
+RubyGems gains support for a new special condition in gem request URLs while 
+tightening up the definition of the original behavior. The tests
+also serve to protect both conditions from breaking without being noticed 
+in the future.</p>
+
+<p>Taken individually, the risks of accepting untested patches are
+small enough that they don’t seem important enough to worry about when you are pressed
+for time. But in the aggregate, the effects of untested code will pile up until your
+codebase really does become unworkable legacy code. For that reason, establishing
+good habits about reviewing and shoring up tests on each new change can make a
+huge difference in long-term maintainability.</p>
+
+<h3 id="expand-functionality-via-well-defined-extension-points">3) Expand functionality via well-defined extension points</h3>
+
+<p>Most open source projects can benefit from having two clearly defined interfaces:
+one for end-users, and one for developers who want to extend its functionality.
+This point may seem tangentially related to code quality and maintainability,
+but a well-defined extension API can greatly increase a project’s stability.</p>
+
+<p>When its possible to add new functionality to a project without patching its
+codebase directly, it becomes easier to separate essential features that most
+people will need from features that are only relevant in certain rare 
+contexts. The ability to support external add-ons in a transparent way also
+makes it possible to try experiments outside of your main codebase and then
+only merge in features that prove to be both stable and widely used.</p>
+
+<p>Even within the scope of a single codebase, explicitly defining a layer one
+level beneath the surface forces you to think about what the common points
+of interaction are between your project’s features. It also makes testing
+easier, because feature implementations tend to get slimmed down as the
+extension API becomes more capable. Each part can then be tested in 
+isolation without having to think about large amorphous blobs
+of internal dependencies.</p>
+
+<p>It may be hard to figure out how to create an extension API when you first start
+working on a project, because at that time you probably don’t know much
+about the ways that people will need to extend its core behavior, and you may
+not even have a good sense of what its core feature set should be! This is
+completely acceptable, and it makes sense to focus exclusively on your high-level 
+interface at first. But as your project matures, you can use the following guidelines to
+incrementally bring a suitable extension API into existence:</p>
+
+<ul>
+  <li>
+    <p>With each new feature request, ask yourself whether it could be implemented
+as an external add-on without patching your project’s codebase. If not, figure 
+out what extension points would make it possible to do so.</p>
+  </li>
+  <li>
+    <p>For any of your features that have become difficult to work with or overly
+complex, think about what extension points would need to be added in
+order to extract those features into external add-ons.</p>
+  </li>
+  <li>
+    <p>For any essential features that have clearly related functionality, 
+figure out what it would take to re-implement them on top of well defined 
+extension points rather than relying on lots of private internal code.</p>
+  </li>
+</ul>
+
+<p>At first, you may start by carrying out these design considerations as simple
+thought experiments that will indirectly influence the way you implement 
+things. Later, you can take them more seriously and seek to support
+new functionality via external add-ons rather than merging new features 
+unless there is a very good reason to do otherwise. Every project needs to
+discover the right balance for itself, but the basic idea is that the value of a
+clear extension API increases the longer a project is in active use.</p>
+
+<p>Because RDoc has been around for a very long time and has a fairly decent extension 
+API, it is a good library to look at for examples of what this technique has
+to offer. Without asking Eric for help, I looked into what it would take to autolink 
+Github issues, commits, and  version tags in RDoc output. This isn’t something I had 
+a practical use for, but I figured it  would be a decent way to test how easily I 
+could extend the RDoc parser.</p>
+
+<p>I started with the following text as my input data: </p>
+
+<pre><code>Please see #125, #127, and #159
+
+Also see @bed324 and v0.14.0
+</code></pre>
+
+<p>My goal was to produce the following HTML output after telling RDoc what repository
+that these issues, commits, and tags referred to:</p>
+
+<pre><code>&lt;p&gt;Please see &lt;a href="https://github.com/prawnpdf/prawn/issues/125"&gt;#125&lt;/a&gt;,
+&lt;a href="https://github.com/prawnpdf/prawn/issues/127"&gt;#127&lt;/a&gt;, and 
+&lt;a href="https://github.com/prawnpdf/prawn/issues/159"&gt;#159&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Also see &lt;a
+href="https://github.com/prawnpdf/prawn/commit/bed324"&gt;@bed324&lt;/a&gt; and 
+&lt;a href="https://github.com/prawnpdf/prawn/tree/0.14.0"&gt;v0.14.0&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+
+<p>Rendered, the resulting HTML would look like this:</p>
+
+<blockquote>
+  <p>Please see <a href="https://github.com/prawnpdf/prawn/issues/125">#125</a>,
+<a href="https://github.com/prawnpdf/prawn/issues/127">#127</a>, and 
+<a href="https://github.com/prawnpdf/prawn/issues/159">#159</a>&lt;/p&gt;</p>
+
+  <p>Also see <a href="https://github.com/prawnpdf/prawn/commit/bed324">@bed324</a> and 
+<a href="https://github.com/prawnpdf/prawn/tree/0.14.0">v0.14.0</a>&lt;/p&gt;</p>
+</blockquote>
+
+<p>I wasn’t concerned about styling or how to fit this new functionality into a
+full-scale RDoc run. I just wanted to see if I could take my little
+snippet of sample text and replace the GitHub references with their 
+relevant links. My experiment was focused solely on finding an
+suitable entry point into the system that supported these 
+kinds of extensions.</p>
+
+<p>After about 20 minutes of research and tinkering, I was able 
+to produce the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rdoc</span><span style="color:#710">'</span></span>
+
+<span style="color:#036;font-weight:bold">REPO_URL</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://github.com/prawnpdf/prawn</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GithubLinkedHtml</span> &lt; <span style="color:#036;font-weight:bold">RDoc</span>::<span style="color:#036;font-weight:bold">Markup</span>::<span style="color:#036;font-weight:bold">ToHtml</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_special_ISSUE</span>(special)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">&lt;a href=&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">REPO_URL</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/issues/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>special.text[<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&quot;&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>special.text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/a&gt;</span><span style="color:#710">}</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_special_COMMIT</span>(special)
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">&lt;a href=&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">REPO_URL</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/commit/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>special.text[<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&quot;&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>special.text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/a&gt;</span><span style="color:#710">}</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">handle_special_VERSION</span>(special)
+    tag = special.text[<span style="color:#00D">1</span>..<span style="color:#00D">-1</span>]
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">&lt;a href=&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">REPO_URL</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/tree/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>tag<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&quot;&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>special.text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/a&gt;</span><span style="color:#710">}</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+markup = <span style="color:#036;font-weight:bold">RDoc</span>::<span style="color:#036;font-weight:bold">Markup</span>.new
+
+markup.add_special(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">*(</span><span style="color:#D20">\#</span><span style="color:#D20">\d</span><span style="color:#808">+)</span><span style="color:#404">/</span></span>, <span style="color:#A60">:ISSUE</span>)
+markup.add_special(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">*(@</span><span style="color:#D20">\h</span><span style="color:#808">+)</span><span style="color:#404">/</span></span>,  <span style="color:#A60">:COMMIT</span>)
+markup.add_special(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">*(v</span><span style="color:#D20">\d</span><span style="color:#808">+</span><span style="color:#D20">\.</span><span style="color:#D20">\d</span><span style="color:#808">+</span><span style="color:#D20">\.</span><span style="color:#D20">\d</span><span style="color:#808">+)</span><span style="color:#404">/</span></span>, <span style="color:#A60">:VERSION</span>)
+
+wh = <span style="color:#036;font-weight:bold">GithubLinkedHtml</span>.new(<span style="color:#036;font-weight:bold">RDoc</span>::<span style="color:#036;font-weight:bold">Options</span>.new, markup)
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;body&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>wh.convert <span style="color:#069">ARGF</span>.read<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">&lt;/body&gt;</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Once I figured out the right APIs to use, this became an easy problem to solve.
+It was clear from the way things were laid out that this sort of use case had 
+already been considered, and a source dive revealed that RDoc also uses these
+extension points internally to support its own behavior. The only challenge I ran
+into was that these extension points were not especially well documented, which
+is unfortunately a more common problem than it ought to be with open 
+source projects. </p>
+
+<p>It is often the case that extension points are built initially to support 
+internal needs rather than external use cases, and so they often lag behind 
+surface-level features in learnability and third-party usability. This is
+certainly a solvable problem, and is worth considering when working on
+your own projects. But even without documentation, explicit and stable extension
+points can be a hugely powerful tool for making a project more maintainable.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>As you’ve seen from these examples, establishing high quality standards for open 
+source projects is a matter of practicality, not pride. Projects that are made up 
+of code that is easy to understand, easy to test, easy to change, and easy to 
+maintain are far more likely to be sustainable over the long haul than projects 
+that are allowed to decay internally as they grow.</p>
+
+<p>The techniques we’ve discussed in this article are ones that will
+pay off even if you just apply them some of the time, but the more you use them,
+the more you’ll get in return. The nice thing about these practices is that they
+are quite robust – they can be applied in early stage experimental software as
+well as in projects that have been used in production for years.</p>
+
+<p>The hard part of applying these ideas is not in remembering them when things are
+painful, but instead in keeping up with them when things are going well with
+your project. The more contributions you receive, the more important these
+strategies will become, but it is also hard to keep up with them because they do
+slow down the maintenance process a little bit. Whenever you feel that pressure,
+remember that you are looking out for the future of your project by focusing on
+quality, and then do what you can to educate others so that they understand why
+these issues matter.</p>
+
+<p>Every project is different, and you may find that there are other ways to keep a
+high quality standard without following the guidelines we’ve discussed in this
+article. If you have some ideas to share, please let us know!</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>The definition of legacy code as code without tests was popularized in 2004 by Michael Feathers, author of the extremely useful <a href="http://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052">Working Effectively with Legacy Code</a> book. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+</body>
+</html>

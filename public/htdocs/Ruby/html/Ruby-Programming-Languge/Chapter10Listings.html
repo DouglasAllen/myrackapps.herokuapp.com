@@ -1,0 +1,721 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-10">CHAPTER 10</h2>
+
+<h3 id="the-ruby-environment">The Ruby Environment</h3>
+
+<h4 id="invoking-the-ruby-interpreter">10.1 Invoking the Ruby Interpreter</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby [&lt;replaceable&gt;options&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;] [--] &lt;replaceable&gt;program&lt;</span><span style="color:#404">/</span></span>replaceable&gt; [&lt;replaceable&gt;arguments&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">replaceable&gt;]
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="common-options">10.1.1 Common Options</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require '&lt;replaceable&gt;library&lt;/replaceable&gt;'
+</pre></div>
+</div>
+</div>
+
+<h4 id="text-processing-options">10.1.4 Text Processing Options</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">while</span> gets             <span style="color:#777"># Read a line of input into $_</span>
+  <span style="color:#d70">$F</span> = split <span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$-a</span>    <span style="color:#777"># Split $_ into fields if -a was specified</span>
+  chop! <span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$-l</span>         <span style="color:#777"># Chop line ending off $_ if -l was specified</span>
+  <span style="color:#777"># Program text here</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">while</span> gets             <span style="color:#777"># Read a line of input into $_</span>
+  <span style="color:#d70">$F</span> = split <span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$-a</span>    <span style="color:#777"># Split $_ into fields if -a was specified</span>
+  chop! <span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$-l</span>         <span style="color:#777"># Chop line ending off $_ if -l was specified</span>
+  <span style="color:#777"># Program text here</span>
+  print                <span style="color:#777"># Output $_ (adding $/ if -l was specified)</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="predefined-modules-and-classes">10.2.1 Predefined Modules and Classes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Comparable</span>      <span style="color:#036;font-weight:bold">FileTest</span>        <span style="color:#036;font-weight:bold">Marshal</span>         <span style="color:#036;font-weight:bold">Precision</span>
+<span style="color:#036;font-weight:bold">Enumerable</span>      <span style="color:#036;font-weight:bold">GC</span>              <span style="color:#036;font-weight:bold">Math</span>            <span style="color:#036;font-weight:bold">Process</span>
+<span style="color:#036;font-weight:bold">Errno</span>           <span style="color:#036;font-weight:bold">Kernel</span>          <span style="color:#036;font-weight:bold">ObjectSpace</span>     <span style="color:#036;font-weight:bold">Signal</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Array</span>           <span style="color:#036;font-weight:bold">File</span>            <span style="color:#036;font-weight:bold">Method</span>          <span style="color:#036;font-weight:bold">String</span>
+<span style="color:#036;font-weight:bold">Bignum</span>          <span style="color:#036;font-weight:bold">Fixnum</span>          <span style="color:#036;font-weight:bold">Module</span>          <span style="color:#036;font-weight:bold">Struct</span>
+<span style="color:#036;font-weight:bold">Binding</span>         <span style="color:#036;font-weight:bold">Float</span>           <span style="color:#036;font-weight:bold">NilClass</span>        <span style="color:#036;font-weight:bold">Symbol</span>
+<span style="color:#036;font-weight:bold">Class</span>           <span style="color:#036;font-weight:bold">Hash</span>            <span style="color:#036;font-weight:bold">Numeric</span>         <span style="color:#036;font-weight:bold">Thread</span>
+<span style="color:#036;font-weight:bold">Continuation</span>    <span style="color:#036;font-weight:bold">IO</span>              <span style="color:#036;font-weight:bold">Object</span>          <span style="color:#036;font-weight:bold">ThreadGroup</span>
+<span style="color:#036;font-weight:bold">Data</span>            <span style="color:#036;font-weight:bold">Integer</span>         <span style="color:#036;font-weight:bold">Proc</span>            <span style="color:#036;font-weight:bold">Time</span>
+<span style="color:#036;font-weight:bold">Dir</span>             <span style="color:#036;font-weight:bold">MatchData</span>       <span style="color:#036;font-weight:bold">Range</span>           <span style="color:#036;font-weight:bold">TrueClass</span>
+<span style="color:#036;font-weight:bold">FalseClass</span>      <span style="color:#036;font-weight:bold">MatchingData</span>    <span style="color:#036;font-weight:bold">Regexp</span>          <span style="color:#036;font-weight:bold">UnboundMethod</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">ArgumentError</span>           <span style="color:#036;font-weight:bold">NameError</span>               <span style="color:#036;font-weight:bold">SignalException</span>
+<span style="color:#036;font-weight:bold">EOFError</span>                <span style="color:#036;font-weight:bold">NoMemoryError</span>           <span style="color:#036;font-weight:bold">StandardError</span>
+<span style="color:#036;font-weight:bold">Exception</span>               <span style="color:#036;font-weight:bold">NoMethodError</span>           <span style="color:#036;font-weight:bold">SyntaxError</span>
+<span style="color:#036;font-weight:bold">FloatDomainError</span>        <span style="color:#036;font-weight:bold">NotImplementedError</span>     <span style="color:#036;font-weight:bold">SystemCallError</span>
+<span style="color:#036;font-weight:bold">IOError</span>                 <span style="color:#036;font-weight:bold">RangeError</span>              <span style="color:#036;font-weight:bold">SystemExit</span>
+<span style="color:#036;font-weight:bold">IndexError</span>              <span style="color:#036;font-weight:bold">RegexpError</span>             <span style="color:#036;font-weight:bold">SystemStackError</span>
+<span style="color:#036;font-weight:bold">Interrupt</span>               <span style="color:#036;font-weight:bold">RuntimeError</span>            <span style="color:#036;font-weight:bold">ThreadError</span>
+<span style="color:#036;font-weight:bold">LoadError</span>               <span style="color:#036;font-weight:bold">ScriptError</span>             <span style="color:#036;font-weight:bold">TypeError</span>
+<span style="color:#036;font-weight:bold">LocalJumpError</span>          <span style="color:#036;font-weight:bold">SecurityError</span>           <span style="color:#036;font-weight:bold">ZeroDivisionError</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">BasicObject</span>     <span style="color:#036;font-weight:bold">FiberError</span>      <span style="color:#036;font-weight:bold">Mutex</span>           <span style="color:#036;font-weight:bold">VM</span>
+<span style="color:#036;font-weight:bold">Fiber</span>           <span style="color:#036;font-weight:bold">KeyError</span>        <span style="color:#036;font-weight:bold">StopIteration</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Print all modules (excluding classes)</span>
+puts <span style="color:#036;font-weight:bold">Module</span>.constants.sort.select {|x| eval(x.to_s).instance_of? <span style="color:#036;font-weight:bold">Module</span>}
+
+<span style="color:#777"># Print all classes (excluding exceptions)</span>
+puts <span style="color:#036;font-weight:bold">Module</span>.constants.sort.select {|x|
+  c = eval(x.to_s)
+  c.is_a? <span style="color:#036;font-weight:bold">Class</span> <span style="color:#080;font-weight:bold">and</span> <span style="color:#080;font-weight:bold">not</span> c.ancestors.include? <span style="color:#036;font-weight:bold">Exception</span>
+}
+
+<span style="color:#777"># Print all exceptions</span>
+puts <span style="color:#036;font-weight:bold">Module</span>.constants.sort.select {|x|
+  c = eval(x.to_s)
+  c.instance_of? <span style="color:#036;font-weight:bold">Class</span> <span style="color:#080;font-weight:bold">and</span> c.ancestors.include? <span style="color:#036;font-weight:bold">Exception</span>
+}
+</pre></div>
+</div>
+</div>
+
+<h4 id="top-level-constants">10.2.2 Top-Level Constants</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby -e 'puts Module.constants.sort.reject{|x| eval(x.to_s).is_a? Module}'
+</pre></div>
+</div>
+</div>
+
+<h4 id="global-variables">10.2.3 Global Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby -e 'puts global_variables.sort'
+###########################
+ruby -rEnglish -e 'puts global_variables.sort'
+</pre></div>
+</div>
+</div>
+
+<h4 id="keyword-functions">10.2.4.1 Keyword functions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>block_given?    iterator?       loop            require
+callcc          lambda          proc            throw
+catch           load            raise
+</pre></div>
+</div>
+</div>
+
+<h4 id="text-input-output-and-manipulation-functions">10.2.4.2 Text input, output, and manipulation functions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>format          print           puts            sprintf
+gets            printf          readline
+p               putc            readlines
+<span style="color:#777">###########################</span>
+chomp   chop    gsub    scan    sub
+chomp!  chop!   gsub!   split   sub!
+</pre></div>
+</div>
+</div>
+
+<h4 id="os-methods">10.2.4.3 OS methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># `       fork    select  system  trap</span>
+<span style="color:#777"># exec    open    syscall test</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="warnings-failures-and-exiting">10.2.4.4 Warnings, failures, and exiting</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>abort   at_exit exit    exit!   fail    warn
+</pre></div>
+</div>
+</div>
+
+<h4 id="reflection-functions">10.2.4.5 Reflection functions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>binding                         set_trace_func
+caller                          singleton_method_added
+eval                            singleton_method_removed
+global_variables                singleton_method_undefined
+local_variables                 trace_var
+method_missing                  untrace_var
+remove_instance_variable
+</pre></div>
+</div>
+</div>
+
+<h4 id="conversion-functions">10.2.4.6 Conversion functions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Array</span>   <span style="color:#036;font-weight:bold">Float</span>   <span style="color:#036;font-weight:bold">Integer</span> <span style="color:#036;font-weight:bold">String</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="miscellaneous-kernel-functions">10.2.4.7 Miscellaneous Kernel functions</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>autoload                rand                    srand
+autoload?               sleep
+</pre></div>
+</div>
+</div>
+
+<h4 id="one-line-script-shortcuts">10.3.4 One-Line Script Shortcuts</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ruby -n -e 'print if /^A/' datafile
+###########################
+print if $_ =~ /^A/
+</pre></div>
+</div>
+</div>
+
+<h4 id="invoking-os-commands">10.4.1 Invoking OS Commands</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>os = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2">uname</span><span style="color:#161">`</span></span>             <span style="color:#777"># String literal and method invocation in one</span>
+os = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">%x{</span><span style="color:#2B2">uname</span><span style="color:#161">}</span></span>           <span style="color:#777"># Another quoting syntax</span>
+os = <span style="color:#036;font-weight:bold">Kernel</span>.`(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">uname</span><span style="color:#710">&quot;</span></span>)   <span style="color:#777">#` Invoke the method explicitly</span>
+<span style="color:#777">###########################</span>
+files = <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#161">`</span></span> <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2"> </span><span style="color:#161">`</span></span><span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2">echo *.xml</span><span style="color:#161">`</span></span><span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#2B2"> </span><span style="color:#161">`</span></span> <span style="background-color:hsla(120,100%,50%,0.06)"><span style="color:#161">`</span><span style="color:#161">`</span></span>
+<span style="color:#777">###########################</span>
+pipe = open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|echo *.xml</span><span style="color:#710">&quot;</span></span>)
+files = pipe.readline
+pipe.close
+</pre></div>
+</div>
+</div>
+
+<h4 id="forking-and-processes">10.4.2 Forking and Processes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>fork {
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello from the child process: </span><span style="color:#666">#</span><span style="color:#d70">$$</span><span style="color:#710">&quot;</span></span>
+}
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello from the parent process: </span><span style="color:#666">#</span><span style="color:#d70">$$</span><span style="color:#710">&quot;</span></span>
+<span style="color:#777">###########################</span>
+pid = fork
+<span style="color:#080;font-weight:bold">if</span> (pid)
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello from parent process: </span><span style="color:#666">#</span><span style="color:#d70">$$</span><span style="color:#710">&quot;</span></span>
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Created child process </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>pid<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>   
+<span style="color:#080;font-weight:bold">else</span>
+  puts <span style="color:#036;font-weight:bold">Hello</span> from child <span style="color:#606">process</span>: <span style="color:#777">#$$&quot;</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|-</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r+</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |child|
+  <span style="color:#080;font-weight:bold">if</span> child
+    <span style="color:#777"># This is the parent process</span>
+    child.puts(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello child</span><span style="color:#710">&quot;</span></span>)       <span style="color:#777"># Send to child</span>
+    response = child.gets           <span style="color:#777"># Read from child</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Child said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>response<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#777"># This is the child process</span>
+    from_parent = gets              <span style="color:#777"># Read from parent</span>
+    <span style="color:#069">STDERR</span>.puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Parent said: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>from_parent<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    puts(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hi Mom!</span><span style="color:#710">&quot;</span></span>)                 <span style="color:#777"># Send to parent</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|-</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |child|
+  <span style="color:#080;font-weight:bold">if</span> child
+    <span style="color:#777"># This is the parent process</span>
+    files = child.readlines   <span style="color:#777"># Read the output of our child</span>
+    child.close
+  <span style="color:#080;font-weight:bold">else</span>
+    <span style="color:#777"># This is the child process</span>
+    exec(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/bin/ls</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-l</span><span style="color:#710">&quot;</span></span>)     <span style="color:#777"># Run another executable</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="trapping-signals">10.4.3 Trapping Signals</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>trap <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SIGINT</span><span style="color:#710">&quot;</span></span> {
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ignoring SIGINT</span><span style="color:#710">&quot;</span></span>
+}
+</pre></div>
+</div>
+</div>
+
+<h4 id="terminating-programs">10.4.4 Terminating Programs</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>fail <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Unknown option </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>switch<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="restricted-execution-and-safe-levels">10.5.2 Restricted Execution and Safe Levels</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#d70">$SAFE</span>=<span style="color:#00D">1</span>                <span style="color:#777"># upgrade the safe level</span>
+<span style="color:#d70">$SAFE</span>=<span style="color:#00D">4</span>                <span style="color:#777"># upgrade the safe level even higher</span>
+<span style="color:#d70">$SAFE</span>=<span style="color:#00D">0</span>                <span style="color:#777"># SecurityError!  you can't do it</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Thread</span>.start {     <span style="color:#777"># Create a &quot;sandbox&quot; thread</span>
+  <span style="color:#d70">$SAFE</span> = <span style="color:#00D">4</span>        <span style="color:#777"># Restrict execution in this thread only</span>
+  ...              <span style="color:#777"># Untrusted code can be run here</span>
+}
+</pre></div>
+</div>
+</div>
+
+<h4 id="safe-level-2">10.5.2.3 Safe level 2</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Dir</span>.chdir               <span style="color:#036;font-weight:bold">File</span>.truncate           <span style="color:#036;font-weight:bold">Process</span>.egid=
+<span style="color:#036;font-weight:bold">Dir</span>.chroot              <span style="color:#036;font-weight:bold">File</span>.umask              <span style="color:#036;font-weight:bold">Process</span>.fork
+<span style="color:#036;font-weight:bold">Dir</span>.mkdir               <span style="color:#036;font-weight:bold">IO</span>.fctrl                <span style="color:#036;font-weight:bold">Process</span>.kill
+<span style="color:#036;font-weight:bold">Dir</span>.rmdir               <span style="color:#036;font-weight:bold">IO</span>.ioctl                <span style="color:#036;font-weight:bold">Process</span>.setpgid
+<span style="color:#036;font-weight:bold">File</span>.chmod              <span style="color:#036;font-weight:bold">Kernel</span>.exit!            <span style="color:#036;font-weight:bold">Process</span>.setpriority
+<span style="color:#036;font-weight:bold">File</span>.chown              <span style="color:#036;font-weight:bold">Kernel</span>.fork             <span style="color:#036;font-weight:bold">Process</span>.setsid
+<span style="color:#036;font-weight:bold">File</span>.flock              <span style="color:#036;font-weight:bold">Kernel</span>.syscall
+<span style="color:#036;font-weight:bold">File</span>.lstat              <span style="color:#036;font-weight:bold">Kernel</span>.trap
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">safe_eval</span>(str)
+  <span style="color:#036;font-weight:bold">Thread</span>.start {            <span style="color:#777"># Start sandbox thread</span>
+    <span style="color:#d70">$SAFE</span> = <span style="color:#00D">4</span>               <span style="color:#777"># Upgrade safe level</span>
+    eval(str)               <span style="color:#777"># Eval in the sandbox</span>
+  }.value                   <span style="color:#777"># Retrieve result</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

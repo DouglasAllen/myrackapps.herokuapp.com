@@ -1,0 +1,39 @@
+﻿body
+{
+	margin:0px;
+	padding:0px;
+}
+#header
+{
+	background: #0f0;
+	width: 800px;
+	height: 100px;
+}
+#leftcolumn
+{
+	background: #f00;
+	float:left;
+	width: 150px;
+	height: 500px;
+}
+#rightcolumn
+{
+	background: #f00;
+	float:left;
+	width: 150px;
+	height: 500px;
+}
+#content
+{
+	background: #fff;
+	float:left;
+	width: 500px;
+	height: 500px;
+}
+#footer
+{
+	background: #0f0;
+	clear:both;
+	width: 800px;
+	height: 100px;
+}

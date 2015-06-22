@@ -1,0 +1,1162 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-scope--closures">You Don’t Know JS: Scope &amp; Closures</h1>
+<p># Chapter 2: Lexical Scope</p>
+
+<p>In Chapter 1, we defined “scope” as the set of rules that govern how the <em>Engine</em> can look up a variable by its identifier name and find it, either in the current <em>Scope</em>, or in any of the <em>Nested Scopes</em> it’s contained within.</p>
+
+<p>There are two predominant models for how scope works. The first of these is by far the most common, used by the vast majority of programming languages. It’s called <strong>Lexical Scope</strong>, and we will examine it in-depth. The other model, which is still used by some languages (such as Bash scripting, some modes in Perl, etc) is called <strong>Dynamic Scope</strong>.</p>
+
+<p>Dynamic Scope is covered in Appendix A. I mention it here only to provide a contrast with Lexical Scope, which is the scope model that JavaScript employs.</p>
+
+<h2 id="lex-time">Lex-time</h2>
+
+<p>As we discussed in Chapter 1, the first traditional phase of a standard language compiler is called lexing (aka, tokenizing). If you recall, the lexing process examines a string of source code characters and assigns semantic meaning to the tokens as a result of some stateful parsing.</p>
+
+<p>It is this concept which provides the foundation to understand what lexical scope is and where the name comes from.</p>
+
+<p>To define it somewhat circularly, lexical scope is scope that is defined at lexing time. In other words, lexical scope is based on where variables and blocks of scope are authored, by you, at write time, and thus is (mostly) set in stone by the time the lexer processes your code.</p>
+
+<p><strong>Note:</strong> We will see in a little bit there are some ways to cheat lexical scope, thereby modifying it after the lexer has passed by, but these are frowned upon. It is considered best practice to treat lexical scope as, in fact, lexical-only, and thus entirely author-time in nature.</p>
+
+<p>Let’s consider this block of code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(a) {
+
+        <span style="color:#080;font-weight:bold">var</span> b = a * <span style="color:#00D">2</span>;
+
+        <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">bar</span>(c) {
+                console.log( a, b, c );
+        }
+
+        bar(b * <span style="color:#00D">3</span>);
+}
+
+foo( <span style="color:#00D">2</span> ); <span style="color:#777">// 2, 4, 12</span>
+</pre></div>
+</div>
+</div>
+
+<p>There are three nested scopes inherent in this code example. It may be helpful to think about these scopes as bubbles inside of each other.</p>
+
+<p><img src="fig2.png" width="500" /></p>
+
+<p><strong>Bubble 1</strong> encompasses the global scope, and has just one identifier in it: <code>foo</code>.</p>
+
+<p><strong>Bubble 2</strong> encompasses the scope of <code>foo</code>, which includes the three identifiers: <code>a</code>, <code>bar</code> and <code>b</code>.</p>
+
+<p><strong>Bubble 3</strong> encompasses the scope of <code>bar</code>, and it includes just one identifier: <code>c</code>.</p>
+
+<p>Scope bubbles are defined by where the blocks of scope are written, which one is nested inside the other, etc. In the next chapter, we’ll discuss different units of scope, but for now, let’s just assume that each function creates a new bubble of scope.</p>
+
+<p>The bubble for <code>bar</code> is entirely contained within the bubble for <code>foo</code>, because (and only because) that’s where we chose to define the function <code>bar</code>.</p>
+
+<p>Notice that these nested bubbles are strictly nested. We’re not talking about Venn diagrams where the bubbles can cross boundaries. In other words, no bubble for some function can simultaneously exist (partially) inside two other outer scope bubbles, just as no function can partially be inside each of two parent functions.</p>
+
+<h3 id="look-ups">Look-ups</h3>
+
+<p>The structure and relative placement of these scope bubbles fully explains to the <em>Engine</em> all the places it needs to look to find an identifier.</p>
+
+<p>In the above code snippet, the <em>Engine</em> executes the <code>console.log(..)</code> statement and goes looking for the three referenced variables <code>a</code>, <code>b</code>, and <code>c</code>. It first starts with the innermost scope bubble, the scope of the <code>bar(..)</code> function. It won’t find <code>a</code> there, so it goes up one level, out to the next nearest scope bubble, the scope of <code>foo(..)</code>. It finds <code>a</code> there, and so it uses that <code>a</code>. Same thing for <code>b</code>. But <code>c</code>, it does find inside of <code>bar(..)</code>.</p>
+
+<p>Had there been a <code>c</code> both inside of <code>bar(..)</code> and inside of <code>foo(..)</code>, the <code>console.log(..)</code> statement would have found and used the one in <code>bar(..)</code>, never getting to the one in <code>foo(..)</code>.</p>
+
+<p><strong>Scope look-up stops once it finds the first match</strong>. The same identifier name can be specified at multiple layers of nested scope, which is called “shadowing” (the inner identifer “shadows” the outer identifier). Regardless of shadowing, scope look-up always starts at the innermost scope being executed at the time, and works its way outward/upward until the first match, and stops.</p>
+
+<p><strong>Note:</strong> Global variables are also automatically properties of the global object (<code>window</code> in browsers, etc), so it <em>is</em> possible to reference a global variable not directly by its lexical name, but instead indirectly as a property reference of the global object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>window.a
+</pre></div>
+</div>
+</div>
+
+<p>This technique gives access to a global variable which would otherwise be inaccessible due to it being shadowed. However, non-global shadowed variables cannot be accessed.</p>
+
+<p>No matter <em>where</em> a function is invoked from, or even <em>how</em> it is invoked, its lexical scope is <strong>only</strong> defined by where the function was declared.</p>
+
+<p>The lexical scope look-up process <em>only</em> applies to first-class identifiers, such as the <code>a</code>, <code>b</code>, and <code>c</code>. If you had a reference to <code>foo.bar.baz</code> in a piece of code, the lexical scope look-up would apply to finding the <code>foo</code> identifier, but once it locates that variable, object property-access rules take over to resolve the <code>bar</code> and <code>baz</code> properties, respectively.</p>
+
+<h2 id="cheating-lexical">Cheating Lexical</h2>
+
+<p>If lexical scope is defined only by where a function is declared, which is entirely an author-time decision, how could there possibly be a way to “modify” (aka, cheat) lexical scope at run-time?</p>
+
+<p>JavaScript has two such mechanisms. Both of them are equally frowned-upon in the wider community as bad practices to use in your code. But the typical arguments against them are often missing the most important point: <strong>cheating lexical scope leads to poorer performance.</strong></p>
+
+<p>Before I explain the performance issue, though, let’s look at how these two mechanisms work.</p>
+
+<h3 id="eval"><code>eval</code></h3>
+
+<p>The <code>eval(..)</code> function in JavaScript takes a string as an argument, and treats the contents of the string as if it had actually been authored code at that point in the program. In other words, you can programatically generate code inside of your authored code, and run the generated code as if it had been there at author time.</p>
+
+<p>Evaluating <code>eval(..)</code> (pun intended) in that light, it should be clear how <code>eval(..)</code> allows you to modify the lexical scope environment by cheating and pretending that author-time (aka, lexical) code was there all along.</p>
+
+<p>On subsequent lines of code after an <code>eval(..)</code> has executed, the <em>Engine</em> will not “know” or “care” that the previous code in question was dynamically interpreted and thus modified the lexical scope environment. The <em>Engine</em> will simply perform its lexical scope look-ups as it always does.</p>
+
+<p>Consider the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(str, a) {
+        eval( str ); <span style="color:#777">// cheating!</span>
+        console.log( a, b );
+}
+
+<span style="color:#080;font-weight:bold">var</span> b = <span style="color:#00D">2</span>;
+
+foo( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">var b = 3;</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">1</span> ); <span style="color:#777">// 1, 3</span>
+</pre></div>
+</div>
+</div>
+
+<p>The string <code>"var b = 3;"</code> is treated, at the point of the <code>eval(..)</code> call, as code that was there all along. Because that code happens to declare a new variable <code>b</code>, it modifies the existing lexical scope of <code>foo(..)</code>. In fact, as mentioned above, this code actually creates variable <code>b</code> inside of <code>foo(..)</code> that shadows the <code>b</code> that was declared in the outer (global) scope.</p>
+
+<p>When the <code>console.log(..)</code> call occurs, it finds both <code>a</code> and <code>b</code> in the scope of <code>foo(..)</code>, and never finds the outer <code>b</code>. Thus, we print out “1, 3” instead of “1, 2” as would have normally been the case.</p>
+
+<p><strong>Note:</strong> In this example, for simplicity’s sake, the string of “code” we pass in was a fixed literal. But it could easily have been programatically created by adding characters together based on your program’s logic. <code>eval(..)</code> is usually used to execute dynamically created code, as dynamically evaluating essentially static code from a string literal would provide no real benefit to just authoring the code directly.</p>
+
+<p>By default, if a string of code that <code>eval(..)</code> executes contains one or more declarations (either variables or functions), this action modifies the existing lexical scope in which the <code>eval(..)</code> resides. Technically, <code>eval(..)</code> can be invoked “indirectly”, through various tricks (beyond our discussion here), which causes it to instead execute in the context of the global scope, thus modifying it. But in either case, <code>eval(..)</code> can at runtime modify an author-time lexical scope.</p>
+
+<p><strong>Note:</strong> <code>eval(..)</code> when used in a strict-mode program operates in its own lexical scope, which means declarations made inside of the eval() do not actually modify the enclosing scope.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(str) {
+   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">use strict</span><span style="color:#710">&quot;</span></span>;
+   eval( str );
+   console.log( a ); <span style="color:#777">// ReferenceError: a is not defined</span>
+}
+
+foo( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">var a = 2</span><span style="color:#710">&quot;</span></span> );
+</pre></div>
+</div>
+</div>
+
+<p>There are other facilities in JavaScript which amount to a very similar effect to <code>eval(..)</code>. <code>setTimeout(..)</code> and <code>setInterval(..)</code> <em>can</em> take a string for their respective first argument, the contents of which are <code>eval</code>uated as the code of a dynamically-generated function. This is old, legacy behavior and long-since deprecated. Don’t do it!</p>
+
+<p>The <code>new Function(..)</code> function constructor similarly takes a string of code in its <strong>last</strong> argument to turn into a dynamically-generated function (the first argument(s), if any, are the named parameters for the new function). This function-constructor syntax is slightly safer than <code>eval(..)</code>, but it should still be avoided in your code.</p>
+
+<p>The use-cases for dynamically generating code inside your program are incredibly rare, as the performance degradations are almost never worth the capability.</p>
+
+<h3 id="with"><code>with</code></h3>
+
+<p>The other frowned-upon (and now deprecated!) feature in JavaScript which cheats lexical scope is the <code>with</code> keyword. There are multiple valid ways that <code>with</code> can be explained, but I will choose here to explain it from the perspective of how it interacts with and affects lexical scope.</p>
+
+<p><code>with</code> is typically explained as a short-hand for making multiple property references against an object <em>without</em> repeating the object reference itself each time.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> obj = {
+        <span style="color:#606">a</span>: <span style="color:#00D">1</span>,
+        <span style="color:#606">b</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">c</span>: <span style="color:#00D">3</span>
+};
+
+<span style="color:#777">// more &quot;tedious&quot; to repeat &quot;obj&quot;</span>
+obj.a = <span style="color:#00D">2</span>;
+obj.b = <span style="color:#00D">3</span>;
+obj.c = <span style="color:#00D">4</span>;
+
+<span style="color:#777">// &quot;easier&quot; short-hand</span>
+<span style="color:#080;font-weight:bold">with</span> (obj) {
+        a = <span style="color:#00D">3</span>;
+        b = <span style="color:#00D">4</span>;
+        c = <span style="color:#00D">5</span>;
+}
+</pre></div>
+</div>
+</div>
+
+<p>However, there’s much more going on here than just a convenient short-hand for object property access. Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(obj) {
+        <span style="color:#080;font-weight:bold">with</span> (obj) {
+                a = <span style="color:#00D">2</span>;
+        }
+}
+
+<span style="color:#080;font-weight:bold">var</span> o1 = {
+        <span style="color:#606">a</span>: <span style="color:#00D">3</span>
+};
+
+<span style="color:#080;font-weight:bold">var</span> o2 = {
+        <span style="color:#606">b</span>: <span style="color:#00D">3</span>
+};
+
+foo( o1 );
+console.log( o1.a ); <span style="color:#777">// 2</span>
+
+foo( o2 );
+console.log( o2.a ); <span style="color:#777">// undefined</span>
+console.log( a ); <span style="color:#777">// 2 -- Oops, leaked global!</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this code example, two objects <code>o1</code> and <code>o2</code> are created. One has an <code>a</code> property, and the other does not. The <code>foo(..)</code> function takes an object reference <code>obj</code> as an argument, and calls <code>with (obj) { .. }</code> on the reference. Inside the <code>with</code> block, we make what appears to be a normal lexical reference to a variable <code>a</code>, an LHS reference in fact (see Chapter 1), to assign to it the value of <code>2</code>.</p>
+
+<p>When we pass in <code>o1</code>, the <code>a = 2</code> assignment finds the property <code>o1.a</code> and assigns it the value <code>2</code>, as reflected in the subsequent <code>console.log(o1.a)</code> statement. However, when we pass in <code>o2</code>, since it does not have an <code>a</code> property, no such property is created, and <code>o2.a</code> remains <code>undefined</code>.</p>
+
+<p>But then we note a peculiar side-effect, the fact that a global variable <code>a</code> was created by the <code>a = 2</code> assignment. How can this be?</p>
+
+<p>The <code>with</code> statement takes an object, one which has zero or more properties, and <strong>treats that object as if <em>it</em> is a wholly separate lexical scope</strong>, and thus the object’s properties are treated as lexically defined identifiers in that “scope”.</p>
+
+<p><strong>Note:</strong> Even though a <code>with</code> block treats an object like a lexical scope, a normal <code>var</code> declaration inside that <code>with</code> block will not be scoped to that <code>with</code> block, but instead the containing function scope.</p>
+
+<p>While the <code>eval(..)</code> function can modify existing lexical scope if it takes a string of code with one or more declarations in it, the <code>with</code> statement actually creates a <strong>whole new lexical scope</strong> out of thin air, from the object you pass to it.</p>
+
+<p>Understood in this way, the “scope” declared by the <code>with</code> statement when we passed in <code>o1</code> was <code>o1</code>, and that “scope” had an “identifier” in it which corresponds to the <code>o1.a</code> property. But when we used <code>o2</code> as the “scope”, it had no such <code>a</code> “identifier” in it, and so the normal rules of LHS identifier look-up (see Chapter 1) occurred.</p>
+
+<p>Neither the “scope” of <code>o2</code>, nor the scope of <code>foo(..)</code>, nor the global scope even, has an <code>a</code> identifier to be found, so when <code>a = 2</code> is executed, it results in the automatic-global being created (since we’re in non-strict mode).</p>
+
+<p>It is a strange sort of mind-bending thought to see <code>with</code> turning, at runtime, an object and its properties into a “scope” <em>with</em> “identifiers”. But that is the clearest explanation I can give for the results we see.</p>
+
+<p><strong>Note:</strong> In addition to being a bad idea to use, both <code>eval(..)</code> and <code>with</code> are affected (restricted) by Strict Mode. <code>with</code> is outright disallowed, whereas various forms of indirect or unsafe <code>eval(..)</code> are disallowed while retaining the core functionality.</p>
+
+<h3 id="performance">Performance</h3>
+
+<p>Both <code>eval(..)</code> and <code>with</code> cheat the otherwise author-time defined lexical scope by modifying or creating new lexical scope at runtime.</p>
+
+<p>So, what’s the big deal, you ask? If they offer more sophisticated functionality and coding flexibility, aren’t these <em>good</em> features? <strong>No.</strong></p>
+
+<p>The JavaScript <em>Engine</em> has a number of performance optimizations that it performs during the compilation phase. Some of these boil down to being able to essentially statically analyze the code as it lexes, and pre-determine where all the variable and function declarations are, so that it takes less effort to resolve identifiers during execution.</p>
+
+<p>But if the <em>Engine</em> finds an <code>eval(..)</code> or <code>with</code> in the code, it essentially has to <em>assume</em> that all its awareness of identifier location may be invalid, because it cannot know at lexing time exactly what code you may pass to <code>eval(..)</code> to modify the lexical scope, or the contents of the object you may pass to <code>with</code> to create a new lexical scope to be consulted.</p>
+
+<p>In other words, in the pessimistic sense, most of those optimizations it <em>would</em> make are pointless if <code>eval(..)</code> or <code>with</code> are present, so it simply doesn’t perform the optimizations <em>at all</em>.</p>
+
+<p>Your code will almost certainly tend to run slower simply by the fact that you include an <code>eval(..)</code> or <code>with</code> anywhere in the code. No matter how smart the <em>Engine</em> may be about trying to limit the side-effects of these pessimistic assumptions, <strong>there’s no getting around the fact that without the optimizations, code runs slower.</strong></p>
+
+<h2 id="review-tldr">Review (TL;DR)</h2>
+
+<p>Lexical scope means that scope is defined by author-time decisions of where functions are declared. The lexing phase of compilation is essentially able to know where and how all identifiers are declared, and thus predict how they will be looked-up during execution.</p>
+
+<p>Two mechanisms in JavaScript can “cheat” lexical scope: <code>eval(..)</code> and <code>with</code>. The former can modify existing lexical scope (at runtime) by evaluating a string of “code” which has one or more declarations in it. The latter essentially creates a whole new lexical scope (again, at runtime) by treating an object reference <em>as</em> a “scope” and that object’s properties as scoped identifiers.</p>
+
+<p>The downside to these mechanisms is that it defeats the <em>Engine</em>’s ability to perform compile-time optimizations regarding scope look-up, because the <em>Engine</em> has to assume pessimistically that such optimizations will be invalid. Code <em>will</em> run slower as a result of using either feature. <strong>Don’t use them.</strong></p>
+
+    </div>
+  </body>
+</html>

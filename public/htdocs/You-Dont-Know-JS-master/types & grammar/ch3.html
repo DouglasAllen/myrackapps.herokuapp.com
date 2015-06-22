@@ -1,0 +1,1472 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-types--grammar">You Don’t Know JS: Types &amp; Grammar</h1>
+<p># Chapter 3: Natives</p>
+
+<p>Several times in Chapters 1 and 2, we alluded to various built-ins, usually called “natives,” like <code>String</code> and <code>Number</code>. Let’s examine those in detail now.</p>
+
+<p>Here’s a list of the most commonly used natives:</p>
+
+<ul>
+  <li><code>String()</code></li>
+  <li><code>Number()</code></li>
+  <li><code>Boolean()</code></li>
+  <li><code>Array()</code></li>
+  <li><code>Object()</code></li>
+  <li><code>Function()</code></li>
+  <li><code>RegExp()</code></li>
+  <li><code>Date()</code></li>
+  <li><code>Error()</code></li>
+  <li><code>Symbol()</code> – added in ES6!</li>
+</ul>
+
+<p>As you can see, these natives are actually built-in functions.</p>
+
+<p>If you’re coming to JS from a language like Java, JavaScript’s <code>String()</code> will look like the <code>String(..)</code> constructor you’re used to for creating string values. So, you’ll quickly observe that you can do things like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> s = <span style="color:#080;font-weight:bold">new</span> String( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World!</span><span style="color:#710">&quot;</span></span> );
+
+console.log( s.toString() ); <span style="color:#777">// &quot;Hello World!&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>It <em>is</em> true that each of these natives can be used as a native constructor. But what’s being constructed may be different than you think.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> String( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span> );
+
+<span style="color:#080;font-weight:bold">typeof</span> a; <span style="color:#777">// &quot;object&quot; ... not &quot;String&quot;</span>
+
+a <span style="color:#080;font-weight:bold">instanceof</span> String; <span style="color:#777">// true</span>
+
+Object.prototype.toString.call( a ); <span style="color:#777">// &quot;[object String]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The result of the constructor form of value creation (<code>new String("abc")</code>) is an object wrapper around the primitive (<code>"abc"</code>) value.</p>
+
+<p>Importantly, <code>typeof</code> shows that these objects are not their own special <em>types</em>, but more appropriately they are subtypes of the <code>object</code> type.</p>
+
+<p>This object wrapper can further be observed with:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>console.log( a );
+</pre></div>
+</div>
+</div>
+
+<p>The output of that statement varies depending on your browser, as developer consoles are free to choose however they feel it’s appropriate to serialize the object for developer inspection.</p>
+
+<p><strong>Note:</strong> At the time of writing, the latest Chrome prints something like this: <code>String {0: "a", 1: "b", 2: "c", length: 3, [[PrimitiveValue]]: "abc"}</code>. But older versions of Chrome used to just print this: <code>String {0: "a", 1: "b", 2: "c"}</code>. The latest Firefox currently prints <code>String ["a","b","c"]</code>, but used to print <code>"abc"</code> in italics, which was clickable to open the object inspector. Of course, these results are subject to rapid change and your experience may vary.</p>
+
+<p>The point is, <code>new String("abc")</code> creates a string wrapper object around <code>"abc"</code>, not just the primitive <code>"abc"</code> value itself.</p>
+
+<h2 id="internal-class">Internal <code>[[Class]]</code></h2>
+
+<p>Values that are <code>typeof</code> <code>"object"</code> (such as an array) are additionally tagged with an internal <code>[[Class]]</code> property (think of this more as an internal <em>class</em>ification rather than related to classes from traditional class-oriented coding). This property cannot be accessed directly, but can generally be revealed indirectly by borrowing the default <code>Object.prototype.toString(..)</code> method called against the value. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object.prototype.toString.call( [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>] );                        <span style="color:#777">// &quot;[object Array]&quot;</span>
+
+Object.prototype.toString.call( <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">regex-literal</span><span style="color:#404">/</span><span style="color:#C2C">i</span></span> );        <span style="color:#777">// &quot;[object RegExp]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>So, for the array in this example, the internal <code>[[Class]]</code> value is <code>"Array"</code>, and for the regular expression, it’s <code>"RegExp"</code>. In most cases, this internal <code>[[Class]]</code> value corresponds to the built-in native constructor (see below) that’s related to the value, but that’s not always the case.</p>
+
+<p>What about primitive values? First, <code>null</code> and <code>undefined</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object.prototype.toString.call( <span style="color:#069">null</span> );                        <span style="color:#777">// &quot;[object Null]&quot;</span>
+Object.prototype.toString.call( <span style="color:#069">undefined</span> );        <span style="color:#777">// &quot;[object Undefined]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’ll note that there are no <code>Null()</code> or <code>Undefined()</code> native constructors, but nevertheless the <code>"Null"</code> and <code>"Undefined"</code> are the internal <code>[[Class]]</code> values exposed.</p>
+
+<p>But for the other simple primitives like <code>string</code>, <code>number</code>, and <code>boolean</code>, another behavior actually kicks in, which is usually called “boxing” (see “Boxing Wrappers” section next):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Object.prototype.toString.call( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span> );        <span style="color:#777">// &quot;[object String]&quot;</span>
+Object.prototype.toString.call( <span style="color:#00D">42</span> );                <span style="color:#777">// &quot;[object Number]&quot;</span>
+Object.prototype.toString.call( <span style="color:#069">true</span> );                <span style="color:#777">// &quot;[object Boolean]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this snippet, each of the simple primitives are automatically boxed by their respective object wrappers, which is why <code>"String"</code>, <code>"Number"</code>, and <code>"Boolean"</code> are revealed as the respective internal <code>[[Class]]</code> values.</p>
+
+<p><strong>Note:</strong> The behavior of <code>toString()</code> and <code>[[Class]]</code> as illustrated here has changed a bit from ES5 to ES6, but we cover those details in the <em>ES6 &amp; Beyond</em> title of this series.</p>
+
+<h2 id="boxing-wrappers">Boxing Wrappers</h2>
+
+<p>These object wrappers serve a very important purpose. Primitive values don’t have properties or methods, so to access <code>.length</code> or <code>.toString()</code> you need an object wrapper around the value. Thankfully, JS will automatically <em>box</em> (aka wrap) the primitive value to fulfill such accesses.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span>;
+
+a.length; <span style="color:#777">// 3</span>
+a.toUpperCase(); <span style="color:#777">// &quot;ABC&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>So, if you’re going to be accessing these properties/methods on your string values regularly, like a <code>i &lt; a.length</code> condition in a <code>for</code> loop for instance, it might seem to make sense to just have the object form of the value from the start, so the JS engine doesn’t need to implicitly create it for you.</p>
+
+<p>But it turns out that’s a bad idea. Browsers long ago performance-optimized the common cases like <code>.length</code>, which means your program will <em>actually go slower</em> if you try to “preoptimize” by directly using the object form (which isn’t on the optimized path).</p>
+
+<p>In general, there’s basically no reason to use the object form directly. It’s better to just let the boxing happen implicitly where necessary. In other words, never do things like <code>new String("abc")</code>, <code>new Number(42)</code>, etc – always prefer using the literal primitive values <code>"abc"</code> and <code>42</code>.</p>
+
+<h3 id="object-wrapper-gotchas">Object Wrapper Gotchas</h3>
+
+<p>There are some gotchas with using the object wrappers directly that you should be aware of if you <em>do</em> choose to ever use them.</p>
+
+<p>For example, consider <code>Boolean</code> wrapped values:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> Boolean( <span style="color:#069">false</span> );
+
+<span style="color:#080;font-weight:bold">if</span> (!a) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Oops</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// never runs</span>
+}
+</pre></div>
+</div>
+</div>
+
+<p>The problem is that you’ve created an object wrapper around the <code>false</code> value, but objects themselves are “truthy” (see Chapter 4), so using the object behaves oppositely to using the underlying <code>false</code> value itself, which is quite contrary to normal expectation.</p>
+
+<p>If you want to manually box a primitive value, you can use the <code>Object(..)</code> function (no <code>new</code> keyword):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span>;
+<span style="color:#080;font-weight:bold">var</span> b = <span style="color:#080;font-weight:bold">new</span> String( a );
+<span style="color:#080;font-weight:bold">var</span> c = Object( a );
+
+<span style="color:#080;font-weight:bold">typeof</span> a; <span style="color:#777">// &quot;string&quot;</span>
+<span style="color:#080;font-weight:bold">typeof</span> b; <span style="color:#777">// &quot;object&quot;</span>
+<span style="color:#080;font-weight:bold">typeof</span> c; <span style="color:#777">// &quot;object&quot;</span>
+
+b <span style="color:#080;font-weight:bold">instanceof</span> String; <span style="color:#777">// true</span>
+c <span style="color:#080;font-weight:bold">instanceof</span> String; <span style="color:#777">// true</span>
+
+Object.prototype.toString.call( b ); <span style="color:#777">// &quot;[object String]&quot;</span>
+Object.prototype.toString.call( c ); <span style="color:#777">// &quot;[object String]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Again, using the boxed object wrapper directly (like <code>b</code> and <code>c</code> above) is usually discouraged, but there may be some rare occasions you’ll run into where they may be useful.</p>
+
+<h2 id="unboxing">Unboxing</h2>
+
+<p>If you have an object wrapper and you want to get the underlying primitive value out, you can use the <code>valueOf()</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> String( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> b = <span style="color:#080;font-weight:bold">new</span> Number( <span style="color:#00D">42</span> );
+<span style="color:#080;font-weight:bold">var</span> c = <span style="color:#080;font-weight:bold">new</span> Boolean( <span style="color:#069">true</span> );
+
+a.valueOf(); <span style="color:#777">// &quot;abc&quot;</span>
+b.valueOf(); <span style="color:#777">// 42</span>
+c.valueOf(); <span style="color:#777">// true</span>
+</pre></div>
+</div>
+</div>
+
+<p>Unboxing can also happen implicitly, when using an object wrapper value in a way that requires the primitive value. This process (coercion) will be covered in more detail in Chapter 4, but briefly:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> String( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> b = a + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>; <span style="color:#777">// `b` has the unboxed primitive value &quot;abc&quot;</span>
+
+<span style="color:#080;font-weight:bold">typeof</span> a; <span style="color:#777">// &quot;object&quot;</span>
+<span style="color:#080;font-weight:bold">typeof</span> b; <span style="color:#777">// &quot;string&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="natives-as-constructors">Natives as Constructors</h2>
+
+<p>For <code>array</code>, <code>object</code>, <code>function</code>, and regular-expression values, it’s almost universally preferred that you use the literal form for creating the values, but the literal form creates the same sort of object as the constructor form does (that is, there is no nonwrapped value).</p>
+
+<p>Just as we’ve seen above with the other natives, these constructor forms should generally be avoided, unless you really know you need them, mostly because they introduce exceptions and gotchas that you probably don’t really <em>want</em> to deal with.</p>
+
+<h3 id="array"><code>Array(..)</code></h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> Array( <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span> );
+a; <span style="color:#777">// [1, 2, 3]</span>
+
+<span style="color:#080;font-weight:bold">var</span> b = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>];
+b; <span style="color:#777">// [1, 2, 3]</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> The <code>Array(..)</code> constructor does not require the <code>new</code> keyword in front of it. If you omit it, it will behave as if you have used it anyway. So <code>Array(1,2,3)</code> is the same outcome as <code>new Array(1,2,3)</code>.</p>
+
+<p>The <code>Array</code> constructor has a special form where if only one <code>number</code> argument is passed, instead of providing that value as <em>contents</em> of the array, it’s taken as a length to “presize the array” (well, sorta).</p>
+
+<p>This is a terrible idea. Firstly, you can trip over that form accidentally, as it’s easy to forget.</p>
+
+<p>But more importantly, there’s no such thing as actually presizing the array. Instead, what you’re creating is an otherwise empty array, but setting the <code>length</code> property of the array to the numeric value specified.</p>
+
+<p>An array that has no explicit values in its slots, but has a <code>length</code> property that <em>implies</em> the slots exist, is a weird exotic type of data structure in JS with some very strange and confusing behavior. The capability to create such a value comes purely from old, deprecated, historical functionalities (“array-like objects” like the <code>arguments</code> object).</p>
+
+<p><strong>Note:</strong> An array with at least one “empty slot” in it is often called a “sparse array.”</p>
+
+<p>It doesn’t help matters that this is yet another example where browser developer consoles vary on how they represent such an object, which breeds more confusion.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> Array( <span style="color:#00D">3</span> );
+
+a.length; <span style="color:#777">// 3</span>
+a;
+</pre></div>
+</div>
+</div>
+
+<p>The serialization of <code>a</code> in Chrome is (at the time of writing): <code>[ undefined x 3 ]</code>. <strong>This is really unfortunate.</strong> It implies that there are three <code>undefined</code> values in the slots of this array, when in fact the slots do not exist (so-called “empty slots” – also a bad name!).</p>
+
+<p>To visualize the difference, try this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> Array( <span style="color:#00D">3</span> );
+<span style="color:#080;font-weight:bold">var</span> b = [ <span style="color:#069">undefined</span>, <span style="color:#069">undefined</span>, <span style="color:#069">undefined</span> ];
+<span style="color:#080;font-weight:bold">var</span> c = [];
+c.length = <span style="color:#00D">3</span>;
+
+a;
+b;
+c;
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> As you can see with <code>c</code> in this example, empty slots in an array can happen after creation of the array. Changing the <code>length</code> of an array to go beyond its number of actually-defined slot values, you implicitly introduce empty slots. In fact, you could even call <code>delete b[1]</code> in the above snippet, and it would introduce an empty slot into the middle of <code>b</code>.</p>
+
+<p>For <code>b</code> (in Chrome, currently), you’ll find <code>[ undefined, undefined, undefined ]</code> as the serialization, as opposed to <code>[ undefined x 3 ]</code> for <code>a</code> and <code>c</code>. Confused? Yeah, so is everyone else.</p>
+
+<p>Worse than that, at the time of writing, Firefox reports <code>[ , , , ]</code> for <code>a</code> and <code>c</code>. Did you catch why that’s so confusing? Look closely. Three commas implies four slots, not three slots like we’d expect.</p>
+
+<p><strong>What!?</strong> Firefox puts an extra <code>,</code> on the end of their serialization here because as of ES5, trailing commas in lists (array values, property lists, etc.) are allowed (and thus dropped and ignored). So if you were to type in a <code>[ , , , ]</code> value into your program or the console, you’d actually get the underlying value that’s like <code>[ , , ]</code> (that is, an array with three empty slots). This choice, while confusing if reading the developer console, is defended as instead making copy-n-paste behavior accurate.</p>
+
+<p>If you’re shaking your head or rolling your eyes about now, you’re not alone! Shrugs.</p>
+
+<p>Unfortunately, it gets worse. More than just confusing console output, <code>a</code> and <code>b</code> from the above code snippet actually behave the same in some cases <strong>but differently in others</strong>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>a.join( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// &quot;--&quot;</span>
+b.join( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// &quot;--&quot;</span>
+
+a.map(<span style="color:#080;font-weight:bold">function</span>(v,i){ <span style="color:#080;font-weight:bold">return</span> i; }); <span style="color:#777">// [ undefined x 3 ]</span>
+b.map(<span style="color:#080;font-weight:bold">function</span>(v,i){ <span style="color:#080;font-weight:bold">return</span> i; }); <span style="color:#777">// [ 0, 1, 2 ]</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Ugh.</strong></p>
+
+<p>The <code>a.map(..)</code> call <em>fails</em> because the slots don’t actually exist, so <code>map(..)</code> has nothing to iterate over. <code>join(..)</code> works differently. Basically, we can think of it implemented sort of like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">fakeJoin</span>(arr,connector) {
+        <span style="color:#080;font-weight:bold">var</span> str = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>;
+        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> i = <span style="color:#00D">0</span>; i &lt; arr.length; i++) {
+                <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">0</span>) {
+                        str += connector;
+                }
+                <span style="color:#080;font-weight:bold">if</span> (arr[i] !== <span style="color:#069">undefined</span>) {
+                        str += arr[i];
+                }
+        }
+        <span style="color:#080;font-weight:bold">return</span> str;
+}
+
+<span style="color:#080;font-weight:bold">var</span> a = <span style="color:#080;font-weight:bold">new</span> Array( <span style="color:#00D">3</span> );
+fakeJoin( a, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// &quot;--&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, <code>join(..)</code> works by just <em>assuming</em> the slots exist and looping up to the <code>length</code> value. Whatever <code>map(..)</code> does internally, it (apparently) doesn’t make such an assumption, so the result from the strange “empty slots” array is unexpected and likely to cause failure.</p>
+
+<p>So, if you wanted to <em>actually</em> create an array of actual <code>undefined</code> values (not just “empty slots”), how could you do it (besides manually)?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = Array.apply( <span style="color:#069">null</span>, { <span style="color:#606">length</span>: <span style="color:#00D">3</span> } );
+a; <span style="color:#777">// [ undefined, undefined, undefined ]</span>
+</pre></div>
+</div>
+</div>
+
+<p>Confused? Yeah. Here’s roughly how it works.</p>
+
+<p><code>apply(..)</code> is a utility available to all functions, which calls the function it’s used with but in a special way.</p>
+
+<p>The first argument is a <code>this</code> object binding (covered in the <em>this &amp; Object Prototypes</em> title of this series), which we don’t care about here, so we set it to <code>null</code>. The second argument is supposed to be an array (or something <em>like</em> an array – aka an “array-like object”). The contents of this “array” are “spread” out as arguments to the function in question.</p>
+
+<p>So, <code>Array.apply(..)</code> is calling the <code>Array(..)</code> function and spreading out the values (of the <code>{ length: 3 }</code> object value) as its arguments.</p>
+
+<p>Inside of <code>apply(..)</code>, we can envision there’s another <code>for</code> loop (kinda like <code>join(..)</code> from above) that goes from <code>0</code> up to, but not including, <code>length</code> (<code>3</code> in our case).</p>
+
+<p>For each index, it retrieves that key from the object. So if the array-object parameter was named <code>arr</code> internally inside of the <code>apply(..)</code> function, the property access would effectively be <code>arr[0]</code>, <code>arr[1]</code>, and <code>arr[2]</code>. Of course, none of those properties exist on the <code>{ length: 3 }</code> object value, so all three of those property accesses would return the value <code>undefined</code>.</p>
+
+<p>In other words, it ends up calling <code>Array(..)</code> basically like this: <code>Array(undefined,undefined,undefined)</code>, which is how we end up with an array filled with <code>undefined</code> values, and not just those (crazy) empty slots.</p>
+
+<p>While <code>Array.apply( null, { length: 3 } )</code> is a strange and verbose way to create an array filled with <code>undefined</code> values, it’s <strong>vastly</strong> better and more reliable than what you get with the footgun’ish <code>Array(3)</code> empty slots.</p>
+
+<p>Bottom line: <strong>never ever, under any circumstances</strong>, should you intentionally create and use these exotic empty-slot arrays. Just don’t do it. They’re nuts.</p>
+
+<h3 id="object-function-and-regexp"><code>Object(..)</code>, <code>Function(..)</code>, and <code>RegExp(..)</code></h3>
+
+<p>The <code>Object(..)</code>/<code>Function(..)</code>/<code>RegExp(..)</code> constructors are also generally optional (and thus should usually be avoided unless specifically called for):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> c = <span style="color:#080;font-weight:bold">new</span> Object();
+c.foo = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span>;
+c; <span style="color:#777">// { foo: &quot;bar&quot; }</span>
+
+<span style="color:#080;font-weight:bold">var</span> d = { <span style="color:#606">foo</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span> };
+d; <span style="color:#777">// { foo: &quot;bar&quot; }</span>
+
+<span style="color:#080;font-weight:bold">var</span> e = <span style="color:#080;font-weight:bold">new</span> Function( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">return a * 2;</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> <span style="color:#06B;font-weight:bold">f</span> = <span style="color:#080;font-weight:bold">function</span>(a) { <span style="color:#080;font-weight:bold">return</span> a * <span style="color:#00D">2</span>; }
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">g</span>(a) { <span style="color:#080;font-weight:bold">return</span> a * <span style="color:#00D">2</span>; }
+
+<span style="color:#080;font-weight:bold">var</span> h = <span style="color:#080;font-weight:bold">new</span> RegExp( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">^a*b+</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">g</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> i = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^a*b+</span><span style="color:#404">/</span><span style="color:#C2C">g</span></span>;
+</pre></div>
+</div>
+</div>
+
+<p>There’s practically no reason to ever use the <code>new Object()</code> constructor form, especially since it forces you to add properties one-by-one instead of many at once in the object literal form.</p>
+
+<p>The <code>Function</code> constructor is helpful only in the rarest of cases, where you need to dynamically define a function’s parameters and/or its function body. <strong>Do not just treat <code>Function(..)</code> as an alternate form of <code>eval(..)</code>.</strong> You will almost never need to dynamically define a function in this way.</p>
+
+<p>Regular expressions defined in the literal form (<code>/^a*b+/g</code>) are strongly preferred, not just for ease of syntax but for performance reasons – the JS engine precompiles and caches them before code execution. Unlike the other constructor forms we’ve seen so far, <code>RegExp(..)</code> has some reasonable utility: to dynamically define the pattern for a regular expression.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> name = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Kyle</span><span style="color:#710">&quot;</span></span>;
+<span style="color:#080;font-weight:bold">var</span> namePattern = <span style="color:#080;font-weight:bold">new</span> RegExp( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\\</span><span style="color:#D20">b(?:</span><span style="color:#710">&quot;</span></span> + name + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">)+</span><span style="color:#b0b">\\</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ig</span><span style="color:#710">&quot;</span></span> );
+
+<span style="color:#080;font-weight:bold">var</span> matches = someText.match( namePattern );
+</pre></div>
+</div>
+</div>
+
+<p>This kind of scenario legitimately occurs in JS programs from time to time, so you’d need to use the <code>new RegExp("pattern","flags")</code> form.</p>
+
+<h3 id="date-and-error"><code>Date(..)</code> and <code>Error(..)</code></h3>
+
+<p>The <code>Date(..)</code> and <code>Error(..)</code> native constructors are much more useful than the other natives, because there is no literal form for either.</p>
+
+<p>To create a date object value, you must use <code>new Date()</code>. The <code>Date(..)</code> constructor accepts optional arguments to specify the date/time to use, but if omitted, the current date/time is assumed.</p>
+
+<p>By far the most common reason you construct a date object is to get the current unix timestamp value (an integer number of seconds since Jan 1, 1970). You can do this by calling <code>getTime()</code> on a date object instance.</p>
+
+<p>But an even easier way is to just call the static helper function defined as of ES5: <code>Date.now()</code>. And to polyfill that for pre-ES5 is pretty easy:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (!Date.now) {
+        Date.<span style="color:#06B;font-weight:bold">now</span> = <span style="color:#080;font-weight:bold">function</span>(){
+                <span style="color:#080;font-weight:bold">return</span> (<span style="color:#080;font-weight:bold">new</span> Date()).getTime();
+        };
+}
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> If you call <code>Date()</code> without <code>new</code>, you’ll get back a string representation of the date/time at that moment. The exact form of this representation is not specified in the language spec, though browsers tend to agree on something close to: <code>"Fri Jul 18 2014 00:31:02 GMT-0500 (CDT)"</code>.</p>
+
+<p>The <code>Error(..)</code> constructor (much like <code>Array()</code> above) behaves the same with the <code>new</code> keyword present or omitted.</p>
+
+<p>The main reason you’d want to create an error object is that it captures the current execution stack context into the object (in most JS engines, revealed as a read-only <code>.stack</code> property once constructed). This stack context includes the function call-stack and the line-number where the error object was created, which makes debugging that error much easier.</p>
+
+<p>You would typically use such an error object with the <code>throw</code> operator:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(x) {
+        <span style="color:#080;font-weight:bold">if</span> (!x) {
+                <span style="color:#080;font-weight:bold">throw</span> <span style="color:#080;font-weight:bold">new</span> Error( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x wasn't provided</span><span style="color:#710">&quot;</span></span> );
+        }
+        <span style="color:#777">// ..</span>
+}
+</pre></div>
+</div>
+</div>
+
+<p>Error object instances generally have at least a <code>message</code> property, and sometimes other properties (which you should treat as read-only), like <code>type</code>. However, other than inspecting the above-mentioned <code>stack</code> property, it’s usually best to just call <code>toString()</code> on the error object (either explicitly, or implicitly through coercion – see Chapter 4) to get a friendly-formatted error message.</p>
+
+<p><strong>Tip:</strong> Technically, in addition to the general <code>Error(..)</code> native, there are several other specific-error-type natives: <code>EvalError(..)</code>, <code>RangeError(..)</code>, <code>ReferenceError(..)</code>, <code>SyntaxError(..)</code>, <code>TypeError(..)</code>, and <code>URIError(..)</code>. But it’s very rare to manually use these specific error natives. They are automatically used if your program actually suffers from a real exception (such as referencing an undeclared variable and getting a <code>ReferenceError</code> error).</p>
+
+<h3 id="symbol"><code>Symbol(..)</code></h3>
+
+<p>New as of ES6, an additional primitive value type has been added, called “Symbol”. Symbols are special “unique” (not strictly guaranteed!) values that can be used as properties on objects with little fear of any collision. They’re primarily designed for special built-in behaviors of ES6 constructs, but you can also define your own symbols.</p>
+
+<p>Symbols can be used as property names, but you cannot see or access the actual value of a symbol from your program, nor from the developer console. If you evaluate a symbol in the developer console, what’s shown looks like <code>Symbol(Symbol.create)</code>, for example.</p>
+
+<p>There are several predefined symbols in ES6, accessed as static properties of the <code>Symbol</code> function object, like <code>Symbol.create</code>, <code>Symbol.iterator</code>, etc. To use them, do something like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>obj[Symbol.iterator] = <span style="color:#080;font-weight:bold">function</span>(){ <span style="color:#777">/*..*/</span> };
+</pre></div>
+</div>
+</div>
+
+<p>To define your own custom symbols, use the <code>Symbol(..)</code> native. The <code>Symbol(..)</code> native “constructor” is unique in that you’re not allowed to use <code>new</code> with it, as doing so will throw an error.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> mysym = Symbol( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">my own symbol</span><span style="color:#710">&quot;</span></span> );
+mysym;                                <span style="color:#777">// Symbol(my own symbol)</span>
+mysym.toString();        <span style="color:#777">// &quot;Symbol(my own symbol)&quot;</span>
+<span style="color:#080;font-weight:bold">typeof</span> mysym;                 <span style="color:#777">// &quot;symbol&quot;</span>
+
+<span style="color:#080;font-weight:bold">var</span> a = { };
+a[mysym] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foobar</span><span style="color:#710">&quot;</span></span>;
+
+Object.getOwnPropertySymbols( a );
+<span style="color:#777">// [ Symbol(my own symbol) ]</span>
+</pre></div>
+</div>
+</div>
+
+<p>While symbols are not actually private (<code>Object.getOwnPropertySymbols(..)</code> reflects on the object and reveals the symbols quite publicly), using them for private or special properties is likely their primary use-case. For most developers, they may take the place of property names with <code>_</code> underscore prefixes, which are almost always by convention signals to say, “hey, this is a private/special/internal property, so leave it alone!”</p>
+
+<p><strong>Note:</strong> <code>Symbol</code>s are <em>not</em> <code>object</code>s, they are simple scalar primitives.</p>
+
+<h3 id="native-prototypes">Native Prototypes</h3>
+
+<p>Each of the built-in native constructors has its own <code>.prototype</code> object – <code>Array.prototype</code>, <code>String.prototype</code>, etc.</p>
+
+<p>These objects contain behavior unique to their particular object subtype.</p>
+
+<p>For example, all string objects, and by extension (via boxing) <code>string</code> primitives, have access to default behavior as methods defined on the <code>String.prototype</code> object.</p>
+
+<p><strong>Note:</strong> By documentation convention, <code>String.prototype.XYZ</code> is shortened to <code>String#XYZ</code>, and likewise for all the other <code>.prototype</code>s.</p>
+
+<ul>
+  <li><code>String#indexOf(..)</code>: find the position in the string of another substring</li>
+  <li><code>String#charAt(..)</code>: access the character at a position in the string</li>
+  <li><code>String#substr(..)</code>, <code>String#substring(..)</code>, and <code>String#slice(..)</code>: extract a portion of the string as a new string</li>
+  <li><code>String#toUpperCase()</code> and <code>String#toLowerCase()</code>: create a new string that’s converted to either uppercase or lowercase</li>
+  <li><code>String#trim()</code>: create a new string that’s stripped of any trailing or leading whitespace</li>
+</ul>
+
+<p>None of the methods modify the string <em>in place</em>. Modifications (like case conversion or trimming) create a new value from the existing value.</p>
+
+<p>By virtue of prototype delegation (see the <em>this &amp; Object Prototypes</em> title in this series), any string value can access these methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> abc </span><span style="color:#710">&quot;</span></span>;
+
+a.indexOf( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">c</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// 3</span>
+a.toUpperCase(); <span style="color:#777">// &quot; ABC &quot;</span>
+a.trim(); <span style="color:#777">// &quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The other constructor prototypes contain behaviors appropriate to their types, such as <code>Number#toFixed(..)</code> (stringifying a number with a fixed number of decimal digits) and <code>Array#concat(..)</code> (merging arrays). All functions have access to <code>apply(..)</code>, <code>call(..)</code>, and <code>bind(..)</code> because <code>Function.prototype</code> defines them.</p>
+
+<p>But, some of the native prototypes aren’t <em>just</em> plain objects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">typeof</span> Function.prototype;                        <span style="color:#777">// &quot;function&quot;</span>
+Function.prototype();                                <span style="color:#777">// it's an empty function!</span>
+
+RegExp.prototype.toString();                <span style="color:#777">// &quot;/(?:)/&quot; -- empty regex</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">abc</span><span style="color:#710">&quot;</span></span>.match( RegExp.prototype );        <span style="color:#777">// [&quot;&quot;]</span>
+</pre></div>
+</div>
+</div>
+
+<p>A particularly bad idea, you can even modify these native prototypes (not just adding properties as you’re probably familiar with):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Array.isArray( Array.prototype );        <span style="color:#777">// true</span>
+Array.prototype.push( <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span> );        <span style="color:#777">// 3</span>
+Array.prototype;                                        <span style="color:#777">// [1,2,3]</span>
+
+<span style="color:#777">// don't leave it that way, though, or expect weirdness!</span>
+<span style="color:#777">// reset the `Array.prototype` to empty</span>
+Array.prototype.length = <span style="color:#00D">0</span>;
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, <code>Function.prototype</code> is a function, <code>RegExp.prototype</code> is a regular expression, and <code>Array.prototype</code> is an array. Interesting and cool, huh?</p>
+
+<h4 id="prototypes-as-defaults">Prototypes As Defaults</h4>
+
+<p><code>Function.prototype</code> being an empty function, <code>RegExp.prototype</code> being an “empty” (e.g., non-matching) regex, and <code>Array.prototype</code> being an empty array, make them all nice “default” values to assign to variables if those variables wouldn’t already have had a value of the proper type.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">isThisCool</span>(vals,fn,rx) {
+        vals = vals || Array.prototype;
+        fn = fn || Function.prototype;
+        rx = rx || RegExp.prototype;
+
+        <span style="color:#080;font-weight:bold">return</span> rx.test(
+                vals.map( fn ).join( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span> )
+        );
+}
+
+isThisCool();                <span style="color:#777">// true</span>
+
+isThisCool(
+        [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span>,<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">c</span><span style="color:#710">&quot;</span></span>],
+        <span style="color:#080;font-weight:bold">function</span>(v){ <span style="color:#080;font-weight:bold">return</span> v.toUpperCase(); },
+        <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">D</span><span style="color:#404">/</span></span>
+);                                        <span style="color:#777">// false</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> As of ES6, we don’t need to use the <code>vals = vals || ..</code> default value syntax trick (see Chapter 4) anymore, because default values can be set for parameters via native syntax in the function declaration (see Chapter 5).</p>
+
+<p>One minor side-benefit of this approach is that the <code>.prototype</code>s are already created and built-in, thus created <em>only once</em>. By contrast, using <code>[]</code>, <code>function(){}</code>, and <code>/(?:)/</code> values themselves for those defaults would (likely, depending on engine implementations) be recreating those values (and probably garbage-collecting them later) for <em>each call</em> of <code>isThisCool(..)</code>. That could be memory/CPU wasteful.</p>
+
+<p>Also, be very careful not to use <code>Array.prototype</code> as a default value <strong>that will subsequently be modified</strong>. In this example, <code>vals</code> is used read-only, but if you were to instead make in-place changes to <code>vals</code>, you would actually be modifying <code>Array.prototype</code> itself, which would lead to the gotchas mentioned earlier!</p>
+
+<p><strong>Note:</strong> While we’re pointing out these native prototypes and some usefulness, be cautious of relying on them and even more wary of modifying them in anyway. See Appendix A “Native Prototypes” for more discussion.</p>
+
+<h2 id="review">Review</h2>
+
+<p>JavaScript provides object wrappers around primitive values, known as natives (<code>String</code>, <code>Number</code>, <code>Boolean</code>, etc). These object wrappers give the values access to behaviors appropriate for each object subtype (<code>String#trim()</code> and <code>Array#concat(..)</code>).</p>
+
+<p>If you have a simple scalar primitive value like <code>"abc"</code> and you access its <code>length</code> property or some <code>String.prototype</code> method, JS automatically “boxes” the value (wraps it in its respective object wrapper) so that the property/method accesses can be fulfilled.</p>
+
+    </div>
+  </body>
+</html>

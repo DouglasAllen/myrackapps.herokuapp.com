@@ -1,0 +1,652 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>One project that I’ve always wanted to work on is the creation of a generic table datastructure for Ruby. I’ve partially solved this problem in a dozen contexts before, but I’ve never come up with something I’ve been happy enough with to extract into its own gem. </p>
+
+<p>Every time I’ve attempted to work on this project in the past, I’ve set myself up for failure by thinking of the seemingly endless amount of things that a generic table structure would need to implement. Recently, I approached the problem from a different angle and ended up feeling a lot happier with the way things went. In this article, I share the lessons I learned that helped me attack this very sticky problem.</p>
+
+<h3 id="lesson-1-work-on-specific-cases-before-attempting-to-generalize">Lesson 1: Work on specific cases before attempting to generalize</h3>
+
+<p>In the past, I had always been bogged down by thinking of all the possible ways my table structure was going to be used. This time around, I forced myself to think of a single, specific use case to focus on first. Instantly, the idea of of performing some manipulations on sales data came to mind, because I hate the reporting features PayPal gives me.</p>
+
+<p>Typically, I’d start by creating some fake data that was themed to fit this scenario, but lately I’ve been experimenting more and more with trying to work with real data whenever it isn’t too inconvenient. I’ve had mixed results with that approach, but this time around, a few minutes of cleanup work got me from a nastily formatted CSV file with way too much information to a nice array of arrays in JSON format that’s concise enough to let us see the entire contents of the file, as shown here: </p>
+
+<pre><code>[["Date","Payments Received","Amount Received",
+  "Payment Fees","Net Amount"],
+ ["6/30/2011","7","52.00","-3.93","48.07"],
+ ["6/29/2011","14","152.00","-8.98","143.02"],
+ ["6/28/2011","5","40.00","-2.73","37.27"],
+ ["6/27/2011","0","0.00","0.00","0.00"],
+ ["6/26/2011","2","12.00","-0.99","11.01"],
+ ["6/25/2011","1","4.00","-0.46","3.54"],
+ ["6/24/2011","0","0.00","0.00","0.00"],
+ ["6/23/2011","1","16.00","-0.76","15.24"],
+ ["6/22/2011","2","12.00","-0.95","11.05"],
+ ["6/21/2011","0","0.00","0.00","0.00"],
+ ["6/20/2011","0","0.00","0.00","0.00"],
+ ["6/19/2011","1","16.00","-0.76","15.24"],
+ ["6/18/2011","0","0.00","0.00","0.00"],
+ ["6/17/2011","1","4.00","-0.42","3.58"],
+ ["6/16/2011","0","0.00","0.00","0.00"],
+ ["6/15/2011","0","0.00","0.00","0.00"],
+ ["6/14/2011","2","36.00","-1.69","34.31"],
+ ["6/13/2011","0","0.00","0.00","0.00"],
+ ["6/12/2011","0","0.00","0.00","0.00"],
+ ["6/11/2011","1","4.00","-0.46","3.54"],
+ ["6/10/2011","0","0.00","0.00","0.00"],
+ ["6/9/2011","1","4.00","-0.46","3.54"],
+ ["6/8/2011","0","0.00","0.00","0.00"],
+ ["6/7/2011","1","4.00","-0.46","3.54"],
+ ["6/6/2011","0","0.00","0.00","0.00"],
+ ["6/5/2011","2","20.00","-1.22","18.78"],
+ ["6/4/2011","4","52.00","-3.23","48.77"],
+ ["6/3/2011","9","100.00","-6.13","93.87"],
+ ["6/2/2011","8","72.00","-4.79","67.21"],
+ ["6/1/2011","8","136.00","-6.67","129.33"]]
+</code></pre>
+
+<p>My next step was to come up with a question about this data that would be easy to answer by visual inspection, and trivial to represent using nothing more than primitive Ruby objects. The question I settled on was, “How many payments were received on 6/14/2011?”</p>
+
+<pre><code>data = JSON.parse(File.read("sales.json"))
+row = data.find { |x| x[0] == "6/14/2011" }
+p row[1] #=&gt; "2"
+</code></pre>
+
+<p>If instead I’d chosen a question that required too much thought to answer, the judgmental side of my brain would have kicked in too early and derailed my efforts to get even the smallest start on the problem. However, by picking an extremely simple problem to work on, I managed to turn the judge’s voice in my head into a collaborator rather than an interrogator.</p>
+
+<p>The judge looked at these three lines of code and instantly started in with his criticisms.</p>
+
+<p>JUDGE: <em>“This is just terrible! If the order of the columns in your data changes, this code is going to break! Also, your output is clearly supposed to be numeric, but you’re getting back a string. And that JSON call looks ugly too, and your mother is a . . . “</em></p>
+
+<p>Addressing all his points right away would have been a bad idea because it would have led me into a spiral of self-doubt. Instead, I just looked for one thing we could agree on so that we had some common ground to start from. The criticism about the column order dependency was a pretty good one, so I decided to work with that.</p>
+
+<p>Whenever I think of good APIs that I’ve seen for table interactions, the approach ActiveRecord 3 takes always comes to mind. It seemed to fit this particular problem well, so I cautiously asked the judge for his opinion on the following code.</p>
+
+<pre><code>table = Table.new(data)
+row   = table.where("Date" =&gt; "6/14/2011").first
+
+p row["Payments Received"] #=&gt; "2"
+</code></pre>
+
+<p>JUDGE: <em>“Hmm . . . that <code>first()</code> call looks weird, but this is a LOT better than your last attempt. I won’t be convinced until I see an implementation, though. Also, do you really think baking in the assumption that there are headers in the first row of your data is a good idea?”</em></p>
+
+<p>His point about headers was a good one, so—knowing that this was the closest thing I could get to approval from the judge—I started writing some tests that took his suggestion into account.</p>
+
+<pre><code>describe "Table" do
+  it "must be able to search for matching records" do
+    fixture_dir = "#{File.dirname(__FILE__)}/fixtures"
+    json_data   = File.read("#{fixture_dir}/sales.json")
+    
+    names, *data  = JSON.parse(json_data)
+    table         = Table.new(data, names)
+
+    expected_payments = "2"
+    
+    match = table.where("Date" =&gt; "6/14/2011").first
+    match["Payments Received"].must_equal(expected_payments)
+  end
+end
+</code></pre>
+
+<p>Before I even get a chance to run these tests, the judge snapped at me.</p>
+
+<p>JUDGE: <em>“Whoa, that fixture loading code looks disgusting. Do you really think that you can get away with that while I’m watching?”</em></p>
+
+<p>He was right, of course, so I opened up my test helper file and wrote a little method to hide the messy code and isolate it to one place:</p>
+
+<pre><code>def json_fixture(filename)
+  test_dir = File.dirname(__FILE__)
+  JSON.parse(File.read("#{test_dir}/fixtures/#{filename}.json"))
+end
+</code></pre>
+
+<p>Using this helper file, I was able to make my tests look a whole lot better.</p>
+
+<pre><code>describe "Table" do
+  it "must be able to search for matching records" do
+    names, *data  = json_fixture("sales")
+    table         = Table.new(data, names)
+
+    expected_payments = "2"
+    
+    match = table.where("Date" =&gt; "6/14/2011").first
+    match["Payments Received"].must_equal(expected_payments)
+  end
+end
+</code></pre>
+
+<p>I looked to the judge for approval and got a half-hearted shrug, which was good enough for me. By the time I finished writing these tests, I already had an idea in mind for how to implement a solution.</p>
+
+<pre><code>class Table
+  def initialize(data, attribute_names)
+    @data = data.map { |e| Hash[attribute_names.zip(e)] }
+  end
+
+  def where(conditions)
+    @data.select do |row|
+      conditions.all? { |k,v| row[k] == v }
+    end
+  end
+end
+</code></pre>
+
+<p>Even though this code passed the test, the judge could no longer contain himself, and fired off another burst of scathing criticism.</p>
+
+<p>JUDGE: <em>“This code is a giant hack. You store each row in a hash, but hashes are meant for unordered content and a row is necessarily ordered. Yes, I know that in Ruby 1.9 you can iterate over hashes in insert order, but that’s going to come back and bite you later. What if you want to introduce a column rename operation in the future? There is no way to do that with your current code without either changing the iteration order or generating entirely new hashes for the entire structure. Even worse, hash keys must be unique. What if you have a table with two column names that are the same? To make matters worse, the code reeks of primitive obsession. Unless you introduce a <code>Row</code> object soon, every feature you add to <code>Table</code> is going to get more and more complicated because it will have two concerns: representing an ordered list of rows and manipulating the data within those rows. But who says that users are going to want to work with just rows? What if they want to organize their data by columns instead? Oh, and as I was saying about your mom . . . “</em></p>
+
+<p>This rant was too much to take in all at once, and I felt overwhelmed. I knew that responding directly to his criticisms line by line would only fan the flames. The points he made about problems I might run into later could have very well been valid, but thinking about them at this particular point in time would have sent me down a deadly path of feature creep. I needed to take a step back and consider the big picture.</p>
+
+<h3 id="lesson-2-seek-ways-to-defer-tough-design-decisions">Lesson 2: Seek ways to defer tough design decisions</h3>
+
+<p>After catching my breath, I realized that I could address many of the judge’s points without actually making any major decisions about implementation details. I could do this by introducing a <code>Record</code> object. This object would initially have a core implementation similar to my previous example but would make it much easier to introduce changes down the line. The following test describes what I was shooting for:</p>
+
+<pre><code>describe "Record" do
+  it "must allow access to attributes by name" do
+    data       = ["6/14/2011", "2", "36.00", "-1.69", "34.31"]
+    names      = ["Date", "Payments Received", "Amount Received", 
+                  "Payment Fees", "Net Amount"] 
+
+    record     = Record.new(data, names)
+
+    record["Payments Received"].must_equal("2")
+    record["Payment Fees"].must_equal("-1.69")
+  end
+
+  it "must support conditional matching" do
+    data       = ["6/14/2011", "2", "36.00", "-1.69", "34.31"]
+    names      = ["Date", "Payments Received", "Amount Received", 
+                  "Payment Fees", "Net Amount"] 
+
+    record     = Record.new(data, names)
+
+    record.matches?("Date" =&gt; "6/14/2011").must_equal(true)
+    record.matches?("Date" =&gt; "6/12/2011").must_equal(false)
+  end
+end
+</code></pre>
+
+<p>To pass these tests, I pushed logic down from the <code>Table</code> class into a newly created <code>Record</code> class:</p>
+
+<pre><code>class Record
+  def initialize(values, attribute_names)
+    @data = Hash[attribute_names.zip(values)]
+  end
+
+  def [](key)
+    @data[key]
+  end
+
+  def matches?(conditions)
+    conditions.all? { |k,v| self[k] == v }
+  end
+end
+</code></pre>
+
+<p>The judge was eerily silent as this test went green. Perhaps he was waiting to see what my next move would be, or maybe he had just run out of jokes about my mom. Nonetheless, I took this as my cue to go update my <code>Table</code> code so that it would use <code>Record</code> objects instead of hashes:</p>
+
+<pre><code>class Table
+  def initialize(data, attribute_names)
+    @data = data.map { |e| Record.new(e, attribute_names) }
+  end
+
+  def where(conditions)
+    @data.select { |record| record.matches?(conditions) }
+  end
+end
+</code></pre>
+
+<p>Just after I reran my <code>Table</code> tests and saw that they were passing, the judge said something that I had to ask him to repeat, because it was so surprising.</p>
+
+<p>JUDGE: <em>“Not bad.”</em></p>
+
+<p>He refused to elaborate, but I think I finally figured out why he approved of this newer version of my code. After thinking about his previous barrage of complaints, I realized that this new <code>Table</code> implementation did not raise any of the same questions. When you look at the problem at hand and then at the object that directly solves that problem, the object looks natural, well focused, and unsurprising. A <code>Table</code> is a collection of <code>Record</code> objects. The <code>Table#where</code> method selects from that collection the records that match the conditions. These explanations are very easy to follow and directly line up with the code itself.</p>
+
+<p>The thing that made this new <code>Table</code> code “not bad” in the eyes of the judge is that it is a proper abstraction, whereas my previous implementation was just an indirect wrapper over some primitive operations. My newer code was written with the changing needs for our <code>Record</code> object in mind, which is what made all the difference.</p>
+
+<h3 id="lesson-3-let-real-use-cases-be-your-guide-not-imagined-scenarios">Lesson 3: Let real use cases be your guide, not imagined scenarios</h3>
+
+<p>In his various outbursts, the judge pointed out lots of different things that he felt my <code>Table</code> code should do. Here is a short list of them, for those who haven’t been keeping track:</p>
+
+<ul>
+  <li>Should be able to set column data types (i.e., convert a column that contains numeric strings into numeric values)</li>
+  <li>Should be able to deserialize array-of-arrays datastructure from JSON</li>
+  <li>Should provide a way to match a single record rather than calling <code>first()</code> on the array returned by <code>Table#where</code></li>
+  <li>Should preserve data ordering explicitly</li>
+  <li>Should support both by column and by row access</li>
+  <li>Should be able to rename columns</li>
+  <li>Should be able to support multiple columns with the same name</li>
+</ul>
+
+<p>On their own, all these ideas sound like good ones. But taken together, we’re talking about a lot of additional work for a nonspecific gain. I know from previous experience that going down this path will lead to a very complex, very bloated object. Take a look at my <code>Ruport::Data::Table</code> implementation from several years ago if you want to see just how complicated this sort of thing can get:</p>
+
+<p>https://github.com/ruport/ruport/blob/master/lib/ruport/data/table.rb </p>
+
+<p>This time around, I’m going to take a very different approach, adding features to my <code>Table</code> object only when I have a real project that depends on that feature. Even when there is something the API doesn’t support, I will try to work around the problem and see how much pain it causes me. Only after something causes me a lot of pain in one place or a little pain spread across several places will I add new features.</p>
+
+<p>I am very interested to see what kind of code is produced from this sort of aggressive use-case-driven development. But testing this idea is something that we’re going to need to do collectively as homework, because not enough time passed between when I started this experiment and when I published the article you are reading now. </p>
+
+<p>If you’d like to help, please take a look at the following repository on Github and follow the instructions in the README.</p>
+
+<p>http://github.com/sandal/waffle</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Hopefully, by following in my footsteps, you were able to notice some similarities to your own struggles with sticky projects. As this article was just a story about an approach that seems to have worked for me, your mileage will probably vary. Still, I’d love to hear what you think of the ideas I mentioned here, especially if you have a different way of dealing with this kind of problem.</p>
+
+  </div>
+</body>
+</html>

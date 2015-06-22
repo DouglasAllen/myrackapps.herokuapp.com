@@ -1,0 +1,666 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p>Note: This article series on modules is also available as a <a href="https://github.com/elm-city-craftworks/pr-monthly/blob/gh-pages/b5e5a89847701c4aa7c170cf/sept-2012-modules.pdf?raw=true">PDF download</a>. The
+PDF version has been revised and is more up-to-date than what you see here.</p>
+</blockquote>
+
+<p>Today we’re going to wrap up this series on modules by looking at how mixins can be useful for implementing custom behavior on individual objects. In particular, we’ll be looking at how modules can be used both as a replacement for monkey patching, as well as for constructing systems that can be extended without the need for monkey patching. While neither of these techniques are going to be something you’ll use every day, they really come in handy when you run into a situation that calls for them.</p>
+
+<h3 id="modules-instead-of-monkey-patches">Modules instead of Monkey Patches</h3>
+
+<p>Back in the bad old days before Prawn, I was working on a reporting framework called Ruby Reports (Ruport), which generated PDF reports via <code>PDF::Writer</code>. At the time, <code>PDF::Writer</code> was quite buggy, and essentially abandoned, but was the only game in town when it came to PDF generation.</p>
+
+<p>One of the bugs was something fairly critical: Memory consumption for outputting simple PDF tables would balloon like crazy, causing a document with more than a few pages to take anywhere from several minutes to several <em>hours</em> to run.</p>
+
+<p>The original author of the library had a patch laying around that inserted a hook which did some caching that greatly reduced the memory consumption, but he had not tested it extensively and did not want to want to cut a release. I had talked to him about possibly monkey patching <code>PDF::Document</code> in Ruport’s code to add this patch, but together, we came up with a better solution: wrap the patch in a module.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">PDFWriterMemoryPatch</span>
+  <span style="color:#080;font-weight:bold">unless</span> <span style="color:#069">self</span>.class.instance_methods.include?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">_post_transaction_rewind</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">_post_transaction_rewind</span>
+      <span style="color:#33B">@objects</span>.each { |e| e.instance_variable_set(<span style="color:#A60">:@parent</span>,<span style="color:#069">self</span>) }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In Ruport’s PDF formatter code, we did something like the following to apply our patch:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#33B">@document</span> = <span style="color:#036;font-weight:bold">PDF</span>::<span style="color:#036;font-weight:bold">Document</span>.new
+<span style="color:#33B">@document</span>.extend(<span style="color:#036;font-weight:bold">Ruport</span>::<span style="color:#036;font-weight:bold">PDFWriterMemoryPatch</span>)
+</pre></div>
+</div>
+</div>
+
+<p>Throughout our application, whenever someone interacted with a <code>PDF::Document</code> instance we created, they had a patched instance that fixed the memory leak. This meant from the Ruport user’s perspective, the bug was fixed. So what makes this different from monkey patching?</p>
+
+<p>Because we were only manipulating the individual objects that we created in our library, we were not making a global change that might surprise people. For example if someone was building an application that only implicitly loaded Ruport as a dependency, and they created a <code>PDF::Document</code> instance, our patch would not be loaded. This prevented us from causing unexpected behavior in any code that lived outside of Ruport itself.</p>
+
+<p>While this approach didn’t shield us from the risks that a future change to <code>PDF::Writer</code> could potentially break our patch in Ruport, it did prevent any risk of global consequences. Anyone who’s ever spent a day scratching their head because of some sloppy monkey patch in a third party dependency will immediately be able to see the value of this sort of isolation.</p>
+
+<p>The neat thing is that a similar approach can be used for core extensions as
+well. Rather than re-opening Ruby core classes, you can imbue individual
+instances with custom behavior, getting many of the benefits of monkey patching
+without the disadvantages. For example, suppose you want to add the <code>sum)()</code> and
+<code>average()</code> methods to Array. If we were monkey patching, we’d write something
+like the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Array</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sum</span>
+    inject(<span style="color:#00D">0</span>) { |s,e| s + e }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">average</span>
+    sum.to_f / length
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+obj = [<span style="color:#00D">1</span>,<span style="color:#00D">3</span>,<span style="color:#00D">5</span>,<span style="color:#00D">7</span>]
+obj.sum     <span style="color:#777">#=&gt; 16</span>
+obj.average <span style="color:#777">#=&gt; 4</span>
+</pre></div>
+</div>
+</div>
+
+<p>The danger here of course is that you’d be globally stomping anyone else’s definition of <code>sum()</code> and <code>average()</code>, which can lead to ugly conflicts. All these problems can be avoided with a minor modification.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ArrayMathHelpers</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sum</span>
+    inject(<span style="color:#00D">0</span>) { |s,e| s + e }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">average</span>
+    sum.to_f / length
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+obj = [<span style="color:#00D">1</span>,<span style="color:#00D">3</span>,<span style="color:#00D">5</span>,<span style="color:#00D">7</span>]
+obj.extend(<span style="color:#036;font-weight:bold">ArrayMathHelpers</span>)
+obj.sum     <span style="color:#777">#=&gt; 16</span>
+obj.average <span style="color:#777">#=&gt; 4</span>
+</pre></div>
+</div>
+</div>
+
+<p>By explicitly mixing in the <code>ArrayMathHelpers</code> module, we isolate our changes just to the objects we’ve created ourselves. With slight modification, this technique can also be used with objects passed into functions, typically by making a copy of the object before working on it.</p>
+
+<p>Because modules mixed into an instance of an object are looked up before 
+the methods defined by its class, 
+you can actually use this technique for modifying existing behavior of an object as well. 
+The example below demonstrates modifying <code>&lt;&lt;</code> on strings so that it allows appending 
+arbitrary objects to a string through coercion.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">LooseStringAppend</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(value)
+    <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">TypeError</span>
+    <span style="color:#080;font-weight:bold">super</span>(value.to_s)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+a = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>
+a.extend(<span style="color:#036;font-weight:bold">LooseStringAppend</span>)
+a &lt;&lt; <span style="color:#A60">:bar</span> &lt;&lt; <span style="color:#A60">:baz</span> <span style="color:#777">#=&gt; &quot;foobarbaz&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Of course this (like most core modifications), is a horrible idea. But speaking as a pure technique, this is far better than the alternative global monkey patch shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">String</span>
+  alias_method <span style="color:#A60">:old_append</span>, <span style="color:#A60">:&lt;&lt;</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(value)
+    old_append(value)
+  <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">TypeError</span>
+    old_append(value.to_s)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When using per-object mixins as an alternative to monkey patching, what you gain is essentially two things: A first class seat in the lookup path allowing you to make use of <code>super()</code>, and isolation on a per-object behavior so that consumers of your code don’t curse you for patching things in unexpected ways. While this approach isn’t always available, it is definitely preferable whenever you can choose it over monkey patching.</p>
+
+<p>In Ruby 2.0, we may end up with even better option for this sort of thing called refinements, which are also module based. But for now, if you must hack other people’s objects, this approach is a civil way to do it.</p>
+
+<p>We’ll now take a look at how to produce libraries and applications that actively encourage extensions to be done this way.</p>
+
+<h3 id="modules-as-extension-points">Modules as Extension Points</h3>
+
+<p>This last section is not so much about practical advice as it is about taking what we’ve learned so far and really stretching it as far as possible into new territories. In essence, what follows are my own experiments with ideas that I’m not fully sure are good, but find interesting enough to share with you.</p>
+
+<p>In previous Practicing Ruby issues, I’ve shown some code from a command line client we’ve used for time tracking in my consulting work. The tool itself never quite matured far enough to be release ready, but I used it as a testing ground for new design ideas, so it is a good conversation starter at least.</p>
+
+<p>Today, I want to show how we implemented commands for it. Essentially, I want to walk through what happens when someone types the following command into their console:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#F00;background-color:#FAA">$</span> turbine start
+<span style="color:#036;font-weight:bold">Timer</span> started at <span style="color:#036;font-weight:bold">Wed</span> <span style="color:#036;font-weight:bold">Dec</span> <span style="color:#00D">15</span> <span style="color:#00D">17</span>:<span style="color:#00D">55</span>:<span style="color:#00D">37</span> -<span style="color:#00D">0500</span> <span style="color:#00D">2010</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because we knew this tool would evolve over time, we wanted to make it as hackable as possible. To do this, we set up a system in which commands get installed into a hidden folder in each project, making it trivial to modify existing commands or add new ones. Here’s a quick directory listing to show what that structure looks like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#F00;background-color:#FAA">$</span> ls .turbine/commands/standard/
+add.rb                project.rb        rewind.rb        status.rb commit.rb push.rb                
+staged.rb        stop.rb drop.rb        reset.rb start.rb
+</pre></div>
+</div>
+</div>
+
+<p>As you might expect, start.rb defines the start command. Here’s what its source
+looks like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Turbine</span>::<span style="color:#036;font-weight:bold">Application</span>.extension(<span style="color:#A60">:start_command</span>) <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start</span>
+    timer = <span style="color:#036;font-weight:bold">Turbine</span>::<span style="color:#036;font-weight:bold">Timer</span>.new
+    <span style="color:#080;font-weight:bold">if</span> timer.running?
+      prompt.say <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Timer already started, please stop or rewind first</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>
+      timer.write_timestamp
+      prompt.say <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Timer started at </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Time</span>.now<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’ll notice that all our commands are direct mappings to method
+calls, which are responsible for doing all the work. While I’ve simplified the
+following definition to remove some domain specific callbacks and options 
+parsing, the following example shows the basic harness which registers 
+Turbine’s commands:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Turbine</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Application</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">extensions</span>
+      <span style="color:#33B">@extensions</span> ||= {}
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">extension</span>(key, &amp;block)
+      extensions[key] = <span style="color:#036;font-weight:bold">Module</span>.new(&amp;block)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+      <span style="color:#069">self</span>.class.extensions.each <span style="color:#080;font-weight:bold">do</span> |_, extension|
+        extend(extension)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">run</span>(command)
+      send(command)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>From this, we see that <code>Turbine::Application</code> stores a Hash of anonymous modules
+which are created on the fly whenever the <code>extension()</code> is called. The
+interesting thing about this design is that the commands aren’t applied globally
+to <code>Turbine::Application</code>, but instead, are mixed in at the instance level. This
+approach allows us to selectively disable features, or completely replace them 
+with alternative implementations.</p>
+
+<p>For example, consider a custom command that gets loaded after the standard commands, which is implemented like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Turbine</span>::<span style="color:#036;font-weight:bold">Application</span>.extension(<span style="color:#A60">:start_command</span>) <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">go</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Let's go!</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because the module defining the <code>go()</code> method would replace the original module in the extensions hash, the original module ends up getting completely wiped out. In retrospect, for my particular use case, this approach seems to be like using a thermonuclear weapon where a slingshot would do, but you can’t argue that this fails to take extensibility to whole new limits.</p>
+
+<p>Eventually, when someone falls off the deep end in their study of modules, they ask ‘is it possible to uninclude them?’, and the short answer to that question is “No”, promptly followed up with “Why would you want to do that?”. But what we’ve shown here is a good approximation for unincluding a module, even if we haven’t quite figured out the answer to the ‘why’ part yet.</p>
+
+<p>But sometimes, we have to explore just for the fun of it, right? :)</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>I have had a blast writing to you all about modules and answering your questions as they come up. Unfortunately, the topic is even bigger than I thought, and there are at least two full articles I could write on the topic,which might actually be more practical and immediately relevant than the materials I’ve shared today. In particular, we didn’t cover things like the <code>included()</code> and <code>extended()</code> hooks, which can be quite useful and are worth investigating on your own.</p>
+
+<p>Moving forward, my goals for Practicing Ruby are to be able to hit a wide range of topics, so we’ll probably move away from the fundamentals of Ruby’s object system and go back to some more problem-solving oriented topics in the coming weeks. But if you like this kind of format, please let me know.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/043-issue-11-uses-for-modules.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

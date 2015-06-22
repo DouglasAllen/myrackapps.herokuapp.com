@@ -1,0 +1,442 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span style="color:#036;font-weight:bold">RSpec</span>.describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mod_three</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  [ [<span style="color:#00D">0</span>],               [],
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    [<span style="color:#00D">1</span>],               [<span style="color:#00D">1</span>],
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    [<span style="color:#00D">2</span>],               [<span style="color:#00D">2</span>],
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    [<span style="color:#00D">3</span>],               [],
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>    [<span style="color:#00D">4</span>],               [<span style="color:#00D">1</span>],
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    [<span style="color:#00D">5</span>],               [<span style="color:#00D">2</span>],
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    [<span style="color:#00D">6</span>],               [],
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    [<span style="color:#00D">7</span>],               [<span style="color:#00D">1</span>],
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>    [<span style="color:#00D">0</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">6</span>,<span style="color:#00D">7</span>], [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">1</span>],
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>    [<span style="color:#00D">237</span>, <span style="color:#00D">491</span>, <span style="color:#00D">988</span>, <span style="color:#00D">944</span>, <span style="color:#00D">796</span>, <span style="color:#00D">342</span>, <span style="color:#00D">284</span>, <span style="color:#00D">110</span>, <span style="color:#00D">647</span>, <span style="color:#00D">782</span>, <span style="color:#00D">250</span>, <span style="color:#00D">504</span>, <span style="color:#00D">196</span>, <span style="color:#00D">624</span>, <span style="color:#00D">466</span>, <span style="color:#00D">983</span>, <span style="color:#00D">580</span>, <span style="color:#00D">841</span>, <span style="color:#00D">785</span>, <span style="color:#00D">513</span>, <span style="color:#00D">1</span>, <span style="color:#00D">541</span>, <span style="color:#00D">253</span>, <span style="color:#00D">498</span>, <span style="color:#00D">206</span>, <span style="color:#00D">516</span>, <span style="color:#00D">271</span>, <span style="color:#00D">108</span>, <span style="color:#00D">601</span>, <span style="color:#00D">868</span>, <span style="color:#00D">450</span>, <span style="color:#00D">813</span>, <span style="color:#00D">824</span>, <span style="color:#00D">397</span>, <span style="color:#00D">218</span>, <span style="color:#00D">325</span>, <span style="color:#00D">190</span>, <span style="color:#00D">131</span>, <span style="color:#00D">905</span>, <span style="color:#00D">418</span>, <span style="color:#00D">934</span>, <span style="color:#00D">826</span>, <span style="color:#00D">858</span>, <span style="color:#00D">403</span>, <span style="color:#00D">998</span>, <span style="color:#00D">535</span>, <span style="color:#00D">687</span>, <span style="color:#00D">339</span>, <span style="color:#00D">792</span>, <span style="color:#00D">914</span>, <span style="color:#00D">954</span>, <span style="color:#00D">522</span>, <span style="color:#00D">805</span>, <span style="color:#00D">31</span>, <span style="color:#00D">883</span>, <span style="color:#00D">167</span>, <span style="color:#00D">613</span>, <span style="color:#00D">829</span>, <span style="color:#00D">308</span>, <span style="color:#00D">698</span>, <span style="color:#00D">256</span>, <span style="color:#00D">746</span>, <span style="color:#00D">740</span>, <span style="color:#00D">801</span>, <span style="color:#00D">301</span>, <span style="color:#00D">678</span>, <span style="color:#00D">166</span>, <span style="color:#00D">706</span>, <span style="color:#00D">3</span>, <span style="color:#00D">370</span>, <span style="color:#00D">362</span>, <span style="color:#00D">542</span>, <span style="color:#00D">688</span>, <span style="color:#00D">911</span>, <span style="color:#00D">501</span>, <span style="color:#00D">534</span>, <span style="color:#00D">877</span>, <span style="color:#00D">574</span>, <span style="color:#00D">650</span>, <span style="color:#00D">533</span>, <span style="color:#00D">838</span>, <span style="color:#00D">429</span>, <span style="color:#00D">787</span>, <span style="color:#00D">978</span>, <span style="color:#00D">537</span>, <span style="color:#00D">793</span>, <span style="color:#00D">697</span>, <span style="color:#00D">507</span>, <span style="color:#00D">930</span>, <span style="color:#00D">714</span>, <span style="color:#00D">850</span>, <span style="color:#00D">689</span>, <span style="color:#00D">939</span>, <span style="color:#00D">828</span>, <span style="color:#00D">634</span>, <span style="color:#00D">900</span>, <span style="color:#00D">27</span>, <span style="color:#00D">950</span>, <span style="color:#00D">295</span>, <span style="color:#00D">670</span>, <span style="color:#00D">173</span>, <span style="color:#00D">587</span>, <span style="color:#00D">810</span>, <span style="color:#00D">654</span>, <span style="color:#00D">819</span>, <span style="color:#00D">451</span>, <span style="color:#00D">931</span>, <span style="color:#00D">652</span>, <span style="color:#00D">360</span>, <span style="color:#00D">589</span>, <span style="color:#00D">275</span>, <span style="color:#00D">546</span>, <span style="color:#00D">120</span>, <span style="color:#00D">552</span>, <span style="color:#00D">774</span>, <span style="color:#00D">739</span>, <span style="color:#00D">473</span>, <span style="color:#00D">133</span>, <span style="color:#00D">909</span>, <span style="color:#00D">633</span>, <span style="color:#00D">465</span>, <span style="color:#00D">974</span>, <span style="color:#00D">562</span>, <span style="color:#00D">320</span>, <span style="color:#00D">897</span>, <span style="color:#00D">979</span>, <span style="color:#00D">119</span>, <span style="color:#00D">807</span>, <span style="color:#00D">871</span>, <span style="color:#00D">109</span>, <span style="color:#00D">35</span>, <span style="color:#00D">489</span>, <span style="color:#00D">313</span>, <span style="color:#00D">572</span>, <span style="color:#00D">958</span>, <span style="color:#00D">17</span>, <span style="color:#00D">610</span>, <span style="color:#00D">307</span>, <span style="color:#00D">903</span>, <span style="color:#00D">464</span>, <span style="color:#00D">257</span>, <span style="color:#00D">198</span>, <span style="color:#00D">11</span>, <span style="color:#00D">887</span>, <span style="color:#00D">696</span>, <span style="color:#00D">591</span>, <span style="color:#00D">106</span>, <span style="color:#00D">23</span>, <span style="color:#00D">174</span>, <span style="color:#00D">402</span>, <span style="color:#00D">683</span>, <span style="color:#00D">346</span>, <span style="color:#00D">636</span>, <span style="color:#00D">481</span>, <span style="color:#00D">744</span>, <span style="color:#00D">474</span>, <span style="color:#00D">521</span>, <span style="color:#00D">440</span>, <span style="color:#00D">641</span>, <span style="color:#00D">947</span>, <span style="color:#00D">681</span>, <span style="color:#00D">130</span>, <span style="color:#00D">949</span>, <span style="color:#00D">502</span>, <span style="color:#00D">244</span>, <span style="color:#00D">298</span>, <span style="color:#00D">165</span>, <span style="color:#00D">665</span>, <span style="color:#00D">933</span>, <span style="color:#00D">441</span>, <span style="color:#00D">240</span>, <span style="color:#00D">103</span>, <span style="color:#00D">170</span>, <span style="color:#00D">182</span>, <span style="color:#00D">47</span>, <span style="color:#00D">726</span>, <span style="color:#00D">524</span>, <span style="color:#00D">756</span>, <span style="color:#00D">981</span>, <span style="color:#00D">37</span>, <span style="color:#00D">141</span>, <span style="color:#00D">586</span>, <span style="color:#00D">50</span>, <span style="color:#00D">798</span>, <span style="color:#00D">940</span>, <span style="color:#00D">322</span>, <span style="color:#00D">29</span>, <span style="color:#00D">946</span>, <span style="color:#00D">235</span>, <span style="color:#00D">367</span>, <span style="color:#00D">414</span>, <span style="color:#00D">471</span>, <span style="color:#00D">595</span>, <span style="color:#00D">847</span>, <span style="color:#00D">644</span>, <span style="color:#00D">755</span>, <span style="color:#00D">359</span>, <span style="color:#00D">40</span>, <span style="color:#00D">943</span>, <span style="color:#00D">874</span>, <span style="color:#00D">667</span>, <span style="color:#00D">291</span>, <span style="color:#00D">209</span>, <span style="color:#00D">751</span>, <span style="color:#00D">6</span>, <span style="color:#00D">531</span>, <span style="color:#00D">916</span>, <span style="color:#00D">508</span>, <span style="color:#00D">547</span>, <span style="color:#00D">251</span>, <span style="color:#00D">816</span>, <span style="color:#00D">728</span>, <span style="color:#00D">19</span>, <span style="color:#00D">919</span>, <span style="color:#00D">445</span>, <span style="color:#00D">843</span>, <span style="color:#00D">663</span>, <span style="color:#00D">817</span>, <span style="color:#00D">870</span>, <span style="color:#00D">281</span>, <span style="color:#00D">408</span>, <span style="color:#00D">773</span>, <span style="color:#00D">891</span>, <span style="color:#00D">575</span>, <span style="color:#00D">880</span>, <span style="color:#00D">5</span>, <span style="color:#00D">127</span>, <span style="color:#00D">570</span>, <span style="color:#00D">387</span>, <span style="color:#00D">635</span>, <span style="color:#00D">30</span>, <span style="color:#00D">763</span>, <span style="color:#00D">335</span>, <span style="color:#00D">759</span>, <span style="color:#00D">363</span>, <span style="color:#00D">475</span>, <span style="color:#00D">261</span>, <span style="color:#00D">228</span>, <span style="color:#00D">616</span>, <span style="color:#00D">259</span>, <span style="color:#00D">872</span>, <span style="color:#00D">270</span>, <span style="color:#00D">789</span>, <span style="color:#00D">808</span>, <span style="color:#00D">804</span>, <span style="color:#00D">768</span>, <span style="color:#00D">117</span>, <span style="color:#00D">901</span>, <span style="color:#00D">221</span>, <span style="color:#00D">713</span>, <span style="color:#00D">213</span>, <span style="color:#00D">354</span>, <span style="color:#00D">195</span>, <span style="color:#00D">88</span>, <span style="color:#00D">786</span>, <span style="color:#00D">942</span>, <span style="color:#00D">593</span>, <span style="color:#00D">762</span>, <span style="color:#00D">937</span>, <span style="color:#00D">904</span>, <span style="color:#00D">671</span>, <span style="color:#00D">748</span>, <span style="color:#00D">415</span>, <span style="color:#00D">467</span>, <span style="color:#00D">806</span>, <span style="color:#00D">860</span>, <span style="color:#00D">377</span>, <span style="color:#00D">771</span>, <span style="color:#00D">319</span>, <span style="color:#00D">332</span>, <span style="color:#00D">894</span>, <span style="color:#00D">822</span>, <span style="color:#00D">925</span>, <span style="color:#00D">945</span>, <span style="color:#00D">779</span>, <span style="color:#00D">139</span>, <span style="color:#00D">505</span>, <span style="color:#00D">211</span>, <span style="color:#00D">959</span>, <span style="color:#00D">14</span>, <span style="color:#00D">155</span>, <span style="color:#00D">176</span>, <span style="color:#00D">484</span>, <span style="color:#00D">770</span>, <span style="color:#00D">212</span>, <span style="color:#00D">249</span>, <span style="color:#00D">603</span>, <span style="color:#00D">977</span>, <span style="color:#00D">656</span>, <span style="color:#00D">157</span>, <span style="color:#00D">57</span>, <span style="color:#00D">84</span>, <span style="color:#00D">852</span>, <span style="color:#00D">217</span>, <span style="color:#00D">775</span>, <span style="color:#00D">662</span>, <span style="color:#00D">210</span>, <span style="color:#00D">818</span>, <span style="color:#00D">929</span>, <span style="color:#00D">642</span>, <span style="color:#00D">615</span>, <span style="color:#00D">338</span>, <span style="color:#00D">865</span>, <span style="color:#00D">128</span>, <span style="color:#00D">760</span>, <span style="color:#00D">859</span>, <span style="color:#00D">115</span>, <span style="color:#00D">179</span>, <span style="color:#00D">548</span>, <span style="color:#00D">781</span>, <span style="color:#00D">343</span>, <span style="color:#00D">143</span>, <span style="color:#00D">605</span>, <span style="color:#00D">90</span>, <span style="color:#00D">56</span>, <span style="color:#00D">661</span>, <span style="color:#00D">907</span>, <span style="color:#00D">260</span>, <span style="color:#00D">873</span>, <span style="color:#00D">520</span>, <span style="color:#00D">598</span>, <span style="color:#00D">590</span>, <span style="color:#00D">526</span>, <span style="color:#00D">730</span>, <span style="color:#00D">267</span>, <span style="color:#00D">709</span>, <span style="color:#00D">965</span>, <span style="color:#00D">861</span>, <span style="color:#00D">60</span>, <span style="color:#00D">917</span>, <span style="color:#00D">113</span>, <span style="color:#00D">202</span>, <span style="color:#00D">701</span>, <span style="color:#00D">995</span>, <span style="color:#00D">262</span>, <span style="color:#00D">741</span>, <span style="color:#00D">668</span>, <span style="color:#00D">316</span>, <span style="color:#00D">729</span>, <span style="color:#00D">758</span>, <span style="color:#00D">386</span>, <span style="color:#00D">201</span>, <span style="color:#00D">472</span>, <span style="color:#00D">935</span>, <span style="color:#00D">659</span>, <span style="color:#00D">812</span>, <span style="color:#00D">193</span>, <span style="color:#00D">71</span>, <span style="color:#00D">573</span>, <span style="color:#00D">617</span>, <span style="color:#00D">691</span>, <span style="color:#00D">997</span>, <span style="color:#00D">864</span>, <span style="color:#00D">200</span>, <span style="color:#00D">156</span>, <span style="color:#00D">645</span>, <span style="color:#00D">392</span>, <span style="color:#00D">169</span>, <span style="color:#00D">252</span>, <span style="color:#00D">44</span>, <span style="color:#00D">854</span>, <span style="color:#00D">620</span>, <span style="color:#00D">340</span>, <span style="color:#00D">100</span>, <span style="color:#00D">837</span>, <span style="color:#00D">68</span>, <span style="color:#00D">276</span>, <span style="color:#00D">735</span>, <span style="color:#00D">384</span>, <span style="color:#00D">655</span>, <span style="color:#00D">797</span>, <span style="color:#00D">761</span>, <span style="color:#00D">495</span>, <span style="color:#00D">97</span>, <span style="color:#00D">161</span>, <span style="color:#00D">737</span>, <span style="color:#00D">777</span>, <span style="color:#00D">263</span>, <span style="color:#00D">639</span>, <span style="color:#00D">199</span>, <span style="color:#00D">222</span>, <span style="color:#00D">846</span>, <span style="color:#00D">910</span>, <span style="color:#00D">82</span>, <span style="color:#00D">318</span>, <span style="color:#00D">556</span>, <span style="color:#00D">333</span>, <span style="color:#00D">629</span>, <span style="color:#00D">132</span>, <span style="color:#00D">356</span>, <span style="color:#00D">941</span>, <span style="color:#00D">61</span>, <span style="color:#00D">889</span>, <span style="color:#00D">485</span>, <span style="color:#00D">544</span>, <span style="color:#00D">551</span>, <span style="color:#00D">124</span>, <span style="color:#00D">724</span>, <span style="color:#00D">984</span>, <span style="color:#00D">274</span>, <span style="color:#00D">802</span>, <span style="color:#00D">180</span>, <span style="color:#00D">439</span>, <span style="color:#00D">536</span>, <span style="color:#00D">606</span>, <span style="color:#00D">509</span>, <span style="color:#00D">896</span>, <span style="color:#00D">882</span>, <span style="color:#00D">695</span>, <span style="color:#00D">694</span>, <span style="color:#00D">795</span>, <span style="color:#00D">703</span>, <span style="color:#00D">895</span>, <span style="color:#00D">932</span>, <span style="color:#00D">374</span>, <span style="color:#00D">160</span>, <span style="color:#00D">144</span>, <span style="color:#00D">866</span>, <span style="color:#00D">421</span>, <span style="color:#00D">518</span>, <span style="color:#00D">288</span>, <span style="color:#00D">254</span>, <span style="color:#00D">514</span>, <span style="color:#00D">966</span>, <span style="color:#00D">734</span>, <span style="color:#00D">482</span>, <span style="color:#00D">172</span>, <span style="color:#00D">844</span>, <span style="color:#00D">497</span>, <span style="color:#00D">830</span>, <span style="color:#00D">63</span>, <span style="color:#00D">660</span>, <span style="color:#00D">59</span>, <span style="color:#00D">705</span>, <span style="color:#00D">448</span>, <span style="color:#00D">612</span>, <span style="color:#00D">188</span>, <span style="color:#00D">890</span>, <span style="color:#00D">220</span>, <span style="color:#00D">406</span>, <span style="color:#00D">391</span>, <span style="color:#00D">767</span>, <span style="color:#00D">757</span>, <span style="color:#00D">168</span>, <span style="color:#00D">503</span>, <span style="color:#00D">666</span>, <span style="color:#00D">138</span>, <span style="color:#00D">424</span>, <span style="color:#00D">545</span>, <span style="color:#00D">394</span>, <span style="color:#00D">69</span>, <span style="color:#00D">576</span>, <span style="color:#00D">282</span>, <span style="color:#00D">578</span>, <span style="color:#00D">630</span>, <span style="color:#00D">55</span>, <span style="color:#00D">626</span>, <span style="color:#00D">366</span>, <span style="color:#00D">581</span>, <span style="color:#00D">989</span>, <span style="color:#00D">600</span>, <span style="color:#00D">479</span>, <span style="color:#00D">10</span>, <span style="color:#00D">845</span>, <span style="color:#00D">716</span>, <span style="color:#00D">511</span>, <span style="color:#00D">145</span>, <span style="color:#00D">297</span>, <span style="color:#00D">305</span>, <span style="color:#00D">719</span>, <span style="color:#00D">569</span>, <span style="color:#00D">477</span>, <span style="color:#00D">114</span>, <span style="color:#00D">855</span>, <span style="color:#00D">175</span>, <span style="color:#00D">921</span>, <span style="color:#00D">116</span>, <span style="color:#00D">956</span>, <span style="color:#00D">148</span>, <span style="color:#00D">517</span>, <span style="color:#00D">684</span>, <span style="color:#00D">294</span>, <span style="color:#00D">628</span>, <span style="color:#00D">442</span>, <span style="color:#00D">287</span>, <span style="color:#00D">16</span>, <span style="color:#00D">234</span>, <span style="color:#00D">717</span>, <span style="color:#00D">85</span>, <span style="color:#00D">15</span>, <span style="color:#00D">585</span>, <span style="color:#00D">183</span>, <span style="color:#00D">177</span>, <span style="color:#00D">381</span>, <span style="color:#00D">101</span>, <span style="color:#00D">435</span>, <span style="color:#00D">241</span>, <span style="color:#00D">496</span>, <span style="color:#00D">825</span>, <span style="color:#00D">853</span>, <span style="color:#00D">227</span>, <span style="color:#00D">350</span>, <span style="color:#00D">42</span>, <span style="color:#00D">961</span>, <span style="color:#00D">856</span>, <span style="color:#00D">693</span>, <span style="color:#00D">146</span>, <span style="color:#00D">673</span>, <span style="color:#00D">674</span>, <span style="color:#00D">395</span>, <span style="color:#00D">21</span>, <span style="color:#00D">710</span>, <span style="color:#00D">851</span>, <span style="color:#00D">736</span>, <span style="color:#00D">960</span>, <span style="color:#00D">123</span>, <span style="color:#00D">563</span>, <span style="color:#00D">926</span>, <span style="color:#00D">34</span>],
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>     [<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">2</span>,<span style="color:#00D">1</span>],
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>  ].each_slice <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">do</span> |input, output|
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>    specify <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mod_three(</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>input.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">) returns </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>output.inspect<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>      expect(mod_three input).to eq output
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>    <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span><span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

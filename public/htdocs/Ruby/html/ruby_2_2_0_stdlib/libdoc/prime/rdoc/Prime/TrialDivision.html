@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : Prime::TrialDivision  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:23:55 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: Prime::TrialDivision (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>prime.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-5B-5D">#[]</a></li>
+          
+          <li><a href="#method-i-cache">#cache</a></li>
+          
+          <li><a href="#method-i-primes">#primes</a></li>
+          
+          <li><a href="#method-i-primes_so_far">#primes_so_far</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Singleton</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          
+          
+          <li><a href="../Prime.html">Prime</a></li>
+        
+          
+          
+          <li><a href="../Prime/EratosthenesGenerator.html">Prime::EratosthenesGenerator</a></li>
+        
+          
+          
+          <li><a href="../Prime/EratosthenesSieve.html">Prime::EratosthenesSieve</a></li>
+        
+          
+          
+          <li><a href="../Prime/Generator23.html">Prime::Generator23</a></li>
+        
+          
+          
+          <li><a href="../Prime/OldCompatibility.html">Prime::OldCompatibility</a></li>
+        
+          
+          
+          <li><a href="../Prime/PseudoPrimeGenerator.html">Prime::PseudoPrimeGenerator</a></li>
+        
+          
+          
+          <li><a href="../Prime/TrialDivision.html">Prime::TrialDivision</a></li>
+        
+          
+          
+          <li><a href="../Prime/TrialDivisionGenerator.html">Prime::TrialDivisionGenerator</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">Prime::TrialDivision</h1>
+
+    <div id="description" class="description">
+      
+<p>Internal use. An implementation of prime table by trial division method.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="5B-5D-method" class="method-detail ">
+          <a name="method-i-5B-5D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">[]</span><span
+              class="method-args">(index)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the +index+th prime number.</p>
+
+<p><code>index</code> is a 0-based index.</p>
+            
+
+            
+            <div class="method-source-code" id="5B-5D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File prime.rb, line 398</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-comment"># Only check for prime factors up to the square root of the potential primes,</span>
+    <span class="ruby-comment">#   but without the performance hit of an actual square root calculation.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+</span> <span class="ruby-value">4</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@ulticheck_next_squared</span>
+      <span class="ruby-ivar">@ulticheck_index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@ulticheck_next_squared</span> = <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">at</span>(<span class="ruby-ivar">@ulticheck_index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-operator">**</span> <span class="ruby-value">2</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># Only check numbers congruent to one and five, modulo six. All others</span>
+
+    <span class="ruby-comment">#   are divisible by two or three.  This also allows us to skip checking against</span>
+    <span class="ruby-comment">#   two and three.</span>
+    <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-ivar">@ulticheck_index</span>].<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">prime</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">prime</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> }.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+=</span> <span class="ruby-value">4</span>
+    <span class="ruby-ivar">@primes</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-ivar">@ulticheck_index</span>].<span class="ruby-identifier">find</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">prime</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">prime</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> }.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@next_to_check</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@primes</span>[<span class="ruby-identifier">index</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- 5B-5D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 5B-5D-method -->
+      
+        <div id="cache-method" class="method-detail ">
+          <a name="method-i-cache"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cache</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the cached prime numbers.</p>
+            
+
+            
+            <div class="method-source-code" id="cache-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File prime.rb, line 389</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">cache</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@primes</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- cache-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="TrialDivision.html#method-i-primes">primes</a>, <a href="TrialDivision.html#method-i-primes_so_far">primes_so_far</a>
+          </div>
+          
+
+          
+        </div><!-- cache-method -->
+      
+        <div id="primes-method" class="method-detail method-alias">
+          <a name="method-i-primes"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">primes</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="TrialDivision.html#method-i-cache">cache</a>
+          </div>
+          
+        </div><!-- primes-method -->
+      
+        <div id="primes_so_far-method" class="method-detail method-alias">
+          <a name="method-i-primes_so_far"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">primes_so_far</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="TrialDivision.html#method-i-cache">cache</a>
+          </div>
+          
+        </div><!-- primes_so_far-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_TrialDivision_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_TrialDivision_versioned").load("/associated/2_2_0/TrialDivision.html");</script> <div id='tx_TrialDivision' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_TrialDivision").load("/associated/TrialDivision.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, a <a href="http://www.neurogami.com">software development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_TrialDivision.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

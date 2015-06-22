@@ -1,0 +1,1957 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-this--object-prototypes">You Don’t Know JS: <em>this</em> &amp; Object Prototypes</h1>
+<p># Chapter 3: Objects</p>
+
+<p>In Chapters 1 and 2, we explained how the <code>this</code> binding points to various objects depending on the call-site of the function invocation. But what exactly are objects, and why do we need to point to them? We will explore objects in detail in this chapter.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>Objects come in two forms: the declarative (literal) form, and the constructed form.</p>
+
+<p>The literal syntax for an object looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObj = {
+        <span style="color:#606">key</span>: value
+        <span style="color:#777">// ...</span>
+};
+</pre></div>
+</div>
+</div>
+
+<p>The constructed form looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObj = <span style="color:#080;font-weight:bold">new</span> Object();
+myObj.key = value;
+</pre></div>
+</div>
+</div>
+
+<p>The constructed form and the literal form result in exactly the same sort of object. The only difference really is that you can add one or more key/value pairs to the literal declaration, whereas with constructed-form objects, you must add the properties one-by-one.</p>
+
+<p><strong>Note:</strong> It’s extremely uncommon to use the “constructed form” for creating objects as just shown. You would pretty much always want to use the literal syntax form. The same will be true of most of the built-in objects (see below).</p>
+
+<h2 id="type">Type</h2>
+
+<p>Objects are the general building block upon which much of JS is built. They are one of the 6 primary types (called “language types” in the specification) in JS:</p>
+
+<ul>
+  <li><code>string</code></li>
+  <li><code>number</code></li>
+  <li><code>boolean</code></li>
+  <li><code>null</code></li>
+  <li><code>undefined</code></li>
+  <li><code>object</code></li>
+</ul>
+
+<p>Note that the <em>simple primitives</em> (<code>string</code>, <code>boolean</code>, <code>number</code>, <code>null</code>, and <code>undefined</code>) are <strong>not</strong> themselves <code>objects</code>. <code>null</code> is sometimes referred to as an object type, but this misconception stems from a bug in the language which causes <code>typeof null</code> to return the string <code>"object"</code> incorrectly (and confusingly). In fact, <code>null</code> is its own primitive type.</p>
+
+<p><strong>It’s a common mis-statement that “everything in JavaScript is an object”. This is clearly not true.</strong></p>
+
+<p>By contrast, there <em>are</em> a few special object sub-types, which we can refer to as <em>complex primitives</em>.</p>
+
+<p><code>function</code> is a sub-type of object (technically, a “callable object”). Functions in JS are said to be “first class” in that they are basically just normal objects (with callable behavior semantics bolted on), and so they can be handled like any other plain object.</p>
+
+<p>Arrays are also a form of objects, with extra behavior. The organization of contents in arrays is slightly more structured than for general objects.</p>
+
+<h3 id="built-in-objects">Built-in Objects</h3>
+
+<p>There are several other object sub-types, usually referred to as built-in objects. For some of them, their names seem to imply they are directly related to their simple primitives counter-parts, but in fact, their relationship is more complicated, which we’ll explore shortly.</p>
+
+<ul>
+  <li><code>String</code></li>
+  <li><code>Number</code></li>
+  <li><code>Boolean</code></li>
+  <li><code>Object</code></li>
+  <li><code>Function</code></li>
+  <li><code>Array</code></li>
+  <li><code>Date</code></li>
+  <li><code>RegExp</code></li>
+  <li><code>Error</code></li>
+</ul>
+
+<p>These built-ins have the appearance of being actual types, even classes, if you rely on the similarity to other languages such as Java’s <code>String</code> class.</p>
+
+<p>But in JS, these are actually just built-in functions. Each of these built-in functions can be used as a constructor (that is, a function call with the <code>new</code> operator – see Chapter 2), with the result being a newly <em>constructed</em> object of the sub-type in question. For instance:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> strPrimitive = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am a string</span><span style="color:#710">&quot;</span></span>;
+<span style="color:#080;font-weight:bold">typeof</span> strPrimitive;                                                        <span style="color:#777">// &quot;string&quot;</span>
+strPrimitive <span style="color:#080;font-weight:bold">instanceof</span> String;                                        <span style="color:#777">// false</span>
+
+<span style="color:#080;font-weight:bold">var</span> strObject = <span style="color:#080;font-weight:bold">new</span> String( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am a string</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">typeof</span> strObject; <span style="color:#777">// &quot;object&quot;</span>
+strObject <span style="color:#080;font-weight:bold">instanceof</span> String;                                        <span style="color:#777">// true</span>
+
+<span style="color:#777">// inspect the object sub-type</span>
+Object.prototype.toString.call( strObject );        <span style="color:#777">// [object String]</span>
+</pre></div>
+</div>
+</div>
+
+<p>We’ll see in detail in a later chapter exactly how the <code>Object.prototype.toString...</code> bit works, but briefly, we can inspect the internal sub-type by borrowing the base default <code>toString()</code> method, and you can see it reveals that <code>strObject</code> is an object that was in fact created by the <code>String</code> constructor.</p>
+
+<p>The primitive value <code>"I am a string"</code> is not an object, it’s a primitive literal and immutable value. To perform operations on it, such as checking its length, accessing its individual character contents, etc, a <code>String</code> object is required.</p>
+
+<p>Luckily, the language automatically coerces a <code>"string"</code> primitive to a <code>String</code> object when necessary, which means you almost never need to explicitly create the Object form. It is <strong>strongly preferred</strong> by the majority of the JS community to use the literal form for a value, where possible, rather than the constructed object form.</p>
+
+<p>Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> strPrimitive = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am a string</span><span style="color:#710">&quot;</span></span>;
+
+console.log( strPrimitive.length );                        <span style="color:#777">// 13</span>
+
+console.log( strPrimitive.charAt( <span style="color:#00D">3</span> ) );        <span style="color:#777">// &quot;m&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>In both cases, we call a property or method on a string primitive, and the engine automatically coerces it to a <code>String</code> object, so that the property/method access works.</p>
+
+<p>The same sort of coercion happens between the number literal primitive <code>42</code> and the <code>new Number(42)</code> object wrapper, when using methods like <code>42.359.toFixed(2)</code>. Likewise for <code>Boolean</code> objects from <code>"boolean"</code> primitives.</p>
+
+<p><code>null</code> and <code>undefined</code> have no object wrapper form, only their primitive values. By contrast, <code>Date</code> values can <em>only</em> be created with their constructed object form, as they have no literal form counter-part.</p>
+
+<p><code>Object</code>s, <code>Array</code>s, <code>Function</code>s, and <code>RegExp</code>s (regular expressions) are all objects regardless of whether the literal or constructed form is used. The constructed form does offer, in some cases, more options in creation than the literal form counterpart. Since objects are created either way, the simpler literal form is almost universally preferred. <strong>Only use the constructed form if you need the extra options.</strong></p>
+
+<p><code>Error</code> objects are rarely created explicitly in code, but usually created automatically when exceptions are thrown. They can be created with the constructed form <code>new Error(..)</code>, but it’s often unnecessary.</p>
+
+<h2 id="contents">Contents</h2>
+
+<p>As mentioned earlier, the contents of an object consist of values (any type) stored at specifically named <em>locations</em>, which we call properties.</p>
+
+<p>It’s important to note that while we say “contents” which implies that these values are <em>actually</em> stored inside the object, that’s merely an appearance. The engine stores values in implementation-dependent ways, and may very well not store them <em>in</em> some object container. What <em>is</em> stored in the container are these property names, which act as pointers (technically, <em>references</em>) to where the values are stored.</p>
+
+<p>Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+myObject.a;                <span style="color:#777">// 2</span>
+
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>];        <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>To access the value at the <em>location</em> <code>a</code> in <code>myObject</code>, we need to use either the <code>.</code> operator or the <code>[ ]</code> operator. The <code>.a</code> syntax is usually referred to as “property” access, whereas the <code>["a"]</code> syntax is usually referred to as “key” access. In reality, they both access the same <em>location</em>, and will pull out the same value, <code>2</code>, so the terms can be used interchangeably. We will use the most common term, “property access” from here on.</p>
+
+<p>The main difference between the two syntaxes is that the <code>.</code> operator requires an <code>Identifier</code> compatible property name after it, whereas the <code>[".."]</code> syntax can take basically any UTF-8/unicode compatible string as the name for the property. To reference a property of the name “Super-Fun!”, for instance, you would have to use the <code>["Super-Fun!"]</code> access syntax, as <code>Super-Fun!</code> is not a valid <code>Identifier</code> property name.</p>
+
+<p>Also, since the <code>[".."]</code> syntax uses a string’s <strong>value</strong> to specify the location, this means the program can programmatically build up the value of the string, such as:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+<span style="color:#080;font-weight:bold">var</span> idx;
+
+<span style="color:#080;font-weight:bold">if</span> (wantA) {
+        idx = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>;
+}
+
+<span style="color:#777">// later</span>
+
+console.log( myObject[idx] ); <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>In objects, property names are <strong>always</strong> strings. If you use any other value besides a <code>string</code> (primitive) as the property, it will first be converted to a string. This even includes numbers, which are commonly used as array indexes, so be careful not to confuse the use of numbers between objects and arrays.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = { };
+
+myObject[<span style="color:#069">true</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>;
+myObject[<span style="color:#00D">3</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span>;
+myObject[myObject] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">baz</span><span style="color:#710">&quot;</span></span>;
+
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span>];                                <span style="color:#777">// &quot;foo&quot;</span>
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span>];                                        <span style="color:#777">// &quot;bar&quot;</span>
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">[object Object]</span><span style="color:#710">&quot;</span></span>];        <span style="color:#777">// &quot;baz&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="computed-property-names">Computed Property Names</h3>
+
+<p>The <code>myObject[..]</code> property access syntax we just described is useful if you need to use a computed expression value <em>as</em> the key name, like <code>myObject[prefix + name]</code>. But that’s not really helpful when declaring objects using the object-literal syntax.</p>
+
+<p>ES6 adds <em>computed property names</em>, where you can specify an expression, surrounded by a <code>[ ]</code> pair, in the key-name position of an object-literal declaration:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> prefix = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>;
+
+<span style="color:#080;font-weight:bold">var</span> myObject = {
+        [prefix + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span>]: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>,
+        [prefix + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">baz</span><span style="color:#710">&quot;</span></span>]: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">world</span><span style="color:#710">&quot;</span></span>
+};
+
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foobar</span><span style="color:#710">&quot;</span></span>]; <span style="color:#777">// hello</span>
+myObject[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foobaz</span><span style="color:#710">&quot;</span></span>]; <span style="color:#777">// world</span>
+</pre></div>
+</div>
+</div>
+
+<p>The most common usage of <em>computed property names</em> will probably be for ES6 <code>Symbol</code>s, which we will not be covering in detail in this book. In short, they’re a new primitive data type which has an opaque unguessable value (technically a <code>string</code> value). You will be strongly discouraged from working with the <em>actual value</em> of a <code>Symbol</code> (which can theoretically be different between different JS engines), so the name of the <code>Symbol</code>, like <code>Symbol.Something</code> (just a made up name!), will be what you use:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        [Symbol.Something]: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>
+};
+</pre></div>
+</div>
+</div>
+
+<h3 id="property-vs-method">Property vs. Method</h3>
+
+<p>Some developers like to make a distinction when talking about a property access on an object, if the value being accessed happens to be a function. Because it’s tempting to think of the function as <em>belonging</em> to the object, and in other languages, functions which belong to objects (aka, “classes”) are referred to as “methods”, it’s not uncommon to hear, “method access” as opposed to “property access”.</p>
+
+<p><strong>The specification makes this same distinction</strong>, interestingly.</p>
+
+<p>Technically, functions never “belong” to objects, so saying that a function that just happens to be accessed on an object reference is automatically a “method” seems a bit of a stretch of semantics.</p>
+
+<p>It <em>is</em> true that some functions have <code>this</code> references in them, and that <em>sometimes</em> these <code>this</code> references refer to the object reference at the call-site. But this usage really does not make that function any more a “method” than any other function, as <code>this</code> is dynamically bound at run-time, at the call-site, and thus its relationship to the object is indirect, at best.</p>
+
+<p>Every time you access a property on an object, that is a <strong>property access</strong>, regardless of the type of value you get back. If you <em>happen</em> to get a function from that property access, it’s not magically a “method” at that point. There’s nothing special (outside of possible implicit <code>this</code> binding as explained earlier) about a function that comes from a property access.</p>
+
+<p>For instance:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span> );
+}
+
+<span style="color:#080;font-weight:bold">var</span> someFoo = foo;        <span style="color:#777">// variable reference to `foo`</span>
+
+<span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">someFoo</span>: foo
+};
+
+foo;                                <span style="color:#777">// function foo(){..}</span>
+
+someFoo;                        <span style="color:#777">// function foo(){..}</span>
+
+myObject.someFoo;        <span style="color:#777">// function foo(){..}</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>someFoo</code> and <code>myObject.someFoo</code> are just two separate references to the same function, and neither implies anything about the function being special or “owned” by any other object. If <code>foo()</code> above was defined to have a <code>this</code> reference inside it, that <code>myObject.someFoo</code> <em>implicit binding</em> would be the <strong>only</strong> observable difference between the two references. Neither reference really makes sense to be called a “method”.</p>
+
+<p><strong>Perhaps one could argue</strong> that a function <em>becomes a method</em>, not at definition time, but during run-time just for that invocation, depending on how it’s called at its call-site (with an object reference context or not – see Chapter 2 for more details). Even this interpretation is a bit of a stretch.</p>
+
+<p>The safest conclusion is probably that “function” and “method” are interchangeable in JavaScript.</p>
+
+<p><strong>Note:</strong> ES6 adds a <code>super</code> reference, which is typically going to be used with <code>class</code> (see Appendix A). The way <code>super</code> behaves (static binding rather than late binding as <code>this</code>) gives further weight to the idea that a function which is <code>super</code> bound somewhere is more a “method” than “function”. But again, these are just subtle semantic (and mechanical) nuances.</p>
+
+<p>Even when you declare a function expression as part of the object-literal, that function doesn’t magically <em>belong</em> more to the object – still just multiple references to the same function object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#06B;font-weight:bold">foo</span>: <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() {
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span> );
+        }
+};
+
+<span style="color:#080;font-weight:bold">var</span> someFoo = myObject.foo;
+
+someFoo;                <span style="color:#777">// function foo(){..}</span>
+
+myObject.foo;        <span style="color:#777">// function foo(){..}</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> In Chapter 6, we will cover an ES6 short-hand for that <code>foo: function foo(){ .. }</code> declaration syntax in our object-literal.</p>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays also use the <code>[ ]</code> access form, but as mentioned above, they have slightly more structured organization for how and where values are stored (though still no restriction on what <em>type</em> of values are stored). Arrays assume <em>numeric indexing</em>, which means that values are stored in locations, usually called <em>indices</em>, at positive integers, such as <code>0</code> and <code>42</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">42</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span> ];
+
+myArray.length;                <span style="color:#777">// 3</span>
+
+myArray[<span style="color:#00D">0</span>];                        <span style="color:#777">// &quot;foo&quot;</span>
+
+myArray[<span style="color:#00D">2</span>];                        <span style="color:#777">// &quot;bar&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Arrays <em>are</em> objects, so even though each index is a positive integer, you can <em>also</em> add properties onto the array:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">42</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span> ];
+
+myArray.baz = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">baz</span><span style="color:#710">&quot;</span></span>;
+
+myArray.length;        <span style="color:#777">// 3</span>
+
+myArray.baz;        <span style="color:#777">// &quot;baz&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice that adding named properties (regardless of <code>.</code> or <code>[ ]</code> operator syntax) does not change the reported <code>length</code> of the array.</p>
+
+<p>You <em>could</em> use an array as a plain key/value object, and never add any numeric indices, but this is bad idea because arrays have behavior and optimizations specific to their intended use, and likewise with plain objects. Use objects to store key/value pairs, and arrays to store values at numeric indices.</p>
+
+<p><strong>Be careful:</strong> If you try to add a property to an array, but the property name <em>looks</em> like a number, it will end up instead as a numeric index (thus modifying the array contents):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">42</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span> ];
+
+myArray[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">baz</span><span style="color:#710">&quot;</span></span>;
+
+myArray.length;        <span style="color:#777">// 4</span>
+
+myArray[<span style="color:#00D">3</span>];                <span style="color:#777">// &quot;baz&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="duplicating-objects">Duplicating Objects</h3>
+
+<p>One of the most commonly requested features when developers newly take up the JavaScript language is how to duplicate an object. It would seem like there should just be a built-in <code>copy()</code> method, right? It turns out that it’s a little more complicated than that, because it’s not fully clear what, by default, should be the algorithm for the duplication.</p>
+
+<p>For example, consider this object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">anotherFunction</span>() { <span style="color:#777">/*..*/</span> }
+
+<span style="color:#080;font-weight:bold">var</span> anotherObject = {
+        <span style="color:#606">c</span>: <span style="color:#069">true</span>
+};
+
+<span style="color:#080;font-weight:bold">var</span> anotherArray = [];
+
+<span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">b</span>: anotherObject,        <span style="color:#777">// reference, not a copy!</span>
+        <span style="color:#606">c</span>: anotherArray,        <span style="color:#777">// another reference!</span>
+        <span style="color:#606">d</span>: anotherFunction
+};
+
+anotherArray.push( anotherObject, myObject );
+</pre></div>
+</div>
+</div>
+
+<p>What exactly should be the representation of a <em>copy</em> of <code>myObject</code>?</p>
+
+<p>Firstly, we should answer if it should be a <em>shallow</em> or <em>deep</em> copy? A <em>shallow copy</em> would end up with <code>a</code> on the new object as a copy of the value <code>2</code>, but <code>b</code>, <code>c</code>, and <code>d</code> properties as just references to the same places as the references in the original object. A <em>deep copy</em> would duplicate not only <code>myObject</code>, but <code>anotherObject</code> and <code>anotherArray</code>. But then we have issues that <code>anotherArray</code> has references to <code>anotherObject</code> and <code>myObject</code> in it, so <em>those</em> should also be duplicated rather than reference-preserved. Now we have an infinite circular duplication problem because of the circular reference.</p>
+
+<p>Should we detect a circular reference and just break the circular traversal (leaving the deep element not fully duplicated)? Should we error out completely? Something in between?</p>
+
+<p>Moreover, it’s not really clear what “duplicating” a function would mean? There are some hacks like pulling out the <code>toString()</code> serialization of a function’s source code (which varies across implementations and is not even reliable in all engines depending on the type of function being inspected).</p>
+
+<p>So how do we resolve all these tricky questions? Various JS frameworks have each picked their own interpretations and made their own decisions. But which of these (if any) should JS adopt as <em>the</em> standard. For a long time, there was no clear answer.</p>
+
+<p>One subset solution is that objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values) can easily be <em>duplicated</em> with:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> newObj = JSON.parse( JSON.stringify( someObj ) );
+</pre></div>
+</div>
+</div>
+
+<p>Of course, that requires you to ensure your object is JSON safe. For some situations, that’s trivial. For others, it’s insufficient.</p>
+
+<p>At the same time, a shallow copy is fairly understandable and has far less issues, so ES6 has now defined <code>Object.assign(..)</code> for this task. <code>Object.assign(..)</code> takes a <em>target</em> object as its first parameter, and one or more <em>source</em> objects as its subsequent parameters. It iterates over all the <em>enumerable</em> (see below), <em>owned keys</em> (<strong>immediately present</strong>) on the <em>source</em> object(s) and copies them (via <code>=</code> assignment only) to <em>target</em>. It also, helpfully, returns <em>target</em>, as you can see below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> newObj = Object.assign( {}, myObject );
+
+newObj.a;                                                <span style="color:#777">// 2</span>
+newObj.b === anotherObject;                <span style="color:#777">// true</span>
+newObj.c === anotherArray;                <span style="color:#777">// true</span>
+newObj.d === anotherFunction;        <span style="color:#777">// true</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> In the next section, we describe “property descriptors” (property characteristics) and show the use of <code>Object.defineProperty(..)</code>. The duplication that occurs for <code>Object.assign(..)</code> however is purely <code>=</code> style assignment, so any special characteristics of a property (like <code>writable</code>) on a source object <strong>are not preserved</strong> on the target object.</p>
+
+<h3 id="property-descriptors">Property Descriptors</h3>
+
+<p>Prior to ES5, the JavaScript language gave no direct way for your code to inspect or draw any distinction between the characteristics of properties, such as whether the property was read-only or not.</p>
+
+<p>But as of ES5, all properties are described in terms of a <strong>property descriptor</strong>.</p>
+
+<p>Consider this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+Object.getOwnPropertyDescriptor( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#777">// {</span>
+<span style="color:#777">//    value: 2,</span>
+<span style="color:#777">//    writable: true,</span>
+<span style="color:#777">//    enumerable: true,</span>
+<span style="color:#777">//    configurable: true</span>
+<span style="color:#777">// }</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, the property descriptor (called a “data descriptor” since it’s only for holding a data value) for our normal object property <code>a</code> is much more than just its <code>value</code> of <code>2</code>. It includes 3 other characteristics: <code>writable</code>, <code>enumerable</code>, and <code>configurable</code>.</p>
+
+<p>While we can see what the default values for the property descriptor characteristics are when we create a normal property, we can use <code>Object.defineProperty(..)</code> to add a new property, or modify an existing one (if it’s <code>configurable</code>!), with the desired characteristics.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {};
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} );
+
+myObject.a; <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>Using <code>defineProperty(..)</code>, we added the plain, normal <code>a</code> property to <code>myObject</code> in a manually explicit way. However, you generally wouldn’t use this manual approach unless you wanted to modify one of the descriptor characteristics from its normal behavior.</p>
+
+<h4 id="writable">Writable</h4>
+
+<p>The ability for you to change the value of a property is controlled by <code>writable</code>.</p>
+
+<p>Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {};
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">false</span>, <span style="color:#777">// not writable!</span>
+        <span style="color:#606">configurable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} );
+
+myObject.a = <span style="color:#00D">3</span>;
+
+myObject.a; <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, our modification of the <code>value</code> silently failed. If we try in <code>strict mode</code>, we get an error:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">use strict</span><span style="color:#710">&quot;</span></span>;
+
+<span style="color:#080;font-weight:bold">var</span> myObject = {};
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">false</span>, <span style="color:#777">// not writable!</span>
+        <span style="color:#606">configurable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} );
+
+myObject.a = <span style="color:#00D">3</span>; <span style="color:#777">// TypeError</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>TypeError</code> tells us we cannot change a non-writable property.</p>
+
+<p><strong>Note:</strong> We will discuss getters/setters shortly, but briefly, you can observe that <code>writable:false</code> means a value cannot be changed, which is somewhat equivalent to if you defined a no-op setter. Actually, your no-op setter would need throw a <code>TypeError</code> when called, to be truly conformant to <code>writable:false</code>.</p>
+
+<h4 id="configurable">Configurable</h4>
+
+<p>As long as a property is currently configurable, we can modify its descriptor definition, using the same <code>defineProperty(..)</code> utility.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+myObject.a = <span style="color:#00D">3</span>;
+myObject.a;                                        <span style="color:#777">// 3</span>
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">4</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">false</span>,        <span style="color:#777">// not configurable!</span>
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} );
+
+myObject.a;                                        <span style="color:#777">// 4</span>
+myObject.a = <span style="color:#00D">5</span>;
+myObject.a;                                        <span style="color:#777">// 5</span>
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">6</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} ); <span style="color:#777">// TypeError</span>
+</pre></div>
+</div>
+</div>
+
+<p>The final <code>defineProperty(..)</code> call results in a TypeError, regardless of <code>strict mode</code>, if you attempt to change the descriptor definition of a non-configurable property. Be careful: as you can see, changing <code>configurable</code> to <code>false</code> is a <strong>one-way action, and cannot be undone!</strong></p>
+
+<p><strong>Note:</strong> There’s a nuanced exception to be aware of: even if the property is already <code>configurable:false</code>, <code>writable</code> can always be changed from <code>true</code> to <code>false</code> without error, but not back to <code>true</code> if already <code>false</code>.</p>
+
+<p>Another thing <code>configurable:false</code> prevents is the ability to use the <code>delete</code> operator to remove an existing property.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+myObject.a;                                <span style="color:#777">// 2</span>
+<span style="color:#080;font-weight:bold">delete</span> myObject.a;
+myObject.a;                                <span style="color:#777">// undefined</span>
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">true</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">false</span>,
+        <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+} );
+
+myObject.a;                                <span style="color:#777">// 2</span>
+<span style="color:#080;font-weight:bold">delete</span> myObject.a;
+myObject.a;                                <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>As you can see, the last <code>delete</code> call failed (silently) because we made the <code>a</code> property non-configurable.</p>
+
+<p><code>delete</code> is only used to remove object properties (which can be removed) directly from the object in question. If an object property is the last remaining <em>reference</em> to some object/function, and you <code>delete</code> it, that removes the reference and now that unreferenced object/function can be garbage collected. But, it is <strong>not</strong> proper to think of <code>delete</code> as a tool to free up allocated memory as it does in other languages (like C/C++). <code>delete</code> is just an object property removal operation – nothing more.</p>
+
+<h4 id="enumerable">Enumerable</h4>
+
+<p>The final descriptor characteristic we will mention here (there are two others, which we deal with shortly when we discuss getter/setters) is <code>enumerable</code>.</p>
+
+<p>The name probably makes it obvious, but this characteristic controls if a property will show up in certain object-property enumerations, such as the <code>for..in</code> loop. Set to <code>false</code> to keep it from showing up in such enumerations, even though it’s still completely accessible. Set to <code>true</code> to keep it present.</p>
+
+<p>All normal user-defined properties are defaulted to <code>enumerable</code>, as this is most commonly what you want. But if you have a special property you want to hide from enumeration, set it to <code>enumerable:false</code>.</p>
+
+<p>We’ll demonstrate enumerability in much more detail shortly, so keep a mental bookmark on this topic.</p>
+
+<h3 id="immutability">Immutability</h3>
+
+<p>It is sometimes desired to make properties or objects that cannot be changed (either by accident or intentionally). ES5 adds support for handling that in a variety of different nuanced ways.</p>
+
+<p>It’s important to note that <strong>all</strong> of these approaches create shallow immutability. That is, they affect only the object and its direct property characteristics. If an object has a reference to another object (array, object, function, etc), the <em>contents</em> of that object are not affected, and remain mutable.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>myImmutableObject.foo; <span style="color:#777">// [1,2,3]</span>
+myImmutableObject.foo.push( <span style="color:#00D">4</span> );
+myImmutableObject.foo; <span style="color:#777">// [1,2,3,4]</span>
+</pre></div>
+</div>
+</div>
+
+<p>We assume in this snippet that <code>myImmutableObject</code> is already created and protected as immutable. But, to also protect the contents of <code>myImmutableObject.foo</code> (which is its own object – array), you would also need to make <code>foo</code> immutable, using one or more of the following functionalities.</p>
+
+<p><strong>Note:</strong> It is not terribly common to create deeply entrenched immutable objects in JS programs. Special cases can certainly call for it, but as a general design pattern, if you find yourself wanting to <em>seal</em> or <em>freeze</em> all your objects, you may want to take a step back and reconsider your program design to be more robust to potential changes in objects’ values.</p>
+
+<h4 id="object-constant">Object Constant</h4>
+
+<p>By combining <code>writable:false</code> and <code>configurable:false</code>, you can essentially create a <em>constant</em> (cannot be changed, redefined or deleted) as an object property, like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {};
+
+Object.defineProperty( myObject, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FAVORITE_NUMBER</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">value</span>: <span style="color:#00D">42</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">false</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">false</span>
+} );
+</pre></div>
+</div>
+</div>
+
+<h4 id="prevent-extensions">Prevent Extensions</h4>
+
+<p>If you want to prevent an object from having new properties added to it, but otherwise leave the rest of the object’s properties alone, call <code>Object.preventExtensions(..)</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+Object.preventExtensions( myObject );
+
+myObject.b = <span style="color:#00D">3</span>;
+myObject.b; <span style="color:#777">// undefined</span>
+</pre></div>
+</div>
+</div>
+
+<p>In <code>non-strict mode</code>, the creation of <code>b</code> fails silently. In <code>strict mode</code>, it throws a <code>TypeError</code>.</p>
+
+<h4 id="seal">Seal</h4>
+
+<p><code>Object.seal(..)</code> creates a “sealed” object, which means it takes an existing object and essentially calls <code>Object.preventExtensions(..)</code> on it, but also marks all its existing properties as <code>configurable:false</code>.</p>
+
+<p>So, not only can you not add anymore properties, but you also cannot reconfigure or delete any existing properties (though you <em>can</em> still modify their values).</p>
+
+<h4 id="freeze">Freeze</h4>
+
+<p><code>Object.freeze(..)</code> creates a frozen object, which means it takes an existing object and essentially calls <code>Object.seal(..)</code> on it, but it also marks all “data accessor” properties as <code>writable:false</code>, so that their values cannot be changed.</p>
+
+<p>This approach is the highest level of immutability that you can attain for an object itself, as it prevents any changes to the object or to any of its direct properties (though, as mentioned above, the contents of any referenced other objects are unaffected).</p>
+
+<p>You could “deep freeze” an object by calling <code>Object.freeze(..)</code> on the object, and then recursively iterating over all objects it references (which would have been unaffected thus far), and calling <code>Object.freeze(..)</code> on them as well. Be careful, though, as that could affect other (shared) objects you’re not intending to affect.</p>
+
+<h3 id="get"><code>[[Get]]</code></h3>
+
+<p>There’s a subtle, but important, detail about how property accesses are performed.</p>
+
+<p>Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+myObject.a; <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>myObject.a</code> is a property access, but it doesn’t <em>just</em> look in <code>myObject</code> for a property of the name <code>a</code>, as it might seem.</p>
+
+<p>According to the spec, the code above actually performs a <code>[[Get]]</code> operation (kinda like a function call: <code>[[Get]]()</code>) on the <code>myObject</code>. The default built-in <code>[[Get]]</code> operation for an object <em>first</em> inspects the object for a property of the requested name, and if it finds it, it will return the value accordingly.</p>
+
+<p>However, the <code>[[Get]]</code> algorithm defines other important behavior if it does <em>not</em> find a property of the requested name. We will examine in Chapter 5 what happens <em>next</em> (traversal of the <code>[[Prototype]]</code> chain, if any).</p>
+
+<p>But one important result of this <code>[[Get]]</code> operation is that if it cannot through any means come up with a value for the requested property, it instead returns the value <code>undefined</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+myObject.b; <span style="color:#777">// undefined</span>
+</pre></div>
+</div>
+</div>
+
+<p>This behavior is different from when you reference <em>variables</em> by their identifier names. If you reference a variable that cannot be resolved within the applicable lexical scope look-up, the result is not <code>undefined</code> as it is for object properties, but instead a <code>ReferenceError</code> is thrown.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#069">undefined</span>
+};
+
+myObject.a; <span style="color:#777">// undefined</span>
+
+myObject.b; <span style="color:#777">// undefined</span>
+</pre></div>
+</div>
+</div>
+
+<p>From a <em>value</em> perspective, there is no difference between these two references – they both result in <code>undefined</code>. However, the <code>[[Get]]</code> operation underneath, though subtle at a glance, potentially performed a bit more “work” for the reference <code>myObject.b</code> than for the reference <code>myObject.a</code>.</p>
+
+<p>Inspecting only the value results, you cannot distinguish whether a property exists and holds the explicit value <code>undefined</code>, or whether the property does <em>not</em> exist and <code>undefined</code> was the default return value after <code>[[Get]]</code> failed to return something explicitly. However, we will see shortly how you <em>can</em> distinguish these two scenarios.</p>
+
+<h3 id="put"><code>[[Put]]</code></h3>
+
+<p>Since there’s an internally defined <code>[[Get]]</code> operation for getting a value from a property, it should be obvious there’s also a default <code>[[Put]]</code> operation.</p>
+
+<p>It may be tempting to think that an assignment to a property on an object would just invoke <code>[[Put]]</code> to set or create that property on the object in question. But the situation is more nuanced than that.</p>
+
+<p>When invoking <code>[[Put]]</code>, how it behaves differs based on a number of factors, including (most impactfully) whether the property is already present on the object or not.</p>
+
+<p>If the property is present, the <code>[[Put]]</code> algorithm will roughly check:</p>
+
+<ol>
+  <li>Is the property an accessor descriptor (see “Getters &amp; Setters” section below)? <strong>If so, call the setter, if any.</strong></li>
+  <li>Is the property a data descriptor with <code>writable</code> of <code>false</code>? <strong>If so, silently fail in <code>non-strict mode</code>, or throw <code>TypeError</code> in <code>strict mode</code>.</strong></li>
+  <li>Otherwise, set the value to the existing property as normal.</li>
+</ol>
+
+<p>If the property is not yet present on the object in question, the <code>[[Put]]</code> operation is even more nuanced and complex. We will revisit this scenario in Chapter 5 when we discuss <code>[[Prototype]]</code> to give it more clarity.</p>
+
+<h3 id="getters--setters">Getters &amp; Setters</h3>
+
+<p>The default <code>[[Put]]</code> and <code>[[Get]]</code> operations for objects completely control how values are set to existing or new properties, or retrieved from existing properties, respectively.</p>
+
+<p><strong>Note:</strong> Using future/advanced capabilities of the language, it may be possible to override the default <code>[[Get]]</code> or <code>[[Put]]</code> operations for an entire object (not just per property). This is beyond the scope of our discussion in this book, but will be covered later in the “You Don’t Know JS” series.</p>
+
+<p>ES5 introduced a way to override part of these default operations, not on an object level but a per-property level, through the use of getters and setters. Getters are properties which actually call a hidden function to retrieve a value. Setters are properties which actually call a hidden function to set a value.</p>
+
+<p>When you define a property to have either a getter or a setter or both, its definition becomes an “accessor descriptor” (as opposed to a “data descriptor”). For accessor-descriptors, the <code>value</code> and <code>writable</code> characteristics of the descriptor are moot and ignored, and instead JS considers the <code>set</code> and <code>get</code> characteristics of the property (as well as <code>configurable</code> and <code>enumerable</code>).</p>
+
+<p>Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#777">// define a getter for `a`</span>
+        get a() {
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">2</span>;
+        }
+};
+
+Object.defineProperty(
+        myObject,        <span style="color:#777">// target</span>
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span>,                <span style="color:#777">// property name</span>
+        {                        <span style="color:#777">// descriptor</span>
+                <span style="color:#777">// define a getter for `b`</span>
+                <span style="color:#06B;font-weight:bold">get</span>: <span style="color:#080;font-weight:bold">function</span>(){ <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.a * <span style="color:#00D">2</span> },
+
+                <span style="color:#777">// make sure `b` shows up as an object property</span>
+                <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>
+        }
+);
+
+myObject.a; <span style="color:#777">// 2</span>
+
+myObject.b; <span style="color:#777">// 4</span>
+</pre></div>
+</div>
+</div>
+
+<p>Either through object-literal syntax with <code>get a() { .. }</code> or through explicit definition with <code>defineProperty(..)</code>, in both cases we created a property on the object that actually doesn’t hold a value, but whose access automatically results in a hidden function call to the getter function, with whatever value it returns being the result of the property access.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#777">// define a getter for `a`</span>
+        get a() {
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">2</span>;
+        }
+};
+
+myObject.a = <span style="color:#00D">3</span>;
+
+myObject.a; <span style="color:#777">// 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>Since we only defined a getter for <code>a</code>, if we try to set the value of <code>a</code> later, the set operation won’t throw an error but will just silently throw the assignment away. Even if there was a valid setter, our custom getter is hard-coded to return only <code>2</code>, so the set operation would be moot.</p>
+
+<p>To make this scenario more sensible, properties should also be defined with setters, which override the default <code>[[Put]]</code> operation (aka, assignment), per-property, just as you’d expect. You will almost certainly want to always declare both getter and setter (having only one or the other often leads to unexpected/surprising behavior):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#777">// define a getter for `a`</span>
+        get a() {
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>._a_;
+        },
+
+        <span style="color:#777">// define a setter for `a`</span>
+        set a(val) {
+                <span style="color:#950">this</span>._a_ = val * <span style="color:#00D">2</span>;
+        }
+};
+
+myObject.a = <span style="color:#00D">2</span>;
+
+myObject.a; <span style="color:#777">// 4</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> In this example, we actually store the specified value <code>2</code> of the assignment (<code>[[Put]]</code> operation) into another variable <code>_a_</code>. The <code>_a_</code> name is purely by convention for this example and implies nothing special about its behavior – it’s a normal property like any other.</p>
+
+<h3 id="existence">Existence</h3>
+
+<p>We showed earlier that a property access like <code>myObject.a</code> may result in an <code>undefined</code> value if either the explicit <code>undefined</code> is stored there or the <code>a</code> property doesn’t exist at all. So, if the value is the same in both cases, how else do we distinguish them?</p>
+
+<p>We can ask an object if it has a certain property <em>without</em> asking to get that property’s value:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>
+};
+
+(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">in</span> myObject);                                <span style="color:#777">// true</span>
+(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">in</span> myObject);                                <span style="color:#777">// false</span>
+
+myObject.hasOwnProperty( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span> );        <span style="color:#777">// true</span>
+myObject.hasOwnProperty( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span> );        <span style="color:#777">// false</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>in</code> operator will check to see if the property is <em>in</em> the object, or if it exists at any higher level of the <code>[[Prototype]]</code> chain object traversal (see Chapter 5). By contrast, <code>hasOwnProperty(..)</code> checks to see if <em>only</em> <code>myObject</code> has the property or not, and will <em>not</em> consult the <code>[[Prototype]]</code> chain. We’ll come back to the important differences between these two operations in the Chapter 5 when we explore <code>[[Prototype]]</code>s in detail.</p>
+
+<p><code>hasOwnProperty(..)</code> is accessible for all normal objects via delegation to <code>Object.prototype</code> (see Chapter 5). But it’s possible to create an object that does not link to <code>Object.prototype</code> (via <code>Object.create(null)</code> – see Chapter 5). In this case, a method call like <code>myObject.hasOwnProperty(..)</code> would fail.</p>
+
+<p>In that scenario, a more robust way of performing such a check is <code>Object.prototype.hasOwnProperty.call(myObject,"a")</code>, which borrows the base <code>hasOwnProperty(..)</code> method and uses <em>explicit <code>this</code> binding</em> (see Chapter 2) to apply it against our <code>myObject</code>.</p>
+
+<p><strong>Note:</strong> The <code>in</code> operator has the appearance that it will check for the existence of a <em>value</em> inside a container, but it actually checks for the existence of a property name. This difference is important to note with respect to arrays, as the temptation to try a check like <code>4 in [2, 4, 6]</code> is strong, but this will not behave as expected.</p>
+
+<h4 id="enumeration">Enumeration</h4>
+
+<p>Previously, we explained briefly the idea of “enumerability” when we looked at the <code>enumerable</code> property descriptor characteristic. Let’s revisit that and examine it in more close detail.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = { };
+
+Object.defineProperty(
+        myObject,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#777">// make `a` enumerable, as normal</span>
+        { <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>, <span style="color:#606">value</span>: <span style="color:#00D">2</span> }
+);
+
+Object.defineProperty(
+        myObject,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#777">// make `b` NON-enumerable</span>
+        { <span style="color:#606">enumerable</span>: <span style="color:#069">false</span>, <span style="color:#606">value</span>: <span style="color:#00D">3</span> }
+);
+
+myObject.b; <span style="color:#777">// 3</span>
+(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">in</span> myObject); <span style="color:#777">// true</span>
+myObject.hasOwnProperty( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// true</span>
+
+<span style="color:#777">// .......</span>
+
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> k <span style="color:#080;font-weight:bold">in</span> myObject) {
+        console.log( k, myObject[k] );
+}
+<span style="color:#777">// &quot;a&quot; 2</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’ll notice that <code>myObject.b</code> in fact <strong>exists</strong> and has an accessible value, but it doesn’t show up in a <code>for..in</code> loop (though, surprisingly, it <strong>is</strong> revealed by the <code>in</code> operator existence check). That’s because “enumerable” basically means “will be included if the object’s properties are iterated through”.</p>
+
+<p><strong>Note:</strong> <code>for..in</code> loops applied to arrays can give somewhat unexpected results, in that the enumeration of an array will include not only all the numeric indices, but also any enumerable properties. It’s a good idea to use <code>for..in</code> loops <em>only</em> on objects, and traditional <code>for</code> loops with numeric index iteration for the values stored in arrays.</p>
+
+<p>Another way that enumerable and non-enumerable properties can be distinguished:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = { };
+
+Object.defineProperty(
+        myObject,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#777">// make `a` enumerable, as normal</span>
+        { <span style="color:#606">enumerable</span>: <span style="color:#069">true</span>, <span style="color:#606">value</span>: <span style="color:#00D">2</span> }
+);
+
+Object.defineProperty(
+        myObject,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span>,
+        <span style="color:#777">// make `b` non-enumerable</span>
+        { <span style="color:#606">enumerable</span>: <span style="color:#069">false</span>, <span style="color:#606">value</span>: <span style="color:#00D">3</span> }
+);
+
+myObject.propertyIsEnumerable( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// true</span>
+myObject.propertyIsEnumerable( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b</span><span style="color:#710">&quot;</span></span> ); <span style="color:#777">// false</span>
+
+Object.keys( myObject ); <span style="color:#777">// [&quot;a&quot;]</span>
+Object.getOwnPropertyNames( myObject ); <span style="color:#777">// [&quot;a&quot;, &quot;b&quot;]</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>propertyIsEnumerable(..)</code> tests whether the given property name exists <em>directly</em> on the object and is also <code>enumerable:true</code>.</p>
+
+<p><code>Object.keys(..)</code> returns an array of all enumerable properties, whereas <code>Object.getOwnPropertyNames(..)</code> returns an array of <em>all</em> properties, enumerable or not.</p>
+
+<p>Whereas <code>in</code> vs. <code>hasOwnProperty(..)</code> differ in whether they consult the <code>[[Prototype]]</code> chain or not, <code>Object.keys(..)</code> and <code>Object.getOwnPropertyNames(..)</code> both inspect <em>only</em> the direct object specified.</p>
+
+<p>There’s (currently) no built-in way to get a list of <strong>all properties</strong> which is equivalent to what the <code>in</code> operator test would consult (traversing all properties on the entire <code>[[Prototype]]</code> chain, as explained in Chapter 5). You could approximate such a utility by recursively traversing the <code>[[Prototype]]</code> chain of an object, and for each level, capturing the list from <code>Object.keys(..)</code> – only enumerable properties.</p>
+
+<h2 id="iteration">Iteration</h2>
+
+<p>The <code>for..in</code> loop iterates over the list of enumerable properties on an object (including its <code>[[Prototype]]</code> chain). But what if you instead want to iterate over the values?</p>
+
+<p>With numerically-indexed arrays, iterating over the values is typically done with a standard <code>for</code> loop, like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>];
+
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> i = <span style="color:#00D">0</span>; i &lt; myArray.length; i++) {
+        console.log( myArray[i] );
+}
+<span style="color:#777">// 1 2 3</span>
+</pre></div>
+</div>
+</div>
+
+<p>This isn’t iterating over the values, though, but iterating over the indices, where you then use the index to reference the value, as <code>myArray[i]</code>.</p>
+
+<p>ES5 also added several iteration helpers for arrays, including <code>forEach(..)</code>, <code>every(..)</code>, and <code>some(..)</code>. Each of these helpers accepts a function callback to apply to each element in the array, differing only in they respectively respond to a return value from the callback.</p>
+
+<p><code>forEach(..)</code> will iterate over all values in the array, and ignores any callback return values. <code>every(..)</code> keeps going until the end <em>or</em> the callback returns a <code>false</code> (or “falsy”) value, whereas <code>some(..)</code> keeps going until the end <em>or</em> the callback returns a <code>true</code> (or “truthy”) value.</p>
+
+<p>These special return values inside <code>every(..)</code> and <code>some(..)</code> act somewhat like a <code>break</code> statement inside a normal <code>for</code> loop, in that they stop the iteration early before it reaches the end.</p>
+
+<p>If you iterate on an object with a <code>for..in</code> loop, you’re also only getting at the values indirectly, because it’s actually iterating only over the enumerable properties of the object, leaving you to access the properties manually to get the values.</p>
+
+<p><strong>Note:</strong> As contrasted with iterating over an array’s indices in a numerically ordered way (<code>for</code> loop or other iterators), the order of iteration over an object’s properties is <strong>not guaranteed</strong> and may vary between different JS engines. <strong>Do not rely</strong> on any observed ordering for anything that requires consistency among environments, as any observed agreement is unreliable.</p>
+
+<p>But what if you want to iterate over the values directly instead of the array indices (or object properties)? Helpfully, ES6 adds a <code>for..of</code> loop syntax for iterating over arrays (and objects, if the object defines its own custom iterator):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [ <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span> ];
+
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> v of myArray) {
+        console.log( v );
+}
+<span style="color:#777">// 1</span>
+<span style="color:#777">// 2</span>
+<span style="color:#777">// 3</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>for..of</code> loop asks for an iterator object (from a default internal function known as <code>@@iterator</code> in spec-speak) of the <em>thing</em> to be iterated, and the loop then iterates over the successive return values from calling that iterator object’s <code>next()</code> method, once for each loop iteration.</p>
+
+<p>Arrays have a built-in <code>@@iterator</code>, so <code>for..of</code> works easily on them, as shown. But let’s manually iterate the array, using the built-in <code>@@iterator</code>, to see how it works:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myArray = [ <span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span> ];
+<span style="color:#080;font-weight:bold">var</span> it = myArray[Symbol.iterator]();
+
+it.next(); <span style="color:#777">// { value:1, done:false }</span>
+it.next(); <span style="color:#777">// { value:2, done:false }</span>
+it.next(); <span style="color:#777">// { value:3, done:false }</span>
+it.next(); <span style="color:#777">// { done:true }</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> We get at the <code>@@iterator</code> <em>internal property</em> of an object using an ES6 <code>Symbol</code>: <code>Symbol.iterator</code>. We briefly mentioned <code>Symbol</code> semantics earlier in the chapter (see “Computed Property Names”), so the same reasoning applies here. You’ll always want to reference such special properties by <code>Symbol</code> name reference instead of by the special value it may hold. Also, despite the name’s implications, <code>@@iterator</code> is <strong>not the iterator object</strong> itself, but a <strong>function that returns</strong> the iterator object – a subtle but important detail!</p>
+
+<p>As the above snippet reveals, the return value from an iterator’s <code>next()</code> call is an object of the form <code>{ value: .. , done: .. }</code>, where <code>value</code> is the current iteration value, and <code>done</code> is a <code>boolean</code> that indicates if there’s more to iterate.</p>
+
+<p>Notice the value <code>3</code> was returned with a <code>done:false</code>, which seems strange at first glance. You have to call the <code>next()</code> a fourth time (which the <code>for..of</code> loop in the previous snippet automatically does) to get <code>done:true</code> and know you’re truly done iterating. The reason for this quirk is beyond the scope of what we’ll discuss here, but it comes from the semantics of ES6 generator functions.</p>
+
+<p>While arrays do automatically iterate in <code>for..of</code> loops, regular objects <strong>do not have a built-in <code>@@iterator</code></strong>. The reasons for this intentional omission are more complex than we will examine here, but in general it was better to not include some implementation that could prove troublesome for future types of objects.</p>
+
+<p>It <em>is</em> possible to define your own default <code>@@iterator</code> for any object that you care to iterate over. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> myObject = {
+        <span style="color:#606">a</span>: <span style="color:#00D">2</span>,
+        <span style="color:#606">b</span>: <span style="color:#00D">3</span>
+};
+
+Object.defineProperty( myObject, Symbol.iterator, {
+        <span style="color:#606">enumerable</span>: <span style="color:#069">false</span>,
+        <span style="color:#606">writable</span>: <span style="color:#069">false</span>,
+        <span style="color:#606">configurable</span>: <span style="color:#069">true</span>,
+        <span style="color:#06B;font-weight:bold">value</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#080;font-weight:bold">var</span> o = <span style="color:#950">this</span>;
+                <span style="color:#080;font-weight:bold">var</span> idx = <span style="color:#00D">0</span>;
+                <span style="color:#080;font-weight:bold">var</span> ks = Object.keys( o );
+                <span style="color:#080;font-weight:bold">return</span> {
+                        <span style="color:#06B;font-weight:bold">next</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                                <span style="color:#080;font-weight:bold">return</span> {
+                                        <span style="color:#606">value</span>: o[ks[idx++]],
+                                        <span style="color:#606">done</span>: (idx &gt; ks.length)
+                                };
+                        }
+                };
+        }
+} );
+
+<span style="color:#777">// iterate `myObject` manually</span>
+<span style="color:#080;font-weight:bold">var</span> it = myObject[Symbol.iterator]();
+it.next(); <span style="color:#777">// { value:2, done:false }</span>
+it.next(); <span style="color:#777">// { value:3, done:false }</span>
+it.next(); <span style="color:#777">// { value:undefined, done:true }</span>
+
+<span style="color:#777">// iterate `myObject` with `for..of`</span>
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> v of myObject) {
+        console.log( v );
+}
+<span style="color:#777">// 2</span>
+<span style="color:#777">// 3</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> We used <code>Object.defineProperty(..)</code> to define our custom <code>@@iterator</code> (mostly so we could make it non-enumerable), but using the <code>Symbol</code> as a <em>computed property name</em> (covered earlier in this chapter), we could have declared it directly, like <code>var myObject = { a:2, b:3, [Symbol.iterator]: function(){ /* .. */ } }</code>.</p>
+
+<p>Each time the <code>for..of</code> loop calls <code>next()</code> on <code>myObject</code>’s iterator object, the internal pointer will advance and return back the next value from the object’s properties list (see a previous note about iteration ordering on object properties/values).</p>
+
+<p>The iteration we just demonstrated is a simple value-by-value iteration, but you can of course define arbitrarily complex iterations for your custom data structures, as you see fit. Custom iterators combined with ES6’s <code>for..of</code> loop are a powerful new syntactic tool for manipulating user-defined objects.</p>
+
+<p>For example, a list of <code>Pixel</code> objects (with <code>x</code> and <code>y</code> coordinate values) could decide to order its iteration based on the linear distance from the <code>(0,0)</code> origin, or filter out points that are “too far away”, etc. As long as your iterator returns the expected <code>{ value: .. }</code> return values from <code>next()</code> calls, and a <code>{ done: true }</code> after the iteration is complete, ES6’s <code>for..of</code> can iterate over it.</p>
+
+<p>In fact, you can even generate “infinite” iterators which never “finish” and always return a new value (such as a random number, an incremented value, a unique identifier, etc), though you probably will not use such iterators with an unbounded <code>for..of</code> loop, as it would never end and would hang your program.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> randoms = {
+        [Symbol.iterator]: <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#080;font-weight:bold">return</span> {
+                        <span style="color:#06B;font-weight:bold">next</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                                <span style="color:#080;font-weight:bold">return</span> { <span style="color:#606">value</span>: Math.random() };
+                        }
+                };
+        }
+};
+
+<span style="color:#080;font-weight:bold">var</span> randoms_pool = [];
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> n of randoms) {
+        randoms_pool.push( n );
+
+        <span style="color:#777">// don't proceed unbounded!</span>
+        <span style="color:#080;font-weight:bold">if</span> (randoms_pool.length === <span style="color:#00D">100</span>) <span style="color:#080;font-weight:bold">break</span>;
+}
+</pre></div>
+</div>
+</div>
+
+<p>This iterator will generate random numbers “forever”, so we’re careful to only pull out 100 values so our program doesn’t hang.</p>
+
+<h2 id="review-tldr">Review (TL;DR)</h2>
+
+<p>Objects in JS have both a literal form (such as <code>var a = { .. }</code>) and a constructed form (such as <code>var a = new Array(..)</code>). The literal form is almost always preferred, but the constructed form offers, in some cases, more creation options.</p>
+
+<p>Many people mistakingly claim “everything in JavaScript is an object”, but this is incorrect. Objects are one of the 6 (or 7, depending on your perspective) primitive types. Objects have sub-types, including <code>function</code>, and also can be behavior-specialized, like <code>[object Array]</code> as the internal label representing the array object sub-type.</p>
+
+<p>Objects are collections of key/value pairs. The values can be accessed as properties, via <code>.propName</code> or <code>["propName"]</code> syntax. Whenever a property is accessed, the engine actually invokes the internal default <code>[[Get]]</code> operation (and <code>[[Put]]</code> for setting values), which not only looks for the property directly on the object, but which will traverse the <code>[[Prototype]]</code> chain (see Chapter 5) if not found.</p>
+
+<p>Properties have certain characteristics that can be controlled through property descriptors, such as <code>writable</code> and <code>configurable</code>. In addition, objects can have their mutability (and that of their properties) controlled to various levels of immutability using <code>Object.preventExtensions(..)</code>, <code>Object.seal(..)</code>, and <code>Object.freeze(..)</code>.</p>
+
+<p>Properties don’t have to contain values – they can be “accessor properties” as well, with getters/setters. They can also be either <em>enumerable</em> or not, which controls if they show up in <code>for..in</code> loop iterations, for instance.</p>
+
+<p>You can also iterate over <strong>the values</strong> in data structures (arrays, objects, etc) using the ES6 <code>for..of</code> syntax, which looks for either a built-in or custom <code>@@iterator</code> object consisting of a <code>next()</code> method to advance through the data values one at a time.</p>
+
+    </div>
+  </body>
+</html>

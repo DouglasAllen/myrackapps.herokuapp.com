@@ -1,0 +1,604 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>NOTE:</strong> This is one of <a href="http://practicingruby.com/articles/65">four lessons
+learned</a> from my 90 day <a href="http://practicingruby.com/articles/28">self-study on
+test-driven development</a>. 
+If this topic interests you, be sure to check out the other lessons!</p>
+</blockquote>
+
+<p>Before this study, I knew that I <a href="http://practicingruby.com/articles/49">rarely used mock objects</a> 
+in my tests, but I didn’t clearly understand why that was the case. When asked to explain my 
+preferences, I typically would offer some vague argument about keeping things
+simple, and then go on to complain about test brittleness. Because I knew many
+other people who shared the same view, I assumed my line of reasoning was 
+mostly coherent. This left me with no desire to dig any deeper than what my own 
+experiences had taught me.</p>
+
+<p>After years of somewhat blissful ignorance, I finally started to second guess
+myself after watching Greg Moeck’s excellent talk at RubyConf 2011, which was
+aptly named <a href="http://www.confreaks.com/videos/659-rubyconf2011-why-you-don-t-get-mock-objects">Why You Don’t Get Mock Objects</a>. 
+This talk pointed out that the reason why most Rubyists tend to dislike mock
+objects is because they try to shoehorn them into existing workflows rather 
+than adopting the form of TDD that mocks are meant to promote. I remember being
+easily convinced by this talk when I first watched it, but because old habits
+die hard, I never ended up changing my way of doing things.</p>
+
+<p>Throughout the entire 90 day period of my study, I found myself <a href="https://github.com/elm-city-craftworks/broken_record/blob/5c9287e0c6d8211c4a91aee43b26181dfbcc1992/test/record_test.rb">using mock
+objects only
+once</a>, 
+even though I had thought about using them in many places. Towards the end, I realized that I
+still didn’t quite understand how mocks were meant to be used, and so I
+decided to study them properly. This inevitably lead me to the excellent <a href="http://www.jmock.org/oopsla2004.pdf">Mock
+Roles, Not Objects</a> paper, which was written in 
+2004 by the developers who had pioneered the concept of mock-based testing. In
+addition to being a solid introduction to the topic in general, the paper lays
+out a number of practical guidelines for avoiding the common problems that can
+arise from using mocks incorrectly. In particular, the authors proposed the
+following rules:</p>
+
+<ul>
+  <li>Only mock types you own.</li>
+  <li>Don’t use getters.</li>
+  <li>Be explicit about what should not happen.</li>
+  <li>Specify as little as possible in a test.</li>
+  <li>Don’t use mocks to test boundary objects.</li>
+  <li>Don’t add behavior to mocks.</li>
+  <li>Only mock your immediate neighbors.</li>
+  <li>Don’t create too many mocks.</li>
+  <li>Inject all dependencies.</li>
+</ul>
+
+<p>By programming in this style, the promise is that the benefits of mock objects
+will be maximized and their drawbacks minimized. The interesting thing is that
+while several of these heuristics are meant to improve the testability of code,
+nearly as many have a direct influence on software design in general. Taken
+together, the following four points strongly favor <a href="http://practicingruby.com/articles/64">responsibility-centric
+design</a>:</p>
+
+<ul>
+  <li>Don’t use getters.</li>
+  <li>Only mock your immediate neighbors.</li>
+  <li>Don’t create too many mocks.</li>
+  <li>Inject all dependencies.</li>
+</ul>
+
+<p>These guidelines will almost certainly lead to code that is more testable, 
+and should also lead to code that is easier to change. If you think about
+these heuristics a little bit, you’ll find they conveniently map onto
+the following software design principles:</p>
+
+<ul>
+  <li><a href="http://robots.thoughtbot.com/post/27572137956/tell-dont-ask">Tell, don’t ask</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Law_of_Demeter">The law of Demeter</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">Single responsibility</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Dependency_inversion_principle">Dependency inversion</a></li>
+</ul>
+
+<p>Testing a codebase via mock objects is easy when these design principles are
+followed, and challenging when they are not. In that sense, mock objects can be
+used as a smoke test for the overall design of a project, which is useful in its
+own right. However, most mockists claim that the technique actually inspires 
+better design, rather than simply helping you find areas in your code that
+suffer from bad design. This is a much broader statement, and isn’t nearly as
+obvious to those who have not had this experience themselves.</p>
+
+<p>Because I used mock objects so infrequently during my study, I am unable to tell
+you whether or not they can actually help improve software design. However, now
+that I have a clearer sense of what my own workflow is like, I understand why I
+have had so few opportunities to make good use of mock objects. It all boils
+down to the fact that I don’t practice disciplined outside-in design.</p>
+
+<p>The way I tend to approach design is to choose a very small vertical slice of
+functionality and develop an imaginary example of how I expect that feature to
+work. This technique is consistent with the outside-in way of doing things, 
+but my next steps bring me in a completely different direction. Rather than
+starting with my interface and then using mock objects to allow me to discover
+collaborators iteratively until I reach the lowest-level objects in my system, 
+I build things bottom up instead.</p>
+
+<p>Taking a look back at the projects I worked on during this study, I was able to
+see this trend in action. For example, in BrokenRecord, my first test
+was for a struct-like object that would be used for storing field
+data:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>describe <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Row</span> <span style="color:#080;font-weight:bold">do</span>
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">must create readers for all attributes</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    row = <span style="color:#036;font-weight:bold">BrokenRecord</span>::<span style="color:#036;font-weight:bold">Row</span>.new(<span style="color:#A60">:a</span> =&gt; <span style="color:#00D">1</span>, <span style="color:#A60">:b</span> =&gt; <span style="color:#00D">2</span>)
+
+    row.a.must_equal(<span style="color:#00D">1</span>)
+    row.b.must_equal(<span style="color:#00D">2</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Similarly, when I was working on the Blind game, my first test was for a <code>Map</code> object
+that allowed you to place named objects at specific coordinates:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>describe <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Map</span> <span style="color:#080;font-weight:bold">do</span>
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">must be able to store elements at a position</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    map = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Map</span>.new
+    map.add_object(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">player</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">10</span>, <span style="color:#00D">25</span>)
+
+    pos = map.locate(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">player</span><span style="color:#710">&quot;</span></span>)
+    [pos.x, pos.y].must_equal([<span style="color:#00D">10</span>,<span style="color:#00D">25</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Even though each of these objects were designed with a single external feature
+in mind, they are clearly boundary objects; concrete implementation code with 
+no collaborators within the system. As I built on top of them, I found no
+need for mocks, because using these objects directly was easy enough to do. The
+benefit of building things this way is that you can think in terms of concrete
+objects at all times, but that is also the drawback: you can’t use mock objects
+to discover the protocols of your collaborators if those details have already
+been locked down. I don’t know enough about mock-based TDD to know
+whether this is a trade worth making, but this does explain to me why I’ve
+failed to experience some of its benefits.</p>
+
+<p>After I realized that I haven’t been working in a way that would support the
+effective use of mock objects, I took an interest in figuring out what kind of
+workflow mockists tend to follow. Digging back to one of my <a href="http://martinfowler.com/articles/mocksArentStubs.html">favorite articles on
+mock objects</a>, I found that 
+this is what Martin Fowler had to say:</p>
+
+<blockquote>
+  <p>Mock objects came out of the XP community, and one of the principal features of XP is its emphasis on Test Driven Development - where a system design is evolved through iteration driven by writing tests.</p>
+</blockquote>
+
+<blockquote>
+  <p>Thus it’s no surprise that the mockists particularly talk about the effect of mockist testing on a design. In particular they advocate a style called need-driven development. With this style you begin developing a story by writing your first test for the outside of your system, making some interface object your SUT. By thinking through the expectations upon the collaborators, you explore the interaction between the SUT and its neighbors - effectively designing the outbound interface of the SUT.</p>
+</blockquote>
+
+<blockquote>
+  <p>Once you have your first test running, the expectations on the mocks provide a specification for the next step and a starting point for the tests. You turn each expectation into a test on a collaborator and repeat the process working your way into the system one SUT at a time. This style is also referred to as outside-in, which is a very descriptive name for it. It works well with layered systems. You first start by programming the UI using mock layers underneath. Then you write tests for the lower layer, gradually stepping through the system one layer at a time. This is a very structured and controlled approach, one that many people believe is helpful to guide newcomers to OO and TDD.</p>
+</blockquote>
+
+<p>Based on what I learned about mock objects, this style of development does
+appear to be a natural way of developing responsibility-centric code that abides
+by all the guidelines laid out in the <a href="http://www.jmock.org/oopsla2004.pdf">Mock Roles, Not
+Objects</a> paper. While it sounds intriguing
+to me and worth trying out, I doubt that I am smart enough to apply this
+style of development effectively. The reason I tend to use a divide-and-conquer, 
+think-in-concrete-objects strategy in my projects is that I don’t have much
+faith in my own abilities to understand the current and future relations 
+between my objects. In other words, the disciplined outside-in approach seems 
+to require more design confidence than what I typically am able to muster up. </p>
+
+<p>To make matters worse, I have not yet come across an example that clearly shows how this
+technique can be applied throughout an entire project. I think that in addition
+to my own experimentation, I’ll need to see something like that for these ideas
+to finally click. If you know of a source of good large-scale examples of these
+techniques, please let me know!</p>
+
+<p>To sum up the overall point of this lesson: mock objects facilitate
+a particular design style, and if you’re not using that approach in
+your projects, you probably will not experience their benefits. I’d love to hear
+your thoughts on that conclusion, whether or not you agree with it; I clearly
+have a lot more to learn in this area.</p>
+
+  </div>
+</body>
+</html>

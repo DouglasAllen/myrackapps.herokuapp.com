@@ -1,0 +1,842 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was written by Luke Francl, a Ruby developer living in
+San Francisco. He is a developer at <a href="https://swiftype.com">Swiftype</a> where he
+works on everything from web crawling to answering support requests.</em></p>
+
+<p>Implementing a simpler version of a technology that you use every day can
+help you understand it better. In this article, we will apply this
+technique by building a simple HTTP server in Ruby.</p>
+
+<p>By the time you’re done reading, you will know how to serve files from your
+computer to a web browser with no dependencies other than a few standard
+libraries that ship with Ruby. Although the server
+we build will not be robust or anywhere near feature complete,
+it will allow you to look under the hood of one of the most fundamental
+pieces of technology that we all use on a regular basis.</p>
+
+<h2 id="a-very-brief-introduction-to-http">A (very) brief introduction to HTTP</h2>
+
+<p>We all use web applications daily and many of us build
+them for a living, but much of our work is done far above the HTTP level.
+We’ll need come down from the clouds a bit in order to explore
+what happens at the protocol level when someone clicks a 
+link to <em>http://example.com/file.txt</em> in their web browser. </p>
+
+<p>The following steps roughly cover the typical HTTP request/response lifecycle:</p>
+
+<p>1) The browser issues an HTTP request by opening a TCP socket connection to
+<code>example.com</code> on port 80. The server accepts the connection, opening a
+socket for bi-directional communication.</p>
+
+<p>2) When the connection has been made, the HTTP client sends a HTTP request:</p>
+
+<pre><code>GET /file.txt HTTP/1.1
+User-Agent: ExampleBrowser/1.0
+Host: example.com
+Accept: */*
+</code></pre>
+
+<p>3) The server then parses the request. The first line is the Request-Line which contains
+the HTTP method (<code>GET</code>), Request-URI (<code>/file.txt</code>), and HTTP version (<code>1.1</code>).
+Subsequent lines are headers, which consists of key-value pairs delimited by <code>:</code>. 
+After the headers is a blank line followed by an optional message body (not shown in
+this example).</p>
+
+<p>4) Using the same connection, the server responds with the contents of the file:</p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 13
+Connection: close
+
+hello world
+</code></pre>
+
+<p>5) After finishing the response, the server closes the socket to terminate the connection.</p>
+
+<p>The basic workflow shown above is one of HTTP’s most simple use cases,
+but it is also one of the most common interactions handled by web servers.
+Let’s jump right into implementing it!</p>
+
+<h2 id="writing-the-hello-world-http-server">Writing the “Hello World” HTTP server</h2>
+
+<p>To begin, let’s build the simplest thing that could possibly work: a web server
+that always responds “Hello World” with HTTP 200 to any request. The following
+code mostly follows the process outlined in the previous section, but is
+commented line-by-line to help you understand its implementation details:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">socket</span><span style="color:#710">'</span></span> <span style="color:#777"># Provides TCPServer and TCPSocket classes</span>
+
+<span style="color:#777"># Initialize a TCPServer object that will listen</span>
+<span style="color:#777"># on localhost:2345 for incoming connections.</span>
+server = <span style="color:#036;font-weight:bold">TCPServer</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">localhost</span><span style="color:#710">'</span></span>, <span style="color:#00D">2345</span>)
+
+<span style="color:#777"># loop infinitely, processing one incoming</span>
+<span style="color:#777"># connection at a time.</span>
+loop <span style="color:#080;font-weight:bold">do</span>
+
+  <span style="color:#777"># Wait until a client connects, then return a TCPSocket</span>
+  <span style="color:#777"># that can be used in a similar fashion to other Ruby</span>
+  <span style="color:#777"># I/O objects. (In fact, TCPSocket is a subclass of IO.)</span>
+  socket = server.accept
+
+  <span style="color:#777"># Read the first line of the request (the Request-Line)</span>
+  request = socket.gets
+
+  <span style="color:#777"># Log the request to the console for debugging</span>
+  <span style="color:#069">STDERR</span>.puts request
+
+  response = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World!</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777"># We need to include the Content-Type and Content-Length headers</span>
+  <span style="color:#777"># to let the client know the size and type of data</span>
+  <span style="color:#777"># contained in the response. Note that HTTP is whitespace</span>
+  <span style="color:#777"># sensitive, and expects each header line to end with CRLF (i.e. &quot;\r\n&quot;)</span>
+  socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP/1.1 200 OK</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+               <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type: text/plain</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+               <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Length: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>response.bytesize<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+               <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Connection: close</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777"># Print a blank line to separate the header from the response body,</span>
+  <span style="color:#777"># as required by the protocol.</span>
+  socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777"># Print the actual response body, which is just &quot;Hello World!\n&quot;</span>
+  socket.print response
+
+  <span style="color:#777"># Close the socket, terminating the connection</span>
+  socket.close
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+<p>To test your server, run this code and then try opening <code>http://localhost:2345/anything</code>
+in a browser. You should see the “Hello world!” message. Meanwhile, in the output for
+the HTTP server, you should see the request being logged:</p>
+
+<pre><code>GET /anything HTTP/1.1
+</code></pre>
+
+<p>Next, open another shell and test it with <code>curl</code>:</p>
+
+<pre><code>curl --verbose -XGET http://localhost:2345/anything
+</code></pre>
+
+<p>You’ll see the detailed request and response headers:</p>
+
+<pre><code>* About to connect() to localhost port 2345 (#0)
+*   Trying 127.0.0.1... connected
+* Connected to localhost (127.0.0.1) port 2345 (#0)
+&gt; GET /anything HTTP/1.1
+&gt; User-Agent: curl/7.19.7 (universal-apple-darwin10.0) libcurl/7.19.7
+              OpenSSL/0.9.8r zlib/1.2.3
+&gt; Host: localhost:2345
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: text/plain
+&lt; Content-Length: 13
+&lt; Connection: close
+&lt;
+Hello world!
+* Closing connection #0
+</code></pre>
+
+<p>Congratulations, you’ve written a simple HTTP server! Now we’ll 
+build a more useful one.</p>
+
+<h2 id="serving-files-over-http">Serving files over HTTP</h2>
+
+<p>We’re about to build a more realistic program that is capable of 
+serving files over HTTP, rather than simply responding to any request
+with “Hello World”. In order to do that, we’ll need to make a few 
+changes to the way our server works.</p>
+
+<p>For each incoming request, we’ll parse the <code>Request-URI</code> header and translate it into
+a path to a file within the server’s public folder. If we’re able to find a match, we’ll
+respond with its contents, using the file’s size to determine the <code>Content-Length</code>,
+and its extension to determine the <code>Content-Type</code>. If no matching file can be found,
+we’ll respond with a <code>404 Not Found</code> error status.</p>
+
+<p>Most of these changes are fairly straightforward to implement, but mapping the
+<code>Request-URI</code> to a path on the server’s filesystem is a bit more complicated due
+to security issues. To simplify things a bit, let’s assume for the moment that a
+<code>requested_file</code> function has been implemented for us already that can handle
+this task safely. Then we could build a rudimentary HTTP file server in the following way:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">socket</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">uri</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Files will be served from this directory</span>
+<span style="color:#036;font-weight:bold">WEB_ROOT</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./public</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Map extensions to their content type</span>
+<span style="color:#036;font-weight:bold">CONTENT_TYPE_MAPPING</span> = {
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text/html</span><span style="color:#710">'</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">txt</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">text/plain</span><span style="color:#710">'</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">png</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">image/png</span><span style="color:#710">'</span></span>,
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">jpg</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">image/jpeg</span><span style="color:#710">'</span></span>
+}
+
+<span style="color:#777"># Treat as binary data if content type cannot be found</span>
+<span style="color:#036;font-weight:bold">DEFAULT_CONTENT_TYPE</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">application/octet-stream</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># This helper function parses the extension of the</span>
+<span style="color:#777"># requested file and then looks up its content type.</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">content_type</span>(path)
+  ext = <span style="color:#036;font-weight:bold">File</span>.extname(path).split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>).last
+  <span style="color:#036;font-weight:bold">CONTENT_TYPE_MAPPING</span>.fetch(ext, <span style="color:#036;font-weight:bold">DEFAULT_CONTENT_TYPE</span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># This helper function parses the Request-Line and</span>
+<span style="color:#777"># generates a path to a file on the server.</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">requested_file</span>(request_line)
+  <span style="color:#777"># ... implementation details to be discussed later ...</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Except where noted below, the general approach of</span>
+<span style="color:#777"># handling requests and generating responses is</span>
+<span style="color:#777"># similar to that of the &quot;Hello World&quot; example</span>
+<span style="color:#777"># shown earlier.</span>
+
+server = <span style="color:#036;font-weight:bold">TCPServer</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">localhost</span><span style="color:#710">'</span></span>, <span style="color:#00D">2345</span>)
+
+loop <span style="color:#080;font-weight:bold">do</span>
+  socket       = server.accept
+  request_line = socket.gets
+
+  <span style="color:#069">STDERR</span>.puts request_line
+
+  path = requested_file(request_line)
+
+  <span style="color:#777"># Make sure the file exists and is not a directory</span>
+  <span style="color:#777"># before attempting to open it.</span>
+  <span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">File</span>.exist?(path) &amp;&amp; !<span style="color:#036;font-weight:bold">File</span>.directory?(path)
+    <span style="color:#036;font-weight:bold">File</span>.open(path, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rb</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |file|
+      socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP/1.1 200 OK</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>content_type(file)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Length: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>file.size<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                   <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Connection: close</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+      socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+      <span style="color:#777"># write the contents of the file to the socket</span>
+      <span style="color:#036;font-weight:bold">IO</span>.copy_stream(file, socket)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    message = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">File not found</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># respond with a 404 error code to indicate the file does not exist</span>
+    socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">HTTP/1.1 404 Not Found</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type: text/plain</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Length: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>message.size<span style="font-weight:bold;color:#666">}</span></span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +
+                 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Connection: close</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+    socket.print <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\r</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+    socket.print message
+  <span style="color:#080;font-weight:bold">end</span>
+
+  socket.close
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although there is a lot more code here than what we saw in the
+“Hello World” example, most of it is routine file manipulation
+similar to the kind we’d encounter in everyday code. Now there
+is only one more feature left to implement before we can serve
+files over HTTP: the <code>requested_file</code> method.</p>
+
+<h2 id="safely-converting-a-uri-into-a-file-path">Safely converting a URI into a file path</h2>
+
+<p>Practically speaking, mapping the Request-Line to a file on the 
+server’s filesystem is easy: you extract the Request-URI, scrub 
+out any parameters and URI-encoding, and then finally turn that 
+into a path to a file in the server’s public folder:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Takes a request line (e.g. &quot;GET /path?foo=bar HTTP/1.1&quot;)</span>
+<span style="color:#777"># and extracts the path from it, scrubbing out parameters</span>
+<span style="color:#777"># and unescaping URI-encoding.</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># This cleaned up path (e.g. &quot;/path&quot;) is then converted into</span>
+<span style="color:#777"># a relative path to a file in the server's public folder</span>
+<span style="color:#777"># by joining it with the WEB_ROOT.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">requested_file</span>(request_line)
+  request_uri  = request_line.split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">1</span>]
+  path         = <span style="color:#036;font-weight:bold">URI</span>.unescape(URI(request_uri).path)
+
+  <span style="color:#036;font-weight:bold">File</span>.join(<span style="color:#036;font-weight:bold">WEB_ROOT</span>, path)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, this implementation has a very bad security problem that has affected
+many, many web servers and CGI scripts over the years: the server will happily
+serve up any file, even if it’s outside the <code>WEB_ROOT</code>.</p>
+
+<p>Consider a request like this:</p>
+
+<pre><code>GET /../../../../etc/passwd HTTP/1.1
+</code></pre>
+
+<p>On my system, when <code>File.join</code> is called on this path, the “..” path components
+will cause it escape the <code>WEB_ROOT</code> directory and serve the <code>/etc/passwd</code> file.
+Yikes! We’ll need to sanitize the path before use in order to prevent this
+kind of problem.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> If you want to try to reproduce this issue on your own machine,
+you may need to use a low level tool like <em>curl</em> to demonstrate it. Some browsers change the path to remove the “..” before sending a request to the server.</p>
+</blockquote>
+
+<p>Because security code is notoriously difficult to get right, we will borrow our
+implementation from <a href="https://github.com/rack/rack/blob/master/lib/rack/file.rb">Rack::File</a>.
+The approach shown below was actually added to <code>Rack::File</code> in response to a <a href="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-0262">similar
+security vulnerability</a> that
+was disclosed in early 2013:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">requested_file</span>(request_line)
+  request_uri  = request_line.split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>)[<span style="color:#00D">1</span>]
+  path         = <span style="color:#036;font-weight:bold">URI</span>.unescape(URI(request_uri).path)
+
+  clean = []
+
+  <span style="color:#777"># Split the path into components</span>
+  parts = path.split(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span>)
+
+  parts.each <span style="color:#080;font-weight:bold">do</span> |part|
+    <span style="color:#777"># skip any empty or current directory (&quot;.&quot;) path components</span>
+    <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> part.empty? || part == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>
+    <span style="color:#777"># If the path component goes up one directory level (&quot;..&quot;),</span>
+    <span style="color:#777"># remove the last clean component.</span>
+    <span style="color:#777"># Otherwise, add the component to the Array of clean components</span>
+    part == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">..</span><span style="color:#710">'</span></span> ? clean.pop : clean &lt;&lt; part
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># return the web root joined to the clean path</span>
+  <span style="color:#036;font-weight:bold">File</span>.join(<span style="color:#036;font-weight:bold">WEB_ROOT</span>, *clean)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To test this implementation (and finally see your file server in action), 
+replace the <code>requested_file</code> stub in the example from the previous section 
+with the implementation shown above, and then create an <code>index.html</code> file 
+in a <code>public/</code> folder that is contained within the same directory as your
+server script. Upon running the script, you should be able to 
+visit <code>http://localhost:2345/index.html</code> but NOT be able to reach any
+files outside of the <code>public/</code> folder.</p>
+
+<h2 id="serving-up-indexhtml-implicitly">Serving up index.html implicitly</h2>
+
+<p>If you visit <code>http://localhost:2345</code> in your web browser, you’ll see a 404 Not
+Found response, even though you’ve created an index.html file. Most real web
+servers will serve an index file when the client requests a directory. Let’s
+implement that.</p>
+
+<p>This change is more simple than it seems, and can be accomplished by adding
+a single line of code to our server script:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777" class="line"># ...</span>
+<span style="color:#777" class="line">path = requested_file(request_line)</span>
+
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> path = File.join(path, 'index.html') if File.directory?(path)</span>
+
+<span style="color:#777" class="line">if File.exist?(path) &amp;&amp; !File.directory?(path)</span>
+<span style="color:#777" class="line"># ...</span>
+</pre></div>
+</div>
+</div>
+
+<p>Doing so will cause any path that refers to a directory to have “/index.html” appended to
+the end of it. This way, <code>/</code> becomes <code>/index.html</code>, and <code>/path/to/dir</code> becomes
+<code>path/to/dir/index.html</code>.</p>
+
+<p>Perhaps surprisingly, the validations in our response code do not need
+to be changed. Let’s recall what they look like and then examine why
+that’s the case:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">File</span>.exist?(path) &amp;&amp; !<span style="color:#036;font-weight:bold">File</span>.directory?(path)
+  <span style="color:#777"># serve up the file...</span>
+<span style="color:#080;font-weight:bold">else</span>
+  <span style="color:#777"># respond with a 404</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Suppose a request is received for <code>/somedir</code>. That request will automatically be converted by our server into <code>/somedir/index.html</code>. If the index.html exists within <code>/somedir</code>, then it will be served up without any problems. However, if <code>/somedir</code> does not contain an <code>index.html</code> file, the <code>File.exist?</code> check will fail, causing the server to respond with a 404 error code. This is exactly what we want!</p>
+
+<p>It may be tempting to think that this small change would make it possible to remove the <code>File.directory?</code> check, and in normal circumstances you might be able to safely do with it. However, because leaving it in prevents an error condition in the edge case where someone attempts to serve up a directory named <code>index.html</code>, we’ve decided to leave that validation as it is.</p>
+
+<p>With this small improvement, our file server is now pretty much working as we’d expect it to. If you want to play with it some more, you can grab the <a href="https://github.com/elm-city-craftworks/practicing-ruby-examples/tree/master/v7/002">complete source code</a> from GitHub.</p>
+
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+
+<p>In this article, we reviewed how HTTP works, then built a simple web
+server that can serve up files from a directory. We’ve also examined
+one of the most common security problems with web applications and
+fixed it. If you’ve made it this far, congratulations! That’s a lot
+to learn in one day.</p>
+
+<p>However, it’s obvious that the server we’ve built is extremely limited.
+If you want to continue in your studies, here are a few recommendations
+for how to go about improving the server:</p>
+
+<ul>
+  <li>According to the HTTP 1.1 specification, a server must minimally
+respond to GET and HEAD to be compliant. Implement the HEAD response.</li>
+  <li>Add error handling that returns a 500 response to the client
+if something goes wrong with the request.</li>
+  <li>Make the web root directory and port configurable.</li>
+  <li>Add support for POST requests. You could implement CGI by executing
+a script when it matches the path, or implement 
+the <a href="http://rack.rubyforge.org/doc/SPEC.html">Rack spec</a> to
+let the server serve Rack apps with <code>call</code>.</li>
+  <li>Reimplement the request loop using <a href="http://www.ruby-doc.org/stdlib-2.0/libdoc/gserver/rdoc/GServer.html">GServer</a>
+(Ruby’s generic threaded server) to handle multiple connections.</li>
+</ul>
+
+<p>Please do share your experiences and code if you decide to try any of
+these ideas, or if you come up with some improvement ideas of your own.
+Happy hacking!</p>
+
+<p><em>We’d like to thank Eric Hodel, Magnus Holm, Piotr Szotkowski, and 
+Mathias Lafeldt for reviewing this article and providing feedback 
+before we published it.</em></p>
+
+<blockquote>
+  <p>NOTE: If you’d like to learn more about this topic, consider doing the Practicing Ruby self-guided course on <a href="https://practicingruby.com/articles/study-guide-1?u=dc2ab0f9bb">Streams, Files, and Sockets</a>. You’ve already completed one of its reading exercises by working through this article!</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

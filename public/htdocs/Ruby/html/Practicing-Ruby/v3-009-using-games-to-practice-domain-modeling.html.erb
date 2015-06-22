@@ -1,0 +1,827 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>As programmers, it is literally our job to make <a href="http://en.wikipedia.org/wiki/Domain_model">domain models</a> understandable to computers. While this can be some of the most creative work we do, it also tends to be the most challenging. The inherent difficulty of designing and implementing conceptual models leads many to develop their problem solving skills through a painful process of trial and error rather than some form of deliberate practice. However, that is a path paved with sorrows, and we can do better.</p>
+
+<p>Defining problem spaces and navigating within them does get easier as you become more experienced. But if you only work with complex domain models while you are knee deep in production code, you’ll find that many useful modeling patterns will blend in with application-specific details and quickly fade into the background without being noticed. Instead, what is needed is a testbed for exploring these ideas that is complex enough to mirror some of the problems you’re likely to encounter in your daily work, but inconsequential enough to ensure that your practical needs for working code won’t get in the way of exploring new ideas. </p>
+
+<p>While there are a number of ways to create a good learning environment for studying domain modeling, my favorite approach is to try to clone bits of functionality from various games I play when I’m not coding. In this article, I’ll walk you through an example of this technique by demonstrating how to model a simplified version of the <a href="http://www.minecraftwiki.net/wiki/Crafting">Minecraft crafting system</a>.</p>
+
+<h3 id="defining-the-problem-space">Defining the problem space</h3>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Those who haven’t played Minecraft before may want to spend a few minutes watching this video <a href="http://www.youtube.com/watch?v=AKktiCsCPWE">tutorial about crafting</a> or skimming <a href="http://www.minecraftwiki.net/wiki/Crafting">the game’s wiki page</a> on the topic before continuing. However, because I only focus on a few very basic ideas about the system for this exercise, you don’t need to be a Minecraft player in order to enjoy this article.</p>
+</blockquote>
+
+<p>The crafting table is a key component in Minecraft because it provides the player with a way to turn natural resources into useful tools, weapons, and construction materials. Stripped down to its bare essence, the function of the crafting table is essentially to convert various input items laid out in a 3x3 grid into some quantity of a different type of item. For example, a single block of wood can be converted into four wooden planks, a pair of wooden planks can be combined to produce four sticks, and a stick combined with a piece of coal will produce four torches. Virtually all objects in the Minecraft world can be built in this fashion, as long as the player has the necessary materials and knows the rules about how to combine them together. </p>
+
+<p>Because positioning of input items within the crafting table’s grid is significant, players need to make use of recipes to learn how various input items can be combined to produce new objects. To make recipes easier for the player to memorize, the game allows for a bit of flexibility in the way things are arranged, as long as the basic structure of the layout is preserved. In particular, the input items for recipes can be horizontally and vertically shifted as long as they remain within the 3x3 grid, and the system also knows how to match mirror images as well. However, after accounting for these variants, there is a direct mapping from the inputs to the outputs in the crafting system.</p>
+
+<p>As of 2012-02-27, Minecraft supports 174 crafting recipes. This is a small enough number where even a naïve data model would likely be fast enough to not cause any usability problems, even if you consider the fact that most of those recipes can be shifted around in various ways. But in the interest of showing off some neat Ruby data modeling tricks, I’ve decided to try to implement this model in an efficient way. In doing so, I found out that inputs can be checked for corresponding outputs in constant time, and that there are some useful constraints that make it so that only a few variants need to be checked in most cases in order to find a match for the player’s input items.</p>
+
+<p>My <a href="https://github.com/elm-city-craftworks/crafting_table">finished model</a> ended up consisting of three parts: A <code>Recipe</code> object responsible for codifying the layout of input items and generating variants based on that layout, a <code>Cookbook</code> object which maps recipes to their outputs, and an <code>Importer</code> object which generates a cookbook object from CSV formatted recipe data. In the following sections, I will take a look at each of these objects and point out any interesting details about them.</p>
+
+<h3 id="modeling-recipes">Modeling recipes</h3>
+
+<blockquote>
+  <p><strong>NOTE:</strong> To keep my implementation code easy to follow, I have simplified the recipe model somewhat so that it does not consider mirror images of recipes to be equivalent. Implementing that sort of behavior could be a fun exercise for the reader, and would make this model a closer match to what Minecraft actually implements.</p>
+</blockquote>
+
+<p>The challenge involved in modeling Minecraft recipes is that you need to treat horizontal and vertically shifted item sets as being equivalent to one other. Or in other words, as long as the shape of an item set is preserved, there is a bit of flexibility about where you can place items on the table. For example, all of the recipes below are considered to be equivalent to one another:</p>
+
+<p><img src="http://i.imgur.com/HSop9.png" alt="" /></p>
+
+<p>A naïve approach to the problem will lead you to checking up to 25 variants for each recipe, only to find out that most of them are invalid mutations of the original item set that place at least one item outside of the 3x3 grid. Some simple checks can be put in place to throw out invalid variants, but it is better to never generate them at all. </p>
+
+<blockquote>
+  <p><strong>UPDATE 2012-03-01</strong>: Based on a suggestion by <a href="http://community.mendicantuniversity.org/people/semmons99">Shane Emmons</a>, I worked on a better approach to this problem after this article was published. The basic idea is that rather than generating recipe variants, you instead normalize the recipes into a single common layout on demand. Check out the <a href="https://github.com/elm-city-craftworks/crafting_table/blob/607a4d8fc958c2e746b899c43b5cbb01301b3c6b/lib/crafting_table/recipe.rb">updated code here</a>. The solution described below is still interesting though, so feel free to read on anyway!</p>
+</blockquote>
+
+<p>The approach I ended up taking is to compute margins surrounding each item that indicate how they can be shifted. As each new item gets added to the recipe, its margins and the margins of the current item set are intersected to obtain a new set of boundaries. The following diagram demonstrates the process of adding three items (B, C, A) to the grid sequentially, with each newly added item reducing the number of equivalent recipes that can be generated:</p>
+
+<p><img src="http://i.imgur.com/SEen2.png" alt="" /></p>
+
+<p>This process is very efficient because it involves simple numerical computations at insert time, rather than processing the whole item set at once. With that in mind, my implementation of <code>Recipe#[]=</code> updates the margins for the item set right away whenever a new item is added:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>recipe[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">B</span><span style="color:#710">&quot;</span></span>
+p recipe.send(<span style="color:#A60">:margins</span>) <span style="color:#777">#=&gt; {:top=&gt;2, :left=&gt;0, :right=&gt;2, :bottom=&gt;0}</span>
+
+recipe[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">C</span><span style="color:#710">&quot;</span></span>
+p recipe.send(<span style="color:#A60">:margins</span>) <span style="color:#777">#=&gt; {:top=&gt;2, :left=&gt;0, :right=&gt;1, :bottom=&gt;0} </span>
+
+recipe[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A</span><span style="color:#710">&quot;</span></span>
+p recipe.send(<span style="color:#A60">:margins</span>) <span style="color:#777">#=&gt; {:top=&gt;1, :left=&gt;0, :right=&gt;1, :bottom=&gt;0} </span>
+</pre></div>
+</div>
+</div>
+
+<p>The following code shows how <code>Recipe#[]=</code> is implemented. In particular, it demonstrates that item set margins are directly updated on insert, but variant layouts are not generated until later.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Recipe</span>
+    <span style="color:#036;font-weight:bold">TABLE_WIDTH</span> = <span style="color:#00D">3</span>
+    <span style="color:#036;font-weight:bold">TABLE_HEIGHT</span> = <span style="color:#00D">3</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+      <span style="color:#069">self</span>.ingredients = {}
+      <span style="color:#069">self</span>.margins     = { <span style="color:#A60">:top</span>    =&gt; <span style="color:#036;font-weight:bold">Float</span>::<span style="color:#036;font-weight:bold">INFINITY</span>, 
+                           <span style="color:#A60">:left</span>   =&gt; <span style="color:#036;font-weight:bold">Float</span>::<span style="color:#036;font-weight:bold">INFINITY</span>, 
+                           <span style="color:#A60">:right</span>  =&gt; <span style="color:#036;font-weight:bold">Float</span>::<span style="color:#036;font-weight:bold">INFINITY</span>,
+                           <span style="color:#A60">:bottom</span> =&gt; <span style="color:#036;font-weight:bold">Float</span>::<span style="color:#036;font-weight:bold">INFINITY</span> }
+
+      <span style="color:#069">self</span>.variants = <span style="color:#036;font-weight:bold">Set</span>.new
+      <span style="color:#069">self</span>.variants_need_updating = <span style="color:#069">false</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ... various unrelated details omitted ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(x,y,ingredient_type)
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">unless</span> (<span style="color:#00D">0</span>...<span style="color:#036;font-weight:bold">TABLE_WIDTH</span>).include?(x)
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">unless</span> (<span style="color:#00D">0</span>...<span style="color:#036;font-weight:bold">TABLE_HEIGHT</span>).include?(y)
+
+      <span style="color:#777"># storing positions as vectors makes variant computations easier</span>
+      ingredients[<span style="color:#036;font-weight:bold">Vector</span>[x,y]] = ingredient_type
+
+      update_margins(x,y)
+
+      <span style="color:#069">self</span>.variants_need_updating = <span style="color:#069">true</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:margins</span>, <span style="color:#A60">:ingredients</span>, <span style="color:#A60">:variants_need_updating</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">update_margins</span>(x,y)
+      margins[<span style="color:#A60">:left</span>]   = [x,                margins[<span style="color:#A60">:left</span>]  ].min
+      margins[<span style="color:#A60">:right</span>]  = [<span style="color:#036;font-weight:bold">TABLE_WIDTH</span>-x-<span style="color:#00D">1</span>,  margins[<span style="color:#A60">:right</span>] ].min
+      margins[<span style="color:#A60">:bottom</span>] = [y,                margins[<span style="color:#A60">:bottom</span>]].min
+      margins[<span style="color:#A60">:top</span>]    = [<span style="color:#036;font-weight:bold">TABLE_HEIGHT</span>-y-<span style="color:#00D">1</span>, margins[<span style="color:#A60">:top</span>]   ].min
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>I deferred the process of generating variants simply because doing so at insert time would cause many unnecessary intermediate computations to be done for multi-item recipes. While such a small number of possible variations pretty much guarantees there won’t be performance issues whether or not lazy evaluation is used, I wanted to use this situation as a chance to think through how I would model variant generation if efficiency was a real concern. In production code, premature optimization is the root of all evil, but when you’re in deliberate practice mode it can be quite fun.</p>
+
+<p>I ultimately decided to generate the variants on demand when two <code>Recipe</code> objects are compared to one another. As you can see from the following code, my implementation of <code>Recipe#==</code> causes both recipe objects involved in the test to update their variants if necessary:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Recipe</span>
+    <span style="color:#777"># ... various unrelated details omitted ...</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">false</span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#069">self</span>.class == other.class
+
+      variants == other.variants
+    <span style="color:#080;font-weight:bold">end</span>
+
+    protected
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">variants</span>
+      update_variants <span style="color:#080;font-weight:bold">if</span> variants_need_updating
+
+      <span style="color:#33B">@variants</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While the high level interface for <code>Recipe</code> comparison is easy to follow, the way I ended up generating the underlying variant data is a bit messy. The implementation details for <code>Recipe#update_variants</code> are shown below, but the rough idea here is that I compute a set of <code>valid_offsets</code> and then use them to do vector addition to translate items to different coordinates within the grid. After performing this transformation, I wrap the variant data in a <code>Set</code> object so that they can easily be compared in an order-independent fashion. Assuming all this happens successfully, the <code>variants_need_updating</code> flag gets set to <code>false</code> to indicate that the variant data is now up to date. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Recipe</span>
+    
+    <span style="color:#777"># ... various unrelated details omitted ...</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:margins</span>, <span style="color:#A60">:ingredients</span>, <span style="color:#A60">:variants_need_updating</span>
+    attr_writer   <span style="color:#A60">:variants</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">update_variants</span>
+      raise <span style="color:#036;font-weight:bold">InvalidRecipeError</span> <span style="color:#080;font-weight:bold">if</span> ingredients.empty?
+
+      variant_data = valid_offsets.map <span style="color:#080;font-weight:bold">do</span> |x,y|
+        ingredients.each_with_object({}) <span style="color:#080;font-weight:bold">do</span> |(position, content), variant|
+          new_position = position + <span style="color:#036;font-weight:bold">Vector</span>[x,y]
+
+          variant[new_position] = content
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#069">self</span>.variants                  = <span style="color:#036;font-weight:bold">Set</span>[*variant_data]
+      <span style="color:#069">self</span>.variants_need_updating    = <span style="color:#069">false</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">valid_offsets</span>
+      horizontal = (-margins[<span style="color:#A60">:left</span>]..margins[<span style="color:#A60">:right</span>]).to_a
+      vertical   = (-margins[<span style="color:#A60">:bottom</span>]..margins[<span style="color:#A60">:top</span>]).to_a
+
+      horizontal.product(vertical)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>An interesting thing to note about this design is that variants are purely implementation details that are not exposed via the public API. While the large amount of code I’ve shelved in private methods seems to indicate that there might be an object to extract here, I like the idea that from the outside perspective, the equivalence relationship between recipes is established without having to do any sort of explicit check to see whether two different layouts share a common variant. To see the true benefits of this kind of information hiding, we can take a look at how it affects the design of the cookbook.</p>
+
+<h3 id="modeling-a-cookbook">Modeling a cookbook</h3>
+
+<p>One of the first things I noticed about this problem domain was that the mapping of inputs to outputs were a natural fit for a hash structure. While it took a while to sort out the details, I eventually was able to put together a <code>Cookbook</code> object that works in the manner shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>cookbook     = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Cookbook</span>.new
+torch_recipe = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Recipe</span>.new
+
+torch_recipe[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">coal</span><span style="color:#710">&quot;</span></span>
+torch_recipe[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stick</span><span style="color:#710">&quot;</span></span>
+
+cookbook[torch_recipe] = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">torch</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">4</span>]
+
+<span style="color:#777"># ---</span>
+
+user_recipe = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Recipe</span>.new
+user_recipe[<span style="color:#00D">2</span>,<span style="color:#00D">2</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">coal</span><span style="color:#710">&quot;</span></span>
+user_recipe[<span style="color:#00D">2</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stick</span><span style="color:#710">&quot;</span></span>
+
+p cookbook[user_recipe] <span style="color:#777">#=&gt; [&quot;torch&quot;, 4]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The final implementation of this object turned out to be incredibly simple, although it required some minor extensions to the <code>Recipe</code> object in order to work correctly. Take a look at the following class definition to see just how little <code>CraftingTable::Cookbook</code> is doing under the hood:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+
+  <span style="color:#777"># This is the complete definition of my Cookbook object, with no omissions!</span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Cookbook</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+      <span style="color:#069">self</span>.recipes = {}
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(recipe)
+      recipes[recipe]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]=</span>(recipe, output)
+      <span style="color:#080;font-weight:bold">if</span> recipes[recipe]
+        raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A variant of this recipe is already defined!</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      recipes[recipe] = output
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:recipes</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>On the surface, the class seems to have only two tangible features to it: it severely narrows the interface to the hash it wraps so that it becomes nothing more than a simple key/value store, and it forces single assignment semantics. However, when we look at how the object is actually used, we see that there is an implicit dependency on some deeper, more domain specific logic. Revisiting the usage example from before, you can see that the <code>Cookbook</code> object treats variants of the same recipes as if they were the same hash key. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># ... unimportant boilerplate omitted</span>
+
+torch_recipe[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">coal</span><span style="color:#710">&quot;</span></span>
+torch_recipe[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stick</span><span style="color:#710">&quot;</span></span>
+
+cookbook[torch_recipe] = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">torch</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">4</span>]
+
+<span style="color:#777"># ---</span>
+
+user_recipe[<span style="color:#00D">2</span>,<span style="color:#00D">2</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">coal</span><span style="color:#710">&quot;</span></span>
+user_recipe[<span style="color:#00D">2</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stick</span><span style="color:#710">&quot;</span></span>
+
+p cookbook[user_recipe] <span style="color:#777">#=&gt; [&quot;torch&quot;, 4]</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you haven’t already dug into the source to locate where this bit of magic comes from, it has to do with the fact that Ruby provides hooks that allow you to use complex objects as hash keys. In particular, customizing the way that objects are used as hash keys involves overriding the <code>Object#hash</code> and <code>Object#eql?</code> methods. If you take a closer look at the <code>Recipe</code> object, you’ll see it does define both of these methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#777"># ... various unrelated details omitted ...</span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Recipe</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">false</span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#069">self</span>.class == other.class
+
+      variants == other.variants
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># this is the standard idiom, as in most cases == should be the same as eql?</span>
+    alias_method <span style="color:#A60">:eql?</span>, <span style="color:#A60">:==</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hash</span>
+      variants.hash
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While I don’t want to get bogged down in the details of how these hooks work, the basic idea is that the <code>hash</code> method returns a numeric identifier which determines which bucket to store the value in. When a provided key hashes to the same number of an object already in the hash, the <code>eql?</code> method determines whether the keys are actually equivalent. Because <code>Recipe#hash</code> simply delegates to <code>Set#hash</code>, all item sets with the same elements have the same hash value, even if their order differs. Likewise, when <code>eql?</code> is called, it ends up delegating to <code>Set#==</code> which has the same semantics. If you trace your way through the usage example, you’ll find that because <code>torch_recipe</code> and <code>user_recipe</code> generate the same variants, they also can stand in for one another as hash keys due to these overridden methods.</p>
+
+<p>Without a doubt, this is a <em>clever</em> technique. But I’m still on the fence about whether it is a good approach or not. On the one hand, it makes use of a well defined hook that Ruby provides which seems to be well suited for the problem we’re trying to model. On the other hand, it is not a very explicit way of building an API at all, and requires a non-trivial understanding of low level features of Ruby to fully understand this code. This is a common tension whenever designing Ruby objects: Matz assumes we’re all a lot smarter and a lot more responsible than we might consider ourselves. </p>
+
+<p>I decided to go this route because in learning exercises I like to push my boundaries a bit and see where it takes me. But if this were production code, I would think about going with a slighly less elegant but more explicit approach. For example, I might have made the <code>Recipe#variants</code> method public and then did something similar to the following code in the <code>Cookbook#[]</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Cookbook</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(recipe)
+      variant = recipe.variants.find { |v| recipes[v] }
+
+      recipes[variant]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>That said, I would love to hear your thoughts on this particular pattern. Sometimes when a technique is rare, it’s hard to tell whether it seems unintuitive because it is actually hard to understand, or if it just feels that way because it isn’t familiar territory.</p>
+
+<h3 id="modeling-a-recipe-importer">Modeling a recipe importer</h3>
+
+<p>With the interesting modeling out of the way, all that remains to talk about is how to get data imported into cookbooks in a way that doesn’t require a lot of tedious assignment statements. For this purpose, I built a simple <code>Importer</code> object which takes a CSV file as input and builds up a <code>Cookbook</code> object from it.</p>
+
+<p>The data format consists of multiline records separated by an empty line, as shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>torch,<span style="color:#00D">4</span>
+-,-,-
+-,coal,-
+-,stick,-
+
+crafting_table,<span style="color:#00D">1</span>
+-,-,-
+wooden_plank,wooden_plank,-
+wooden_plank,wooden_plank,-
+</pre></div>
+</div>
+</div>
+
+<p>While the data isn’t pretty as a raw CSV file, this format makes it convenient to edit the data via a spreadsheet program, and doing so provides a pretty nice layout of the input grid. Once the file is written up, it ends up getting used in the manner shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>cookbook      = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Importer</span>.cookbook_from_csv(recipe_file)
+user_recipe_1 = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Recipe</span>.new
+
+user_recipe_1[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stick</span><span style="color:#710">&quot;</span></span>
+user_recipe_1[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">coal</span><span style="color:#710">&quot;</span></span>
+
+p cookbook[user_recipe_1] <span style="color:#777">#=&gt; [&quot;torch&quot;, 4]</span>
+
+user_recipe_2 = <span style="color:#036;font-weight:bold">CraftingTable</span>::<span style="color:#036;font-weight:bold">Recipe</span>.new
+
+user_recipe_2[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wooden_plank</span><span style="color:#710">&quot;</span></span>
+user_recipe_2[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wooden_plank</span><span style="color:#710">&quot;</span></span>
+user_recipe_2[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wooden_plank</span><span style="color:#710">&quot;</span></span>
+user_recipe_2[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>] = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wooden_plank</span><span style="color:#710">&quot;</span></span>
+
+p cookbook[user_recipe_1] <span style="color:#777">#=&gt; [&quot;crafting_table&quot;, 1]</span>
+</pre></div>
+</div>
+</div>
+
+<p>The implementation of the <code>Importer</code> object is mostly an uninspired procedural hack, with the only interesting detail of it being that it manually iterates over the CSV data using <code>CSV.new</code> in combination with a <code>File</code> object as yet another unnecessary-yet-educational efficiency optimization:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">CraftingTable</span>
+  <span style="color:#036;font-weight:bold">Importer</span> = <span style="color:#036;font-weight:bold">Object</span>.new
+
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">Importer</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cookbook_from_csv</span>(filename)
+      cookbook = <span style="color:#036;font-weight:bold">Cookbook</span>.new
+
+      <span style="color:#036;font-weight:bold">File</span>.open(filename) <span style="color:#080;font-weight:bold">do</span> |f|
+        csv = <span style="color:#036;font-weight:bold">CSV</span>.new(f)
+
+        <span style="color:#080;font-weight:bold">until</span> f.eof?
+          product, quantity = csv.gets
+
+          grid = [csv.gets, csv.gets, csv.gets]
+
+          cookbook[recipe_from_grid(grid)] = [product, quantity.to_i]
+          
+          csv.gets
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+
+      cookbook
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">recipe_from_grid</span>(grid)
+      recipe = <span style="color:#036;font-weight:bold">Recipe</span>.new
+
+      last_row = <span style="color:#036;font-weight:bold">Recipe</span>::<span style="color:#036;font-weight:bold">TABLE_WIDTH</span>  - <span style="color:#00D">1</span>
+      last_col = <span style="color:#036;font-weight:bold">Recipe</span>::<span style="color:#036;font-weight:bold">TABLE_HEIGHT</span> - <span style="color:#00D">1</span>
+
+      ((<span style="color:#00D">0</span>..last_row).to_a).product((<span style="color:#00D">0</span>..last_col).to_a) <span style="color:#080;font-weight:bold">do</span> |x,y|
+        row = x
+        col = last_col - y
+        
+        <span style="color:#080;font-weight:bold">next</span> <span style="color:#080;font-weight:bold">if</span> grid[col][x] =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">-</span><span style="color:#404">/</span></span>
+
+        recipe[x,y] = grid[col][x]
+      <span style="color:#080;font-weight:bold">end</span>
+
+      recipe
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This object is boring enough that I originally had planned to not implement it at all, in favor of having a <code>Cookbook.from_csv</code> method and perhaps a <code>Recipe.from_grid</code> method. However, I am increasingly growing suspicious of the presence of too many factory methods on objects, and worried that I’d be mixing the concerns of data extraction and data manipulation too much by doing that. In particular, I would have had to figure out a way to avoid directly referencing the “-“ string as an indicator of an empty cell in <code>Recipe.from_grid</code>, and I didn’t want to focus my energy on that because it felt like a waste of time.</p>
+
+<p>This code represents a small compromise in that it isolates something that doesn’t quite have a natural home so that it can be refactored later into something more elegant. Because this is a bolt-on feature, I felt comfortable making that trade so that I could focus more on the heart of the problem. However, if data import needs became more complex, this code would almost certainly need to be refactored into something more well organized.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Hopefully this article has given you a strong sense of how deep even seemingly simple game constructs can be if you really think them through. In my experience, this phenomenon is strikingly similar to the kinds of complexity that arise naturally in even moderately complicated business applications. The main difference is that in a practice environment, you don’t need to worry about how much money you’re costing someone else by spending as much time thinking about the problem as you do writing implementation code.</p>
+
+<p>While doing deliberate practice of this variety, it is perfectly acceptable to actively seek out ways to induce analysis paralysis, premature optimization, and extreme over-engineering. In fact, the closer you get to feeling like your solution is completely overkill for the problem at hand, the more likely it is that you’re going to learn something useful from the exercise. Experiencing the tensions that arise from this kind of perfectionism in a low-risk environment can make it a lot easier to take a middle of the road path when dealing with your day to day work.</p>
+
+<p>The thing I like most about this sort of exercise is that it will often lead you to come across patterns or techniques that actually are directly applicable in practical scenarios. Whenever I stumble across a technique which is just as easy to implement as a more commonly used alternative but is more robust in some way, I tend to experiment with introducing those ideas into my production code to see how they work out for me. Sometimes these experiments work and other times they don’t, but they always improve my understanding of why I do things the way I do.</p>
+
+<p>While I remain a firm believer in the idea that deliberate practice should be done only in moderation and that there is no substitute for working on real problems that matter to you, the occasional sitting or two spent on shaking up what you think you know about this craft is well worth the effort. There are lots of different ways to do that, but this is the way that works for me. I’d love to hear what you think of it, and would also like to hear what other ways you’ve tried to hone your problem solving skills. </p>
+
+  </div>
+</body>
+</html>

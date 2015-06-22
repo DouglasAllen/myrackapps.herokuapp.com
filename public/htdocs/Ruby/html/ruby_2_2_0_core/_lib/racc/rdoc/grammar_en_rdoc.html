@@ -1,0 +1,761 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <!-- RD version: 0.32.0  -->
+    <!--  filepage  -->
+  <meta charset="utf-8">
+          
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <!-- meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" -->
+
+
+	<title>File: grammar.en.rdoc [Ruby 2.2.0]</title>
+  <link rel="stylesheet" href="../../../css/inuit.css" >
+  <link rel="stylesheet" href="../../../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../../../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../../../css/rdoc.css" type="text/css" >
+  <!-- rel_prefix  = '../../..' -->
+    
+  <!-- rel_prefix = '../../..'   asset_rel_prefix = '../../..'  --> 
+
+</head>
+
+<body class="file">
+<div id='actionbar' >
+<div class='wrapper'>
+<ul class='grids g0'></ul></div>
+</div> <!-- end action bar -->
+<!-- VERSION HEADER for 2.2.0 NOT FOUND -->          <div class='wrapper'>
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <header>
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../../index.html">Home</a>
+          <a href="../../../index.html#classes">Classes</a>
+          <a href="../../../index.html#methods">Methods</a>
+        </h3>
+      </div>
+      </header>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/globals_rdoc.html">globals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/security_rdoc.html">security.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+				
+        <!-- local_rel_prefix -->
+					<li class="file"><a href="../../../sample/drb/README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" ></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value="" class="quicksearch-field" >
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ArgumentError.html">ArgumentError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Array.html">Array</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../BasicObject.html">BasicObject</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Bignum.html">Bignum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Binding.html">Binding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Class.html">Class</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Comparable.html">Comparable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Complex.html">Complex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Complex/compatible.html">Complex::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ConditionVariable.html">ConditionVariable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Continuation.html">Continuation</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Data.html">Data</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Dir.html">Dir</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ENV.html">ENV</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../EOFError.html">EOFError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding.html">Encoding</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding/Converter.html">Encoding::Converter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../EncodingError.html">EncodingError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Enumerable.html">Enumerable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Enumerator.html">Enumerator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Enumerator/Generator.html">Enumerator::Generator</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Errno.html">Errno</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Exception.html">Exception</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../FalseClass.html">FalseClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Fiber.html">Fiber</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../FiberError.html">FiberError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../File.html">File</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../File/Constants.html">File::Constants</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../File/Stat.html">File::Stat</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../FileTest.html">FileTest</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Fixnum.html">Fixnum</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Float.html">Float</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../FloatDomainError.html">FloatDomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../GC.html">GC</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../GC/Profiler.html">GC::Profiler</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Hash.html">Hash</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO.html">IO</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/WaitReadable.html">IO::WaitReadable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IO/WaitWritable.html">IO::WaitWritable</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IOError.html">IOError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../IndexError.html">IndexError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Integer.html">Integer</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Interrupt.html">Interrupt</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Kernel.html">Kernel</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../KeyError.html">KeyError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../LoadError.html">LoadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../LocalJumpError.html">LocalJumpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Marshal.html">Marshal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../MatchData.html">MatchData</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Math.html">Math</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Math/DomainError.html">Math::DomainError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Method.html">Method</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Module.html">Module</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Mutex.html">Mutex</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../NameError.html">NameError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../NilClass.html">NilClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../NoMemoryError.html">NoMemoryError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../NoMethodError.html">NoMethodError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../NotImplementedError.html">NotImplementedError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Numeric.html">Numeric</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Object.html">Object</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ObjectSpace.html">ObjectSpace</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Proc.html">Proc</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process.html">Process</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process/GID.html">Process::GID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process/Status.html">Process::Status</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process/Sys.html">Process::Sys</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process/UID.html">Process::UID</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Process/Waiter.html">Process::Waiter</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Queue.html">Queue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Random.html">Random</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Range.html">Range</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RangeError.html">RangeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Rational.html">Rational</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Rational/compatible.html">Rational::compatible</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Regexp.html">Regexp</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RegexpError.html">RegexpError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RubyVM.html">RubyVM</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RubyVM/Env.html">RubyVM::Env</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../RuntimeError.html">RuntimeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ScriptError.html">ScriptError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SecurityError.html">SecurityError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Signal.html">Signal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SignalException.html">SignalException</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SizedQueue.html">SizedQueue</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../StandardError.html">StandardError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../StopIteration.html">StopIteration</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../String.html">String</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Struct.html">Struct</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Symbol.html">Symbol</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SyntaxError.html">SyntaxError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SystemCallError.html">SystemCallError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SystemExit.html">SystemExit</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../SystemStackError.html">SystemStackError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Thread.html">Thread</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ThreadError.html">ThreadError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ThreadGroup.html">ThreadGroup</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../Time.html">Time</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../TracePoint.html">TracePoint</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../TrueClass.html">TrueClass</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../TypeError.html">TypeError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../UnboundMethod.html">UnboundMethod</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../UncaughtThrowError.html">UncaughtThrowError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../ZeroDivisionError.html">ZeroDivisionError</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../fatal.html">fatal</a></li>
+				
+        <!--  local_rel_prefix -->
+					<li><a href="../../../unknown.html">unknown</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+  <div class='adzbox'  id="azk83167">
+      
+  </div> 
+	<div id="documentation">
+		
+<h1 id="label-Racc+Grammar+File+Reference">Racc Grammar <a href="../../../File.html">File</a> Reference<span><a href="#label-Racc+Grammar+File+Reference">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<h2 id="label-Global+Structure">Global Structure<span><a href="#label-Global+Structure">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h2 id="label-Class+Block+and+User+Code+Block"><a href="../../../Class.html">Class</a> Block and User Code Block<span><a href="#label-Class+Block+and+User+Code+Block">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>There are two blocks on toplevel. One is ‘class’ block, another is ‘user
+code’ block. ‘user code’ block MUST be placed after ‘class’ block.</p>
+
+<h2 id="label-Comments">Comments<span><a href="#label-Comments">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can insert comments about all places. Two style comments can be used,
+Ruby style ‘#.….’ and C style ‘/*.…..*/’.</p>
+
+<h2 id="label-Class+Block"><a href="../../../Class.html">Class</a> Block<span><a href="#label-Class+Block">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The class block is formed like this:</p>
+
+<pre>class CLASS_NAME
+  [precedance table]
+  [token declarations]
+  [expected number of S/R conflicts]
+  [options]
+  [semantic value convertion]
+  [start rule]
+rule
+  GRAMMARS</pre>
+
+<p>CLASS_NAME is a name of parser class. This is the name of generating parser
+class.</p>
+
+<p>If CLASS_NAME includes ‘::’, Racc outputs module clause. For example,
+writing “class M::C” causes creating the code bellow:</p>
+
+<pre>module M
+  class C
+    :
+    :
+  end
+end</pre>
+
+<h2 id="label-Grammar+Block">Grammar Block<span><a href="#label-Grammar+Block">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The grammar block describes grammar which is able to be understood by
+parser. Syntax is:</p>
+
+<pre>(token): (token) (token) (token).... (action)
+
+(token): (token) (token) (token).... (action)
+       | (token) (token) (token).... (action)
+       | (token) (token) (token).... (action)</pre>
+
+<p>(action) is an action which is executed when its (token)s are found.
+(action) is a ruby code block, which is surrounded by braces:</p>
+
+<pre>{ print val[0]
+  puts val[1] }</pre>
+
+<p>Note that you cannot use ‘%’ string, here document, ‘%r’ regexp in action.</p>
+
+<p>Actions can be omitted. When it is omitted, ” (empty string) is used.</p>
+
+<p>A return value of action is a value of left side value ($$). It is value of
+result, or returned value by `return` statement.</p>
+
+<p>Here is an example of whole grammar block.</p>
+
+<pre>rule
+  goal: definition rules source { result = val }
+
+  definition:    none      { result = [] }
+    | definition startdesig  { result[0] = val[1] }
+    | definition
+             precrule   # this line continues from upper line
+      {
+        result[1] = val[1]
+      }
+
+  startdesig: START TOKEN</pre>
+
+<p>You can use the following special local variables in action:</p>
+
+<pre class="ruby"><span class="ruby-identifier">result</span> (<span class="ruby-identifier">$$</span>)
+</pre>
+
+<p>The value of left-hand side (lhs). A default value is <a href="0">val</a>.</p>
+
+<pre>val ($1,$2,$3...)</pre>
+
+<p>An array of value of right-hand side (rhs).</p>
+
+<pre>_values (...$-2,$-1,$0)</pre>
+
+<p>A stack of values. DO NOT MODIFY this stack unless you know what you are
+doing.</p>
+
+<h2 id="label-Operator+Precedence">Operator Precedence<span><a href="#label-Operator+Precedence">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>This function is equal to ‘%prec’ in yacc. To designate this block:</p>
+
+<pre class="ruby"><span class="ruby-identifier">prechigh</span>
+  <span class="ruby-identifier">nonassoc</span> <span class="ruby-string">'++'</span>
+  <span class="ruby-identifier">left</span>     <span class="ruby-string">'*'</span> <span class="ruby-string">'/'</span>
+  <span class="ruby-identifier">left</span>     <span class="ruby-string">'+'</span> <span class="ruby-string">'-'</span>
+  <span class="ruby-identifier">right</span>    <span class="ruby-string">'='</span>
+<span class="ruby-identifier">preclow</span>
+</pre>
+
+<p>`right` is yacc’s %right, `left` is yacc’s %left.</p>
+
+<p>`=` + (symbol) means yacc’s %prec:</p>
+
+<pre>prechigh
+  nonassoc UMINUS
+  left '*' '/'
+  left '+' '-'
+preclow
+
+rule
+  exp: exp '*' exp
+     | exp '-' exp
+     | '-' exp       =UMINUS   # equals to &quot;%prec UMINUS&quot;
+         :
+         :</pre>
+
+<h2 id="label-expect">expect<span><a href="#label-expect">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Racc has bison’s “expect” directive.</p>
+
+<pre># Example
+
+class MyParser
+rule
+  expect 3
+    :
+    :</pre>
+
+<p>This directive declares “expected” number of shift/reduce conflicts. If
+“expected” number is equal to real number of conflicts, Racc does not print
+conflict warning message.</p>
+
+<h2 id="label-Declaring+Tokens">Declaring Tokens<span><a href="#label-Declaring+Tokens">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>By declaring tokens, you can avoid many meaningless bugs. If declared token
+does not exist or existing token does not decleared, Racc output warnings.
+Declaration syntax is:</p>
+
+<pre class="ruby"><span class="ruby-identifier">token</span> <span class="ruby-constant">TOKEN_NAME</span> <span class="ruby-constant">AND_IS_THIS</span>
+      <span class="ruby-constant">ALSO_THIS_IS</span> <span class="ruby-constant">AGAIN_AND_AGAIN</span> <span class="ruby-constant">THIS_IS_LAST</span>
+</pre>
+
+<h2 id="label-Options">Options<span><a href="#label-Options">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>You can write options for Racc command in your Racc file.</p>
+
+<pre>options OPTION OPTION ...</pre>
+
+<p>Options are:</p>
+
+<pre class="ruby"><span class="ruby-identifier">omit_action_call</span>
+</pre>
+
+<p>omits empty action call or not.</p>
+
+<pre class="ruby"><span class="ruby-identifier">result_var</span>
+</pre>
+
+<p>uses local variable “result” or not.</p>
+
+<p>You can use ‘no_’ prefix to invert their meanings.</p>
+
+<h2 id="label-Converting+Token+Symbol">Converting Token <a href="../../../Symbol.html">Symbol</a><span><a href="#label-Converting+Token+Symbol">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Token symbols are, as default,</p>
+
+<pre>naked token string in Racc file (TOK, XFILE, this_is_token, ...)
+--&gt; symbol (:TOK, :XFILE, :this_is_token, ...)
+quoted string (':', '.', '(', ...)
+--&gt; same string (':', '.', '(', ...)</pre>
+
+<p>You can change this default by “convert” block. Here is an example:</p>
+
+<pre>convert
+  PLUS 'PlusClass'      # We use PlusClass for symbol of `PLUS'
+  MIN  'MinusClass'     # We use MinusClass for symbol of `MIN'
+end</pre>
+
+<p>We can use almost all ruby value can be used by token symbol, except
+‘false’ and ‘nil’.  These cause unexpected parse error.</p>
+
+<p>If you want to use <a href="../../../String.html">String</a> as token
+symbol, special care is required. For example:</p>
+
+<pre>convert
+  class '&quot;cls&quot;'            # in code, &quot;cls&quot;
+  PLUS '&quot;plus\n&quot;'          # in code, &quot;plus\n&quot;
+  MIN  &quot;\&quot;minus#{val}\&quot;&quot;   # in code, \&quot;minus#{val}\&quot;
+end</pre>
+
+<h2 id="label-Start+Rule">Start Rule<span><a href="#label-Start+Rule">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>‘%start’ in yacc. This changes start rule.</p>
+
+<pre class="ruby"><span class="ruby-identifier">start</span> <span class="ruby-identifier">real_target</span>
+</pre>
+
+<h2 id="label-User+Code+Block">User Code Block<span><a href="#label-User+Code+Block">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>“User Code Block” is a Ruby source code which is copied to output. There
+are three user code blocks, “header” “inner” and “footer”.</p>
+
+<p>Format of user code is like this:</p>
+
+<pre>---- header
+  ruby statement
+  ruby statement
+  ruby statement
+
+---- inner
+  ruby statement
+     :
+     :</pre>
+
+<p>If four ‘-’ exist on line head, Racc treat it as beginning of user code
+block. The name of user code block must be one word.</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small>Generated with Rubydoc Rdoc Generator 0.32.0</small>.</p>
+	</div>
+
+    
+
+
+</body>
+
+</html>
+

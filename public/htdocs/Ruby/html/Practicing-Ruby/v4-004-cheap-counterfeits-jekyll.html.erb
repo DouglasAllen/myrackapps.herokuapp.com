@@ -1,0 +1,745 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>While it may not seem like it at first, you can learn a great deal about Ruby by building something as simple as a static website generator. Although the task itself may seem a bit dull, it provides an opportunity to practice a wide range of Ruby idioms that can be applied elsewhere whenever you need to manipulate text-based data or muck around with the filesystem. Because text and files are everywhere, this kind of practice can have a profound impact on your ability to write elegant Ruby code.</p>
+
+<p>Unfortunately, there are two downsides to building a static site generator as a learning exercise: it involves a fairly large time commitment, and in the end you will probably be better off using <a href="http://github.com/mojombo/jekyll">Jekyll</a> rather than maintaining your own project. But don’t despair, I wrote this article specifically with those two points in mind!</p>
+
+<p>In order to make it easier for us to study text and file processing tricks, I broke off a small chunk of Jekyll’s functionality and implemented a simplified demo app called <a href="http://github.com/elm-city-craftworks/jackal">Jackal</a>. Although it would be a horrible idea to attempt to use this barely functional counterfeit to maintain a blog or website, it works great as a tiny but context-rich showcase for some very handy Ruby idioms.</p>
+
+<h3 id="a-brief-overview-of-jackals-functionality">A brief overview of Jackal’s functionality</h3>
+
+<p>The best way to get a feel for what Jackal can do is to <a href="https://github.com/elm-city-craftworks/jackal">grab it from Github</a> and follow the instructions in the README. However, because it only implements a single feature, you should be able to get a full sense of how it works from the following overview.</p>
+
+<p>Similar to Jekyll, the main purpose of Jackal is to convert Markdown-formatted posts and their metadata into HTML files. For example, suppose we have a file called <strong>_posts/2012-05-09-tiniest-kitten.markdown</strong> with the following contents:</p>
+
+<pre><code>---
+category: essays
+title: The tiniest kitten
+---
+
+# The Tiniest Kitten
+
+Is not nearly as **small** as you might think she is.
+</code></pre>
+
+<p>Jackal’s job is to split the metadata from the content in this file and then generate a new file called <strong>_site/essays/2012/05/09/tiniest_kitten.html</strong> that ends up looking like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;h1&gt;</span>The Tiniest Kitten<span style="color:#070;font-weight:bold">&lt;/h1&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;p&gt;</span>Is not nearly as <span style="color:#070;font-weight:bold">&lt;strong&gt;</span>small<span style="color:#070;font-weight:bold">&lt;/strong&gt;</span> as you might think she is.<span style="color:#070;font-weight:bold">&lt;/p&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If Jackal were a real static site generator, it would support all sorts of fancy features like layouts and templates, but I found that I was able to generate enough “teaching moments” without those things, and so this is pretty much all there is to it. You may want to spend a few more minutes <a href="http://github.com/elm-city-craftworks/jackal">reading its source</a> before moving on, but if you understand this example, you will have no trouble understanding the rest of this article.</p>
+
+<p>Now that you have some sense of the surrounding context, I will take you on a guided tour of through various points of interest in Jackal’s implementation, highlighting the parts that illustrate generally useful techniques.</p>
+
+<h3 id="idioms-for-text-processing">Idioms for text processing</h3>
+
+<p>While working on solving this problem, I noticed a total of four text processing idioms worth mentioning.</p>
+
+<p><strong>1) Enabling multi-line mode in patterns</strong></p>
+
+<p>The first step that Jackal (and Jekyll) need to take before further processing can be done on source files is to split the YAML-based metadata from the post’s content. In Jekyll, the following code is used to split things up:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> <span style="color:#069">self</span>.content =~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^(---</span><span style="color:#D20">\s</span><span style="color:#808">*</span><span style="color:#D20">\n</span><span style="color:#808">.*?</span><span style="color:#D20">\n</span><span style="color:#808">?)^(---</span><span style="color:#D20">\s</span><span style="color:#808">*$</span><span style="color:#D20">\n</span><span style="color:#808">?)</span><span style="color:#404">/</span><span style="color:#C2C">m</span></span>
+  <span style="color:#069">self</span>.content = <span style="color:#d70">$POSTMATCH</span>
+  <span style="color:#069">self</span>.data    = <span style="color:#036;font-weight:bold">YAML</span>.load(<span style="color:#d70">$1</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is a fairly vanilla use of regular expressions, and is pretty easy to read even if you aren’t especially familiar with Jekyll itself. The main interesting thing about it that it uses the <code>/m</code> modifier to make it so that the pattern is evaluated in multiline-mode. In this particular example, this simply makes it so that the group which captures the YAML metadata can match multiple lines without explicitly specifying the intermediate <code>\n</code> characters. The following contrived example should help you understand what that means if you are still scratching your head:</p>
+
+<pre><code>&gt;&gt; "foo\nbar\nbaz\nquux"[/foo\n(.*)quux/, 1]
+=&gt; nil
+&gt;&gt; "foo\nbar\nbaz\nquux"[/foo\n(.*)quux/m, 1]
+=&gt; "bar\nbaz\n"
+</code></pre>
+
+<p>While this isn’t much of an exciting idiom for those who have a decent understanding of regular expressions, I know that for many patterns can be a mystery, and so I wanted to make sure to point this feature out. It is great to use whenever you need to match a semi-arbritrary blob of content that can span many lines.</p>
+
+<p><strong>2) Using MatchData objects rather than global variables</strong></p>
+
+<p>While it is not necessarily terrible to use variables like <code>$1</code> and <code>$POSTMATCH</code>, I tend to avoid them whenever it is not strictly necessary to use them. I find that using <code>String#match</code> feels a lot more object-oriented and is more aesthetically pleasing:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> md = <span style="color:#069">self</span>.content.match(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^(---</span><span style="color:#D20">\s</span><span style="color:#808">*</span><span style="color:#D20">\n</span><span style="color:#808">.*?</span><span style="color:#D20">\n</span><span style="color:#808">?)^(---</span><span style="color:#D20">\s</span><span style="color:#808">*$</span><span style="color:#D20">\n</span><span style="color:#808">?)</span><span style="color:#404">/</span><span style="color:#C2C">m</span></span>)
+  <span style="color:#069">self</span>.content = md.post_match
+  <span style="color:#069">self</span>.data    = md[<span style="color:#00D">1</span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you combine this with the use of Ruby 1.9’s named groups, your code ends up looking even better. The following example is what I ended up using in Jackal:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (md = contents.match(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^(?&lt;metadata&gt;---</span><span style="color:#D20">\s</span><span style="color:#808">*</span><span style="color:#D20">\n</span><span style="color:#808">.*?</span><span style="color:#D20">\n</span><span style="color:#808">?)^(---</span><span style="color:#D20">\s</span><span style="color:#808">*$</span><span style="color:#D20">\n</span><span style="color:#808">?)</span><span style="color:#404">/</span><span style="color:#C2C">m</span></span>))
+  <span style="color:#069">self</span>.contents = md.post_match
+  <span style="color:#069">self</span>.metadata = <span style="color:#036;font-weight:bold">YAML</span>.load(md[<span style="color:#A60">:metadata</span>])
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While this does lead to somewhat more verbose patterns, it helps quite a bit with readability and even makes it possible to directly use <code>MatchData</code> objects in a way similar to how we would work with a parameters hash.</p>
+
+<p><strong>3) Enabling free-spacing mode in patterns</strong></p>
+
+<p>I tend to be very strict about keeping my code formatted so that my lines are under 80 characters, and as a result of that I find that I am often having to think about how to break up long statements. I ended up using the <code>/x</code> modifier in one of Jackal’s regular expressions for this purpose, as shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Jackal</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span>
+    <span style="color:#036;font-weight:bold">PATTERN</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#808">(?&lt;year&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{4})-(?&lt;month&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{2})-(?&lt;day&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{2})-
+                (?&lt;basename&gt;.*).markdown</span><span style="color:#D20">\z</span><span style="color:#404">/</span><span style="color:#C2C">x</span></span>
+
+    <span style="color:#777"># ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This mode makes it so that patterns ignore whitespace characters, making the previous pattern functionally equivalent to the following pattern:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\A</span><span style="color:#808">(?&lt;year&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{4})-(?&lt;month&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{2})-(?&lt;day&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{2})-(?&lt;basename&gt;.*).markdown</span><span style="color:#D20">\z</span><span style="color:#404">/</span><span style="color:#C2C">x</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>However, this mode does not exist primarily to serve the needs of those with obsessive code formatting habits, but instead exists to make it possible to break up and document long regular expressions, such as in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># adapted from: http://refactormycode.com/codes/573-phone-number-regex</span>
+
+<span style="color:#036;font-weight:bold">PHONE_NUMBER_PATTERN</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^
+  (?:
+    (?&lt;prefix&gt;</span><span style="color:#D20">\d</span><span style="color:#808">)             # prefix digit
+    [ </span><span style="color:#D20">\-</span><span style="color:#D20">\.</span><span style="color:#808">]?                  # optional separator
+  )?
+  (?:
+    </span><span style="color:#D20">\(</span><span style="color:#808">?(?&lt;areacode&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{3})</span><span style="color:#D20">\)</span><span style="color:#808">?  # area code
+    [ </span><span style="color:#D20">\-</span><span style="color:#D20">\.</span><span style="color:#808">]                   # separator
+  )?
+  (?&lt;trunk&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{3})             # trunk
+  [ </span><span style="color:#D20">\-</span><span style="color:#D20">\.</span><span style="color:#808">]                     # separator
+  (?&lt;line&gt;</span><span style="color:#D20">\d</span><span style="color:#808">{4})              # line
+  (?:</span><span style="color:#D20">\ </span><span style="color:#808">?x?                    # optional space or 'x'
+    (?&lt;extension&gt;</span><span style="color:#D20">\d</span><span style="color:#808">+)         # extension
+  )?
+$</span><span style="color:#404">/</span><span style="color:#C2C">x</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This idiom is not extremly common in Ruby, perhaps because it is easy to use interpolation within regular expressions to accomplish similar results. However, this does seem to be a handy way to document your patterns and arrange them in a way that can be easily visually scanned without having to chain things together through interpolation.</p>
+
+<p><strong>4) Making good use of Array#join</strong></p>
+
+<p>Whenever I am building up a string from a list of elements, I tend to use <code>Array#join</code> rather than string interpolation (i.e. the <code>#{}</code> operator) if I am working with more than two elements. As an example, take a look at my implementation of the <code>Jackal::Post#dirname</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Jackal</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">dirname</span>
+      raise <span style="color:#036;font-weight:bold">ArgumentError</span> <span style="color:#080;font-weight:bold">unless</span> metadata[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">category</span><span style="color:#710">&quot;</span></span>]
+
+      [ metadata[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">category</span><span style="color:#710">&quot;</span></span>], 
+        filedata[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">year</span><span style="color:#710">&quot;</span></span>], filedata[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">month</span><span style="color:#710">&quot;</span></span>], filedata[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">day</span><span style="color:#710">&quot;</span></span>] ].join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The reason for this is mostly aesthetic, but it gives me the freedom to format my code any way I would like, and is a bit easier to make changes to.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Noah Hendrix pointed out in the <a href="http://practicingruby.com/articles/57#comments">comments on this article</a> that for this particular example, using <code>File.join</code> would be better because it would take platform-specific path syntax into account.</p>
+</blockquote>
+
+<h3 id="idioms-for-working-with-files-and-folders">Idioms for working with files and folders</h3>
+
+<p>In addition to the text processing tricks that we’ve already gone over, I also noticed four idioms for doing various kinds of file and folder manipulation that came in handy.</p>
+
+<p><strong>1) Manipulating filenames</strong></p>
+
+<p>There are three methods that are commonly used for munging filenames: <code>File.dirname</code>, <code>File.basename</code>, and <code>File.extname</code>. In Jackal, I ended up using two out of three of them, but could easily imagine how to make use of all three.</p>
+
+<p>I expect that most folks will already be familiar with <code>File.dirname</code>, but if that is not the case, the tests below should familiarize you with one of its use cases:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>describe <span style="color:#036;font-weight:bold">Jackal</span>::<span style="color:#036;font-weight:bold">Page</span> <span style="color:#080;font-weight:bold">do</span>
+  let(<span style="color:#A60">:page</span>) <span style="color:#080;font-weight:bold">do</span>
+    posts_dir = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">File</span>.dirname(<span style="color:#069">__FILE__</span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/../fixtures/sample_app/_posts</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#036;font-weight:bold">Jackal</span>::<span style="color:#036;font-weight:bold">Page</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>posts_dir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/2012-05-07-first-post.markdown</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">must extract the base filename</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    page.filename.must_equal(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2012-05-07-first-post.markdown</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When used in conjunction with the special <code>__FILE__</code> variable, <code>File.dirname</code> is used generate a relative path. So for example, if the <code>__FILE__</code> variable in the previous tests evaluates to <code>"test/units/page_test.rb"</code>, you end up with the following return value from <code>File.dirname</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#036;font-weight:bold">File</span>.dirname(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test/units/page_test.rb</span><span style="color:#710">&quot;</span></span>)
+=&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test/units</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Then the whole path becomes <code>"tests/units/../fixtures/sample_app/_posts"</code>, which is functionally equivalent to <code>"test/fixtures/sample_app/_posts"</code>. The main benefit is that should you run the tests from a different folder, <code>__FILE__</code> would be updated accordingly to still generate a correct relative path. This is yet another one of those idioms that is hardly exciting to those who are already familiar with it, but is an important enough tool that I wanted to make sure to mention it.</p>
+
+<p>If you feel like you understand <code>File.dirname</code>, then <code>File.basename</code> should be just as easy to grasp. It is essentially the opposite operation, getting just the filename and stripping away the directories in the path. If you take a closer look at the tests above, you will see that <code>File.basename</code> is exactly what we need in order to implement the behavior hinted at by <code>Jackal::Page#filename</code>. The irb-based example below should give you a sense of how that could work:</p>
+
+<pre><code>&gt;&gt; File.basename("long/path/to/_posts/2012-05-09-tiniest-kitten.markdown")
+=&gt; "2012-05-09-tiniest-kitten.markdown"
+</code></pre>
+
+<p>For the sake of simplicity, I decided to support Markdown only in Jackal posts, but if we wanted to make it more Jekyll-like, we would need to support looking up which formatter to use based on the post’s file extension. This is where <code>File.extname</code> comes in handy:</p>
+
+<pre><code>&gt;&gt; File.extname("2012-05-09-tiniest-kitten.markdown")
+=&gt; ".markdown"
+&gt;&gt; File.extname("2012-05-09-tiniest-kitten.textile")
+=&gt; ".textile"
+</code></pre>
+
+<p>Typically when you are interested in the extension of a file, you are also interested in the name of the file without the extension. While I have seen several hacks that can be used for this purpose, the approach I like best is to use the lesser-known two argument form of <code>File.basename</code>, as shown below:</p>
+
+<pre><code>&gt;&gt; File.basename("2012-05-09-tiniest-kitten.textile", ".*")
+=&gt; "2012-05-09-tiniest-kitten"
+&gt;&gt; File.basename("2012-05-09-tiniest-kitten.markdown", ".*")
+=&gt; "2012-05-09-tiniest-kitten"
+</code></pre>
+
+<p>While these three methods may not look especially beautiful in your code, they provide a fairly comprehensive way of decomposing paths and filenames into their parts. With that in mind, it is somewhat surprising to me how many different ways I have seen people attempt to solve these problems, typically resorting to some regexp-based hacks.</p>
+
+<p><strong>2) Using Pathname objects</strong></p>
+
+<p>Whenever Ruby has a procedural or functional API, it usually also has a more object-oriented way of doing things as well. Manipulating paths and filenames is no exception, and the example below shows that it is entirely possible to use <code>Pathname</code> objects to solve the same problems discussed in the previous section:</p>
+
+<pre><code>&gt;&gt; require "pathname"
+=&gt; true
+&gt;&gt; Pathname.new("long/path/to/_posts/2012-05-09-tiniest-kitten.markdown").dirname
+=&gt; #&lt;Pathname:long/path/to/_posts&gt;
+&gt;&gt; Pathname.new("long/path/to/_posts/2012-05-09-tiniest-kitten.markdown").basename
+=&gt; #&lt;Pathname:2012-05-09-tiniest-kitten.markdown&gt;
+&gt;&gt; Pathname.new("long/path/to/_posts/2012-05-09-tiniest-kitten.markdown").extname
+=&gt; ".markdown"
+</code></pre>
+
+<p>However, because doing so doesn’t really simplify the code, it is hard to see the advantages of using <code>Pathname</code> objects in this particular example. A much better example can be found in <code>Jackal::Post#save</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Jackal</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save</span>(base_dir)
+      target_dir = <span style="color:#036;font-weight:bold">Pathname</span>.new(base_dir) + dirname
+      
+      target_dir.mkpath
+
+      <span style="color:#036;font-weight:bold">File</span>.write(target_dir + filename, contents)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The main reason why I used a <code>Pathname</code> object here is because I needed to make use of the <code>mkpath</code> method. This method is roughly equivalent to the UNIX <code>mkdir -p</code> command, which handles the creation of intermediate directories automatically. This feature really comes in handy for safely generating a deeply nested folder structure similar to the ones that Jekyll produces. I could have alternatively used the <code>FileUtils</code> standard library for this purpose, but personally find <code>Pathname</code> to look and feel a lot more like a modern Ruby library.</p>
+
+<p>Although its use here is almost coincidental, the <code>Pathname#+</code> method is another powerful feature worth mentioning. This method builds up a <code>Pathname</code> object through concatenation. Because this method accepts both <code>Pathname</code> objects and <code>String</code> objects as arguments but always returns a <code>Pathname</code> object, it makes easy to incrementally build up a complex path. However, because <code>Pathname</code> objects do more than simply merge strings together, you need to be aware of certain edge cases. For example, the following irb session demonstrates that <code>Pathname</code> has a few special cases for dealing with absolute and relative paths:</p>
+
+<pre><code>&gt;&gt; Pathname.new("foo") + "bar"
+=&gt; #&lt;Pathname:foo/bar&gt;
+&gt;&gt; Pathname.new("foo") + "/bar"
+=&gt; #&lt;Pathname:/bar&gt;
+&gt;&gt; Pathname.new("foo") + "./bar"
+=&gt; #&lt;Pathname:foo/bar&gt;
+&gt;&gt; Pathname.new("foo") + ".////bar"
+=&gt; #&lt;Pathname:foo/bar&gt;
+</code></pre>
+
+<p>Unless you keep these issues in mind, you may end up introducing subtle errors into your code. However, this behavior makes sense as long as you can remember that <code>Pathname</code> is semantically aware of what a path actually is, and is not meant to be a drop in replacement for ordinary string concatenation.</p>
+
+<p><strong>3) Using File.write</strong></p>
+
+<p>When I first started using Ruby, I was really impressed by how simple and expressive the <code>File.read</code> method was. Because of that, it was kind of a shock to find out that simply writing some text to a file was not as simple. The following code felt like the opposite of elegance to me, but we all typed it for years:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">File</span>.open(filename, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w</span><span style="color:#710">&quot;</span></span>) { |f| f &lt;&lt; contents }
+</pre></div>
+</div>
+</div>
+
+<p>In modern versions of Ruby 1.9, the above code can be replaced with something far nicer, as shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">File</span>.write(filename, contents)
+</pre></div>
+</div>
+</div>
+
+<p>If you look back at the implementation of <code>Jackal::Post#save</code>, you will see that I use this technique there. While it is the simple and obvious thing to do, a ton of built up muscle memory typically causes me to forget that <code>File.write</code> exists, even when I am not concerned at all about backwards compatibility concerns.</p>
+
+<p>Another pair of methods worth knowing about that help make some other easy tasks more elegant in a similar way are <code>File.binread</code> and <code>File.binwrite</code>. These aren’t really related to our interests with Jackal, but are worth checking out if you ever work with binary files.</p>
+
+<p><strong>4) Using Dir.mktmpdir for testing</strong></p>
+
+<p>It can be challenging to write tests for code which deals with files and complicated folder structures, but it doesn’t have to be. The tempfile standard library provides a lot of useful tools for dealing with this problem, and <code>Dir.mktmpdir</code> is one of its most useful methods.  </p>
+
+<p>I like to use this method in combination with <code>Dir.chdir</code> to build up a temporary directory structure, do some work in it, and then automatically discard all the files I generated as soon as my test is completed. The tests below are a nice example of how that works:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">must be able to save contents to file</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#036;font-weight:bold">Dir</span>.mktmpdir <span style="color:#080;font-weight:bold">do</span> |base_dir|
+    post.save(base_dir)
+
+    <span style="color:#036;font-weight:bold">Dir</span>.chdir(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>base_dir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>post.dirname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#036;font-weight:bold">File</span>.read(post.filename).must_equal(post.contents)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+<p>This approach provides an alternative to using mock objects. Even though this code creates real files and folders, the transactional nature of <code>Dir.mktmpdir</code> ensures that tests won’t have any unexpected side effects from run to run. When manipulating files and folders is part of the core job of an object (as opposed to an implementation detail), I prefer testing in this way rather than using mock objects for the sake of realism.</p>
+
+<p>The <code>Dir.mktmpdir</code> method can also come in handy whenever some complicated work needs to be done in a sandbox on the file system. For example, I <a href="https://github.com/sandal/bookie/blob/45e0c4d0a575026deff79732b3c4c737f1c6f15c/lib/bookie/emitters/epub.rb#L19-46">use it in Bookie</a> to store the intermediate results of a complicated text munging process, and it seems to work great for that purpose.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Taken individually, these text processing and file management idioms only make a subtle improvement to the quality of your code. However, if you get in the habit of using most or all of them whenever you have an opportunity to do so, you will end up with much more maintainable code that is very easy to read.</p>
+
+<p>Because many languages make text processing and file management hard, and because Ruby also has low level APIs that work in much the same way as those languages, it is often the case that folks end up solving these problems the hard way without ever realizing that there are nicer alternatives available. Hopefully this article has exposed you to a few tricks you haven’t already seen before, but if it hasn’t, maybe you can share some thoughts on how to make this code even better!</p>
+
+  </div>
+</body>
+</html>

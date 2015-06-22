@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>Rack app with uri and HTTP specific responses · rack/rack Wiki</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="rack/rack" name="twitter:title"><meta content="rack - a modular Ruby webserver interface" name="twitter:description"><meta content="https://avatars3.githubusercontent.com/u/42379?v=3&amp;s=400" name="twitter:image:src">
+      <meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="https://avatars3.githubusercontent.com/u/42379?v=3&amp;s=400" property="og:image"><meta content="rack/rack" property="og:title"><meta content="https://github.com/rack/rack" property="og:url"><meta content="rack - a modular Ruby webserver interface" property="og:description">
+      <meta name="browser-stats-url" content="/_stats">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="https://github.com/_sockets">
+    <meta name="pjax-timeout" content="1000">
+    <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_wiki" data-pjax-transient="">
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="github" name="octolytics-app-id"><meta content="3281F5B0:12AE:1125143E:54E7BEF7" name="octolytics-dimension-request_id"><meta content="887598" name="octolytics-actor-id"><meta content="DouglasAllen" name="octolytics-actor-login"><meta content="e33d9202dff6e8481bb8ed352889b85819e07f27f49b1f83ff8c4ab85b91e2c1" name="octolytics-actor-hash">
+    
+    <meta content="Rails, view, wiki#show" name="analytics-event">
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="wjv2RWOVylGAUhHaxiR9XLQEalTE1ZnsZIVzTB8B10K9TwnMvMpTMaH+ffRb0SOgFXvmqjFHPjKG1v0Ji+mruw==" name="csrf-token">
+
+    <link href="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/github-951e64287f8bc97e9b47e510c3be2de006cf747d5c833af0f3389.css" media="all" rel="stylesheet">
+    <link href="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/github2-f7073494168d35df2845fccdae3f73cb69dc51cf65c42dccd9ce.css" media="all" rel="stylesheet">
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="f323dd8546e66c2e974b3bce9d06785e">
+
+      
+  <meta name="description" content="rack - a modular Ruby webserver interface">
+  <meta name="go-import" content="github.com/rack/rack git https://github.com/rack/rack.git">
+
+  <meta content="42379" name="octolytics-dimension-user_id"><meta content="rack" name="octolytics-dimension-user_login"><meta content="96071" name="octolytics-dimension-repository_id"><meta content="rack/rack" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="96071" name="octolytics-dimension-repository_network_root_id"><meta content="rack/rack" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/rack/rack/commits/master.atom" rel="alternate" title="Recent Commits to rack:master" type="application/atom+xml">
+
+  <script src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/api.js" async="" type="text/javascript"></script></head>
+
+
+  <body class="logged_in  env-production linux vis-public">
+    <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+
+      <div class="site-search repo-scope js-site-search" role="search">
+          <form accept-charset="UTF-8" action="/rack/rack/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/rack/rack/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+  <input class="js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" data-global-scope-placeholder="Search GitHub" data-repo-scope-placeholder="Search" tabindex="1" autocapitalize="off" type="text">
+  <div class="scope-badge">This repository</div>
+</form>
+      </div>
+      <ul class="header-nav left" role="navigation">
+        <li class="header-nav-item explore">
+          <a class="header-nav-link" href="https://github.com/explore" data-ga-click="Header, go to explore, text:explore">Explore</a>
+        </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://gist.github.com/" data-ga-click="Header, go to gist, text:gist">Gist</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/blog" data-ga-click="Header, go to blog, text:blog">Blog</a>
+          </li>
+        <li class="header-nav-item">
+          <a class="header-nav-link" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">Help</a>
+        </li>
+      </ul>
+
+    
+<ul class="header-nav user-nav right" id="user-links">
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link name" href="https://github.com/DouglasAllen" data-ga-click="Header, go to profile, text:username">
+      <img alt="Douglas G. Allen" class="avatar" data-user="887598" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/887598.jpeg" height="20" width="20">
+      <span class="css-truncate">
+        <span class="css-truncate-target">DouglasAllen</span>
+      </span>
+    </a>
+  </li>
+
+  <li class="header-nav-item dropdown js-menu-container">
+    <a class="header-nav-link js-menu-target tooltipped tooltipped-s" href="#" aria-label="Create new..." data-ga-click="Header, create new, icon:add">
+      <span class="octicon octicon-plus"></span>
+      <span class="dropdown-caret"></span>
+    </a>
+
+    <div class="dropdown-menu-content js-menu-content">
+      
+<ul class="dropdown-menu">
+  <li>
+    <a href="https://github.com/new" data-ga-click="Header, create new repository, icon:repo"><span class="octicon octicon-repo"></span> New repository</a>
+  </li>
+  <li>
+    <a href="https://github.com/organizations/new" data-ga-click="Header, create new organization, icon:organization"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+    <li class="dropdown-divider"></li>
+    <li class="dropdown-header">
+      <span title="rack/rack">This repository</span>
+    </li>
+      <li>
+        <a href="https://github.com/rack/rack/issues/new" data-ga-click="Header, create new issue, icon:issue"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+</ul>
+
+    </div>
+  </li>
+
+  <li class="header-nav-item">
+        <a href="https://github.com/notifications" aria-label="You have unread notifications" class="header-nav-link notification-indicator tooltipped tooltipped-s" data-ga-click="Header, go to notifications, icon:unread" data-hotkey="g n">
+        <span class="mail-status unread"></span>
+        <span class="octicon octicon-inbox"></span>
+</a>
+  </li>
+
+  <li class="header-nav-item">
+    <a class="header-nav-link tooltipped tooltipped-s" href="https://github.com/settings/profile" id="account_settings" aria-label="Settings" data-ga-click="Header, go to settings, icon:settings">
+      <span class="octicon octicon-gear"></span>
+    </a>
+  </li>
+
+  <li class="header-nav-item">
+    <form accept-charset="UTF-8" action="/logout" class="logout-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="pqY7dmEWrAUS6+b+Ewd5elKACjd14i8SVSJZqXyWEjZyBAZRnMNKI8LiZhaPx2ksdAg6NcTt/mTajdyuB5Rfow==" type="hidden"></div>
+      <button class="header-nav-link sign-out-button tooltipped tooltipped-s" aria-label="Sign out" data-ga-click="Header, sign out, icon:logout">
+        <span class="octicon octicon-sign-out"></span>
+      </button>
+</form>  </li>
+
+</ul>
+
+
+    
+  </div>
+</div>
+
+      
+
+        
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container">
+      
+    </div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+<ul class="pagehead-actions">
+
+  <li>
+      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="1H8wRF0ksI+lpQxbpvFLvIPr/EGl+QbmIoZGHGNrZmP50/u79IYlg3QrzTqLh29goZ2fF9cv2d+mlDN7pRMAWQ==" type="hidden"></div>    <input id="repository_id" name="repository_id" value="96071" type="hidden">
+
+      <div class="select-menu js-menu-container js-select-menu">
+        <a class="social-count js-social-count" href="https://github.com/rack/rack/watchers">
+          117
+        </a>
+        <a href="https://github.com/rack/rack/subscription" class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0" aria-haspopup="true">
+          <span class="js-select-button">
+            <span class="octicon octicon-mute ignored"></span>
+            Stop ignoring
+          </span>
+        </a>
+
+        <div class="select-menu-modal-holder">
+          <div class="select-menu-modal subscription-menu-modal js-menu-content" aria-hidden="true">
+            <div class="select-menu-header">
+              <span class="select-menu-title">Notifications</span>
+              <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+            </div>
+
+            <div class="select-menu-list js-navigation-container" role="menu">
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_included" name="do" value="included" type="radio">
+                  <span class="select-menu-item-heading">Not watching</span>
+                  <span class="description">Be notified when participating or @mentioned.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Watch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input id="do_subscribed" name="do" value="subscribed" type="radio">
+                  <span class="select-menu-item-heading">Watching</span>
+                  <span class="description">Be notified of all conversations.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-eye"></span>
+                    Unwatch
+                  </span>
+                </div>
+              </div>
+
+              <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+                <span class="select-menu-item-icon octicon octicon-check"></span>
+                <div class="select-menu-item-text">
+                  <input checked="checked" id="do_ignore" name="do" value="ignore" type="radio">
+                  <span class="select-menu-item-heading">Ignoring</span>
+                  <span class="description">Never be notified.</span>
+                  <span class="js-select-button-text hidden-select-button-text">
+                    <span class="octicon octicon-mute"></span>
+                    Stop ignoring
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+</form>
+
+  </li>
+
+  <li>
+    
+  <div class="js-toggler-container js-social-container starring-container ">
+
+    <form accept-charset="UTF-8" action="/rack/rack/unstar" class="js-toggler-form starred js-unstar-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="M7ipUnQS436AtuHhxMhck8IPGDB8WAJkXBd9WTQlv+7TTk0oAjAT+ocXFAY/Y+Ka6x5LA42jIzI5qB7+8ZG1Kg==" type="hidden"></div>
+      <button class="minibutton with-count js-toggler-target" aria-label="Unstar this repository" title="Unstar rack/rack">
+        <span class="octicon octicon-star"></span>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/rack/rack/stargazers">
+          2,206
+        </a>
+</form>
+    <form accept-charset="UTF-8" action="/rack/rack/star" class="js-toggler-form unstarred js-star-button" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="mZBoMrKWpCmHwtWFsnTwTTCd2Gi6kcAzP9MDvha3va5VvN45ZUWgYeb1uegYtqk3yMD0dRf4jzdTMlTFws2VOQ==" type="hidden"></div>
+      <button class="minibutton with-count js-toggler-target" aria-label="Star this repository" title="Star rack/rack">
+        <span class="octicon octicon-star"></span>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="https://github.com/rack/rack/stargazers">
+          2,206
+        </a>
+</form>  </div>
+
+  </li>
+
+        <li>
+          <a href="https://github.com/rack/rack/fork" class="minibutton with-count js-toggler-target tooltipped-n" title="Fork your own copy of rack/rack to your account" aria-label="Fork your own copy of rack/rack to your account" rel="nofollow" data-method="post">
+            <span class="octicon octicon-repo-forked"></span>
+            Fork
+          </a>
+          <a href="https://github.com/rack/rack/network" class="social-count">846</a>
+        </li>
+
+</ul>
+
+        <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="https://github.com/rack" class="url fn" itemprop="url" rel="author"><span itemprop="title">rack</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="https://github.com/rack/rack" class="js-current-repository" data-pjax="#js-repo-pjax-container">rack</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline">
+        <div class="repository-sidebar clearfix">
+            
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders" role="navigation" data-pjax="#js-repo-pjax-container" data-issue-count-url="/rack/rack/issues/counts">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="https://github.com/rack/rack" aria-label="Code" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /rack/rack">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Issues">
+        <a href="https://github.com/rack/rack/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /rack/rack/issues">
+          <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+          <span class="js-issue-replace-counter"></span>
+          <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>      </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull Requests">
+      <a href="https://github.com/rack/rack/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g p" data-selected-links="repo_pulls /rack/rack/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+          <span class="js-pull-replace-counter"></span>
+          <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>    </li>
+
+
+      <li class="tooltipped tooltipped-w" aria-label="Wiki">
+        <a href="https://github.com/rack/rack/wiki" aria-label="Wiki" class="selected js-selected-navigation-item sunken-menu-item" data-hotkey="g w" data-selected-links="repo_wiki /rack/rack/wiki">
+          <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+          <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>      </li>
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="https://github.com/rack/rack/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-selected-links="pulse /rack/rack/pulse">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="https://github.com/rack/rack/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_graphs repo_contributors /rack/rack/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62.gif" height="16" width="16">
+</a>    </li>
+  </ul>
+
+
+</nav>
+
+              <div class="only-with-full-nav">
+                  
+<div class="clone-url " data-protocol-type="http" data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="https://github.com/rack/rack.git" readonly="readonly" type="text">
+    <span class="input-group-button">
+      
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url open" data-protocol-type="ssh" data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">SSH</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="git@github.com:rack/rack.git" readonly="readonly" type="text">
+    <span class="input-group-button">
+      
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url " data-protocol-type="subversion" data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="https://github.com/rack/rack" readonly="readonly" type="text">
+    <span class="input-group-button">
+      
+    </span>
+  </div>
+</div>
+
+
+
+<p class="clone-options">You can clone with
+  <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>, <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>, or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <span class="octicon octicon-question"></span>
+  </a>
+</p>
+
+
+
+                <a href="https://github.com/rack/rack/archive/master.zip" class="minibutton sidebar-button" aria-label="Download the contents of rack/rack as a zip file" title="Download the contents of rack/rack as a zip file" rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+          
+
+<div id="wiki-wrapper" class="wiki-wrapper page">
+<div class="gh-header">
+  <div class="gh-header-show">
+      <div class="gh-header-actions">
+          <a href="https://github.com/rack/rack/wiki/Rack-app-with-uri-and-HTTP-specific-responses/_edit" class="minibutton ">Edit</a>
+          <a href="https://github.com/rack/rack/wiki/_new" class="minibutton primary">New Page</a>
+      </div>
+    <h1 class="gh-header-title instapaper_title">Rack app with uri and HTTP specific responses</h1>
+      <div class="gh-header-meta">
+        mattetti edited this page <time title="Dec 8, 2011, 10:31 AM CST" datetime="2011-12-08T16:31:55Z" is="relative-time">on Dec 8, 2011</time>
+        ·
+        <a href="https://github.com/rack/rack/wiki/Rack-app-with-uri-and-HTTP-specific-responses/_history" class="history">
+          1 revision
+        </a>
+      </div>
+  </div>
+</div>
+<div id="wiki-content">
+  <div class="wrap has-rightbar">
+
+  <div id="wiki-rightbar">
+    <div class="wiki-pages-box readability-sidebar boxed-group flush js-wiki-pages-box " role="navigation">
+      
+<h3 class="js-wiki-toggle-collapse wiki-auxiliary-content">
+  <span class="octicon octicon-triangle-down caret-expanded"></span>
+  <span class="octicon octicon-triangle-right caret-collapsed"></span>
+  Pages <span class="counter">7</span>
+</h3>
+<div class="boxed-group-inner wiki-auxiliary-content wiki-auxiliary-content-no-bg">
+
+  <ul class="wiki-pages" data-filterable-for="wiki-pages-filter" data-filterable-type="substring">
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/%28tutorial%29-rackup-howto" class="wiki-page-link">(tutorial) rackup howto</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki" class="wiki-page-link">Home</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/List-of-Middleware" class="wiki-page-link">List of Middleware</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/Presentations" class="wiki-page-link">Presentations</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/Rack-app-with-uri-and-HTTP-specific-responses" class="wiki-page-link">Rack app with uri and HTTP specific responses</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/Tutorial-rackup-howto" class="wiki-page-link">Tutorial rackup howto</a></strong>
+    </li>
+    <li>
+      <strong><a href="https://github.com/rack/rack/wiki/Tutorials" class="wiki-page-link">Tutorials</a></strong>
+    </li>
+  </ul>
+</div>
+
+    </div>
+
+
+    <div class="clone-url">
+      <h5>Clone this wiki locally</h5>
+      <div class="input-group js-zeroclipboard-container">
+        <input class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="https://github.com/rack/rack.wiki.git" readonly="readonly" type="text">
+        <span class="input-group-button">
+          
+        </span>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div id="wiki-body" class="gollum-markdown-content instapaper_body">
+    <div class="markdown-body">
+      <h2>
+<a id="user-content-goal" class="anchor" href="#goal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goal</h2>
+
+<p>Show how to write a simple Rack application responding differently if
+ the request is a POST or a GET request. Also show how to use the map 
+method to implement a simple router.</p>
+
+<h2>
+<a id="user-content-code" class="anchor" href="#code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code</h2>
+
+<p>Save the following code in a file named: rack_example.ru</p>
+
+<pre><code>class Idea
+  attr_accessor :title, :body, :created_at
+
+  # Memory store, gets cleared as the process is restarted
+  def self.store
+    @ideas ||= []
+  end
+
+  class InvalidParams &lt; StandardError; end
+
+  # create an instance based on some passed params
+  def initialize(params)
+    raise InvalidParams, "You need to provide at least a title" unless params['title']
+    self.title = params['title']
+    self.body = params['body']
+    self.created_at = Time.now
+  end
+
+  # Converts an instance into a string
+  def to_s
+    "#{title} at #{created_at.to_s}\n#{body}"
+  end
+end
+
+class IdeaAPI
+  def call(env)
+    request = Rack::Request.new(env)
+    case request.request_method
+    when 'POST'
+      begin
+        idea = Idea.new(request.params)
+      rescue Idea::InvalidParams =&gt; error
+        [400, {"Content-Type" =&gt; "text/plain"}, [error.message] ]
+      else
+        Idea.store &lt;&lt; idea
+        [200, {"Content-Type" =&gt; "text/plain"}, ["Idea added, currently #{Idea.store.size} ideas are in memory!"]]
+      end
+    when 'GET'
+      [200, {"Content-Type" =&gt; "text/plain"}, [Idea.store.map{|idea, idx| idea.to_s }.join("\n\n") + "\n"]]
+    else
+      [404, {}, ["Did you get lost?"]]
+    end
+  end
+end
+
+map '/ideas' do
+  run IdeaAPI.new
+end
+</code></pre>
+
+<p>The code is pretty straight forward, but let me walk you through it nonetheless.
+We have an <code>Idea</code> class which is just there for the demo. It creates an instance of itself when calling <code>#new</code> with a hash of params. If the pass hash doesn't have a value for the 'title' key, then an exception is raised.</p>
+
+<p>At the bottom of the file, we can see that I'm mapping incoming requests for the '/ideas' uri to an instance of <code>IdeaAPI</code>.
+The <code>run</code> method does what you expect, it runs the instance of the <code>IdeaAPI</code> passing it the Rack environment.</p>
+
+<p>The <code>IdeaAPI</code> class implements the Rack protocol by providing a <code>call(env)</code> method which gets triggered when the request is dispatched to an instance of itself.
+The environment object is then converted into a <code>Rack::Request</code> object which provides the developer with a few helpers.
+Using one of these helpers, we check on the HTTP verb using the <code>request_method</code>
+ instance method on our newly created object.
+Finally using a case statement, we can provide a response based on the 
+HTTP verb. Note that the response follows the usual Rack response 
+format.</p>
+
+<h2>
+<a id="user-content-notes" class="anchor" href="#notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes</h2>
+
+<ul class="task-list">
+<li>In real life, you probably don't want to raise an exception and rescue it. This is an expensive approach and should be avoided.</li>
+<li>Using map the way is shown doesn't prevent uris such as '/ideas/foo'
+ to be routed to our API. This is by design, you can also lose <code>map</code> all together and got for an approach such as: <a href="https://gist.github.com/1447478">https://gist.github.com/1447478</a>
+</li>
+</ul>
+
+    </div>
+
+  </div>
+  </div>
+</div>
+</div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="http://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="http://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>© 2015 <span title="0.06578s from github-fe126-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-suggester-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder=""></textarea><img style="cursor: pointer ! important; display: none ! important; position: absolute ! important; padding: 0px ! important; margin: 0px ! important; border: medium none ! important; width: 28px ! important; height: 14px ! important; opacity: 0.0152174 ! important;" title="It's All Text!" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/gumdrop.png">
+      <div class="suggester-container">
+        <div class="suggester fullscreen-suggester js-suggester js-navigation-container"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w" aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-x flash-close js-ajax-error-dismiss" aria-label="Dismiss error"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/frameworks-9643b0378c6bcb216adcdaaaa703eed77aa239aaf1c2ae44ca.js"></script>
+      <script async="async" crossorigin="anonymous" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/github-18e60b9aac8c7c21fb47634ab0194e9f8a433423ebafc0eea0d393.js"></script>
+      
+        <script crossorigin="anonymous" src="Rack%20app%20with%20uri%20and%20HTTP%20specific%20responses%20%C2%B7%20rack_rack%20Wiki_files/wiki-9bdadeb969c13b362c729813988236483d4c5abc83f6a436f3af2204.js"></script>
+
+
+  
+
+
+<style>.travis-ci{z-index:50;overflow:hidden;position:absolute;border-radius:1px;display:inline-block;margin-left:8px;margin-bottom:-1px;opacity:0.9;-moz-transition: all .2s;}.travis-ci:hover{background:rgba(0,0,0,0.5);box-shadow: 0 0 3px rgba(0,0,0,1);opacity:1;cursor:pointer;}.travis-ci img{display:block;padding:5px;}ul.repositories a.travis-ci.user{position:relative;top:5px}.travis-ci.repo{margin:0 0 0 8px}</style></body></html>

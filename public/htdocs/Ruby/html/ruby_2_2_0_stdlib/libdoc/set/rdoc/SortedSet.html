@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : SortedSet  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:26:47 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Class: SortedSet (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>set.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="Set.html">Set</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./Enumerable.html">Enumerable</a></li>
+        
+          
+          
+          <li><a href="./Set.html">Set</a></li>
+        
+          
+          
+          <li><a href="./SortedSet.html">SortedSet</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">SortedSet</h1>
+
+    <div id="description" class="description">
+      
+<p><a href="SortedSet.html">SortedSet</a> implements a <a
+href="Set.html">Set</a> that guarantees that its elements are yielded in
+sorted order (according to the return values of their #&lt;=&gt; methods)
+when iterating over them.</p>
+
+<p>All elements that are added to a <a href="SortedSet.html">SortedSet</a>
+must respond to the &lt;=&gt; method for comparison.</p>
+
+<p>Also, all elements must be <em>mutually comparable</em>: <code>el1
+&lt;=&gt; el2</code> must not return <code>nil</code> for any elements
+<code>el1</code> and <code>el2</code>, else an ArgumentError will be raised
+when iterating over the <a href="SortedSet.html">SortedSet</a>.</p>
+
+<h2 id="class-SortedSet-label-Example">Example<span><a href="#class-SortedSet-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&quot;set&quot;</span>
+
+<span class="ruby-identifier">set</span> = <span class="ruby-constant">SortedSet</span>.<span class="ruby-identifier">new</span>([<span class="ruby-value">2</span>, <span class="ruby-value">1</span>, <span class="ruby-value">5</span>, <span class="ruby-value">6</span>, <span class="ruby-value">4</span>, <span class="ruby-value">5</span>, <span class="ruby-value">3</span>, <span class="ruby-value">3</span>, <span class="ruby-value">3</span>])
+<span class="ruby-identifier">ary</span> = []
+
+<span class="ruby-identifier">set</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">obj</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">p</span> <span class="ruby-identifier">ary</span> <span class="ruby-comment"># =&gt; [1, 2, 3, 4, 5, 6]</span>
+
+<span class="ruby-identifier">set2</span> = <span class="ruby-constant">SortedSet</span>.<span class="ruby-identifier">new</span>([<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-string">&quot;3&quot;</span>])
+<span class="ruby-identifier">set2</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">obj</span><span class="ruby-operator">|</span> } <span class="ruby-comment"># =&gt; raises ArgumentError: comparison of Fixnum with String failed</span>
+</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_SortedSet_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_SortedSet_versioned").load("/associated/2_2_0/SortedSet.html");</script> <div id='tx_SortedSet' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_SortedSet").load("/associated/SortedSet.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_SortedSet.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

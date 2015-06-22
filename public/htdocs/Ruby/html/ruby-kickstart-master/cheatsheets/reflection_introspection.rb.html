@@ -1,0 +1,506 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <p>~~~ruby
+# =====  Reflection and Introspection (they’re synonyms)  =====
+# it can be useful to know about what kind of an object you are dealing with
+# what your environment is like, etc
+# here are some useful methods for this purpose
+#
+# Got this list from http://weare.buildingsky.net/2009/08/25/rubys-metaprogramming-toolbox
+# the pound between the class and the method indicates that it is an instance method
+#   Object#inspect
+#   Object#object_id
+#   Object#class
+#   Object#instance_variables
+#   Object#methods
+#   Object#private_methods
+#   Object#public_methods
+#   Object#singleton_methods
+#   Module#class_variables
+#   Module#constants
+#   Module#included_modules
+#   Module#instance_methods
+#   Module#name
+#   Module#private_instance_methods
+#   Module#protected_instance_methods
+#   Module#public_instance_methods
+#</p>
+
+<h1 id="examples">examples</h1>
+<p>require ‘date’  # pulls in date class from the stdlib
+class Person
+  # class level
+  IS_HUMAN = true</p>
+
+<p>class « self
+    def human?() IS_HUMAN end
+  end</p>
+
+<p># instance level
+  attr_accessor :birthday
+  def initialize(name,age,birthday)
+    @name , @age , @birthday = name , age , birthday
+  end</p>
+
+<p>end
+audrey = Person.new ‘Audrey’ , 28 , Date.parse(‘1 Jan 1995’)</p>
+
+<h1 id="what-class-is-the-object">what class is the object?</h1>
+<p>1.class                             # =&gt; Fixnum
+1.0.class                           # =&gt; Float
+“abc”.class                         # =&gt; String
+audrey.class                        # =&gt; Person
+audrey.birthday.class               # =&gt; Date</p>
+
+<h1 id="are-two-objects-the-same">are two objects the same?</h1>
+<p># symbols are
+:abc.object_id                      # =&gt; 215868
+:abc.object_id                      # =&gt; 215868
+# strings are not
+“abc”.object_id                     # =&gt; 2148310280
+“abc”.object_id                     # =&gt; 2148308540
+# classes are
+Array.object_id                     # =&gt; 2148370060
+Array.object_id                     # =&gt; 2148370060
+# Two separate instantiations of non singleton (patterned) classes aren’t
+Array.new.object_id                 # =&gt; 2148303280
+Array.new.object_id                 # =&gt; 2148301520</p>
+
+<h1 id="what-instance-variables-does-the-object-have">what instance variables does the object have?</h1>
+<p>@hello , @world = %w(hello world)
+self.instance_variables             # =&gt; [“@hello”, “@world”]
+audrey.instance_variables           # =&gt; [“@birthday”, “@age”, “@name”]
+audrey.birthday.instance_variables  # =&gt; [“@sg”, “@of”, “@ajd”]</p>
+
+<h1 id="what-methods-does-the-object-have">what methods does the object have?</h1>
+<p>audrey.methods                      # =&gt; [“inspect”, “tap”, “birthday=”, “clone”, “public_methods”, “object_id”, “<strong>send</strong>”, “instance_variable_defined?”, “equal?”, “freeze”, “extend”, “send”, “methods”, “hash”, “dup”, “to_enum”, “instance_variables”, “eql?”, “instance_eval”, “id”, “singleton_methods”, “taint”, “frozen?”, “instance_variable_get”, “enum_for”, “instance_of?”, “display”, “to_a”, “method”, “type”, “instance_exec”, “protected_methods”, “==”, “===”, “instance_variable_set”, “kind_of?”, “respond_to?”, “to_s”, “class”, “<strong>id</strong>”, “tainted?”, “=~”, “private_methods”, “untaint”, “nil?”, “is_a?”, “birthday”]
+audrey.methods.grep(/birthday/)     # =&gt; [“birthday=”, “birthday”]
+1.methods.sort                      # =&gt; [”%”, “&amp;”, “<em>”, “**”, “+”, “+@”, “-“, “-@”, “/”, “&lt;”, “«”, “&lt;=”, “&lt;=&gt;”, “==”, “===”, “=~”, “&gt;”, “&gt;=”, “»”, “[]”, “^”, “<strong>id</strong>”, “<strong>send</strong>”, “abs”, “between?”, “ceil”, “chr”, “class”, “clone”, “coerce”, “denominator”, “display”, “div”, “divmod”, “downto”, “dup”, “enum_for”, “eql?”, “equal?”, “even?”, “extend”, “fdiv”, “floor”, “freeze”, “frozen?”, “gcd”, “gcdlcm”, “hash”, “id”, “id2name”, “inspect”, “instance_eval”, “instance_exec”, “instance_of?”, “instance_variable_defined?”, “instance_variable_get”, “instance_variable_set”, “instance_variables”, “integer?”, “is_a?”, “kind_of?”, “lcm”, “method”, “methods”, “modulo”, “next”, “nil?”, “nonzero?”, “numerator”, “object_id”, “odd?”, “ord”, “power!”, “prec”, “prec_f”, “prec_i”, “pred”, “private_methods”, “protected_methods”, “public_methods”, “quo”, “rdiv”, “remainder”, “respond_to?”, “round”, “rpower”, “send”, “singleton_method_added”, “singleton_methods”, “size”, “step”, “succ”, “taint”, “tainted?”, “tap”, “times”, “to_a”, “to_enum”, “to_f”, “to_i”, “to_int”, “to_r”, “to_s”, “to_sym”, “truncate”, “type”, “untaint”, “upto”, “zero?”, “|”, “~”]
+“abc”.methods                       # =&gt; [“upcase!”, “zip”, “find_index”, “between?”, “unpack”, “enum_slice”, “to_f”, “minmax”, “lines”, “sub”, “methods”, “send”, “replace”, “empty?”, “group_by”, “squeeze”, “crypt”, “gsub!”, “taint”, “instance_variable_defined?”, “match”, “downcase!”, “take”, “find_all”, “min_by”, “bytes”, “each_cons”, “entries”, “gsub”, “singleton_methods”, “instance_eval”, “to_str”, “first”, “chop!”, “intern”, “nil?”, “succ”, “capitalize!”, “take_while”, “select”, “max_by”, “chars”, “enum_cons”, “tr!”, “protected_methods”, “instance_exec”, “display”, “sort”, “chop”, “tainted?”, “dump”, “method”, “include?”, “untaint”, “instance_of?”, “chomp!”, “swapcase!”, “drop”, “equal?”, “reject”, “hex”, “minmax_by”, “sum”, “hash”, “private_methods”, “all?”, “tr_s!”, “sort_by”, “chomp”, “upcase”, “start_with?”, “succ!”, “kind_of?”, “strip!”, “freeze”, “drop_while”, “eql?”, “next”, “collect”, “oct”, “id”, “slice”, “casecmp”, “grep”, “strip”, “any?”, “delete!”, “public_methods”, “end_with?”, “downcase”, “%”, “object_id”, “is_a?”, “scan”, “lstrip!”, “cycle”, “map”, “member?”, “tap”, “type”, “</em>”, “split”, “insert”, “each_with_index”, “+”, “count”, “lstrip”, “one?”, “squeeze!”, “instance_variables”, “<strong>id</strong>”, “frozen?”, “capitalize”, “next!”, “each_line”, “to_enum”, “rstrip!”, “to_a”, “ljust”, “respond_to?”, “upto”, “each”, “inject”, “tr”, “slice!”, “class”, “reverse”, “length”, “enum_with_index”, “rpartition”, “rstrip”, “&lt;=&gt;”, “none?”, “instance_variable_get”, “find”, “==”, “swapcase”, “<strong>send</strong>”, “===”, “min”, “each_byte”, “enum_for”, “extend”, “to_s”, “rjust”, “index”, “&gt;=”, “size”, “reduce”, “tr_s”, “&lt;=”, “clone”, “reverse_each”, “to_sym”, “bytesize”, “=~”, “instance_variable_set”, “&lt;”, “detect”, “max”, “each_char”, “each_slice”, “&gt;”, “to_i”, “center”, “inspect”, “[]”, “reverse!”, “rindex”, “partition”, “delete”, “[]=”, “concat”, “sub!”, “dup”, “«”]</p>
+
+<p>“abc”.private_methods               # =&gt; [“untrace_var”, “load”, “readlines”, “sprintf”, “exit”, “syscall”, “remove_instance_variable”, “eval”, “set_trace_func”, “require”, “p”, “exit!”, “initialize”, “format”, “abort”, “open”, “autoload”, “login_name”, “at_exit”, “printf”, “iterator?”, “Integer”, “fork”, “<code>", "initialize_copy", "srand", "catch", "print", "block_given?", "binding", "autoload?", "Float", "loop", "callcc", "exec", "method_missing", "Rational", "rand", "throw", "putc", "proc", "String", "system", "global_variables", "puts", "lambda", "singleton_method_added", "raise", "test", "Array", "sleep", "local_variables", "warn", "gets", "trap", "singleton_method_removed", "fail", "trace_var", "__method__", "readline", "singleton_method_undefined", "caller", "getc"]
+[1,2,3].private_methods             # =&gt; ["chomp!", "exit!", "fail", "print", "initialize", "binding", "Array", "split", "catch", "iterator?", "chop", "format", "readlines", "trap", "remove_instance_variable", "getc", "caller", "singleton_method_added", "putc", "proc", "autoload?", "p", "throw", "block_given?", "chomp", "sub!", "syscall", "trace_var", "loop", "callcc", "Integer", "exec", "load", "exit", "singleton_method_removed", "puts", "login_name", "initialize_copy", "srand", "lambda", "global_variables", "gsub!", "</code>”, “open”, “untrace_var”, “system”, “method_missing”, “Float”, “require”, “abort”, “sub”, “singleton_method_undefined”, “gets”, “test”, “rand”, “eval”, “warn”, “local_variables”, “chop!”, “fork”, “printf”, “set_trace_func”, “raise”, “scan”, “Rational”, “String”, “sleep”, “gsub”, “sprintf”, “readline”, “autoload”, “at_exit”, “<strong>method</strong>”]
+audrey.private_methods              # =&gt; [“exit!”, “chomp!”, “initialize”, “print”, “fail”, “binding”, “split”, “Array”, “readlines”, “format”, “chop”, “iterator?”, “catch”, “trap”, “getc”, “remove_instance_variable”, “putc”, “singleton_method_added”, “caller”, “autoload?”, “proc”, “chomp”, “block_given?”, “throw”, “p”, “sub!”, “loop”, “trace_var”, “syscall”, “exec”, “Integer”, “callcc”, “login_name”, “initialize_copy”, “puts”, “singleton_method_removed”, “exit”, “load”, “lambda”, “srand”, “global_variables”, “gsub!”, “untrace_var”, “open”, “`”, “Float”, “method_missing”, “system”, “gets”, “singleton_method_undefined”, “sub”, “abort”, “require”, “rand”, “test”, “warn”, “eval”, “local_variables”, “chop!”, “scan”, “Rational”, “raise”, “set_trace_func”, “printf”, “fork”, “sleep”, “select”, “String”, “gsub”, “sprintf”, “readline”, “at_exit”, “autoload”, “<strong>method</strong>”]</p>
+
+<p>12.methods == 12.public_methods     # =&gt; true</p>
+
+<p>Person.constants                    # =&gt; [“IS_HUMAN”]
+Person.singleton_methods            # =&gt; [“human?”]~~~</p>
+
+  </div>
+</body>
+</html>

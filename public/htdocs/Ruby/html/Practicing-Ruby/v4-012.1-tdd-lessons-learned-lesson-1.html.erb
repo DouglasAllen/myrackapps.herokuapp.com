@@ -1,0 +1,633 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>NOTE:</strong> This is one of <a href="http://practicingruby.com/articles/65">four lessons
+learned</a> from my 90 day <a href="http://practicingruby.com/articles/28">self-study on
+test-driven development</a>. 
+If this topic interests you, be sure to check out the other lessons!</p>
+</blockquote>
+
+<p>Perhaps the most significant thing I have noticed about my own TDD habits 
+is that I frequently defer end-to-end testing or skip it entirely, and that 
+always comes at a huge cost. Now that I have had a chance to watch 
+myself get caught in that trap several times, I have a better understanding
+of what triggers it.</p>
+
+<p>Most of the time when I work on application development, I start out by 
+attempting to treat its delivery mechanism as an implementation detail. 
+Thinking this way makes me feel that testing code through the UI 
+isn’t especially important, provided that I test-drive my domain objects 
+and keep their surface as narrow as possible. My first iteration on the
+Blind game provides a good example of how I tend to apply this strategy.</p>
+
+<p>My first complete feature in the game was a simple proof of concept: 
+I dropped the player into the center of a map, and then allowed them to
+move around using the WASD keys on their keyboard. When the player 
+reached the edge of the map, the game would play a beeping sound
+and then terminate itself. You can check out the <a href="https://github.com/elm-city-craftworks/blind/compare/1f6a...4345">full source for 
+this feature</a>
+to see its implementation details, but the important thing to note
+is that its delivery mechanism was tiny and almost completely logic-free:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Ray</span>.game <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Blind</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  register { add_hook <span style="color:#A60">:quit</span>, method(<span style="color:#A60">:exit!</span>) }
+
+  scene <span style="color:#A60">:main</span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#069">self</span>.frames_per_second = <span style="color:#00D">10</span>
+
+    <span style="color:#33B">@game</span> = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Game</span>.new
+    <span style="color:#33B">@game</span>.on_event(<span style="color:#A60">:out_of_bounds</span>) <span style="color:#080;font-weight:bold">do</span>
+      beep = sound(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">File</span>.dirname(<span style="color:#069">__FILE__</span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/../data/beep.wav</span><span style="color:#710">&quot;</span></span>)
+      beep.play
+      sleep beep.duration
+
+      exit!
+    <span style="color:#080;font-weight:bold">end</span>
+
+    always <span style="color:#080;font-weight:bold">do</span>
+      puts <span style="color:#33B">@game</span>.player_position
+
+      <span style="color:#33B">@game</span>.move_player(<span style="color:#00D">0</span>,<span style="color:#00D">-1</span>) <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:w</span>)
+      <span style="color:#33B">@game</span>.move_player(<span style="color:#00D">0</span>,<span style="color:#00D">1</span>) <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:s</span>)
+      <span style="color:#33B">@game</span>.move_player(<span style="color:#00D">-1</span>,<span style="color:#00D">0</span>) <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:a</span>)
+      <span style="color:#33B">@game</span>.move_player(<span style="color:#00D">1</span>,<span style="color:#00D">0</span>) <span style="color:#080;font-weight:bold">if</span> holding?(<span style="color:#A60">:d</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  scenes &lt;&lt; <span style="color:#A60">:main</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Based on this single code example, it is easy to make the case that end-to-end
+testing can be deferred until later, or that perhaps it is not needed at all.
+Thinking this way is very tempting, because it frees you from having to think
+about how to dig down into the delivery mechanism and run your tests through it.
+Already burdened by the idea of writing more tests than I usually do, I was
+quick to take that bargain and felt like it was a reasonable tradeoff at the
+time.</p>
+
+<p>I couldn’t have been more wrong. I encountered my first trivial UI bug 
+within 24 hours of shipping the first feature. Several dozen patches 
+later when I had a playable game, I had already sunk several hours into 
+finding and fixing UI defects that I discovered through manual play testing.
+The wheels finally came off the wagon when I realized that I could not
+even safely rename methods without playing through the entire game and
+triggering each of its edge cases. The following example shows one
+of the many “oops” changesets that the projects accumulated in a very short
+period of time:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777" class="line">sounds[:siren].volume = </span>
+<span style="background:hsla(0,100%,50%,0.12)" class="line"><span style="color:#c00;background:transparent;font-weight:bold">-</span>  ((world.distance(world.center_po<span style="background-color:hsla(0,100%,50%,0.2);border:1pxsolidhsla(0,100%,45%,0.5);margin:-1px;border-bottom:none;border-top-left-radius:5px;border-top-right-radius:5px">sition</span>) - min) / max.to_f) * 100</span>
+<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>  ((world.distance(world.center_po<span style="background-color:hsla(120,100%,50%,0.2);border:1pxsolidhsla(120,100%,25%,0.5);margin:-1px;border-top:none;border-bottom-left-radius:5px;border-bottom-right-radius:5px">int</span>) - min) / max.to_f) * 100</span>
+</pre></div>
+</div>
+</div>
+
+<p>By the time I had finally felt the pain of not having any tests running from
+end-to-end, the delivery mechanism was no longer a trivial script that could
+be scribbled on the back of a napkin. Over the period of a week or so, it had
+grown into a <a href="https://github.com/elm-city-craftworks/blind/tree/776f3462c2244634ccddc22a5473916d6439872c/lib/blind/ui">couple hundred lines of code</a> 
+spread across several significant features. The surface of
+the domain model also needed to expand to support these new
+features, and so the critical path through the system became difficult to 
+keep in mind while working on the codebase. This made it much harder
+to introduce a change without accidentally breaking something. </p>
+
+<p>Fed up with chasing down trivial bugs and spending so much time on manual
+testing, I finally decided that I needed to implement a player simulator 
+which would allow me write tests similar to the one shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">should result in a loss on entering deep space</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  world  = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Worlds</span>.original(<span style="color:#00D">0</span>)
+  levels = [<span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">Level</span>.new(world, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test</span><span style="color:#710">&quot;</span></span>)]
+
+  game  = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">UI</span>::<span style="color:#036;font-weight:bold">GamePresenter</span>.new(levels)
+
+  sim   = <span style="color:#036;font-weight:bold">Blind</span>::<span style="color:#036;font-weight:bold">UI</span>::<span style="color:#036;font-weight:bold">Simulator</span>.new(game)
+
+  sim.move(<span style="color:#00D">500</span>, <span style="color:#00D">500</span>)
+  
+  sim.status.must_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You drifted off into deep space! YOU LOSE!</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As predicted, the <code>Blind::UI::Simulator</code> object was <a href="https://github.com/elm-city-craftworks/blind/blob/2fa2d75216077bdafa556be3c560b3f7c205e672/lib/blind/ui/simulator.rb">not especially easy to
+implement</a>. 
+To get it to work, I had to experiment with several undocumented features in the Ray
+framework and cobble them together through a messy trial and error process. This
+reminded me of previous projects I had worked on where I had to do the same
+thing to introduce end-to-end tests in Rails applications, and is quite possibly
+one of my least favorite programming tasks; all this work just feels so
+tangential to the task at hand.</p>
+
+<p>Still, it is hard to argue with results. After introducing this little simulator
+object, the number of trivial errors I introduced into the system rapidly
+declined, even though I was still actively changing things. Occasionally, I’d
+make a change which broke the simulator in weird and confusing ways, but all the
+time spent working on those issues was less than the total time I spent chasing
+down dumb mistakes before making this change. </p>
+
+<p>As I continued on with my study, I experienced similar situations with both a 
+Sinatra application and a command line application, and that is when I realized
+that you simply can’t get away from paying this tax one way or another. If
+nothing else, working on acceptance tests first helps balance out the illusion
+of progress in the early stages of a project, and makes it easier to sustain
+an even pace of development over time.</p>
+
+<p>At the end of my study, I read the first few chapters of <a href="http://www.growing-object-oriented-software.com/">Growing Object
+Oriented Software, Guided by Tests</a>, 
+and it gave similar advice to what I had found out the hard way. The authors
+presented a somewhat more radical idea about how to build application runners, 
+suggesting that they should completely hide the implementation details of the 
+underlying application and its delivery mechanism. To try out these ideas, 
+I built a small <a href="https://github.com/elm-city-craftworks/ruby-examples/tree/master/tic_tac_toe">tic-tac-toe game</a> 
+using Ray, writing my first end-to-end test before writing any other code: </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A tic tac toe game</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alternates between X and O</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    run_game <span style="color:#080;font-weight:bold">do</span> |runner|
+      runner.message.must_equal(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's your turn, X</span><span style="color:#710">&quot;</span></span>)
+      runner.move(<span style="color:#00D">5</span>)
+      runner.message.must_equal(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's your turn, O</span><span style="color:#710">&quot;</span></span>)
+      runner.move(<span style="color:#00D">3</span>)
+      runner.message.must_equal(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's your turn, X</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">run_game</span>(&amp;block)
+    <span style="color:#036;font-weight:bold">GameRunner</span>.run(&amp;block)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because this test does all of its work through the
+<a href="https://github.com/elm-city-craftworks/ruby-examples/blob/master/tic_tac_toe/test/helpers/game_runner.rb">GameRunner
+object</a>,
+it is both easier to read and more maintainable than the tests that I built for
+Blind. Furthermore, I feel like it is much easier write test-first code this
+way, as it doesn’t require as many decisions to be made up front.</p>
+
+<p>I’ve been talking about a rather weird domain throughout this article (game
+programming in Ray), but I could easily imagine how I might apply what I’ve
+learned to a traditional Rails application. For example, if I were to build a
+blog and wanted to write my first test for it, I might start with something like
+this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A post</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  let(<span style="color:#A60">:blogger</span>) { <span style="color:#036;font-weight:bold">SimulatedBlogger</span>.new }
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">can be created by a logged in blogger</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    blogger.log_in(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">password</span><span style="color:#710">&quot;</span></span>)
+    blogger.create_post(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cannot be created by a blogger that has not logged in</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    assert_raises(<span style="color:#036;font-weight:bold">SimulatedBlogger</span>::<span style="color:#036;font-weight:bold">AccessDeniedError</span>) <span style="color:#080;font-weight:bold">do</span>
+      blogger.create_post(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>I would then move on to implement the <code>SimulatedBlogger</code> using something like
+capybara or some other web automation tool. On the surface, this at least 
+seems like a good idea; in practice it may be more trouble than it’s worth for a number 
+of reasons.</p>
+
+<p>Since I’m still relatively new to end-to-end testing in general, I am definitely
+curious to hear what you think of these ideas. This article summarizes what
+I learned from my experiences during my study, but I am not yet confident in my 
+own applications of these techniques. If you have an interesting story to share, 
+please do so!</p>
+
+  </div>
+</body>
+</html>

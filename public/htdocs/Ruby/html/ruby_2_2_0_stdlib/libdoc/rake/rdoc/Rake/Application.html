@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : Rake::Application  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:24:14 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: Rake::Application (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>rake/application.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-add_loader">#add_loader</a></li>
+          
+          <li><a href="#method-i-init">#init</a></li>
+          
+          <li><a href="#method-i-load_rakefile">#load_rakefile</a></li>
+          
+          <li><a href="#method-i-options">#options</a></li>
+          
+          <li><a href="#method-i-run">#run</a></li>
+          
+          <li><a href="#method-i-run_with_threads">#run_with_threads</a></li>
+          
+          <li><a href="#method-i-top_level">#top_level</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><a class="include" href="TaskManager.html">Rake::TaskManager</a></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../FileUtils.html">FileUtils</a></li>
+        
+          
+          
+          <li><a href="../Module.html">Module</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../Pathname.html">Pathname</a></li>
+        
+          
+          
+          <li><a href="../Rake/Application.html">Rake::Application</a></li>
+        
+          
+          
+          <li><a href="../Rake/CompositePublisher.html">Rake::CompositePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/DSL.html">Rake::DSL</a></li>
+        
+          
+          
+          <li><a href="../Rake/DefaultLoader.html">Rake::DefaultLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/EarlyTime.html">Rake::EarlyTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileCreationTask.html">Rake::FileCreationTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileList.html">Rake::FileList</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileTask.html">Rake::FileTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileUtilsExt.html">Rake::FileUtilsExt</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain.html">Rake::InvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain/EmptyInvocationChain.html">Rake::InvocationChain::EmptyInvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationExceptionMixin.html">Rake::InvocationExceptionMixin</a></li>
+        
+          
+          
+          <li><a href="../Rake/LateTime.html">Rake::LateTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList.html">Rake::LinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList/EmptyLinkedList.html">Rake::LinkedList::EmptyLinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/MakefileLoader.html">Rake::MakefileLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/MultiTask.html">Rake::MultiTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/NameSpace.html">Rake::NameSpace</a></li>
+        
+          
+          
+          <li><a href="../Rake/PackageTask.html">Rake::PackageTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/PrivateReader.html">Rake::PrivateReader</a></li>
+        
+          
+          
+          <li><a href="../Rake/RuleRecursionOverflowError.html">Rake::RuleRecursionOverflowError</a></li>
+        
+          
+          
+          <li><a href="../Rake/Scope.html">Rake::Scope</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshDirPublisher.html">Rake::SshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFilePublisher.html">Rake::SshFilePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFreshDirPublisher.html">Rake::SshFreshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/Task.html">Rake::Task</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArgumentError.html">Rake::TaskArgumentError</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArguments.html">Rake::TaskArguments</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskLib.html">Rake::TaskLib</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskManager.html">Rake::TaskManager</a></li>
+        
+          
+          
+          <li><a href="../Rake/TestTask.html">Rake::TestTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/Win32.html">Rake::Win32</a></li>
+        
+          
+          
+          <li><a href="../String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">Rake::Application</h1>
+
+    <div id="description" class="description">
+      
+<p>Rake main application object.  When invoking <code>rake</code> from the
+command line, a <a href="Application.html">Rake::Application</a> object is
+created and run.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="DEFAULT_RAKEFILES">DEFAULT_RAKEFILES</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="name-attribute-method" class="method-detail">
+          <a name="name"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">name</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The name of the application (typically ‘rake’)</p>
+          
+          </div>
+        </div>
+        
+        <div id="original_dir-attribute-method" class="method-detail">
+          <a name="original_dir"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">original_dir</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The original directory where rake was invoked.</p>
+          
+          </div>
+        </div>
+        
+        <div id="rakefile-attribute-method" class="method-detail">
+          <a name="rakefile"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">rakefile</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Name of the actual rakefile used.</p>
+          
+          </div>
+        </div>
+        
+        <div id="terminal_columns-attribute-method" class="method-detail">
+          <a name="terminal_columns"></a>
+          
+          <a name="terminal_columns="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">terminal_columns</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Number of columns on the terminal</p>
+          
+          </div>
+        </div>
+        
+        <div id="top_level_tasks-attribute-method" class="method-detail">
+          <a name="top_level_tasks"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">top_level_tasks</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>List of the top level task names (task names from the command line).</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Initialize a <a href="Application.html">Rake::Application</a> object.</p>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+  <span class="ruby-keyword">super</span>
+  <span class="ruby-ivar">@name</span> = <span class="ruby-string">'rake'</span>
+  <span class="ruby-ivar">@rakefiles</span> = <span class="ruby-constant">DEFAULT_RAKEFILES</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-ivar">@rakefile</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@pending_imports</span> = []
+  <span class="ruby-ivar">@imported</span> = []
+  <span class="ruby-ivar">@loaders</span> = {}
+  <span class="ruby-ivar">@default_loader</span> = <span class="ruby-constant">Rake</span><span class="ruby-operator">::</span><span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@original_dir</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+  <span class="ruby-ivar">@top_level_tasks</span> = []
+  <span class="ruby-identifier">add_loader</span>(<span class="ruby-string">'rb'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-identifier">add_loader</span>(<span class="ruby-string">'rf'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-identifier">add_loader</span>(<span class="ruby-string">'rake'</span>, <span class="ruby-constant">DefaultLoader</span>.<span class="ruby-identifier">new</span>)
+  <span class="ruby-ivar">@tty_output</span> = <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">tty?</span>
+  <span class="ruby-ivar">@terminal_columns</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">'RAKE_COLUMNS'</span>].<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="add_loader-method" class="method-detail ">
+          <a name="method-i-add_loader"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">add_loader</span><span
+              class="method-args">(ext, loader)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Add a loader to handle imported files ending in the extension
+<code>ext</code>.</p>
+            
+
+            
+            <div class="method-source-code" id="add_loader-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_loader</span>(<span class="ruby-identifier">ext</span>, <span class="ruby-identifier">loader</span>)
+  <span class="ruby-identifier">ext</span> = <span class="ruby-node">&quot;.#{ext}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">ext</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^\./</span>
+  <span class="ruby-ivar">@loaders</span>[<span class="ruby-identifier">ext</span>] = <span class="ruby-identifier">loader</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- add_loader-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- add_loader-method -->
+      
+        <div id="init-method" class="method-detail ">
+          <a name="method-i-init"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">init</span><span
+              class="method-args">(app_name='rake')</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Initialize the command line parameters and app name.</p>
+            
+
+            
+            <div class="method-source-code" id="init-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">app_name</span>=<span class="ruby-string">'rake'</span>)
+  <span class="ruby-identifier">standard_exception_handling</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">app_name</span>
+    <span class="ruby-identifier">args</span> = <span class="ruby-identifier">handle_options</span>
+    <span class="ruby-identifier">collect_command_line_tasks</span>(<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- init-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- init-method -->
+      
+        <div id="load_rakefile-method" class="method-detail ">
+          <a name="method-i-load_rakefile"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">load_rakefile</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Find the rakefile and then load it and any pending imports.</p>
+            
+
+            
+            <div class="method-source-code" id="load_rakefile-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_rakefile</span>
+  <span class="ruby-identifier">standard_exception_handling</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">raw_load_rakefile</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- load_rakefile-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- load_rakefile-method -->
+      
+        <div id="options-method" class="method-detail ">
+          <a name="method-i-options"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">options</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p><a href="Application.html">Application</a> options from the command line</p>
+            
+
+            
+            <div class="method-source-code" id="options-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@options</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- options-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- options-method -->
+      
+        <div id="run-method" class="method-detail ">
+          <a name="method-i-run"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">run</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Run the Rake application.  The run method performs the following three
+steps:</p>
+<ul><li>
+<p>Initialize the command line options (<code>init</code>).</p>
+</li><li>
+<p>Define the tasks (<code>load_rakefile</code>).</p>
+</li><li>
+<p>Run the top level tasks (<code>top_level</code>).</p>
+</li></ul>
+
+<p>If you wish to build a custom rake command, you should call
+<code>init</code> on your application.  Then define any tasks.  Finally,
+call <code>top_level</code> to run your top level tasks.</p>
+            
+
+            
+            <div class="method-source-code" id="run-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run</span>
+  <span class="ruby-identifier">standard_exception_handling</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">init</span>
+    <span class="ruby-identifier">load_rakefile</span>
+    <span class="ruby-identifier">top_level</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- run-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- run-method -->
+      
+        <div id="run_with_threads-method" class="method-detail ">
+          <a name="method-i-run_with_threads"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">run_with_threads</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Run the given block with the thread startup and shutdown.</p>
+            
+
+            
+            <div class="method-source-code" id="run_with_threads-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run_with_threads</span>
+  <span class="ruby-identifier">thread_pool</span>.<span class="ruby-identifier">gather_history</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">job_stats</span> <span class="ruby-operator">==</span> <span class="ruby-value">:history</span>
+
+  <span class="ruby-keyword">yield</span>
+
+  <span class="ruby-identifier">thread_pool</span>.<span class="ruby-identifier">join</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">job_stats</span>
+    <span class="ruby-identifier">stats</span> = <span class="ruby-identifier">thread_pool</span>.<span class="ruby-identifier">statistics</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Maximum active threads: #{stats[:max_active_threads]} + main&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Total threads in play:  #{stats[:total_threads_in_play]} + main&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-constant">ThreadHistoryDisplay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">thread_pool</span>.<span class="ruby-identifier">history</span>).<span class="ruby-identifier">show</span> <span class="ruby-keyword">if</span>
+    <span class="ruby-identifier">options</span>.<span class="ruby-identifier">job_stats</span> <span class="ruby-operator">==</span> <span class="ruby-value">:history</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- run_with_threads-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- run_with_threads-method -->
+      
+        <div id="top_level-method" class="method-detail ">
+          <a name="method-i-top_level"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">top_level</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Run the top level tasks of a Rake application.</p>
+            
+
+            
+            <div class="method-source-code" id="top_level-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/application.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">top_level</span>
+  <span class="ruby-identifier">run_with_threads</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">show_tasks</span>
+      <span class="ruby-identifier">display_tasks_and_comments</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">show_prereqs</span>
+      <span class="ruby-identifier">display_prerequisites</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">top_level_tasks</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">task_name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">invoke_task</span>(<span class="ruby-identifier">task_name</span>) }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- top_level-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- top_level-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_Application_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Application_versioned").load("/associated/2_2_0/Application.html");</script> <div id='tx_Application' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Application").load("/associated/Application.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Hack your world.  Feed your head.  Live curious</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_Application.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

@@ -1,0 +1,2328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : RubyVM::InstructionSequence  -   Ruby 2.2.0 ' />
+  <meta content="2015-02-05 22:44:36 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: RubyVM::InstructionSequence (Ruby 2.2.0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2.2.0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+          
+          <!-- br><a id='alternateFormatLink' class='rotate' href="#" onclick='matchingYardUrl()'>YARD version</a -->
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>iseq.c</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-compile">::compile</a></li>
+          
+          <li><a href="#method-c-compile_file">::compile_file</a></li>
+          
+          <li><a href="#method-c-compile_option">::compile_option</a></li>
+          
+          <li><a href="#method-c-compile_option-3D">::compile_option=</a></li>
+          
+          <li><a href="#method-c-disasm">::disasm</a></li>
+          
+          <li><a href="#method-c-disassemble">::disassemble</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-c-of">::of</a></li>
+          
+          <li><a href="#method-i-absolute_path">#absolute_path</a></li>
+          
+          <li><a href="#method-i-base_label">#base_label</a></li>
+          
+          <li><a href="#method-i-disasm">#disasm</a></li>
+          
+          <li><a href="#method-i-disassemble">#disassemble</a></li>
+          
+          <li><a href="#method-i-eval">#eval</a></li>
+          
+          <li><a href="#method-i-first_lineno">#first_lineno</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-label">#label</a></li>
+          
+          <li><a href="#method-i-line_trace_all">#line_trace_all</a></li>
+          
+          <li><a href="#method-i-line_trace_specify">#line_trace_specify</a></li>
+          
+          <li><a href="#method-i-path">#path</a></li>
+          
+          <li><a href="#method-i-to_a">#to_a</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+      <div id="fileindex-section" class="section project-section">
+        <h3 class="section-header">Files</h3>
+        <ul id='files'>
+        
+          
+          <li class="file"><a href="../_lib/racc/rdoc/grammar_en_rdoc.html">grammar.en.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../_test/rdoc/test_ja_rdoc.html">test.ja.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/contributing_rdoc.html">contributing.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/contributors_rdoc.html">contributors.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/dtrace_probes_rdoc.html">dtrace_probes.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/globals_rdoc.html">globals.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/keywords_rdoc.html">keywords.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/maintainers_rdoc.html">maintainers.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/marshal_rdoc.html">marshal.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/regexp_rdoc.html">regexp.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/security_rdoc.html">security.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/standard_library_rdoc.html">standard_library.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax_rdoc.html">syntax.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/assignment_rdoc.html">assignment.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/calling_methods_rdoc.html">calling_methods.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/control_expressions_rdoc.html">control_expressions.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/exceptions_rdoc.html">exceptions.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/literals_rdoc.html">literals.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/methods_rdoc.html">methods.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/miscellaneous_rdoc.html">miscellaneous.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/modules_and_classes_rdoc.html">modules_and_classes.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/precedence_rdoc.html">precedence.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../doc/syntax/refinements_rdoc.html">refinements.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../sample/drb/README_ja_rdoc.html">README.ja.rdoc</a></li>
+        
+          
+          <li class="file"><a href="../sample/drb/README_rdoc.html">README.rdoc</a></li>
+        
+        </ul>
+      </div>
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../ArgumentError.html">ArgumentError</a></li>
+        
+          
+          
+          <li><a href="../Array.html">Array</a></li>
+        
+          
+          
+          <li><a href="../BasicObject.html">BasicObject</a></li>
+        
+          
+          
+          <li><a href="../Bignum.html">Bignum</a></li>
+        
+          
+          
+          <li><a href="../Binding.html">Binding</a></li>
+        
+          
+          
+          <li><a href="../Class.html">Class</a></li>
+        
+          
+          
+          <li><a href="../Comparable.html">Comparable</a></li>
+        
+          
+          
+          <li><a href="../Complex.html">Complex</a></li>
+        
+          
+          
+          <li><a href="../Complex/compatible.html">Complex::compatible</a></li>
+        
+          
+          
+          <li><a href="../ConditionVariable.html">ConditionVariable</a></li>
+        
+          
+          
+          <li><a href="../Continuation.html">Continuation</a></li>
+        
+          
+          
+          <li><a href="../Data.html">Data</a></li>
+        
+          
+          
+          <li><a href="../Dir.html">Dir</a></li>
+        
+          
+          
+          <li><a href="../ENV.html">ENV</a></li>
+        
+          
+          
+          <li><a href="../EOFError.html">EOFError</a></li>
+        
+          
+          
+          <li><a href="../Encoding.html">Encoding</a></li>
+        
+          
+          
+          <li><a href="../Encoding/CompatibilityError.html">Encoding::CompatibilityError</a></li>
+        
+          
+          
+          <li><a href="../Encoding/Converter.html">Encoding::Converter</a></li>
+        
+          
+          
+          <li><a href="../Encoding/ConverterNotFoundError.html">Encoding::ConverterNotFoundError</a></li>
+        
+          
+          
+          <li><a href="../Encoding/InvalidByteSequenceError.html">Encoding::InvalidByteSequenceError</a></li>
+        
+          
+          
+          <li><a href="../Encoding/UndefinedConversionError.html">Encoding::UndefinedConversionError</a></li>
+        
+          
+          
+          <li><a href="../EncodingError.html">EncodingError</a></li>
+        
+          
+          
+          <li><a href="../Enumerable.html">Enumerable</a></li>
+        
+          
+          
+          <li><a href="../Enumerator.html">Enumerator</a></li>
+        
+          
+          
+          <li><a href="../Enumerator/Generator.html">Enumerator::Generator</a></li>
+        
+          
+          
+          <li><a href="../Enumerator/Lazy.html">Enumerator::Lazy</a></li>
+        
+          
+          
+          <li><a href="../Enumerator/Yielder.html">Enumerator::Yielder</a></li>
+        
+          
+          
+          <li><a href="../Errno.html">Errno</a></li>
+        
+          
+          
+          <li><a href="../Exception.html">Exception</a></li>
+        
+          
+          
+          <li><a href="../FalseClass.html">FalseClass</a></li>
+        
+          
+          
+          <li><a href="../Fiber.html">Fiber</a></li>
+        
+          
+          
+          <li><a href="../FiberError.html">FiberError</a></li>
+        
+          
+          
+          <li><a href="../File.html">File</a></li>
+        
+          
+          
+          <li><a href="../File/Constants.html">File::Constants</a></li>
+        
+          
+          
+          <li><a href="../File/Stat.html">File::Stat</a></li>
+        
+          
+          
+          <li><a href="../FileTest.html">FileTest</a></li>
+        
+          
+          
+          <li><a href="../Fixnum.html">Fixnum</a></li>
+        
+          
+          
+          <li><a href="../Float.html">Float</a></li>
+        
+          
+          
+          <li><a href="../FloatDomainError.html">FloatDomainError</a></li>
+        
+          
+          
+          <li><a href="../GC.html">GC</a></li>
+        
+          
+          
+          <li><a href="../GC/Profiler.html">GC::Profiler</a></li>
+        
+          
+          
+          <li><a href="../Hash.html">Hash</a></li>
+        
+          
+          
+          <li><a href="../IO.html">IO</a></li>
+        
+          
+          
+          <li><a href="../IO/EAGAINWaitReadable.html">IO::EAGAINWaitReadable</a></li>
+        
+          
+          
+          <li><a href="../IO/EAGAINWaitWritable.html">IO::EAGAINWaitWritable</a></li>
+        
+          
+          
+          <li><a href="../IO/EINPROGRESSWaitReadable.html">IO::EINPROGRESSWaitReadable</a></li>
+        
+          
+          
+          <li><a href="../IO/EINPROGRESSWaitWritable.html">IO::EINPROGRESSWaitWritable</a></li>
+        
+          
+          
+          <li><a href="../IO/EWOULDBLOCKWaitReadable.html">IO::EWOULDBLOCKWaitReadable</a></li>
+        
+          
+          
+          <li><a href="../IO/EWOULDBLOCKWaitWritable.html">IO::EWOULDBLOCKWaitWritable</a></li>
+        
+          
+          
+          <li><a href="../IO/WaitReadable.html">IO::WaitReadable</a></li>
+        
+          
+          
+          <li><a href="../IO/WaitWritable.html">IO::WaitWritable</a></li>
+        
+          
+          
+          <li><a href="../IOError.html">IOError</a></li>
+        
+          
+          
+          <li><a href="../IndexError.html">IndexError</a></li>
+        
+          
+          
+          <li><a href="../Integer.html">Integer</a></li>
+        
+          
+          
+          <li><a href="../Interrupt.html">Interrupt</a></li>
+        
+          
+          
+          <li><a href="../Kernel.html">Kernel</a></li>
+        
+          
+          
+          <li><a href="../KeyError.html">KeyError</a></li>
+        
+          
+          
+          <li><a href="../LoadError.html">LoadError</a></li>
+        
+          
+          
+          <li><a href="../LocalJumpError.html">LocalJumpError</a></li>
+        
+          
+          
+          <li><a href="../Marshal.html">Marshal</a></li>
+        
+          
+          
+          <li><a href="../MatchData.html">MatchData</a></li>
+        
+          
+          
+          <li><a href="../Math.html">Math</a></li>
+        
+          
+          
+          <li><a href="../Math/DomainError.html">Math::DomainError</a></li>
+        
+          
+          
+          <li><a href="../Method.html">Method</a></li>
+        
+          
+          
+          <li><a href="../Module.html">Module</a></li>
+        
+          
+          
+          <li><a href="../Mutex.html">Mutex</a></li>
+        
+          
+          
+          <li><a href="../NameError.html">NameError</a></li>
+        
+          
+          
+          <li><a href="../NilClass.html">NilClass</a></li>
+        
+          
+          
+          <li><a href="../NoMemoryError.html">NoMemoryError</a></li>
+        
+          
+          
+          <li><a href="../NoMethodError.html">NoMethodError</a></li>
+        
+          
+          
+          <li><a href="../NotImplementedError.html">NotImplementedError</a></li>
+        
+          
+          
+          <li><a href="../Numeric.html">Numeric</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../ObjectSpace.html">ObjectSpace</a></li>
+        
+          
+          
+          <li><a href="../ObjectSpace/WeakMap.html">ObjectSpace::WeakMap</a></li>
+        
+          
+          
+          <li><a href="../Proc.html">Proc</a></li>
+        
+          
+          
+          <li><a href="../Process.html">Process</a></li>
+        
+          
+          
+          <li><a href="../Process/GID.html">Process::GID</a></li>
+        
+          
+          
+          <li><a href="../Process/Status.html">Process::Status</a></li>
+        
+          
+          
+          <li><a href="../Process/Sys.html">Process::Sys</a></li>
+        
+          
+          
+          <li><a href="../Process/UID.html">Process::UID</a></li>
+        
+          
+          
+          <li><a href="../Process/Waiter.html">Process::Waiter</a></li>
+        
+          
+          
+          <li><a href="../Queue.html">Queue</a></li>
+        
+          
+          
+          <li><a href="../Random.html">Random</a></li>
+        
+          
+          
+          <li><a href="../Range.html">Range</a></li>
+        
+          
+          
+          <li><a href="../RangeError.html">RangeError</a></li>
+        
+          
+          
+          <li><a href="../Rational.html">Rational</a></li>
+        
+          
+          
+          <li><a href="../Rational/compatible.html">Rational::compatible</a></li>
+        
+          
+          
+          <li><a href="../Regexp.html">Regexp</a></li>
+        
+          
+          
+          <li><a href="../RegexpError.html">RegexpError</a></li>
+        
+          
+          
+          <li><a href="../RubyVM.html">RubyVM</a></li>
+        
+          
+          
+          <li><a href="../RubyVM/Env.html">RubyVM::Env</a></li>
+        
+          
+          
+          <li><a href="../RubyVM/InstructionSequence.html">RubyVM::InstructionSequence</a></li>
+        
+          
+          
+          <li><a href="../RuntimeError.html">RuntimeError</a></li>
+        
+          
+          
+          <li><a href="../ScriptError.html">ScriptError</a></li>
+        
+          
+          
+          <li><a href="../SecurityError.html">SecurityError</a></li>
+        
+          
+          
+          <li><a href="../Signal.html">Signal</a></li>
+        
+          
+          
+          <li><a href="../SignalException.html">SignalException</a></li>
+        
+          
+          
+          <li><a href="../SizedQueue.html">SizedQueue</a></li>
+        
+          
+          
+          <li><a href="../StandardError.html">StandardError</a></li>
+        
+          
+          
+          <li><a href="../StopIteration.html">StopIteration</a></li>
+        
+          
+          
+          <li><a href="../String.html">String</a></li>
+        
+          
+          
+          <li><a href="../Struct.html">Struct</a></li>
+        
+          
+          
+          <li><a href="../Symbol.html">Symbol</a></li>
+        
+          
+          
+          <li><a href="../SyntaxError.html">SyntaxError</a></li>
+        
+          
+          
+          <li><a href="../SystemCallError.html">SystemCallError</a></li>
+        
+          
+          
+          <li><a href="../SystemExit.html">SystemExit</a></li>
+        
+          
+          
+          <li><a href="../SystemStackError.html">SystemStackError</a></li>
+        
+          
+          
+          <li><a href="../Thread.html">Thread</a></li>
+        
+          
+          
+          <li><a href="../Thread/Backtrace/Location.html">Thread::Backtrace::Location</a></li>
+        
+          
+          
+          <li><a href="../ThreadError.html">ThreadError</a></li>
+        
+          
+          
+          <li><a href="../ThreadGroup.html">ThreadGroup</a></li>
+        
+          
+          
+          <li><a href="../Time.html">Time</a></li>
+        
+          
+          
+          <li><a href="../TracePoint.html">TracePoint</a></li>
+        
+          
+          
+          <li><a href="../TrueClass.html">TrueClass</a></li>
+        
+          
+          
+          <li><a href="../TypeError.html">TypeError</a></li>
+        
+          
+          
+          <li><a href="../UnboundMethod.html">UnboundMethod</a></li>
+        
+          
+          
+          <li><a href="../UncaughtThrowError.html">UncaughtThrowError</a></li>
+        
+          
+          
+          <li><a href="../ZeroDivisionError.html">ZeroDivisionError</a></li>
+        
+          
+          
+          <li><a href="../fatal.html">fatal</a></li>
+        
+          
+          
+          <li><a href="../unknown.html">unknown</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">RubyVM::InstructionSequence</h1>
+
+    <div id="description" class="description">
+      
+<p>The <a href="InstructionSequence.html">InstructionSequence</a> class
+represents a compiled sequence of instructions for the Ruby Virtual
+Machine.</p>
+
+<p>With it, you can get a handle to the instructions that make up a method or
+a proc, compile strings of Ruby code down to VM instructions, and
+disassemble instruction sequences to strings for easy inspection. It is
+mostly useful if you want to learn how the Ruby VM works, but it also lets
+you control various settings for the Ruby iseq compiler.</p>
+
+<p>You can find the source for the VM instructions in <code>insns.def</code>
+in the Ruby source.</p>
+
+<p>The instruction sequence results will almost certainly change as Ruby
+changes, so example output in this documentation may be different from what
+you see.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="compile-method" class="method-detail ">
+          <a name="method-c-compile"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">compile(source[, file[, path[, line[, options]]]]) &rarr; iseq</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Takes <code>source</code>, a <a href="../String.html">String</a> of Ruby
+code and compiles it to an <a
+href="InstructionSequence.html">InstructionSequence</a>.</p>
+
+<p>Optionally takes <code>file</code>, <code>path</code>, and
+<code>line</code> which describe the filename, absolute path and first line
+number of the ruby code in <code>source</code> which are metadata attached
+to the returned <code>iseq</code>.</p>
+
+<p><code>options</code>, which can be <code>true</code>, <code>false</code> or
+a <code>Hash</code>, is used to modify the default behavior of the Ruby
+iseq compiler.</p>
+
+<p>For details regarding valid compile options see <a
+href="InstructionSequence.html#method-c-compile_option-3D">::compile_option=</a>.</p>
+
+<pre class="ruby"><span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">&quot;a = 1 + 2&quot;</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="compile-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_compile(int argc, VALUE *argv, VALUE self)
+{
+    VALUE src, file = Qnil, path = Qnil, line = INT2FIX(1), opt = Qnil;
+
+    rb_secure(1);
+
+    rb_scan_args(argc, argv, &quot;14&quot;, &amp;src, &amp;file, &amp;path, &amp;line, &amp;opt);
+    if (NIL_P(file)) file = rb_str_new2(&quot;&lt;compiled&gt;&quot;);
+    if (NIL_P(line)) line = INT2FIX(1);
+
+    return rb_iseq_compile_with_option(src, file, path, line, 0, opt);
+}
+            </pre> 
+            </div><!-- compile-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- compile-method -->
+      
+        <div id="compile_file-method" class="method-detail ">
+          <a name="method-c-compile_file"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">compile_file(file[, options]) &rarr; iseq</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Takes <code>file</code>, a <a href="../String.html">String</a> with the
+location of a Ruby source file, reads, parses and compiles the file, and
+returns <code>iseq</code>, the compiled <a
+href="InstructionSequence.html">InstructionSequence</a> with source
+location metadata set.</p>
+
+<p>Optionally takes <code>options</code>, which can be <code>true</code>,
+<code>false</code> or a <code>Hash</code>, to modify the default behavior
+of the Ruby iseq compiler.</p>
+
+<p>For details regarding valid compile options see <a
+href="InstructionSequence.html#method-c-compile_option-3D">::compile_option=</a>.</p>
+
+<pre class="ruby"><span class="ruby-comment"># /tmp/hello.rb</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Hello, world!&quot;</span>
+
+<span class="ruby-comment"># elsewhere</span>
+<span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile_file</span>(<span class="ruby-string">&quot;/tmp/hello.rb&quot;</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;main&gt;@/tmp/hello.rb&gt;</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="compile_file-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_compile_file(int argc, VALUE *argv, VALUE self)
+{
+    VALUE file, line = INT2FIX(1), opt = Qnil;
+    VALUE parser;
+    VALUE f;
+    NODE *node;
+    const char *fname;
+    rb_compile_option_t option;
+
+    rb_secure(1);
+    rb_scan_args(argc, argv, &quot;11&quot;, &amp;file, &amp;opt);
+    FilePathValue(file);
+    fname = StringValueCStr(file);
+
+    f = rb_file_open_str(file, &quot;r&quot;);
+
+    parser = rb_parser_new();
+    node = rb_parser_compile_file(parser, fname, f, NUM2INT(line));
+
+    rb_io_close(f);
+
+    make_compile_option(&amp;option, opt);
+    return rb_iseq_new_with_opt(node, rb_str_new2(&quot;&lt;main&gt;&quot;), file,
+                                rb_realpath_internal(Qnil, file, 1), line, Qfalse,
+                                ISEQ_TYPE_TOP, &amp;option);
+}
+            </pre> 
+            </div><!-- compile_file-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- compile_file-method -->
+      
+        <div id="compile_option-method" class="method-detail ">
+          <a name="method-c-compile_option"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">compile_option &rarr; options</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Returns a hash of default options used by the Ruby iseq compiler.</p>
+
+<p>For details, see <a
+href="InstructionSequence.html#method-c-compile_option-3D">::compile_option=</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="compile_option-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_compile_option_get(VALUE self)
+{
+    return make_compile_option_value(&amp;COMPILE_OPTION_DEFAULT);
+}
+            </pre> 
+            </div><!-- compile_option-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- compile_option-method -->
+      
+        <div id="compile_option-3D-method" class="method-detail ">
+          <a name="method-c-compile_option-3D"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">compile_option = options</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Sets the default values for various optimizations in the Ruby iseq
+compiler.</p>
+
+<p>Possible values for <code>options</code> include <code>true</code>, which
+enables all options, <code>false</code> which disables all options, and
+<code>nil</code> which leaves all options unchanged.</p>
+
+<p>You can also pass a <code>Hash</code> of <code>options</code> that you want
+to change, any options not present in the hash will be left unchanged.</p>
+
+<p>Possible option names (which are keys in <code>options</code>) which can be
+set to <code>true</code> or <code>false</code> include:</p>
+<ul><li>
+<p><code>:inline_const_cache</code></p>
+</li><li>
+<p><code>:instructions_unification</code></p>
+</li><li>
+<p><code>:operands_unification</code></p>
+</li><li>
+<p><code>:peephole_optimization</code></p>
+</li><li>
+<p><code>:specialized_instruction</code></p>
+</li><li>
+<p><code>:stack_caching</code></p>
+</li><li>
+<p><code>:tailcall_optimization</code></p>
+</li><li>
+<p><code>:trace_instruction</code></p>
+</li></ul>
+
+<p>Additionally, <code>:debug_level</code> can be set to an integer.</p>
+
+<p>These default options can be overwritten for a single run of the iseq
+compiler by passing any of the above values as the <code>options</code>
+parameter to <a href="InstructionSequence.html#method-c-new">::new</a>, <a
+href="InstructionSequence.html#method-c-compile">::compile</a> and <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="compile_option-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_compile_option_set(VALUE self, VALUE opt)
+{
+    rb_compile_option_t option;
+    rb_secure(1);
+    make_compile_option(&amp;option, opt);
+    COMPILE_OPTION_DEFAULT = option;
+    return opt;
+}
+            </pre> 
+            </div><!-- compile_option-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- compile_option-3D-method -->
+      
+        <div id="disasm-method" class="method-detail ">
+          <a name="method-c-disasm"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">disasm(body) &rarr; str</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          <div class="method-heading">
+            <span class="method-callseq">disassemble(body) &rarr; str</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Takes <code>body</code>, a <a href="../Method.html">Method</a> or <a
+href="../Proc.html">Proc</a> object, and returns a <a
+href="../String.html">String</a> with the human readable instructions for
+<code>body</code>.</p>
+
+<p>For a <a href="../Method.html">Method</a> object:</p>
+
+<pre class="ruby"><span class="ruby-comment"># /tmp/method.rb</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;hello, world&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">disasm</span>(<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">hello</span>))
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:hello@/tmp/method.rb&gt;============
+0000 trace            8                                               (   1)
+0002 trace            1                                               (   2)
+0004 putself
+0005 putstring        &quot;hello, world&quot;
+0007 send             :puts, 1, nil, 8, &lt;ic:0&gt;
+0013 trace            16                                              (   3)
+0015 leave                                                            (   2)</pre>
+
+<p>For a Proc:</p>
+
+<pre class="ruby"><span class="ruby-comment"># /tmp/proc.rb</span>
+<span class="ruby-identifier">p</span> = <span class="ruby-identifier">proc</span> { <span class="ruby-identifier">num</span> = <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span> }
+<span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">disasm</span>(<span class="ruby-identifier">p</span>)
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:block in &lt;main&gt;@/tmp/proc.rb&gt;===
+== catch table
+| catch type: redo   st: 0000 ed: 0012 sp: 0000 cont: 0000
+| catch type: next   st: 0000 ed: 0012 sp: 0000 cont: 0012
+|------------------------------------------------------------------------
+local table (size: 2, argc: 0 [opts: 0, rest: -1, post: 0, block: -1] s1)
+[ 2] num
+0000 trace            1                                               (   1)
+0002 putobject        1
+0004 putobject        2
+0006 opt_plus         &lt;ic:1&gt;
+0008 dup
+0009 setlocal         num, 0
+0012 leave</pre>
+            
+
+            
+            <div class="method-source-code" id="disasm-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_disasm(VALUE klass, VALUE body)
+{
+    VALUE iseqval = iseq_s_of(klass, body);
+    return NIL_P(iseqval) ? Qnil : rb_iseq_disasm(iseqval);
+}
+            </pre> 
+            </div><!-- disasm-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- disasm-method -->
+      
+        <div id="disassemble-method" class="method-detail ">
+          <a name="method-c-disassemble"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">disasm(body) &rarr; str</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          <div class="method-heading">
+            <span class="method-callseq">disassemble(body) &rarr; str</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Takes <code>body</code>, a <a href="../Method.html">Method</a> or <a
+href="../Proc.html">Proc</a> object, and returns a <a
+href="../String.html">String</a> with the human readable instructions for
+<code>body</code>.</p>
+
+<p>For a <a href="../Method.html">Method</a> object:</p>
+
+<pre class="ruby"><span class="ruby-comment"># /tmp/method.rb</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hello</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;hello, world&quot;</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">disasm</span>(<span class="ruby-identifier">method</span>(:<span class="ruby-identifier">hello</span>))
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:hello@/tmp/method.rb&gt;============
+0000 trace            8                                               (   1)
+0002 trace            1                                               (   2)
+0004 putself
+0005 putstring        &quot;hello, world&quot;
+0007 send             :puts, 1, nil, 8, &lt;ic:0&gt;
+0013 trace            16                                              (   3)
+0015 leave                                                            (   2)</pre>
+
+<p>For a Proc:</p>
+
+<pre class="ruby"><span class="ruby-comment"># /tmp/proc.rb</span>
+<span class="ruby-identifier">p</span> = <span class="ruby-identifier">proc</span> { <span class="ruby-identifier">num</span> = <span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span> }
+<span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">disasm</span>(<span class="ruby-identifier">p</span>)
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:block in &lt;main&gt;@/tmp/proc.rb&gt;===
+== catch table
+| catch type: redo   st: 0000 ed: 0012 sp: 0000 cont: 0000
+| catch type: next   st: 0000 ed: 0012 sp: 0000 cont: 0012
+|------------------------------------------------------------------------
+local table (size: 2, argc: 0 [opts: 0, rest: -1, post: 0, block: -1] s1)
+[ 2] num
+0000 trace            1                                               (   1)
+0002 putobject        1
+0004 putobject        2
+0006 opt_plus         &lt;ic:1&gt;
+0008 dup
+0009 setlocal         num, 0
+0012 leave</pre>
+            
+
+            
+            <div class="method-source-code" id="disassemble-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_disasm(VALUE klass, VALUE body)
+{
+    VALUE iseqval = iseq_s_of(klass, body);
+    return NIL_P(iseqval) ? Qnil : rb_iseq_disasm(iseqval);
+}
+            </pre> 
+            </div><!-- disassemble-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- disassemble-method -->
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">new(source[, file[, path[, line[, options]]]]) &rarr; iseq</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Takes <code>source</code>, a <a href="../String.html">String</a> of Ruby
+code and compiles it to an <a
+href="InstructionSequence.html">InstructionSequence</a>.</p>
+
+<p>Optionally takes <code>file</code>, <code>path</code>, and
+<code>line</code> which describe the filename, absolute path and first line
+number of the ruby code in <code>source</code> which are metadata attached
+to the returned <code>iseq</code>.</p>
+
+<p><code>options</code>, which can be <code>true</code>, <code>false</code> or
+a <code>Hash</code>, is used to modify the default behavior of the Ruby
+iseq compiler.</p>
+
+<p>For details regarding valid compile options see <a
+href="InstructionSequence.html#method-c-compile_option-3D">::compile_option=</a>.</p>
+
+<pre class="ruby"><span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">&quot;a = 1 + 2&quot;</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_compile(int argc, VALUE *argv, VALUE self)
+{
+    VALUE src, file = Qnil, path = Qnil, line = INT2FIX(1), opt = Qnil;
+
+    rb_secure(1);
+
+    rb_scan_args(argc, argv, &quot;14&quot;, &amp;src, &amp;file, &amp;path, &amp;line, &amp;opt);
+    if (NIL_P(file)) file = rb_str_new2(&quot;&lt;compiled&gt;&quot;);
+    if (NIL_P(line)) line = INT2FIX(1);
+
+    return rb_iseq_compile_with_option(src, file, path, line, 0, opt);
+}
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+        <div id="of-method" class="method-detail ">
+          <a name="method-c-of"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">of</span><span
+              class="method-args">(p1)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the instruction sequence containing the given proc or method.</p>
+
+<p>For example, using irb:</p>
+
+<pre># a proc
+&gt; p = proc { num = 1 + 2 }
+&gt; RubyVM::InstructionSequence.of(p)
+&gt; #=&gt; &lt;RubyVM::InstructionSequence:block in irb_binding@(irb)&gt;
+
+# for a method
+&gt; def foo(bar); puts bar; end
+&gt; RubyVM::InstructionSequence.of(method(:foo))
+&gt; #=&gt; &lt;RubyVM::InstructionSequence:foo@(irb)&gt;</pre>
+
+<p>Using <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>:</p>
+
+<pre># /tmp/iseq_of.rb
+def hello
+  puts &quot;hello, world&quot;
+end
+
+$a_global_proc = proc { str = 'a' + 'b' }
+
+# in irb
+&gt; require '/tmp/iseq_of.rb'
+
+# first the method hello
+&gt; RubyVM::InstructionSequence.of(method(:hello))
+&gt; #=&gt; #&lt;RubyVM::InstructionSequence:0x007fb73d7cb1d0&gt;
+
+# then the global proc
+&gt; RubyVM::InstructionSequence.of($a_global_proc)
+&gt; #=&gt; #&lt;RubyVM::InstructionSequence:0x007fb73d7caf78&gt;</pre>
+            
+
+            
+            <div class="method-source-code" id="of-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_s_of(VALUE klass, VALUE body)
+{
+    VALUE ret = Qnil;
+    rb_iseq_t *iseq;
+
+    rb_secure(1);
+
+    if (rb_obj_is_proc(body)) {
+        rb_proc_t *proc;
+        GetProcPtr(body, proc);
+        iseq = proc-&gt;block.iseq;
+        if (RUBY_VM_NORMAL_ISEQ_P(iseq)) {
+            ret = iseq-&gt;self;
+        }
+    }
+    else if ((iseq = rb_method_get_iseq(body)) != 0) {
+        ret = iseq-&gt;self;
+    }
+    return ret;
+}
+            </pre> 
+            </div><!-- of-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- of-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="absolute_path-method" class="method-detail ">
+          <a name="method-i-absolute_path"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">absolute_path</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the absolute path of this instruction sequence.</p>
+
+<p><code>nil</code> if the iseq was evaluated from a string.</p>
+
+<p>For example, using <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>:</p>
+
+<pre># /tmp/method.rb
+def hello
+  puts &quot;hello, world&quot;
+end
+
+# in irb
+&gt; iseq = RubyVM::InstructionSequence.compile_file('/tmp/method.rb')
+&gt; iseq.absolute_path #=&gt; /tmp/method.rb</pre>
+            
+
+            
+            <div class="method-source-code" id="absolute_path-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_absolute_path(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    return iseq-&gt;location.absolute_path;
+}
+            </pre> 
+            </div><!-- absolute_path-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- absolute_path-method -->
+      
+        <div id="base_label-method" class="method-detail ">
+          <a name="method-i-base_label"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">base_label</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the base label of this instruction sequence.</p>
+
+<p>For example, using irb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">iseq</span> = <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'num = 1 + 2'</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+<span class="ruby-identifier">iseq</span>.<span class="ruby-identifier">base_label</span>
+<span class="ruby-comment">#=&gt; &quot;&lt;compiled&gt;&quot;</span>
+</pre>
+
+<p>Using <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>:</p>
+
+<pre># /tmp/method.rb
+def hello
+  puts &quot;hello, world&quot;
+end
+
+# in irb
+&gt; iseq = RubyVM::InstructionSequence.compile_file('/tmp/method.rb')
+&gt; iseq.base_label #=&gt; &lt;main&gt;</pre>
+            
+
+            
+            <div class="method-source-code" id="base_label-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_base_label(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    return iseq-&gt;location.base_label;
+}
+            </pre> 
+            </div><!-- base_label-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- base_label-method -->
+      
+        <div id="disasm-method" class="method-detail ">
+          <a name="method-i-disasm"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">disasm &rarr; str</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Returns the instruction sequence as a <code>String</code> in human readable
+form.</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'1 + 2'</span>).<span class="ruby-identifier">disasm</span>
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;==========
+0000 trace            1                                               (   1)
+0002 putobject        1
+0004 putobject        2
+0006 opt_plus         &lt;ic:1&gt;
+0008 leave</pre>
+            
+
+            
+            <div class="method-source-code" id="disasm-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_disasm(VALUE self)
+{
+    rb_iseq_t *iseqdat = iseq_check(self); /* TODO: rename to iseq */
+    VALUE *iseq;
+    VALUE str = rb_str_new(0, 0);
+    VALUE child = rb_ary_new();
+    unsigned int size;
+    int i;
+    long l;
+    ID *tbl;
+    size_t n;
+    enum {header_minlen = 72};
+
+    rb_secure(1);
+
+    size = iseqdat-&gt;iseq_size;
+
+    rb_str_cat2(str, &quot;== disasm: &quot;);
+
+    rb_str_concat(str, iseq_inspect(iseqdat-&gt;self));
+    if ((l = RSTRING_LEN(str)) &lt; header_minlen) {
+        rb_str_resize(str, header_minlen);
+        memset(RSTRING_PTR(str) + l, '=', header_minlen - l);
+    }
+    rb_str_cat2(str, &quot;\n&quot;);
+
+    /* show catch table information */
+    if (iseqdat-&gt;catch_table) {
+        rb_str_cat2(str, &quot;== catch table\n&quot;);
+    }
+    if (iseqdat-&gt;catch_table) for (i = 0; i &lt; iseqdat-&gt;catch_table-&gt;size; i++) {
+        struct iseq_catch_table_entry *entry = &amp;iseqdat-&gt;catch_table-&gt;entries[i];
+        rb_str_catf(str,
+                    &quot;| catch type: %-6s st: %04d ed: %04d sp: %04d cont: %04d\n&quot;,
+                    catch_type((int)entry-&gt;type), (int)entry-&gt;start,
+                    (int)entry-&gt;end, (int)entry-&gt;sp, (int)entry-&gt;cont);
+        if (entry-&gt;iseq) {
+            rb_str_concat(str, rb_iseq_disasm(entry-&gt;iseq));
+        }
+    }
+    if (iseqdat-&gt;catch_table) {
+        rb_str_cat2(str, &quot;|-------------------------------------&quot;
+                    &quot;-----------------------------------\n&quot;);
+    }
+
+    /* show local table information */
+    tbl = iseqdat-&gt;local_table;
+
+    if (tbl) {
+        rb_str_catf(str,
+                    &quot;local table (size: %d, argc: %d &quot;
+                    &quot;[opts: %d, rest: %d, post: %d, block: %d, kw: %d@%d, kwrest: %d])\n&quot;,
+                    iseqdat-&gt;local_size,
+                    iseqdat-&gt;param.lead_num,
+                    iseqdat-&gt;param.opt_num,
+                    iseqdat-&gt;param.flags.has_rest ? iseqdat-&gt;param.rest_start : -1,
+                    iseqdat-&gt;param.post_num,
+                    iseqdat-&gt;param.flags.has_block ? iseqdat-&gt;param.block_start : -1,
+                    iseqdat-&gt;param.flags.has_kw ? iseqdat-&gt;param.keyword-&gt;num : -1,
+                    iseqdat-&gt;param.flags.has_kw ? iseqdat-&gt;param.keyword-&gt;required_num : -1,
+                    iseqdat-&gt;param.flags.has_kwrest ? iseqdat-&gt;param.keyword-&gt;rest_start : -1);
+
+        for (i = 0; i &lt; iseqdat-&gt;local_table_size; i++) {
+            long width;
+            VALUE name = id_to_name(tbl[i], 0);
+            char argi[0x100] = &quot;&quot;;
+            char opti[0x100] = &quot;&quot;;
+
+            if (iseqdat-&gt;param.flags.has_opt) {
+                int argc = iseqdat-&gt;param.lead_num;
+                int opts = iseqdat-&gt;param.opt_num;
+                if (i &gt;= argc &amp;&amp; i &lt; argc + opts) {
+                    snprintf(opti, sizeof(opti), &quot;Opt=%&quot;PRIdVALUE,
+                             iseqdat-&gt;param.opt_table[i - argc]);
+                }
+            }
+
+            snprintf(argi, sizeof(argi), &quot;%s%s%s%s%s&quot;, /* arg, opts, rest, post  block */
+                     iseqdat-&gt;param.lead_num &gt; i ? &quot;Arg&quot; : &quot;&quot;,
+                     opti,
+                     (iseqdat-&gt;param.flags.has_rest &amp;&amp; iseqdat-&gt;param.rest_start == i) ? &quot;Rest&quot; : &quot;&quot;,
+                     (iseqdat-&gt;param.flags.has_post &amp;&amp; iseqdat-&gt;param.post_start &lt;= i &amp;&amp; i &lt; iseqdat-&gt;param.post_start + iseqdat-&gt;param.post_num) ? &quot;Post&quot; : &quot;&quot;,
+                     (iseqdat-&gt;param.flags.has_block &amp;&amp; iseqdat-&gt;param.block_start == i) ? &quot;Block&quot; : &quot;&quot;);
+
+            rb_str_catf(str, &quot;[%2d] &quot;, iseqdat-&gt;local_size - i);
+            width = RSTRING_LEN(str) + 11;
+            if (name)
+                rb_str_append(str, name);
+            else
+                rb_str_cat2(str, &quot;?&quot;);
+            if (*argi) rb_str_catf(str, &quot;&lt;%s&gt;&quot;, argi);
+            if ((width -= RSTRING_LEN(str)) &gt; 0) rb_str_catf(str, &quot;%*s&quot;, (int)width, &quot;&quot;);
+        }
+        rb_str_cat2(str, &quot;\n&quot;);
+    }
+
+    /* show each line */
+    iseq = rb_iseq_original_iseq(iseqdat);
+    for (n = 0; n &lt; size;) {
+        n += rb_iseq_disasm_insn(str, iseq, n, iseqdat, child);
+    }
+
+    for (i = 0; i &lt; RARRAY_LEN(child); i++) {
+        VALUE isv = rb_ary_entry(child, i);
+        rb_str_concat(str, rb_iseq_disasm(isv));
+    }
+
+    return str;
+}
+            </pre> 
+            </div><!-- disasm-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- disasm-method -->
+      
+        <div id="disassemble-method" class="method-detail ">
+          <a name="method-i-disassemble"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">disassemble &rarr; str</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Returns the instruction sequence as a <code>String</code> in human readable
+form.</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'1 + 2'</span>).<span class="ruby-identifier">disasm</span>
+</pre>
+
+<p>Produces:</p>
+
+<pre>== disasm: &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;==========
+0000 trace            1                                               (   1)
+0002 putobject        1
+0004 putobject        2
+0006 opt_plus         &lt;ic:1&gt;
+0008 leave</pre>
+            
+
+            
+            <div class="method-source-code" id="disassemble-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_disasm(VALUE self)
+{
+    rb_iseq_t *iseqdat = iseq_check(self); /* TODO: rename to iseq */
+    VALUE *iseq;
+    VALUE str = rb_str_new(0, 0);
+    VALUE child = rb_ary_new();
+    unsigned int size;
+    int i;
+    long l;
+    ID *tbl;
+    size_t n;
+    enum {header_minlen = 72};
+
+    rb_secure(1);
+
+    size = iseqdat-&gt;iseq_size;
+
+    rb_str_cat2(str, &quot;== disasm: &quot;);
+
+    rb_str_concat(str, iseq_inspect(iseqdat-&gt;self));
+    if ((l = RSTRING_LEN(str)) &lt; header_minlen) {
+        rb_str_resize(str, header_minlen);
+        memset(RSTRING_PTR(str) + l, '=', header_minlen - l);
+    }
+    rb_str_cat2(str, &quot;\n&quot;);
+
+    /* show catch table information */
+    if (iseqdat-&gt;catch_table) {
+        rb_str_cat2(str, &quot;== catch table\n&quot;);
+    }
+    if (iseqdat-&gt;catch_table) for (i = 0; i &lt; iseqdat-&gt;catch_table-&gt;size; i++) {
+        struct iseq_catch_table_entry *entry = &amp;iseqdat-&gt;catch_table-&gt;entries[i];
+        rb_str_catf(str,
+                    &quot;| catch type: %-6s st: %04d ed: %04d sp: %04d cont: %04d\n&quot;,
+                    catch_type((int)entry-&gt;type), (int)entry-&gt;start,
+                    (int)entry-&gt;end, (int)entry-&gt;sp, (int)entry-&gt;cont);
+        if (entry-&gt;iseq) {
+            rb_str_concat(str, rb_iseq_disasm(entry-&gt;iseq));
+        }
+    }
+    if (iseqdat-&gt;catch_table) {
+        rb_str_cat2(str, &quot;|-------------------------------------&quot;
+                    &quot;-----------------------------------\n&quot;);
+    }
+
+    /* show local table information */
+    tbl = iseqdat-&gt;local_table;
+
+    if (tbl) {
+        rb_str_catf(str,
+                    &quot;local table (size: %d, argc: %d &quot;
+                    &quot;[opts: %d, rest: %d, post: %d, block: %d, kw: %d@%d, kwrest: %d])\n&quot;,
+                    iseqdat-&gt;local_size,
+                    iseqdat-&gt;param.lead_num,
+                    iseqdat-&gt;param.opt_num,
+                    iseqdat-&gt;param.flags.has_rest ? iseqdat-&gt;param.rest_start : -1,
+                    iseqdat-&gt;param.post_num,
+                    iseqdat-&gt;param.flags.has_block ? iseqdat-&gt;param.block_start : -1,
+                    iseqdat-&gt;param.flags.has_kw ? iseqdat-&gt;param.keyword-&gt;num : -1,
+                    iseqdat-&gt;param.flags.has_kw ? iseqdat-&gt;param.keyword-&gt;required_num : -1,
+                    iseqdat-&gt;param.flags.has_kwrest ? iseqdat-&gt;param.keyword-&gt;rest_start : -1);
+
+        for (i = 0; i &lt; iseqdat-&gt;local_table_size; i++) {
+            long width;
+            VALUE name = id_to_name(tbl[i], 0);
+            char argi[0x100] = &quot;&quot;;
+            char opti[0x100] = &quot;&quot;;
+
+            if (iseqdat-&gt;param.flags.has_opt) {
+                int argc = iseqdat-&gt;param.lead_num;
+                int opts = iseqdat-&gt;param.opt_num;
+                if (i &gt;= argc &amp;&amp; i &lt; argc + opts) {
+                    snprintf(opti, sizeof(opti), &quot;Opt=%&quot;PRIdVALUE,
+                             iseqdat-&gt;param.opt_table[i - argc]);
+                }
+            }
+
+            snprintf(argi, sizeof(argi), &quot;%s%s%s%s%s&quot;, /* arg, opts, rest, post  block */
+                     iseqdat-&gt;param.lead_num &gt; i ? &quot;Arg&quot; : &quot;&quot;,
+                     opti,
+                     (iseqdat-&gt;param.flags.has_rest &amp;&amp; iseqdat-&gt;param.rest_start == i) ? &quot;Rest&quot; : &quot;&quot;,
+                     (iseqdat-&gt;param.flags.has_post &amp;&amp; iseqdat-&gt;param.post_start &lt;= i &amp;&amp; i &lt; iseqdat-&gt;param.post_start + iseqdat-&gt;param.post_num) ? &quot;Post&quot; : &quot;&quot;,
+                     (iseqdat-&gt;param.flags.has_block &amp;&amp; iseqdat-&gt;param.block_start == i) ? &quot;Block&quot; : &quot;&quot;);
+
+            rb_str_catf(str, &quot;[%2d] &quot;, iseqdat-&gt;local_size - i);
+            width = RSTRING_LEN(str) + 11;
+            if (name)
+                rb_str_append(str, name);
+            else
+                rb_str_cat2(str, &quot;?&quot;);
+            if (*argi) rb_str_catf(str, &quot;&lt;%s&gt;&quot;, argi);
+            if ((width -= RSTRING_LEN(str)) &gt; 0) rb_str_catf(str, &quot;%*s&quot;, (int)width, &quot;&quot;);
+        }
+        rb_str_cat2(str, &quot;\n&quot;);
+    }
+
+    /* show each line */
+    iseq = rb_iseq_original_iseq(iseqdat);
+    for (n = 0; n &lt; size;) {
+        n += rb_iseq_disasm_insn(str, iseq, n, iseqdat, child);
+    }
+
+    for (i = 0; i &lt; RARRAY_LEN(child); i++) {
+        VALUE isv = rb_ary_entry(child, i);
+        rb_str_concat(str, rb_iseq_disasm(isv));
+    }
+
+    return str;
+}
+            </pre> 
+            </div><!-- disassemble-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- disassemble-method -->
+      
+        <div id="eval-method" class="method-detail ">
+          <a name="method-i-eval"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">eval &rarr; obj</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Evaluates the instruction sequence and returns the result.</p>
+
+<pre class="ruby"><span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">&quot;1 + 2&quot;</span>).<span class="ruby-identifier">eval</span> <span class="ruby-comment">#=&gt; 3</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="eval-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_eval(VALUE self)
+{
+    rb_secure(1);
+    return rb_iseq_eval(self);
+}
+            </pre> 
+            </div><!-- eval-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- eval-method -->
+      
+        <div id="first_lineno-method" class="method-detail ">
+          <a name="method-i-first_lineno"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">first_lineno</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the number of the first source line where the instruction sequence
+was loaded from.</p>
+
+<p>For example, using irb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">iseq</span> = <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'num = 1 + 2'</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+<span class="ruby-identifier">iseq</span>.<span class="ruby-identifier">first_lineno</span>
+<span class="ruby-comment">#=&gt; 1</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="first_lineno-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_first_lineno(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    return iseq-&gt;location.first_lineno;
+}
+            </pre> 
+            </div><!-- first_lineno-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- first_lineno-method -->
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns a human-readable string representation of this instruction
+sequence, including the <a
+href="InstructionSequence.html#method-i-label">label</a> and <a
+href="InstructionSequence.html#method-i-path">path</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_inspect(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    if (!iseq-&gt;location.label) {
+        return rb_sprintf(&quot;#&lt;%s: uninitialized&gt;&quot;, rb_obj_classname(self));
+    }
+
+    return rb_sprintf(&quot;&lt;%s:%s@%s&gt;&quot;,
+                      rb_obj_classname(self),
+                      RSTRING_PTR(iseq-&gt;location.label), RSTRING_PTR(iseq-&gt;location.path));
+}
+            </pre> 
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+      
+        <div id="label-method" class="method-detail ">
+          <a name="method-i-label"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">label</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the label of this instruction sequence.</p>
+
+<p><code>&lt;main&gt;</code> if it's at the top level,
+<code>&lt;compiled&gt;</code> if it was evaluated from a string.</p>
+
+<p>For example, using irb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">iseq</span> = <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'num = 1 + 2'</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+<span class="ruby-identifier">iseq</span>.<span class="ruby-identifier">label</span>
+<span class="ruby-comment">#=&gt; &quot;&lt;compiled&gt;&quot;</span>
+</pre>
+
+<p>Using <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>:</p>
+
+<pre># /tmp/method.rb
+def hello
+  puts &quot;hello, world&quot;
+end
+
+# in irb
+&gt; iseq = RubyVM::InstructionSequence.compile_file('/tmp/method.rb')
+&gt; iseq.label #=&gt; &lt;main&gt;</pre>
+            
+
+            
+            <div class="method-source-code" id="label-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_label(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    return iseq-&gt;location.label;
+}
+            </pre> 
+            </div><!-- label-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- label-method -->
+      
+        <div id="line_trace_all-method" class="method-detail ">
+          <a name="method-i-line_trace_all"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">line_trace_all</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p><strong>Experimental MRI specific feature, only available as C level
+api.</strong></p>
+
+<p>Returns all <code>specified_line</code> events.</p>
+            
+
+            
+            <div class="method-source-code" id="line_trace_all-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_line_trace_all(VALUE iseqval)
+{
+    VALUE result = rb_ary_new();
+    rb_iseq_line_trace_each(iseqval, collect_trace, (void *)result);
+    return result;
+}
+            </pre> 
+            </div><!-- line_trace_all-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- line_trace_all-method -->
+      
+        <div id="line_trace_specify-method" class="method-detail ">
+          <a name="method-i-line_trace_specify"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">line_trace_specify</span><span
+              class="method-args">(p1, p2)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p><strong>Experimental MRI specific feature, only available as C level
+api.</strong></p>
+
+<p>Set a <code>specified_line</code> event at the given line position, if the
+<code>set</code> parameter is <code>true</code>.</p>
+
+<p>This method is useful for building a debugger breakpoint at a specific
+line.</p>
+
+<p>A <a href="../TypeError.html">TypeError</a> is raised if <code>set</code>
+is not boolean.</p>
+
+<p>If <code>pos</code> is a negative integer a <a
+href="../TypeError.html">TypeError</a> exception is raised.</p>
+            
+
+            
+            <div class="method-source-code" id="line_trace_specify-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_line_trace_specify(VALUE iseqval, VALUE pos, VALUE set)
+{
+    struct set_specifc_data data;
+
+    data.prev = 0;
+    data.pos = NUM2INT(pos);
+    if (data.pos &lt; 0) rb_raise(rb_eTypeError, &quot;`pos' is negative&quot;);
+
+    switch (set) {
+      case Qtrue:  data.set = 1; break;
+      case Qfalse: data.set = 0; break;
+      default:
+        rb_raise(rb_eTypeError, &quot;`set' should be true/false&quot;);
+    }
+
+    rb_iseq_line_trace_each(iseqval, line_trace_specify, (void *)&amp;data);
+
+    if (data.prev == 0) {
+        rb_raise(rb_eTypeError, &quot;`pos' is out of range.&quot;);
+    }
+    return data.prev == 1 ? Qtrue : Qfalse;
+}
+            </pre> 
+            </div><!-- line_trace_specify-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- line_trace_specify-method -->
+      
+        <div id="path-method" class="method-detail ">
+          <a name="method-i-path"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">path</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns the path of this instruction sequence.</p>
+
+<p><code>&lt;compiled&gt;</code> if the iseq was evaluated from a string.</p>
+
+<p>For example, using irb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">iseq</span> = <span class="ruby-constant">RubyVM</span><span class="ruby-operator">::</span><span class="ruby-constant">InstructionSequence</span>.<span class="ruby-identifier">compile</span>(<span class="ruby-string">'num = 1 + 2'</span>)
+<span class="ruby-comment">#=&gt; &lt;RubyVM::InstructionSequence:&lt;compiled&gt;@&lt;compiled&gt;&gt;</span>
+<span class="ruby-identifier">iseq</span>.<span class="ruby-identifier">path</span>
+<span class="ruby-comment">#=&gt; &quot;&lt;compiled&gt;&quot;</span>
+</pre>
+
+<p>Using <a
+href="InstructionSequence.html#method-c-compile_file">::compile_file</a>:</p>
+
+<pre># /tmp/method.rb
+def hello
+  puts &quot;hello, world&quot;
+end
+
+# in irb
+&gt; iseq = RubyVM::InstructionSequence.compile_file('/tmp/method.rb')
+&gt; iseq.path #=&gt; /tmp/method.rb</pre>
+            
+
+            
+            <div class="method-source-code" id="path-source">
+              <pre> <!-- method.markup_code 290 -->
+               VALUE
+rb_iseq_path(VALUE self)
+{
+    rb_iseq_t *iseq;
+    GetISeqPtr(self, iseq);
+    return iseq-&gt;location.path;
+}
+            </pre> 
+            </div><!-- path-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- path-method -->
+      
+        <div id="to_a-method" class="method-detail ">
+          <a name="method-i-to_a"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">to_a &rarr; ary</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Returns an <a href="../Array.html">Array</a> with 14 elements representing
+the instruction sequence with the following data:</p>
+<dl class="rdoc-list label-list"><dt>magic
+<dd>
+<p>A string identifying the data format. <strong>Always
+<code>YARVInstructionSequence/SimpleDataFormat</code>.</strong></p>
+</dd><dt>major_version
+<dd>
+<p>The major version of the instruction sequence.</p>
+</dd><dt>minor_version
+<dd>
+<p>The minor version of the instruction sequence.</p>
+</dd><dt>format_type
+<dd>
+<p>A number identifying the data format. <strong>Always 1</strong>.</p>
+</dd><dt>misc
+<dd>
+<p>A hash containing:</p>
+<dl class="rdoc-list label-list"><dt><code>:arg_size</code>
+<dd>
+<p>the total number of arguments taken by the method or the block (0 if
+<em>iseq</em> doesn’t represent a method or block)</p>
+</dd><dt><code>:local_size</code>
+<dd>
+<p>the number of local variables + 1</p>
+</dd><dt><code>:stack_max</code>
+<dd>
+<p>used in calculating the stack depth at which a <a
+href="../SystemStackError.html">SystemStackError</a> is thrown.</p>
+</dd></dl>
+</dd><dt><a href="InstructionSequence.html#method-i-label">label</a>
+<dd>
+<p>The name of the context (block, method, class, module, etc.) that this
+instruction sequence belongs to.</p>
+
+<p><code>&lt;main&gt;</code> if it's at the top level,
+<code>&lt;compiled&gt;</code> if it was evaluated from a string.</p>
+</dd><dt><a href="InstructionSequence.html#method-i-path">path</a>
+<dd>
+<p>The relative path to the Ruby file where the instruction sequence was
+loaded from.</p>
+
+<p><code>&lt;compiled&gt;</code> if the iseq was evaluated from a string.</p>
+</dd><dt><a href="InstructionSequence.html#method-i-absolute_path">absolute_path</a>
+<dd>
+<p>The absolute path to the Ruby file where the instruction sequence was
+loaded from.</p>
+
+<p><code>nil</code> if the iseq was evaluated from a string.</p>
+</dd><dt><a href="InstructionSequence.html#method-i-first_lineno">first_lineno</a>
+<dd>
+<p>The number of the first source line where the instruction sequence was
+loaded from.</p>
+</dd><dt>type
+<dd>
+<p>The type of the instruction sequence.</p>
+
+<p>Valid values are <code>:top</code>, <code>:method</code>,
+<code>:block</code>, <code>:class</code>, <code>:rescue</code>,
+<code>:ensure</code>, <code>:eval</code>, <code>:main</code>, and
+<code>:defined_guard</code>.</p>
+</dd><dt>locals
+<dd>
+<p>An array containing the names of all arguments and local variables as
+symbols.</p>
+</dd><dt>params
+<dd>
+<p>An <a href="../Hash.html">Hash</a> object containing parameter information.</p>
+
+<p>More info about these values can be found in <code>vm_core.h</code>.</p>
+</dd><dt>catch_table
+<dd>
+<p>A list of exceptions and control flow operators (rescue, next, redo, break,
+etc.).</p>
+</dd><dt>bytecode
+<dd>
+<p>An array of arrays containing the instruction names and operands that make
+up the body of the instruction sequence.</p>
+</dd></dl>
+
+<p>Note that this format is MRI specific and version dependent.</p>
+            
+
+            
+            <div class="method-source-code" id="to_a-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+iseq_to_a(VALUE self)
+{
+    rb_iseq_t *iseq = iseq_check(self);
+    rb_secure(1);
+    return iseq_data_to_ary(iseq);
+}
+            </pre> 
+            </div><!-- to_a-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_a-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_InstructionSequence_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_InstructionSequence_versioned").load("/associated/2.2.0/InstructionSequence.html");</script> <div id='tx_InstructionSequence' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_InstructionSequence").load("/associated/InstructionSequence.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2.2.0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2.2.0/plus_InstructionSequence.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

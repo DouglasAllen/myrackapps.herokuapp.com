@@ -1,0 +1,1065 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was contributed by <a href="http://avdi.org">Avdi Grimm</a>. Avdi has been wrangling Ruby code for over a
+decade and shows no signs of slowing down. He is the author of
+<a href="http://exceptionalruby.com">*Exceptional Ruby*</a> and
+<a href="http://objectsonrails.com">*Objects on Rails*</a>. His next book,
+<a href="http://confidentruby.com">*Confident Ruby*</a>, focuses on writing Ruby
+code with a confident and straightforward style.</em></p>
+
+<h3 id="losing-the-plot">Losing the plot</h3>
+
+<p>Have you ever read a “choose your own adventure” book? Nearly every page ends with a question like this:</p>
+
+<blockquote>
+  <ul>
+    <li>If you fight the angry troll with your bare hands, turn to page 137.</li>
+    <li>If you try to reason with the troll, turn to page 29.</li>
+    <li>If you don your invisibility cloak, turn to page 6.</li>
+  </ul>
+</blockquote>
+
+<p>You’d pick one option, turn to the indicated page, and the story would
+continue.</p>
+
+<p>Did you ever try to read one of those books from front to back? It’s a
+surreal experience. The story jumps forward and back in
+time. Characters appear out of nowhere. One page you’re crushed by the
+fist of an angry troll, and on the next you’re just entering the
+troll’s realm for the first time.</p>
+
+<p>What if <em>each individual page</em> was this kind of mish-mash? What if
+every page read like this:</p>
+
+<blockquote>
+  <p>You exit the passageway into a large cavern. Unless you came from
+  page 59, in which case you fall down the sinkhole into a large
+  cavern. A huge troll, or possibly a badger (if you already visited
+  Queen Pelican), blocks your path. Unless you threw a button down the
+  wishing well on page 8, in which case there nothing blocking your
+  way. The [troll or badger or nothing at all] does not look happy to
+  see you.</p>
+
+  <ul>
+    <li>
+      <p>If you came here from chapter 7 (the Pool of Time), go back to the
+top of the page and read it again, only imagine you are watching the
+events happen to someone else.</p>
+    </li>
+    <li>
+      <p>If you already received the invisibility cloak from the aged
+lighthouse-keeper, and you want to use it now, go to page 67. Otherwise, forget you read anything about an invisibility cloak.</p>
+    </li>
+    <li>
+      <p>If you are facing a badger (see above), and you choose to run away,
+turn to page 93…</p>
+    </li>
+  </ul>
+</blockquote>
+
+<p>Not the most compelling narrative, is it? The story asks you to carry
+so much mental baggage for it that just getting through a page is
+exhausting.</p>
+
+<h3 id="code-as-narrative">Code as narrative</h3>
+
+<p>What does this have to do with software? Well, code can tell a story
+as well. It might not be a tale of high adventure and intrigue. But
+it’s a story nonetheless; one about a problem that needed to be
+solved, and the path the developer(s) chose to accomplish that task.</p>
+
+<p>A single method is like a page in that story. And unfortunately, a lot
+of methods are just as convoluted, equivical, and confusing as that
+made-up page above.</p>
+
+<p>In the following sections, we’ll take a look at some examples of code
+that unnecessarily obscures the storyline of a method. We’ll also
+explore some techniques for minimizing distractions and writing
+methods that straightforwardly convey their intent.</p>
+
+<h3 id="secure-the-borders">Secure the borders</h3>
+
+<p>Here is some code that’s having some trouble sticking to the plot:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">date</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Employee</span>
+  attr_accessor <span style="color:#A60">:name</span>
+  attr_accessor <span style="color:#A60">:hire_date</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, hire_date)
+    <span style="color:#33B">@name</span>      = name
+    <span style="color:#33B">@hire_date</span> = hire_date
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">due_for_tie_pin?</span>
+    raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Missing hire date!</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> hire_date
+    ((<span style="color:#036;font-weight:bold">Date</span>.today - hire_date) / <span style="color:#00D">365</span>).to_i &gt;= <span style="color:#00D">10</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">covered_by_pension_plan?</span>
+    <span style="color:#777"># TODO Someone in HR should probably check this logic</span>
+    ((hire_date &amp;&amp; hire_date.year) || <span style="color:#00D">2000</span>) &lt; <span style="color:#00D">2000</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bio</span>
+    <span style="color:#080;font-weight:bold">if</span> hire_date
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> has been a Yoyodyne employee since </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>hire_date.year<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> is a proud Yoyodyne employee</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We can speculate about the history of this class. It looks like over
+the course of development, three different developers discovered that
+<code>#hire_date</code> might sometimes be <code>nil</code>. They each chose to handle this
+fact in a slightly different way. The one who wrote
+<code>#due_for_tie_pin?</code> added a check that raises an exception if the hire
+date is missing. The developer responsible for
+<code>#covered_by_pension_plan</code> substituted a (seemingly arbitrary) default
+value for <code>nil</code>. And the writer of <code>#bio</code> went with an <code>if</code> statement
+switching on the presence of <code>#hire_date</code>.</p>
+
+<p>This class has serious problems with second-guessing itself. And the
+root of all this insecurity is the fact that the <code>#hire_date</code>
+attribute is unreliable—even though it’s clearly important to the operation of the class!</p>
+
+<p>One of the purposes of a constructor is to establish an object’s
+invariant: a set of properties which should always hold true for that
+object. In this case, it really seems like one of those invariants should be: <em>employee hire date is a <code>Date</code></em>.</p>
+
+<p>But the constructor, whose job it is to stand guard against initial
+values which are not compatible with the class invariant, has fallen
+asleep on the job. As a result, every other method dealing with hire
+dates is burdened with the additional responsibility of checking
+whether the value is present.</p>
+
+<p>This is an example of a class which needs to set some
+boundaries. Since there is no obvious “right” way to handle a missing
+hire date, it probably needs to simply insist on having a valid hire
+date, thereby forcing the cause of these spurious <code>nil</code> values to be
+discovered and sorted out. To do this, it should guard its own
+integrity by checking the value wherever it is set, either in the
+constructor or elsewhere:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">date</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Employee</span>
+  attr_accessor <span style="color:#A60">:name</span>
+  attr_reader <span style="color:#A60">:hire_date</span>  
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, hire_date)
+    <span style="color:#33B">@name</span>          = name
+    <span style="color:#069">self</span>.hire_date = hire_date
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hire_date=</span>(new_hire_date)
+    raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Invalid hire date</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> new_hire_date.is_a?(<span style="color:#036;font-weight:bold">Date</span>)
+    <span style="color:#33B">@hire_date</span> = new_hire_date
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">due_for_tie_pin?</span>
+    ((<span style="color:#036;font-weight:bold">Date</span>.today - hire_date) / <span style="color:#00D">365</span>).to_i &gt;= <span style="color:#00D">10</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">covered_by_pension_plan?</span>
+    hire_date.year &lt; <span style="color:#00D">2000</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">bio</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> has been a Yoyodyne employee since </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>hire_date.year<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this version, the <code>hire_date</code> attribute is protected by type check
+in the setter method. Since the constructor now delegates to this
+setter method to initialize the attribute, it is no longer possible to
+construct new <code>Employee</code> objects without a valid hire date. Now that
+the “borders” of the object are guarded, all the other methods can
+focus on telling their own stories, without being distracted by
+a potentially missing <code>hire_date</code>.</p>
+
+<h3 id="be-assertive">Be assertive</h3>
+
+<p>In the last section we saw how assertions in a class’ constructor or
+setter methods can help keep the other methods focused. But
+uncertainty and convoluted code can come from sources
+other than input parameters.</p>
+
+<p>Let’s say you’re working on some budget management software. The next
+user story requires the application to pull in transaction data from a
+third-party electronic banking API. According to the meager
+documentation you can find, you need to use the
+<code>Bank#read_transactions</code> method in order to load bank
+transactions. The first thing you decide to do is to stash the loaded
+transactions into a local data store.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Account</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">refresh_transactions</span>
+    transactions = bank.read_transactions(account_number)
+    <span style="color:#777"># ... now what?</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Unfortunately the documentation doesn’t say what the
+<code>#read_transactions</code> method returns. An <code>Array</code> seems likely. But what
+if there are no transactions found? What if the account is not found?
+Will it raise an exception, or perhaps return <code>nil</code>? Given enough time
+you might be able to work it out by reading the API library’s source
+code, but it’s pretty convoluted and you might still miss some edge
+cases.</p>
+
+<p>You decide to make an assumption… but as insurance, you document your assumption with an assertion.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Account</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">refresh_transactions</span>
+    transactions = bank.read_transactions(account_number)
+    transactions.is_a?(<span style="color:#036;font-weight:bold">Array</span>) <span style="color:#080;font-weight:bold">or</span> raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">transactions is not an Array</span><span style="color:#710">&quot;</span></span>
+    transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+      <span style="color:#777"># ...</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You manually test the code against a test account and it doesn’t blow
+up, so it seems your suspicion was correct. Next, you move on to
+pulling amount information out of the individual transactions.</p>
+
+<p>You ask your teammate, who has had some experience with this API, what
+format transactions are in. She says she thinks they are hashes with
+string keys. You decide to tentatively try looking at the “amount”
+key.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+  amount = transaction[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You look at this for a few seconds, and realize that if there is no
+“amount” key, you’ll just get a <code>nil</code> back. Then you’d have to check
+for the presence of <code>nil</code> everywhere the amount is used. You’d prefer
+to document your assumption more explicitly. So instead, you make an
+assertion by using the <code>Hash#fetch</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+  amount = transaction.fetch(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Hash#fetch</code> will raise a <code>KeyError</code> if the given key is not found,
+signaling that one of your assumptions about the <code>Bank API</code> was
+incorrect.</p>
+
+<p>You make another trial run and you don’t get any exceptions, so you
+proceed onward. Before you can store the value locally, you want to
+make sure the transaction amount is in a format that your local
+transaction store can understand. Nobody in the office seems to know
+what format the amounts come in as. You know that many financial
+system store dollar amounts as an integer number of cents, so you
+decide to proceed with the assumption that it’s the same with this
+system. In order to once again document your assumption, you make
+another assertion:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+  amount = transaction[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>]
+  amount.is_a?(<span style="color:#036;font-weight:bold">Integer</span>) <span style="color:#080;font-weight:bold">or</span> raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount not an Integer</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You put the code through it’s paces and… BOOM. You get an error.</p>
+
+<pre><code>TypeError: amount not an Integer
+</code></pre>
+
+<p>You decide to drop into the debugger on the next round, and take a
+look at the transaction values coming back from the API. You see this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[
+ {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.23</span><span style="color:#710">&quot;</span></span>},
+ {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4.75</span><span style="color:#710">&quot;</span></span>},
+ {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">8.97</span><span style="color:#710">&quot;</span></span>}
+]
+</pre></div>
+</div>
+</div>
+
+<p>Well that’s… interesting. The amounts are reported as decimal strings.</p>
+
+<p>You decide to convert them to integers, since that’s what
+your internal <code>Transaction</code> class uses.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+  amount = transaction.fetch(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>)
+  amount_cents = (amount.to_f * <span style="color:#00D">100</span>).to_i
+  <span style="color:#777"># ...</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Once again, you find yourself questioning this code as soon as you
+write it. You remember something about <code>#to_f</code> being really forgiving
+in how it parses numbers. A little experimentation proves this to be
+true.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1.23</span><span style="color:#710">&quot;</span></span>.to_f                     <span style="color:#777"># =&gt; 1.23</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">$1.23</span><span style="color:#710">&quot;</span></span>.to_f                    <span style="color:#777"># =&gt; 0.0</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a hojillion</span><span style="color:#710">&quot;</span></span>.to_f              <span style="color:#777"># =&gt; 0.0</span>
+</pre></div>
+</div>
+</div>
+
+<p>Only having a small sample of demonstration values to go on, you’re
+not confident that the amounts this API might return will always be in
+a format that <code>#to_f</code> understands. What about negative numbers? Will
+they be formatted as “-4.56”? Or as “(4.56)”? Having an unrecognized
+amount format silently converted to zero could lead to nasty bugs down
+the road.</p>
+
+<p>Yet again, you want a way to state in no uncertain terms what kind of
+values the code is prepared to deal with. This time, you use
+Kernel#Float to assert that the amount is in a format Ruby can parse
+unambiguously as a floating point number:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+  amount = transaction.fetch(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>)
+  amount_cents = (Float(amount) * <span style="color:#00D">100</span>).to_i
+  cache_transaction(<span style="color:#A60">:amount</span> =&gt; amount_cents)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>Kernel#Float</code> is much stricter than <code>String#to_f</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Float(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">$1.23</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># ~&gt; -:1:in `Float': invalid value for Float(): &quot;$1.23&quot; (ArgumentError)</span>
+<span style="color:#777"># ~&gt;    from -:1:in `&lt;main&gt;'</span>
+</pre></div>
+</div>
+</div>
+
+<p>The final code is chock full of assertions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Account</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">refresh_transactions</span>
+    transactions = bank.read_transactions(account_number)
+    transactions.is_a?(<span style="color:#036;font-weight:bold">Array</span>) <span style="color:#080;font-weight:bold">or</span> raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">transactions is not an Array</span><span style="color:#710">&quot;</span></span>
+    transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+      amount = transaction.fetch(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>)
+      amount_cents = (Float(amount) * <span style="color:#00D">100</span>).to_i
+      cache_transaction(<span style="color:#A60">:amount</span> =&gt; amount_cents)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code clearly states what it expects. It communicates a great deal
+of information about your understanding of the external API at the
+time you wrote it. It explicitly establishes the parameters within
+which it can operate confidently; as soon as any of its expectations
+are violated it fails quickly, with a meaningful exception message.</p>
+
+<p>Unfortunately, as a result it is really telling two stories: one about
+refreshing transactions (remember, that’s nominally what this method is
+about) and one about the format of an external data source. This is
+quickly mended, however:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Account</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">refresh_transactions</span>
+    fetch_transactions <span style="color:#080;font-weight:bold">do</span> |transaction_attributes|
+      cache_transaction(transaction_attributes)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Yields a hash of cleaned-up transaction attributes for each transaction</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">fetch_transactions</span>
+    transactions = bank.read_transactions(account_number)
+    transactions.is_a?(<span style="color:#036;font-weight:bold">Array</span>) <span style="color:#080;font-weight:bold">or</span> raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">transactions is not an Array</span><span style="color:#710">&quot;</span></span>
+    transactions.each <span style="color:#080;font-weight:bold">do</span> |transaction|
+      amount = transaction.fetch(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span>)
+      amount_cents = (Float(amount) * <span style="color:#00D">100</span>).to_i
+      <span style="color:#080;font-weight:bold">yield</span>(<span style="color:#A60">:amount</span> =&gt; amount_cents)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>By failing early rather than allowing misunderstood inputs to
+contaminate the system, it reduces the need for type-checking and
+coercion in other methods. And not only does this code document your
+assumptions now, it also sets up an early-warning system should the
+third-party API ever change unexpectedly in the future.</p>
+
+<h3 id="represent-special-cases-with-objects">Represent special cases with objects</h3>
+
+<p>The most common causes of code that tells a confusing story are
+special cases. Let’s look at an example of a special case, in the
+context of our budgeting application.</p>
+
+<p>You’ve implemented transaction import and it’s working great. Except
+for one little problem: users have been reporting bugs about the
+reported balances being off. And not just the balances; in fact, all
+of the reports seem to have incorrect numbers for some accounts.</p>
+
+<p>You do some investigation into the system logs, and eventually
+discover the culprit. It turns out that some banks, when they receive
+a authorization for a credit card charge, immediately report it as a
+pending transaction in the transaction list. The data looks something
+like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">55.08</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">type</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pending</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">98765</span><span style="color:#710">&quot;</span></span>}
+</pre></div>
+</div>
+</div>
+
+<p>Then, when the charge is completed or “captured”, another transaction
+is recorded:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">amount</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">55.08</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">type</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">charge</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">98765</span><span style="color:#710">&quot;</span></span>}
+</pre></div>
+</div>
+</div>
+
+<blockquote>
+  <p><strong>Aside:</strong> if you’ve ever written code to deal with actual banking APIs,
+you’ve probably figured out by now that I have not. I’m making this up for the
+sake of example. I expect real banking APIs are just as idiosyncratic, though,
+in their own ways.</p>
+</blockquote>
+
+<p>The result of these “double entries” is that your calculations get
+thrown off. Your application has routines for summing transactions,
+averaging them, breaking them down by month and quarter, and many
+more. And every one of these calculations uses the amount field to
+arrive at its results.</p>
+
+<p>You briefly consider simply throwing out pending transactions. But
+after a quick consultation with your team you realize this would only
+introduce more problems. There is sanity-checking code in place which
+checks that the bank servers and the local cache have the same
+transaction count and contain the same transaction IDs. And not only
+that, you might actually want to use the pending transaction
+information for upcoming features.</p>
+
+<p>Your second option is to handle the special case… <em>specially</em>,
+everywhere that the amount field is referenced. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">account_balance</span>
+  cached_transactions.reduce(starting_balance) <span style="color:#080;font-weight:bold">do</span> |balance, transaction|
+    <span style="color:#080;font-weight:bold">if</span> transaction.type == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pending</span><span style="color:#710">&quot;</span></span>
+      balance
+    <span style="color:#080;font-weight:bold">else</span>
+      balance + transaction.amount
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’ll have to carefully audit the code base, adding conditionals to
+every use of amount. Not only that, you’ll have to make sure anyone
+else who works on this code understands the special case.</p>
+
+<p>That doesn’t seem like a very attractive option. Thankfully, there is
+a third way. And the code above actually gives you the hint you needed
+to discover it.</p>
+
+<p>Let’s look at that conditional again:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> transaction.type == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pending</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This code is branching on the type of a value. This is a huge clue. In
+an object-oriented language, anytime we branch on an object’s type,
+we’re doing work that the language could be doing for us.</p>
+
+<p>You realize that this special case calls for a special type of object
+to represent it.</p>
+
+<p>You decide to try this approach out. You find the code where
+transaction objects are being instantiated:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Note: we expect that transaction attributes have already been</span>
+<span style="color:#777"># converted to use Symbol keys at this point.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache_transaction</span>(attributes)
+  cached_transactions &lt;&lt; <span style="color:#036;font-weight:bold">Transaction</span>.new(attributes)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You change it to instantiate a different kind of object for pending
+transactions. Because you want to quickly spike this approach, you use
+an <code>OpenStruct</code> to create a rough-and-ready ad-hoc object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache_transaction</span>(attributes)
+  transaction = 
+    <span style="color:#080;font-weight:bold">case</span> attributes[<span style="color:#A60">:type</span>]
+    <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pending</span><span style="color:#710">&quot;</span></span>
+      pending_attributes = {
+        <span style="color:#A60">:amount</span>         =&gt; <span style="color:#00D">0</span>,
+        <span style="color:#A60">:pending_amount</span> =&gt; attributes[<span style="color:#A60">:amount</span>]
+      }
+      <span style="color:#036;font-weight:bold">OpenStruct</span>.new(attributes.merge(pending_attributes))
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#036;font-weight:bold">Transaction</span>.new(attributes)
+    <span style="color:#080;font-weight:bold">end</span>
+  cached_transactions &lt;&lt; transaction
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This switches on type as well, but it only does it once. After that,
+the transaction can be used as-is in all of your existing algorithms.</p>
+
+<p>You run some tests, and discover this fixes the problem! You consider
+simply leaving the code as it is, since it’s working now. But on
+reflection you decide that the concept of a pending transaction would
+be best represented by a proper class. That way you have a place to
+put documentation about this special case, as well as any more special
+logic you realize you need down the road.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># A pending credit-card transaction</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PendingTransaction</span>
+  attr_reader <span style="color:#A60">:id</span>, <span style="color:#A60">:pending_amount</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(attributes)
+    <span style="color:#33B">@id</span>             = attributes.fetch(<span style="color:#A60">:id</span>)
+    <span style="color:#33B">@pending_amount</span> = attributes.fetch(<span style="color:#A60">:amount</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">amount</span>
+    <span style="color:#777"># Pending transactions duplicate finished transactions, thus</span>
+    <span style="color:#777"># throwing off calculations. For the purpose of calculations and</span>
+    <span style="color:#777"># reports, a pending transaction always has a zero amount. The</span>
+    <span style="color:#777"># real amount is available from #pending_amount.</span>
+    <span style="color:#00D">0</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You then rewrite <code>#cached_transactions</code> to use this new class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">cache_transaction</span>(attributes)
+  transaction = 
+    <span style="color:#080;font-weight:bold">case</span> attributes[<span style="color:#A60">:type</span>]
+    <span style="color:#080;font-weight:bold">when</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pending</span><span style="color:#710">&quot;</span></span>
+      <span style="color:#036;font-weight:bold">PendingTransaction</span>.new(attributes)
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#036;font-weight:bold">Transaction</span>.new(attributes)
+    <span style="color:#080;font-weight:bold">end</span>
+  cached_transactions &lt;&lt; transaction
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code solves the immediate problem of a special type of
+transaction, without duplicating logic for that special case all
+throughout the codebase. But not only that, it is <em>exemplary</em>: it sets
+a good example for code that follows. When, inevitably, another
+special case transaction type turns up, whoever is tasked with dealing
+with it will see this class and be guided towards representing the new
+case as a distinct type of object.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Ruby is a language which values expressiveness over just about
+everything else. It is optimized to help us programmers say exactly
+what we mean, without any extraneous fluff, to both the computer and
+to future readers of our code. This is what makes it so much fun to
+code in.</p>
+
+<p>When we allow our methods to become cluttered up with ifs and maybes
+and provisos and digressions, we let go of that expressiveness. We
+start to lose the clear, confident narrative voice. We force the
+future maintainers of the code to navigate through a twisty path full
+of logical forks in the road in order to understand the purpose of a
+method. Reading and updating the code stops being fun.</p>
+
+<p>My challenge to you is this: when you are writing a new method, keep a
+clear idea in mind of the story you are trying to tell. When detours
+and diversions start to show up along the way, figure out what you
+need to do to restore the narrative, and do it. You might get rid of
+repetitive data integrity checks by introducing preconditions in the
+initializer of a method. Maybe you can surround an external API in
+assertions that document your beliefs about it, rather than trying to
+handle anything it throws at you. Or perhaps you can eliminate a
+family of often-repeated conditionals by representing a special case
+as a class in its own right.</p>
+
+<p>However you do it, keep your focus on telling a straightforward
+tale. Not only will the future readers of your code thank you for it,
+but I think you’ll find that it makes your code more robust and easier
+to maintain as well.</p>
+
+  </div>
+</body>
+</html>

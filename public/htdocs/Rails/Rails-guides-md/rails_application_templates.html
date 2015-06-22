@@ -1,0 +1,285 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="rails-application-templates">Rails Application Templates</h1>
+
+<p>Application templates are simple Ruby files containing DSL for adding gems/initializers etc. to your freshly created Rails project or an existing Rails project.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to use templates to generate/customize Rails applications.</li>
+  <li>How to write your own reusable application templates using the Rails template API.</li>
+</ul>
+
+<hr />
+
+<h2 id="usage">Usage</h2>
+
+<p>To apply a template, you need to provide the Rails generator with the location of the template you wish to apply using the -m option. This can either be a path to a file or a URL.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails new blog -m ~/template.rb
+$ rails new blog -m http://example.com/template.rb
+</pre></div>
+</div>
+</div>
+
+<p>You can use the rake task <code>rails:template</code> to apply templates to an existing Rails application. The location of the template needs to be passed in to an environment variable named LOCATION. Again, this can either be path to a file or a URL.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake rails:template LOCATION=~/template.rb
+$ rake rails:template LOCATION=http://example.com/template.rb
+</pre></div>
+</div>
+</div>
+
+<h2 id="template-api">Template API</h2>
+
+<p>The Rails templates API is easy to understand. Here’s an example of a typical Rails template:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># template.rb</span>
+generate(<span style="color:#A60">:scaffold</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person name:string</span><span style="color:#710">&quot;</span></span>)
+route <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">root to: 'people#index'</span><span style="color:#710">&quot;</span></span>
+rake(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">db:migrate</span><span style="color:#710">&quot;</span></span>)
+
+git <span style="color:#A60">:init</span>
+git <span style="color:#606">add</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+git <span style="color:#606">commit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%Q{</span><span style="color:#D20"> -m 'Initial commit' </span><span style="color:#710">}</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The following sections outline the primary methods provided by the API:</p>
+
+<h3 id="gemargs">gem(*args)</h3>
+
+<p>Adds a <code>gem</code> entry for the supplied gem to the generated application’s <code>Gemfile</code>.</p>
+
+<p>For example, if your application depends on the gems <code>bj</code> and <code>nokogiri</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bj</span><span style="color:#710">&quot;</span></span>
+gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">nokogiri</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Please note that this will NOT install the gems for you and you will have to run <code>bundle install</code> to do that.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>bundle install
+</pre></div>
+</div>
+</div>
+
+<h3 id="gemgroupnames-block">gem_group(*names, &amp;block)</h3>
+
+<p>Wraps gem entries inside a group.</p>
+
+<p>For example, if you want to load <code>rspec-rails</code> only in the <code>development</code> and <code>test</code> groups:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem_group <span style="color:#A60">:development</span>, <span style="color:#A60">:test</span> <span style="color:#080;font-weight:bold">do</span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rspec-rails</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="addsourcesource-options--">add_source(source, options = {})</h3>
+
+<p>Adds the given source to the generated application’s <code>Gemfile</code>.</p>
+
+<p>For example, if you need to source a gem from “http://code.whytheluckystiff.net”:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>add_source <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://code.whytheluckystiff.net</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="environmentapplicationdatanil-options-block">environment/application(data=nil, options={}, &amp;block)</h3>
+
+<p>Adds a line inside the <code>Application</code> class for <code>config/application.rb</code>.</p>
+
+<p>If <code>options[:env]</code> is specified, the line is appended to the corresponding file in <code>config/environments</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>environment <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">config.action_mailer.default_url_options = {host: </span><span style="color:#710">'</span></span><span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>yourwebsite.example.com<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">}, env: </span><span style="color:#710">'</span></span>production<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">
+</span></span></pre></div>
+</div>
+</div>
+
+<p>A block can be used in place of the <code>data</code> argument.</p>
+
+<h3 id="vendorlibfileinitializerfilename-data--nil-block">vendor/lib/file/initializer(filename, data = nil, &amp;block)</h3>
+
+<p>Adds an initializer to the generated application’s <code>config/initializers</code> directory.</p>
+
+<p>Let’s say you like using <code>Object#not_nil?</code> and <code>Object#not_blank?</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>initializer <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bloatlol.rb</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-CODE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+  class Object
+    def not_nil?
+      !nil?
+    end
+
+    def not_blank?
+      !blank?
+    end
+  end</span><span style="color:#710">
+CODE</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Similarly, <code>lib()</code> creates a file in the <code>lib/</code> directory and <code>vendor()</code> creates a file in the <code>vendor/</code> directory.</p>
+
+<p>There is even <code>file()</code>, which accepts a relative path from <code>Rails.root</code> and creates all the directories/files needed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>file <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">app/components/foo.rb</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-CODE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+  class Foo
+  end</span><span style="color:#710">
+CODE</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>That’ll create the <code>app/components</code> directory and put <code>foo.rb</code> in there.</p>
+
+<h3 id="rakefilefilename-data--nil-block">rakefile(filename, data = nil, &amp;block)</h3>
+
+<p>Creates a new rake file under <code>lib/tasks</code> with the supplied tasks:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rakefile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bootstrap.rake</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-TASK</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+    namespace :boot do
+      task :strap do
+        puts &quot;i like boots!&quot;
+      end
+    end</span><span style="color:#710">
+  TASK</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The above creates <code>lib/tasks/bootstrap.rake</code> with a <code>boot:strap</code> rake task.</p>
+
+<h3 id="generatewhat-args">generate(what, *args)</h3>
+
+<p>Runs the supplied rails generator with given arguments.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>generate(<span style="color:#A60">:scaffold</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name:string</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">address:text</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">age:number</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="runcommand">run(command)</h3>
+
+<p>Executes an arbitrary command. Just like the backticks. Let’s say you want to remove the <code>README.rdoc</code> file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>run <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rm README.rdoc</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="rakecommand-options--">rake(command, options = {})</h3>
+
+<p>Runs the supplied rake tasks in the Rails application. Let’s say you want to migrate the database:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rake <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">db:migrate</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also run rake tasks with a different Rails environment:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rake <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">db:migrate</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">env</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="routeroutingcode">route(routing_code)</h3>
+
+<p>Adds a routing entry to the <code>config/routes.rb</code> file. In the steps above, we generated a person scaffold and also removed <code>README.rdoc</code>. Now, to make <code>PeopleController#index</code> the default page for the application:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>route <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">root to: 'person#index'</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="insidedir">inside(dir)</h3>
+
+<p>Enables you to run a command from the given directory. For example, if you have a copy of edge rails that you wish to symlink from your new apps, you can do this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>inside(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">vendor</span><span style="color:#710">'</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  run <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ln -s ~/commit-rails/rails rails</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="askquestion">ask(question)</h3>
+
+<p><code>ask()</code> gives you a chance to get some feedback from the user and use it in your templates. Let’s say you want your user to name the new shiny library you’re adding:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>lib_name = ask(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">What do you want to call the shiny library ?</span><span style="color:#710">&quot;</span></span>)
+lib_name &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.rb</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> lib_name.index(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.rb</span><span style="color:#710">&quot;</span></span>)
+
+lib lib_name, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-CODE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+  class Shiny
+  end</span><span style="color:#710">
+CODE</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="yesquestion-or-noquestion">yes?(question) or no?(question)</h3>
+
+<p>These methods let you ask questions from templates and decide the flow based on the user’s answer. Let’s say you want to freeze rails only if the user wants to:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rake(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rails:freeze:gems</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">if</span> yes?(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Freeze rails gems?</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># no?(question) acts just the opposite.</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="gitcommand">git(:command)</h3>
+
+<p>Rails templates let you run any git command:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>git <span style="color:#A60">:init</span>
+git <span style="color:#606">add</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>
+git <span style="color:#606">commit</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-a -m 'Initial commit'</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

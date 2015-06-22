@@ -1,0 +1,1808 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="action-view-overview">Action View Overview</h1>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>What Action View is and how to use it with Rails.</li>
+  <li>How best to use templates, partials, and layouts.</li>
+  <li>What helpers are provided by Action View and how to make your own.</li>
+  <li>How to use localized views.</li>
+  <li>How to use Action View outside of Rails.</li>
+</ul>
+
+<hr />
+
+<h2 id="what-is-action-view">What is Action View?</h2>
+
+<p>Action View and Action Controller are the two major components of Action Pack. In Rails, web requests are handled by Action Pack, which splits the work into a controller part (performing the logic) and a view part (rendering a template). Typically, Action Controller will be concerned with communicating with the database and performing CRUD actions where necessary. Action View is then responsible for compiling the response.</p>
+
+<p>Action View templates are written using embedded Ruby in tags mingled with HTML. To avoid cluttering the templates with boilerplate code, a number of helper classes provide common behavior for forms, dates, and strings. It’s also easy to add new helpers to your application as it evolves.</p>
+
+<p>NOTE: Some features of Action View are tied to Active Record, but that doesn’t mean Action View depends on Active Record. Action View is an independent package that can be used with any sort of Ruby libraries.</p>
+
+<h2 id="using-action-view-with-rails">Using Action View with Rails</h2>
+
+<p>For each controller there is an associated directory in the <code>app/views</code> directory which holds the template files that make up the views associated with that controller. These files are used to display the view that results from each controller action.</p>
+
+<p>Let’s take a look at what Rails does by default when creating a new resource using the scaffold generator:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate scaffold post
+      [...]
+      invoke  scaffold_controller
+      create    app/controllers/posts_controller.rb
+      invoke    erb
+      create      app/views/posts
+      create      app/views/posts/index.html.erb
+      create      app/views/posts/edit.html.erb
+      create      app/views/posts/show.html.erb
+      create      app/views/posts/new.html.erb
+      create      app/views/posts/_form.html.erb
+      [...]
+</pre></div>
+</div>
+</div>
+
+<p>There is a naming convention for views in Rails. Typically, the views share their name with the associated controller action, as you can see above.
+For example, the index controller action of the <code>posts_controller.rb</code> will use the <code>index.html.erb</code> view file in the <code>app/views/posts</code> directory.
+The complete HTML returned to the client is composed of a combination of this ERB file, a layout template that wraps it, and all the partials that the view may reference. Later on this guide you can find a more detailed documentation of each one of these three components.</p>
+
+<h2 id="templates-partials-and-layouts">Templates, Partials and Layouts</h2>
+
+<p>As mentioned before, the final HTML output is a composition of three Rails elements: <code>Templates</code>, <code>Partials</code> and <code>Layouts</code>.
+Below is a brief overview of each one of them.</p>
+
+<h3 id="templates">Templates</h3>
+
+<p>Action View templates can be written in several ways. If the template file has a <code>.erb</code> extension then it uses a mixture of ERB (included in Ruby) and HTML. If the template file has a <code>.builder</code> extension then a fresh instance of <code>Builder::XmlMarkup</code> library is used.</p>
+
+<p>Rails supports multiple template systems and uses a file extension to distinguish amongst them. For example, an HTML file using the ERB template system will have <code>.html.erb</code> as a file extension.</p>
+
+<h4 id="erb">ERB</h4>
+
+<p>Within an ERB template, Ruby code can be included using both <code>&lt;% %&gt;</code> and <code>&lt;%= %&gt;</code> tags. The <code>&lt;% %&gt;</code> tags are used to execute Ruby code that does not return anything, such as conditions, loops or blocks, and the <code>&lt;%= %&gt;</code> tags are used when you want output.</p>
+
+<p>Consider the following loop for names:</p>
+
+<p>~~~html+erb</p>
+<h1>Names of all the people</h1>
+<p>&lt;% @people.each do |person| %&gt;
+  Name: &lt;%= person.name %&gt;<br />
+&lt;% end %&gt;
+~~~</p>
+
+<p>The loop is set up in regular embedding tags (<code>&lt;% %&gt;</code>) and the name is written using the output embedding tags (<code>&lt;%= %&gt;</code>). Note that this is not just a usage suggestion, for regular output functions like <code>print</code> or <code>puts</code> won’t work with ERB templates. So this would be wrong:</p>
+
+<p>~~~html+erb
+&lt;%# WRONG %&gt;
+Hi, Mr. &lt;% puts “Frodo” %&gt;
+~~~</p>
+
+<p>To suppress leading and trailing whitespaces, you can use <code>&lt;%-</code> <code>-%&gt;</code> interchangeably with <code>&lt;%</code> and <code>%&gt;</code>.</p>
+
+<h4 id="builder">Builder</h4>
+
+<p>Builder templates are a more programmatic alternative to ERB. They are especially useful for generating XML content. An XmlMarkup object named <code>xml</code> is automatically made available to templates with a <code>.builder</code> extension.</p>
+
+<p>Here are some basic examples:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>xml.em(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">emphasized</span><span style="color:#710">&quot;</span></span>)
+xml.em { xml.b(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">emph &amp; bold</span><span style="color:#710">&quot;</span></span>) }
+xml.a(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A Link</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">href</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://rubyonrails.org</span><span style="color:#710">&quot;</span></span>)
+xml.target(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">compile</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">option</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fast</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>which would produce:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;em&gt;</span>emphasized<span style="color:#070;font-weight:bold">&lt;/em&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;em&gt;</span><span style="color:#070;font-weight:bold">&lt;b&gt;</span>emph <span style="color:#800;font-weight:bold">&amp;amp;</span> bold<span style="color:#070;font-weight:bold">&lt;/b&gt;</span><span style="color:#070;font-weight:bold">&lt;/em&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://rubyonrails.org</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>A link<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;target</span> <span style="color:#b48">option</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fast</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">compile</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Any method with a block will be treated as an XML markup tag with nested markup in the block. For example, the following:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>xml.div {
+  xml.h1(<span style="color:#33B">@person</span>.name)
+  xml.p(<span style="color:#33B">@person</span>.bio)
+}
+</pre></div>
+</div>
+</div>
+
+<p>would produce something like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;div&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;h1&gt;</span>David Heinemeier Hansson<span style="color:#070;font-weight:bold">&lt;/h1&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;p&gt;</span>A product of Danish Design during the Winter of '79...<span style="color:#070;font-weight:bold">&lt;/p&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Below is a full-length RSS example actually used on Basecamp:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>xml.rss(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">version</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2.0</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">xmlns:dc</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://purl.org/dc/elements/1.1/</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  xml.channel <span style="color:#080;font-weight:bold">do</span>
+    xml.title(<span style="color:#33B">@feed_title</span>)
+    xml.link(<span style="color:#33B">@url</span>)
+    xml.description <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Basecamp: Recent items</span><span style="color:#710">&quot;</span></span>
+    xml.language <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">en-us</span><span style="color:#710">&quot;</span></span>
+    xml.ttl <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">40</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#080;font-weight:bold">for</span> item <span style="color:#080;font-weight:bold">in</span> <span style="color:#33B">@recent_items</span>
+      xml.item <span style="color:#080;font-weight:bold">do</span>
+        xml.title(item_title(item))
+        xml.description(item_description(item)) <span style="color:#080;font-weight:bold">if</span> item_description(item)
+        xml.pubDate(item_pubDate(item))
+        xml.guid(<span style="color:#33B">@person</span>.firm.account.url + <span style="color:#33B">@recent_items</span>.url(item))
+        xml.link(<span style="color:#33B">@person</span>.firm.account.url + <span style="color:#33B">@recent_items</span>.url(item))
+        xml.tag!(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">dc:creator</span><span style="color:#710">&quot;</span></span>, item.author_name) <span style="color:#080;font-weight:bold">if</span> item_has_creator?(item)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="template-caching">Template Caching</h4>
+
+<p>By default, Rails will compile each template to a method in order to render it. When you alter a template, Rails will check the file’s modification time and recompile it in development mode.</p>
+
+<h3 id="partials">Partials</h3>
+
+<p>Partial templates – usually just called “partials” – are another device for breaking the rendering process into more manageable chunks. With partials, you can extract pieces of code from your templates to separate files and also reuse them throughout your templates.</p>
+
+<h4 id="naming-partials">Naming Partials</h4>
+
+<p>To render a partial as part of a view, you use the <code>render</code> method within the view:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">menu</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This will render a file named <code>_menu.html.erb</code> at that point within the view that is being rendered. Note the leading underscore character: partials are named with a leading underscore to distinguish them from regular views, even though they are referred to without the underscore. This holds true even when you’re pulling in a partial from another folder:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shared/menu</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>That code will pull in the partial from <code>app/views/shared/_menu.html.erb</code>.</p>
+
+<h4 id="using-partials-to-simplify-views">Using Partials to simplify Views</h4>
+
+<p>One way to use partials is to treat them as the equivalent of subroutines; a way to move details out of a view so that you can grasp what’s going on more easily. For example, you might have a view that looks like this:</p>
+
+<p>~~~html+erb
+&lt;%= render “shared/ad_banner” %&gt;</p>
+
+<h1>Products</h1>
+
+<p>Here are a few of our fine products:</p>
+<p>&lt;% @products.each do |product| %&gt;
+  &lt;%= render partial: “product”, locals: {product: product} %&gt;
+&lt;% end %&gt;</p>
+
+<p>&lt;%= render “shared/footer” %&gt;
+~~~</p>
+
+<p>Here, the <code>_ad_banner.html.erb</code> and <code>_footer.html.erb</code> partials could contain content that is shared among many pages in your application. You don’t need to see the details of these sections when you’re concentrating on a particular page.</p>
+
+<h4 id="the-as-and-object-options">The <code>as</code> and <code>object</code> options</h4>
+
+<p>By default <code>ActionView::Partials::PartialRenderer</code> has its object in a local variable with the same name as the template. So, given:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>within product we’ll get <code>@product</code> in the local variable <code>product</code>, as if we had written:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">locals</span>: {<span style="color:#606">product</span>: <span style="color:#33B">@product</span>} <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>With the <code>as</code> option we can specify a different name for the local variable. For example, if we wanted it to be <code>item</code> instead of <code>product</code> we would do:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">as</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">item</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>object</code> option can be used to directly specify which object is rendered into the partial; useful when the template’s object is elsewhere (eg. in a different instance variable or in a local variable).</p>
+
+<p>For example, instead of:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">locals</span>: {<span style="color:#606">product</span>: <span style="color:#33B">@item</span>} <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>we would do:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">object</span>: <span style="color:#33B">@item</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>object</code> and <code>as</code> options can also be used together:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">object</span>: <span style="color:#33B">@item</span>, <span style="color:#606">as</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">item</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="rendering-collections">Rendering Collections</h4>
+
+<p>It is very common that a template needs to iterate over a collection and render a sub-template for each of the elements. This pattern has been implemented as a single method that accepts an array and renders a partial for each one of the elements in the array.</p>
+
+<p>So this example for rendering all the products:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#33B">@products</span>.each <span style="color:#080;font-weight:bold">do</span> |product| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">locals</span>: { <span style="color:#606">product</span>: product } <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>can be rewritten in a single line:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">collection</span>: <span style="color:#33B">@products</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>When a partial is called like this (eg. with a collection), the individual instances of the partial have access to the member of the collection being rendered via a variable named after the partial. In this case, the partial is <code>_product</code>, and within it you can refer to <code>product</code> to get the instance that is being rendered.</p>
+
+<p>You can use a shorthand syntax for rendering collections. Assuming <code>@products</code> is a collection of <code>Product</code> instances, you can simply write the following to produce the same result:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#33B">@products</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Rails determines the name of the partial to use by looking at the model name in the collection, <code>Product</code> in this case. In fact, you can even create a heterogeneous collection and render it this way, and Rails will choose the proper partial for each member of the collection.</p>
+
+<h4 id="spacer-templates">Spacer Templates</h4>
+
+<p>You can also specify a second partial to be rendered between instances of the main partial by using the <code>:spacer_template</code> option:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#33B">@products</span>, <span style="color:#606">spacer_template</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">product_ruler</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Rails will render the <code>_product_ruler</code> partial (with no data passed to it) between each pair of <code>_product</code> partials.</p>
+
+<h3 id="layouts">Layouts</h3>
+
+<p>Layouts can be used to render a common view template around the results of Rails controller actions. Typically, every Rails has a couple of overall layouts that most pages are rendered within. For example, a site might have a layout for a logged in user, and a layout for the marketing or sales side of the site. The logged in user layout might include top-level navigation that should be present across many controller actions. The sales layout for a SaaS app might include top-level navigation for things like “Pricing” and “Contact Us.” You would expect each layout to have a different look and feel. You can read more details about Layouts in the <a href="layouts_and_rendering.html">Layouts and Rendering in Rails</a> guide.</p>
+
+<h2 id="partial-layouts">Partial Layouts</h2>
+
+<p>Partials can have their own layouts applied to them. These layouts are different than the ones that are specified globally for the entire action, but they work in a similar fashion.</p>
+
+<p>Let’s say we’re displaying a post on a page, that should be wrapped in a <code>div</code> for display purposes. First, we’ll create a new <code>Post</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Post</span>.create(<span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Partial Layouts are cool!</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>In the <code>show</code> template, we’ll render the <code>_post</code> partial wrapped in the <code>box</code> layout:</p>
+
+<p><strong>posts/show.html.erb</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="color:#606">partial</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">post</span><span style="color:#710">'</span></span>, <span style="color:#606">layout</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">box</span><span style="color:#710">'</span></span>, <span style="color:#606">locals</span>: {<span style="color:#606">post</span>: <span style="color:#33B">@post</span>} <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>box</code> layout simply wraps the <code>_post</code> partial in a <code>div</code>:</p>
+
+<p><strong>posts/_box.html.erb</strong></p>
+
+<p>~~~html+erb
+&lt;div class='box'&gt;
+  &lt;%= yield %&gt;
+&lt;/div&gt;
+~~~</p>
+
+<p>The <code>_post</code> partial wraps the post’s <code>body</code> in a <code>div</code> with the <code>id</code> of the post using the <code>div_for</code> helper:</p>
+
+<p><strong>posts/_post.html.erb</strong></p>
+
+<p>~~~html+erb
+&lt;%= div_for(post) do %&gt;</p>
+<p>&lt;%= post.body %&gt;</p>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>this would output the following:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">box</span><span style="color:#710">'</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">post_1</span><span style="color:#710">'</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;p&gt;</span>Partial Layouts are cool!<span style="color:#070;font-weight:bold">&lt;/p&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note that the partial layout has access to the local <code>post</code> variable that was passed into the <code>render</code> call. However, unlike application-wide layouts, partial layouts still have the underscore prefix.</p>
+
+<p>You can also render a block of code within a partial layout instead of calling <code>yield</code>. For example, if we didn’t have the <code>_post</code> partial, we could do this instead:</p>
+
+<p><strong>posts/show.html.erb</strong></p>
+
+<p>~~~html+erb
+&lt;% render(layout: ‘box’, locals: {post: @post}) do %&gt;
+  &lt;%= div_for(post) do %&gt;
+    &lt;p&gt;&lt;%= post.body %&gt;&lt;/p&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+~~~</p>
+
+<p>Supposing we use the same <code>_box</code> partial from above, this would produce the same output as the previous example.</p>
+
+<h2 id="view-paths">View Paths</h2>
+
+<p>TODO…</p>
+
+<h2 id="overview-of-helpers-provided-by-action-view">Overview of helpers provided by Action View</h2>
+
+<p>WIP: Not all the helpers are listed here. For a full list see the <a href="http://api.rubyonrails.org/classes/ActionView/Helpers.html">API documentation</a></p>
+
+<p>The following is only a brief overview summary of the helpers available in Action View. It’s recommended that you review the <a href="http://api.rubyonrails.org/classes/ActionView/Helpers.html">API Documentation</a>, which covers all of the helpers in more detail, but this should serve as a good starting point.</p>
+
+<h3 id="recordtaghelper">RecordTagHelper</h3>
+
+<p>This module provides methods for generating container tags, such as <code>div</code>, for your record. This is the recommended way of creating a container for render your Active Record object, as it adds an appropriate class and id attributes to that container. You can then refer to those containers easily by following the convention, instead of having to think about which class or id attribute you should use.</p>
+
+<h4 id="contenttagfor">content_tag_for</h4>
+
+<p>Renders a container tag that relates to your Active Record Object.</p>
+
+<p>For example, given <code>@post</code> is the object of <code>Post</code> class, you can do:</p>
+
+<p>~~~html+erb
+&lt;%= content_tag_for(:tr, @post) do %&gt;</p>
+<td>&lt;%= @post.title %&gt;</td>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>This will generate this HTML output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;tr</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_1234</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;td&gt;</span>Hello World!<span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also supply HTML attributes as an additional option hash. For example:</p>
+
+<p>~~~html+erb
+&lt;%= content_tag_for(:tr, @post, class: “frontpage”) do %&gt;</p>
+<td>&lt;%= @post.title %&gt;</td>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>Will generate this HTML output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;tr</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_1234</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post frontpage</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;td&gt;</span>Hello World!<span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can pass a collection of Active Record objects. This method will loop through your objects and create a container for each of them. For example, given <code>@posts</code> is an array of two <code>Post</code> objects:</p>
+
+<p>~~~html+erb
+&lt;%= content_tag_for(:tr, @posts) do |post| %&gt;</p>
+<td>&lt;%= post.title %&gt;</td>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>Will generate this HTML output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;tr</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_1234</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;td&gt;</span>Hello World!<span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/tr&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;tr</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_1235</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;td&gt;</span>Ruby on Rails Rocks!<span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/tr&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="divfor">div_for</h4>
+
+<p>This is actually a convenient method which calls <code>content_tag_for</code> internally with <code>:div</code> as the tag name. You can pass either an Active Record object or a collection of objects. For example:</p>
+
+<p>~~~html+erb
+&lt;%= div_for(@post, class: “frontpage”) do %&gt;</p>
+<td>&lt;%= @post.title %&gt;</td>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>Will generate this HTML output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_1234</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post frontpage</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;td&gt;</span>Hello World!<span style="color:#070;font-weight:bold">&lt;/td&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="assettaghelper">AssetTagHelper</h3>
+
+<p>This module provides methods for generating HTML that links views to assets such as images, JavaScript files, stylesheets, and feeds.</p>
+
+<p>By default, Rails links to these assets on the current host in the public folder, but you can direct Rails to link to assets from a dedicated assets server by setting <code>config.action_controller.asset_host</code> in the application configuration, typically in <code>config/environments/production.rb</code>. For example, let’s say your asset host is <code>assets.example.com</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>config.action_controller.asset_host = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">assets.example.com</span><span style="color:#710">&quot;</span></span>
+image_tag(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rails.png</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># =&gt; &lt;img src=&quot;http://assets.example.com/images/rails.png&quot; alt=&quot;Rails&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="registerjavascriptexpansion">register_javascript_expansion</h4>
+
+<p>Register one or more JavaScript files to be included when symbol is passed to javascript_include_tag. This method is typically intended to be called from plugin initialization to register JavaScript files that the plugin installed in <code>vendor/assets/javascripts</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ActionView</span>::<span style="color:#036;font-weight:bold">Helpers</span>::<span style="color:#036;font-weight:bold">AssetTagHelper</span>.register_javascript_expansion <span style="color:#606">monkey</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">head</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">body</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tail</span><span style="color:#710">&quot;</span></span>]
+
+javascript_include_tag <span style="color:#A60">:monkey</span> <span style="color:#777"># =&gt;</span>
+  &lt;script src=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/assets/head.js</span><span style="color:#710">&quot;</span></span>&gt;&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">script&gt;
+  &lt;script src=&quot;</span><span style="color:#404">/</span></span>assets/body.js<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&gt;&lt;/script&gt;
+  &lt;script src=</span><span style="color:#710">&quot;</span></span>/assets/tail.js<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&gt;&lt;/script&gt;
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="registerstylesheetexpansion">register_stylesheet_expansion</h4>
+
+<p>Register one or more stylesheet files to be included when symbol is passed to <code>stylesheet_link_tag</code>. This method is typically intended to be called from plugin initialization to register stylesheet files that the plugin installed in <code>vendor/assets/stylesheets</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ActionView</span>::<span style="color:#036;font-weight:bold">Helpers</span>::<span style="color:#036;font-weight:bold">AssetTagHelper</span>.register_stylesheet_expansion <span style="color:#606">monkey</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">head</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">body</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tail</span><span style="color:#710">&quot;</span></span>]
+
+stylesheet_link_tag <span style="color:#A60">:monkey</span> <span style="color:#777"># =&gt;</span>
+  &lt;link href=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/assets/head.css</span><span style="color:#710">&quot;</span></span> media=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">screen</span><span style="color:#710">&quot;</span></span> rel=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stylesheet</span><span style="color:#710">&quot;</span></span> /&gt;
+  &lt;link href=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/assets/body.css</span><span style="color:#710">&quot;</span></span> media=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">screen</span><span style="color:#710">&quot;</span></span> rel=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stylesheet</span><span style="color:#710">&quot;</span></span> /&gt;
+  &lt;link href=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/assets/tail.css</span><span style="color:#710">&quot;</span></span> media=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">screen</span><span style="color:#710">&quot;</span></span> rel=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stylesheet</span><span style="color:#710">&quot;</span></span> /&gt;
+</pre></div>
+</div>
+</div>
+
+<h4 id="autodiscoverylinktag">auto_discovery_link_tag</h4>
+
+<p>Returns a link tag that browsers and news readers can use to auto-detect an RSS or Atom feed.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>auto_discovery_link_tag(<span style="color:#A60">:rss</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.example.com/feed.rss</span><span style="color:#710">&quot;</span></span>, {<span style="color:#606">title</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RSS Feed</span><span style="color:#710">&quot;</span></span>}) <span style="color:#777"># =&gt;</span>
+  &lt;link rel=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alternate</span><span style="color:#710">&quot;</span></span> type=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application/rss+xml</span><span style="color:#710">&quot;</span></span> title=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">RSS Feed</span><span style="color:#710">&quot;</span></span> href=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://www.example.com/feed</span><span style="color:#710">&quot;</span></span> /&gt;
+</pre></div>
+</div>
+</div>
+
+<h4 id="imagepath">image_path</h4>
+
+<p>Computes the path to an image asset in the <code>app/assets/images</code> directory. Full paths from the document root will be passed through. Used internally by <code>image_tag</code> to build the image path.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">edit.png</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># =&gt; /assets/edit.png</span>
+</pre></div>
+</div>
+</div>
+
+<p>Fingerprint will be added to the filename if config.assets.digest is set to true.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_path(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">edit.png</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># =&gt; /assets/edit-2d1a2db63fc738690021fedb5a65b68e.png</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="imageurl">image_url</h4>
+
+<p>Computes the url to an image asset in the <code>app/assets/images</code> directory. This will call <code>image_path</code> internally and merge with your current host or your asset host.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_url(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">edit.png</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># =&gt; http://www.example.com/assets/edit.png</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="imagetag">image_tag</h4>
+
+<p>Returns an html image tag for the source. The source can be a full path or a file that exists in your <code>app/assets/images</code> directory.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_tag(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">icon.png</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># =&gt; &lt;img src=&quot;/assets/icon.png&quot; alt=&quot;Icon&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="javascriptincludetag">javascript_include_tag</h4>
+
+<p>Returns an html script tag for each of the sources provided. You can pass in the filename (<code>.js</code> extension is optional) of JavaScript files that exist in your <code>app/assets/javascripts</code> directory for inclusion into the current page or you can pass the full path relative to your document root.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_include_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">common</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; &lt;script src=&quot;/assets/common.js&quot;&gt;&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If the application does not use the asset pipeline, to include the jQuery JavaScript library in your application, pass <code>:defaults</code> as the source. When using <code>:defaults</code>, if an <code>application.js</code> file exists in your <code>app/assets/javascripts</code> directory, it will be included as well.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_include_tag <span style="color:#A60">:defaults</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also include all JavaScript files in the <code>app/assets/javascripts</code> directory using <code>:all</code> as the source.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_include_tag <span style="color:#A60">:all</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also cache multiple JavaScript files into one file, which requires less HTTP connections to download and can better be compressed by gzip (leading to faster transfers). Caching will only happen if <code>ActionController::Base.perform_caching</code> is set to true (which is the case by default for the Rails production environment, but not for the development environment).</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_include_tag <span style="color:#A60">:all</span>, <span style="color:#606">cache</span>: <span style="color:#069">true</span> <span style="color:#777"># =&gt;</span>
+  &lt;script src=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/javascripts/all.js</span><span style="color:#710">&quot;</span></span>&gt;&lt;<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">script&gt;
+</span></span></pre></div>
+</div>
+</div>
+
+<h4 id="javascriptpath">javascript_path</h4>
+
+<p>Computes the path to a JavaScript asset in the <code>app/assets/javascripts</code> directory. If the source filename has no extension, <code>.js</code> will be appended. Full paths from the document root will be passed through. Used internally by <code>javascript_include_tag</code> to build the script path.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_path <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">common</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; /assets/common.js</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="javascripturl">javascript_url</h4>
+
+<p>Computes the url to a JavaScript asset in the <code>app/assets/javascripts</code> directory. This will call <code>javascript_path</code> internally and merge with your current host or your asset host.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_url <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">common</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; http://www.example.com/assets/common.js</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="stylesheetlinktag">stylesheet_link_tag</h4>
+
+<p>Returns a stylesheet link tag for the sources specified as arguments. If you don’t specify an extension, <code>.css</code> will be appended automatically.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stylesheet_link_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; &lt;link href=&quot;/assets/application.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also include all styles in the stylesheet directory using :all as the source:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stylesheet_link_tag <span style="color:#A60">:all</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can also cache multiple stylesheets into one file, which requires less HTTP connections and can better be compressed by gzip (leading to faster transfers). Caching will only happen if ActionController::Base.perform_caching is set to true (which is the case by default for the Rails production environment, but not for the development environment).</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stylesheet_link_tag <span style="color:#A60">:all</span>, <span style="color:#606">cache</span>: <span style="color:#069">true</span>
+<span style="color:#777"># =&gt; &lt;link href=&quot;/assets/all.css&quot; media=&quot;screen&quot; rel=&quot;stylesheet&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="stylesheetpath">stylesheet_path</h4>
+
+<p>Computes the path to a stylesheet asset in the <code>app/assets/stylesheets</code> directory. If the source filename has no extension, .css will be appended. Full paths from the document root will be passed through. Used internally by stylesheet_link_tag to build the stylesheet path.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stylesheet_path <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; /assets/application.css</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="stylesheeturl">stylesheet_url</h4>
+
+<p>Computes the url to a stylesheet asset in the <code>app/assets/stylesheets</code> directory. This will call <code>stylesheet_path</code> internally and merge with your current host or your asset host.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>stylesheet_url <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">application</span><span style="color:#710">&quot;</span></span> <span style="color:#777"># =&gt; http://www.example.com/assets/application.css</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="atomfeedhelper">AtomFeedHelper</h3>
+
+<h4 id="atomfeed">atom_feed</h4>
+
+<p>This helper makes building an Atom feed easy. Here’s a full usage example:</p>
+
+<p><strong>config/routes.rb</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>resources <span style="color:#A60">:posts</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>app/controllers/posts_controller.rb</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">index</span>
+  <span style="color:#33B">@posts</span> = <span style="color:#036;font-weight:bold">Post</span>.all
+
+  respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+    format.html
+    format.atom
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>app/views/posts/index.atom.builder</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>atom_feed <span style="color:#080;font-weight:bold">do</span> |feed|
+  feed.title(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Posts Index</span><span style="color:#710">&quot;</span></span>)
+  feed.updated((<span style="color:#33B">@posts</span>.first.created_at))
+
+  <span style="color:#33B">@posts</span>.each <span style="color:#080;font-weight:bold">do</span> |post|
+    feed.entry(post) <span style="color:#080;font-weight:bold">do</span> |entry|
+      entry.title(post.title)
+      entry.content(post.body, <span style="color:#606">type</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">html</span><span style="color:#710">'</span></span>)
+
+      entry.author <span style="color:#080;font-weight:bold">do</span> |author|
+        author.name(post.author_name)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="benchmarkhelper">BenchmarkHelper</h3>
+
+<h4 id="benchmark">benchmark</h4>
+
+<p>Allows you to measure the execution time of a block in a template and records the result to the log. Wrap this block around expensive operations or possible bottlenecks to get a time reading for the operation.</p>
+
+<p>~~~html+erb
+&lt;% benchmark “Process data files” do %&gt;
+  &lt;%= expensive_files_operation %&gt;
+&lt;% end %&gt;
+~~~</p>
+
+<p>This would add something like “Process data files (0.34523)” to the log, which you can then use to compare timings when optimizing your code.</p>
+
+<h3 id="cachehelper">CacheHelper</h3>
+
+<h4 id="cache">cache</h4>
+
+<p>A method for caching fragments of a view rather than an entire action or page. This technique is useful caching pieces like menus, lists of news topics, static HTML fragments, and so on. This method takes a block that contains the content you wish to cache. See <code>ActionController::Caching::Fragments</code> for more information.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> cache <span style="color:#080;font-weight:bold">do</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">shared/footer</span><span style="color:#710">&quot;</span></span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="capturehelper">CaptureHelper</h3>
+
+<h4 id="capture">capture</h4>
+
+<p>The <code>capture</code> method allows you to extract part of a template into a variable. You can then use this variable anywhere in your templates or layout.</p>
+
+<p>~~~html+erb
+&lt;% @greeting = capture do %&gt;</p>
+<p>Welcome! The date and time is &lt;%= Time.now %&gt;</p>
+<p>&lt;% end %&gt;
+~~~</p>
+
+<p>The captured variable can then be used anywhere else.</p>
+
+<p>~~~html+erb</p>
+<html>
+  <head>
+    <title>Welcome!</title>
+  </head>
+  <body>
+    &lt;%= @greeting %&gt;
+  </body>
+</html>
+<pre><code>
+#### content_for
+
+Calling `content_for` stores a block of markup in an identifier for later use. You can make subsequent calls to the stored content in other templates or the layout by passing the identifier as an argument to `yield`.
+
+For example, let's say we have a standard application layout, but also a special page that requires certain JavaScript that the rest of the site doesn't need. We can use `content_for` to include this JavaScript on our special page without fattening up the rest of the site.
+
+**app/views/layouts/application.html.erb**
+
+~~~html+erb
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Welcome!&lt;/title&gt;
+    &lt;%= yield :special_script %&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Welcome! The date and time is &lt;%= Time.now %&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>app/views/posts/special.html.erb</strong></p>
+
+<p>~~~html+erb</p>
+<p>This is a special page.</p>
+
+<p>&lt;% content_for :special_script do %&gt;
+  <script>alert('Hello!')</script>
+&lt;% end %&gt;
+~~~</p>
+
+<h3 id="datehelper">DateHelper</h3>
+
+<h4 id="dateselect">date_select</h4>
+
+<p>Returns a set of select tags (one for year, month, and day) pre-selected for accessing a specified date-based attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>date_select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published_on</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="datetimeselect">datetime_select</h4>
+
+<p>Returns a set of select tags (one for year, month, day, hour, and minute) pre-selected for accessing a specified datetime-based attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>datetime_select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">published_on</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="distanceoftimeinwords">distance_of_time_in_words</h4>
+
+<p>Reports the approximate distance in time between two Time or Date objects or integers as seconds. Set <code>include_seconds</code> to true if you want more detailed approximations.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>distance_of_time_in_words(<span style="color:#036;font-weight:bold">Time</span>.now, <span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">15</span>.seconds)        <span style="color:#777"># =&gt; less than a minute</span>
+distance_of_time_in_words(<span style="color:#036;font-weight:bold">Time</span>.now, <span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">15</span>.seconds, <span style="color:#606">include_seconds</span>: <span style="color:#069">true</span>)  <span style="color:#777"># =&gt; less than 20 seconds</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectdate">select_date</h4>
+
+<p>Returns a set of html select-tags (one for year, month, and day) pre-selected with the <code>date</code> provided.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a date select that defaults to the date provided (six days after today)</span>
+select_date(<span style="color:#036;font-weight:bold">Time</span>.today + <span style="color:#00D">6</span>.days)
+
+<span style="color:#777"># Generates a date select that defaults to today (no specified date)</span>
+select_date()
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectdatetime">select_datetime</h4>
+
+<p>Returns a set of html select-tags (one for year, month, day, hour, and minute) pre-selected with the <code>datetime</code> provided.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a datetime select that defaults to the datetime provided (four days after today)</span>
+select_datetime(<span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">4</span>.days)
+
+<span style="color:#777"># Generates a datetime select that defaults to today (no specified datetime)</span>
+select_datetime()
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectday">select_day</h4>
+
+<p>Returns a select tag with options for each of the days 1 through 31 with the current day selected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for days that defaults to the day for the date provided</span>
+select_day(<span style="color:#036;font-weight:bold">Time</span>.today + <span style="color:#00D">2</span>.days)
+
+<span style="color:#777"># Generates a select field for days that defaults to the number given</span>
+select_day(<span style="color:#00D">5</span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selecthour">select_hour</h4>
+
+<p>Returns a select tag with options for each of the hours 0 through 23 with the current hour selected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for minutes that defaults to the minutes for the time provided</span>
+select_minute(<span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">6</span>.hours)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectminute">select_minute</h4>
+
+<p>Returns a select tag with options for each of the minutes 0 through 59 with the current minute selected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for minutes that defaults to the minutes for the time provided.</span>
+select_minute(<span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">6</span>.hours)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectmonth">select_month</h4>
+
+<p>Returns a select tag with options for each of the months January through December with the current month selected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for months that defaults to the current month</span>
+select_month(<span style="color:#036;font-weight:bold">Date</span>.today)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectsecond">select_second</h4>
+
+<p>Returns a select tag with options for each of the seconds 0 through 59 with the current second selected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for seconds that defaults to the seconds for the time provided</span>
+select_second(<span style="color:#036;font-weight:bold">Time</span>.now + <span style="color:#00D">16</span>.minutes)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selecttime">select_time</h4>
+
+<p>Returns a set of html select-tags (one for hour and minute).</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a time select that defaults to the time provided</span>
+select_time(<span style="color:#036;font-weight:bold">Time</span>.now)
+</pre></div>
+</div>
+</div>
+
+<h4 id="selectyear">select_year</h4>
+
+<p>Returns a select tag with options for each of the five years on each side of the current, which is selected. The five year radius can be changed using the <code>:start_year</code> and <code>:end_year</code> keys in the <code>options</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Generates a select field for five years on either side of Date.today that defaults to the current year</span>
+select_year(<span style="color:#036;font-weight:bold">Date</span>.today)
+
+<span style="color:#777"># Generates a select field from 1900 to 2009 that defaults to the current year</span>
+select_year(<span style="color:#036;font-weight:bold">Date</span>.today, <span style="color:#606">start_year</span>: <span style="color:#00D">1900</span>, <span style="color:#606">end_year</span>: <span style="color:#00D">2009</span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="timeagoinwords">time_ago_in_words</h4>
+
+<p>Like <code>distance_of_time_in_words</code>, but where <code>to_time</code> is fixed to <code>Time.now</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>time_ago_in_words(<span style="color:#00D">3</span>.minutes.from_now)  <span style="color:#777"># =&gt; 3 minutes</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="timeselect">time_select</h4>
+
+<p>Returns a set of select tags (one for hour, minute and optionally second) pre-selected for accessing a specified time-based attribute. The selects are prepared for multi-parameter assignment to an Active Record object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Creates a time select tag that, when POSTed, will be stored in the order variable in the submitted attribute</span>
+time_select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">order</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">submitted</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="debughelper">DebugHelper</h3>
+
+<p>Returns a <code>pre</code> tag that has object dumped by YAML. This creates a very readable way to inspect an object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>my_hash = {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">first</span><span style="color:#710">'</span></span> =&gt; <span style="color:#00D">1</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">second</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">two</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">third</span><span style="color:#710">'</span></span> =&gt; [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]}
+debug(my_hash)
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;pre</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">debug_dump</span><span style="color:#710">'</span></span><span style="color:#070;font-weight:bold">&gt;</span>---
+first: 1
+second: two
+third:
+- 1
+- 2
+- 3
+<span style="color:#070;font-weight:bold">&lt;/pre&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="formhelper">FormHelper</h3>
+
+<p>Form helpers are designed to make working with models much easier compared to using just standard HTML elements by providing a set of methods for creating forms based on your models. This helper generates the HTML for forms, providing a method for each sort of input (e.g., text, password, select, and so on). When the form is submitted (i.e., when the user hits the submit button or form.submit is called via JavaScript), the form inputs will be bundled into the params object and passed back to the controller.</p>
+
+<p>There are two types of form helpers: those that specifically work with model attributes and those that don’t. This helper deals with those that work with model attributes; to see an example of form helpers that don’t work with model attributes, check the ActionView::Helpers::FormTagHelper documentation.</p>
+
+<p>The core method of this helper, form_for, gives you the ability to create a form for a model instance; for example, let’s say that you have a model Person and want to create a new instance of it:</p>
+
+<p>~~~html+erb
+# Note: a @person variable will have been created in the controller (e.g. @person = Person.new)
+&lt;%= form_for @person, url: {action: “create”} do |f| %&gt;
+  &lt;%= f.text_field :first_name %&gt;
+  &lt;%= f.text_field :last_name %&gt;
+  &lt;%= submit_tag ‘Create’ %&gt;
+&lt;% end %&gt;
+~~~</p>
+
+<p>The HTML generated for this would be:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/people/create</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_first_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[first_name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_last_name</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person[last_name]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">commit</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">submit</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Create</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The params object created when this form is submitted would look like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>{<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">action</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">create</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">controller</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">people</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span> =&gt; {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">first_name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">William</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">last_name</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Smith</span><span style="color:#710">&quot;</span></span>}}
+</pre></div>
+</div>
+</div>
+
+<p>The params hash has a nested person value, which can therefore be accessed with params[:person] in the controller.</p>
+
+<h4 id="checkbox">check_box</h4>
+
+<p>Returns a checkbox tag tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Let's say that @post.validated? is 1:</span>
+check_box(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">validated</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;checkbox&quot; id=&quot;post_validated&quot; name=&quot;post[validated]&quot; value=&quot;1&quot; /&gt;</span>
+<span style="color:#777">#    &lt;input name=&quot;post[validated]&quot; type=&quot;hidden&quot; value=&quot;0&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="fieldsfor">fields_for</h4>
+
+<p>Creates a scope around a specific model object like form_for, but doesn’t create the form tags themselves. This makes fields_for suitable for specifying additional model objects in the same form:</p>
+
+<p>~~~html+erb
+&lt;%= form_for @person, url: {action: “update”} do |person_form| %&gt;
+  First name: &lt;%= person_form.text_field :first_name %&gt;
+  Last name : &lt;%= person_form.text_field :last_name %&gt;</p>
+
+<p>&lt;%= fields_for @person.permission do |permission_fields| %&gt;
+    Admin?  : &lt;%= permission_fields.check_box :admin %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+~~~</p>
+
+<h4 id="filefield">file_field</h4>
+
+<p>Returns a file upload input tag tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>file_field(<span style="color:#A60">:user</span>, <span style="color:#A60">:avatar</span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;file&quot; id=&quot;user_avatar&quot; name=&quot;user[avatar]&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="formfor">form_for</h4>
+
+<p>Creates a form and a scope around a specific model object that is used as a base for questioning about values for the fields.</p>
+
+<p>~~~html+erb
+&lt;%= form_for @post do |f| %&gt;
+  &lt;%= f.label :title, ‘Title’ %&gt;:
+  &lt;%= f.text_field :title %&gt;<br />
+  &lt;%= f.label :body, ‘Body’ %&gt;:
+  &lt;%= f.text_area :body %&gt;<br />
+&lt;% end %&gt;
+~~~</p>
+
+<h4 id="hiddenfield">hidden_field</h4>
+
+<p>Returns a hidden input tag tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>hidden_field(<span style="color:#A60">:user</span>, <span style="color:#A60">:token</span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;hidden&quot; id=&quot;user_token&quot; name=&quot;user[token]&quot; value=&quot;#{@user.token}&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="label">label</h4>
+
+<p>Returns a label tag tailored for labelling an input field for a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>label(<span style="color:#A60">:post</span>, <span style="color:#A60">:title</span>)
+<span style="color:#777"># =&gt; &lt;label for=&quot;post_title&quot;&gt;Title&lt;/label&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="passwordfield">password_field</h4>
+
+<p>Returns an input tag of the “password” type tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>password_field(<span style="color:#A60">:login</span>, <span style="color:#A60">:pass</span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;text&quot; id=&quot;login_pass&quot; name=&quot;login[pass]&quot; value=&quot;#{@login.pass}&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="radiobutton">radio_button</h4>
+
+<p>Returns a radio button tag for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Let's say that @post.category returns &quot;rails&quot;:</span>
+radio_button(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">category</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rails</span><span style="color:#710">&quot;</span></span>)
+radio_button(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">category</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">java</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;radio&quot; id=&quot;post_category_rails&quot; name=&quot;post[category]&quot; value=&quot;rails&quot; checked=&quot;checked&quot; /&gt;</span>
+<span style="color:#777">#    &lt;input type=&quot;radio&quot; id=&quot;post_category_java&quot; name=&quot;post[category]&quot; value=&quot;java&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="textarea">text_area</h4>
+
+<p>Returns a textarea opening and closing tag set tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>text_area(<span style="color:#A60">:comment</span>, <span style="color:#A60">:text</span>, <span style="color:#606">size</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">20x30</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># =&gt; &lt;textarea cols=&quot;20&quot; rows=&quot;30&quot; id=&quot;comment_text&quot; name=&quot;comment[text]&quot;&gt;</span>
+<span style="color:#777">#      #{@comment.text}</span>
+<span style="color:#777">#    &lt;/textarea&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="textfield">text_field</h4>
+
+<p>Returns an input tag of the “text” type tailored for accessing a specified attribute.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>text_field(<span style="color:#A60">:post</span>, <span style="color:#A60">:title</span>)
+<span style="color:#777"># =&gt; &lt;input type=&quot;text&quot; id=&quot;post_title&quot; name=&quot;post[title]&quot; value=&quot;#{@post.title}&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="formoptionshelper">FormOptionsHelper</h3>
+
+<p>Provides a number of methods for turning different kinds of containers into a set of option tags.</p>
+
+<h4 id="collectionselect">collection_select</h4>
+
+<p>Returns <code>select</code> and <code>option</code> tags for the collection of existing return values of <code>method</code> for <code>object</code>’s class.</p>
+
+<p>Example object structure for use with this method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:author</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Author</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:posts</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">name_with_initial</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>first_name.first<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">. </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>last_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Sample usage (selecting the associated Author for an instance of Post, <code>@post</code>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>collection_select(<span style="color:#A60">:post</span>, <span style="color:#A60">:author_id</span>, <span style="color:#036;font-weight:bold">Author</span>.all, <span style="color:#A60">:id</span>, <span style="color:#A60">:name_with_initial</span>, {<span style="color:#606">prompt</span>: <span style="color:#069">true</span>})
+</pre></div>
+</div>
+</div>
+
+<p>If <code>@post.author_id</code> is 1, this would return:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;select</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_id]</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Please select<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">selected</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">selected</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Heinemeier Hansson<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Thomas<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>M. Clark<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/select&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="collectionradiobuttons">collection_radio_buttons</h4>
+
+<p>Returns <code>radio_button</code> tags for the collection of existing return values of <code>method</code> for <code>object</code>’s class.</p>
+
+<p>Example object structure for use with this method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:author</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Author</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:posts</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">name_with_initial</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>first_name.first<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">. </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>last_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Sample usage (selecting the associated Author for an instance of Post, <code>@post</code>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>collection_radio_buttons(<span style="color:#A60">:post</span>, <span style="color:#A60">:author_id</span>, <span style="color:#036;font-weight:bold">Author</span>.all, <span style="color:#A60">:id</span>, <span style="color:#A60">:name_with_initial</span>)
+</pre></div>
+</div>
+</div>
+
+<p>If <code>@post.author_id</code> is 1, this would return:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_id]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">radio</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">checked</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">checked</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_1</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Heinemeier Hansson<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_2</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_id]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">radio</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_2</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Thomas<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_3</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_id]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">radio</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_id_3</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>M. Clark<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="collectioncheckboxes">collection_check_boxes</h4>
+
+<p>Returns <code>check_box</code> tags for the collection of existing return values of <code>method</code> for <code>object</code>’s class.</p>
+
+<p>Example object structure for use with this method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Post</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_and_belongs_to_many <span style="color:#A60">:author</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Author</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_and_belongs_to_many <span style="color:#A60">:posts</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">name_with_initial</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>first_name.first<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">. </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>last_name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Sample usage (selecting the associated Authors for an instance of Post, <code>@post</code>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>collection_check_boxes(<span style="color:#A60">:post</span>, <span style="color:#A60">:author_ids</span>, <span style="color:#036;font-weight:bold">Author</span>.all, <span style="color:#A60">:id</span>, <span style="color:#A60">:name_with_initial</span>)
+</pre></div>
+</div>
+</div>
+
+<p>If <code>@post.author_ids</code> is [1], this would return:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_ids][]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">checkbox</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">checked</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">checked</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_1</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Heinemeier Hansson<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_2</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_ids][]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">checkbox</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_2</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>D. Thomas<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_3</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_ids][]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">checkbox</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;label</span> <span style="color:#b48">for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post_author_ids_3</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>M. Clark<span style="color:#070;font-weight:bold">&lt;/label&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[author_ids][]</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hidden</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="countryoptionsforselect">country_options_for_select</h4>
+
+<p>Returns a string of option tags for pretty much any country in the world.</p>
+
+<h4 id="countryselect">country_select</h4>
+
+<p>Return select and option tags for the given object and method, using country_options_for_select to generate the list of option tags.</p>
+
+<h4 id="optiongroupsfromcollectionforselect">option_groups_from_collection_for_select</h4>
+
+<p>Returns a string of <code>option</code> tags, like <code>options_from_collection_for_select</code>, but groups them by <code>optgroup</code> tags based on the object relationships of the arguments.</p>
+
+<p>Example object structure for use with this method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Continent</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  has_many <span style="color:#A60">:countries</span>
+  <span style="color:#777"># attribs: id, name</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Country</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  belongs_to <span style="color:#A60">:continent</span>
+  <span style="color:#777"># attribs: id, name, continent_id</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Sample usage:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>option_groups_from_collection_for_select(<span style="color:#33B">@continents</span>, <span style="color:#A60">:countries</span>, <span style="color:#A60">:name</span>, <span style="color:#A60">:id</span>, <span style="color:#A60">:name</span>, <span style="color:#00D">3</span>)
+</pre></div>
+</div>
+</div>
+
+<p>Possible output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;optgroup</span> <span style="color:#b48">label</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Africa</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Egypt<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Rwanda<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  ...
+<span style="color:#070;font-weight:bold">&lt;/optgroup&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;optgroup</span> <span style="color:#b48">label</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Asia</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">selected</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">selected</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>China<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>India<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">5</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Japan<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  ...
+<span style="color:#070;font-weight:bold">&lt;/optgroup&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note: Only the <code>optgroup</code> and <code>option</code> tags are returned, so you still have to wrap the output in an appropriate <code>select</code> tag.</p>
+
+<h4 id="optionsforselect">options_for_select</h4>
+
+<p>Accepts a container (hash, array, enumerable, your type) and returns a string of option tags.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>options_for_select([ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">VISA</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">MasterCard</span><span style="color:#710">&quot;</span></span> ])
+<span style="color:#777"># =&gt; &lt;option&gt;VISA&lt;/option&gt; &lt;option&gt;MasterCard&lt;/option&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note: Only the <code>option</code> tags are returned, you have to wrap this call in a regular HTML <code>select</code> tag.</p>
+
+<h4 id="optionsfromcollectionforselect">options_from_collection_for_select</h4>
+
+<p>Returns a string of option tags that have been compiled by iterating over the <code>collection</code> and assigning the result of a call to the <code>value_method</code> as the option value and the <code>text_method</code> as the option text.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># options_from_collection_for_select(collection, value_method, text_method, selected = nil)</span>
+</pre></div>
+</div>
+</div>
+
+<p>For example, imagine a loop iterating over each person in @project.people to generate an input tag:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>options_from_collection_for_select(<span style="color:#33B">@project</span>.people, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">id</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">name</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># =&gt; &lt;option value=&quot;#{person.id}&quot;&gt;#{person.name}&lt;/option&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note: Only the <code>option</code> tags are returned, you have to wrap this call in a regular HTML <code>select</code> tag.</p>
+
+<h4 id="select">select</h4>
+
+<p>Create a select tag and a series of contained option tags for the provided object and method.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>select(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person_id</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Person</span>.all.collect {|p| [ p.name, p.id ] }, {<span style="color:#606">include_blank</span>: <span style="color:#069">true</span>})
+</pre></div>
+</div>
+</div>
+
+<p>If <code>@post.person_id</code> is 1, this would become:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;select</span> <span style="color:#b48">name</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post[person_id]</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span><span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">selected</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">selected</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>David<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Sam<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;option</span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Tobias<span style="color:#070;font-weight:bold">&lt;/option&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/select&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="timezoneoptionsforselect">time_zone_options_for_select</h4>
+
+<p>Returns a string of option tags for pretty much any time zone in the world.</p>
+
+<h4 id="timezoneselect">time_zone_select</h4>
+
+<p>Return select and option tags for the given object and method, using <code>time_zone_options_for_select</code> to generate the list of option tags.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>time_zone_select( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">time_zone</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h3 id="formtaghelper">FormTagHelper</h3>
+
+<p>Provides a number of methods for creating form tags that doesn’t rely on an Active Record object assigned to the template like FormHelper does. Instead, you provide the names and values manually.</p>
+
+<h4 id="checkboxtag">check_box_tag</h4>
+
+<p>Creates a check box form input tag.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>check_box_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">accept</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;accept&quot; name=&quot;accept&quot; type=&quot;checkbox&quot; value=&quot;1&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="fieldsettag">field_set_tag</h4>
+
+<p>Creates a field set for grouping HTML form elements.</p>
+
+<p>~~~html+erb
+&lt;%= field_set_tag do %&gt;</p>
+<p>&lt;%= text_field_tag 'name' %&gt;</p>
+<p>&lt;% end %&gt;
+# =&gt; &lt;fieldset&gt;&lt;p&gt;<input id="name" name="name" type="text" />&lt;/p&gt;&lt;/fieldset&gt;
+~~~</p>
+
+<h4 id="filefieldtag">file_field_tag</h4>
+
+<p>Creates a file upload field.</p>
+
+<p>~~~html+erb
+&lt;%= form_tag {action: “post”}, {multipart: true} do %&gt;
+  <label for="file">File to Upload</label> &lt;%= file_field_tag “file” %&gt;
+  &lt;%= submit_tag %&gt;
+&lt;% end %&gt;
+~~~</p>
+
+<p>Example output:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>file_field_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">attachment</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;attachment&quot; name=&quot;attachment&quot; type=&quot;file&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="formtag">form_tag</h4>
+
+<p>Starts a form tag that points the action to an url configured with <code>url_for_options</code> just like <code>ActionController::Base#url_for</code>.</p>
+
+<p>~~~html+erb
+&lt;%= form_tag ‘/posts’ do %&gt;</p>
+<div>&lt;%= submit_tag 'Save' %&gt;</div>
+<p>&lt;% end %&gt;
+# =&gt; &lt;form action="/posts" method="post"&gt;&lt;div&gt;<input type="submit" name="submit" value="Save" />&lt;/div&gt;&lt;/form&gt;
+~~~</p>
+
+<h4 id="hiddenfieldtag">hidden_field_tag</h4>
+
+<p>Creates a hidden form input field used to transmit data that would be lost due to HTTP’s statelessness or data that should be hidden from the user.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>hidden_field_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">token</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">VUBJKB23UIVI1UU1VOBVI@</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;token&quot; name=&quot;token&quot; type=&quot;hidden&quot; value=&quot;VUBJKB23UIVI1UU1VOBVI@&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="imagesubmittag">image_submit_tag</h4>
+
+<p>Displays an image which when clicked will submit the form.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_submit_tag(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">login.png</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#777"># =&gt; &lt;input src=&quot;/images/login.png&quot; type=&quot;image&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="labeltag">label_tag</h4>
+
+<p>Creates a label field.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>label_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">name</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;label for=&quot;name&quot;&gt;Name&lt;/label&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="passwordfieldtag">password_field_tag</h4>
+
+<p>Creates a password field, a masked text field that will hide the users input behind a mask character.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>password_field_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pass</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;pass&quot; name=&quot;pass&quot; type=&quot;password&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="radiobuttontag">radio_button_tag</h4>
+
+<p>Creates a radio button; use groups of radio buttons named the same to allow users to select from a group of options.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>radio_button_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">gender</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">male</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;gender_male&quot; name=&quot;gender&quot; type=&quot;radio&quot; value=&quot;male&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="selecttag">select_tag</h4>
+
+<p>Creates a dropdown selection box.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>select_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">people</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;option&gt;David&lt;/option&gt;</span><span style="color:#710">&quot;</span></span>
+<span style="color:#777"># =&gt; &lt;select id=&quot;people&quot; name=&quot;people&quot;&gt;&lt;option&gt;David&lt;/option&gt;&lt;/select&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="submittag">submit_tag</h4>
+
+<p>Creates a submit button with the text provided as the caption.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>submit_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Publish this post</span><span style="color:#710">&quot;</span></span>
+<span style="color:#777"># =&gt; &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Publish this post&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="textareatag">text_area_tag</h4>
+
+<p>Creates a text input area; use a textarea for longer text inputs such as blog posts or descriptions.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>text_area_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">post</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;textarea id=&quot;post&quot; name=&quot;post&quot;&gt;&lt;/textarea&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="textfieldtag">text_field_tag</h4>
+
+<p>Creates a standard text field; use these text fields to input smaller chunks of text like a username or a search query.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>text_field_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">name</span><span style="color:#710">'</span></span>
+<span style="color:#777"># =&gt; &lt;input id=&quot;name&quot; name=&quot;name&quot; type=&quot;text&quot; /&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="javascripthelper">JavaScriptHelper</h3>
+
+<p>Provides functionality for working with JavaScript in your views.</p>
+
+<h4 id="buttontofunction">button_to_function</h4>
+
+<p>Returns a button that’ll trigger a JavaScript function using the onclick handler. Examples:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>button_to_function <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Greeting</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alert('Hello world!')</span><span style="color:#710">&quot;</span></span>
+button_to_function <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Delete</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">if (confirm('Really?')) do_delete()</span><span style="color:#710">&quot;</span></span>
+button_to_function <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Details</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span> |page|
+  page[<span style="color:#A60">:details</span>].visual_effect <span style="color:#A60">:toggle_slide</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="definejavascriptfunctions">define_javascript_functions</h4>
+
+<p>Includes the Action Pack JavaScript libraries inside a single <code>script</code> tag.</p>
+
+<h4 id="escapejavascript">escape_javascript</h4>
+
+<p>Escape carrier returns and single and double quotes for JavaScript segments.</p>
+
+<h4 id="javascripttag">javascript_tag</h4>
+
+<p>Returns a JavaScript tag wrapping the provided code.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>javascript_tag <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alert('All is good')</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#777">//&lt;![CDATA[</span>
+alert(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">All is good</span><span style="color:#710">'</span></span>)
+<span style="color:#777">//]]&gt;</span></span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="linktofunction">link_to_function</h4>
+
+<p>Returns a link that will trigger a JavaScript function using the onclick handler and return false after the fact.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>link_to_function <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Greeting</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">alert('Hello world!')</span><span style="color:#710">&quot;</span></span>
+<span style="color:#777"># =&gt; &lt;a onclick=&quot;alert('Hello world!'); return false;&quot; href=&quot;#&quot;&gt;Greeting&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="numberhelper">NumberHelper</h3>
+
+<p>Provides methods for converting numbers into formatted strings. Methods are provided for phone numbers, currency, percentage, precision, positional notation, and file size.</p>
+
+<h4 id="numbertocurrency">number_to_currency</h4>
+
+<p>Formats a number into a currency string (e.g., $13.65).</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_to_currency(<span style="color:#60E">1234567890.50</span>) <span style="color:#777"># =&gt; $1,234,567,890.50</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="numbertohumansize">number_to_human_size</h4>
+
+<p>Formats the bytes in size into a more understandable representation; useful for reporting file sizes to users.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_to_human_size(<span style="color:#00D">1234</span>)          <span style="color:#777"># =&gt; 1.2 KB</span>
+number_to_human_size(<span style="color:#00D">1234567</span>)       <span style="color:#777"># =&gt; 1.2 MB</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="numbertopercentage">number_to_percentage</h4>
+
+<p>Formats a number as a percentage string.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_to_percentage(<span style="color:#00D">100</span>, <span style="color:#A60">:precision</span> =&gt; <span style="color:#00D">0</span>)        <span style="color:#777"># =&gt; 100%</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="numbertophone">number_to_phone</h4>
+
+<p>Formats a number into a US phone number.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_to_phone(<span style="color:#00D">1235551234</span>) <span style="color:#777"># =&gt; 123-555-1234</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="numberwithdelimiter">number_with_delimiter</h4>
+
+<p>Formats a number with grouped thousands using a delimiter.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_with_delimiter(<span style="color:#00D">12345678</span>) <span style="color:#777"># =&gt; 12,345,678</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="numberwithprecision">number_with_precision</h4>
+
+<p>Formats a number with the specified level of <code>precision</code>, which defaults to 3.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>number_with_precision(<span style="color:#60E">111.2345</span>)     <span style="color:#777"># =&gt; 111.235</span>
+number_with_precision(<span style="color:#60E">111.2345</span>, <span style="color:#00D">2</span>)  <span style="color:#777"># =&gt; 111.23</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="localized-views">Localized Views</h2>
+
+<p>Action View has the ability render different templates depending on the current locale.</p>
+
+<p>For example, suppose you have a Posts controller with a show action. By default, calling this action will render <code>app/views/posts/show.html.erb</code>. But if you set <code>I18n.locale = :de</code>, then <code>app/views/posts/show.de.html.erb</code> will be rendered instead. If the localized template isn’t present, the undecorated version will be used. This means you’re not required to provide localized views for all cases, but they will be preferred and used if available.</p>
+
+<p>You can use the same technique to localize the rescue files in your public directory. For example, setting <code>I18n.locale = :de</code> and creating <code>public/500.de.html</code> and <code>public/404.de.html</code> would allow you to have localized rescue pages.</p>
+
+<p>Since Rails doesn’t restrict the symbols that you use to set I18n.locale, you can leverage this system to display different content depending on anything you like. For example, suppose you have some “expert” users that should see different pages from “normal” users. You could add the following to <code>app/controllers/application.rb</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>before_action <span style="color:#A60">:set_expert_locale</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">set_expert_locale</span>
+  <span style="color:#036;font-weight:bold">I18n</span>.locale = <span style="color:#A60">:expert</span> <span style="color:#080;font-weight:bold">if</span> current_user.expert?
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then you could create special views like <code>app/views/posts/show.expert.html.erb</code> that would only be displayed to expert users.</p>
+
+<p>You can read more about the Rails Internationalization (I18n) API <a href="i18n.html">here</a>.</p>
+
+<h2 id="using-action-view-outside-of-rails">Using Action View outside of Rails</h2>
+
+<p>Action View is a Rails component, but it can also be used without Rails. We can demonstrate this by creating a small <a href="http://rack.rubyforge.org/">Rack</a> application that includes Action View functionality. This may be useful, for example, if you’d like access to Action View’s helpers in a Rack application.</p>
+
+<p>Let’s start by ensuring that you have the Action Pack and Rack gems installed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ gem install actionpack
+$ gem install rack
+</pre></div>
+</div>
+</div>
+
+<p>Now we’ll create a simple “Hello World” application that uses the <code>titleize</code> method provided by Active Support.</p>
+
+<p><strong>hello_world.rb:</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">active_support/core_ext/string/inflections</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rack</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello_world</span>(env)
+  [<span style="color:#00D">200</span>, {<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content-Type</span><span style="color:#710">&quot;</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text/html</span><span style="color:#710">&quot;</span></span>}, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello world</span><span style="color:#710">&quot;</span></span>.titleize]
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Rack</span>::<span style="color:#036;font-weight:bold">Handler</span>::<span style="color:#036;font-weight:bold">Mongrel</span>.run method(<span style="color:#A60">:hello_world</span>), <span style="color:#606">Port</span>: <span style="color:#00D">4567</span>
+</pre></div>
+</div>
+</div>
+
+<p>We can see this all come together by starting up the application and then visiting <code>http://localhost:4567/</code></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ ruby hello_world.rb
+</pre></div>
+</div>
+</div>
+
+<p>TODO needs a screenshot? I have one - not sure where to put it.</p>
+
+<p>Notice how ‘hello world’ has been converted into ‘Hello World’ by the <code>titleize</code> helper method.</p>
+
+<p>Action View can also be used with <a href="http://www.sinatrarb.com/">Sinatra</a> in the same way.</p>
+
+<p>Let’s start by ensuring that you have the Action Pack and Sinatra gems installed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ gem install actionpack
+$ gem install sinatra
+</pre></div>
+</div>
+</div>
+
+<p>Now we’ll create the same “Hello World” application in Sinatra.</p>
+
+<p><strong>hello_world.rb:</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">action_view</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sinatra</span><span style="color:#710">'</span></span>
+
+get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+  erb <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello world</span><span style="color:#710">'</span></span>.titleize
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then, we can run the application:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ ruby hello_world.rb
+</pre></div>
+</div>
+</div>
+
+<p>Once the application is running, you can see Sinatra and Action View working together by visiting <code>http://localhost:4567/</code></p>
+
+<p>TODO needs a screenshot? I have one - not sure where to put it.</p>
+
+    </div>
+  </body>
+</html>

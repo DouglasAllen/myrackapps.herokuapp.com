@@ -1,0 +1,925 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>Ruby makes it easy to quickly put together a proof-of-concept for almost any kind of project, as long as you have some experience in rapid application development. In this article, I will go over how I build prototypes, sharing the tricks that have worked well for me.</p>
+
+<p>Today we’ll be walking through a bit of code that implements a small chunk of a falling blocks game that is similar to Tetris. If you’re not familiar with Tetris, head over to <a href="http://freetetris.org">freetetris.org</a> and play it a bit before reading this article.</p>
+
+<p>Assuming you’re now familiar with the general idea behind the game, I’ll walk you through the thought process that I went through from the initial idea of working on a falling blocks game to the small bit of code I have written for this issue.</p>
+
+<h3 id="the-planning-phase">The Planning Phase</h3>
+
+<p>After running through a few ideas, I settled on a falling blocks game as a good example of a problem that’s too big to be tackled in a single sitting, but easy enough to make some quick progress on.</p>
+
+<p>The next step for me was to come up with a target set of requirements for my
+prototype. To prevent the possibilities from seeming endless, I had to set a
+time limit up front to make this decision making process easier. Because 
+very small  chunks of focused effort can get you far in Ruby, I settled on
+coming up with something I felt I could build within an hour or two.</p>
+
+<p>I knew right away this meant that I wasn’t going to make an interactive demo. Synchronizing user input and screen output is something that may be easy for folks who do it regularly, but my concurrency knowledge is very limited, and I’d risk spending several hours on that side of things and coming up empty if I went down that path. Fortunately, even without an event loop, there are still a lot of options for building a convincing demo.</p>
+
+<p>In my initial optimism, I thought what I’d like to be able to do is place a piece on the screen, and then let gravity take over, eliminating any completed lines as it fell into place. But this would require me to implement collision detection, something I didn’t want to tackle right away.</p>
+
+<p>Eventually, I came up with the idea of just implementing the action that happens when a piece collides with the junk on the grid. This process involved turning the active piece into inactive junk, and then removing any completed rows from the grid. This is something that I felt fit within the range of what I could do within an hour or two, so I decided to sleep on it and see if any unknowns bubbled up to the surface.</p>
+
+<p>I could have just started hacking right away, but ironically that’s a practice I typically avoid when putting together rapid prototypes. If this were a commercial project and I quoted the customer 2-4 hours, I’d want to use their money in the best possible way, and picking the wrong scope for my project would be a surefire way to either blow the budget or fail to produce something interesting. I find a few hours of passive noodling helps me see unexpected issues before they bite me.</p>
+
+<p>Fortunately, this idea managed to pass the test of time, and I set out to begin coding by turning the idea into a set of requirements.</p>
+
+<h3 id="the-requirements-phase">The Requirements Phase</h3>
+
+<p>A good prototype does not come from a top-down or bottom-up design, but instead comes from starting in the middle and building outwards. By taking a small vertical slice of the problem at hand, you are forced to think about many aspects of the system, but not in a way that requires you consider the whole problem all at once. This allows most of your knowledge and often a good chunk of your code to be re-used when you approach the full project.</p>
+
+<p>The key is to start with a behavior the user can actually observe. This means that you should be thinking in terms of features rather than functions and objects. Some folks use story frameworks such as Cucumber to help them formalize this sort of inside-out thinking, but personally, I prefer just to come up with a good, clear example and not worry about shoehorning it into a formal setting.</p>
+
+<p>To do this, I created a simple text file filled with ascii art that codified two cases: One in which a line was cleared, and where no lines were cleared. Both cases are shown below.</p>
+
+<h3 id="case-1-removing-completed-lines">CASE 1: REMOVING COMPLETED LINES</h3>
+
+<pre><code>==========
+           
+           
+           
+           
+           
+           
+   #       
+   #|    | 
+  |#||  ||
+|||#||||||
+==========
+</code></pre>
+
+<p>BECOMES:</p>
+
+<pre><code>==========
+           
+           
+           
+           
+           
+
+
+   |       
+   ||    | 
+  ||||  ||
+==========
+</code></pre>
+
+<h3 id="case-2-collision-without-any-completed-lines">CASE 2: COLLISION WITHOUT ANY COMPLETED LINES</h3>
+
+<pre><code>==========
+           
+           
+           
+           
+           
+          
+  #       
+  ##|    |
+  |#||  ||
+||| ||||||
+==========
+</code></pre>
+
+<p>BECOMES:</p>
+
+<pre><code>==========
+           
+           
+           
+           
+           
+          
+  |       
+  |||    | 
+  ||||  ||
+||| ||||||
+==========
+</code></pre>
+
+<hr />
+
+<p>With the goals for the prototype clearly outlined, I set out to write a simple program that would perform the necessary transformations.</p>
+
+<h3 id="the-coding-phase">The Coding Phase</h3>
+
+<p>One thing I’ll openly admit is that when prototyping something that will take me less than a half day from end to end, I tend to relax my standards on both testing and writing clean code. The reason for this is that when I’m trying to take a nose-dive into a new problem domain, I find my best practices actually get in the way until I have at least a basic understanding of the project.</p>
+
+<p>What I’ll typically do instead is write a single file that implements both the objects I need and an example that gets me closer to my goal. For this project, I started with a canvas object for rendering output similar to what I outlined in my requirements.</p>
+
+<p>Imagining this canvas object already existed, I wrote some code for generating the very first bit out output we see in the requirements.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>canvas = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Canvas</span>.new
+
+(<span style="color:#00D">0</span>..<span style="color:#00D">2</span>).map <span style="color:#080;font-weight:bold">do</span> |x|
+  canvas.paint([x,<span style="color:#00D">0</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+canvas.paint([<span style="color:#00D">2</span>,<span style="color:#00D">1</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+
+(<span style="color:#00D">0</span>..<span style="color:#00D">3</span>).map <span style="color:#080;font-weight:bold">do</span> |y|
+  canvas.paint([<span style="color:#00D">3</span>,y], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+(<span style="color:#00D">4</span>..<span style="color:#00D">9</span>).map <span style="color:#080;font-weight:bold">do</span> |x|
+  canvas.paint([x,<span style="color:#00D">0</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+[<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">8</span>,<span style="color:#00D">9</span>].map <span style="color:#080;font-weight:bold">do</span> |x|
+  canvas.paint([x,<span style="color:#00D">1</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+canvas.paint([<span style="color:#00D">4</span>,<span style="color:#00D">2</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+canvas.paint([<span style="color:#00D">9</span>,<span style="color:#00D">2</span>], <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+
+puts canvas 
+</pre></div>
+</div>
+</div>
+
+<p>While I use a few loops for convenience, it’s easy to see that this code does little more than put symbols on a text grid at the specified (x,y) coordinates. Once <code>FallingBlocks::Canvas</code> is implemented, we’d expect the following output from this example:</p>
+
+<pre><code>==========
+           
+           
+           
+           
+           
+           
+   #       
+   #|    | 
+  |#||  ||
+|||#||||||
+==========
+</code></pre>
+
+<p>What we have done is narrowed the problem down to a much simpler task, making it easier to get started. The following implementation is sufficient to get the example working, and is simple enough that we probably don’t need to discuss it further.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">FallingBlocks</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Canvas</span>
+    <span style="color:#036;font-weight:bold">SIZE</span> = <span style="color:#00D">10</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+      <span style="color:#33B">@data</span> = <span style="color:#036;font-weight:bold">SIZE</span>.times.map { <span style="color:#036;font-weight:bold">Array</span>.new(<span style="color:#036;font-weight:bold">SIZE</span>) }
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">paint</span>(point, marker)
+      x,y = point
+      <span style="color:#33B">@data</span>[<span style="color:#036;font-weight:bold">SIZE</span>-y-<span style="color:#00D">1</span>][x] = marker
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+      [separator, body, separator].join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">separator</span>
+      <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">=</span><span style="color:#710">&quot;</span></span>*<span style="color:#036;font-weight:bold">SIZE</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">body</span>
+      <span style="color:#33B">@data</span>.map <span style="color:#080;font-weight:bold">do</span> |row|
+        row.map { |e| e || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span> }.join
+      <span style="color:#080;font-weight:bold">end</span>.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, things get a little more hairy once we’ve plucked this low hanging fruit. So far, we’ve built a tool for painting the picture of what’s going on, but that doesn’t tell us anything about the underlying structure. This is a good time to start thinking about what Tetris pieces are.</p>
+
+<p>While a full implementation of the game would require implementing rotations and movement, our prototype looks at pieces frozen in time. This means that a piece is really just represented by a collection of points. If we define each piece based on an origin of [0,0], we end up with something like this for a vertical line:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>line = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">3</span>]])
+</pre></div>
+</div>
+</div>
+
+<p>Similarly, a bent S-shaped piece would be defined like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>bent = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+</pre></div>
+</div>
+</div>
+
+<p>In order to position these pieces on a grid, what we’d need as an anchor point that could be used to translate the positions occupied by the pieces into another coordinate space.</p>
+
+<p>We could use the origin at [0,0], but for aesthetic reason, I didn’t like the mental model of grasping a piece by a position that could potentially be unoccupied. Instead, I decided to define the anchor as the top-left position occupied by the piece, which could later be translated to a different position on the canvas. This gives us an anchor of [0,3] for the line, and an anchor of [0,2] for the bent shape. I wrote the following example to outline how the API should work.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>line = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">3</span>]])
+p line.anchor <span style="color:#777">#=&gt; [0,3]</span>
+
+bent = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+p bent.anchor <span style="color:#777">#=&gt; [0,2]</span>
+</pre></div>
+</div>
+</div>
+
+<p>Once again, a simple example gives me enough constraints to make it easy to write an object that implements the desired behavior.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Piece</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(points)
+    <span style="color:#33B">@points</span> = points
+    establish_anchor
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:points</span>, <span style="color:#A60">:anchor</span>
+
+  <span style="color:#777"># Gets the top-left most point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">establish_anchor</span>
+    <span style="color:#33B">@anchor</span> = <span style="color:#33B">@points</span>.max_by { |x,y| [y,-x] }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As I was writing this code, I stopped for a moment and considered that this logic, as well as the logic written earlier that manipulates (x,y) coordinates to fit inside a row-major data structure are the sort of things I really like to write unit tests for. There is nothing particularly tricky about this code, but the lack of tests makes it harder to see what’s going on at a glance. Still, this sort of tension is normal when prototyping, and at this point I wasn’t even 30 minutes into working on the problem, so I let the feeling pass.</p>
+
+<p>The next step was to paint these pieces onto the canvas, and I decided to start
+with their absolute coordinates to verify my shape definitions. The following example 
+outlines the behavior I had expected.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>canvas = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Canvas</span>.new
+
+bent_shape = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+bent_shape.paint(canvas)
+
+puts canvas
+</pre></div>
+</div>
+</div>
+
+<p>OUTPUTS:</p>
+
+<pre><code>==========
+          
+          
+          
+          
+          
+          
+          
+#         
+##        
+ #        
+==========
+</code></pre>
+
+<p>Getting this far was easy, the following definition of <code>Piece</code> does the trick:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Piece</span>
+   <span style="color:#036;font-weight:bold">SYMBOL</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(points)
+    <span style="color:#33B">@points</span> = points
+    establish_anchor
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:points</span>, <span style="color:#A60">:anchor</span>
+
+  <span style="color:#777"># Gets the top-left most point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">establish_anchor</span>
+    <span style="color:#33B">@anchor</span> = <span style="color:#33B">@points</span>.min_by { |x,y| [y,-x] }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">paint</span>(canvas)
+    points.each <span style="color:#080;font-weight:bold">do</span> |point|
+      canvas.paint(point, <span style="color:#036;font-weight:bold">SYMBOL</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This demonstrates to me that the concept of considering pieces as a collection of points can work, and that my basic coordinates for a bent piece are right. But since I need a way to translate these coordinates to arbitrary positions of the grid for this code to be useful, this iteration was only a stepping stone. A new example pushes us forward.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>canvas = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Canvas</span>.new
+
+bent_shape = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+
+canvas.paint_shape(bent_shape, [<span style="color:#00D">2</span>,<span style="color:#00D">3</span>])
+
+puts canvas
+</pre></div>
+</div>
+</div>
+
+<p>OUTPUTS</p>
+
+<pre><code>==========
+          
+          
+          
+          
+          
+          
+  #       
+  ##      
+   #      
+          
+==========
+</code></pre>
+
+<p>As you can see in the code above, I decided that my <code>Piece#paint</code> method was probably better off as <code>Canvas#paint_shape</code>, just to collect the presentation logic in one place. Here’s what the updated code ended up looking like.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Canvas</span>
+ <span style="color:#777"># ...</span>
+
+ <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">paint_shape</span>(shape, position)
+   shape.translated_points(position).each <span style="color:#080;font-weight:bold">do</span> |point|
+     paint(point, <span style="color:#036;font-weight:bold">Piece</span>::<span style="color:#036;font-weight:bold">SYMBOL</span>)
+   <span style="color:#080;font-weight:bold">end</span>
+ <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This new code does not rely directly on the <code>Piece#points</code> method anymore, but instead, passes a position to the newly created <code>Piece#translated_points</code> to get a set of coordinates anchored by the specified position.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Piece</span>
+  <span style="color:#777">#...</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">translated_points</span>(new_anchor)
+    new_x, new_y = new_anchor
+    old_x, old_y = anchor
+
+    dx = new_x - old_x
+    dy = new_y - old_y
+    
+    points.map { |x,y| [x+dx, y+dy] }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While this mapping isn’t very complex, it’s yet another point where I was
+thinking ‘gee, I should be writing tests’, and a couple subtle bugs that
+cropped up while implementing it confirmed my gut feeling. But with the light
+visible at the end of the tunnel, I wrote an example to unify piece objects 
+with the junk left on the grid from previous moves.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>game = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Game</span>.new
+bent_shape = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+game.piece = bent_shape
+game.piece_position = [<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]
+game.junk += [[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">1</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">4</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">2</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">6</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">7</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">1</span>],
+              [<span style="color:#00D">9</span>,<span style="color:#00D">2</span>]]
+
+puts game
+</pre></div>
+</div>
+</div>
+
+<p>OUTPUTS:</p>
+
+<pre><code>==========
+
+
+
+
+
+
+  #
+  ##|    |
+  |#||  ||
+||| ||||||
+==========
+</code></pre>
+
+<p>The key component that tied this all together is the <code>Game</code> object, which essentially is just a container that knows how to use a <code>Canvas</code> object to render itself.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Game</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@junk</span> = []
+    <span style="color:#33B">@piece</span> = <span style="color:#069">nil</span>
+    <span style="color:#33B">@piece_position</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_accessor <span style="color:#A60">:junk</span>, <span style="color:#A60">:piece</span>, <span style="color:#A60">:piece_position</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+    canvas = <span style="color:#036;font-weight:bold">Canvas</span>.new
+
+    junk.each <span style="color:#080;font-weight:bold">do</span> |pos|
+      canvas.paint(pos, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    canvas.paint_shape(piece, piece_position, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span>)
+
+    canvas.to_s
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>I made a small change to <code>Canvas#paint_shape</code> so that the symbol used to display pieces on the grid was parameterized rather than stored in <code>Piece::SYMBOL</code>. This isn’t a major change and was just another attempt at moving display code away from the data models.</p>
+
+<p>After all this work, we’ve made it back to the output we were getting out of our first example, but without the smoke and mirrors. Still, the model is not as solid as I’d hoped for, and some last minute changes were needed to bridge the gap before this code was ready to implement the two use cases I was targeting.</p>
+
+<p>Since the last iteration would be a bit cumbersome to describe in newsletter form, please just “check out my final commit”:http://is.gd/jbvdB for this project on github. With this new code, it’s possible to get output identical to our target story through the following two examples.</p>
+
+<h3 id="case-1-lineshapedemorb">CASE 1: line_shape_demo.rb</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">falling_blocks</span><span style="color:#710">&quot;</span></span>
+
+game = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Game</span>.new
+line_shape = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">3</span>]])
+game.piece = line_shape
+game.piece_position = [<span style="color:#00D">3</span>,<span style="color:#00D">3</span>]
+game.add_junk([[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">1</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">4</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">2</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">6</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">7</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">1</span>],
+              [<span style="color:#00D">9</span>,<span style="color:#00D">2</span>]])
+
+puts game
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">BECOMES:</span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+game.update_junk
+puts game
+</pre></div>
+</div>
+</div>
+
+<h3 id="case-2-bendedshapedemorb">CASE 2: bended_shape_demo.rb</h3>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">falling_blocks</span><span style="color:#710">&quot;</span></span>
+
+game = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Game</span>.new
+bent_shape = <span style="color:#036;font-weight:bold">FallingBlocks</span>::<span style="color:#036;font-weight:bold">Piece</span>.new([[<span style="color:#00D">0</span>,<span style="color:#00D">1</span>],[<span style="color:#00D">0</span>,<span style="color:#00D">2</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">0</span>],[<span style="color:#00D">1</span>,<span style="color:#00D">1</span>]])
+game.piece = bent_shape
+game.piece_position = [<span style="color:#00D">2</span>,<span style="color:#00D">3</span>]
+game.add_junk([[<span style="color:#00D">0</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">1</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">2</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">4</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">4</span>,<span style="color:#00D">2</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">5</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">6</span>,<span style="color:#00D">0</span>],
+              [<span style="color:#00D">7</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">8</span>,<span style="color:#00D">1</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">0</span>], [<span style="color:#00D">9</span>,<span style="color:#00D">1</span>],
+              [<span style="color:#00D">9</span>,<span style="color:#00D">2</span>]])
+
+puts game
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#D20">BECOMES:</span><span style="color:#b0b">\n</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+
+game.update_junk
+puts game
+</pre></div>
+</div>
+</div>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>Once I outlined the story by drawing some ascii art, it took me just over 1.5 hours to produce working code that performs the transformations described. Overall, I’d call that a success.</p>
+
+<p>That having been said, working on this problem was not without hurdles. While it turns out that removing completed lines and turning pieces into junk upon collision is surprisingly simple, I am still uneasy about my final design. It seems that there is considerable duplication between the grid maintained by <code>Game</code> and the <code>Canvas</code> object. But a refactoring here would be non-trivial, and I wouldn’t want to attempt it without laying down some tests to minimize the amount of time hunting down subtle bugs.</p>
+
+<p>For me, this is about as far as I can write code organically in a single sitting without either writing tests, or doing some proper design in front of whiteboard, or a combination of the two. I think it’s important to recognize this limit, and also note that it varies from person to person and project to project. The key to writing a good prototype is getting as close to that line as you can without flying off the edge of a cliff.</p>
+
+<p>In the end though, what I like about this prototype is that it isn’t just an illusion. With a little work, it’d be easy enough to scale up to my initial ambition of demonstrating a free falling piece. By adding some tests and doing some refactoring, it’d be possible to evolve this code into something that could be used in production rather than just treating it as throwaway demo-ware.</p>
+
+<p>Hopefully, seeing how I decomposed the problem, and having a bit of insight into what my though process was like as I worked on this project has helped you understand what goes into making proof-of-concept code in Ruby. I’ve not actually taught extensively about this process before, so describing it is a bit of an experiment for me. Let me know what you think!</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/044-issue-12-rapid-prototyping.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

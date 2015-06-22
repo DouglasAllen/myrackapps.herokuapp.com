@@ -1,0 +1,242 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="api-documentation-guidelines">API Documentation Guidelines</h1>
+
+<p>This guide documents the Ruby on Rails API documentation guidelines.</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to write effective prose for documentation purposes.</li>
+  <li>Style guidelines for documenting different kinds of Ruby code.</li>
+</ul>
+
+<hr />
+
+<h2 id="rdoc">RDoc</h2>
+
+<p>The Rails API documentation is generated with RDoc. Please consult the documentation for help with the <a href="http://rdoc.rubyforge.org/RDoc/Markup.html">markup</a>, and also take into account these <a href="http://rdoc.rubyforge.org/RDoc/Parser/Ruby.html">additional directives</a>.</p>
+
+<h2 id="wording">Wording</h2>
+
+<p>Write simple, declarative sentences. Brevity is a plus: get to the point.</p>
+
+<p>Write in present tense: “Returns a hash that…”, rather than “Returned a hash that…” or “Will return a hash that…”.</p>
+
+<p>Start comments in upper case. Follow regular punctuation rules:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Declares an attribute reader backed by an internally-named </span>
+<span style="color:#777"># instance variable.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">attr_internal_reader</span>(*attrs)
+  ...
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Communicate to the reader the current way of doing things, both explicitly and implicitly. Use the idioms recommended in edge. Reorder sections to emphasize favored approaches if needed, etc. The documentation should be a model for best practices and canonical, modern Rails usage.</p>
+
+<p>Documentation has to be concise but comprehensive. Explore and document edge cases. What happens if a module is anonymous? What if a collection is empty? What if an argument is nil?</p>
+
+<p>The proper names of Rails components have a space in between the words, like “Active Support”. <code>ActiveRecord</code> is a Ruby module, whereas Active Record is an ORM. All Rails documentation should consistently refer to Rails components by their proper name, and if in your next blog post or presentation you remember this tidbit and take it into account that’d be phenomenal.</p>
+
+<p>Spell names correctly: Arel, Test::Unit, RSpec, HTML, MySQL, JavaScript, ERB. When in doubt, please have a look at some authoritative source like their official documentation.</p>
+
+<p>Use the article “an” for “SQL”, as in “an SQL statement”. Also “an SQLite database”.</p>
+
+<h2 id="english">English</h2>
+
+<p>Please use American English (<em>color</em>, <em>center</em>, <em>modularize</em>, etc).. See <a href="http://en.wikipedia.org/wiki/American_and_British_English_spelling_differences">a list of American and British English spelling differences here</a>.</p>
+
+<h2 id="example-code">Example Code</h2>
+
+<p>Choose meaningful examples that depict and cover the basics as well as interesting points or gotchas.</p>
+
+<p>Use two spaces to indent chunks of code–that is, for markup purposes, two spaces with respect to the left margin. The examples themselves should use <a href="contributing_to_ruby_on_rails.html#follow-the-coding-conventions">Rails coding conventions</a>.</p>
+
+<p>Short docs do not need an explicit “Examples” label to introduce snippets; they just follow paragraphs:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Converts a collection of elements into a formatted string by </span>
+<span style="color:#777"># calling +to_s+ on all elements and joining them.</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   Blog.all.to_formatted_s # =&gt; &quot;First PostSecond PostThird Post&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>On the other hand, big chunks of structured documentation may have a separate “Examples” section:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># ==== Examples</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   Person.exists?(5)</span>
+<span style="color:#777">#   Person.exists?('5')</span>
+<span style="color:#777">#   Person.exists?(name: &quot;David&quot;)</span>
+<span style="color:#777">#   Person.exists?(['name LIKE ?', &quot;%#{query}%&quot;])</span>
+</pre></div>
+</div>
+</div>
+
+<p>The results of expressions follow them and are introduced by “# =&gt; “, vertically aligned:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># For checking if a fixnum is even or odd.</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   1.even? # =&gt; false</span>
+<span style="color:#777">#   1.odd?  # =&gt; true</span>
+<span style="color:#777">#   2.even? # =&gt; true</span>
+<span style="color:#777">#   2.odd?  # =&gt; false</span>
+</pre></div>
+</div>
+</div>
+
+<p>If a line is too long, the comment may be placed on the next line:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#   label(:post, :title)</span>
+<span style="color:#777">#   # =&gt; &lt;label for=&quot;post_title&quot;&gt;Title&lt;/label&gt;</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   label(:post, :title, &quot;A short title&quot;)</span>
+<span style="color:#777">#   # =&gt; &lt;label for=&quot;post_title&quot;&gt;A short title&lt;/label&gt;</span>
+<span style="color:#777">#</span>
+<span style="color:#777">#   label(:post, :title, &quot;A short title&quot;, class: &quot;title_label&quot;)</span>
+<span style="color:#777">#   # =&gt; &lt;label for=&quot;post_title&quot; class=&quot;title_label&quot;&gt;A short title&lt;/label&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Avoid using any printing methods like <code>puts</code> or <code>p</code> for that purpose.</p>
+
+<p>On the other hand, regular comments do not use an arrow:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#   polymorphic_url(record)  # same as comment_url(record)</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="filenames">Filenames</h2>
+
+<p>As a rule of thumb, use filenames relative to the application root:</p>
+
+<pre><code>config/routes.rb            # YES
+routes.rb                   # NO
+RAILS_ROOT/config/routes.rb # NO
+</code></pre>
+
+<h2 id="fonts">Fonts</h2>
+
+<h3 id="fixed-width-font">Fixed-width Font</h3>
+
+<p>Use fixed-width fonts for:</p>
+
+<ul>
+  <li>Constants, in particular class and module names.</li>
+  <li>Method names.</li>
+  <li>Literals like <code>nil</code>, <code>false</code>, <code>true</code>, <code>self</code>.</li>
+  <li>Symbols.</li>
+  <li>Method parameters.</li>
+  <li>File names.</li>
+</ul>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Array</span>
+  <span style="color:#777"># Calls +to_param+ on all its elements and joins the result with</span>
+  <span style="color:#777"># slashes. This is used by +url_for+ in Action Pack.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_param</span>
+    collect { |e| e.to_param }.join <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>WARNING: Using a pair of <code>+...+</code> for fixed-width font only works with <strong>words</strong>; that is: anything matching <code>\A\w+\z</code>. For anything else  use <code>&lt;tt&gt;...&lt;/tt&gt;</code>, notably symbols, setters, inline snippets, etc.</p>
+
+<h3 id="regular-font">Regular Font</h3>
+
+<p>When “true” and “false” are English words rather than Ruby keywords use a regular font:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Runs all the validations within the specified context.</span>
+<span style="color:#777"># Returns true if no errors are found, false otherwise.</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># If the argument is false (default is +nil+), the context is</span>
+<span style="color:#777"># set to &lt;tt&gt;:create&lt;/tt&gt; if &lt;tt&gt;new_record?&lt;/tt&gt; is true,</span>
+<span style="color:#777"># and to &lt;tt&gt;:update&lt;/tt&gt; if it is not.</span>
+<span style="color:#777">#</span>
+<span style="color:#777"># Validations with no &lt;tt&gt;:on&lt;/tt&gt; option will run no</span>
+<span style="color:#777"># matter the context. Validations with # some &lt;tt&gt;:on&lt;/tt&gt;</span>
+<span style="color:#777"># option will only run in the specified context.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">valid?</span>(context = <span style="color:#069">nil</span>)
+  ...
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="description-lists">Description Lists</h2>
+
+<p>In lists of options, parameters, etc. use a hyphen between the item and its description (reads better than a colon because normally options are symbols):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># * &lt;tt&gt;:allow_nil&lt;/tt&gt; - Skip validation if attribute is +nil+.</span>
+</pre></div>
+</div>
+</div>
+
+<p>The description starts in upper case and ends with a full stop—it’s standard English.</p>
+
+<h2 id="dynamically-generated-methods">Dynamically Generated Methods</h2>
+
+<p>Methods created with <code>(module|class)_eval(STRING)</code> have a comment by their side with an instance of the generated code. That comment is 2 spaces away from the template:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">for</span> severity <span style="color:#080;font-weight:bold">in</span> <span style="color:#036;font-weight:bold">Severity</span>.constants
+  class_eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;-EOT</span></span>, <span style="color:#069">__FILE__</span>, <span style="color:#069">__LINE__</span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+    def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>severity.downcase<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(message = nil, progname = nil, &amp;block)  # def debug(message = nil, progname = nil, &amp;block)
+      add(</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>severity<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">, message, progname, &amp;block)                    #   add(DEBUG, message, progname, &amp;block)
+    end                                                              # end
+                                                                     #
+    def </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>severity.downcase<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">?                                        # def debug?
+      </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>severity<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> &gt;= @level                                          #   DEBUG &gt;= @level
+    end                                                              # end</span><span style="color:#710">
+  EOT</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If the resulting lines are too wide, say 200 columns or more, put the comment above the call:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># def self.find_by_login_and_activated(*args)</span>
+<span style="color:#777">#   options = args.extract_options!</span>
+<span style="color:#777">#   ...</span>
+<span style="color:#777"># end</span>
+<span style="color:#069">self</span>.class_eval <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+  def self.</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>method_id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">(*args)
+    options = args.extract_options!
+    ...
+  end
+</span><span style="color:#710">}</span></span>
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

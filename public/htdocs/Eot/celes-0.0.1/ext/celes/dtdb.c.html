@@ -1,0 +1,2145 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">#include &quot;sofam.h&quot;</span>
+
+double iauDtdb(double date1, double date2,
+               double ut, double elong, double u, double v)
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+**  - - - - - - - -
+**   i a u D t d b
+**  - - - - - - - -
+**
+**  An approximation to TDB-TT, the difference between barycentric
+**  dynamical time and terrestrial time, for an observer on the Earth.
+**
+**  The different time scales - proper, coordinate and realized - are
+**  related to each other:
+**
+**            TAI             &lt;-  physically realized
+**             :
+**          offset            &lt;-  observed (nominally +32.184s)
+**             :
+**            TT              &lt;-  terrestrial time
+**             :
+**    rate adjustment (L_G)   &lt;-  definition of TT
+**             :
+**            TCG             &lt;-  time scale for GCRS
+**             :
+**      &quot;periodic&quot; terms      &lt;-  iauDtdb  is an implementation
+**             :
+**    rate adjustment (L_C)   &lt;-  function of solar-system ephemeris
+**             :
+**            TCB             &lt;-  time scale for BCRS
+**             :
+**    rate adjustment (-L_B)  &lt;-  definition of TDB
+**             :
+**            TDB             &lt;-  TCB scaled to track TT
+**             :
+**      &quot;periodic&quot; terms      &lt;-  -iauDtdb is an approximation
+**             :
+**            TT              &lt;-  terrestrial time
+**
+**  Adopted values for the various constants can be found in the IERS
+**  Conventions (McCarthy &amp; Petit 2003).
+**
+**  Status:  support routine.
+**
+**  Given:
+**     date1,date2   double  date, TDB (Notes 1-3)
+**     ut            double  universal time (UT1, fraction of one day)
+**     elong         double  longitude (east positive, radians)
+**     u             double  distance from Earth spin axis (km)
+**     v             double  distance north of equatorial plane (km)
+**
+**  Returned (function value):
+**                   double  TDB-TT (seconds)
+**
+**  Notes:
+**
+**  1) The date date1+date2 is a Julian Date, apportioned in any
+**     convenient way between the two arguments.  For example,
+**     JD(TT)=2450123.7 could be expressed in any of these ways,
+**     among others:
+**
+**            date1          date2
+**
+**         2450123.7           0.0       (JD method)
+**         2451545.0       -1421.3       (J2000 method)
+**         2400000.5       50123.2       (MJD method)
+**         2450123.5           0.2       (date &amp; time method)
+**
+**     The JD method is the most natural and convenient to use in
+**     cases where the loss of several decimal digits of resolution
+**     is acceptable.  The J2000 method is best matched to the way
+**     the argument is handled internally and will deliver the
+**     optimum resolution.  The MJD method and the date &amp; time methods
+**     are both good compromises between resolution and convenience.
+**
+**     Although the date is, formally, barycentric dynamical time (TDB),
+**     the terrestrial dynamical time (TT) can be used with no practical
+**     effect on the accuracy of the prediction.
+**
+**  2) TT can be regarded as a coordinate time that is realized as an
+**     offset of 32.184s from International Atomic Time, TAI.  TT is a
+**     specific linear transformation of geocentric coordinate time TCG,
+**     which is the time scale for the Geocentric Celestial Reference
+**     System, GCRS.
+**
+**  3) TDB is a coordinate time, and is a specific linear transformation
+**     of barycentric coordinate time TCB, which is the time scale for
+**     the Barycentric Celestial Reference System, BCRS.
+**
+**  4) The difference TCG-TCB depends on the masses and positions of the
+**     bodies of the solar system and the velocity of the Earth.  It is
+**     dominated by a rate difference, the residual being of a periodic
+**     character.  The latter, which is modeled by the present function,
+**     comprises a main (annual) sinusoidal term of amplitude
+**     approximately 0.00166 seconds, plus planetary terms up to about
+**     20 microseconds, and lunar and diurnal terms up to 2 microseconds.
+**     These effects come from the changing transverse Doppler effect
+**     and gravitational red-shift as the observer (on the Earth's
+**     surface) experiences variations in speed (with respect to the
+**     BCRS) and gravitational potential.
+**
+**  5) TDB can be regarded as the same as TCB but with a rate adjustment
+**     to keep it close to TT, which is convenient for many applications.
+**     The history of successive attempts to define TDB is set out in
+**     Resolution 3 adopted by the IAU General Assembly in 2006, which
+**     defines a fixed TDB(TCB) transformation that is consistent with
+**     contemporary solar-system ephemerides.  Future ephemerides will
+**     imply slightly changed transformations between TCG and TCB, which
+**     could introduce a linear drift between TDB and TT;  however, any
+**     such drift is unlikely to exceed 1 nanosecond per century.
+**
+**  6) The geocentric TDB-TT model used in the present function is that of
+**     Fairhead &amp; Bretagnon (1990), in its full form.  It was originally
+**     supplied by Fairhead (private communications with P.T.Wallace,
+**     1990) as a Fortran subroutine.  The present C function contains an
+**     adaptation of the Fairhead code.  The numerical results are
+**     essentially unaffected by the changes, the differences with
+**     respect to the Fairhead &amp; Bretagnon original being at the 1e-20 s
+**     level.
+**
+**     The topocentric part of the model is from Moyer (1981) and
+**     Murray (1983), with fundamental arguments adapted from
+**     Simon et al. 1994.  It is an approximation to the expression
+**     ( v </span><span style="color:#404">/</span></span> c ) . ( r / c ), where v is the barycentric velocity of
+**     the <span style="color:#036;font-weight:bold">Earth</span>, r is the geocentric position of the observer <span style="color:#080;font-weight:bold">and</span>
+**     c is the speed of light.
+**
+**     <span style="color:#036;font-weight:bold">By</span> supplying zeroes <span style="color:#080;font-weight:bold">for</span> u <span style="color:#080;font-weight:bold">and</span> v, the topocentric part of the
+**     model can be nullified, <span style="color:#080;font-weight:bold">and</span> the function will <span style="color:#080;font-weight:bold">return</span> the <span style="color:#036;font-weight:bold">Fairhead</span>
+**     &amp; <span style="color:#036;font-weight:bold">Bretagnon</span> result alone.
+**
+**  <span style="color:#00D">7</span>) <span style="color:#036;font-weight:bold">During</span> the interval <span style="color:#00D">1950</span>-<span style="color:#00D">2050</span>, the absolute accuracy is better
+**     than +<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">- 3 nanoseconds relative to time ephemerides obtained by
+**     direct numerical integrations based on the JPL DE405 solar system
+**     ephemeris.
+**
+**  8) It must be stressed that the present function is merely a model,
+**     and that numerical integration of solar-system ephemerides is the
+**     definitive method for predicting the relationship between TCG and
+**     TCB and hence between TT and TDB.
+**
+**  References:
+**
+**     Fairhead, L., &amp; Bretagnon, P., Astron.Astrophys., 229, 240-247
+**     (1990).
+**
+**     IAU 2006 Resolution 3.
+**
+**     McCarthy, D. D., Petit, G. (eds.), IERS Conventions (2003),
+**     IERS Technical Note No. 32, BKG (2004)
+**
+**     Moyer, T.D., Cel.Mech., 23, 33 (1981).
+**
+**     Murray, C.A., Vectorial Astrometry, Adam Hilger (1983).
+**
+**     Seidelmann, P.K. et al., Explanatory Supplement to the
+**     Astronomical Almanac, Chapter 2, University Science Books (1992).
+**
+**     Simon, J.L., Bretagnon, P., Chapront, J., Chapront-Touze, M.,
+**     Francou, G. &amp; Laskar, J., Astron.Astrophys., 282, 663-683 (1994).
+**
+**  This revision:  2012 February 14
+**
+**  Original version 2012-03-01
+**
+**  Copyright (C) 2013 Naoki Arita.  See notes at end.
+*</span><span style="color:#404">/</span></span>
+{
+   double t, tsol, w, elsun, emsun, d, elj, els, wt, w0, w1, w2, w3, w4,
+          wf, wj;
+   int j;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*
+** =====================
+** Fairhead et al. model
+** =====================
+**
+** 787 sets of three coefficients.
+**
+** Each set is
+**    amplitude (microseconds)
+**      frequency (radians per Julian millennium since J2000.0)
+**      phase (radians)
+**
+** Sets   1-474 are the T**0 terms
+**  &quot;   475-679  &quot;   &quot;  T**1
+**  &quot;   680-764  &quot;   &quot;  T**2
+**  &quot;   765-784  &quot;   &quot;  T**3
+**  &quot;   785-787  &quot;   &quot;  T**4
+*</span><span style="color:#404">/</span></span>
+
+   static const double fairhd[<span style="color:#00D">787</span>][<span style="color:#00D">3</span>] = {
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 1, 10 *</span><span style="color:#404">/</span></span>
+      { <span style="color:#60E">1656.674564e-6</span>,     <span style="color:#60E">6283.075849991</span>,  <span style="color:#60E">6.240054195</span> },
+      {   <span style="color:#60E">22.417471e-6</span>,     <span style="color:#60E">5753.384884897</span>,  <span style="color:#60E">4.296977442</span> },
+      {   <span style="color:#60E">13.839792e-6</span>,    <span style="color:#60E">12566.151699983</span>,  <span style="color:#60E">6.196904410</span> },
+      {    <span style="color:#60E">4.770086e-6</span>,      <span style="color:#60E">529.690965095</span>,  <span style="color:#60E">0.444401603</span> },
+      {    <span style="color:#60E">4.676740e-6</span>,     <span style="color:#60E">6069.776754553</span>,  <span style="color:#60E">4.021195093</span> },
+      {    <span style="color:#60E">2.256707e-6</span>,      <span style="color:#60E">213.299095438</span>,  <span style="color:#60E">5.543113262</span> },
+      {    <span style="color:#60E">1.694205e-6</span>,      <span style="color:#60E">-3.523118349</span>,   <span style="color:#60E">5.025132748</span> },
+      {    <span style="color:#60E">1.554905e-6</span>,    <span style="color:#60E">77713.771467920</span>,  <span style="color:#60E">5.198467090</span> },
+      {    <span style="color:#60E">1.276839e-6</span>,     <span style="color:#60E">7860.419392439</span>,  <span style="color:#60E">5.988822341</span> },
+      {    <span style="color:#60E">1.193379e-6</span>,     <span style="color:#60E">5223.693919802</span>,  <span style="color:#60E">3.649823730</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 11, 20 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">1.115322e-6</span>,     <span style="color:#60E">3930.209696220</span>,  <span style="color:#60E">1.422745069</span> },
+      {    <span style="color:#60E">0.794185e-6</span>,    <span style="color:#60E">11506.769769794</span>,  <span style="color:#60E">2.322313077</span> },
+      {    <span style="color:#60E">0.447061e-6</span>,       <span style="color:#60E">26.298319800</span>,  <span style="color:#60E">3.615796498</span> },
+      {    <span style="color:#60E">0.435206e-6</span>,     <span style="color:#60E">-398.149003408</span>,  <span style="color:#60E">4.349338347</span> },
+      {    <span style="color:#60E">0.600309e-6</span>,     <span style="color:#60E">1577.343542448</span>,  <span style="color:#60E">2.678271909</span> },
+      {    <span style="color:#60E">0.496817e-6</span>,     <span style="color:#60E">6208.294251424</span>,  <span style="color:#60E">5.696701824</span> },
+      {    <span style="color:#60E">0.486306e-6</span>,     <span style="color:#60E">5884.926846583</span>,  <span style="color:#60E">0.520007179</span> },
+      {    <span style="color:#60E">0.432392e-6</span>,       <span style="color:#60E">74.781598567</span>,  <span style="color:#60E">2.435898309</span> },
+      {    <span style="color:#60E">0.468597e-6</span>,     <span style="color:#60E">6244.942814354</span>,  <span style="color:#60E">5.866398759</span> },
+      {    <span style="color:#60E">0.375510e-6</span>,     <span style="color:#60E">5507.553238667</span>,  <span style="color:#60E">4.103476804</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 21, 30 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.243085e-6</span>,     <span style="color:#60E">-775.522611324</span>,  <span style="color:#60E">3.651837925</span> },
+      {    <span style="color:#60E">0.173435e-6</span>,    <span style="color:#60E">18849.227549974</span>,  <span style="color:#60E">6.153743485</span> },
+      {    <span style="color:#60E">0.230685e-6</span>,     <span style="color:#60E">5856.477659115</span>,  <span style="color:#60E">4.773852582</span> },
+      {    <span style="color:#60E">0.203747e-6</span>,    <span style="color:#60E">12036.460734888</span>,  <span style="color:#60E">4.333987818</span> },
+      {    <span style="color:#60E">0.143935e-6</span>,     <span style="color:#60E">-796.298006816</span>,  <span style="color:#60E">5.957517795</span> },
+      {    <span style="color:#60E">0.159080e-6</span>,    <span style="color:#60E">10977.078804699</span>,  <span style="color:#60E">1.890075226</span> },
+      {    <span style="color:#60E">0.119979e-6</span>,       <span style="color:#60E">38.133035638</span>,  <span style="color:#60E">4.551585768</span> },
+      {    <span style="color:#60E">0.118971e-6</span>,     <span style="color:#60E">5486.777843175</span>,  <span style="color:#60E">1.914547226</span> },
+      {    <span style="color:#60E">0.116120e-6</span>,     <span style="color:#60E">1059.381930189</span>,  <span style="color:#60E">0.873504123</span> },
+      {    <span style="color:#60E">0.137927e-6</span>,    <span style="color:#60E">11790.629088659</span>,  <span style="color:#60E">1.135934669</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 31, 40 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.098358e-6</span>,     <span style="color:#60E">2544.314419883</span>,  <span style="color:#60E">0.092793886</span> },
+      {    <span style="color:#60E">0.101868e-6</span>,    <span style="color:#60E">-5573.142801634</span>,  <span style="color:#60E">5.984503847</span> },
+      {    <span style="color:#60E">0.080164e-6</span>,      <span style="color:#60E">206.185548437</span>,  <span style="color:#60E">2.095377709</span> },
+      {    <span style="color:#60E">0.079645e-6</span>,     <span style="color:#60E">4694.002954708</span>,  <span style="color:#60E">2.949233637</span> },
+      {    <span style="color:#60E">0.062617e-6</span>,       <span style="color:#60E">20.775395492</span>,  <span style="color:#60E">2.654394814</span> },
+      {    <span style="color:#60E">0.075019e-6</span>,     <span style="color:#60E">2942.463423292</span>,  <span style="color:#60E">4.980931759</span> },
+      {    <span style="color:#60E">0.064397e-6</span>,     <span style="color:#60E">5746.271337896</span>,  <span style="color:#60E">1.280308748</span> },
+      {    <span style="color:#60E">0.063814e-6</span>,     <span style="color:#60E">5760.498431898</span>,  <span style="color:#60E">4.167901731</span> },
+      {    <span style="color:#60E">0.048042e-6</span>,     <span style="color:#60E">2146.165416475</span>,  <span style="color:#60E">1.495846011</span> },
+      {    <span style="color:#60E">0.048373e-6</span>,      <span style="color:#60E">155.420399434</span>,  <span style="color:#60E">2.251573730</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 41, 50 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.058844e-6</span>,      <span style="color:#60E">426.598190876</span>,  <span style="color:#60E">4.839650148</span> },
+      {    <span style="color:#60E">0.046551e-6</span>,       <span style="color:#60E">-0.980321068</span>,  <span style="color:#60E">0.921573539</span> },
+      {    <span style="color:#60E">0.054139e-6</span>,    <span style="color:#60E">17260.154654690</span>,  <span style="color:#60E">3.411091093</span> },
+      {    <span style="color:#60E">0.042411e-6</span>,     <span style="color:#60E">6275.962302991</span>,  <span style="color:#60E">2.869567043</span> },
+      {    <span style="color:#60E">0.040184e-6</span>,       <span style="color:#60E">-7.113547001</span>,  <span style="color:#60E">3.565975565</span> },
+      {    <span style="color:#60E">0.036564e-6</span>,     <span style="color:#60E">5088.628839767</span>,  <span style="color:#60E">3.324679049</span> },
+      {    <span style="color:#60E">0.040759e-6</span>,    <span style="color:#60E">12352.852604545</span>,  <span style="color:#60E">3.981496998</span> },
+      {    <span style="color:#60E">0.036507e-6</span>,      <span style="color:#60E">801.820931124</span>,  <span style="color:#60E">6.248866009</span> },
+      {    <span style="color:#60E">0.036955e-6</span>,     <span style="color:#60E">3154.687084896</span>,  <span style="color:#60E">5.071801441</span> },
+      {    <span style="color:#60E">0.042732e-6</span>,      <span style="color:#60E">632.783739313</span>,  <span style="color:#60E">5.720622217</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 51, 60 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.042560e-6</span>,   <span style="color:#60E">161000.685737473</span>,  <span style="color:#60E">1.270837679</span> },
+      {    <span style="color:#60E">0.040480e-6</span>,    <span style="color:#60E">15720.838784878</span>,  <span style="color:#60E">2.546610123</span> },
+      {    <span style="color:#60E">0.028244e-6</span>,    <span style="color:#60E">-6286.598968340</span>,  <span style="color:#60E">5.069663519</span> },
+      {    <span style="color:#60E">0.033477e-6</span>,     <span style="color:#60E">6062.663207553</span>,  <span style="color:#60E">4.144987272</span> },
+      {    <span style="color:#60E">0.034867e-6</span>,      <span style="color:#60E">522.577418094</span>,  <span style="color:#60E">5.210064075</span> },
+      {    <span style="color:#60E">0.032438e-6</span>,     <span style="color:#60E">6076.890301554</span>,  <span style="color:#60E">0.749317412</span> },
+      {    <span style="color:#60E">0.030215e-6</span>,     <span style="color:#60E">7084.896781115</span>,  <span style="color:#60E">3.389610345</span> },
+      {    <span style="color:#60E">0.029247e-6</span>,   <span style="color:#60E">-71430.695617928</span>,  <span style="color:#60E">4.183178762</span> },
+      {    <span style="color:#60E">0.033529e-6</span>,     <span style="color:#60E">9437.762934887</span>,  <span style="color:#60E">2.404714239</span> },
+      {    <span style="color:#60E">0.032423e-6</span>,     <span style="color:#60E">8827.390269875</span>,  <span style="color:#60E">5.541473556</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 61, 70 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.027567e-6</span>,     <span style="color:#60E">6279.552731642</span>,  <span style="color:#60E">5.040846034</span> },
+      {    <span style="color:#60E">0.029862e-6</span>,    <span style="color:#60E">12139.553509107</span>,  <span style="color:#60E">1.770181024</span> },
+      {    <span style="color:#60E">0.022509e-6</span>,    <span style="color:#60E">10447.387839604</span>,  <span style="color:#60E">1.460726241</span> },
+      {    <span style="color:#60E">0.020937e-6</span>,     <span style="color:#60E">8429.241266467</span>,  <span style="color:#60E">0.652303414</span> },
+      {    <span style="color:#60E">0.020322e-6</span>,      <span style="color:#60E">419.484643875</span>,  <span style="color:#60E">3.735430632</span> },
+      {    <span style="color:#60E">0.024816e-6</span>,    <span style="color:#60E">-1194.447010225</span>,  <span style="color:#60E">1.087136918</span> },
+      {    <span style="color:#60E">0.025196e-6</span>,     <span style="color:#60E">1748.016413067</span>,  <span style="color:#60E">2.901883301</span> },
+      {    <span style="color:#60E">0.021691e-6</span>,    <span style="color:#60E">14143.495242431</span>,  <span style="color:#60E">5.952658009</span> },
+      {    <span style="color:#60E">0.017673e-6</span>,     <span style="color:#60E">6812.766815086</span>,  <span style="color:#60E">3.186129845</span> },
+      {    <span style="color:#60E">0.022567e-6</span>,     <span style="color:#60E">6133.512652857</span>,  <span style="color:#60E">3.307984806</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 71, 80 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.016155e-6</span>,    <span style="color:#60E">10213.285546211</span>,  <span style="color:#60E">1.331103168</span> },
+      {    <span style="color:#60E">0.014751e-6</span>,     <span style="color:#60E">1349.867409659</span>,  <span style="color:#60E">4.308933301</span> },
+      {    <span style="color:#60E">0.015949e-6</span>,     <span style="color:#60E">-220.412642439</span>,  <span style="color:#60E">4.005298270</span> },
+      {    <span style="color:#60E">0.015974e-6</span>,    <span style="color:#60E">-2352.866153772</span>,  <span style="color:#60E">6.145309371</span> },
+      {    <span style="color:#60E">0.014223e-6</span>,    <span style="color:#60E">17789.845619785</span>,  <span style="color:#60E">2.104551349</span> },
+      {    <span style="color:#60E">0.017806e-6</span>,       <span style="color:#60E">73.297125859</span>,  <span style="color:#60E">3.475975097</span> },
+      {    <span style="color:#60E">0.013671e-6</span>,     <span style="color:#60E">-536.804512095</span>,  <span style="color:#60E">5.971672571</span> },
+      {    <span style="color:#60E">0.011942e-6</span>,     <span style="color:#60E">8031.092263058</span>,  <span style="color:#60E">2.053414715</span> },
+      {    <span style="color:#60E">0.014318e-6</span>,    <span style="color:#60E">16730.463689596</span>,  <span style="color:#60E">3.016058075</span> },
+      {    <span style="color:#60E">0.012462e-6</span>,      <span style="color:#60E">103.092774219</span>,  <span style="color:#60E">1.737438797</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 81, 90 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.010962e-6</span>,        <span style="color:#60E">3.590428652</span>,  <span style="color:#60E">2.196567739</span> },
+      {    <span style="color:#60E">0.015078e-6</span>,    <span style="color:#60E">19651.048481098</span>,  <span style="color:#60E">3.969480770</span> },
+      {    <span style="color:#60E">0.010396e-6</span>,      <span style="color:#60E">951.718406251</span>,  <span style="color:#60E">5.717799605</span> },
+      {    <span style="color:#60E">0.011707e-6</span>,    <span style="color:#60E">-4705.732307544</span>,  <span style="color:#60E">2.654125618</span> },
+      {    <span style="color:#60E">0.010453e-6</span>,     <span style="color:#60E">5863.591206116</span>,  <span style="color:#60E">1.913704550</span> },
+      {    <span style="color:#60E">0.012420e-6</span>,     <span style="color:#60E">4690.479836359</span>,  <span style="color:#60E">4.734090399</span> },
+      {    <span style="color:#60E">0.011847e-6</span>,     <span style="color:#60E">5643.178563677</span>,  <span style="color:#60E">5.489005403</span> },
+      {    <span style="color:#60E">0.008610e-6</span>,     <span style="color:#60E">3340.612426700</span>,  <span style="color:#60E">3.661698944</span> },
+      {    <span style="color:#60E">0.011622e-6</span>,     <span style="color:#60E">5120.601145584</span>,  <span style="color:#60E">4.863931876</span> },
+      {    <span style="color:#60E">0.010825e-6</span>,      <span style="color:#60E">553.569402842</span>,  <span style="color:#60E">0.842715011</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 91, 100 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.008666e-6</span>,     <span style="color:#60E">-135.065080035</span>,  <span style="color:#60E">3.293406547</span> },
+      {    <span style="color:#60E">0.009963e-6</span>,      <span style="color:#60E">149.563197135</span>,  <span style="color:#60E">4.870690598</span> },
+      {    <span style="color:#60E">0.009858e-6</span>,     <span style="color:#60E">6309.374169791</span>,  <span style="color:#60E">1.061816410</span> },
+      {    <span style="color:#60E">0.007959e-6</span>,      <span style="color:#60E">316.391869657</span>,  <span style="color:#60E">2.465042647</span> },
+      {    <span style="color:#60E">0.010099e-6</span>,      <span style="color:#60E">283.859318865</span>,  <span style="color:#60E">1.942176992</span> },
+      {    <span style="color:#60E">0.007147e-6</span>,     <span style="color:#60E">-242.728603974</span>,  <span style="color:#60E">3.661486981</span> },
+      {    <span style="color:#60E">0.007505e-6</span>,     <span style="color:#60E">5230.807466803</span>,  <span style="color:#60E">4.920937029</span> },
+      {    <span style="color:#60E">0.008323e-6</span>,    <span style="color:#60E">11769.853693166</span>,  <span style="color:#60E">1.229392026</span> },
+      {    <span style="color:#60E">0.007490e-6</span>,    <span style="color:#60E">-6256.777530192</span>,  <span style="color:#60E">3.658444681</span> },
+      {    <span style="color:#60E">0.009370e-6</span>,   <span style="color:#60E">149854.400134205</span>,  <span style="color:#60E">0.673880395</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 101, 110 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.007117e-6</span>,       <span style="color:#60E">38.027672636</span>,  <span style="color:#60E">5.294249518</span> },
+      {    <span style="color:#60E">0.007857e-6</span>,    <span style="color:#60E">12168.002696575</span>,  <span style="color:#60E">0.525733528</span> },
+      {    <span style="color:#60E">0.007019e-6</span>,     <span style="color:#60E">6206.809778716</span>,  <span style="color:#60E">0.837688810</span> },
+      {    <span style="color:#60E">0.006056e-6</span>,      <span style="color:#60E">955.599741609</span>,  <span style="color:#60E">4.194535082</span> },
+      {    <span style="color:#60E">0.008107e-6</span>,    <span style="color:#60E">13367.972631107</span>,  <span style="color:#60E">3.793235253</span> },
+      {    <span style="color:#60E">0.006731e-6</span>,     <span style="color:#60E">5650.292110678</span>,  <span style="color:#60E">5.639906583</span> },
+      {    <span style="color:#60E">0.007332e-6</span>,       <span style="color:#60E">36.648562930</span>,  <span style="color:#60E">0.114858677</span> },
+      {    <span style="color:#60E">0.006366e-6</span>,     <span style="color:#60E">4164.311989613</span>,  <span style="color:#60E">2.262081818</span> },
+      {    <span style="color:#60E">0.006858e-6</span>,     <span style="color:#60E">5216.580372801</span>,  <span style="color:#60E">0.642063318</span> },
+      {    <span style="color:#60E">0.006919e-6</span>,     <span style="color:#60E">6681.224853400</span>,  <span style="color:#60E">6.018501522</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 111, 120 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.006826e-6</span>,     <span style="color:#60E">7632.943259650</span>,  <span style="color:#60E">3.458654112</span> },
+      {    <span style="color:#60E">0.005308e-6</span>,    <span style="color:#60E">-1592.596013633</span>,  <span style="color:#60E">2.500382359</span> },
+      {    <span style="color:#60E">0.005096e-6</span>,    <span style="color:#60E">11371.704689758</span>,  <span style="color:#60E">2.547107806</span> },
+      {    <span style="color:#60E">0.004841e-6</span>,     <span style="color:#60E">5333.900241022</span>,  <span style="color:#60E">0.437078094</span> },
+      {    <span style="color:#60E">0.005582e-6</span>,     <span style="color:#60E">5966.683980335</span>,  <span style="color:#60E">2.246174308</span> },
+      {    <span style="color:#60E">0.006304e-6</span>,    <span style="color:#60E">11926.254413669</span>,  <span style="color:#60E">2.512929171</span> },
+      {    <span style="color:#60E">0.006603e-6</span>,    <span style="color:#60E">23581.258177318</span>,  <span style="color:#60E">5.393136889</span> },
+      {    <span style="color:#60E">0.005123e-6</span>,       <span style="color:#60E">-1.484472708</span>,  <span style="color:#60E">2.999641028</span> },
+      {    <span style="color:#60E">0.004648e-6</span>,     <span style="color:#60E">1589.072895284</span>,  <span style="color:#60E">1.275847090</span> },
+      {    <span style="color:#60E">0.005119e-6</span>,     <span style="color:#60E">6438.496249426</span>,  <span style="color:#60E">1.486539246</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 121, 130 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.004521e-6</span>,     <span style="color:#60E">4292.330832950</span>,  <span style="color:#60E">6.140635794</span> },
+      {    <span style="color:#60E">0.005680e-6</span>,    <span style="color:#60E">23013.539539587</span>,  <span style="color:#60E">4.557814849</span> },
+      {    <span style="color:#60E">0.005488e-6</span>,       <span style="color:#60E">-3.455808046</span>,  <span style="color:#60E">0.090675389</span> },
+      {    <span style="color:#60E">0.004193e-6</span>,     <span style="color:#60E">7234.794256242</span>,  <span style="color:#60E">4.869091389</span> },
+      {    <span style="color:#60E">0.003742e-6</span>,     <span style="color:#60E">7238.675591600</span>,  <span style="color:#60E">4.691976180</span> },
+      {    <span style="color:#60E">0.004148e-6</span>,     <span style="color:#60E">-110.206321219</span>,  <span style="color:#60E">3.016173439</span> },
+      {    <span style="color:#60E">0.004553e-6</span>,    <span style="color:#60E">11499.656222793</span>,  <span style="color:#60E">5.554998314</span> },
+      {    <span style="color:#60E">0.004892e-6</span>,     <span style="color:#60E">5436.993015240</span>,  <span style="color:#60E">1.475415597</span> },
+      {    <span style="color:#60E">0.004044e-6</span>,     <span style="color:#60E">4732.030627343</span>,  <span style="color:#60E">1.398784824</span> },
+      {    <span style="color:#60E">0.004164e-6</span>,    <span style="color:#60E">12491.370101415</span>,  <span style="color:#60E">5.650931916</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 131, 140 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.004349e-6</span>,    <span style="color:#60E">11513.883316794</span>,  <span style="color:#60E">2.181745369</span> },
+      {    <span style="color:#60E">0.003919e-6</span>,    <span style="color:#60E">12528.018664345</span>,  <span style="color:#60E">5.823319737</span> },
+      {    <span style="color:#60E">0.003129e-6</span>,     <span style="color:#60E">6836.645252834</span>,  <span style="color:#60E">0.003844094</span> },
+      {    <span style="color:#60E">0.004080e-6</span>,    <span style="color:#60E">-7058.598461315</span>,  <span style="color:#60E">3.690360123</span> },
+      {    <span style="color:#60E">0.003270e-6</span>,       <span style="color:#60E">76.266071276</span>,  <span style="color:#60E">1.517189902</span> },
+      {    <span style="color:#60E">0.002954e-6</span>,     <span style="color:#60E">6283.143160294</span>,  <span style="color:#60E">4.447203799</span> },
+      {    <span style="color:#60E">0.002872e-6</span>,       <span style="color:#60E">28.449187468</span>,  <span style="color:#60E">1.158692983</span> },
+      {    <span style="color:#60E">0.002881e-6</span>,      <span style="color:#60E">735.876513532</span>,  <span style="color:#60E">0.349250250</span> },
+      {    <span style="color:#60E">0.003279e-6</span>,     <span style="color:#60E">5849.364112115</span>,  <span style="color:#60E">4.893384368</span> },
+      {    <span style="color:#60E">0.003625e-6</span>,     <span style="color:#60E">6209.778724132</span>,  <span style="color:#60E">1.473760578</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 141, 150 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.003074e-6</span>,      <span style="color:#60E">949.175608970</span>,  <span style="color:#60E">5.185878737</span> },
+      {    <span style="color:#60E">0.002775e-6</span>,     <span style="color:#60E">9917.696874510</span>,  <span style="color:#60E">1.030026325</span> },
+      {    <span style="color:#60E">0.002646e-6</span>,    <span style="color:#60E">10973.555686350</span>,  <span style="color:#60E">3.918259169</span> },
+      {    <span style="color:#60E">0.002575e-6</span>,    <span style="color:#60E">25132.303399966</span>,  <span style="color:#60E">6.109659023</span> },
+      {    <span style="color:#60E">0.003500e-6</span>,      <span style="color:#60E">263.083923373</span>,  <span style="color:#60E">1.892100742</span> },
+      {    <span style="color:#60E">0.002740e-6</span>,    <span style="color:#60E">18319.536584880</span>,  <span style="color:#60E">4.320519510</span> },
+      {    <span style="color:#60E">0.002464e-6</span>,      <span style="color:#60E">202.253395174</span>,  <span style="color:#60E">4.698203059</span> },
+      {    <span style="color:#60E">0.002409e-6</span>,        <span style="color:#60E">2.542797281</span>,  <span style="color:#60E">5.325009315</span> },
+      {    <span style="color:#60E">0.003354e-6</span>,   <span style="color:#60E">-90955.551694697</span>,  <span style="color:#60E">1.942656623</span> },
+      {    <span style="color:#60E">0.002296e-6</span>,     <span style="color:#60E">6496.374945429</span>,  <span style="color:#60E">5.061810696</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 151, 160 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.003002e-6</span>,     <span style="color:#60E">6172.869528772</span>,  <span style="color:#60E">2.797822767</span> },
+      {    <span style="color:#60E">0.003202e-6</span>,    <span style="color:#60E">27511.467873537</span>,  <span style="color:#60E">0.531673101</span> },
+      {    <span style="color:#60E">0.002954e-6</span>,    <span style="color:#60E">-6283.008539689</span>,  <span style="color:#60E">4.533471191</span> },
+      {    <span style="color:#60E">0.002353e-6</span>,      <span style="color:#60E">639.897286314</span>,  <span style="color:#60E">3.734548088</span> },
+      {    <span style="color:#60E">0.002401e-6</span>,    <span style="color:#60E">16200.772724501</span>,  <span style="color:#60E">2.605547070</span> },
+      {    <span style="color:#60E">0.003053e-6</span>,   <span style="color:#60E">233141.314403759</span>,  <span style="color:#60E">3.029030662</span> },
+      {    <span style="color:#60E">0.003024e-6</span>,    <span style="color:#60E">83286.914269554</span>,  <span style="color:#60E">2.355556099</span> },
+      {    <span style="color:#60E">0.002863e-6</span>,    <span style="color:#60E">17298.182327326</span>,  <span style="color:#60E">5.240963796</span> },
+      {    <span style="color:#60E">0.002103e-6</span>,    <span style="color:#60E">-7079.373856808</span>,  <span style="color:#60E">5.756641637</span> },
+      {    <span style="color:#60E">0.002303e-6</span>,    <span style="color:#60E">83996.847317911</span>,  <span style="color:#60E">2.013686814</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 161, 170 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.002303e-6</span>,    <span style="color:#60E">18073.704938650</span>,  <span style="color:#60E">1.089100410</span> },
+      {    <span style="color:#60E">0.002381e-6</span>,       <span style="color:#60E">63.735898303</span>,  <span style="color:#60E">0.759188178</span> },
+      {    <span style="color:#60E">0.002493e-6</span>,     <span style="color:#60E">6386.168624210</span>,  <span style="color:#60E">0.645026535</span> },
+      {    <span style="color:#60E">0.002366e-6</span>,        <span style="color:#60E">3.932153263</span>,  <span style="color:#60E">6.215885448</span> },
+      {    <span style="color:#60E">0.002169e-6</span>,    <span style="color:#60E">11015.106477335</span>,  <span style="color:#60E">4.845297676</span> },
+      {    <span style="color:#60E">0.002397e-6</span>,     <span style="color:#60E">6243.458341645</span>,  <span style="color:#60E">3.809290043</span> },
+      {    <span style="color:#60E">0.002183e-6</span>,     <span style="color:#60E">1162.474704408</span>,  <span style="color:#60E">6.179611691</span> },
+      {    <span style="color:#60E">0.002353e-6</span>,     <span style="color:#60E">6246.427287062</span>,  <span style="color:#60E">4.781719760</span> },
+      {    <span style="color:#60E">0.002199e-6</span>,     <span style="color:#60E">-245.831646229</span>,  <span style="color:#60E">5.956152284</span> },
+      {    <span style="color:#60E">0.001729e-6</span>,     <span style="color:#60E">3894.181829542</span>,  <span style="color:#60E">1.264976635</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 171, 180 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001896e-6</span>,    <span style="color:#60E">-3128.388765096</span>,  <span style="color:#60E">4.914231596</span> },
+      {    <span style="color:#60E">0.002085e-6</span>,       <span style="color:#60E">35.164090221</span>,  <span style="color:#60E">1.405158503</span> },
+      {    <span style="color:#60E">0.002024e-6</span>,    <span style="color:#60E">14712.317116458</span>,  <span style="color:#60E">2.752035928</span> },
+      {    <span style="color:#60E">0.001737e-6</span>,     <span style="color:#60E">6290.189396992</span>,  <span style="color:#60E">5.280820144</span> },
+      {    <span style="color:#60E">0.002229e-6</span>,      <span style="color:#60E">491.557929457</span>,  <span style="color:#60E">1.571007057</span> },
+      {    <span style="color:#60E">0.001602e-6</span>,    <span style="color:#60E">14314.168113050</span>,  <span style="color:#60E">4.203664806</span> },
+      {    <span style="color:#60E">0.002186e-6</span>,      <span style="color:#60E">454.909366527</span>,  <span style="color:#60E">1.402101526</span> },
+      {    <span style="color:#60E">0.001897e-6</span>,    <span style="color:#60E">22483.848574493</span>,  <span style="color:#60E">4.167932508</span> },
+      {    <span style="color:#60E">0.001825e-6</span>,    <span style="color:#60E">-3738.761430108</span>,  <span style="color:#60E">0.545828785</span> },
+      {    <span style="color:#60E">0.001894e-6</span>,     <span style="color:#60E">1052.268383188</span>,  <span style="color:#60E">5.817167450</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 181, 190 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001421e-6</span>,       <span style="color:#60E">20.355319399</span>,  <span style="color:#60E">2.419886601</span> },
+      {    <span style="color:#60E">0.001408e-6</span>,    <span style="color:#60E">10984.192351700</span>,  <span style="color:#60E">2.732084787</span> },
+      {    <span style="color:#60E">0.001847e-6</span>,    <span style="color:#60E">10873.986030480</span>,  <span style="color:#60E">2.903477885</span> },
+      {    <span style="color:#60E">0.001391e-6</span>,    <span style="color:#60E">-8635.942003763</span>,  <span style="color:#60E">0.593891500</span> },
+      {    <span style="color:#60E">0.001388e-6</span>,       <span style="color:#60E">-7.046236698</span>,  <span style="color:#60E">1.166145902</span> },
+      {    <span style="color:#60E">0.001810e-6</span>,   <span style="color:#60E">-88860.057071188</span>,  <span style="color:#60E">0.487355242</span> },
+      {    <span style="color:#60E">0.001288e-6</span>,    <span style="color:#60E">-1990.745017041</span>,  <span style="color:#60E">3.913022880</span> },
+      {    <span style="color:#60E">0.001297e-6</span>,    <span style="color:#60E">23543.230504682</span>,  <span style="color:#60E">3.063805171</span> },
+      {    <span style="color:#60E">0.001335e-6</span>,     <span style="color:#60E">-266.607041722</span>,  <span style="color:#60E">3.995764039</span> },
+      {    <span style="color:#60E">0.001376e-6</span>,    <span style="color:#60E">10969.965257698</span>,  <span style="color:#60E">5.152914309</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 191, 200 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001745e-6</span>,   <span style="color:#60E">244287.600007027</span>,  <span style="color:#60E">3.626395673</span> },
+      {    <span style="color:#60E">0.001649e-6</span>,    <span style="color:#60E">31441.677569757</span>,  <span style="color:#60E">1.952049260</span> },
+      {    <span style="color:#60E">0.001416e-6</span>,     <span style="color:#60E">9225.539273283</span>,  <span style="color:#60E">4.996408389</span> },
+      {    <span style="color:#60E">0.001238e-6</span>,     <span style="color:#60E">4804.209275927</span>,  <span style="color:#60E">5.503379738</span> },
+      {    <span style="color:#60E">0.001472e-6</span>,     <span style="color:#60E">4590.910180489</span>,  <span style="color:#60E">4.164913291</span> },
+      {    <span style="color:#60E">0.001169e-6</span>,     <span style="color:#60E">6040.347246017</span>,  <span style="color:#60E">5.841719038</span> },
+      {    <span style="color:#60E">0.001039e-6</span>,     <span style="color:#60E">5540.085789459</span>,  <span style="color:#60E">2.769753519</span> },
+      {    <span style="color:#60E">0.001004e-6</span>,     <span style="color:#60E">-170.672870619</span>,  <span style="color:#60E">0.755008103</span> },
+      {    <span style="color:#60E">0.001284e-6</span>,    <span style="color:#60E">10575.406682942</span>,  <span style="color:#60E">5.306538209</span> },
+      {    <span style="color:#60E">0.001278e-6</span>,       <span style="color:#60E">71.812653151</span>,  <span style="color:#60E">4.713486491</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 201, 210 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001321e-6</span>,    <span style="color:#60E">18209.330263660</span>,  <span style="color:#60E">2.624866359</span> },
+      {    <span style="color:#60E">0.001297e-6</span>,    <span style="color:#60E">21228.392023546</span>,  <span style="color:#60E">0.382603541</span> },
+      {    <span style="color:#60E">0.000954e-6</span>,     <span style="color:#60E">6282.095528923</span>,  <span style="color:#60E">0.882213514</span> },
+      {    <span style="color:#60E">0.001145e-6</span>,     <span style="color:#60E">6058.731054289</span>,  <span style="color:#60E">1.169483931</span> },
+      {    <span style="color:#60E">0.000979e-6</span>,     <span style="color:#60E">5547.199336460</span>,  <span style="color:#60E">5.448375984</span> },
+      {    <span style="color:#60E">0.000987e-6</span>,    <span style="color:#60E">-6262.300454499</span>,  <span style="color:#60E">2.656486959</span> },
+      {    <span style="color:#60E">0.001070e-6</span>,  <span style="color:#60E">-154717.609887482</span>,  <span style="color:#60E">1.827624012</span> },
+      {    <span style="color:#60E">0.000991e-6</span>,     <span style="color:#60E">4701.116501708</span>,  <span style="color:#60E">4.387001801</span> },
+      {    <span style="color:#60E">0.001155e-6</span>,      <span style="color:#60E">-14.227094002</span>,  <span style="color:#60E">3.042700750</span> },
+      {    <span style="color:#60E">0.001176e-6</span>,      <span style="color:#60E">277.034993741</span>,  <span style="color:#60E">3.335519004</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 211, 220 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000890e-6</span>,    <span style="color:#60E">13916.019109642</span>,  <span style="color:#60E">5.601498297</span> },
+      {    <span style="color:#60E">0.000884e-6</span>,    <span style="color:#60E">-1551.045222648</span>,  <span style="color:#60E">1.088831705</span> },
+      {    <span style="color:#60E">0.000876e-6</span>,     <span style="color:#60E">5017.508371365</span>,  <span style="color:#60E">3.969902609</span> },
+      {    <span style="color:#60E">0.000806e-6</span>,    <span style="color:#60E">15110.466119866</span>,  <span style="color:#60E">5.142876744</span> },
+      {    <span style="color:#60E">0.000773e-6</span>,    <span style="color:#60E">-4136.910433516</span>,  <span style="color:#60E">0.022067765</span> },
+      {    <span style="color:#60E">0.001077e-6</span>,      <span style="color:#60E">175.166059800</span>,  <span style="color:#60E">1.844913056</span> },
+      {    <span style="color:#60E">0.000954e-6</span>,    <span style="color:#60E">-6284.056171060</span>,  <span style="color:#60E">0.968480906</span> },
+      {    <span style="color:#60E">0.000737e-6</span>,     <span style="color:#60E">5326.786694021</span>,  <span style="color:#60E">4.923831588</span> },
+      {    <span style="color:#60E">0.000845e-6</span>,     <span style="color:#60E">-433.711737877</span>,  <span style="color:#60E">4.749245231</span> },
+      {    <span style="color:#60E">0.000819e-6</span>,     <span style="color:#60E">8662.240323563</span>,  <span style="color:#60E">5.991247817</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 221, 230 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000852e-6</span>,      <span style="color:#60E">199.072001436</span>,  <span style="color:#60E">2.189604979</span> },
+      {    <span style="color:#60E">0.000723e-6</span>,    <span style="color:#60E">17256.631536341</span>,  <span style="color:#60E">6.068719637</span> },
+      {    <span style="color:#60E">0.000940e-6</span>,     <span style="color:#60E">6037.244203762</span>,  <span style="color:#60E">6.197428148</span> },
+      {    <span style="color:#60E">0.000885e-6</span>,    <span style="color:#60E">11712.955318231</span>,  <span style="color:#60E">3.280414875</span> },
+      {    <span style="color:#60E">0.000706e-6</span>,    <span style="color:#60E">12559.038152982</span>,  <span style="color:#60E">2.824848947</span> },
+      {    <span style="color:#60E">0.000732e-6</span>,     <span style="color:#60E">2379.164473572</span>,  <span style="color:#60E">2.501813417</span> },
+      {    <span style="color:#60E">0.000764e-6</span>,    <span style="color:#60E">-6127.655450557</span>,  <span style="color:#60E">2.236346329</span> },
+      {    <span style="color:#60E">0.000908e-6</span>,      <span style="color:#60E">131.541961686</span>,  <span style="color:#60E">2.521257490</span> },
+      {    <span style="color:#60E">0.000907e-6</span>,    <span style="color:#60E">35371.887265976</span>,  <span style="color:#60E">3.370195967</span> },
+      {    <span style="color:#60E">0.000673e-6</span>,     <span style="color:#60E">1066.495477190</span>,  <span style="color:#60E">3.876512374</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 231, 240 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000814e-6</span>,    <span style="color:#60E">17654.780539750</span>,  <span style="color:#60E">4.627122566</span> },
+      {    <span style="color:#60E">0.000630e-6</span>,       <span style="color:#60E">36.027866677</span>,  <span style="color:#60E">0.156368499</span> },
+      {    <span style="color:#60E">0.000798e-6</span>,      <span style="color:#60E">515.463871093</span>,  <span style="color:#60E">5.151962502</span> },
+      {    <span style="color:#60E">0.000798e-6</span>,      <span style="color:#60E">148.078724426</span>,  <span style="color:#60E">5.909225055</span> },
+      {    <span style="color:#60E">0.000806e-6</span>,      <span style="color:#60E">309.278322656</span>,  <span style="color:#60E">6.054064447</span> },
+      {    <span style="color:#60E">0.000607e-6</span>,      <span style="color:#60E">-39.617508346</span>,  <span style="color:#60E">2.839021623</span> },
+      {    <span style="color:#60E">0.000601e-6</span>,      <span style="color:#60E">412.371096874</span>,  <span style="color:#60E">3.984225404</span> },
+      {    <span style="color:#60E">0.000646e-6</span>,    <span style="color:#60E">11403.676995575</span>,  <span style="color:#60E">3.852959484</span> },
+      {    <span style="color:#60E">0.000704e-6</span>,    <span style="color:#60E">13521.751441591</span>,  <span style="color:#60E">2.300991267</span> },
+      {    <span style="color:#60E">0.000603e-6</span>,   <span style="color:#60E">-65147.619767937</span>,  <span style="color:#60E">4.140083146</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 241, 250 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000609e-6</span>,    <span style="color:#60E">10177.257679534</span>,  <span style="color:#60E">0.437122327</span> },
+      {    <span style="color:#60E">0.000631e-6</span>,     <span style="color:#60E">5767.611978898</span>,  <span style="color:#60E">4.026532329</span> },
+      {    <span style="color:#60E">0.000576e-6</span>,    <span style="color:#60E">11087.285125918</span>,  <span style="color:#60E">4.760293101</span> },
+      {    <span style="color:#60E">0.000674e-6</span>,    <span style="color:#60E">14945.316173554</span>,  <span style="color:#60E">6.270510511</span> },
+      {    <span style="color:#60E">0.000726e-6</span>,     <span style="color:#60E">5429.879468239</span>,  <span style="color:#60E">6.039606892</span> },
+      {    <span style="color:#60E">0.000710e-6</span>,    <span style="color:#60E">28766.924424484</span>,  <span style="color:#60E">5.672617711</span> },
+      {    <span style="color:#60E">0.000647e-6</span>,    <span style="color:#60E">11856.218651625</span>,  <span style="color:#60E">3.397132627</span> },
+      {    <span style="color:#60E">0.000678e-6</span>,    <span style="color:#60E">-5481.254918868</span>,  <span style="color:#60E">6.249666675</span> },
+      {    <span style="color:#60E">0.000618e-6</span>,    <span style="color:#60E">22003.914634870</span>,  <span style="color:#60E">2.466427018</span> },
+      {    <span style="color:#60E">0.000738e-6</span>,     <span style="color:#60E">6134.997125565</span>,  <span style="color:#60E">2.242668890</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 251, 260 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000660e-6</span>,      <span style="color:#60E">625.670192312</span>,  <span style="color:#60E">5.864091907</span> },
+      {    <span style="color:#60E">0.000694e-6</span>,     <span style="color:#60E">3496.032826134</span>,  <span style="color:#60E">2.668309141</span> },
+      {    <span style="color:#60E">0.000531e-6</span>,     <span style="color:#60E">6489.261398429</span>,  <span style="color:#60E">1.681888780</span> },
+      {    <span style="color:#60E">0.000611e-6</span>,  <span style="color:#60E">-143571.324284214</span>,  <span style="color:#60E">2.424978312</span> },
+      {    <span style="color:#60E">0.000575e-6</span>,    <span style="color:#60E">12043.574281889</span>,  <span style="color:#60E">4.216492400</span> },
+      {    <span style="color:#60E">0.000553e-6</span>,    <span style="color:#60E">12416.588502848</span>,  <span style="color:#60E">4.772158039</span> },
+      {    <span style="color:#60E">0.000689e-6</span>,     <span style="color:#60E">4686.889407707</span>,  <span style="color:#60E">6.224271088</span> },
+      {    <span style="color:#60E">0.000495e-6</span>,     <span style="color:#60E">7342.457780181</span>,  <span style="color:#60E">3.817285811</span> },
+      {    <span style="color:#60E">0.000567e-6</span>,     <span style="color:#60E">3634.621024518</span>,  <span style="color:#60E">1.649264690</span> },
+      {    <span style="color:#60E">0.000515e-6</span>,    <span style="color:#60E">18635.928454536</span>,  <span style="color:#60E">3.945345892</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 261, 270 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000486e-6</span>,     <span style="color:#60E">-323.505416657</span>,  <span style="color:#60E">4.061673868</span> },
+      {    <span style="color:#60E">0.000662e-6</span>,    <span style="color:#60E">25158.601719765</span>,  <span style="color:#60E">1.794058369</span> },
+      {    <span style="color:#60E">0.000509e-6</span>,      <span style="color:#60E">846.082834751</span>,  <span style="color:#60E">3.053874588</span> },
+      {    <span style="color:#60E">0.000472e-6</span>,   <span style="color:#60E">-12569.674818332</span>,  <span style="color:#60E">5.112133338</span> },
+      {    <span style="color:#60E">0.000461e-6</span>,     <span style="color:#60E">6179.983075773</span>,  <span style="color:#60E">0.513669325</span> },
+      {    <span style="color:#60E">0.000641e-6</span>,    <span style="color:#60E">83467.156352816</span>,  <span style="color:#60E">3.210727723</span> },
+      {    <span style="color:#60E">0.000520e-6</span>,    <span style="color:#60E">10344.295065386</span>,  <span style="color:#60E">2.445597761</span> },
+      {    <span style="color:#60E">0.000493e-6</span>,    <span style="color:#60E">18422.629359098</span>,  <span style="color:#60E">1.676939306</span> },
+      {    <span style="color:#60E">0.000478e-6</span>,     <span style="color:#60E">1265.567478626</span>,  <span style="color:#60E">5.487314569</span> },
+      {    <span style="color:#60E">0.000472e-6</span>,      <span style="color:#60E">-18.159247265</span>,  <span style="color:#60E">1.999707589</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 271, 280 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000559e-6</span>,    <span style="color:#60E">11190.377900137</span>,  <span style="color:#60E">5.783236356</span> },
+      {    <span style="color:#60E">0.000494e-6</span>,     <span style="color:#60E">9623.688276691</span>,  <span style="color:#60E">3.022645053</span> },
+      {    <span style="color:#60E">0.000463e-6</span>,     <span style="color:#60E">5739.157790895</span>,  <span style="color:#60E">1.411223013</span> },
+      {    <span style="color:#60E">0.000432e-6</span>,    <span style="color:#60E">16858.482532933</span>,  <span style="color:#60E">1.179256434</span> },
+      {    <span style="color:#60E">0.000574e-6</span>,    <span style="color:#60E">72140.628666286</span>,  <span style="color:#60E">1.758191830</span> },
+      {    <span style="color:#60E">0.000484e-6</span>,    <span style="color:#60E">17267.268201691</span>,  <span style="color:#60E">3.290589143</span> },
+      {    <span style="color:#60E">0.000550e-6</span>,     <span style="color:#60E">4907.302050146</span>,  <span style="color:#60E">0.864024298</span> },
+      {    <span style="color:#60E">0.000399e-6</span>,       <span style="color:#60E">14.977853527</span>,  <span style="color:#60E">2.094441910</span> },
+      {    <span style="color:#60E">0.000491e-6</span>,      <span style="color:#60E">224.344795702</span>,  <span style="color:#60E">0.878372791</span> },
+      {    <span style="color:#60E">0.000432e-6</span>,    <span style="color:#60E">20426.571092422</span>,  <span style="color:#60E">6.003829241</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 281, 290 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000481e-6</span>,     <span style="color:#60E">5749.452731634</span>,  <span style="color:#60E">4.309591964</span> },
+      {    <span style="color:#60E">0.000480e-6</span>,     <span style="color:#60E">5757.317038160</span>,  <span style="color:#60E">1.142348571</span> },
+      {    <span style="color:#60E">0.000485e-6</span>,     <span style="color:#60E">6702.560493867</span>,  <span style="color:#60E">0.210580917</span> },
+      {    <span style="color:#60E">0.000426e-6</span>,     <span style="color:#60E">6055.549660552</span>,  <span style="color:#60E">4.274476529</span> },
+      {    <span style="color:#60E">0.000480e-6</span>,     <span style="color:#60E">5959.570433334</span>,  <span style="color:#60E">5.031351030</span> },
+      {    <span style="color:#60E">0.000466e-6</span>,    <span style="color:#60E">12562.628581634</span>,  <span style="color:#60E">4.959581597</span> },
+      {    <span style="color:#60E">0.000520e-6</span>,    <span style="color:#60E">39302.096962196</span>,  <span style="color:#60E">4.788002889</span> },
+      {    <span style="color:#60E">0.000458e-6</span>,    <span style="color:#60E">12132.439962106</span>,  <span style="color:#60E">1.880103788</span> },
+      {    <span style="color:#60E">0.000470e-6</span>,    <span style="color:#60E">12029.347187887</span>,  <span style="color:#60E">1.405611197</span> },
+      {    <span style="color:#60E">0.000416e-6</span>,    <span style="color:#60E">-7477.522860216</span>,  <span style="color:#60E">1.082356330</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 291, 300 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000449e-6</span>,    <span style="color:#60E">11609.862544012</span>,  <span style="color:#60E">4.179989585</span> },
+      {    <span style="color:#60E">0.000465e-6</span>,    <span style="color:#60E">17253.041107690</span>,  <span style="color:#60E">0.353496295</span> },
+      {    <span style="color:#60E">0.000362e-6</span>,    <span style="color:#60E">-4535.059436924</span>,  <span style="color:#60E">1.583849576</span> },
+      {    <span style="color:#60E">0.000383e-6</span>,    <span style="color:#60E">21954.157609398</span>,  <span style="color:#60E">3.747376371</span> },
+      {    <span style="color:#60E">0.000389e-6</span>,       <span style="color:#60E">17.252277143</span>,  <span style="color:#60E">1.395753179</span> },
+      {    <span style="color:#60E">0.000331e-6</span>,    <span style="color:#60E">18052.929543158</span>,  <span style="color:#60E">0.566790582</span> },
+      {    <span style="color:#60E">0.000430e-6</span>,    <span style="color:#60E">13517.870106233</span>,  <span style="color:#60E">0.685827538</span> },
+      {    <span style="color:#60E">0.000368e-6</span>,    <span style="color:#60E">-5756.908003246</span>,  <span style="color:#60E">0.731374317</span> },
+      {    <span style="color:#60E">0.000330e-6</span>,    <span style="color:#60E">10557.594160824</span>,  <span style="color:#60E">3.710043680</span> },
+      {    <span style="color:#60E">0.000332e-6</span>,    <span style="color:#60E">20199.094959633</span>,  <span style="color:#60E">1.652901407</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 301, 310 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000384e-6</span>,    <span style="color:#60E">11933.367960670</span>,  <span style="color:#60E">5.827781531</span> },
+      {    <span style="color:#60E">0.000387e-6</span>,    <span style="color:#60E">10454.501386605</span>,  <span style="color:#60E">2.541182564</span> },
+      {    <span style="color:#60E">0.000325e-6</span>,    <span style="color:#60E">15671.081759407</span>,  <span style="color:#60E">2.178850542</span> },
+      {    <span style="color:#60E">0.000318e-6</span>,      <span style="color:#60E">138.517496871</span>,  <span style="color:#60E">2.253253037</span> },
+      {    <span style="color:#60E">0.000305e-6</span>,     <span style="color:#60E">9388.005909415</span>,  <span style="color:#60E">0.578340206</span> },
+      {    <span style="color:#60E">0.000352e-6</span>,     <span style="color:#60E">5749.861766548</span>,  <span style="color:#60E">3.000297967</span> },
+      {    <span style="color:#60E">0.000311e-6</span>,     <span style="color:#60E">6915.859589305</span>,  <span style="color:#60E">1.693574249</span> },
+      {    <span style="color:#60E">0.000297e-6</span>,    <span style="color:#60E">24072.921469776</span>,  <span style="color:#60E">1.997249392</span> },
+      {    <span style="color:#60E">0.000363e-6</span>,     <span style="color:#60E">-640.877607382</span>,  <span style="color:#60E">5.071820966</span> },
+      {    <span style="color:#60E">0.000323e-6</span>,    <span style="color:#60E">12592.450019783</span>,  <span style="color:#60E">1.072262823</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 311, 320 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000341e-6</span>,    <span style="color:#60E">12146.667056108</span>,  <span style="color:#60E">4.700657997</span> },
+      {    <span style="color:#60E">0.000290e-6</span>,     <span style="color:#60E">9779.108676125</span>,  <span style="color:#60E">1.812320441</span> },
+      {    <span style="color:#60E">0.000342e-6</span>,     <span style="color:#60E">6132.028180148</span>,  <span style="color:#60E">4.322238614</span> },
+      {    <span style="color:#60E">0.000329e-6</span>,     <span style="color:#60E">6268.848755990</span>,  <span style="color:#60E">3.033827743</span> },
+      {    <span style="color:#60E">0.000374e-6</span>,    <span style="color:#60E">17996.031168222</span>,  <span style="color:#60E">3.388716544</span> },
+      {    <span style="color:#60E">0.000285e-6</span>,     <span style="color:#60E">-533.214083444</span>,  <span style="color:#60E">4.687313233</span> },
+      {    <span style="color:#60E">0.000338e-6</span>,     <span style="color:#60E">6065.844601290</span>,  <span style="color:#60E">0.877776108</span> },
+      {    <span style="color:#60E">0.000276e-6</span>,       <span style="color:#60E">24.298513841</span>,  <span style="color:#60E">0.770299429</span> },
+      {    <span style="color:#60E">0.000336e-6</span>,    <span style="color:#60E">-2388.894020449</span>,  <span style="color:#60E">5.353796034</span> },
+      {    <span style="color:#60E">0.000290e-6</span>,     <span style="color:#60E">3097.883822726</span>,  <span style="color:#60E">4.075291557</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 321, 330 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000318e-6</span>,      <span style="color:#60E">709.933048357</span>,  <span style="color:#60E">5.941207518</span> },
+      {    <span style="color:#60E">0.000271e-6</span>,    <span style="color:#60E">13095.842665077</span>,  <span style="color:#60E">3.208912203</span> },
+      {    <span style="color:#60E">0.000331e-6</span>,     <span style="color:#60E">6073.708907816</span>,  <span style="color:#60E">4.007881169</span> },
+      {    <span style="color:#60E">0.000292e-6</span>,      <span style="color:#60E">742.990060533</span>,  <span style="color:#60E">2.714333592</span> },
+      {    <span style="color:#60E">0.000362e-6</span>,    <span style="color:#60E">29088.811415985</span>,  <span style="color:#60E">3.215977013</span> },
+      {    <span style="color:#60E">0.000280e-6</span>,    <span style="color:#60E">12359.966151546</span>,  <span style="color:#60E">0.710872502</span> },
+      {    <span style="color:#60E">0.000267e-6</span>,    <span style="color:#60E">10440.274292604</span>,  <span style="color:#60E">4.730108488</span> },
+      {    <span style="color:#60E">0.000262e-6</span>,      <span style="color:#60E">838.969287750</span>,  <span style="color:#60E">1.327720272</span> },
+      {    <span style="color:#60E">0.000250e-6</span>,    <span style="color:#60E">16496.361396202</span>,  <span style="color:#60E">0.898769761</span> },
+      {    <span style="color:#60E">0.000325e-6</span>,    <span style="color:#60E">20597.243963041</span>,  <span style="color:#60E">0.180044365</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 331, 340 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000268e-6</span>,     <span style="color:#60E">6148.010769956</span>,  <span style="color:#60E">5.152666276</span> },
+      {    <span style="color:#60E">0.000284e-6</span>,     <span style="color:#60E">5636.065016677</span>,  <span style="color:#60E">5.655385808</span> },
+      {    <span style="color:#60E">0.000301e-6</span>,     <span style="color:#60E">6080.822454817</span>,  <span style="color:#60E">2.135396205</span> },
+      {    <span style="color:#60E">0.000294e-6</span>,     <span style="color:#60E">-377.373607916</span>,  <span style="color:#60E">3.708784168</span> },
+      {    <span style="color:#60E">0.000236e-6</span>,     <span style="color:#60E">2118.763860378</span>,  <span style="color:#60E">1.733578756</span> },
+      {    <span style="color:#60E">0.000234e-6</span>,     <span style="color:#60E">5867.523359379</span>,  <span style="color:#60E">5.575209112</span> },
+      {    <span style="color:#60E">0.000268e-6</span>,  <span style="color:#60E">-226858.238553767</span>,  <span style="color:#60E">0.069432392</span> },
+      {    <span style="color:#60E">0.000265e-6</span>,   <span style="color:#60E">167283.761587465</span>,  <span style="color:#60E">4.369302826</span> },
+      {    <span style="color:#60E">0.000280e-6</span>,    <span style="color:#60E">28237.233459389</span>,  <span style="color:#60E">5.304829118</span> },
+      {    <span style="color:#60E">0.000292e-6</span>,    <span style="color:#60E">12345.739057544</span>,  <span style="color:#60E">4.096094132</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 341, 350 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000223e-6</span>,    <span style="color:#60E">19800.945956225</span>,  <span style="color:#60E">3.069327406</span> },
+      {    <span style="color:#60E">0.000301e-6</span>,    <span style="color:#60E">43232.306658416</span>,  <span style="color:#60E">6.205311188</span> },
+      {    <span style="color:#60E">0.000264e-6</span>,    <span style="color:#60E">18875.525869774</span>,  <span style="color:#60E">1.417263408</span> },
+      {    <span style="color:#60E">0.000304e-6</span>,    <span style="color:#60E">-1823.175188677</span>,  <span style="color:#60E">3.409035232</span> },
+      {    <span style="color:#60E">0.000301e-6</span>,      <span style="color:#60E">109.945688789</span>,  <span style="color:#60E">0.510922054</span> },
+      {    <span style="color:#60E">0.000260e-6</span>,      <span style="color:#60E">813.550283960</span>,  <span style="color:#60E">2.389438934</span> },
+      {    <span style="color:#60E">0.000299e-6</span>,   <span style="color:#60E">316428.228673312</span>,  <span style="color:#60E">5.384595078</span> },
+      {    <span style="color:#60E">0.000211e-6</span>,     <span style="color:#60E">5756.566278634</span>,  <span style="color:#60E">3.789392838</span> },
+      {    <span style="color:#60E">0.000209e-6</span>,     <span style="color:#60E">5750.203491159</span>,  <span style="color:#60E">1.661943545</span> },
+      {    <span style="color:#60E">0.000240e-6</span>,    <span style="color:#60E">12489.885628707</span>,  <span style="color:#60E">5.684549045</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 351, 360 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000216e-6</span>,     <span style="color:#60E">6303.851245484</span>,  <span style="color:#60E">3.862942261</span> },
+      {    <span style="color:#60E">0.000203e-6</span>,     <span style="color:#60E">1581.959348283</span>,  <span style="color:#60E">5.549853589</span> },
+      {    <span style="color:#60E">0.000200e-6</span>,     <span style="color:#60E">5642.198242609</span>,  <span style="color:#60E">1.016115785</span> },
+      {    <span style="color:#60E">0.000197e-6</span>,      <span style="color:#60E">-70.849445304</span>,  <span style="color:#60E">4.690702525</span> },
+      {    <span style="color:#60E">0.000227e-6</span>,     <span style="color:#60E">6287.008003254</span>,  <span style="color:#60E">2.911891613</span> },
+      {    <span style="color:#60E">0.000197e-6</span>,      <span style="color:#60E">533.623118358</span>,  <span style="color:#60E">1.048982898</span> },
+      {    <span style="color:#60E">0.000205e-6</span>,    <span style="color:#60E">-6279.485421340</span>,  <span style="color:#60E">1.829362730</span> },
+      {    <span style="color:#60E">0.000209e-6</span>,   <span style="color:#60E">-10988.808157535</span>,  <span style="color:#60E">2.636140084</span> },
+      {    <span style="color:#60E">0.000208e-6</span>,     <span style="color:#60E">-227.526189440</span>,  <span style="color:#60E">4.127883842</span> },
+      {    <span style="color:#60E">0.000191e-6</span>,      <span style="color:#60E">415.552490612</span>,  <span style="color:#60E">4.401165650</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 361, 370 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000190e-6</span>,    <span style="color:#60E">29296.615389579</span>,  <span style="color:#60E">4.175658539</span> },
+      {    <span style="color:#60E">0.000264e-6</span>,    <span style="color:#60E">66567.485864652</span>,  <span style="color:#60E">4.601102551</span> },
+      {    <span style="color:#60E">0.000256e-6</span>,    <span style="color:#60E">-3646.350377354</span>,  <span style="color:#60E">0.506364778</span> },
+      {    <span style="color:#60E">0.000188e-6</span>,    <span style="color:#60E">13119.721102825</span>,  <span style="color:#60E">2.032195842</span> },
+      {    <span style="color:#60E">0.000185e-6</span>,     <span style="color:#60E">-209.366942175</span>,  <span style="color:#60E">4.694756586</span> },
+      {    <span style="color:#60E">0.000198e-6</span>,    <span style="color:#60E">25934.124331089</span>,  <span style="color:#60E">3.832703118</span> },
+      {    <span style="color:#60E">0.000195e-6</span>,     <span style="color:#60E">4061.219215394</span>,  <span style="color:#60E">3.308463427</span> },
+      {    <span style="color:#60E">0.000234e-6</span>,     <span style="color:#60E">5113.487598583</span>,  <span style="color:#60E">1.716090661</span> },
+      {    <span style="color:#60E">0.000188e-6</span>,     <span style="color:#60E">1478.866574064</span>,  <span style="color:#60E">5.686865780</span> },
+      {    <span style="color:#60E">0.000222e-6</span>,    <span style="color:#60E">11823.161639450</span>,  <span style="color:#60E">1.942386641</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 371, 380 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000181e-6</span>,    <span style="color:#60E">10770.893256262</span>,  <span style="color:#60E">1.999482059</span> },
+      {    <span style="color:#60E">0.000171e-6</span>,     <span style="color:#60E">6546.159773364</span>,  <span style="color:#60E">1.182807992</span> },
+      {    <span style="color:#60E">0.000206e-6</span>,       <span style="color:#60E">70.328180442</span>,  <span style="color:#60E">5.934076062</span> },
+      {    <span style="color:#60E">0.000169e-6</span>,    <span style="color:#60E">20995.392966449</span>,  <span style="color:#60E">2.169080622</span> },
+      {    <span style="color:#60E">0.000191e-6</span>,    <span style="color:#60E">10660.686935042</span>,  <span style="color:#60E">5.405515999</span> },
+      {    <span style="color:#60E">0.000228e-6</span>,    <span style="color:#60E">33019.021112205</span>,  <span style="color:#60E">4.656985514</span> },
+      {    <span style="color:#60E">0.000184e-6</span>,    <span style="color:#60E">-4933.208440333</span>,  <span style="color:#60E">3.327476868</span> },
+      {    <span style="color:#60E">0.000220e-6</span>,     <span style="color:#60E">-135.625325010</span>,  <span style="color:#60E">1.765430262</span> },
+      {    <span style="color:#60E">0.000166e-6</span>,    <span style="color:#60E">23141.558382925</span>,  <span style="color:#60E">3.454132746</span> },
+      {    <span style="color:#60E">0.000191e-6</span>,     <span style="color:#60E">6144.558353121</span>,  <span style="color:#60E">5.020393445</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 381, 390 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000180e-6</span>,     <span style="color:#60E">6084.003848555</span>,  <span style="color:#60E">0.602182191</span> },
+      {    <span style="color:#60E">0.000163e-6</span>,    <span style="color:#60E">17782.732072784</span>,  <span style="color:#60E">4.960593133</span> },
+      {    <span style="color:#60E">0.000225e-6</span>,    <span style="color:#60E">16460.333529525</span>,  <span style="color:#60E">2.596451817</span> },
+      {    <span style="color:#60E">0.000222e-6</span>,     <span style="color:#60E">5905.702242076</span>,  <span style="color:#60E">3.731990323</span> },
+      {    <span style="color:#60E">0.000204e-6</span>,      <span style="color:#60E">227.476132789</span>,  <span style="color:#60E">5.636192701</span> },
+      {    <span style="color:#60E">0.000159e-6</span>,    <span style="color:#60E">16737.577236597</span>,  <span style="color:#60E">3.600691544</span> },
+      {    <span style="color:#60E">0.000200e-6</span>,     <span style="color:#60E">6805.653268085</span>,  <span style="color:#60E">0.868220961</span> },
+      {    <span style="color:#60E">0.000187e-6</span>,    <span style="color:#60E">11919.140866668</span>,  <span style="color:#60E">2.629456641</span> },
+      {    <span style="color:#60E">0.000161e-6</span>,      <span style="color:#60E">127.471796607</span>,  <span style="color:#60E">2.862574720</span> },
+      {    <span style="color:#60E">0.000205e-6</span>,     <span style="color:#60E">6286.666278643</span>,  <span style="color:#60E">1.742882331</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 391, 400 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000189e-6</span>,      <span style="color:#60E">153.778810485</span>,  <span style="color:#60E">4.812372643</span> },
+      {    <span style="color:#60E">0.000168e-6</span>,    <span style="color:#60E">16723.350142595</span>,  <span style="color:#60E">0.027860588</span> },
+      {    <span style="color:#60E">0.000149e-6</span>,    <span style="color:#60E">11720.068865232</span>,  <span style="color:#60E">0.659721876</span> },
+      {    <span style="color:#60E">0.000189e-6</span>,     <span style="color:#60E">5237.921013804</span>,  <span style="color:#60E">5.245313000</span> },
+      {    <span style="color:#60E">0.000143e-6</span>,     <span style="color:#60E">6709.674040867</span>,  <span style="color:#60E">4.317625647</span> },
+      {    <span style="color:#60E">0.000146e-6</span>,     <span style="color:#60E">4487.817406270</span>,  <span style="color:#60E">4.815297007</span> },
+      {    <span style="color:#60E">0.000144e-6</span>,     <span style="color:#60E">-664.756045130</span>,  <span style="color:#60E">5.381366880</span> },
+      {    <span style="color:#60E">0.000175e-6</span>,     <span style="color:#60E">5127.714692584</span>,  <span style="color:#60E">4.728443327</span> },
+      {    <span style="color:#60E">0.000162e-6</span>,     <span style="color:#60E">6254.626662524</span>,  <span style="color:#60E">1.435132069</span> },
+      {    <span style="color:#60E">0.000187e-6</span>,    <span style="color:#60E">47162.516354635</span>,  <span style="color:#60E">1.354371923</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 401, 410 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000146e-6</span>,    <span style="color:#60E">11080.171578918</span>,  <span style="color:#60E">3.369695406</span> },
+      {    <span style="color:#60E">0.000180e-6</span>,     <span style="color:#60E">-348.924420448</span>,  <span style="color:#60E">2.490902145</span> },
+      {    <span style="color:#60E">0.000148e-6</span>,      <span style="color:#60E">151.047669843</span>,  <span style="color:#60E">3.799109588</span> },
+      {    <span style="color:#60E">0.000157e-6</span>,     <span style="color:#60E">6197.248551160</span>,  <span style="color:#60E">1.284375887</span> },
+      {    <span style="color:#60E">0.000167e-6</span>,      <span style="color:#60E">146.594251718</span>,  <span style="color:#60E">0.759969109</span> },
+      {    <span style="color:#60E">0.000133e-6</span>,    <span style="color:#60E">-5331.357443741</span>,  <span style="color:#60E">5.409701889</span> },
+      {    <span style="color:#60E">0.000154e-6</span>,       <span style="color:#60E">95.979227218</span>,  <span style="color:#60E">3.366890614</span> },
+      {    <span style="color:#60E">0.000148e-6</span>,    <span style="color:#60E">-6418.140930027</span>,  <span style="color:#60E">3.384104996</span> },
+      {    <span style="color:#60E">0.000128e-6</span>,    <span style="color:#60E">-6525.804453965</span>,  <span style="color:#60E">3.803419985</span> },
+      {    <span style="color:#60E">0.000130e-6</span>,    <span style="color:#60E">11293.470674356</span>,  <span style="color:#60E">0.939039445</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 411, 420 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000152e-6</span>,    <span style="color:#60E">-5729.506447149</span>,  <span style="color:#60E">0.734117523</span> },
+      {    <span style="color:#60E">0.000138e-6</span>,      <span style="color:#60E">210.117701700</span>,  <span style="color:#60E">2.564216078</span> },
+      {    <span style="color:#60E">0.000123e-6</span>,     <span style="color:#60E">6066.595360816</span>,  <span style="color:#60E">4.517099537</span> },
+      {    <span style="color:#60E">0.000140e-6</span>,    <span style="color:#60E">18451.078546566</span>,  <span style="color:#60E">0.642049130</span> },
+      {    <span style="color:#60E">0.000126e-6</span>,    <span style="color:#60E">11300.584221356</span>,  <span style="color:#60E">3.485280663</span> },
+      {    <span style="color:#60E">0.000119e-6</span>,    <span style="color:#60E">10027.903195729</span>,  <span style="color:#60E">3.217431161</span> },
+      {    <span style="color:#60E">0.000151e-6</span>,     <span style="color:#60E">4274.518310832</span>,  <span style="color:#60E">4.404359108</span> },
+      {    <span style="color:#60E">0.000117e-6</span>,     <span style="color:#60E">6072.958148291</span>,  <span style="color:#60E">0.366324650</span> },
+      {    <span style="color:#60E">0.000165e-6</span>,    <span style="color:#60E">-7668.637425143</span>,  <span style="color:#60E">4.298212528</span> },
+      {    <span style="color:#60E">0.000117e-6</span>,    <span style="color:#60E">-6245.048177356</span>,  <span style="color:#60E">5.379518958</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 421, 430 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000130e-6</span>,    <span style="color:#60E">-5888.449964932</span>,  <span style="color:#60E">4.527681115</span> },
+      {    <span style="color:#60E">0.000121e-6</span>,     <span style="color:#60E">-543.918059096</span>,  <span style="color:#60E">6.109429504</span> },
+      {    <span style="color:#60E">0.000162e-6</span>,     <span style="color:#60E">9683.594581116</span>,  <span style="color:#60E">5.720092446</span> },
+      {    <span style="color:#60E">0.000141e-6</span>,     <span style="color:#60E">6219.339951688</span>,  <span style="color:#60E">0.679068671</span> },
+      {    <span style="color:#60E">0.000118e-6</span>,    <span style="color:#60E">22743.409379516</span>,  <span style="color:#60E">4.881123092</span> },
+      {    <span style="color:#60E">0.000129e-6</span>,     <span style="color:#60E">1692.165669502</span>,  <span style="color:#60E">0.351407289</span> },
+      {    <span style="color:#60E">0.000126e-6</span>,     <span style="color:#60E">5657.405657679</span>,  <span style="color:#60E">5.146592349</span> },
+      {    <span style="color:#60E">0.000114e-6</span>,      <span style="color:#60E">728.762966531</span>,  <span style="color:#60E">0.520791814</span> },
+      {    <span style="color:#60E">0.000120e-6</span>,       <span style="color:#60E">52.596639600</span>,  <span style="color:#60E">0.948516300</span> },
+      {    <span style="color:#60E">0.000115e-6</span>,       <span style="color:#60E">65.220371012</span>,  <span style="color:#60E">3.504914846</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 431, 440 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000126e-6</span>,     <span style="color:#60E">5881.403728234</span>,  <span style="color:#60E">5.577502482</span> },
+      {    <span style="color:#60E">0.000158e-6</span>,   <span style="color:#60E">163096.180360983</span>,  <span style="color:#60E">2.957128968</span> },
+      {    <span style="color:#60E">0.000134e-6</span>,    <span style="color:#60E">12341.806904281</span>,  <span style="color:#60E">2.598576764</span> },
+      {    <span style="color:#60E">0.000151e-6</span>,    <span style="color:#60E">16627.370915377</span>,  <span style="color:#60E">3.985702050</span> },
+      {    <span style="color:#60E">0.000109e-6</span>,     <span style="color:#60E">1368.660252845</span>,  <span style="color:#60E">0.014730471</span> },
+      {    <span style="color:#60E">0.000131e-6</span>,     <span style="color:#60E">6211.263196841</span>,  <span style="color:#60E">0.085077024</span> },
+      {    <span style="color:#60E">0.000146e-6</span>,     <span style="color:#60E">5792.741760812</span>,  <span style="color:#60E">0.708426604</span> },
+      {    <span style="color:#60E">0.000146e-6</span>,      <span style="color:#60E">-77.750543984</span>,  <span style="color:#60E">3.121576600</span> },
+      {    <span style="color:#60E">0.000107e-6</span>,     <span style="color:#60E">5341.013788022</span>,  <span style="color:#60E">0.288231904</span> },
+      {    <span style="color:#60E">0.000138e-6</span>,     <span style="color:#60E">6281.591377283</span>,  <span style="color:#60E">2.797450317</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 441, 450 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000113e-6</span>,    <span style="color:#60E">-6277.552925684</span>,  <span style="color:#60E">2.788904128</span> },
+      {    <span style="color:#60E">0.000115e-6</span>,     <span style="color:#60E">-525.758811831</span>,  <span style="color:#60E">5.895222200</span> },
+      {    <span style="color:#60E">0.000138e-6</span>,     <span style="color:#60E">6016.468808270</span>,  <span style="color:#60E">6.096188999</span> },
+      {    <span style="color:#60E">0.000139e-6</span>,    <span style="color:#60E">23539.707386333</span>,  <span style="color:#60E">2.028195445</span> },
+      {    <span style="color:#60E">0.000146e-6</span>,    <span style="color:#60E">-4176.041342449</span>,  <span style="color:#60E">4.660008502</span> },
+      {    <span style="color:#60E">0.000107e-6</span>,    <span style="color:#60E">16062.184526117</span>,  <span style="color:#60E">4.066520001</span> },
+      {    <span style="color:#60E">0.000142e-6</span>,    <span style="color:#60E">83783.548222473</span>,  <span style="color:#60E">2.936315115</span> },
+      {    <span style="color:#60E">0.000128e-6</span>,     <span style="color:#60E">9380.959672717</span>,  <span style="color:#60E">3.223844306</span> },
+      {    <span style="color:#60E">0.000135e-6</span>,     <span style="color:#60E">6205.325306007</span>,  <span style="color:#60E">1.638054048</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,     <span style="color:#60E">2699.734819318</span>,  <span style="color:#60E">5.481603249</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 451, 460 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000104e-6</span>,     <span style="color:#60E">-568.821874027</span>,  <span style="color:#60E">2.205734493</span> },
+      {    <span style="color:#60E">0.000103e-6</span>,     <span style="color:#60E">6321.103522627</span>,  <span style="color:#60E">2.440421099</span> },
+      {    <span style="color:#60E">0.000119e-6</span>,     <span style="color:#60E">6321.208885629</span>,  <span style="color:#60E">2.547496264</span> },
+      {    <span style="color:#60E">0.000138e-6</span>,     <span style="color:#60E">1975.492545856</span>,  <span style="color:#60E">2.314608466</span> },
+      {    <span style="color:#60E">0.000121e-6</span>,      <span style="color:#60E">137.033024162</span>,  <span style="color:#60E">4.539108237</span> },
+      {    <span style="color:#60E">0.000123e-6</span>,    <span style="color:#60E">19402.796952817</span>,  <span style="color:#60E">4.538074405</span> },
+      {    <span style="color:#60E">0.000119e-6</span>,    <span style="color:#60E">22805.735565994</span>,  <span style="color:#60E">2.869040566</span> },
+      {    <span style="color:#60E">0.000133e-6</span>,    <span style="color:#60E">64471.991241142</span>,  <span style="color:#60E">6.056405489</span> },
+      {    <span style="color:#60E">0.000129e-6</span>,      <span style="color:#60E">-85.827298831</span>,  <span style="color:#60E">2.540635083</span> },
+      {    <span style="color:#60E">0.000131e-6</span>,    <span style="color:#60E">13613.804277336</span>,  <span style="color:#60E">4.005732868</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 461, 470 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000104e-6</span>,     <span style="color:#60E">9814.604100291</span>,  <span style="color:#60E">1.959967212</span> },
+      {    <span style="color:#60E">0.000112e-6</span>,    <span style="color:#60E">16097.679950283</span>,  <span style="color:#60E">3.589026260</span> },
+      {    <span style="color:#60E">0.000123e-6</span>,     <span style="color:#60E">2107.034507542</span>,  <span style="color:#60E">1.728627253</span> },
+      {    <span style="color:#60E">0.000121e-6</span>,    <span style="color:#60E">36949.230808424</span>,  <span style="color:#60E">6.072332087</span> },
+      {    <span style="color:#60E">0.000108e-6</span>,   <span style="color:#60E">-12539.853380183</span>,  <span style="color:#60E">3.716133846</span> },
+      {    <span style="color:#60E">0.000113e-6</span>,    <span style="color:#60E">-7875.671863624</span>,  <span style="color:#60E">2.725771122</span> },
+      {    <span style="color:#60E">0.000109e-6</span>,     <span style="color:#60E">4171.425536614</span>,  <span style="color:#60E">4.033338079</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,     <span style="color:#60E">6247.911759770</span>,  <span style="color:#60E">3.441347021</span> },
+      {    <span style="color:#60E">0.000113e-6</span>,     <span style="color:#60E">7330.728427345</span>,  <span style="color:#60E">0.656372122</span> },
+      {    <span style="color:#60E">0.000113e-6</span>,    <span style="color:#60E">51092.726050855</span>,  <span style="color:#60E">2.791483066</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 471, 480 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000106e-6</span>,     <span style="color:#60E">5621.842923210</span>,  <span style="color:#60E">1.815323326</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,      <span style="color:#60E">111.430161497</span>,  <span style="color:#60E">5.711033677</span> },
+      {    <span style="color:#60E">0.000103e-6</span>,      <span style="color:#60E">909.818733055</span>,  <span style="color:#60E">2.812745443</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,     <span style="color:#60E">1790.642637886</span>,  <span style="color:#60E">1.965746028</span> },
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T *</span><span style="color:#404">/</span></span>
+      {  <span style="color:#60E">102.156724e-6</span>,     <span style="color:#60E">6283.075849991</span>,  <span style="color:#60E">4.249032005</span> },
+      {    <span style="color:#60E">1.706807e-6</span>,    <span style="color:#60E">12566.151699983</span>,  <span style="color:#60E">4.205904248</span> },
+      {    <span style="color:#60E">0.269668e-6</span>,      <span style="color:#60E">213.299095438</span>,  <span style="color:#60E">3.400290479</span> },
+      {    <span style="color:#60E">0.265919e-6</span>,      <span style="color:#60E">529.690965095</span>,  <span style="color:#60E">5.836047367</span> },
+      {    <span style="color:#60E">0.210568e-6</span>,       <span style="color:#60E">-3.523118349</span>,  <span style="color:#60E">6.262738348</span> },
+      {    <span style="color:#60E">0.077996e-6</span>,     <span style="color:#60E">5223.693919802</span>,  <span style="color:#60E">4.670344204</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 481, 490 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.054764e-6</span>,     <span style="color:#60E">1577.343542448</span>,  <span style="color:#60E">4.534800170</span> },
+      {    <span style="color:#60E">0.059146e-6</span>,       <span style="color:#60E">26.298319800</span>,  <span style="color:#60E">1.083044735</span> },
+      {    <span style="color:#60E">0.034420e-6</span>,     <span style="color:#60E">-398.149003408</span>,  <span style="color:#60E">5.980077351</span> },
+      {    <span style="color:#60E">0.032088e-6</span>,    <span style="color:#60E">18849.227549974</span>,  <span style="color:#60E">4.162913471</span> },
+      {    <span style="color:#60E">0.033595e-6</span>,     <span style="color:#60E">5507.553238667</span>,  <span style="color:#60E">5.980162321</span> },
+      {    <span style="color:#60E">0.029198e-6</span>,     <span style="color:#60E">5856.477659115</span>,  <span style="color:#60E">0.623811863</span> },
+      {    <span style="color:#60E">0.027764e-6</span>,      <span style="color:#60E">155.420399434</span>,  <span style="color:#60E">3.745318113</span> },
+      {    <span style="color:#60E">0.025190e-6</span>,     <span style="color:#60E">5746.271337896</span>,  <span style="color:#60E">2.980330535</span> },
+      {    <span style="color:#60E">0.022997e-6</span>,     <span style="color:#60E">-796.298006816</span>,  <span style="color:#60E">1.174411803</span> },
+      {    <span style="color:#60E">0.024976e-6</span>,     <span style="color:#60E">5760.498431898</span>,  <span style="color:#60E">2.467913690</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 491, 500 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.021774e-6</span>,      <span style="color:#60E">206.185548437</span>,  <span style="color:#60E">3.854787540</span> },
+      {    <span style="color:#60E">0.017925e-6</span>,     <span style="color:#60E">-775.522611324</span>,  <span style="color:#60E">1.092065955</span> },
+      {    <span style="color:#60E">0.013794e-6</span>,      <span style="color:#60E">426.598190876</span>,  <span style="color:#60E">2.699831988</span> },
+      {    <span style="color:#60E">0.013276e-6</span>,     <span style="color:#60E">6062.663207553</span>,  <span style="color:#60E">5.845801920</span> },
+      {    <span style="color:#60E">0.011774e-6</span>,    <span style="color:#60E">12036.460734888</span>,  <span style="color:#60E">2.292832062</span> },
+      {    <span style="color:#60E">0.012869e-6</span>,     <span style="color:#60E">6076.890301554</span>,  <span style="color:#60E">5.333425680</span> },
+      {    <span style="color:#60E">0.012152e-6</span>,     <span style="color:#60E">1059.381930189</span>,  <span style="color:#60E">6.222874454</span> },
+      {    <span style="color:#60E">0.011081e-6</span>,       <span style="color:#60E">-7.113547001</span>,  <span style="color:#60E">5.154724984</span> },
+      {    <span style="color:#60E">0.010143e-6</span>,     <span style="color:#60E">4694.002954708</span>,  <span style="color:#60E">4.044013795</span> },
+      {    <span style="color:#60E">0.009357e-6</span>,     <span style="color:#60E">5486.777843175</span>,  <span style="color:#60E">3.416081409</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 501, 510 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.010084e-6</span>,      <span style="color:#60E">522.577418094</span>,  <span style="color:#60E">0.749320262</span> },
+      {    <span style="color:#60E">0.008587e-6</span>,    <span style="color:#60E">10977.078804699</span>,  <span style="color:#60E">2.777152598</span> },
+      {    <span style="color:#60E">0.008628e-6</span>,     <span style="color:#60E">6275.962302991</span>,  <span style="color:#60E">4.562060226</span> },
+      {    <span style="color:#60E">0.008158e-6</span>,     <span style="color:#60E">-220.412642439</span>,  <span style="color:#60E">5.806891533</span> },
+      {    <span style="color:#60E">0.007746e-6</span>,     <span style="color:#60E">2544.314419883</span>,  <span style="color:#60E">1.603197066</span> },
+      {    <span style="color:#60E">0.007670e-6</span>,     <span style="color:#60E">2146.165416475</span>,  <span style="color:#60E">3.000200440</span> },
+      {    <span style="color:#60E">0.007098e-6</span>,       <span style="color:#60E">74.781598567</span>,  <span style="color:#60E">0.443725817</span> },
+      {    <span style="color:#60E">0.006180e-6</span>,     <span style="color:#60E">-536.804512095</span>,  <span style="color:#60E">1.302642751</span> },
+      {    <span style="color:#60E">0.005818e-6</span>,     <span style="color:#60E">5088.628839767</span>,  <span style="color:#60E">4.827723531</span> },
+      {    <span style="color:#60E">0.004945e-6</span>,    <span style="color:#60E">-6286.598968340</span>,  <span style="color:#60E">0.268305170</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 511, 520 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.004774e-6</span>,     <span style="color:#60E">1349.867409659</span>,  <span style="color:#60E">5.808636673</span> },
+      {    <span style="color:#60E">0.004687e-6</span>,     <span style="color:#60E">-242.728603974</span>,  <span style="color:#60E">5.154890570</span> },
+      {    <span style="color:#60E">0.006089e-6</span>,     <span style="color:#60E">1748.016413067</span>,  <span style="color:#60E">4.403765209</span> },
+      {    <span style="color:#60E">0.005975e-6</span>,    <span style="color:#60E">-1194.447010225</span>,  <span style="color:#60E">2.583472591</span> },
+      {    <span style="color:#60E">0.004229e-6</span>,      <span style="color:#60E">951.718406251</span>,  <span style="color:#60E">0.931172179</span> },
+      {    <span style="color:#60E">0.005264e-6</span>,      <span style="color:#60E">553.569402842</span>,  <span style="color:#60E">2.336107252</span> },
+      {    <span style="color:#60E">0.003049e-6</span>,     <span style="color:#60E">5643.178563677</span>,  <span style="color:#60E">1.362634430</span> },
+      {    <span style="color:#60E">0.002974e-6</span>,     <span style="color:#60E">6812.766815086</span>,  <span style="color:#60E">1.583012668</span> },
+      {    <span style="color:#60E">0.003403e-6</span>,    <span style="color:#60E">-2352.866153772</span>,  <span style="color:#60E">2.552189886</span> },
+      {    <span style="color:#60E">0.003030e-6</span>,      <span style="color:#60E">419.484643875</span>,  <span style="color:#60E">5.286473844</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 521, 530 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.003210e-6</span>,       <span style="color:#60E">-7.046236698</span>,  <span style="color:#60E">1.863796539</span> },
+      {    <span style="color:#60E">0.003058e-6</span>,     <span style="color:#60E">9437.762934887</span>,  <span style="color:#60E">4.226420633</span> },
+      {    <span style="color:#60E">0.002589e-6</span>,    <span style="color:#60E">12352.852604545</span>,  <span style="color:#60E">1.991935820</span> },
+      {    <span style="color:#60E">0.002927e-6</span>,     <span style="color:#60E">5216.580372801</span>,  <span style="color:#60E">2.319951253</span> },
+      {    <span style="color:#60E">0.002425e-6</span>,     <span style="color:#60E">5230.807466803</span>,  <span style="color:#60E">3.084752833</span> },
+      {    <span style="color:#60E">0.002656e-6</span>,     <span style="color:#60E">3154.687084896</span>,  <span style="color:#60E">2.487447866</span> },
+      {    <span style="color:#60E">0.002445e-6</span>,    <span style="color:#60E">10447.387839604</span>,  <span style="color:#60E">2.347139160</span> },
+      {    <span style="color:#60E">0.002990e-6</span>,     <span style="color:#60E">4690.479836359</span>,  <span style="color:#60E">6.235872050</span> },
+      {    <span style="color:#60E">0.002890e-6</span>,     <span style="color:#60E">5863.591206116</span>,  <span style="color:#60E">0.095197563</span> },
+      {    <span style="color:#60E">0.002498e-6</span>,     <span style="color:#60E">6438.496249426</span>,  <span style="color:#60E">2.994779800</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 531, 540 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001889e-6</span>,     <span style="color:#60E">8031.092263058</span>,  <span style="color:#60E">3.569003717</span> },
+      {    <span style="color:#60E">0.002567e-6</span>,      <span style="color:#60E">801.820931124</span>,  <span style="color:#60E">3.425611498</span> },
+      {    <span style="color:#60E">0.001803e-6</span>,   <span style="color:#60E">-71430.695617928</span>,  <span style="color:#60E">2.192295512</span> },
+      {    <span style="color:#60E">0.001782e-6</span>,        <span style="color:#60E">3.932153263</span>,  <span style="color:#60E">5.180433689</span> },
+      {    <span style="color:#60E">0.001694e-6</span>,    <span style="color:#60E">-4705.732307544</span>,  <span style="color:#60E">4.641779174</span> },
+      {    <span style="color:#60E">0.001704e-6</span>,    <span style="color:#60E">-1592.596013633</span>,  <span style="color:#60E">3.997097652</span> },
+      {    <span style="color:#60E">0.001735e-6</span>,     <span style="color:#60E">5849.364112115</span>,  <span style="color:#60E">0.417558428</span> },
+      {    <span style="color:#60E">0.001643e-6</span>,     <span style="color:#60E">8429.241266467</span>,  <span style="color:#60E">2.180619584</span> },
+      {    <span style="color:#60E">0.001680e-6</span>,       <span style="color:#60E">38.133035638</span>,  <span style="color:#60E">4.164529426</span> },
+      {    <span style="color:#60E">0.002045e-6</span>,     <span style="color:#60E">7084.896781115</span>,  <span style="color:#60E">0.526323854</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 541, 550 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001458e-6</span>,     <span style="color:#60E">4292.330832950</span>,  <span style="color:#60E">1.356098141</span> },
+      {    <span style="color:#60E">0.001437e-6</span>,       <span style="color:#60E">20.355319399</span>,  <span style="color:#60E">3.895439360</span> },
+      {    <span style="color:#60E">0.001738e-6</span>,     <span style="color:#60E">6279.552731642</span>,  <span style="color:#60E">0.087484036</span> },
+      {    <span style="color:#60E">0.001367e-6</span>,    <span style="color:#60E">14143.495242431</span>,  <span style="color:#60E">3.987576591</span> },
+      {    <span style="color:#60E">0.001344e-6</span>,     <span style="color:#60E">7234.794256242</span>,  <span style="color:#60E">0.090454338</span> },
+      {    <span style="color:#60E">0.001438e-6</span>,    <span style="color:#60E">11499.656222793</span>,  <span style="color:#60E">0.974387904</span> },
+      {    <span style="color:#60E">0.001257e-6</span>,     <span style="color:#60E">6836.645252834</span>,  <span style="color:#60E">1.509069366</span> },
+      {    <span style="color:#60E">0.001358e-6</span>,    <span style="color:#60E">11513.883316794</span>,  <span style="color:#60E">0.495572260</span> },
+      {    <span style="color:#60E">0.001628e-6</span>,     <span style="color:#60E">7632.943259650</span>,  <span style="color:#60E">4.968445721</span> },
+      {    <span style="color:#60E">0.001169e-6</span>,      <span style="color:#60E">103.092774219</span>,  <span style="color:#60E">2.838496795</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 551, 560 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001162e-6</span>,     <span style="color:#60E">4164.311989613</span>,  <span style="color:#60E">3.408387778</span> },
+      {    <span style="color:#60E">0.001092e-6</span>,     <span style="color:#60E">6069.776754553</span>,  <span style="color:#60E">3.617942651</span> },
+      {    <span style="color:#60E">0.001008e-6</span>,    <span style="color:#60E">17789.845619785</span>,  <span style="color:#60E">0.286350174</span> },
+      {    <span style="color:#60E">0.001008e-6</span>,      <span style="color:#60E">639.897286314</span>,  <span style="color:#60E">1.610762073</span> },
+      {    <span style="color:#60E">0.000918e-6</span>,    <span style="color:#60E">10213.285546211</span>,  <span style="color:#60E">5.532798067</span> },
+      {    <span style="color:#60E">0.001011e-6</span>,    <span style="color:#60E">-6256.777530192</span>,  <span style="color:#60E">0.661826484</span> },
+      {    <span style="color:#60E">0.000753e-6</span>,    <span style="color:#60E">16730.463689596</span>,  <span style="color:#60E">3.905030235</span> },
+      {    <span style="color:#60E">0.000737e-6</span>,    <span style="color:#60E">11926.254413669</span>,  <span style="color:#60E">4.641956361</span> },
+      {    <span style="color:#60E">0.000694e-6</span>,     <span style="color:#60E">3340.612426700</span>,  <span style="color:#60E">2.111120332</span> },
+      {    <span style="color:#60E">0.000701e-6</span>,     <span style="color:#60E">3894.181829542</span>,  <span style="color:#60E">2.760823491</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 561, 570 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000689e-6</span>,     <span style="color:#60E">-135.065080035</span>,  <span style="color:#60E">4.768800780</span> },
+      {    <span style="color:#60E">0.000700e-6</span>,    <span style="color:#60E">13367.972631107</span>,  <span style="color:#60E">5.760439898</span> },
+      {    <span style="color:#60E">0.000664e-6</span>,     <span style="color:#60E">6040.347246017</span>,  <span style="color:#60E">1.051215840</span> },
+      {    <span style="color:#60E">0.000654e-6</span>,     <span style="color:#60E">5650.292110678</span>,  <span style="color:#60E">4.911332503</span> },
+      {    <span style="color:#60E">0.000788e-6</span>,     <span style="color:#60E">6681.224853400</span>,  <span style="color:#60E">4.699648011</span> },
+      {    <span style="color:#60E">0.000628e-6</span>,     <span style="color:#60E">5333.900241022</span>,  <span style="color:#60E">5.024608847</span> },
+      {    <span style="color:#60E">0.000755e-6</span>,     <span style="color:#60E">-110.206321219</span>,  <span style="color:#60E">4.370971253</span> },
+      {    <span style="color:#60E">0.000628e-6</span>,     <span style="color:#60E">6290.189396992</span>,  <span style="color:#60E">3.660478857</span> },
+      {    <span style="color:#60E">0.000635e-6</span>,    <span style="color:#60E">25132.303399966</span>,  <span style="color:#60E">4.121051532</span> },
+      {    <span style="color:#60E">0.000534e-6</span>,     <span style="color:#60E">5966.683980335</span>,  <span style="color:#60E">1.173284524</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 571, 580 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000543e-6</span>,     <span style="color:#60E">-433.711737877</span>,  <span style="color:#60E">0.345585464</span> },
+      {    <span style="color:#60E">0.000517e-6</span>,    <span style="color:#60E">-1990.745017041</span>,  <span style="color:#60E">5.414571768</span> },
+      {    <span style="color:#60E">0.000504e-6</span>,     <span style="color:#60E">5767.611978898</span>,  <span style="color:#60E">2.328281115</span> },
+      {    <span style="color:#60E">0.000485e-6</span>,     <span style="color:#60E">5753.384884897</span>,  <span style="color:#60E">1.685874771</span> },
+      {    <span style="color:#60E">0.000463e-6</span>,     <span style="color:#60E">7860.419392439</span>,  <span style="color:#60E">5.297703006</span> },
+      {    <span style="color:#60E">0.000604e-6</span>,      <span style="color:#60E">515.463871093</span>,  <span style="color:#60E">0.591998446</span> },
+      {    <span style="color:#60E">0.000443e-6</span>,    <span style="color:#60E">12168.002696575</span>,  <span style="color:#60E">4.830881244</span> },
+      {    <span style="color:#60E">0.000570e-6</span>,      <span style="color:#60E">199.072001436</span>,  <span style="color:#60E">3.899190272</span> },
+      {    <span style="color:#60E">0.000465e-6</span>,    <span style="color:#60E">10969.965257698</span>,  <span style="color:#60E">0.476681802</span> },
+      {    <span style="color:#60E">0.000424e-6</span>,    <span style="color:#60E">-7079.373856808</span>,  <span style="color:#60E">1.112242763</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 581, 590 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000427e-6</span>,      <span style="color:#60E">735.876513532</span>,  <span style="color:#60E">1.994214480</span> },
+      {    <span style="color:#60E">0.000478e-6</span>,    <span style="color:#60E">-6127.655450557</span>,  <span style="color:#60E">3.778025483</span> },
+      {    <span style="color:#60E">0.000414e-6</span>,    <span style="color:#60E">10973.555686350</span>,  <span style="color:#60E">5.441088327</span> },
+      {    <span style="color:#60E">0.000512e-6</span>,     <span style="color:#60E">1589.072895284</span>,  <span style="color:#60E">0.107123853</span> },
+      {    <span style="color:#60E">0.000378e-6</span>,    <span style="color:#60E">10984.192351700</span>,  <span style="color:#60E">0.915087231</span> },
+      {    <span style="color:#60E">0.000402e-6</span>,    <span style="color:#60E">11371.704689758</span>,  <span style="color:#60E">4.107281715</span> },
+      {    <span style="color:#60E">0.000453e-6</span>,     <span style="color:#60E">9917.696874510</span>,  <span style="color:#60E">1.917490952</span> },
+      {    <span style="color:#60E">0.000395e-6</span>,      <span style="color:#60E">149.563197135</span>,  <span style="color:#60E">2.763124165</span> },
+      {    <span style="color:#60E">0.000371e-6</span>,     <span style="color:#60E">5739.157790895</span>,  <span style="color:#60E">3.112111866</span> },
+      {    <span style="color:#60E">0.000350e-6</span>,    <span style="color:#60E">11790.629088659</span>,  <span style="color:#60E">0.440639857</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 591, 600 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000356e-6</span>,     <span style="color:#60E">6133.512652857</span>,  <span style="color:#60E">5.444568842</span> },
+      {    <span style="color:#60E">0.000344e-6</span>,      <span style="color:#60E">412.371096874</span>,  <span style="color:#60E">5.676832684</span> },
+      {    <span style="color:#60E">0.000383e-6</span>,      <span style="color:#60E">955.599741609</span>,  <span style="color:#60E">5.559734846</span> },
+      {    <span style="color:#60E">0.000333e-6</span>,     <span style="color:#60E">6496.374945429</span>,  <span style="color:#60E">0.261537984</span> },
+      {    <span style="color:#60E">0.000340e-6</span>,     <span style="color:#60E">6055.549660552</span>,  <span style="color:#60E">5.975534987</span> },
+      {    <span style="color:#60E">0.000334e-6</span>,     <span style="color:#60E">1066.495477190</span>,  <span style="color:#60E">2.335063907</span> },
+      {    <span style="color:#60E">0.000399e-6</span>,    <span style="color:#60E">11506.769769794</span>,  <span style="color:#60E">5.321230910</span> },
+      {    <span style="color:#60E">0.000314e-6</span>,    <span style="color:#60E">18319.536584880</span>,  <span style="color:#60E">2.313312404</span> },
+      {    <span style="color:#60E">0.000424e-6</span>,     <span style="color:#60E">1052.268383188</span>,  <span style="color:#60E">1.211961766</span> },
+      {    <span style="color:#60E">0.000307e-6</span>,       <span style="color:#60E">63.735898303</span>,  <span style="color:#60E">3.169551388</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 601, 610 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000329e-6</span>,       <span style="color:#60E">29.821438149</span>,  <span style="color:#60E">6.106912080</span> },
+      {    <span style="color:#60E">0.000357e-6</span>,     <span style="color:#60E">6309.374169791</span>,  <span style="color:#60E">4.223760346</span> },
+      {    <span style="color:#60E">0.000312e-6</span>,    <span style="color:#60E">-3738.761430108</span>,  <span style="color:#60E">2.180556645</span> },
+      {    <span style="color:#60E">0.000301e-6</span>,      <span style="color:#60E">309.278322656</span>,  <span style="color:#60E">1.499984572</span> },
+      {    <span style="color:#60E">0.000268e-6</span>,    <span style="color:#60E">12043.574281889</span>,  <span style="color:#60E">2.447520648</span> },
+      {    <span style="color:#60E">0.000257e-6</span>,    <span style="color:#60E">12491.370101415</span>,  <span style="color:#60E">3.662331761</span> },
+      {    <span style="color:#60E">0.000290e-6</span>,      <span style="color:#60E">625.670192312</span>,  <span style="color:#60E">1.272834584</span> },
+      {    <span style="color:#60E">0.000256e-6</span>,     <span style="color:#60E">5429.879468239</span>,  <span style="color:#60E">1.913426912</span> },
+      {    <span style="color:#60E">0.000339e-6</span>,     <span style="color:#60E">3496.032826134</span>,  <span style="color:#60E">4.165930011</span> },
+      {    <span style="color:#60E">0.000283e-6</span>,     <span style="color:#60E">3930.209696220</span>,  <span style="color:#60E">4.325565754</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 611, 620 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000241e-6</span>,    <span style="color:#60E">12528.018664345</span>,  <span style="color:#60E">3.832324536</span> },
+      {    <span style="color:#60E">0.000304e-6</span>,     <span style="color:#60E">4686.889407707</span>,  <span style="color:#60E">1.612348468</span> },
+      {    <span style="color:#60E">0.000259e-6</span>,    <span style="color:#60E">16200.772724501</span>,  <span style="color:#60E">3.470173146</span> },
+      {    <span style="color:#60E">0.000238e-6</span>,    <span style="color:#60E">12139.553509107</span>,  <span style="color:#60E">1.147977842</span> },
+      {    <span style="color:#60E">0.000236e-6</span>,     <span style="color:#60E">6172.869528772</span>,  <span style="color:#60E">3.776271728</span> },
+      {    <span style="color:#60E">0.000296e-6</span>,    <span style="color:#60E">-7058.598461315</span>,  <span style="color:#60E">0.460368852</span> },
+      {    <span style="color:#60E">0.000306e-6</span>,    <span style="color:#60E">10575.406682942</span>,  <span style="color:#60E">0.554749016</span> },
+      {    <span style="color:#60E">0.000251e-6</span>,    <span style="color:#60E">17298.182327326</span>,  <span style="color:#60E">0.834332510</span> },
+      {    <span style="color:#60E">0.000290e-6</span>,     <span style="color:#60E">4732.030627343</span>,  <span style="color:#60E">4.759564091</span> },
+      {    <span style="color:#60E">0.000261e-6</span>,     <span style="color:#60E">5884.926846583</span>,  <span style="color:#60E">0.298259862</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 621, 630 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000249e-6</span>,     <span style="color:#60E">5547.199336460</span>,  <span style="color:#60E">3.749366406</span> },
+      {    <span style="color:#60E">0.000213e-6</span>,    <span style="color:#60E">11712.955318231</span>,  <span style="color:#60E">5.415666119</span> },
+      {    <span style="color:#60E">0.000223e-6</span>,     <span style="color:#60E">4701.116501708</span>,  <span style="color:#60E">2.703203558</span> },
+      {    <span style="color:#60E">0.000268e-6</span>,     <span style="color:#60E">-640.877607382</span>,  <span style="color:#60E">0.283670793</span> },
+      {    <span style="color:#60E">0.000209e-6</span>,     <span style="color:#60E">5636.065016677</span>,  <span style="color:#60E">1.238477199</span> },
+      {    <span style="color:#60E">0.000193e-6</span>,    <span style="color:#60E">10177.257679534</span>,  <span style="color:#60E">1.943251340</span> },
+      {    <span style="color:#60E">0.000182e-6</span>,     <span style="color:#60E">6283.143160294</span>,  <span style="color:#60E">2.456157599</span> },
+      {    <span style="color:#60E">0.000184e-6</span>,     <span style="color:#60E">-227.526189440</span>,  <span style="color:#60E">5.888038582</span> },
+      {    <span style="color:#60E">0.000182e-6</span>,    <span style="color:#60E">-6283.008539689</span>,  <span style="color:#60E">0.241332086</span> },
+      {    <span style="color:#60E">0.000228e-6</span>,    <span style="color:#60E">-6284.056171060</span>,  <span style="color:#60E">2.657323816</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 631, 640 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000166e-6</span>,     <span style="color:#60E">7238.675591600</span>,  <span style="color:#60E">5.930629110</span> },
+      {    <span style="color:#60E">0.000167e-6</span>,     <span style="color:#60E">3097.883822726</span>,  <span style="color:#60E">5.570955333</span> },
+      {    <span style="color:#60E">0.000159e-6</span>,     <span style="color:#60E">-323.505416657</span>,  <span style="color:#60E">5.786670700</span> },
+      {    <span style="color:#60E">0.000154e-6</span>,    <span style="color:#60E">-4136.910433516</span>,  <span style="color:#60E">1.517805532</span> },
+      {    <span style="color:#60E">0.000176e-6</span>,    <span style="color:#60E">12029.347187887</span>,  <span style="color:#60E">3.139266834</span> },
+      {    <span style="color:#60E">0.000167e-6</span>,    <span style="color:#60E">12132.439962106</span>,  <span style="color:#60E">3.556352289</span> },
+      {    <span style="color:#60E">0.000153e-6</span>,      <span style="color:#60E">202.253395174</span>,  <span style="color:#60E">1.463313961</span> },
+      {    <span style="color:#60E">0.000157e-6</span>,    <span style="color:#60E">17267.268201691</span>,  <span style="color:#60E">1.586837396</span> },
+      {    <span style="color:#60E">0.000142e-6</span>,    <span style="color:#60E">83996.847317911</span>,  <span style="color:#60E">0.022670115</span> },
+      {    <span style="color:#60E">0.000152e-6</span>,    <span style="color:#60E">17260.154654690</span>,  <span style="color:#60E">0.708528947</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 641, 650 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000144e-6</span>,     <span style="color:#60E">6084.003848555</span>,  <span style="color:#60E">5.187075177</span> },
+      {    <span style="color:#60E">0.000135e-6</span>,     <span style="color:#60E">5756.566278634</span>,  <span style="color:#60E">1.993229262</span> },
+      {    <span style="color:#60E">0.000134e-6</span>,     <span style="color:#60E">5750.203491159</span>,  <span style="color:#60E">3.457197134</span> },
+      {    <span style="color:#60E">0.000144e-6</span>,     <span style="color:#60E">5326.786694021</span>,  <span style="color:#60E">6.066193291</span> },
+      {    <span style="color:#60E">0.000160e-6</span>,    <span style="color:#60E">11015.106477335</span>,  <span style="color:#60E">1.710431974</span> },
+      {    <span style="color:#60E">0.000133e-6</span>,     <span style="color:#60E">3634.621024518</span>,  <span style="color:#60E">2.836451652</span> },
+      {    <span style="color:#60E">0.000134e-6</span>,    <span style="color:#60E">18073.704938650</span>,  <span style="color:#60E">5.453106665</span> },
+      {    <span style="color:#60E">0.000134e-6</span>,     <span style="color:#60E">1162.474704408</span>,  <span style="color:#60E">5.326898811</span> },
+      {    <span style="color:#60E">0.000128e-6</span>,     <span style="color:#60E">5642.198242609</span>,  <span style="color:#60E">2.511652591</span> },
+      {    <span style="color:#60E">0.000160e-6</span>,      <span style="color:#60E">632.783739313</span>,  <span style="color:#60E">5.628785365</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 651, 660 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000132e-6</span>,    <span style="color:#60E">13916.019109642</span>,  <span style="color:#60E">0.819294053</span> },
+      {    <span style="color:#60E">0.000122e-6</span>,    <span style="color:#60E">14314.168113050</span>,  <span style="color:#60E">5.677408071</span> },
+      {    <span style="color:#60E">0.000125e-6</span>,    <span style="color:#60E">12359.966151546</span>,  <span style="color:#60E">5.251984735</span> },
+      {    <span style="color:#60E">0.000121e-6</span>,     <span style="color:#60E">5749.452731634</span>,  <span style="color:#60E">2.210924603</span> },
+      {    <span style="color:#60E">0.000136e-6</span>,     <span style="color:#60E">-245.831646229</span>,  <span style="color:#60E">1.646502367</span> },
+      {    <span style="color:#60E">0.000120e-6</span>,     <span style="color:#60E">5757.317038160</span>,  <span style="color:#60E">3.240883049</span> },
+      {    <span style="color:#60E">0.000134e-6</span>,    <span style="color:#60E">12146.667056108</span>,  <span style="color:#60E">3.059480037</span> },
+      {    <span style="color:#60E">0.000137e-6</span>,     <span style="color:#60E">6206.809778716</span>,  <span style="color:#60E">1.867105418</span> },
+      {    <span style="color:#60E">0.000141e-6</span>,    <span style="color:#60E">17253.041107690</span>,  <span style="color:#60E">2.069217456</span> },
+      {    <span style="color:#60E">0.000129e-6</span>,    <span style="color:#60E">-7477.522860216</span>,  <span style="color:#60E">2.781469314</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 661, 670 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000116e-6</span>,     <span style="color:#60E">5540.085789459</span>,  <span style="color:#60E">4.281176991</span> },
+      {    <span style="color:#60E">0.000116e-6</span>,     <span style="color:#60E">9779.108676125</span>,  <span style="color:#60E">3.320925381</span> },
+      {    <span style="color:#60E">0.000129e-6</span>,     <span style="color:#60E">5237.921013804</span>,  <span style="color:#60E">3.497704076</span> },
+      {    <span style="color:#60E">0.000113e-6</span>,     <span style="color:#60E">5959.570433334</span>,  <span style="color:#60E">0.983210840</span> },
+      {    <span style="color:#60E">0.000122e-6</span>,     <span style="color:#60E">6282.095528923</span>,  <span style="color:#60E">2.674938860</span> },
+      {    <span style="color:#60E">0.000140e-6</span>,      <span style="color:#60E">-11.045700264</span>,  <span style="color:#60E">4.957936982</span> },
+      {    <span style="color:#60E">0.000108e-6</span>,    <span style="color:#60E">23543.230504682</span>,  <span style="color:#60E">1.390113589</span> },
+      {    <span style="color:#60E">0.000106e-6</span>,   <span style="color:#60E">-12569.674818332</span>,  <span style="color:#60E">0.429631317</span> },
+      {    <span style="color:#60E">0.000110e-6</span>,     <span style="color:#60E">-266.607041722</span>,  <span style="color:#60E">5.501340197</span> },
+      {    <span style="color:#60E">0.000115e-6</span>,    <span style="color:#60E">12559.038152982</span>,  <span style="color:#60E">4.691456618</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 671, 680 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000134e-6</span>,    <span style="color:#60E">-2388.894020449</span>,  <span style="color:#60E">0.577313584</span> },
+      {    <span style="color:#60E">0.000109e-6</span>,    <span style="color:#60E">10440.274292604</span>,  <span style="color:#60E">6.218148717</span> },
+      {    <span style="color:#60E">0.000102e-6</span>,     <span style="color:#60E">-543.918059096</span>,  <span style="color:#60E">1.477842615</span> },
+      {    <span style="color:#60E">0.000108e-6</span>,    <span style="color:#60E">21228.392023546</span>,  <span style="color:#60E">2.237753948</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,    <span style="color:#60E">-4535.059436924</span>,  <span style="color:#60E">3.100492232</span> },
+      {    <span style="color:#60E">0.000103e-6</span>,       <span style="color:#60E">76.266071276</span>,  <span style="color:#60E">5.594294322</span> },
+      {    <span style="color:#60E">0.000104e-6</span>,      <span style="color:#60E">949.175608970</span>,  <span style="color:#60E">5.674287810</span> },
+      {    <span style="color:#60E">0.000101e-6</span>,    <span style="color:#60E">13517.870106233</span>,  <span style="color:#60E">2.196632348</span> },
+      {    <span style="color:#60E">0.000100e-6</span>,    <span style="color:#60E">11933.367960670</span>,  <span style="color:#60E">4.056084160</span> },
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T^2 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">4.322990e-6</span>,     <span style="color:#60E">6283.075849991</span>,  <span style="color:#60E">2.642893748</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 681, 690 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.406495e-6</span>,        <span style="color:#60E">0.000000000</span>,  <span style="color:#60E">4.712388980</span> },
+      {    <span style="color:#60E">0.122605e-6</span>,    <span style="color:#60E">12566.151699983</span>,  <span style="color:#60E">2.438140634</span> },
+      {    <span style="color:#60E">0.019476e-6</span>,      <span style="color:#60E">213.299095438</span>,  <span style="color:#60E">1.642186981</span> },
+      {    <span style="color:#60E">0.016916e-6</span>,      <span style="color:#60E">529.690965095</span>,  <span style="color:#60E">4.510959344</span> },
+      {    <span style="color:#60E">0.013374e-6</span>,       <span style="color:#60E">-3.523118349</span>,  <span style="color:#60E">1.502210314</span> },
+      {    <span style="color:#60E">0.008042e-6</span>,       <span style="color:#60E">26.298319800</span>,  <span style="color:#60E">0.478549024</span> },
+      {    <span style="color:#60E">0.007824e-6</span>,      <span style="color:#60E">155.420399434</span>,  <span style="color:#60E">5.254710405</span> },
+      {    <span style="color:#60E">0.004894e-6</span>,     <span style="color:#60E">5746.271337896</span>,  <span style="color:#60E">4.683210850</span> },
+      {    <span style="color:#60E">0.004875e-6</span>,     <span style="color:#60E">5760.498431898</span>,  <span style="color:#60E">0.759507698</span> },
+      {    <span style="color:#60E">0.004416e-6</span>,     <span style="color:#60E">5223.693919802</span>,  <span style="color:#60E">6.028853166</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 691, 700 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.004088e-6</span>,       <span style="color:#60E">-7.113547001</span>,  <span style="color:#60E">0.060926389</span> },
+      {    <span style="color:#60E">0.004433e-6</span>,    <span style="color:#60E">77713.771467920</span>,  <span style="color:#60E">3.627734103</span> },
+      {    <span style="color:#60E">0.003277e-6</span>,    <span style="color:#60E">18849.227549974</span>,  <span style="color:#60E">2.327912542</span> },
+      {    <span style="color:#60E">0.002703e-6</span>,     <span style="color:#60E">6062.663207553</span>,  <span style="color:#60E">1.271941729</span> },
+      {    <span style="color:#60E">0.003435e-6</span>,     <span style="color:#60E">-775.522611324</span>,  <span style="color:#60E">0.747446224</span> },
+      {    <span style="color:#60E">0.002618e-6</span>,     <span style="color:#60E">6076.890301554</span>,  <span style="color:#60E">3.633715689</span> },
+      {    <span style="color:#60E">0.003146e-6</span>,      <span style="color:#60E">206.185548437</span>,  <span style="color:#60E">5.647874613</span> },
+      {    <span style="color:#60E">0.002544e-6</span>,     <span style="color:#60E">1577.343542448</span>,  <span style="color:#60E">6.232904270</span> },
+      {    <span style="color:#60E">0.002218e-6</span>,     <span style="color:#60E">-220.412642439</span>,  <span style="color:#60E">1.309509946</span> },
+      {    <span style="color:#60E">0.002197e-6</span>,     <span style="color:#60E">5856.477659115</span>,  <span style="color:#60E">2.407212349</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 701, 710 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.002897e-6</span>,     <span style="color:#60E">5753.384884897</span>,  <span style="color:#60E">5.863842246</span> },
+      {    <span style="color:#60E">0.001766e-6</span>,      <span style="color:#60E">426.598190876</span>,  <span style="color:#60E">0.754113147</span> },
+      {    <span style="color:#60E">0.001738e-6</span>,     <span style="color:#60E">-796.298006816</span>,  <span style="color:#60E">2.714942671</span> },
+      {    <span style="color:#60E">0.001695e-6</span>,      <span style="color:#60E">522.577418094</span>,  <span style="color:#60E">2.629369842</span> },
+      {    <span style="color:#60E">0.001584e-6</span>,     <span style="color:#60E">5507.553238667</span>,  <span style="color:#60E">1.341138229</span> },
+      {    <span style="color:#60E">0.001503e-6</span>,     <span style="color:#60E">-242.728603974</span>,  <span style="color:#60E">0.377699736</span> },
+      {    <span style="color:#60E">0.001552e-6</span>,     <span style="color:#60E">-536.804512095</span>,  <span style="color:#60E">2.904684667</span> },
+      {    <span style="color:#60E">0.001370e-6</span>,     <span style="color:#60E">-398.149003408</span>,  <span style="color:#60E">1.265599125</span> },
+      {    <span style="color:#60E">0.001889e-6</span>,    <span style="color:#60E">-5573.142801634</span>,  <span style="color:#60E">4.413514859</span> },
+      {    <span style="color:#60E">0.001722e-6</span>,     <span style="color:#60E">6069.776754553</span>,  <span style="color:#60E">2.445966339</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 711, 720 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.001124e-6</span>,     <span style="color:#60E">1059.381930189</span>,  <span style="color:#60E">5.041799657</span> },
+      {    <span style="color:#60E">0.001258e-6</span>,      <span style="color:#60E">553.569402842</span>,  <span style="color:#60E">3.849557278</span> },
+      {    <span style="color:#60E">0.000831e-6</span>,      <span style="color:#60E">951.718406251</span>,  <span style="color:#60E">2.471094709</span> },
+      {    <span style="color:#60E">0.000767e-6</span>,     <span style="color:#60E">4694.002954708</span>,  <span style="color:#60E">5.363125422</span> },
+      {    <span style="color:#60E">0.000756e-6</span>,     <span style="color:#60E">1349.867409659</span>,  <span style="color:#60E">1.046195744</span> },
+      {    <span style="color:#60E">0.000775e-6</span>,      <span style="color:#60E">-11.045700264</span>,  <span style="color:#60E">0.245548001</span> },
+      {    <span style="color:#60E">0.000597e-6</span>,     <span style="color:#60E">2146.165416475</span>,  <span style="color:#60E">4.543268798</span> },
+      {    <span style="color:#60E">0.000568e-6</span>,     <span style="color:#60E">5216.580372801</span>,  <span style="color:#60E">4.178853144</span> },
+      {    <span style="color:#60E">0.000711e-6</span>,     <span style="color:#60E">1748.016413067</span>,  <span style="color:#60E">5.934271972</span> },
+      {    <span style="color:#60E">0.000499e-6</span>,    <span style="color:#60E">12036.460734888</span>,  <span style="color:#60E">0.624434410</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 721, 730 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000671e-6</span>,    <span style="color:#60E">-1194.447010225</span>,  <span style="color:#60E">4.136047594</span> },
+      {    <span style="color:#60E">0.000488e-6</span>,     <span style="color:#60E">5849.364112115</span>,  <span style="color:#60E">2.209679987</span> },
+      {    <span style="color:#60E">0.000621e-6</span>,     <span style="color:#60E">6438.496249426</span>,  <span style="color:#60E">4.518860804</span> },
+      {    <span style="color:#60E">0.000495e-6</span>,    <span style="color:#60E">-6286.598968340</span>,  <span style="color:#60E">1.868201275</span> },
+      {    <span style="color:#60E">0.000456e-6</span>,     <span style="color:#60E">5230.807466803</span>,  <span style="color:#60E">1.271231591</span> },
+      {    <span style="color:#60E">0.000451e-6</span>,     <span style="color:#60E">5088.628839767</span>,  <span style="color:#60E">0.084060889</span> },
+      {    <span style="color:#60E">0.000435e-6</span>,     <span style="color:#60E">5643.178563677</span>,  <span style="color:#60E">3.324456609</span> },
+      {    <span style="color:#60E">0.000387e-6</span>,    <span style="color:#60E">10977.078804699</span>,  <span style="color:#60E">4.052488477</span> },
+      {    <span style="color:#60E">0.000547e-6</span>,   <span style="color:#60E">161000.685737473</span>,  <span style="color:#60E">2.841633844</span> },
+      {    <span style="color:#60E">0.000522e-6</span>,     <span style="color:#60E">3154.687084896</span>,  <span style="color:#60E">2.171979966</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 731, 740 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000375e-6</span>,     <span style="color:#60E">5486.777843175</span>,  <span style="color:#60E">4.983027306</span> },
+      {    <span style="color:#60E">0.000421e-6</span>,     <span style="color:#60E">5863.591206116</span>,  <span style="color:#60E">4.546432249</span> },
+      {    <span style="color:#60E">0.000439e-6</span>,     <span style="color:#60E">7084.896781115</span>,  <span style="color:#60E">0.522967921</span> },
+      {    <span style="color:#60E">0.000309e-6</span>,     <span style="color:#60E">2544.314419883</span>,  <span style="color:#60E">3.172606705</span> },
+      {    <span style="color:#60E">0.000347e-6</span>,     <span style="color:#60E">4690.479836359</span>,  <span style="color:#60E">1.479586566</span> },
+      {    <span style="color:#60E">0.000317e-6</span>,      <span style="color:#60E">801.820931124</span>,  <span style="color:#60E">3.553088096</span> },
+      {    <span style="color:#60E">0.000262e-6</span>,      <span style="color:#60E">419.484643875</span>,  <span style="color:#60E">0.606635550</span> },
+      {    <span style="color:#60E">0.000248e-6</span>,     <span style="color:#60E">6836.645252834</span>,  <span style="color:#60E">3.014082064</span> },
+      {    <span style="color:#60E">0.000245e-6</span>,    <span style="color:#60E">-1592.596013633</span>,  <span style="color:#60E">5.519526220</span> },
+      {    <span style="color:#60E">0.000225e-6</span>,     <span style="color:#60E">4292.330832950</span>,  <span style="color:#60E">2.877956536</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 741, 750 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000214e-6</span>,     <span style="color:#60E">7234.794256242</span>,  <span style="color:#60E">1.605227587</span> },
+      {    <span style="color:#60E">0.000205e-6</span>,     <span style="color:#60E">5767.611978898</span>,  <span style="color:#60E">0.625804796</span> },
+      {    <span style="color:#60E">0.000180e-6</span>,    <span style="color:#60E">10447.387839604</span>,  <span style="color:#60E">3.499954526</span> },
+      {    <span style="color:#60E">0.000229e-6</span>,      <span style="color:#60E">199.072001436</span>,  <span style="color:#60E">5.632304604</span> },
+      {    <span style="color:#60E">0.000214e-6</span>,      <span style="color:#60E">639.897286314</span>,  <span style="color:#60E">5.960227667</span> },
+      {    <span style="color:#60E">0.000175e-6</span>,     <span style="color:#60E">-433.711737877</span>,  <span style="color:#60E">2.162417992</span> },
+      {    <span style="color:#60E">0.000209e-6</span>,      <span style="color:#60E">515.463871093</span>,  <span style="color:#60E">2.322150893</span> },
+      {    <span style="color:#60E">0.000173e-6</span>,     <span style="color:#60E">6040.347246017</span>,  <span style="color:#60E">2.556183691</span> },
+      {    <span style="color:#60E">0.000184e-6</span>,     <span style="color:#60E">6309.374169791</span>,  <span style="color:#60E">4.732296790</span> },
+      {    <span style="color:#60E">0.000227e-6</span>,   <span style="color:#60E">149854.400134205</span>,  <span style="color:#60E">5.385812217</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 751, 760 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000154e-6</span>,     <span style="color:#60E">8031.092263058</span>,  <span style="color:#60E">5.120720920</span> },
+      {    <span style="color:#60E">0.000151e-6</span>,     <span style="color:#60E">5739.157790895</span>,  <span style="color:#60E">4.815000443</span> },
+      {    <span style="color:#60E">0.000197e-6</span>,     <span style="color:#60E">7632.943259650</span>,  <span style="color:#60E">0.222827271</span> },
+      {    <span style="color:#60E">0.000197e-6</span>,       <span style="color:#60E">74.781598567</span>,  <span style="color:#60E">3.910456770</span> },
+      {    <span style="color:#60E">0.000138e-6</span>,     <span style="color:#60E">6055.549660552</span>,  <span style="color:#60E">1.397484253</span> },
+      {    <span style="color:#60E">0.000149e-6</span>,    <span style="color:#60E">-6127.655450557</span>,  <span style="color:#60E">5.333727496</span> },
+      {    <span style="color:#60E">0.000137e-6</span>,     <span style="color:#60E">3894.181829542</span>,  <span style="color:#60E">4.281749907</span> },
+      {    <span style="color:#60E">0.000135e-6</span>,     <span style="color:#60E">9437.762934887</span>,  <span style="color:#60E">5.979971885</span> },
+      {    <span style="color:#60E">0.000139e-6</span>,    <span style="color:#60E">-2352.866153772</span>,  <span style="color:#60E">4.715630782</span> },
+      {    <span style="color:#60E">0.000142e-6</span>,     <span style="color:#60E">6812.766815086</span>,  <span style="color:#60E">0.513330157</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 761, 770 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000120e-6</span>,    <span style="color:#60E">-4705.732307544</span>,  <span style="color:#60E">0.194160689</span> },
+      {    <span style="color:#60E">0.000131e-6</span>,   <span style="color:#60E">-71430.695617928</span>,  <span style="color:#60E">0.000379226</span> },
+      {    <span style="color:#60E">0.000124e-6</span>,     <span style="color:#60E">6279.552731642</span>,  <span style="color:#60E">2.122264908</span> },
+      {    <span style="color:#60E">0.000108e-6</span>,    <span style="color:#60E">-6256.777530192</span>,  <span style="color:#60E">0.883445696</span> },
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T^3 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.143388e-6</span>,     <span style="color:#60E">6283.075849991</span>,  <span style="color:#60E">1.131453581</span> },
+      {    <span style="color:#60E">0.006671e-6</span>,    <span style="color:#60E">12566.151699983</span>,  <span style="color:#60E">0.775148887</span> },
+      {    <span style="color:#60E">0.001480e-6</span>,      <span style="color:#60E">155.420399434</span>,  <span style="color:#60E">0.480016880</span> },
+      {    <span style="color:#60E">0.000934e-6</span>,      <span style="color:#60E">213.299095438</span>,  <span style="color:#60E">6.144453084</span> },
+      {    <span style="color:#60E">0.000795e-6</span>,      <span style="color:#60E">529.690965095</span>,  <span style="color:#60E">2.941595619</span> },
+      {    <span style="color:#60E">0.000673e-6</span>,     <span style="color:#60E">5746.271337896</span>,  <span style="color:#60E">0.120415406</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 771, 780 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000672e-6</span>,     <span style="color:#60E">5760.498431898</span>,  <span style="color:#60E">5.317009738</span> },
+      {    <span style="color:#60E">0.000389e-6</span>,     <span style="color:#60E">-220.412642439</span>,  <span style="color:#60E">3.090323467</span> },
+      {    <span style="color:#60E">0.000373e-6</span>,     <span style="color:#60E">6062.663207553</span>,  <span style="color:#60E">3.003551964</span> },
+      {    <span style="color:#60E">0.000360e-6</span>,     <span style="color:#60E">6076.890301554</span>,  <span style="color:#60E">1.918913041</span> },
+      {    <span style="color:#60E">0.000316e-6</span>,      <span style="color:#60E">-21.340641002</span>,  <span style="color:#60E">5.545798121</span> },
+      {    <span style="color:#60E">0.000315e-6</span>,     <span style="color:#60E">-242.728603974</span>,  <span style="color:#60E">1.884932563</span> },
+      {    <span style="color:#60E">0.000278e-6</span>,      <span style="color:#60E">206.185548437</span>,  <span style="color:#60E">1.266254859</span> },
+      {    <span style="color:#60E">0.000238e-6</span>,     <span style="color:#60E">-536.804512095</span>,  <span style="color:#60E">4.532664830</span> },
+      {    <span style="color:#60E">0.000185e-6</span>,      <span style="color:#60E">522.577418094</span>,  <span style="color:#60E">4.578313856</span> },
+      {    <span style="color:#60E">0.000245e-6</span>,    <span style="color:#60E">18849.227549974</span>,  <span style="color:#60E">0.587467082</span> },
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* 781, 787 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.000180e-6</span>,      <span style="color:#60E">426.598190876</span>,  <span style="color:#60E">5.151178553</span> },
+      {    <span style="color:#60E">0.000200e-6</span>,      <span style="color:#60E">553.569402842</span>,  <span style="color:#60E">5.355983739</span> },
+      {    <span style="color:#60E">0.000141e-6</span>,     <span style="color:#60E">5223.693919802</span>,  <span style="color:#60E">1.336556009</span> },
+      {    <span style="color:#60E">0.000104e-6</span>,     <span style="color:#60E">5856.477659115</span>,  <span style="color:#60E">4.239842759</span> },
+
+   <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T^4 *</span><span style="color:#404">/</span></span>
+      {    <span style="color:#60E">0.003826e-6</span>,     <span style="color:#60E">6283.075849991</span>,  <span style="color:#60E">5.705257275</span> },
+      {    <span style="color:#60E">0.000303e-6</span>,    <span style="color:#60E">12566.151699983</span>,  <span style="color:#60E">5.407132842</span> },
+      {    <span style="color:#60E">0.000209e-6</span>,      <span style="color:#60E">155.420399434</span>,  <span style="color:#60E">1.989815753</span> }
+   };
+
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Time since J2000.0 in Julian millennia. *</span><span style="color:#404">/</span></span>
+   t = ((date1 - <span style="color:#036;font-weight:bold">DJ00</span>) + date2) / <span style="color:#036;font-weight:bold">DJM</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ================= *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Topocentric terms *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ================= *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Convert UT to local solar time in radians. *</span><span style="color:#404">/</span></span>
+   tsol = fmod(ut, <span style="color:#60E">1.0</span>) * <span style="color:#036;font-weight:bold">D2PI</span> + elong;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* FUNDAMENTAL ARGUMENTS:  Simon et al. 1994. *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Combine time argument (millennia) with deg</span><span style="color:#404">/</span></span>arcsec factor. */
+   w = t / <span style="color:#60E">3600.0</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Sun Mean Longitude. *</span><span style="color:#404">/</span></span>
+   elsun = fmod(<span style="color:#60E">280.46645683</span> + <span style="color:#60E">1296027711.03429</span> * w, <span style="color:#60E">360.0</span>) * <span style="color:#036;font-weight:bold">DD2R</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Sun Mean Anomaly. *</span><span style="color:#404">/</span></span>
+   emsun = fmod(<span style="color:#60E">357.52910918</span> + <span style="color:#60E">1295965810.481</span> * w, <span style="color:#60E">360.0</span>) * <span style="color:#036;font-weight:bold">DD2R</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean Elongation of Moon from Sun. *</span><span style="color:#404">/</span></span>
+   d = fmod(<span style="color:#60E">297.85019547</span> + <span style="color:#60E">16029616012.090</span> * w, <span style="color:#60E">360.0</span>) * <span style="color:#036;font-weight:bold">DD2R</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean Longitude of Jupiter. *</span><span style="color:#404">/</span></span>
+   elj = fmod(<span style="color:#60E">34.35151874</span> + <span style="color:#60E">109306899.89453</span> * w, <span style="color:#60E">360.0</span>) * <span style="color:#036;font-weight:bold">DD2R</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Mean Longitude of Saturn. *</span><span style="color:#404">/</span></span>
+   els = fmod(<span style="color:#60E">50.07744430</span> + <span style="color:#60E">44046398.47038</span> * w, <span style="color:#60E">360.0</span>) * <span style="color:#036;font-weight:bold">DD2R</span>;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* TOPOCENTRIC TERMS:  Moyer 1981 and Murray 1983. *</span><span style="color:#404">/</span></span>
+   wt =   +  <span style="color:#60E">0.00029e-10</span> * u * sin(tsol + elsun - els)
+          +  <span style="color:#60E">0.00100e-10</span> * u * sin(tsol - <span style="color:#60E">2.0</span> * emsun)
+          +  <span style="color:#60E">0.00133e-10</span> * u * sin(tsol - d)
+          +  <span style="color:#60E">0.00133e-10</span> * u * sin(tsol + elsun - elj)
+          -  <span style="color:#60E">0.00229e-10</span> * u * sin(tsol + <span style="color:#60E">2.0</span> * elsun + emsun)
+          -  <span style="color:#60E">0.02200e-10</span> * v * cos(elsun + emsun)
+          +  <span style="color:#60E">0.05312e-10</span> * u * sin(tsol - emsun)
+          -  <span style="color:#60E">0.13677e-10</span> * u * sin(tsol + <span style="color:#60E">2.0</span> * elsun)
+          -  <span style="color:#60E">1.31840e-10</span> * v * cos(elsun)
+          +  <span style="color:#60E">3.17679e-10</span> * u * sin(tsol);
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ===================== *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Fairhead et al. model *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ===================== *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T**0 *</span><span style="color:#404">/</span></span>
+   w0 = <span style="color:#00D">0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">473</span>; j &gt;= <span style="color:#00D">0</span>; j--) {
+      w0 += fairhd[j][<span style="color:#00D">0</span>] * sin(fairhd[j][<span style="color:#00D">1</span>] * t + fairhd[j][<span style="color:#00D">2</span>]);
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T**1 *</span><span style="color:#404">/</span></span>
+   w1 = <span style="color:#00D">0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">678</span>; j &gt;= <span style="color:#00D">474</span>; j--) {
+      w1 += fairhd[j][<span style="color:#00D">0</span>] * sin(fairhd[j][<span style="color:#00D">1</span>] * t + fairhd[j][<span style="color:#00D">2</span>]);
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T**2 *</span><span style="color:#404">/</span></span>
+   w2 = <span style="color:#00D">0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">763</span>; j &gt;= <span style="color:#00D">679</span>; j--) {
+      w2 += fairhd[j][<span style="color:#00D">0</span>] * sin(fairhd[j][<span style="color:#00D">1</span>] * t + fairhd[j][<span style="color:#00D">2</span>]);
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T**3 *</span><span style="color:#404">/</span></span>
+   w3 = <span style="color:#00D">0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">783</span>; j &gt;= <span style="color:#00D">764</span>; j--) {
+      w3 += fairhd[j][<span style="color:#00D">0</span>] * sin(fairhd[j][<span style="color:#00D">1</span>] * t + fairhd[j][<span style="color:#00D">2</span>]);
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* T**4 *</span><span style="color:#404">/</span></span>
+   w4 = <span style="color:#00D">0</span>;
+   <span style="color:#080;font-weight:bold">for</span> (j = <span style="color:#00D">786</span>; j &gt;= <span style="color:#00D">784</span>; j--) {
+      w4 += fairhd[j][<span style="color:#00D">0</span>] * sin(fairhd[j][<span style="color:#00D">1</span>] * t + fairhd[j][<span style="color:#00D">2</span>]);
+   }
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Multiply by powers of T and combine. *</span><span style="color:#404">/</span></span>
+   wf = t * (t * (t * (t * w4 + w3) + w2) + w1) + w0;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Adjustments to use JPL planetary masses instead of IAU. *</span><span style="color:#404">/</span></span>
+   wj =   <span style="color:#60E">0.00065e-6</span> * sin(<span style="color:#60E">6069.776754</span> * t + <span style="color:#60E">4.021194</span>) +
+          <span style="color:#60E">0.00033e-6</span> * sin( <span style="color:#60E">213.299095</span> * t + <span style="color:#60E">5.543132</span>) +
+        (<span style="color:#60E">-0.00196e-6</span> * sin(<span style="color:#60E">6208.294251</span> * t + <span style="color:#60E">5.696701</span>)) +
+        (<span style="color:#60E">-0.00173e-6</span> * sin(  <span style="color:#60E">74.781599</span> * t + <span style="color:#60E">2.435900</span>)) +
+          <span style="color:#60E">0.03638e-6</span> * t * t;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ============ *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* Final result *</span><span style="color:#404">/</span></span>
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* ============ *</span><span style="color:#404">/</span></span>
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">* TDB-TT in seconds. *</span><span style="color:#404">/</span></span>
+   w = wt + wf + wj;
+
+   <span style="color:#080;font-weight:bold">return</span> w;
+
+<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">*----------------------------------------------------------------------
+**
+**  Celes is a wrapper of the SOFA Library for Ruby.
+**
+**  This file is redistributed and relicensed in accordance with 
+**  the SOFA Software License (http:</span><span style="color:#404">/</span></span>/www.iausofa.org/tandc.html).
+**
+**  <span style="color:#036;font-weight:bold">The</span> original library is available from <span style="color:#036;font-weight:bold">IAU</span> <span style="color:#036;font-weight:bold">Standards</span> of
+**  <span style="color:#036;font-weight:bold">Fundamental</span> <span style="color:#036;font-weight:bold">Astronomy</span> (<span style="color:#606">http</span>:<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#404">/</span></span>www.iausofa.org/).
+**
+**
+**
+**
+**
+**  <span style="color:#036;font-weight:bold">Copyright</span> (<span style="color:#036;font-weight:bold">C</span>) <span style="color:#00D">2013</span>, <span style="color:#036;font-weight:bold">Naoki</span> <span style="color:#036;font-weight:bold">Arita</span>
+**  <span style="color:#036;font-weight:bold">All</span> rights reserved.
+**
+**  <span style="color:#036;font-weight:bold">Redistribution</span> <span style="color:#080;font-weight:bold">and</span> use <span style="color:#080;font-weight:bold">in</span> source <span style="color:#080;font-weight:bold">and</span> binary forms, with <span style="color:#080;font-weight:bold">or</span> without
+**  modification, are permitted provided that the following conditions
+**  are <span style="color:#606">met</span>:
+**
+**  <span style="color:#00D">1</span> <span style="color:#036;font-weight:bold">Redistributions</span> of source code must retain the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer.
+**
+**  <span style="color:#00D">2</span> <span style="color:#036;font-weight:bold">Redistributions</span> <span style="color:#080;font-weight:bold">in</span> binary form must reproduce the above copyright
+**    notice, this list of conditions <span style="color:#080;font-weight:bold">and</span> the following disclaimer <span style="color:#080;font-weight:bold">in</span>
+**    the documentation <span style="color:#080;font-weight:bold">and</span><span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">or other materials provided with the
+**    distribution.
+**
+**  3 Neither the name of the Standards Of Fundamental Astronomy Board,
+**    the International Astronomical Union nor the names of its
+**    contributors may be used to endorse or promote products derived
+**    from this software without specific prior written permission.
+**
+**  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+**  &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+**  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+**  FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+**  COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+**  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+**  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+**  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+**  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+**  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+**  ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+**  POSSIBILITY OF SUCH DAMAGE.
+**
+**--------------------------------------------------------------------*</span><span style="color:#404">/</span></span>
+}
+
+</pre></div>
+</div>
+</div>
+
+    </div>
+  </body>
+</html>

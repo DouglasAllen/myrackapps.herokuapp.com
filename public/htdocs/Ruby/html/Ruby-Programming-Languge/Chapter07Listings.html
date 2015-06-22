@@ -1,0 +1,1518 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <h1 id="the-ruby-programming-language">The Ruby Programming Language</h1>
+
+<h2 id="chapter-7">CHAPTER 7</h2>
+
+<h3 id="classes-and-modules">Classes and Modules</h3>
+
+<h4 id="creating-the-class">7.1.1 Creating the Class</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="instantiating-a-point">7.1.2 Instantiating a Point</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>p = <span style="color:#036;font-weight:bold">Point</span>.new
+<span style="color:#777">###########################</span>
+p.class       <span style="color:#777"># =&gt; Point</span>
+p.is_a? <span style="color:#036;font-weight:bold">Point</span> <span style="color:#777"># =&gt; true</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="initializing-a-point">7.1.3 Initializing a Point</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Incorrect code!</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#33B">@x</span> = <span style="color:#00D">0</span>   <span style="color:#777"># Create instance variable @x and assign a default. WRONG!</span>
+  <span style="color:#33B">@y</span> = <span style="color:#00D">0</span>   <span style="color:#777"># Create instance variable @y and assign a default. WRONG!</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y   <span style="color:#777"># Now initialize previously created @x and @y.</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-a-tos-method">7.1.4 Defining a to_s Method</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>        <span style="color:#777"># Return a String that represents this point</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#666">#</span><span style="color:#33B">@x</span><span style="color:#D20">,</span><span style="color:#666">#</span><span style="color:#33B">@y</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>   <span style="color:#777"># Just interpolate the instance variables into a string</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p = new Point(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)   <span style="color:#777"># Create a new Point object</span>
+puts p               <span style="color:#777"># Displays &quot;(1,2)&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="accessors-and-attributes">7.1.5 Accessors and Attributes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>           <span style="color:#777"># The accessor (or getter) method for @x</span>
+    <span style="color:#33B">@x</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">y</span>           <span style="color:#777"># The accessor method for @y</span>
+    <span style="color:#33B">@y</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)
+q = <span style="color:#036;font-weight:bold">Point</span>.new(p.x*<span style="color:#00D">2</span>, p.y*<span style="color:#00D">3</span>)
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">MutablePoint</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y); <span style="color:#33B">@x</span>, <span style="color:#33B">@y</span> = x, y; <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>; <span style="color:#33B">@x</span>; <span style="color:#080;font-weight:bold">end</span>       <span style="color:#777"># The getter method for @x</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">y</span>; <span style="color:#33B">@y</span>; <span style="color:#080;font-weight:bold">end</span>       <span style="color:#777"># The getter method for @y</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x=</span>(value)        <span style="color:#777"># The setter method for @x</span>
+    <span style="color:#33B">@x</span> = value
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">y=</span>(value)        <span style="color:#777"># The setter method for @y</span>
+    <span style="color:#33B">@y</span> = value
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">1</span>)
+p.x = <span style="color:#00D">0</span>
+p.y = <span style="color:#00D">0</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attr_accessor <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span> <span style="color:#777"># Define accessor methods for our instance variables</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>  <span style="color:#777"># Define reader methods for our instance variables</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+attr_reader <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">y</span><span style="color:#710">&quot;</span></span>
+<span style="color:#777">###########################</span>
+attr <span style="color:#A60">:x</span>        <span style="color:#777"># Define a trivial getter method x for @x</span>
+attr <span style="color:#A60">:y</span>, <span style="color:#069">true</span>  <span style="color:#777"># Define getter and setter methods for @y</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="defining-operators">7.1.6 Defining Operators</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>   <span style="color:#777"># Define accessor methods for our instance variables</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x, y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)         <span style="color:#777"># Define + to do vector addition</span>
+    <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#33B">@x</span> + other.x, <span style="color:#33B">@y</span> + other.y)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">-@</span>               <span style="color:#777"># Define unary minus to negate both coordinates</span>
+    <span style="color:#036;font-weight:bold">Point</span>.new(-<span style="color:#33B">@x</span>, -<span style="color:#33B">@y</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">*</span>(scalar)        <span style="color:#777"># Define * to perform scalar multiplication</span>
+    <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#33B">@x</span>*scalar, <span style="color:#33B">@y</span>*scalar)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#606">NoMethodError</span>: undefined method <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">for</span> <span style="color:#00D">3</span><span style="color:#A60">:Fixnum</span>
+        from ./point.rb:<span style="color:#00D">37</span><span style="color:#A60">:in</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">+</span><span style="color:#710">'</span></span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)
+  raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Point argument expected</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> other.is_a? <span style="color:#036;font-weight:bold">Point</span>
+  <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#33B">@x</span> + other.x, <span style="color:#33B">@y</span> + other.y)
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)
+  raise <span style="color:#036;font-weight:bold">TypeError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Point-like argument expected</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span>
+    other.respond_to? <span style="color:#A60">:x</span> <span style="color:#080;font-weight:bold">and</span> other.respond_to? <span style="color:#A60">:y</span>
+  <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#33B">@x</span> + other.x, <span style="color:#33B">@y</span> + other.y)
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)         <span style="color:#777"># Assume that other looks like a Point</span>
+  <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#33B">@x</span> + other.x, <span style="color:#33B">@y</span> + other.y)
+<span style="color:#080;font-weight:bold">rescue</span>               <span style="color:#777"># If anything goes wrong above</span>
+  raise <span style="color:#036;font-weight:bold">TypeError</span>,   <span style="color:#777"># Then raise our own exception</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Point addition with an argument that does not quack like a Point!</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># If we try passing a Point to the * method of an Integer, it will call</span>
+<span style="color:#777"># this method on the Point and then will try to multiply the elements of </span>
+<span style="color:#777"># the array. Instead of doing type conversion, we switch the order of</span>
+<span style="color:#777"># the operands, so that we invoke the * method defined above.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">coerce</span>(other)
+  [<span style="color:#069">self</span>, other]
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="array-and-hash-access-with--">7.1.7 Array and Hash Access with [ ]</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Define [] method to allow a Point to look like an array or</span>
+<span style="color:#777"># a hash with keys :x and :y</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">[]</span>(index)
+  <span style="color:#080;font-weight:bold">case</span> index
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span>, <span style="color:#00D">-2</span>: <span style="color:#33B">@x</span>         <span style="color:#777"># Index 0 (or -2) is the X coordinate</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span>, <span style="color:#00D">-1</span>: <span style="color:#33B">@y</span>         <span style="color:#777"># Index 1 (or -1) is the Y coordinate</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:x</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">x</span><span style="color:#710">&quot;</span></span>: <span style="color:#33B">@x</span>       <span style="color:#777"># Hash keys as symbol or string for X</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:y</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">y</span><span style="color:#710">&quot;</span></span>: <span style="color:#33B">@y</span>       <span style="color:#777"># Hash keys as symbol or string for Y</span>
+  <span style="color:#080;font-weight:bold">else</span> <span style="color:#069">nil</span>               <span style="color:#777"># Arrays and hashes just return nil on bad indexes</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="enumerating-coordinates">7.1.8 Enumerating Coordinates</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># This iterator passes the X coordinate to the associated block, and then</span>
+<span style="color:#777"># passes the Y coordinate, and then returns. It allows us to enumerate</span>
+<span style="color:#777"># a point as if it were an array with two elements. This each method is</span>
+<span style="color:#777"># required by the Enumerable module.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>
+  <span style="color:#080;font-weight:bold">yield</span> <span style="color:#33B">@x</span>
+  <span style="color:#080;font-weight:bold">yield</span> <span style="color:#33B">@y</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)
+p.each {|x| print x }   <span style="color:#777"># Prints &quot;12&quot;</span>
+<span style="color:#777">###########################</span>
+include <span style="color:#036;font-weight:bold">Enumerable</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Is the point P at the origin?</span>
+p.all? {|x| x == <span style="color:#00D">0</span> } <span style="color:#777"># True if the block is true for all elements</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="point-equality">7.1.9 Point Equality</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(o)               <span style="color:#777"># Is self == o?</span>
+  <span style="color:#080;font-weight:bold">if</span> o.is_a? <span style="color:#036;font-weight:bold">Point</span>      <span style="color:#777"># If o is a Point object</span>
+    <span style="color:#33B">@x</span>==o.x &amp;&amp; <span style="color:#33B">@y</span>==o.y  <span style="color:#777"># then compare the fields.</span>
+  <span style="color:#080;font-weight:bold">elsif</span>                 <span style="color:#777"># If o is not a Point</span>
+    <span style="color:#069">false</span>               <span style="color:#777"># then, by definition, self != o.</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(o)                  <span style="color:#777"># Is self == o?</span>
+  <span style="color:#33B">@x</span> == o.x &amp;&amp; <span style="color:#33B">@y</span> == o.y   <span style="color:#777"># Assume o has proper x and y methods</span>
+<span style="color:#080;font-weight:bold">rescue</span>                     <span style="color:#777"># If that assumption fails</span>
+  <span style="color:#069">false</span>                    <span style="color:#777"># Then self != o</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">alias</span> <span style="color:#06B;font-weight:bold">eql?</span> <span style="color:#06B;font-weight:bold">==</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">eql?</span>(o)             
+  <span style="color:#080;font-weight:bold">if</span> o.instance_of? <span style="color:#036;font-weight:bold">Point</span>      
+    <span style="color:#33B">@x</span>.eql?(o.x) &amp;&amp; <span style="color:#33B">@y</span>.eql?(o.y)
+  <span style="color:#080;font-weight:bold">elsif</span>
+    <span style="color:#069">false</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hash</span>
+  <span style="color:#33B">@x</span>.hash + <span style="color:#33B">@y</span>.hash
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hash</span>
+  code = <span style="color:#00D">17</span>
+  code = <span style="color:#00D">37</span>*code + <span style="color:#33B">@x</span>.hash
+  code = <span style="color:#00D">37</span>*code + <span style="color:#33B">@y</span>.hash
+  <span style="color:#777"># Add lines like this for each significant instance variable</span>
+  code  <span style="color:#777"># Return the resulting code</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="ordering-points">7.1.10 Ordering Points</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>include <span style="color:#036;font-weight:bold">Comparable</span>   <span style="color:#777"># Mix in methods from the Comparable module.</span>
+
+<span style="color:#777"># Define an ordering for points based on their distance from the origin.</span>
+<span style="color:#777"># This method is required by the Comparable module.</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=&gt;</span>(other)
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">nil</span> <span style="color:#080;font-weight:bold">unless</span> other.instance_of? <span style="color:#036;font-weight:bold">Point</span>
+  <span style="color:#33B">@x</span>**<span style="color:#00D">2</span> + <span style="color:#33B">@y</span>**<span style="color:#00D">2</span> &lt;=&gt; other.x**<span style="color:#00D">2</span> + other.y**<span style="color:#00D">2</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+p,q = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">0</span>), <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">1</span>)
+p == q        <span style="color:#777"># =&gt; false: p is not equal to q</span>
+p &lt; q         <span style="color:#777"># =&gt; false: p is not less than q</span>
+p &gt; q         <span style="color:#777"># =&gt; false: p is not greater than q</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="a-mutable-point">7.1.11 A Mutable Point</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>attr_accessor <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add!</span>(p)          <span style="color:#777"># Add p to self, return modified self</span>
+  <span style="color:#33B">@x</span> += p.x
+  <span style="color:#33B">@y</span> += p.y
+  <span style="color:#069">self</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add</span>(p)           <span style="color:#777"># A nonmutating version of add!</span>
+  q = <span style="color:#069">self</span>.dup       <span style="color:#777"># Make a copy of self</span>
+  q.add!(p)          <span style="color:#777"># Invoke the mutating method on the copy</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="quick-and-easy-mutable-classes">7.1.12 Quick and Easy Mutable Classes</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Struct</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Point</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>)  <span style="color:#777"># Creates new class Struct::Point</span>
+<span style="color:#036;font-weight:bold">Point</span> = <span style="color:#036;font-weight:bold">Struct</span>.new(<span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>)   <span style="color:#777"># Creates new class, assigns to Point</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">C</span> = <span style="color:#036;font-weight:bold">Class</span>.new   <span style="color:#777"># A new class with no body, assigned to a constant</span>
+c = <span style="color:#036;font-weight:bold">C</span>.new       <span style="color:#777"># Create an instance of the class</span>
+c.class.to_s    <span style="color:#777"># =&gt; &quot;C&quot;: constant name becomes class name</span>
+<span style="color:#777">###########################</span>
+p = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)   <span style="color:#777"># =&gt; #&lt;struct Point x=1, y=2&gt;</span>
+p.x                  <span style="color:#777"># =&gt; 1 </span>
+p.y                  <span style="color:#777"># =&gt; 2</span>
+p.x = <span style="color:#00D">3</span>              <span style="color:#777"># =&gt; 3</span>
+p.x                  <span style="color:#777"># =&gt; 3</span>
+<span style="color:#777">###########################</span>
+p[<span style="color:#A60">:x</span>] = <span style="color:#00D">4</span>             <span style="color:#777"># =&gt; 4: same as p.x =</span>
+p[<span style="color:#A60">:x</span>]                 <span style="color:#777"># =&gt; 4: same as p.x</span>
+p[<span style="color:#00D">1</span>]                  <span style="color:#777"># =&gt; 2: same as p.y</span>
+p.each {|c| print c}  <span style="color:#777"># prints &quot;42&quot;</span>
+p.each_pair {|n,c| print n,c }   <span style="color:#777"># prints &quot;x4y2&quot;</span>
+<span style="color:#777">###########################</span>
+q = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">4</span>,<span style="color:#00D">2</span>)
+q == p        <span style="color:#777"># =&gt; true</span>
+h = {q =&gt; <span style="color:#00D">1</span>}  <span style="color:#777"># Create a hash using q as a key</span>
+h[p]          <span style="color:#777"># =&gt; 1: extract value using p as key</span>
+q.to_s        <span style="color:#777"># =&gt; &quot;#&lt;struct Point x=4, y=2&gt;&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Point</span> = <span style="color:#036;font-weight:bold">Struct</span>.new(<span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>)   <span style="color:#777"># Create new class, assign to Point</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>                  <span style="color:#777"># Open Point class for new methods</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">add!</span>(other)            <span style="color:#777"># Define an add! method</span>
+    <span style="color:#069">self</span>.x += other.x
+    <span style="color:#069">self</span>.y += other.y
+    <span style="color:#069">self</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  include <span style="color:#036;font-weight:bold">Comparable</span>         <span style="color:#777"># Include a module for the class</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=&gt;</span>(other)             <span style="color:#777"># Define the &lt;=&gt; operator</span>
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">nil</span> <span style="color:#080;font-weight:bold">unless</span> other.instance_of? <span style="color:#036;font-weight:bold">Point</span>
+    <span style="color:#069">self</span>.x**<span style="color:#00D">2</span> + <span style="color:#069">self</span>.y**<span style="color:#00D">2</span> &lt;=&gt; other.x**<span style="color:#00D">2</span> + other.y**<span style="color:#00D">2</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Point</span> = <span style="color:#036;font-weight:bold">Struct</span>.new(<span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>)  <span style="color:#777"># Define mutable class</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>                 <span style="color:#777"># Open the class</span>
+  <span style="color:#080;font-weight:bold">undef</span> <span style="color:#06B;font-weight:bold">x=</span>,<span style="color:#06B;font-weight:bold">y=</span>,<span style="color:#06B;font-weight:bold">[]=</span>           <span style="color:#777"># Undefine mutator methods</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="a-class-method">7.1.13 A Class Method</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>total = <span style="color:#036;font-weight:bold">Point</span>.sum(p1, p2, p3)  <span style="color:#777"># p1, p2 and p3 are Point objects</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>     <span style="color:#777"># Define accessor methods for our instance variables</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Point</span>.<span style="color:#06B;font-weight:bold">sum</span>(*points) <span style="color:#777"># Return the sum of an arbitrary number of points</span>
+    x = y = <span style="color:#00D">0</span>
+    points.each {|p| x += p.x; y += p.y }
+    <span style="color:#036;font-weight:bold">Point</span>.new(x,y)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># ...the rest of class omitted here...</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">sum</span>(*points)  <span style="color:#777"># Return the sum of an arbitrary number of points</span>
+  x = y = <span style="color:#00D">0</span>
+  points.each {|p| x += p.x; y += p.y }
+  <span style="color:#036;font-weight:bold">Point</span>.new(x,y)
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Open up the Point object so we can add methods to it</span>
+<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">Point</span>      <span style="color:#777"># Syntax for adding methods to a single object</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sum</span>(*points)  <span style="color:#777"># This is the class method Point.sum</span>
+    x = y = <span style="color:#00D">0</span>
+    points.each {|p| x += p.x; y += p.y }
+    <span style="color:#036;font-weight:bold">Point</span>.new(x,y)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Other class methods can be defined here</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># Instance methods go here</span>
+
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>
+    <span style="color:#777"># Class methods go here</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="constants">7.1.14 Constants</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)  <span style="color:#777"># Initialize method</span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x, y 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#036;font-weight:bold">ORIGIN</span> = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)
+  <span style="color:#036;font-weight:bold">UNIT_X</span> = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">0</span>)
+  <span style="color:#036;font-weight:bold">UNIT_Y</span> = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">1</span>)
+
+  <span style="color:#777"># Rest of class definition goes here</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Point</span>::<span style="color:#036;font-weight:bold">UNIT_X</span> + <span style="color:#036;font-weight:bold">Point</span>::<span style="color:#036;font-weight:bold">UNIT_Y</span>   <span style="color:#777"># =&gt; (1,1)</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Point</span>::<span style="color:#036;font-weight:bold">NEGATIVE_UNIT_X</span> = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">-1</span>,<span style="color:#00D">0</span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="class-variables">7.1.15 Class Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># Initialize our class variables in the class definition itself</span>
+  <span style="color:#369">@@n</span> = <span style="color:#00D">0</span>              <span style="color:#777"># How many points have been created</span>
+  <span style="color:#369">@@totalX</span> = <span style="color:#00D">0</span>         <span style="color:#777"># The sum of all X coordinates</span>
+  <span style="color:#369">@@totalY</span> = <span style="color:#00D">0</span>         <span style="color:#777"># The sum of all Y coordinates</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)  <span style="color:#777"># Initialize method</span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x, y       <span style="color:#777"># Sets initial values for instance variables</span>
+
+    <span style="color:#777"># Use the class variables in this instance method to collect data</span>
+    <span style="color:#369">@@n</span> += <span style="color:#00D">1</span>           <span style="color:#777"># Keep track of how many Points have been created</span>
+    <span style="color:#369">@@totalX</span> += x      <span style="color:#777"># Add these coordinates to the totals</span>
+    <span style="color:#369">@@totalY</span> += y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># A class method to report the data we collected</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">report</span>
+    <span style="color:#777"># Here we use the class variables in a class method</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Number of points created: </span><span style="color:#666">#</span><span style="color:#369">@@n</span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average X coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#369">@@totalX</span>.to_f/<span style="color:#369">@@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average Y coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#369">@@totalY</span>.to_f/<span style="color:#369">@@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="class-instance-variables">7.1.16 Class Instance Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># Initialize our class instance variables in the class definition itself</span>
+  <span style="color:#33B">@n</span> = <span style="color:#00D">0</span>              <span style="color:#777"># How many points have been created</span>
+  <span style="color:#33B">@totalX</span> = <span style="color:#00D">0</span>         <span style="color:#777"># The sum of all X coordinates</span>
+  <span style="color:#33B">@totalY</span> = <span style="color:#00D">0</span>         <span style="color:#777"># The sum of all Y coordinates</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y) <span style="color:#777"># Initialize method </span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x, y      <span style="color:#777"># Sets initial values for instance variables</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">new</span>(x,y)   <span style="color:#777"># Class method to create new Point objects</span>
+    <span style="color:#777"># Use the class instance variables in this class method to collect data</span>
+    <span style="color:#33B">@n</span> += <span style="color:#00D">1</span>           <span style="color:#777"># Keep track of how many Points have been created</span>
+    <span style="color:#33B">@totalX</span> += x      <span style="color:#777"># Add these coordinates to the totals</span>
+    <span style="color:#33B">@totalY</span> += y
+
+    <span style="color:#080;font-weight:bold">super</span>             <span style="color:#777"># Invoke the real definition of new to create a Point</span>
+                      <span style="color:#777"># More about super later in the chapter</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># A class method to report the data we collected</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">report</span>
+    <span style="color:#777"># Here we use the class instance variables in a class method</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Number of points created: </span><span style="color:#666">#</span><span style="color:#33B">@n</span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average X coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@totalX</span>.to_f/<span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average Y coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@totalY</span>.to_f/<span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>
+  attr_accessor <span style="color:#A60">:n</span>, <span style="color:#A60">:totalX</span>, <span style="color:#A60">:totalY</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="method-visibility-public-protected-private">7.2 Method Visibility: Public, Protected, Private</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># public methods go here</span>
+
+  <span style="color:#777"># The following methods are protected</span>
+  protected
+
+  <span style="color:#777"># protected methods go here</span>
+
+  <span style="color:#777"># The following methods are private</span>
+  private
+
+  <span style="color:#777"># private methods go here</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Widget</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">x</span>                       <span style="color:#777"># Accessor method for @x</span>
+    <span style="color:#33B">@x</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  protected <span style="color:#A60">:x</span>                <span style="color:#777"># Make it protected</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">utility_method</span>          <span style="color:#777"># Define a method</span>
+    <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  private <span style="color:#A60">:utility_method</span>     <span style="color:#777"># And make it private</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+private_class_method <span style="color:#A60">:new</span>
+<span style="color:#777">###########################</span>
+w = <span style="color:#036;font-weight:bold">Widget</span>.new                      <span style="color:#777"># Create a Widget</span>
+w.send <span style="color:#A60">:utility_method</span>              <span style="color:#777"># Invoke private method!</span>
+w.instance_eval { utility_method }  <span style="color:#777"># Another way to invoke it</span>
+w.instance_eval { <span style="color:#33B">@x</span> }              <span style="color:#777"># Read instance variable of w</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="subclassing-and-inheritance">7.3 Subclassing and Inheritance</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point3D</span> &lt; <span style="color:#036;font-weight:bold">Point</span>    <span style="color:#777"># Define class Point3D as a subclass of Point</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point3D</span> &lt; <span style="color:#036;font-weight:bold">Struct</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Point3D</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>, <span style="color:#A60">:z</span>)
+  <span style="color:#777"># Superclass struct gives us accessor methods, ==, to_s, etc.</span>
+  <span style="color:#777"># Add point-specific methods here</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="inheriting-methods">7.3.1 Inheriting Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>p2 = <span style="color:#036;font-weight:bold">Point</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)
+p3 = <span style="color:#036;font-weight:bold">Point3D</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>)
+print p2.to_s, p2.class   <span style="color:#777"># prints &quot;(1,2)Point&quot;</span>
+print p3.to_s, p3.class   <span style="color:#777"># prints &quot;(1,2)Point3D&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="overriding-methods">7.3.2 Overriding Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>o = <span style="color:#036;font-weight:bold">Object</span>.new
+puts o.to_s      <span style="color:#777"># Prints something like &quot;#&lt;Object:0xb7f7fce4&gt;&quot;</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># Greet the World</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WorldGreeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">greet</span>                      <span style="color:#777"># Display a greeting</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>greeting<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>who<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">greeting</span>                   <span style="color:#777"># What greeting to use</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">who</span>                        <span style="color:#777"># Who to greet</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Greet the world in Spanish</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SpanishWorldGreeter</span> &lt; <span style="color:#036;font-weight:bold">WorldGreeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">greeting</span>                   <span style="color:#777"># Override the greeting</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hola</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># We call a method defined in WorldGreeter, which calls the overridden</span>
+<span style="color:#777"># version of greeting in SpanishWorldGreeter, and prints &quot;Hola World&quot;</span>
+<span style="color:#036;font-weight:bold">SpanishWorldGreeter</span>.new.greet
+<span style="color:#777">###########################</span>
+<span style="color:#777"># This class is abstract; it doesn't define greeting or who</span>
+<span style="color:#777"># No special syntax is required: any class that invokes methods that are</span>
+<span style="color:#777"># intended for a subclass to implement is abstract.</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AbstractGreeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">greet</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>greeting<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>who<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># A concrete subclass</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WorldGreeter</span> &lt; <span style="color:#036;font-weight:bold">AbstractGreeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">greeting</span>; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">who</span>; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span>; <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">WorldGreeter</span>.new.greet  <span style="color:#777"># Displays &quot;Hello World&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="augmenting-behavior-by-chaining">7.3.3 Augmenting Behavior by Chaining</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point3D</span> &lt; <span style="color:#036;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y,z)
+    <span style="color:#777"># Pass our first two arguments along to the superclass initialize method</span>
+    <span style="color:#080;font-weight:bold">super</span>(x,y)
+    <span style="color:#777"># And deal with the third argument ourself</span>
+    <span style="color:#33B">@z</span> = z;
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="inheritance-and-instance-variables">7.3.5 Inheritance and Instance Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point3D</span> &lt; <span style="color:#036;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y,z)
+    <span style="color:#080;font-weight:bold">super</span>(x,y)
+    <span style="color:#33B">@z</span> = z;
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">(</span><span style="color:#666">#</span><span style="color:#33B">@x</span><span style="color:#D20">, </span><span style="color:#666">#</span><span style="color:#33B">@y</span><span style="color:#D20">, </span><span style="color:#666">#</span><span style="color:#33B">@z</span><span style="color:#D20">)</span><span style="color:#710">&quot;</span></span>  <span style="color:#777"># Variables @x and @y inherited?</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">Point3D</span>.new(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>).to_s  <span style="color:#777"># =&gt; &quot;(1, 2, 3)&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="inheritance-and-class-variables">7.3.6 Inheritance and Class Variables</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">A</span>
+  <span style="color:#369">@@value</span> = <span style="color:#00D">1</span>                   <span style="color:#777"># A class variable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">A</span>.<span style="color:#06B;font-weight:bold">value</span>; <span style="color:#369">@@value</span>; <span style="color:#080;font-weight:bold">end</span>     <span style="color:#777"># An accessor method for it</span>
+<span style="color:#080;font-weight:bold">end</span>
+print <span style="color:#036;font-weight:bold">A</span>.value                   <span style="color:#777"># Display value of A's class variable</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">B</span> &lt; <span style="color:#036;font-weight:bold">A</span>; <span style="color:#369">@@value</span> = <span style="color:#00D">2</span>; <span style="color:#080;font-weight:bold">end</span>   <span style="color:#777"># Subclass alters shared class variable</span>
+print <span style="color:#036;font-weight:bold">A</span>.value                   <span style="color:#777"># Superclass sees altered value</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">C</span> &lt; <span style="color:#036;font-weight:bold">A</span>; <span style="color:#369">@@value</span> = <span style="color:#00D">3</span>; <span style="color:#080;font-weight:bold">end</span>   <span style="color:#777"># Another alters shared variable again</span>
+print <span style="color:#036;font-weight:bold">B</span>.value                   <span style="color:#777"># 1st subclass sees value from 2nd subclass</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="inheritance-of-constants">7.3.7 Inheritance of Constants</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ORIGIN</span> = <span style="color:#036;font-weight:bold">Point3D</span>.new(<span style="color:#00D">0</span>,<span style="color:#00D">0</span>,<span style="color:#00D">0</span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="new-allocate-and-initialize">7.4.1 new, allocate, and initialize</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new</span>(*args)
+  o = <span style="color:#069">self</span>.allocate   <span style="color:#777"># Create a new object of this class</span>
+  o.initialize(*args) <span style="color:#777"># Call the object's initialize method with our args</span>
+  o                   <span style="color:#777"># Return new object; ignore return value of initialize</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="factory-methods">7.4.2 Factory Methods</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># Initialize a Point with two or three coordinates</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x, y, z=<span style="color:#069">nil</span>)
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span>,<span style="color:#33B">@z</span> = x, y, z
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># Define an initialize method as usual...</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)  <span style="color:#777"># Expects Cartesian coordinates</span>
+    <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x,y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># But make the factory method new private</span>
+  private_class_method <span style="color:#A60">:new</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Point</span>.<span style="color:#06B;font-weight:bold">cartesian</span>(x,y)  <span style="color:#777"># Factory method for Cartesian coordinates</span>
+    new(x,y)  <span style="color:#777"># We can still call new from other class methods</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Point</span>.<span style="color:#06B;font-weight:bold">polar</span>(r, theta) <span style="color:#777"># Factory method for polar coordinates</span>
+    new(r*<span style="color:#036;font-weight:bold">Math</span>.cos(theta), r*<span style="color:#036;font-weight:bold">Math</span>.sin(theta))
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="dup-clone-and-initializecopy">7.4.3 dup, clone, and initialize_copy</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>                 <span style="color:#777"># A point in n-space</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*coords)   <span style="color:#777"># Accept an arbitrary # of coordinates</span>
+    <span style="color:#33B">@coords</span> = coords        <span style="color:#777"># Store the coordinates in an array</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize_copy</span>(orig) <span style="color:#777"># If someone copies this Point object</span>
+    <span style="color:#33B">@coords</span> = <span style="color:#33B">@coords</span>.dup   <span style="color:#777"># Make a copy of the coordinates array, too</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Season</span>
+  <span style="color:#036;font-weight:bold">NAMES</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w{</span><span style="color:#D20"> Spring Summer Autumn Winter </span><span style="color:#710">}</span></span>  <span style="color:#777"># Array of season names</span>
+  <span style="color:#036;font-weight:bold">INSTANCES</span> = []                             <span style="color:#777"># Array of Season objects</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(n)  <span style="color:#777"># The state of a season is just its </span>
+    <span style="color:#33B">@n</span> = n           <span style="color:#777"># index in the NAMES and INSTANCES arrays</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_s</span>           <span style="color:#777"># Return the name of a season </span>
+    <span style="color:#036;font-weight:bold">NAMES</span>[<span style="color:#33B">@n</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># This code creates instances of this class to represent the seasons </span>
+  <span style="color:#777"># and defines constants to refer to those instances.</span>
+  <span style="color:#777"># Note that we must do this after initialize is defined.</span>
+  <span style="color:#036;font-weight:bold">NAMES</span>.each_with_index <span style="color:#080;font-weight:bold">do</span> |name,index|
+    instance = new(index)         <span style="color:#777"># Create a new instance</span>
+    <span style="color:#036;font-weight:bold">INSTANCES</span>[index] = instance   <span style="color:#777"># Save it in an array of instances</span>
+    const_set name, instance      <span style="color:#777"># Define a constant to refer to it</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># Now that we have created all the instances we'll ever need, we must</span>
+  <span style="color:#777"># prevent any other instances from being created</span>
+  private_class_method <span style="color:#A60">:new</span>,<span style="color:#A60">:allocate</span>  <span style="color:#777"># Make the factory methods private</span>
+  private <span style="color:#A60">:dup</span>, <span style="color:#A60">:clone</span>                 <span style="color:#777"># Make copying methods private</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="marshaldump-and-marshalload">7.4.4 marshal_dump and marshal_load</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>                  <span style="color:#777"># A point in n-space</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(*coords)    <span style="color:#777"># Accept an arbitrary # of coordinates</span>
+    <span style="color:#33B">@coords</span> = coords         <span style="color:#777"># Store the coordinates in an array</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">marshal_dump</span>           <span style="color:#777"># Pack coords into a string and marshal that</span>
+    <span style="color:#33B">@coords</span>.pack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w*</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">marshal_load</span>(s)        <span style="color:#777"># Unpack coords from unmarshaled string</span>
+    <span style="color:#33B">@coords</span> = s.unpack(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w*</span><span style="color:#710">&quot;</span></span>) <span style="color:#777"># and use them to initialize the object</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Season</span>
+  <span style="color:#777"># We want to allow Season objects to be marshaled, but we don't</span>
+  <span style="color:#777"># want new instances to be created when they are unmarshaled.</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">_dump</span>(limit)         <span style="color:#777"># Custom marshaling method</span>
+    <span style="color:#33B">@n</span>.to_s                <span style="color:#777"># Return index as a string</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">_load</span>(s)        <span style="color:#777"># Custom unmarshaling method</span>
+    <span style="color:#036;font-weight:bold">INSTANCES</span>[Integer(s)]  <span style="color:#777"># Return an existing instance</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-singleton-pattern">7.4.5 The Singleton Pattern</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">singleton</span><span style="color:#710">'</span></span>           <span style="color:#777"># Singleton module is not built-in</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PointStats</span>              <span style="color:#777"># Define a class</span>
+  include <span style="color:#036;font-weight:bold">Singleton</span>           <span style="color:#777"># Make it a singleton</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>              <span style="color:#777"># A normal initialization method</span>
+    <span style="color:#33B">@n</span>, <span style="color:#33B">@totalX</span>, <span style="color:#33B">@totalY</span> = <span style="color:#00D">0</span>, <span style="color:#60E">0.0</span>, <span style="color:#60E">0.0</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">record</span>(point)           <span style="color:#777"># Record a new point</span>
+    <span style="color:#33B">@n</span> += <span style="color:#00D">1</span>
+    <span style="color:#33B">@totalX</span> += point.x
+    <span style="color:#33B">@totalY</span> += point.y
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">report</span>                  <span style="color:#777"># Report point statistics</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Number of points created: </span><span style="color:#666">#</span><span style="color:#33B">@n</span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average X coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@totalX</span>/<span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Average Y coordinate: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@totalY</span>/<span style="color:#33B">@n</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+  <span style="color:#33B">@x</span>,<span style="color:#33B">@y</span> = x,y
+  <span style="color:#036;font-weight:bold">PointStats</span>.instance.record(<span style="color:#069">self</span>)
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#036;font-weight:bold">PointStats</span>.instance.report
+</pre></div>
+</div>
+</div>
+
+<h4 id="modules-as-namespaces">7.5.1 Modules as Namespaces</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">base64_encode</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">base64_decode</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Base64</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">encode</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">decode</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Base64</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Base64</span>.<span style="color:#06B;font-weight:bold">encode</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Base64</span>.<span style="color:#06B;font-weight:bold">decode</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#777"># This is how we invoke the methods of the Base64 module</span>
+text = <span style="color:#036;font-weight:bold">Base64</span>.encode(data)
+data = <span style="color:#036;font-weight:bold">Base64</span>.decode(text)
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Base64</span>
+  <span style="color:#036;font-weight:bold">DIGITS</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span><span style="color:#710">'</span></span> \
+           <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">abcdefghijklmnopqrstuvwxyz</span><span style="color:#710">'</span></span> \
+           <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0123456789+/</span><span style="color:#710">'</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="nested-namespaces">7.5.1.1 Nested namespaces</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Base64</span>
+  <span style="color:#036;font-weight:bold">DIGITS</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/</span><span style="color:#710">'</span></span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Encoder</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">encode</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Decoder</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">decode</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># A utility function for use by both classes</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Base64</span>.<span style="color:#06B;font-weight:bold">helper</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="modules-as-mixins">7.5.2 Modules As Mixins</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  include <span style="color:#036;font-weight:bold">Comparable</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  include(<span style="color:#036;font-weight:bold">Comparable</span>)
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+include <span style="color:#036;font-weight:bold">Enumerable</span>, <span style="color:#036;font-weight:bold">Comparable</span>
+<span style="color:#777">###########################</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>.is_a? <span style="color:#036;font-weight:bold">Comparable</span>         <span style="color:#777"># =&gt; true</span>
+<span style="color:#036;font-weight:bold">Enumerable</span> === <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>           <span style="color:#777"># =&gt; true in Ruby 1.8, false in 1.9</span>
+<span style="color:#777">###########################</span>
+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>.instance_of? <span style="color:#036;font-weight:bold">Comparable</span>  <span style="color:#777"># =&gt; false</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Iterable</span>       <span style="color:#777"># Classes that define next can include this module</span>
+  include <span style="color:#036;font-weight:bold">Enumerable</span>          <span style="color:#777"># Define iterators on top of each</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>                    <span style="color:#777"># And define each on top of next</span>
+    loop { <span style="color:#080;font-weight:bold">yield</span> <span style="color:#069">self</span>.next }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+countdown = <span style="color:#036;font-weight:bold">Object</span>.new       <span style="color:#777"># A plain old object</span>
+<span style="color:#080;font-weight:bold">def</span> countdown.<span style="color:#06B;font-weight:bold">each</span>           <span style="color:#777"># The each iterator as a singleton method</span>
+  <span style="color:#080;font-weight:bold">yield</span> <span style="color:#00D">3</span>
+  <span style="color:#080;font-weight:bold">yield</span> <span style="color:#00D">2</span>
+  <span style="color:#080;font-weight:bold">yield</span> <span style="color:#00D">1</span>
+<span style="color:#080;font-weight:bold">end</span>
+countdown.extend(<span style="color:#036;font-weight:bold">Enumerable</span>) <span style="color:#777"># Now the object has all Enumerable methods  </span>
+print countdown.sort         <span style="color:#777"># Prints &quot;[1, 2, 3]&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="includable-namespace-modules">7.5.3 Includable Namespace Modules</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Math</span>.sin(<span style="color:#00D">0</span>)    <span style="color:#777"># =&gt; 0.0: Math is a namespace </span>
+include <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Math</span><span style="color:#710">'</span></span> <span style="color:#777"># The Math namespace can be included</span>
+sin(<span style="color:#00D">0</span>)         <span style="color:#777"># =&gt; 0.0: Now we have easy access to the functions</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="the-load-path">7.6.1 The Load Path</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>/usr/lib/site_ruby/1.8
+/usr/lib/site_ruby/1.8/i386-linux
+/usr/lib/site_ruby
+/usr/lib/ruby/1.8
+/usr/lib/ruby/1.8/i386-linux
+.
+###########################
+/usr/local/lib/ruby/gems/1.9/gems/rake-0.7.3/lib
+/usr/local/lib/ruby/gems/1.9/gems/rake-0.7.3/bin
+/usr/local/lib/ruby/site_ruby/1.9
+/usr/local/lib/ruby/site_ruby/1.9/i686-linux
+/usr/local/lib/ruby/site_ruby
+/usr/local/lib/ruby/vendor_ruby/1.9
+/usr/local/lib/ruby/vendor_ruby/1.9/i686-linux
+/usr/local/lib/ruby/vendor_ruby
+/usr/local/lib/ruby/1.9
+/usr/local/lib/ruby/1.9/i686-linux
+.
+###########################
+</pre></div>
+</div>
+</div>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Remove the current directory from the load path</span>
+<span style="color:#d70">$:</span>.pop <span style="color:#080;font-weight:bold">if</span> <span style="color:#d70">$:</span>.last == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.</span><span style="color:#710">'</span></span>  
+
+<span style="color:#777"># Add the installation directory for the current program to </span>
+<span style="color:#777"># the beginning of the load path</span>
+<span style="color:#d70">$LOAD_PATH</span>.unshift <span style="color:#036;font-weight:bold">File</span>.expand_path(<span style="color:#d70">$PROGRAM_NAME</span>)
+
+<span style="color:#777"># Add the value of an environment variable to the end of the path</span>
+<span style="color:#d70">$LOAD_PATH</span> &lt;&lt; <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MY_LIBRARY_DIRECTORY</span><span style="color:#710">'</span></span>]
+</pre></div>
+</div>
+</div>
+
+<h4 id="wrapped-loads">7.6.2.1 Wrapped loads</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#d70">$Util</span> = <span style="color:#036;font-weight:bold">Util</span>   <span style="color:#777"># Store a reference to this module in a global variable</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">if</span> <span style="color:#036;font-weight:bold">Module</span>.nesting.size &gt; <span style="color:#00D">0</span>       <span style="color:#777"># If we're loaded into a wrapper module</span>
+  <span style="color:#d70">$wrapper</span> = <span style="color:#036;font-weight:bold">Module</span>.nesting[<span style="color:#00D">0</span>]   <span style="color:#777"># Pass the module back to the loading code</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="autoloading-modules">7.6.3 Autoloading Modules</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># Require 'socket' if and when the TCPSocket is first used</span>
+autoload <span style="color:#A60">:TCPSocket</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">socket</span><span style="color:#710">&quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="singleton-methods-and-the-eigenclass">7.7 Singleton Methods and the Eigenclass</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Point</span>.<span style="color:#06B;font-weight:bold">sum</span>
+  <span style="color:#777"># Method body goes here</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">class_method1</span>      <span style="color:#777"># This is an instance method of the eigenclass.</span>
+  <span style="color:#080;font-weight:bold">end</span>                    <span style="color:#777"># It is also a class method of Point.</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">class_method2</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>
+  <span style="color:#777"># instance methods go here</span>
+
+  <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>
+    <span style="color:#777"># class methods go here as instance methods of the eigenclass</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point</span>            <span style="color:#777"># Create or open the class Point</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Point3D</span> &lt; <span style="color:#036;font-weight:bold">Point</span>  <span style="color:#777"># Create a subclass of Point</span>
+<span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">Point</span>         <span style="color:#777"># Open the eigenclass of the object Point</span>
+<span style="color:#777">###########################</span>
+eigenclass = <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">o</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Object</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">eigenclass</span>
+    <span style="color:#080;font-weight:bold">class</span> &lt;&lt; <span style="color:#B06;font-weight:bold">self</span>; <span style="color:#069">self</span>; <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="method-lookup">7.8 Method Lookup</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>message = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span>
+message.world
+<span style="color:#777">###########################</span>
+<span style="color:#606">NoMethodError</span>: undefined method <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">world</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">for</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hello</span><span style="color:#710">&quot;</span></span><span style="color:#A60">:String</span>
+</pre></div>
+</div>
+</div>
+
+<h4 id="class-method-lookup">7.8.1 Class Method Lookup</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">C</span>
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+c = <span style="color:#036;font-weight:bold">C</span>.new
+<span style="color:#777">###########################</span>
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#036;font-weight:bold">Integer</span>.<span style="color:#06B;font-weight:bold">parse</span>(text)
+  text.to_i
+<span style="color:#080;font-weight:bold">end</span>
+<span style="color:#777">###########################</span>
+n = <span style="color:#036;font-weight:bold">Fixnum</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h4 id="constant-lookup">7.9 Constant Lookup</h4>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Kernel</span>
+  <span style="color:#777"># Constants defined in Kernel</span>
+  <span style="color:#036;font-weight:bold">A</span> = <span style="color:#036;font-weight:bold">B</span> = <span style="color:#036;font-weight:bold">C</span> = <span style="color:#036;font-weight:bold">D</span> = <span style="color:#036;font-weight:bold">E</span> = <span style="color:#036;font-weight:bold">F</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined in kernel</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Top-level or &quot;global&quot; constants defined in Object</span>
+<span style="color:#036;font-weight:bold">A</span> = <span style="color:#036;font-weight:bold">B</span> = <span style="color:#036;font-weight:bold">C</span> = <span style="color:#036;font-weight:bold">D</span> = <span style="color:#036;font-weight:bold">E</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined at toplevel</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Super</span>
+  <span style="color:#777"># Constants defined in a superclass</span>
+  <span style="color:#036;font-weight:bold">A</span> = <span style="color:#036;font-weight:bold">B</span> = <span style="color:#036;font-weight:bold">C</span> = <span style="color:#036;font-weight:bold">D</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined in superclass</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Included</span>
+  <span style="color:#777"># Constants defined in an included module</span>
+  <span style="color:#036;font-weight:bold">A</span> = <span style="color:#036;font-weight:bold">B</span> = <span style="color:#036;font-weight:bold">C</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined in included module</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Enclosing</span>
+  <span style="color:#777"># Constants defined in an enclosing module</span>
+  <span style="color:#036;font-weight:bold">A</span> = <span style="color:#036;font-weight:bold">B</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined in enclosing module</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Local</span> &lt; <span style="color:#036;font-weight:bold">Super</span>
+    include <span style="color:#036;font-weight:bold">Included</span>
+
+    <span style="color:#777"># Locally defined constant</span>
+    <span style="color:#036;font-weight:bold">A</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">defined locally</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777"># The list of modules searched, in the order searched</span>
+    <span style="color:#777"># [Enclosing::Local, Enclosing, Included, Super, Object, Kernel]</span>
+    search = (<span style="color:#036;font-weight:bold">Module</span>.nesting + <span style="color:#069">self</span>.ancestors + <span style="color:#036;font-weight:bold">Object</span>.ancestors).uniq
+
+    puts <span style="color:#036;font-weight:bold">A</span>  <span style="color:#777"># Prints &quot;defined locally&quot;</span>
+    puts <span style="color:#036;font-weight:bold">B</span>  <span style="color:#777"># Prints &quot;defined in enclosing module&quot;</span>
+    puts <span style="color:#036;font-weight:bold">C</span>  <span style="color:#777"># Prints &quot;defined in included module&quot;</span>
+    puts <span style="color:#036;font-weight:bold">D</span>  <span style="color:#777"># Prints &quot;defined in superclass&quot;</span>
+    puts <span style="color:#036;font-weight:bold">E</span>  <span style="color:#777"># Prints &quot;defined at toplevel&quot;</span>
+    puts <span style="color:#036;font-weight:bold">F</span>  <span style="color:#777"># Prints &quot;defined in kernel&quot;</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

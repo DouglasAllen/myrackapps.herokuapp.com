@@ -1,0 +1,1914 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-this--object-prototypes">You Don’t Know JS: <em>this</em> &amp; Object Prototypes</h1>
+<p># Chapter 6: Behavior Delegation</p>
+
+<p>In Chapter 5, we addressed the <code>[[Prototype]]</code> mechanism  in detail, and <em>why</em> it’s confusing and inappropriate (despite countless attempts for nearly two decades) to describe it as “class” or “inheritance”. We trudged through not only the fairly verbose syntax (<code>.prototype</code> littering the code), but the various gotchas (like surprising <code>.constructor</code> resolution or ugly pseudo-polymorphic syntax). We explored variations of the “mixin” approach, which many people use to attempt to smooth over such rough areas.</p>
+
+<p>It’s a common reaction at this point to wonder why it has to be so complex to do something seemingly so simple. Now that we’ve pulled back the curtain and seen just how dirty it all gets, it’s not a surprise that most JS developers never dive this deep, and instead relegate such mess to a “class” library to handle it for them.</p>
+
+<p>I hope by now you’re not content to just gloss over and leave such details to a “black box” library. Let’s now dig into how we <em>could and should be</em> thinking about the object <code>[[Prototype]]</code> mechanism in JS, in a <strong>much simpler and more straightforward way</strong> than the confusion of classes.</p>
+
+<p>As a brief review of our conclusions from Chapter 5, the <code>[[Prototype]]</code> mechanism is an internal link that exists on one object which references another object.</p>
+
+<p>This linkage is exercised when a property/method reference is made against the first object, and no such property/method exists. In that case, the <code>[[Prototype]]</code> linkage tells the engine to look for the property/method on the linked-to object. In turn, if that object cannot fulfill the look-up, its <code>[[Prototype]]</code> is followed, and so on. This series of links between objects forms what is called the “prototype chain”.</p>
+
+<p>In other words, the actual mechanism, the essence of what’s important to the functionality we can leverage in JavaScript, is <strong>all about objects being linked to other objects.</strong></p>
+
+<p>That single observation is fundamental and critical to understanding the motivations and approaches for the rest of this chapter!</p>
+
+<h2 id="towards-delegation-oriented-design">Towards Delegation-Oriented Design</h2>
+
+<p>To properly focus our thoughts on how to use <code>[[Prototype]]</code> in the most straightforward way, we must recognize that it represents a fundamentally different design pattern from classes (see Chapter 4).</p>
+
+<p><strong>Note:</strong> <em>Some</em> principles of class-oriented design are still very valid, so don’t toss out everything you know (just most of it!). For example, <em>encapsulation</em> is quite powerful, and is compatible (though not as common) with delegation.</p>
+
+<p>We need to try to change our thinking from the class/inheritance design pattern to the behavior delegation design pattern. If you have done most or all of your programming in your education/career thinking in classes, this may be uncomfortable or feel unnatural. You may need to try this mental exercise quite a few times to get the hang of this very different way of thinking.</p>
+
+<p>I’m going to walk you through some theoretical exercises first, then we’ll look side-by-side at a more concrete example to give you practical context for your own code.</p>
+
+<h3 id="class-theory">Class Theory</h3>
+
+<p>Let’s say we have several similar tasks (“XYZ”, “ABC”, etc) that we need to model in our software.</p>
+
+<p>With classes, the way you design the scenario is: define a general parent (base) class like <code>Task</code>, defining shared behavior for all the “alike” tasks. Then, you define child classes <code>XYZ</code> and <code>ABC</code>, both of which inherit from <code>Task</code>, and each of which adds specialized behavior to handle their respective tasks.</p>
+
+<p><strong>Importantly,</strong> the class design pattern will encourage you that to get the most out of inheritance, you will want to employ method overriding (and polymorphism), where you override the definition of some general <code>Task</code> method in your <code>XYZ</code> task, perhaps even making use of <code>super</code> to call to the base version of that method while adding more behavior to it. <strong>You’ll likely find quite a few places</strong> where you can “abstract” out general behavior to the parent class and specialize (override) it in your child classes.</p>
+
+<p>Here’s some loose pseudo-code for that scenario:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> Task {
+        id;
+
+        <span style="color:#777">// constructor `Task()`</span>
+        Task(ID) { id = ID; }
+        outputTask() { output( id ); }
+}
+
+<span style="color:#080;font-weight:bold">class</span> XYZ inherits Task {
+        label;
+
+        <span style="color:#777">// constructor `XYZ()`</span>
+        XYZ(ID,Label) { <span style="color:#080;font-weight:bold">super</span>( ID ); label = Label; }
+        outputTask() { <span style="color:#080;font-weight:bold">super</span>(); output( label ); }
+}
+
+<span style="color:#080;font-weight:bold">class</span> ABC inherits Task {
+        <span style="color:#777">// ...</span>
+}
+</pre></div>
+</div>
+</div>
+
+<p>Now, you can instantiate one or more <strong>copies</strong> of the <code>XYZ</code> child class, and use those instance(s) to perform task “XYZ”. These instances have <strong>copies both</strong> of the general <code>Task</code> defined behavior as well as the specific <code>XYZ</code> defined behavior. Likewise, instances of the <code>ABC</code> class would have copies of the <code>Task</code> behavior and the specific <code>ABC</code> behavior. After construction, you will generally only interact with these instances (and not the classes), as the instances each have copies of all the behavior you need to do the intended task.</p>
+
+<h3 id="delegation-theory">Delegation Theory</h3>
+
+<p>But now let’s try to think about the same problem domain, but using <em>behavior delegation</em> instead of <em>classes</em>.</p>
+
+<p>You will first define an <strong>object</strong> (not a class, nor a <code>function</code> as most JS’rs would lead you to believe) called <code>Task</code>, and it will have concrete behavior on it that includes utility methods that various tasks can use (read: <em>delegate to</em>!). Then, for each task (“XYZ”, “ABC”), you define an <strong>object</strong> to hold that task-specific data/behavior. You <strong>link</strong> your task-specific object(s) to the <code>Task</code> utility object, allowing them to delegate to it when they need to.</p>
+
+<p>Basically, you think about performing task “XYZ” as needing behaviors from two sibling/peer objects (<code>XYZ</code> and <code>Task</code>) to accomplish it. But rather than needing to compose them together, via class copies, we can keep them in their separate objects, and we can allow <code>XYZ</code> object to <strong>delegate to</strong> <code>Task</code> when needed.</p>
+
+<p>Here’s some simple code to suggest how you accomplish that:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Task = {
+        <span style="color:#06B;font-weight:bold">setID</span>: <span style="color:#080;font-weight:bold">function</span>(ID) { <span style="color:#950">this</span>.id = ID; },
+        <span style="color:#06B;font-weight:bold">outputID</span>: <span style="color:#080;font-weight:bold">function</span>() { console.log( <span style="color:#950">this</span>.id ); }
+};
+
+<span style="color:#777">// make `XYZ` delegate to `Task`</span>
+XYZ = Object.create( Task );
+
+XYZ.<span style="color:#06B;font-weight:bold">prepareTask</span> = <span style="color:#080;font-weight:bold">function</span>(ID,Label) {
+        <span style="color:#950">this</span>.setID( ID );
+        <span style="color:#950">this</span>.label = Label;
+};
+
+XYZ.<span style="color:#06B;font-weight:bold">outputTaskDetails</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#950">this</span>.outputID();
+        console.log( <span style="color:#950">this</span>.label );
+};
+
+<span style="color:#777">// ABC = Object.create( Task );</span>
+<span style="color:#777">// ABC ... = ...</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this code, <code>Task</code> and <code>XYZ</code> are not classes (or functions), they’re <strong>just objects</strong>. <code>XYZ</code> is set up via <code>Object.create(..)</code> to <code>[[Prototype]]</code> delegate to the <code>Task</code> object (see Chapter 5).</p>
+
+<p>As compared to class-orientation (aka, OO – object-oriented), I call this style of code <strong>“OLOO”</strong> (objects-linked-to-other-objects). All we <em>really</em> care about is that the <code>XYZ</code> object delegates to the <code>Task</code> object (as does the <code>ABC</code> object).</p>
+
+<p>In JavaScript, the <code>[[Prototype]]</code> mechanism links <strong>objects</strong> to other <strong>objects</strong>. There are no abstract mechanisms like “classes”, no matter how much you try to convince yourself otherwise. It’s like paddling a canoe upstream: you <em>can</em> do it, but you’re <em>choosing</em> to go against the natural current, so it’s obviously <strong>going to be harder to get where you’re going.</strong></p>
+
+<p>Some other differences to note with <strong>OLOO style code</strong>:</p>
+
+<ol>
+  <li>Both <code>id</code> and <code>label</code> data members from the previous class example are data properties directly on <code>XYZ</code> (neither is on <code>Task</code>). In general, with <code>[[Prototype]]</code> delegation involved, <strong>you want state to be on the delegators</strong> (<code>XYZ</code>, <code>ABC</code>), not on the delegate (<code>Task</code>).</li>
+  <li>
+    <p>With the class design pattern, we intentionally named <code>outputTask</code> the same on both parent (<code>Task</code>) and child (<code>XYZ</code>), so that we could take advantage of overriding (polymorphism). In behavior delegation, we do the opposite: <strong>we avoid if at all possible naming things the same</strong> at different levels of the <code>[[Prototype]]</code> chain (called shadowing – see Chapter 5), because having those name collisions creates awkward/brittle syntax to disambiguate references (see Chapter 4), and we want to avoid that if we can.</p>
+
+    <p>This design pattern calls for less of general method names which are prone to overriding and instead more of descriptive method names, <em>specific</em> to the type of behavior each object is doing. <strong>This can actually create easier to understand/maintain code</strong>, because the names of methods (not only at definition location but strewn throughout other code) are more obvious (self documenting).</p>
+  </li>
+  <li>
+    <p><code>this.setID(ID);</code> inside of a method on the <code>XYZ</code> object first looks on <code>XYZ</code> for <code>setID(..)</code>, but since it doesn’t find a method of that name on <code>XYZ</code>, <code>[[Prototype]]</code> <em>delegation</em> means it can follow the link to <code>Task</code> to look for <code>setID(..)</code>, which it of course finds. Moreover, because of implicit call-site <code>this</code> binding rules (see Chapter 2), when <code>setID(..)</code> runs, even though the method was found on <code>Task</code>, the <code>this</code> binding for that function call is <code>XYZ</code> exactly as we’d expect and want. We see the same thing with <code>this.outputID()</code> later in the code listing.</p>
+
+    <p>In other words, the general utility methods that exist on <code>Task</code> are available to us while interacting with <code>XYZ</code>, because <code>XYZ</code> can delegate to <code>Task</code>.</p>
+  </li>
+</ol>
+
+<p><strong>Behavior Delegation</strong> means: let some object (<code>XYZ</code>) provide a delegation (to <code>Task</code>) for property or method references if not found on the object (<code>XYZ</code>).</p>
+
+<p>This is an <em>extremely powerful</em> design pattern, very distinct from the idea of parent and child classes, inheritance, polymorphism, etc. Rather than organizing the objects in your mind vertically, with Parents flowing down to Children, think of objects side-by-side, as peers, with any direction of delegation links between the objects as necessary.</p>
+
+<p><strong>Note:</strong> Delegation is more properly used as an internal implementation detail rather than exposed directly in the API interface design. In the above example, we don’t necessarily <em>intend</em> with our API design for developers to call <code>XYZ.setID()</code> (though we can, of course!). We sorta <em>hide</em> the delegation as an internal detail of our API, where <code>XYZ.prepareTask(..)</code> delegates to <code>Task.setID(..)</code>. See the “Links As Fallbacks?” discussion in Chapter 5 for more detail.</p>
+
+<h4 id="mutual-delegation-disallowed">Mutual Delegation (Disallowed)</h4>
+
+<p>You cannot create a <em>cycle</em> where two or more objects are mutually delegated (bi-directionally) to each other. If you make <code>B</code> linked to <code>A</code>, and then try to link <code>A</code> to <code>B</code>, you will get an error.</p>
+
+<p>It’s a shame (not terribly surprising, but mildly annoying) that this is disallowed. If you made a reference to a property/method which didn’t exist in either place, you’d have a infinite recursion on the <code>[[Prototype]]</code> loop. But if all references were strictly present, then <code>B</code> could delegate to <code>A</code>, and vice versa, and it <em>could</em> work. This would mean you could use either object to delegate to the other, for various tasks. There are a few niche use-cases where this might be helpful.</p>
+
+<p>But it’s disallowed because engine implementors have observed that it’s more performant to check for (and reject!) the infinite circular reference once at set-time rather than needing to have the performance hit of that guard check every time you look-up a property on an object.</p>
+
+<h4 id="debugged">Debugged</h4>
+
+<p>We’ll briefly cover a subtle detail that can be confusing to developers. In general, the JS specification does not control how browser developer tools should represent specific values/structures to a developer, so each browser/engine is free to interpret such things as they see fit. As such, browsers/tools <em>don’t always agree</em>. Specifically, the behavior we will now examine is currently observed only in Chrome’s Developer Tools.</p>
+
+<p>Consider this traditional “class constructor” style JS code, as it would appear in the <em>console</em> of Chrome Developer Tools:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>() {}
+
+<span style="color:#080;font-weight:bold">var</span> a1 = <span style="color:#080;font-weight:bold">new</span> Foo();
+
+a1; <span style="color:#777">// Foo {}</span>
+</pre></div>
+</div>
+</div>
+
+<p>Let’s look at the last line of that snippet: the output of evaluating the <code>a1</code> expression, which prints <code>Foo {}</code>. If you try this same code in Firefox, you will likely see <code>Object {}</code>. Why the difference? What do these outputs mean?</p>
+
+<p>Chrome is essentially saying “{} is an empty object that was constructed by a function with name ‘Foo’”. Firefox is saying “{} is an empty object of general construction from Object”. The subtle difference is that Chrome is actively tracking, as an <em>internal property</em>, the name of the actual function that did the construction, whereas other browsers don’t track that additional information.</p>
+
+<p>It would be tempting to attempt to explain this with JavaScript mechanisms:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>() {}
+
+<span style="color:#080;font-weight:bold">var</span> a1 = <span style="color:#080;font-weight:bold">new</span> Foo();
+
+a1.constructor; <span style="color:#777">// Foo(){}</span>
+a1.constructor.name; <span style="color:#777">// &quot;Foo&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>So, is that how Chrome is outputting “Foo”, by simply examining the object’s <code>.constructor.name</code>? Confusingly, the answer is both “yes” and “no”.</p>
+
+<p>Consider this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>() {}
+
+<span style="color:#080;font-weight:bold">var</span> a1 = <span style="color:#080;font-weight:bold">new</span> Foo();
+
+Foo.prototype.<span style="color:#06B;font-weight:bold">constructor</span> = <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Gotcha</span>(){};
+
+a1.constructor; <span style="color:#777">// Gotcha(){}</span>
+a1.constructor.name; <span style="color:#777">// &quot;Gotcha&quot;</span>
+
+a1; <span style="color:#777">// Foo {}</span>
+</pre></div>
+</div>
+</div>
+
+<p>Even though we change <code>a1.constructor.name</code> to legitimately be something else (“Gotcha”), Chrome’s console still uses the “Foo” name.</p>
+
+<p>So, it would appear the answer to previous question (does it use <code>.constructor.name</code>?) is <strong>no</strong>, it must track it somewhere else, internally.</p>
+
+<p>But, Not so fast! Let’s see how this kind of behavior works with OLOO-style code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Foo = {};
+
+<span style="color:#080;font-weight:bold">var</span> a1 = Object.create( Foo );
+
+a1; <span style="color:#777">// Object {}</span>
+
+Object.defineProperty( Foo, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">constructor</span><span style="color:#710">&quot;</span></span>, {
+        <span style="color:#606">enumerable</span>: <span style="color:#069">false</span>,
+        <span style="color:#06B;font-weight:bold">value</span>: <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Gotcha</span>(){}
+});
+
+a1; <span style="color:#777">// Gotcha {}</span>
+</pre></div>
+</div>
+</div>
+
+<p>Ah-ha! <strong>Gotcha!</strong> Here, Chrome’s console <strong>did</strong> find and use the <code>.constructor.name</code>. Actually, while writing this book, this exact behavior was identified as a bug in Chrome, and by the time you’re reading this, it may have already been fixed. So you may instead have seen the corrected <code>a1; // Object {}</code>.</p>
+
+<p>Aside from that bug, the internal tracking (apparently only for debug output purposes) of the “constructor name” that Chrome does (shown in the earlier snippets) is an intentional Chrome-only extension of behavior beyond what the JS specification calls for.</p>
+
+<p>If you don’t use a “constructor” to make your objects, as we’ve discouraged with OLOO-style code here in this chapter, then you’ll get objects that Chrome does <em>not</em> track an internal “constructor name” for, and such objects will correctly only be outputted as “Object {}”, meaning “object generated from Object() construction”.</p>
+
+<p><strong>Don’t think</strong> this represents a drawback of OLOO-style coding. When you code with OLOO and behavior delegation as your design pattern, <em>who</em> “constructed” (that is, <em>which function</em> was called with <code>new</code>?) some object is an irrelevant detail. Chrome’s specific internal “constructor name” tracking is really only useful if you’re fully embracing “class-style” coding, but is moot if you’re instead embracing OLOO delegation.</p>
+
+<h3 id="mental-models-compared">Mental Models Compared</h3>
+
+<p>Now that you can see a difference between “class” and “delegation” design patterns, at least theoretically, let’s see the implications these design patterns have on the mental models we use to reason about our code.</p>
+
+<p>We’ll examine some more theoretical (“Foo”, “Bar”) code, and compare both ways (OO vs. OLOO) of implementing the code. The first snippet uses the classical (“prototypal”) OO style:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>(who) {
+        <span style="color:#950">this</span>.me = who;
+}
+Foo.prototype.<span style="color:#06B;font-weight:bold">identify</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.me;
+};
+
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Bar</span>(who) {
+        Foo.call( <span style="color:#950">this</span>, who );
+}
+Bar.prototype = Object.create( Foo.prototype );
+
+Bar.prototype.<span style="color:#06B;font-weight:bold">speak</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        alert( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.identify() + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span> );
+};
+
+<span style="color:#080;font-weight:bold">var</span> b1 = <span style="color:#080;font-weight:bold">new</span> Bar( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b1</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> b2 = <span style="color:#080;font-weight:bold">new</span> Bar( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b2</span><span style="color:#710">&quot;</span></span> );
+
+b1.speak();
+b2.speak();
+</pre></div>
+</div>
+</div>
+
+<p>Parent class <code>Foo</code>, inherited by child class <code>Bar</code>, which is then instantiated twice as <code>b1</code> and <code>b2</code>. What we have is <code>b1</code> delegating to <code>Bar.prototype</code> which delegates to <code>Foo.prototype</code>. This should look fairly familiar to you, at this point. Nothing too ground-breaking going on.</p>
+
+<p>Now, let’s implement <strong>the exact same functionality</strong> using <em>OLOO</em> style code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>Foo = {
+        <span style="color:#06B;font-weight:bold">init</span>: <span style="color:#080;font-weight:bold">function</span>(who) {
+                <span style="color:#950">this</span>.me = who;
+        },
+        <span style="color:#06B;font-weight:bold">identify</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I am </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.me;
+        }
+};
+
+Bar = Object.create( Foo );
+
+Bar.<span style="color:#06B;font-weight:bold">speak</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        alert( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.identify() + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span> );
+};
+
+<span style="color:#080;font-weight:bold">var</span> b1 = Object.create( Bar );
+b1.init( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b1</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#080;font-weight:bold">var</span> b2 = Object.create( Bar );
+b2.init( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b2</span><span style="color:#710">&quot;</span></span> );
+
+b1.speak();
+b2.speak();
+</pre></div>
+</div>
+</div>
+
+<p>We take exactly the same advantage of <code>[[Prototype]]</code> delegation from <code>b1</code> to <code>Bar</code> to <code>Foo</code> as we did in the previous snippet between <code>b1</code>, <code>Bar.prototype</code>, and <code>Foo.prototype</code>. <strong>We still have the same 3 objects linked together</strong>.</p>
+
+<p>But, importantly, we’ve greatly simplified <em>all the other stuff</em> going on, because now we just set up <strong>objects</strong> linked to each other, without needing all the cruft and confusion of things that look (but don’t behave!) like classes, with constructors and prototypes and <code>new</code> calls.</p>
+
+<p>Ask yourself: if I can get the same functionality with OLOO style code as I do with “class” style code, but OLOO is simpler and has less things to think about, <strong>isn’t OLOO better</strong>?</p>
+
+<p>Let’s examine the mental models involved between these two snippets.</p>
+
+<p>First, the class-style code snippet implies this mental model of entities and their relationships:</p>
+
+<p><img src="fig4.png" /></p>
+
+<p>Actually, that’s a little unfair/misleading, because it’s showing a lot of extra detail that you don’t <em>technically</em> need to know at all times (though you <em>do</em> need to understand it!). One take-away is that it’s quite a complex series of relationships. But another take-away: if you spend the time to follow those relationship arrows around, <strong>there’s an amazing amount of internal consistency</strong> in JS’s mechanisms.</p>
+
+<p>For instance, the ability of a JS function to access <code>call(..)</code>, <code>apply(..)</code>, and <code>bind(..)</code> (see Chapter 2) is because functions themselves are objects, and function-objects also have a <code>[[Prototype]]</code> linkage, to the <code>Function.prototype</code> object, which defines those default methods that any function-object can delegate to. JS can do those things, <em>and you can too!</em>.</p>
+
+<p>OK, let’s now look at a <em>slightly</em> simplified version of that diagram which is a little more “fair” for comparison – it shows only the <em>relevant</em> entities and relationships.</p>
+
+<p><img src="fig5.png" /></p>
+
+<p>Still pretty complex, eh? The dotted lines are depicting the implied relationships when you setup the “inheritance” between <code>Foo.prototype</code> and <code>Bar.prototype</code> and haven’t yet <em>fixed</em> the <strong>missing</strong> <code>.constructor</code> property reference (see “Constructor Redux” in Chapter 5). Even with those dotted lines removed, the mental model is still an awful lot to juggle every time you work with object linkages.</p>
+
+<p>Now, let’s look at the mental model for OLOO-style code:</p>
+
+<p><img src="fig6.png" /></p>
+
+<p>As you can see comparing them, it’s quite obvious that OLOO-style code has <em>vastly less stuff</em> to worry about, because OLOO-style code embraces the <strong>fact</strong> that the only thing we ever really cared about was the <strong>objects linked to other objects</strong>.</p>
+
+<p>All the other “class” cruft was a confusing and complex way of getting the same end result. Remove that stuff, and things get much simpler (without losing any capability).</p>
+
+<h2 id="classes-vs-objects">Classes vs. Objects</h2>
+
+<p>We’ve just seen various theoretical explorations and mental models of “classes” vs. “behavior delegation”. But, let’s now look at more concrete code scenarios to show how’d you actually use these ideas.</p>
+
+<p>We’ll first examine a typical scenario in front-end web dev: creating UI widgets (buttons, drop-downs, etc).</p>
+
+<h3 id="widget-classes">Widget “Classes”</h3>
+
+<p>Because you’re probably still so used to the OO design pattern, you’ll likely immediately think of this problem domain in terms of a parent class (perhaps called <code>Widget</code>) with all the common base widget behavior, and then child derived classes for specific widget types (like <code>Button</code>).</p>
+
+<p><strong>Note:</strong> We’re going to use jQuery here for DOM and CSS manipulation, only because it’s a detail we don’t really care about for the purposes of our current discussion. None of this code cares which JS framework (jQuery, Dojo, YUI, etc), if any, you might solve such mundane tasks with.</p>
+
+<p>Let’s examine how we’d implement the “class” design in classic-style pure JS without any “class” helper library or syntax:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Parent class</span>
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Widget</span>(width,height) {
+        <span style="color:#950">this</span>.width = width || <span style="color:#00D">50</span>;
+        <span style="color:#950">this</span>.height = height || <span style="color:#00D">50</span>;
+        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#069">null</span>;
+}
+
+Widget.prototype.<span style="color:#06B;font-weight:bold">render</span> = <span style="color:#080;font-weight:bold">function</span>(<span style="color:#369;font-weight:bold">$where</span>){
+        <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>) {
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.css( {
+                        <span style="color:#606">width</span>: <span style="color:#950">this</span>.width + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>,
+                        <span style="color:#606">height</span>: <span style="color:#950">this</span>.height + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>
+                } ).appendTo( <span style="color:#369;font-weight:bold">$where</span> );
+        }
+};
+
+<span style="color:#777">// Child class</span>
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Button</span>(width,height,label) {
+        <span style="color:#777">// &quot;super&quot; constructor call</span>
+        Widget.call( <span style="color:#950">this</span>, width, height );
+        <span style="color:#950">this</span>.label = label || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default</span><span style="color:#710">&quot;</span></span>;
+
+        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#369;font-weight:bold">$</span>( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;button&gt;</span><span style="color:#710">&quot;</span></span> ).text( <span style="color:#950">this</span>.label );
+}
+
+<span style="color:#777">// make `Button` &quot;inherit&quot; from `Widget`</span>
+Button.prototype = Object.create( Widget.prototype );
+
+<span style="color:#777">// override base &quot;inherited&quot; `render(..)`</span>
+Button.prototype.<span style="color:#06B;font-weight:bold">render</span> = <span style="color:#080;font-weight:bold">function</span>(<span style="color:#369;font-weight:bold">$where</span>) {
+        <span style="color:#777">// &quot;super&quot; call</span>
+        Widget.prototype.render.call( <span style="color:#950">this</span>, <span style="color:#369;font-weight:bold">$where</span> );
+        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.click( <span style="color:#950">this</span>.onClick.bind( <span style="color:#950">this</span> ) );
+};
+
+Button.prototype.<span style="color:#06B;font-weight:bold">onClick</span> = <span style="color:#080;font-weight:bold">function</span>(evt) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Button '</span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.label + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">' clicked!</span><span style="color:#710">&quot;</span></span> );
+};
+
+<span style="color:#369;font-weight:bold">$</span>( document ).ready( <span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#080;font-weight:bold">var</span> <span style="color:#369;font-weight:bold">$body</span> = <span style="color:#369;font-weight:bold">$</span>( document.body );
+        <span style="color:#080;font-weight:bold">var</span> btn1 = <span style="color:#080;font-weight:bold">new</span> Button( <span style="color:#00D">125</span>, <span style="color:#00D">30</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> );
+        <span style="color:#080;font-weight:bold">var</span> btn2 = <span style="color:#080;font-weight:bold">new</span> Button( <span style="color:#00D">150</span>, <span style="color:#00D">40</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span> );
+
+        btn1.render( <span style="color:#369;font-weight:bold">$body</span> );
+        btn2.render( <span style="color:#369;font-weight:bold">$body</span> );
+} );
+</pre></div>
+</div>
+</div>
+
+<p>OO design patterns tell us to declare a base <code>render(..)</code> in the parent class, then override it in our child class, but not to replace it per se, rather to augment the base functionality with button-specific behavior.</p>
+
+<p>Notice the ugliness of <em>explicit pseudo-polymorphism</em> (see Chapter 4) with <code>Widget.call</code> and <code>Widget.prototype.render.call</code> references for faking “super” calls from the child “class” methods back up to the “parent” class base methods. Yuck.</p>
+
+<h4 id="es6-class-sugar">ES6 <code>class</code> sugar</h4>
+
+<p>We cover ES6 <code>class</code> syntax sugar in detail in Appendix A, but let’s briefly demonstrate how we’d implement the same code using <code>class</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> Widget {
+        constructor(width,height) {
+                <span style="color:#950">this</span>.width = width || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.height = height || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#069">null</span>;
+        }
+        render(<span style="color:#369;font-weight:bold">$where</span>){
+                <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>) {
+                        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.css( {
+                                <span style="color:#606">width</span>: <span style="color:#950">this</span>.width + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>,
+                                <span style="color:#606">height</span>: <span style="color:#950">this</span>.height + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>
+                        } ).appendTo( <span style="color:#369;font-weight:bold">$where</span> );
+                }
+        }
+}
+
+<span style="color:#080;font-weight:bold">class</span> Button <span style="color:#080;font-weight:bold">extends</span> Widget {
+        constructor(width,height,label) {
+                <span style="color:#080;font-weight:bold">super</span>( width, height );
+                <span style="color:#950">this</span>.label = label || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default</span><span style="color:#710">&quot;</span></span>;
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#369;font-weight:bold">$</span>( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;button&gt;</span><span style="color:#710">&quot;</span></span> ).text( <span style="color:#950">this</span>.label );
+        }
+        render(<span style="color:#369;font-weight:bold">$where</span>) {
+                <span style="color:#080;font-weight:bold">super</span>( <span style="color:#369;font-weight:bold">$where</span> );
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.click( <span style="color:#950">this</span>.onClick.bind( <span style="color:#950">this</span> ) );
+        }
+        onClick(evt) {
+                console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Button '</span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.label + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">' clicked!</span><span style="color:#710">&quot;</span></span> );
+        }
+}
+
+<span style="color:#369;font-weight:bold">$</span>( document ).ready( <span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#080;font-weight:bold">var</span> <span style="color:#369;font-weight:bold">$body</span> = <span style="color:#369;font-weight:bold">$</span>( document.body );
+        <span style="color:#080;font-weight:bold">var</span> btn1 = <span style="color:#080;font-weight:bold">new</span> Button( <span style="color:#00D">125</span>, <span style="color:#00D">30</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> );
+        <span style="color:#080;font-weight:bold">var</span> btn2 = <span style="color:#080;font-weight:bold">new</span> Button( <span style="color:#00D">150</span>, <span style="color:#00D">40</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span> );
+
+        btn1.render( <span style="color:#369;font-weight:bold">$body</span> );
+        btn2.render( <span style="color:#369;font-weight:bold">$body</span> );
+} );
+</pre></div>
+</div>
+</div>
+
+<p>Undoubtedly, a number of the syntax uglies of the previous classical approach have been smoothed over with ES6’s <code>class</code>. The presence of a <code>super(..)</code> in particular seems quite nice (though when you dig into it, it’s not all roses!).</p>
+
+<p>Despite syntactic improvements, <strong>these are not <em>real</em> classes</strong>, as they still operate on top of the <code>[[Prototype]]</code> mechanism. They suffer from all the same mental-model mismatches we explored in Chapters 4, 5 and thus far in this chapter. Appendix A will expound on the ES6 <code>class</code> syntax and its implications in detail. We’ll see why solving syntax hiccups doesn’t substantially solve our class confusions in JS, though it makes a valiant effort masquerading as a solution!</p>
+
+<p>Whether you use the classic prototypal syntax or the new ES6 sugar, you’ve still made a <em>choice</em> to model the problem domain (UI widgets) with “classes”. And as the previous few chapters try to demonstrate, this <em>choice</em> in JavaScript is opting you into extra headaches and mental tax.</p>
+
+<h3 id="delegating-widget-objects">Delegating Widget Objects</h3>
+
+<p>Here’s our simpler <code>Widget</code> / <code>Button</code> example, using <strong>OLOO style delegation</strong>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Widget = {
+        <span style="color:#06B;font-weight:bold">init</span>: <span style="color:#080;font-weight:bold">function</span>(width,height){
+                <span style="color:#950">this</span>.width = width || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.height = height || <span style="color:#00D">50</span>;
+                <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#069">null</span>;
+        },
+        <span style="color:#06B;font-weight:bold">insert</span>: <span style="color:#080;font-weight:bold">function</span>(<span style="color:#369;font-weight:bold">$where</span>){
+                <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>) {
+                        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.css( {
+                                <span style="color:#606">width</span>: <span style="color:#950">this</span>.width + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>,
+                                <span style="color:#606">height</span>: <span style="color:#950">this</span>.height + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">px</span><span style="color:#710">&quot;</span></span>
+                        } ).appendTo( <span style="color:#369;font-weight:bold">$where</span> );
+                }
+        }
+};
+
+<span style="color:#080;font-weight:bold">var</span> Button = Object.create( Widget );
+
+Button.<span style="color:#06B;font-weight:bold">setup</span> = <span style="color:#080;font-weight:bold">function</span>(width,height,label){
+        <span style="color:#777">// delegated call</span>
+        <span style="color:#950">this</span>.init( width, height );
+        <span style="color:#950">this</span>.label = label || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Default</span><span style="color:#710">&quot;</span></span>;
+
+        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span> = <span style="color:#369;font-weight:bold">$</span>( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;button&gt;</span><span style="color:#710">&quot;</span></span> ).text( <span style="color:#950">this</span>.label );
+};
+Button.<span style="color:#06B;font-weight:bold">build</span> = <span style="color:#080;font-weight:bold">function</span>(<span style="color:#369;font-weight:bold">$where</span>) {
+        <span style="color:#777">// delegated call</span>
+        <span style="color:#950">this</span>.insert( <span style="color:#369;font-weight:bold">$where</span> );
+        <span style="color:#950">this</span>.<span style="color:#369;font-weight:bold">$elem</span>.click( <span style="color:#950">this</span>.onClick.bind( <span style="color:#950">this</span> ) );
+};
+Button.<span style="color:#06B;font-weight:bold">onClick</span> = <span style="color:#080;font-weight:bold">function</span>(evt) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Button '</span><span style="color:#710">&quot;</span></span> + <span style="color:#950">this</span>.label + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">' clicked!</span><span style="color:#710">&quot;</span></span> );
+};
+
+<span style="color:#369;font-weight:bold">$</span>( document ).ready( <span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#080;font-weight:bold">var</span> <span style="color:#369;font-weight:bold">$body</span> = <span style="color:#369;font-weight:bold">$</span>( document.body );
+
+        <span style="color:#080;font-weight:bold">var</span> btn1 = Object.create( Button );
+        btn1.setup( <span style="color:#00D">125</span>, <span style="color:#00D">30</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> );
+
+        <span style="color:#080;font-weight:bold">var</span> btn2 = Object.create( Button );
+        btn2.setup( <span style="color:#00D">150</span>, <span style="color:#00D">40</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">World</span><span style="color:#710">&quot;</span></span> );
+
+        btn1.build( <span style="color:#369;font-weight:bold">$body</span> );
+        btn2.build( <span style="color:#369;font-weight:bold">$body</span> );
+} );
+</pre></div>
+</div>
+</div>
+
+<p>With this OLOO-style approach, we don’t think of <code>Widget</code> as a parent and <code>Button</code> as a child. Rather, <code>Widget</code> <strong>is just an object</strong> and is sort of a utility collection that any specific type of widget might want to delegate to, and <code>Button</code> <strong>is also just a stand-alone object</strong> (with a delegation link to <code>Widget</code>, of course!).</p>
+
+<p>From a design pattern perspective, we <strong>didn’t</strong> share the same method name <code>render(..)</code> in both objects, the way classes suggest, but instead we chose different names (<code>insert(..)</code> and <code>build(..)</code>) that were more descriptive of what task each does specifically. The <em>initialization</em> methods are called <code>init(..)</code> and <code>setup(..)</code>, respectively, for the same reasons.</p>
+
+<p>Not only does this delegation design pattern suggest different and more descriptive names (rather than shared and more generic names), but doing so with OLOO happens to avoid the ugliness of the explicit pseudo-polymorphic calls (<code>Widget.call</code> and <code>Widget.prototype.render.call</code>), as you can see by the simple, relative, delegated calls to <code>this.init(..)</code> and <code>this.insert(..)</code>.</p>
+
+<p>Syntactically, we also don’t have any constructors, <code>.prototype</code> or <code>new</code> present, as they are, in fact, just unnecessary cruft.</p>
+
+<p>Now, if you’re paying close attention, you may notice that what was previously just one call (<code>var btn1 = new Button(..)</code>) is now two calls (<code>var btn1 = Object.create(Button)</code> and <code>btn1.setup(..)</code>). Initially this may seem like a drawback (more code).</p>
+
+<p>However, even this is something that’s <strong>a pro of OLOO style code</strong> as compared to classical prototype style code. How?</p>
+
+<p>With class constructors, you are “forced” (not really, but strongly suggested) to do both construction and initialization in the same step. However, there are many cases where being able to do these two steps separately (as you do with OLOO!) is more flexible.</p>
+
+<p>For example, let’s say you create all your instances in a pool at the beginning of your program, but you wait to initialize them with specific setup until they are pulled from the pool and used. We showed the two calls happening right next to each other, but of course they can happen at very different times and in very different parts of our code, as needed.</p>
+
+<p><strong>OLOO</strong> supports <em>better</em> the principle of separation of concerns, where creation and initialization are not necessarily conflated into the same operation.</p>
+
+<h2 id="simpler-design">Simpler Design</h2>
+
+<p>In addition to OLOO providing ostensibly simpler (and more flexible!) code, behavior delegation as a pattern can actually lead to simpler code architecture. Let’s examine one last example that illustrates how OLOO simplifies your overall design.</p>
+
+<p>The scenario we’ll examine is two controller objects, one for handling the login form of a web page, and another for actually handling the authentication (communication) with the server.</p>
+
+<p>We’ll need a utility helper for making the Ajax communication to the server. We’ll use jQuery (though any framework would do fine), since it handles not only the Ajax for us, but it returns a promise-like answer so that we can listen for the response in our calling code with <code>.then(..)</code>.</p>
+
+<p><strong>Note:</strong> We don’t cover Promises here, but we will cover them in a future title of the <em>“You Don’t Know JS”</em> series.</p>
+
+<p>Following the typical class design pattern, we’ll break up the task into base functionality in a class called <code>Controller</code>, and then we’ll derive two child classes, <code>LoginController</code> and <code>AuthController</code>, which both inherit from <code>Controller</code> and specialize some of those base behaviors.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Parent class</span>
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Controller</span>() {
+        <span style="color:#950">this</span>.errors = [];
+}
+Controller.prototype.<span style="color:#06B;font-weight:bold">showDialog</span> = <span style="color:#080;font-weight:bold">function</span>(title,msg) {
+        <span style="color:#777">// display title &amp; message to user in dialog</span>
+};
+Controller.prototype.<span style="color:#06B;font-weight:bold">success</span> = <span style="color:#080;font-weight:bold">function</span>(msg) {
+        <span style="color:#950">this</span>.showDialog( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Success</span><span style="color:#710">&quot;</span></span>, msg );
+};
+Controller.prototype.<span style="color:#06B;font-weight:bold">failure</span> = <span style="color:#080;font-weight:bold">function</span>(err) {
+        <span style="color:#950">this</span>.errors.push( err );
+        <span style="color:#950">this</span>.showDialog( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Error</span><span style="color:#710">&quot;</span></span>, err );
+};
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Child class</span>
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">LoginController</span>() {
+        Controller.call( <span style="color:#950">this</span> );
+}
+<span style="color:#777">// Link child class to parent</span>
+LoginController.prototype = Object.create( Controller.prototype );
+LoginController.prototype.<span style="color:#06B;font-weight:bold">getUser</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#080;font-weight:bold">return</span> document.getElementById( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">login_username</span><span style="color:#710">&quot;</span></span> ).value;
+};
+LoginController.prototype.<span style="color:#06B;font-weight:bold">getPassword</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#080;font-weight:bold">return</span> document.getElementById( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">login_password</span><span style="color:#710">&quot;</span></span> ).value;
+};
+LoginController.prototype.<span style="color:#06B;font-weight:bold">validateEntry</span> = <span style="color:#080;font-weight:bold">function</span>(user,pw) {
+        user = user || <span style="color:#950">this</span>.getUser();
+        pw = pw || <span style="color:#950">this</span>.getPassword();
+
+        <span style="color:#080;font-weight:bold">if</span> (!(user &amp;&amp; pw)) {
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.failure( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please enter a username &amp; password!</span><span style="color:#710">&quot;</span></span> );
+        }
+        <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (pw.length &lt; <span style="color:#00D">5</span>) {
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.failure( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Password must be 5+ characters!</span><span style="color:#710">&quot;</span></span> );
+        }
+
+        <span style="color:#777">// got here? validated!</span>
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>;
+};
+<span style="color:#777">// Override to extend base `failure()`</span>
+LoginController.prototype.<span style="color:#06B;font-weight:bold">failure</span> = <span style="color:#080;font-weight:bold">function</span>(err) {
+        <span style="color:#777">// &quot;super&quot; call</span>
+        Controller.prototype.failure.call( <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Login invalid: </span><span style="color:#710">&quot;</span></span> + err );
+};
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Child class</span>
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">AuthController</span>(login) {
+        Controller.call( <span style="color:#950">this</span> );
+        <span style="color:#777">// in addition to inheritance, we also need composition</span>
+        <span style="color:#950">this</span>.login = login;
+}
+<span style="color:#777">// Link child class to parent</span>
+AuthController.prototype = Object.create( Controller.prototype );
+AuthController.prototype.<span style="color:#06B;font-weight:bold">server</span> = <span style="color:#080;font-weight:bold">function</span>(url,data) {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#369;font-weight:bold">$</span>.ajax( {
+                <span style="color:#606">url</span>: url,
+                <span style="color:#606">data</span>: data
+        } );
+};
+AuthController.prototype.<span style="color:#06B;font-weight:bold">checkAuth</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#080;font-weight:bold">var</span> user = <span style="color:#950">this</span>.login.getUser();
+        <span style="color:#080;font-weight:bold">var</span> pw = <span style="color:#950">this</span>.login.getPassword();
+
+        <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.login.validateEntry( user, pw )) {
+                <span style="color:#950">this</span>.server( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/check-auth</span><span style="color:#710">&quot;</span></span>,{
+                        <span style="color:#606">user</span>: user,
+                        <span style="color:#606">pw</span>: pw
+                } )
+                .then( <span style="color:#950">this</span>.success.bind( <span style="color:#950">this</span> ) )
+                .fail( <span style="color:#950">this</span>.failure.bind( <span style="color:#950">this</span> ) );
+        }
+};
+<span style="color:#777">// Override to extend base `success()`</span>
+AuthController.prototype.<span style="color:#06B;font-weight:bold">success</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#777">// &quot;super&quot; call</span>
+        Controller.prototype.success.call( <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Authenticated!</span><span style="color:#710">&quot;</span></span> );
+};
+<span style="color:#777">// Override to extend base `failure()`</span>
+AuthController.prototype.<span style="color:#06B;font-weight:bold">failure</span> = <span style="color:#080;font-weight:bold">function</span>(err) {
+        <span style="color:#777">// &quot;super&quot; call</span>
+        Controller.prototype.failure.call( <span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Auth Failed: </span><span style="color:#710">&quot;</span></span> + err );
+};
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> auth = <span style="color:#080;font-weight:bold">new</span> AuthController(
+        <span style="color:#777">// in addition to inheritance, we also need composition</span>
+        <span style="color:#080;font-weight:bold">new</span> LoginController()
+);
+auth.checkAuth();
+</pre></div>
+</div>
+</div>
+
+<p>We have base behaviors that all controllers share, which are <code>success(..)</code>, <code>failure(..)</code> and <code>showDialog(..)</code>. Our child classes <code>LoginController</code> and <code>AuthController</code> override <code>failure(..)</code> and <code>success(..)</code> to augment the default base class behavior. Also note that <code>AuthController</code> needs an instance of <code>LoginController</code> to interact with the login form, so that becomes a member data property.</p>
+
+<p>The other thing to mention is that we chose some <em>composition</em> to sprinkle in on top of the inheritance. <code>AuthController</code> needs to know about <code>LoginController</code>, so we instantiate it (<code>new LoginController()</code>) and keep a class member property called <code>this.login</code> to reference it, so that <code>AuthController</code> can invoke behavior on <code>LoginController</code>.</p>
+
+<p><strong>Note:</strong> There <em>might</em> have been a slight temptation to make <code>AuthController</code> inherit from <code>LoginController</code>, or vice versa, such that we had <em>virtual composition</em> through the inheritance chain. But this is a strongly clear example of what’s wrong with class inheritance as <em>the</em> model for the problem domain, because neither <code>AuthController</code> nor <code>LoginController</code> are specializing base behavior of the other, so inheritance between them makes little sense except if classes are your only design pattern. Instead, we layered in some simple <em>composition</em> and now they can cooperate, while still both benefiting from the inheritance from the parent base <code>Controller</code>.</p>
+
+<p>If you’re familiar with class-oriented (OO) design, this should all look pretty familiar and natural.</p>
+
+<h3 id="de-class-ified">De-class-ified</h3>
+
+<p>But, <strong>do we really need to model this problem</strong> with a parent <code>Controller</code> class, two child classes, <strong>and some composition</strong>? Is there a way to take advantage of OLOO-style behavior delegation and have a <em>much</em> simpler design? <strong>Yes!</strong></p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> LoginController = {
+        <span style="color:#606">errors</span>: [],
+        <span style="color:#06B;font-weight:bold">getUser</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#080;font-weight:bold">return</span> document.getElementById( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">login_username</span><span style="color:#710">&quot;</span></span> ).value;
+        },
+        <span style="color:#06B;font-weight:bold">getPassword</span>: <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#080;font-weight:bold">return</span> document.getElementById( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">login_password</span><span style="color:#710">&quot;</span></span> ).value;
+        },
+        <span style="color:#06B;font-weight:bold">validateEntry</span>: <span style="color:#080;font-weight:bold">function</span>(user,pw) {
+                user = user || <span style="color:#950">this</span>.getUser();
+                pw = pw || <span style="color:#950">this</span>.getPassword();
+
+                <span style="color:#080;font-weight:bold">if</span> (!(user &amp;&amp; pw)) {
+                        <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.failure( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Please enter a username &amp; password!</span><span style="color:#710">&quot;</span></span> );
+                }
+                <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (pw.length &lt; <span style="color:#00D">5</span>) {
+                        <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.failure( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Password must be 5+ characters!</span><span style="color:#710">&quot;</span></span> );
+                }
+
+                <span style="color:#777">// got here? validated!</span>
+                <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>;
+        },
+        <span style="color:#06B;font-weight:bold">showDialog</span>: <span style="color:#080;font-weight:bold">function</span>(title,msg) {
+                <span style="color:#777">// display success message to user in dialog</span>
+        },
+        <span style="color:#06B;font-weight:bold">failure</span>: <span style="color:#080;font-weight:bold">function</span>(err) {
+                <span style="color:#950">this</span>.errors.push( err );
+                <span style="color:#950">this</span>.showDialog( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Error</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Login invalid: </span><span style="color:#710">&quot;</span></span> + err );
+        }
+};
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Link `AuthController` to delegate to `LoginController`</span>
+<span style="color:#080;font-weight:bold">var</span> AuthController = Object.create( LoginController );
+
+AuthController.errors = [];
+AuthController.<span style="color:#06B;font-weight:bold">checkAuth</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#080;font-weight:bold">var</span> user = <span style="color:#950">this</span>.getUser();
+        <span style="color:#080;font-weight:bold">var</span> pw = <span style="color:#950">this</span>.getPassword();
+
+        <span style="color:#080;font-weight:bold">if</span> (<span style="color:#950">this</span>.validateEntry( user, pw )) {
+                <span style="color:#950">this</span>.server( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/check-auth</span><span style="color:#710">&quot;</span></span>,{
+                        <span style="color:#606">user</span>: user,
+                        <span style="color:#606">pw</span>: pw
+                } )
+                .then( <span style="color:#950">this</span>.accepted.bind( <span style="color:#950">this</span> ) )
+                .fail( <span style="color:#950">this</span>.rejected.bind( <span style="color:#950">this</span> ) );
+        }
+};
+AuthController.<span style="color:#06B;font-weight:bold">server</span> = <span style="color:#080;font-weight:bold">function</span>(url,data) {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#369;font-weight:bold">$</span>.ajax( {
+                <span style="color:#606">url</span>: url,
+                <span style="color:#606">data</span>: data
+        } );
+};
+AuthController.<span style="color:#06B;font-weight:bold">accepted</span> = <span style="color:#080;font-weight:bold">function</span>() {
+        <span style="color:#950">this</span>.showDialog( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Success</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Authenticated!</span><span style="color:#710">&quot;</span></span> )
+};
+AuthController.<span style="color:#06B;font-weight:bold">rejected</span> = <span style="color:#080;font-weight:bold">function</span>(err) {
+        <span style="color:#950">this</span>.failure( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Auth Failed: </span><span style="color:#710">&quot;</span></span> + err );
+};
+</pre></div>
+</div>
+</div>
+
+<p>Since <code>AuthController</code> is just an object (so is <code>LoginController</code>), we don’t need to instantiate (like <code>new AuthController()</code>) to perform our task. All we need to do is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>AuthController.checkAuth();
+</pre></div>
+</div>
+</div>
+
+<p>Of course, with OLOO, if you do need to create one or more additional objects in the delegation chain, that’s easy, and still doesn’t require anything like class instantiation:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> controller1 = Object.create( AuthController );
+<span style="color:#080;font-weight:bold">var</span> controller2 = Object.create( AuthController );
+</pre></div>
+</div>
+</div>
+
+<p>With behavior delegation, <code>AuthController</code> and <code>LoginController</code> are <strong>just objects</strong>, <em>horizontal</em> peers of each other, and are not arranged or related as parents and children in class-orientation. We somewhat arbitrarily chose to have <code>AuthController</code> delegate to <code>LoginController</code> – it would have been just as valid for the delegation to go the reverse direction.</p>
+
+<p>The main takeaway from this second code listing is that we only have two entities (<code>LoginController</code> and <code>AuthController</code>), <strong>not three</strong> as before.</p>
+
+<p>We didn’t need a base <code>Controller</code> class to “share” behavior between the two, because delegation is a powerful enough mechanism to give us the functionality we need. We also, as noted before, don’t need to instantiate our classes to work with them, because there are no classes, <strong>just the objects themselves.</strong> Furthermore, there’s no need for <em>composition</em> as delegation gives the two objects the ability to cooperate <em>differentially</em> as needed.</p>
+
+<p>Lastly, we avoided the polymorphism pitfalls of class-oriented design by not having the names <code>success(..)</code> and <code>failure(..)</code> be the same on both objects, which would have required ugly explicit pseduo-polymorphism. Instead, we called them <code>accepted()</code> and <code>rejected(..)</code> on <code>AuthController</code> – slightly more descriptive names for their specific tasks.</p>
+
+<p><strong>Bottom line</strong>: we end up with the same capability, but a (significantly) simpler design. That’s the power of OLOO-style code and the power of the <em>behavior delegation</em> design pattern.</p>
+
+<h2 id="nicer-syntax">Nicer Syntax</h2>
+
+<p>One of the nicer things that makes ES6’s <code>class</code> so deceptively attractive (see Appendix A on why to avoid it!) is the short-hand syntax for declaring class methods:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> Foo {
+        methodName() { <span style="color:#777">/* .. */</span> }
+}
+</pre></div>
+</div>
+</div>
+
+<p>We get to drop the word <code>function</code> from the declaration, which makes JS developers everywhere cheer!</p>
+
+<p>And you may have noticed and been frustrated that the suggested OLOO syntax above has lots of <code>function</code> appearances, which seems like a bit of a detractor to the goal of OLOO simplification. <strong>But it doesn’t have to be that way!</strong></p>
+
+<p>As of ES6, we can use <em>concise method declarations</em> in any object literal, so an object in OLOO style can be declared this way (same short-hand sugar as with <code>class</code> body syntax):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> LoginController = {
+        <span style="color:#606">errors</span>: [],
+        getUser() { <span style="color:#777">// Look ma, no `function`!</span>
+                <span style="color:#777">// ...</span>
+        },
+        getPassword() {
+                <span style="color:#777">// ...</span>
+        }
+        <span style="color:#777">// ...</span>
+};
+</pre></div>
+</div>
+</div>
+
+<p>About the only difference is that object literals will still require <code>,</code> comma separators between elements whereas <code>class</code> syntax doesn’t. Pretty minor concession in the whole scheme of things.</p>
+
+<p>Moreover, as of ES6, the clunkier syntax you use (like for the <code>AuthController</code> definition), where you’re assigning properties individually and not using an object literal, can be re-written using an object literal (so that you can use concise methods), and you can just modify that object’s <code>[[Prototype]]</code> with <code>Object.setPrototypeOf(..)</code>, like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// use nicer object literal syntax w/ concise methods!</span>
+<span style="color:#080;font-weight:bold">var</span> AuthController = {
+        <span style="color:#606">errors</span>: [],
+        checkAuth() {
+                <span style="color:#777">// ...</span>
+        },
+        server(url,data) {
+                <span style="color:#777">// ...</span>
+        }
+        <span style="color:#777">// ...</span>
+};
+
+<span style="color:#777">// NOW, link `AuthController` to delegate to `LoginController`</span>
+Object.setPrototypeOf( AuthController, LoginController );
+</pre></div>
+</div>
+</div>
+
+<p>OLOO-style as of ES6, with concise methods, <strong>is a lot friendlier</strong> than it was before (and even then, it was much simpler and nicer than classical prototype-style code). <strong>You don’t have to opt for class</strong> (complexity) to get nice clean object syntax!</p>
+
+<h3 id="unlexical">Unlexical</h3>
+
+<p>There <em>is</em> one drawback to concise methods that’s subtle but important to note. Consider this code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Foo = {
+        bar() { <span style="color:#777">/*..*/</span> },
+        <span style="color:#06B;font-weight:bold">baz</span>: <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">baz</span>() { <span style="color:#777">/*..*/</span> }
+};
+</pre></div>
+</div>
+</div>
+
+<p>Here’s the syntactic de-sugaring that expresses how that code will operate:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Foo = {
+        <span style="color:#06B;font-weight:bold">bar</span>: <span style="color:#080;font-weight:bold">function</span>() { <span style="color:#777">/*..*/</span> },
+        <span style="color:#06B;font-weight:bold">baz</span>: <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">baz</span>() { <span style="color:#777">/*..*/</span> }
+};
+</pre></div>
+</div>
+</div>
+
+<p>See the difference? The <code>bar()</code> short-hand became an <em>anonymous function expression</em> (<code>function()..</code>) attached to the <code>bar</code> property, because the function object itself has no name identifier. Compare that to the manually specified <em>named function expression</em> (<code>function baz()..</code>) which has a lexical name identifier <code>baz</code> in addition to being attached to a <code>.baz</code> property.</p>
+
+<p>So what? In the <em>“Scope &amp; Closures”</em> title of this <em>“You Don’t Know JS”</em> book series, we cover the three main downsides of <em>anonymous function expressions</em> in detail. We’ll just briefly repeat them so we can compare to the concise method short-hand.</p>
+
+<p>Lack of a <code>name</code> identifier on an anonymous function:</p>
+
+<ol>
+  <li>makes debugging stack traces harder</li>
+  <li>makes self-referencing (recursion, event (un)binding, etc) harder</li>
+  <li>makes code (a little bit) harder to understand</li>
+</ol>
+
+<p>Items 1 and 3 don’t apply to concise methods.</p>
+
+<p>Even though the de-sugaring uses an <em>anonymous function expression</em> which normally would have no <code>name</code> in stack traces, concise methods are specified to set the internal <code>name</code> property of the function object accordingly, so stack traces should be able to use it (though that’s implementation dependent so not guaranteed).</p>
+
+<p>Item 2 is, unfortunately, <strong>still a drawback to concise methods</strong>. They will not have a lexical identifier to use as a self-reference. Consider:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Foo = {
+        <span style="color:#06B;font-weight:bold">bar</span>: <span style="color:#080;font-weight:bold">function</span>(x) {
+                <span style="color:#080;font-weight:bold">if</span> (x &lt; <span style="color:#00D">10</span>) {
+                        <span style="color:#080;font-weight:bold">return</span> Foo.bar( x * <span style="color:#00D">2</span> );
+                }
+                <span style="color:#080;font-weight:bold">return</span> x;
+        },
+        <span style="color:#06B;font-weight:bold">baz</span>: <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">baz</span>(x) {
+                <span style="color:#080;font-weight:bold">if</span> (x &lt; <span style="color:#00D">10</span>) {
+                        <span style="color:#080;font-weight:bold">return</span> baz( x * <span style="color:#00D">2</span> );
+                }
+                <span style="color:#080;font-weight:bold">return</span> x;
+        }
+};
+</pre></div>
+</div>
+</div>
+
+<p>The manual <code>Foo.bar(x*2)</code> reference above kind of suffices in this example, but there are many cases where a function wouldn’t necessarily be able to do that, such as cases where the function is being shared in delegation across different objects, using <code>this</code> binding, etc. You would want to use a real self-reference, and the function object’s <code>name</code> identifier is the best way to accomplish that.</p>
+
+<p>Just be aware of this caveat for concise methods, and if you run into such issues with lack of self-reference, make sure to forgo the concise method syntax <strong>just for that declaration</strong> in favor of the manual <em>named function expression</em> declaration form: <code>baz: function baz(){..}</code>.</p>
+
+<h2 id="introspection">Introspection</h2>
+
+<p>If you’ve spent much time with class oriented programming (either in JS or other languages), you’re probably familiar with <em>type introspection</em>: inspecting an instance to find out what <em>kind</em> of object it is. The primary goal of <em>type introspection</em> with class instances is to reason about the structure/capabilities of the object based on <em>how is was created</em>.</p>
+
+<p>Consider this code which uses <code>instanceof</code> (see Chapter 5) for introspecting on an object <code>a1</code> to infer its capability:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>() {
+        <span style="color:#777">// ...</span>
+}
+Foo.prototype.<span style="color:#06B;font-weight:bold">something</span> = <span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#777">// ...</span>
+}
+
+<span style="color:#080;font-weight:bold">var</span> a1 = <span style="color:#080;font-weight:bold">new</span> Foo();
+
+<span style="color:#777">// later</span>
+
+<span style="color:#080;font-weight:bold">if</span> (a1 <span style="color:#080;font-weight:bold">instanceof</span> Foo) {
+        a1.something();
+}
+</pre></div>
+</div>
+</div>
+
+<p>Because <code>Foo.prototype</code> (not <code>Foo</code>!) is in the <code>[[Prototype]]</code> chain (see Chapter 5) of <code>a1</code>, the <code>instanceof</code> operator (confusingly) pretends to tell us that <code>a1</code> is an instance of the <code>Foo</code> “class”. With this knowledge, we then assume that <code>a1</code> has the capabilities described by the <code>Foo</code> “class”.</p>
+
+<p>Of course, there is no <code>Foo</code> class, only a plain old normal function <code>Foo</code>, which happens to have a reference to an arbitrary object (<code>Foo.prototype</code>) that <code>a1</code> happens to be delegation-linked to. By its syntax, <code>instanceof</code> pretends to be inspecting the relationship between <code>a1</code> and <code>Foo</code>, but it’s actually telling us whether <code>a1</code> and (the arbitrary object referenced by) <code>Foo.prototype</code> are related.</p>
+
+<p>The semantic confusion (and indirection) of <code>instanceof</code> syntax  means that to use <code>instanceof</code>-based introspection to ask if object <code>a1</code> is related to the capabilities object in question, you <em>have to</em> have a function that holds a reference to that object – you can’t just directly ask if the two objects are related.</p>
+
+<p>Recall the abstract <code>Foo</code> / <code>Bar</code> / <code>b1</code> example from earlier in this chapter, which we’ll abbreviate here:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Foo</span>() { <span style="color:#777">/* .. */</span> }
+Foo.prototype...
+
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">Bar</span>() { <span style="color:#777">/* .. */</span> }
+Bar.prototype = Object.create( Foo.prototype );
+
+<span style="color:#080;font-weight:bold">var</span> b1 = <span style="color:#080;font-weight:bold">new</span> Bar( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">b1</span><span style="color:#710">&quot;</span></span> );
+</pre></div>
+</div>
+</div>
+
+<p>For <em>type introspection</em> purposes on the entities in that example, using <code>instanceof</code> and <code>.prototype</code> semantics, here are the various checks you might need to perform:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// relating `Foo` and `Bar` to each other</span>
+Bar.prototype <span style="color:#080;font-weight:bold">instanceof</span> Foo; <span style="color:#777">// true</span>
+Object.getPrototypeOf( Bar.prototype ) === Foo.prototype; <span style="color:#777">// true</span>
+Foo.prototype.isPrototypeOf( Bar.prototype ); <span style="color:#777">// true</span>
+
+<span style="color:#777">// relating `b1` to both `Foo` and `Bar`</span>
+b1 <span style="color:#080;font-weight:bold">instanceof</span> Foo; <span style="color:#777">// true</span>
+b1 <span style="color:#080;font-weight:bold">instanceof</span> Bar; <span style="color:#777">// true</span>
+Object.getPrototypeOf( b1 ) === Bar.prototype; <span style="color:#777">// true</span>
+Foo.prototype.isPrototypeOf( b1 ); <span style="color:#777">// true</span>
+Bar.prototype.isPrototypeOf( b1 ); <span style="color:#777">// true</span>
+</pre></div>
+</div>
+</div>
+
+<p>It’s fair to say that some of that kinda sucks. For instance, intuitively (with classes) you might want to be able to say something like <code>Bar instanceof Foo</code> (because it’s easy to mix up what “instance” means to think it includes “inheritance”), but that’s not a sensible comparison in JS. You have to do <code>Bar.prototype instanceof Foo</code> instead.</p>
+
+<p>Another common, but perhaps less robust, pattern for <em>type introspection</em>, which many devs seem to prefer over <code>instanceof</code>, is called “duck typing”. This term comes from the adage, “if it looks like a duck, and it quacks like a duck, it must be a duck”.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (a1.something) {
+        a1.something();
+}
+</pre></div>
+</div>
+</div>
+
+<p>Rather than inspecting for a relationship between <code>a1</code> and an object that holds the delegatable <code>something()</code> function, we assume that the test for <code>a1.something</code> passing means <code>a1</code> has the capability to call <code>.something()</code> (regardless of if it found the method directly on <code>a1</code> or delegated to some other object). In and of itself, that assumption isn’t so risky.</p>
+
+<p>But “duck typing” is often extended to make <strong>other assumptions about the object’s capabilities</strong> besides what’s being tested, which of course introduces more risk (aka, brittle design) into the test.</p>
+
+<p>One notable example of “duck typing” comes with ES6 Promises (which as an earlier note explained are not being covered in this book).</p>
+
+<p>For various reasons, there’s a need to determine if any arbitrary object reference <em>is a Promise</em>, but the way that test is done is to check if the object happens to have a <code>then()</code> function present on it. In other words, <strong>if any object</strong> happens to have a <code>then()</code> method, ES6 Promises will assume unconditionally that the object <strong>is a “thenable”</strong> and therefore will expect it to behave conformantly to all standard behaviors of Promises.</p>
+
+<p>If you have any non-Promise object that happens for whatever reason to have a <code>then()</code> method on it, you are strongly advised to keep it far away from the ES6 Promise mechanism to avoid broken assumptions.</p>
+
+<p>That example clearly illustrates the perils of “duck typing”. You should only use such approaches sparingly and in controlled conditions.</p>
+
+<p>Turning our attention once again back to OLOO-style code as presented here in this chapter, <em>type introspection</em> turns out to be much cleaner. Let’s recall (and abbreviate) the <code>Foo</code> / <code>Bar</code> / <code>b1</code> OLOO example from earlier in the chapter:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> Foo = { <span style="color:#777">/* .. */</span> };
+
+<span style="color:#080;font-weight:bold">var</span> Bar = Object.create( Foo );
+Bar...
+
+<span style="color:#080;font-weight:bold">var</span> b1 = Object.create( Bar );
+</pre></div>
+</div>
+</div>
+
+<p>Using this OLOO approach, where all we have are plain objects that are related via <code>[[Prototype]]</code> delegation, here’s the quite simplified <em>type introspection</em> we might use:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// relating `Foo` and `Bar` to each other</span>
+Foo.isPrototypeOf( Bar ); <span style="color:#777">// true</span>
+Object.getPrototypeOf( Bar ) === Foo; <span style="color:#777">// true</span>
+
+<span style="color:#777">// relating `b1` to both `Foo` and `Bar`</span>
+Foo.isPrototypeOf( b1 ); <span style="color:#777">// true</span>
+Bar.isPrototypeOf( b1 ); <span style="color:#777">// true</span>
+Object.getPrototypeOf( b1 ) === Bar; <span style="color:#777">// true</span>
+</pre></div>
+</div>
+</div>
+
+<p>We’re not using <code>instanceof</code> anymore, because it’s confusingly pretending to have something to do with classes. Now, we just ask the (informally stated) question, “are you <em>a</em> prototype of me?” There’s no more indirection necessary with stuff like <code>Foo.prototype</code> or the painfully verbose <code>Foo.prototype.isPrototypeOf(..)</code>.</p>
+
+<p>I think it’s fair to say these checks are significantly less complicated/confusing than the previous set of introspection checks. <strong>Yet again, we see that OLOO is simpler than (but with all the same power of) class-style coding in JavaScript.</strong></p>
+
+<h2 id="review-tldr">Review (TL;DR)</h2>
+
+<p>Classes and inheritance are a design pattern you can <em>choose</em>, or <em>not choose</em>, in your software architecture. Most developers take for granted that classes are the only (proper) way to organize code, but here we’ve seen there’s another less-commonly talked about pattern that’s actually quite powerful: <strong>behavior delegation</strong>.</p>
+
+<p>Behavior delegation suggests objects as peers of each other, which delegate amongst themselves, rather than parent and child class relationships. JavaScript’s <code>[[Prototype]]</code> mechanism is, by its very designed nature, a behavior delegation mechanism. That means we can either choose to struggle to implement class mechanics on top of JS (see Chapters 4 and 5), or we can just embrace the natural state of <code>[[Prototype]]</code> as a delegation mechanism.</p>
+
+<p>When you design code with objects only, not only does it simplify the syntax you use, but it can actually lead to simpler code architecture design.</p>
+
+<p><strong>OLOO</strong> (objects-linked-to-other-objects) is a code style which creates and relates objects directly without the abstraction of classes. OLOO quite naturally implements <code>[[Prototype]]</code>-based behavior delegation.</p>
+
+    </div>
+  </body>
+</html>

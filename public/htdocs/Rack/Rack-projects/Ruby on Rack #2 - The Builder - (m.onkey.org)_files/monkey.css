@@ -1,0 +1,155 @@
+p {
+  margin: 0 0 1em;
+}
+
+h4 {
+  color: #9B1D5E;
+  margin-bottom: 0.5em;
+}
+
+body {
+/*  font-family: Lucida Grande, Verdana, Lucida Sans Regular, Lucida Sans Unicode, Arial, sans-serif;*/
+  font-family: 'Nunito', sans-serif;
+/*  font-size: 0.8em;*/
+  font-weight: 300;
+  font-size: 1em;
+  color: #2E2633;
+  line-height: 150%;
+}
+
+a:link, a:visited {
+  color:#2E2633;
+  text-decoration:underline;
+}
+
+h3 {
+  color: #99173C;
+}
+
+#header h1 {
+  padding-top: 30px;
+  font: bold 410% helvetica, arial, verdana, sans-serif;
+  letter-spacing: -1px;
+  font-size: 3em;
+  text-align: center;
+}
+
+#header a:link, #header a:visited {
+  text-decoration:none;
+  color: #2E2633;
+}
+
+#home_sidebar {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#home_posts {
+  border-left: 1px dotted #DDDDDD;
+  padding-left: 20px;
+}
+
+#post_list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 16px;
+}
+
+#post_list li {
+  margin-bottom: 10px;
+  line-height: 20px;
+}
+
+.blog_entries_title {
+  padding-left: 30px;
+}
+
+.post_number {
+  color: #555152;
+}
+
+.post_subtitle {
+  display: block;
+  color: #555152;
+  font-size: 11px;
+}
+
+.recent_post_subtitle {
+  display: block;
+  color: #99173C;
+  font-size: 11px;
+}
+
+.copyright_notice {
+  color: #555152;
+  font-size: 0.8em;
+}
+
+/*POSTS*/
+
+#post, #post_list {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.post_title {
+  color: #99173C;
+  font-size: 1.75em;
+}
+
+
+/*CODERAY*/
+
+.CodeRay {
+  background-color: #232323;
+  border: 1px solid black;
+  font-family: 'Courier New', 'Terminal', monospace;
+  color: #E6E0DB;
+  padding: 3px 5px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0;
+}
+.CodeRay pre {
+  margin: 0px;
+  padding: 0px;
+}
+
+.CodeRay .an { color:#E7BE69 }                      /* html attribute */
+.CodeRay .c  { color:#BC9358; font-style: italic; } /* comment */
+.CodeRay .ch { color:#509E4F }                      /* escaped character */
+.CodeRay .cl { color:#FFF }                         /* class */
+.CodeRay .co { color:#FFF }                         /* constant */
+.CodeRay .fl { color:#A4C260 }                      /* float */
+.CodeRay .fu { color:#FFC56D }                      /* function */
+.CodeRay .gv { color:#D0CFFE }                      /* global variable */
+.CodeRay .i  { color:#A4C260 }                      /* integer */
+.CodeRay .il { background:#151515 }                 /* inline code */
+.CodeRay .iv { color:#D0CFFE }                      /* instance variable */
+.CodeRay .pp { color:#E7BE69 }                      /* doctype */
+.CodeRay .r  { color:#CB7832 }                      /* keyword */
+.CodeRay .rx { color:#A4C260 }                      /* regex */
+.CodeRay .s  { color:#A4C260 }                      /* string */
+.CodeRay .sy { color:#6C9CBD }                      /* symbol */
+.CodeRay .ta { color:#E7BE69 }                      /* html tag */
+.CodeRay .pc { color:#6C9CBD }                      /* boolean */
+
+/* POST FORM */
+
+input.post_title {
+  padding: 6px;
+  font-size: 16px;
+  width: 80%;
+}
+
+textarea.post_body {
+  font-size: 13px;
+  width: 100%;
+  height: 400px;
+}
+
+/* Admin Posts */
+
+.pending_post {
+  color: #99173C;
+}

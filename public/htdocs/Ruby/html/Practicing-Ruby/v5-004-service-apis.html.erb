@@ -1,0 +1,763 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was contributed by Carol Nichols
+(<a href="http://twitter.com/carols10cents">@carols10cents</a>,
+<a href="https://rstat.us/users/Carols10cents">carols10cents@rstat.us</a>), one
+of the active maintainers of <a href="https://rstat.us">rstat.us</a>. Carol is
+also involved in the Pittsburgh Ruby community, and is a co-organizer of the
+<a href="http://steelcityrubyconf.org/">Steel City Ruby Conf</a>.</em></p>
+
+<p><a href="https://rstat.us">Rstat.us</a> is a microblogging site that is similar to Twitter, but 
+based on the <a href="http://ostatus.org/about">OStatus</a> open standard. It’s designed to be federated so
+that anyone can run an instance of rstat.us on their own domain while still being
+able to follow people on other domains. Although rstat.us is an active project 
+which has a lot to offer its users, the lack of an API has limited its
+adoption. In particular, an API would facilitate the development of mobile
+clients, which are a key part of what makes microblogging convenient for many people.</p>
+
+<p>Two different types of APIs have been considered for possible implementation
+in rstat.us: a hypermedia API using an open microblogging spec and a JSON API that is
+compatible with Twitter’s API. In this article, we’ll compare these two API styles 
+in the context of rstat.us, and discuss the decision that the project’s
+developers have made after weighing out the options.</p>
+
+<h2 id="hypermedia-api">Hypermedia API</h2>
+
+<p>Hypermedia APIs currently have a reputation for being complicated and hard to
+understand, but they’re really nothing to be scared of. There are many, many
+articles about what hypermedia is or is not, but the general definition that
+made hypermedia click for me is that a hypermedia API returns links in its
+responses that the client then uses to make its next calls. This means that the
+server does not have a set of URLs with parameters documented for you up front;
+it has documentation of the controls that you will see within the responses.</p>
+
+<p>The specific hypermedia API type that we are considering for rstat.us is one
+that complies with the <a href="http://amundsen.com/hypermedia/profiles/">Application-Level Profile Semantics (ALPS) microblogging
+spec</a>. This spec is an experiment
+started by Mike Amundsen to explore the advantages and disadvantages of multiple
+client and server implementations agreeing only on what particular values for
+the XHTML attributes <code>class</code>, <code>id</code>, <code>rel</code>, and <code>name</code> signify. The spec does not
+contain any URLs, example queries, or example responses.</p>
+
+<p>Here is a subset of the ALPS spec attributes and definitions; these have to do
+with the rendering of one status update and its metadata:</p>
+
+<ul>
+  <li>li.message - A representation of a single message</li>
+  <li>span.message-text - The text of a message posted by a user</li>
+  <li>span.user-text - The user nickname text</li>
+  <li>a with rel ‘message’ - A reference to a message representation</li>
+</ul>
+
+<p>This is one way you could render an update that is compatible with these attributes:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;li</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;span</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message-text</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    I had a fantastic sandwich at Primanti's for lunch.
+  <span style="color:#070;font-weight:bold">&lt;/span&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;span</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user-text</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Carols10cents<span style="color:#070;font-weight:bold">&lt;/span&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">rel</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://rstat.us/12345</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>(permalink)<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>And this is another way that is also compatible:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;li</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message even</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;p&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">rel</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">permalink message</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://rstat.us/update?id=12345</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+      <span style="color:#070;font-weight:bold">&lt;span</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user-text</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Carols10cents<span style="color:#070;font-weight:bold">&lt;/span&gt;</span> said:
+    <span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;span</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message-text</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+      I had a fantastic sandwich at Primanti's for lunch.
+    <span style="color:#070;font-weight:bold">&lt;/span&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;/p&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice some of the differences between the two:</p>
+
+<ul>
+  <li>All the elements being siblings vs some nested within each other</li>
+  <li>Only having the ALPS attribute values vs having other classes and rels as well</li>
+  <li>Only having the ALPS elements vs having the <code>&lt;p&gt;</code> element 
+between the <code>&lt;li&gt;</code> and the rest of the children</li>
+  <li>Simple resource-based routing vs. passing the id as a parameter</li>
+</ul>
+
+<p>All of these are perfectly fine! If a client only depends on the values of the
+attributes and not the exact structure that’s returned, it will be flexible
+enough to handle both responses. For example, you can extract the username 
+from either fragment using the following CSS selector:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">nokogiri</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Create a Nokogiri HTML Document from the first example, the second example </span>
+<span style="color:#777"># could be substituted and the result would be the same</span>
+html = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&lt;&lt;HERE</span></span><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">
+  &lt;li class=&quot;message&quot;&gt;
+    &lt;span class=&quot;message-text&quot;&gt;
+      I had a fantastic sandwich at Primanti's for lunch.
+    &lt;/span&gt;
+    &lt;span class=&quot;user-text&quot;&gt;Carols10cents&lt;/span&gt;
+    &lt;a rel=&quot;message&quot; href=&quot;http://rstat.us/12345&quot;&gt;(permalink)&lt;/a&gt;
+  &lt;/li&gt;</span><span style="color:#710">
+HERE</span></span>
+
+doc = <span style="color:#036;font-weight:bold">Nokogiri</span>::<span style="color:#036;font-weight:bold">HTML</span>::<span style="color:#036;font-weight:bold">Document</span>.parse(html)
+
+<span style="color:#777"># Using CSS selectors</span>
+username = doc.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">li.message span.user-text</span><span style="color:#710">&quot;</span></span>).text 
+</pre></div>
+</div>
+</div>
+
+<p>With this kind of contract, we can change the representation
+of an update by the server from the first format to the second without breaking
+client functionality. While we will discuss the tradeoffs involved in using
+hypermedia APIs in more detail later, it is worth noting
+that structural flexibility is a big part of what makes them attractive
+from a design perspective.</p>
+
+<h2 id="json-api">JSON API</h2>
+
+<p>JSON APIs are much more common than hypermedia APIs right now. This style of API
+typically has a published list of URLs, one for each action a client may want to
+take. Each URL also has a number of documented parameters through which a client can
+send arguments, and the requests return data in a defined format. This style is 
+similar to a Remote Procedure Call (RPC) –
+functions are called with arguments, and values are returned, but the work is
+done on a remote machine. Because this style matches the way we code locally,
+it feels familiar, and that may explain why the technique is so popular.</p>
+
+<p><a href="https://dev.twitter.com/docs/api">Twitter’s API</a> is currently implemented in
+this RPC-like style. There is a lot of documentation about all the URLs
+available, what parameters they take, and what the returned data or resulting
+state will be. For example, here is how you would get the text of the 3 most
+recent tweets made by user @climagic with Twitter’s JSON API (<a href="https://dev.twitter.com/docs/api/1/get/statuses/home_timeline">relevant
+documentation</a>):</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">open-uri</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">json</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># Make a request to the home_timeline resource with the format json.</span>
+<span style="color:#777"># Pass the parameter screen_name with the value climagic and the </span>
+<span style="color:#777"># parameter count with the value 3.</span>
+
+base = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://api.twitter.com/1/statuses/user_timeline.json</span><span style="color:#710">&quot;</span></span>
+uri  = URI(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>base<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">?screen_name=climagic&amp;count=3</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777"># The response object is a list of tweets, which is documented at</span>
+<span style="color:#777"># https://dev.twitter.com/docs/platform-objects/tweets</span>
+
+response = <span style="color:#036;font-weight:bold">JSON</span>.parse(open(uri).read)
+
+tweets = response.map { |t| t[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">text</span><span style="color:#710">&quot;</span></span>] }
+</pre></div>
+</div>
+</div>
+
+<p>Rendering JSON from the server is usually fairly simple as well, and
+the simplicity of providing and consuming JSON in many different languages
+is another one of the big reasons why JSON APIs are gaining in popularity. Twitter
+actually decided to <a href="https://dev.twitter.com/docs/api/1.1/overview#JSON_support_only">drop support for XML, RSS, and
+Atom</a> in
+version 1.1 of their API, leaving ONLY support for JSON. <a href="http://blog.programmableweb.com/2011/05/25/1-in-5-apis-say-bye-xml/">According to
+Programmable
+Web</a> 20%
+of new APIs released in 2011 offered only JSON support.</p>
+
+<p>That said, popularity is neither the best nor the only metric for evaluating
+design strategies; costs and benefits of different approaches 
+can only be weighed out in the context of a real project. To illustrate that point, we can consider how 
+each of these API styles would impact the development of rstat.us.</p>
+
+<h3 id="comparing-and-contrasting-the-two-styles">Comparing and contrasting the two styles</h3>
+
+<p>There are many clients that have been built against Twitter’s current API. There
+are even some clients that allow you to change the root URL of all the requests
+(ex:
+<a href="https://play.google.com/store/apps/details?id=org.mariotaku.twidere">Twidere</a>)
+If rstat.us implemented the same parameters and response data,
+people could use those clients to interact with both Twitter and rstat.us. 
+Even if rstat.us doesn’t end up having this level of compatibility with
+Twitter’s API, a close approximation to it would still feel a lot more 
+familiar to client developers, which may encourage them to support rstat.us.</p>
+
+<p>But is it really a good idea to be coupled to Twitter’s API design? If Twitter changes a
+parameter name, or a URL, or the structure of the data returned, rstat.us will
+need to implement those changes or risk breaking its Twitter-compatible clients.
+Because one of the reasons rstat.us was developed was to reduce this kind of
+dependency of Twitter, this is a big price to pay, and hypermedia APIs can help
+guard against this kind of brittleness.</p>
+
+<p>In addition to flexibility in representation on both the client and server side,
+another advantage of a hypermedia API is that
+it uses XHTML as its media type, and we just so happen to already have an XHTML
+representation of rstat.us’ functionality: the web interface itself! If
+you take a look at the source of <a href="http://rstat.us">http://rstat.us</a>, you can see
+that the markup for an update contains the attribute values we’ve been talking
+about. We haven’t made rstat.us completely compliant with the ALPS spec yet, 
+but adding attributes to our existing output <a href="https://github.com/hotsh/rstat.us/commit/4e234556c73426dc16526883661b3feb1e2f7d9f">has been fairly
+simple</a>.
+By contrast, building out a Twitter-compatible JSON API would mean reimplementing an almost
+entirely separate interface to rstat.us that would need to maintain a mapping
+between its core functionality and the external behavior of Twitter’s API.</p>
+
+<p>But looking at the source of http://rstat.us again, you’ll also see a lot of
+other information in the source of the page. Most of it isn’t needed for the use
+of the API, so we’re transferring a lot of unnecessary data back and forth. The
+JSON responses are very compact in comparison; over time and with scale, this
+could make a difference in performance.</p>
+
+<p>I am also concerned that some operations that are straightforward with a
+Twitter-style JSON API (such as getting one user’s updates given their username)
+seem complex when following the ALPS spec. With the JSON API, there is a
+predefined URL with the username as a parameter, and the response contains
+the user’s updates. With the ALPS spec, starting from the root URL (which is the
+only predefined URL in an ideal hypermedia API), we would need to do a minimum
+of 4 HTTP requests. That would lead to some very tedious client code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">nokogiri</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">open-uri</span><span style="color:#710">'</span></span>
+
+<span style="color:#036;font-weight:bold">USERNAME</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">carols10cents</span><span style="color:#710">&quot;</span></span>
+<span style="color:#036;font-weight:bold">BASE_URI</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">https://rstat.us/</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">find_a_in</span>(html, params = {})
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no rel specified</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> params[<span style="color:#A60">:rel</span>]
+
+  <span style="color:#777"># This XPath is necessary because @rels could have more than one value.</span>
+  link = html.xpath(
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">.//a[contains(concat(' ', normalize-space(@rel), ' '), ' </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>params[<span style="color:#A60">:rel</span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> ')]</span><span style="color:#710">&quot;</span></span>
+  ).first
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">resolve_relative_uri</span>(params = {})
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no relative uri specified</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> params[<span style="color:#A60">:relative</span>]
+  raise <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no base uri specified</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> params[<span style="color:#A60">:base</span>]
+
+  (URI(params[<span style="color:#A60">:base</span>]) + URI(params[<span style="color:#A60">:relative</span>])).to_s
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">request_html</span>(relative_uri)
+  absolute_uri = resolve_relative_uri(
+    <span style="color:#A60">:relative</span> =&gt; relative_uri,
+    <span style="color:#A60">:base</span>     =&gt; <span style="color:#036;font-weight:bold">BASE_URI</span>
+  )
+  <span style="color:#036;font-weight:bold">Nokogiri</span>::<span style="color:#036;font-weight:bold">HTML</span>::<span style="color:#036;font-weight:bold">Document</span>.parse(open(absolute_uri).read)
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Request the root URL</span>
+<span style="color:#777"># HTTP Request #1</span>
+root_response = request_html(<span style="color:#036;font-weight:bold">BASE_URI</span>)
+
+<span style="color:#777"># Find the `a` with `rel=users-search` and follow its `href`</span>
+<span style="color:#777"># HTTP Request #2</span>
+users_search_path = find_a_in(root_response, <span style="color:#A60">:rel</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">users-search</span><span style="color:#710">&quot;</span></span>)[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">href</span><span style="color:#710">&quot;</span></span>]
+users_search_response = request_html(users_search_path)
+
+<span style="color:#777"># Fill out the `form` that has `class=users-search`,</span>
+<span style="color:#777"># putting the username in the `input` with `name=search`</span>
+
+search_path = users_search_response.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">form.users-search</span><span style="color:#710">&quot;</span></span>).first[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">action</span><span style="color:#710">&quot;</span></span>]
+user_lookup_query = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>search_path<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">?search=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">USERNAME</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#777"># HTTP Request #3</span>
+user_lookup_response = request_html(user_lookup_query)
+
+<span style="color:#777"># Find the search result beneath `div#users ul.search li.user` that has</span>
+<span style="color:#777"># `span.user-text` equal to the username</span>
+search_results = user_lookup_response.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">div#users ul.search li.user</span><span style="color:#710">&quot;</span></span>)
+
+result = search_results.detect { |sr|
+  sr.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">span.user-text</span><span style="color:#710">&quot;</span></span>).text.match(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">^</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">USERNAME</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#808">$</span><span style="color:#404">/</span><span style="color:#C2C">i</span></span>)
+}
+
+<span style="color:#777"># Follow the `a` with `rel=user` within that search result</span>
+<span style="color:#777"># HTTP Request #4</span>
+user_path = find_a_in(result, <span style="color:#A60">:rel</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">user</span><span style="color:#710">&quot;</span></span>)[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">href</span><span style="color:#710">&quot;</span></span>]
+user_response = request_html(user_path)
+
+<span style="color:#777"># Extract the user's updates using the update attributes.</span>
+updates = user_response.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">div#messages ul.messages-user li</span><span style="color:#710">&quot;</span></span>)
+puts updates.map { |li| li.css(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">span.message-text</span><span style="color:#710">&quot;</span></span>).text.strip }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This workflow could be cached so that the next time we try to get a user’s
+updates, we wouldn’t have to make so many requests. The first two
+requests for the root page and the user search page are unlikely to change
+often, so when we get a new username we can start with the construction
+of the <code>user_lookup_query</code> with a cached <code>search_path</code> value. That way, we would
+only need to make the last two requests to look up subsequent users.
+However, if the root page or the user search page do change, subsequent 
+requests could fail. In that case, we’d need error handling code that clears 
+the cache and and starts from the root page again. Unfortunately, doing 
+so would make the client code even more complicated.</p>
+
+<p>We could simplify things by extending the ALPS spec to include a URI
+template on the root page with a <code>rel</code> attribute to indicate that it’s a
+transition to information about a user when the template is filled out with
+the username. The ALPS spec path would still work, but the shortcut would
+allow clients to get at this data in fewer requests.
+However, since it wouldn’t be an official part of the spec, we’d need to
+document it, and all clients that wanted to remain compatible with ALPS would
+still need to implement the long way of doing things.</p>
+
+<p>As you can see, there are significant tradeoffs between the two API styles,
+and so it isn’t especially easy to decide what to do. But because rstat.us
+really needs an API in order to be a serious alternative to Twitter, we must 
+figure out a way forward!</p>
+
+<h3 id="making-a-decision">Making a decision</h3>
+
+<p>After weighing all these considerations, we’ve decided to concentrate first on
+implementing a Twitter-compatible JSON API, because it may allow our users
+to interact with rstat.us using the clients they are already familiar with. Even
+if those clients end up requiring some modifications, having an API that is easily 
+understood by many developers will still be a big plus. For the long term, having a more flexible and
+scalable solution is important, but those problems won’t need to be solved
+until there is more adoption. We may implement a hypermedia API (probably an
+extension of the ALPS spec) in the future, but for now we will take the
+pragmatic route in the hopes that it will encourage others to use
+rstat.us and support its development.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="http://rstat.us">rstat.us</a> and its <a href="https://github.com/hotsh/rstat.us">code on github</a></li>
+  <li><a href="http://amundsen.com/hypermedia/profiles/">ALPS microblogging spec</a></li>
+  <li><a href="http://designinghypermediaapis.com">Designing Hypermedia APIs</a> by Steve Klabnik</li>
+  <li><a href="https://gist.github.com/2187514">A Shoes hypermedia client for ALPS microblogging</a></li>
+  <li><a href="https://dev.twitter.com/docs/api">Twitter API docs</a></li>
+  <li><a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">REST APIs must be hypertext-driven</a></li>
+</ul>
+
+  </div>
+</body>
+</html>

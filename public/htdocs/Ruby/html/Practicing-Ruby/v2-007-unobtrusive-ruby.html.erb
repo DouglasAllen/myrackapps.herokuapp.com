@@ -1,0 +1,844 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>When Mike Burns outlined his vision of <a href="http://robots.thoughtbot.com/post/10125070413/unobtrusive-ruby">Unobtrusive Ruby</a>, I initially thought it was going to be a hit with the community. However, a lack of specific examples led to a critical backlash and caused the post to generate more heat than light. This is unfortunate, because the ideas he outlined are quite valuable and shouldn’t be overlooked.</p>
+
+<p>In this article, I share my own interpretation of what Unobtrusive Ruby means, based on the the points that Mike outlined. I can’t guarantee that my take on this is what Mike had in mind, but it should be interesting to those who wanted a better-defined roadmap than what he provided. To get this most out of this article, I recommend going back and <a href="http://robots.thoughtbot.com/post/10125070413/unobtrusive-ruby">reading what Mike wrote</a> before continuing. Try to think about what these concepts mean to you, and then compare them to what I’ve outlined here.</p>
+
+<p>The following guidelines are the ones Mike laid out, but I’ve replaced his explanations with my own in the hopes that attacking these ideas from a second angle will be useful.</p>
+
+<h2 id="take-objects-not-classes">Take objects, not classes</h2>
+
+<p>Because Ruby lets us pass classes around like any other object, we have a way to do dependency injection that isn’t as common in other languages. For example, we can write something like the following code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Roster</span>
+ <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>          
+    <span style="color:#33B">@participants</span> = []  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(new_participant)  
+    <span style="color:#33B">@participants</span> &lt;&lt; new_participant  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">participant_names</span>  
+    <span style="color:#33B">@participants</span>.map { |e| e.full_name }  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">print</span>(printer=<span style="color:#036;font-weight:bold">RosterPrinter</span>)
+    printer.new(participant_names).print
+  <span style="color:#080;font-weight:bold">end</span>    
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">RosterPrinter</span>  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(participant_names)  
+    <span style="color:#33B">@participant_names</span> = participant_names  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">print</span>
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Participants:</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +  
+    <span style="color:#33B">@participant_names</span>.map { |e| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)  
+  <span style="color:#080;font-weight:bold">end</span>  
+<span style="color:#080;font-weight:bold">end</span> 
+</pre></div>
+</div>
+</div>
+
+<p>This feels clever, but this form of dependency injection is more brittle than it
+needs to be. A <a href="http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html#comment-317367342">recent conversation with Derick
+Bailey</a>
+on my <a href="http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html">SOLID
+article</a>
+about a very similar example made me realize just how much we tend to pass
+classes around unnecessarily when we could be directly passing the objects our
+class depends on. With that in mind, Derick helped me refactor the previous example to the more flexible design shown here. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Roster</span>
+ <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>          
+    <span style="color:#33B">@participants</span> = []  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(new_participant)  
+    <span style="color:#33B">@participants</span> &lt;&lt; new_participant  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">participant_names</span>  
+    <span style="color:#33B">@participants</span>.map { |e| e.full_name }  
+  <span style="color:#080;font-weight:bold">end</span>  
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">print</span>(printer=<span style="color:#036;font-weight:bold">RosterPrinter</span>.new)
+    printer.print(<span style="color:#33B">@participants</span>)
+  <span style="color:#080;font-weight:bold">end</span>    
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">RosterPrinter</span>    
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">print</span>(participant_names)
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Participants:</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +  
+    participant_names.map { |e| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)  
+  <span style="color:#080;font-weight:bold">end</span>  
+<span style="color:#080;font-weight:bold">end</span> 
+</pre></div>
+</div>
+</div>
+
+<p>Although this is a subtle change, it has a major impact on the way <code>Roster</code> and its printer object relate to one another. The <code>Roster#print</code> method originally had a dependency on both the constructor of its printer object and its <code>print()</code> instance method. Our new code reduces that coupling by depending only on the existence of a <code>print()</code> method in the general case. The following examples demonstrate the added flexibility that this new approach offers us.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># does not provide a .new() method</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">FunctionalPrinter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">print</span>(participant_names)
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Participants:</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span> +  
+    participant_names.map { |e| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">* </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)  
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">prawn</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#777"># has a different constructor than RosterPrinter</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PDFPrinter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(filename)
+    <span style="color:#33B">@document</span> = <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>.new
+    <span style="color:#33B">@filename</span> = filename
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">print</span>(participant_names)
+    <span style="color:#33B">@document</span>.text(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Participants</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">16</span>)
+
+    participant_names.each <span style="color:#080;font-weight:bold">do</span> |e|
+      <span style="color:#33B">@document</span>.text(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">- </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#33B">@document</span>.render_file(<span style="color:#33B">@filename</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+roster = <span style="color:#036;font-weight:bold">Roster</span>.new
+roster &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span> &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jordan Byron</span><span style="color:#710">&quot;</span></span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">USING DEFAULT</span><span style="color:#710">&quot;</span></span>
+roster.print
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">USING FUNCTIONAL PRINTER</span><span style="color:#710">&quot;</span></span>
+roster.print(<span style="color:#036;font-weight:bold">FunctionalPrinter</span>)
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">USING PDF PRINTER (see roster.pdf)</span><span style="color:#710">&quot;</span></span>
+roster.print(<span style="color:#036;font-weight:bold">PDFPrinter</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">roster.pdf</span><span style="color:#710">&quot;</span></span>))
+</pre></div>
+</div>
+</div>
+
+<p>Both <code>FunctionalPrinter</code> and <code>PDFPrinter</code> demonstrate corner cases that our original code did not account for. By following the guideline of accepting objects rather than classes as the arguments to our methods, our new design can accomodate these types of objects without modification of the <code>Roster#print</code> code. As you can see from these examples, this way makes life easier for us. </p>
+
+<h2 id="never-require-inheritance">Never require inheritance</h2>
+
+<p>Some libraries that we use strongly encourage us to create subclasses of the objects they provide; others flat-out force us to do so. <code>ActiveRecord</code> is an example of a library that is almost useless without inheritance but is also very complicated and would be hard to use as an example. The following code is a much simpler example of a tool that expects you to use subclasses of its provided <code>Plugin</code> class to get the job done.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Inspector</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(data)
+    <span style="color:#036;font-weight:bold">Plugin</span>.registered_plugins.each { |e| e.new.analyze(data) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Plugin</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">inherited</span>(base)
+      registered_plugins &lt;&lt; base
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">registered_plugins</span>
+      <span style="color:#33B">@registered_plugins</span> ||= []
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">analyze</span>(data)
+      raise <span style="color:#036;font-weight:bold">NotImplementedError</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WordCountPlugin</span> &lt; <span style="color:#036;font-weight:bold">Inspector</span>::<span style="color:#036;font-weight:bold">Plugin</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">analyze</span>(data)
+    word_count = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).length
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>word_count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> words</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WordLengthPlugin</span> &lt; <span style="color:#036;font-weight:bold">Inspector</span>::<span style="color:#036;font-weight:bold">Plugin</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">analyze</span>(data)
+    longest = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).map { |e| e.length }.max
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Longest word contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>longest<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> characters</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Inspector</span>.analyze(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a test of the watcher plugins</span><span style="color:#710">&quot;</span></span>)
+
+<span style="color:#777">## OUTPUTS</span>
+<span style="color:#036;font-weight:bold">Content</span> contained <span style="color:#00D">8</span> words
+<span style="color:#036;font-weight:bold">Longest</span> word contained <span style="color:#00D">7</span> characters   
+</pre></div>
+</div>
+</div>
+
+<p>Using the <code>inherited</code> hook is a clever way to implictly register plugins, but this approach comes with a number of downsides. For example, you are forced to make all your plugins inherit from <code>Inspector::Plugin</code>, which means your class can’t be a subclass of anything else. Additionally, you need to use a class even if a module would make more sense. This is a direct consequence of the “interface taking classes rather than ordinary objects” issue and cannot be easily avoided. If you throw in things like having to be aware of possible Liskov Substitution Principle violations, it becomes clear that an API that forces you to use subclassing is not exactly flexible.</p>
+
+<p>This code shows a much more flexible alternative that completely removes the dependency on class inheritance:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Inspector</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(data)
+    registered_plugins.each { |e| e.analyze(data) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">registered_plugins</span>
+    <span style="color:#33B">@registered_plugins</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">WordCountPlugin</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(data)
+    word_count = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).length
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>word_count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> words</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">WordLengthPlugin</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(data)
+    longest = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).map { |e| e.length }.max
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Longest word contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>longest<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> characters</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Inspector</span>.registered_plugins &lt;&lt; <span style="color:#036;font-weight:bold">WordCountPlugin</span> &lt;&lt; <span style="color:#036;font-weight:bold">WordLengthPlugin</span>
+<span style="color:#036;font-weight:bold">Inspector</span>.analyze(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a test of the watcher plugins</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>Now any object that has a valid <code>analyze</code> method will work as a plugin, as long as you explicitly register it with <code>Inspector</code>. This approach results in much cleaner-looking code for this trivial implementation, but the general strategy can also can be used in situations where inheritance is still a part of the picture. The following code shows plugins that inherit from a parent class coexisting with plugins built from scratch.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Inspector</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(data)
+    registered_plugins.each { |e| e.analyze(data) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">registered_plugins</span>
+    <span style="color:#33B">@registered_plugins</span> ||= []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Plugin</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">verify</span>(&amp;block)
+      validations &lt;&lt; block
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">validations</span>
+      <span style="color:#33B">@validations</span> ||= []
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">analyze</span>(&amp;block)
+      define_method <span style="color:#A60">:analyze</span> <span style="color:#080;font-weight:bold">do</span> |data|
+        validate(data) 
+        block.call(data)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">validate</span>(data)
+      raise <span style="color:#080;font-weight:bold">unless</span> <span style="color:#069">self</span>.class.validations.all? { |v| v.call(data) }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">WordCountPlugin</span> &lt; <span style="color:#036;font-weight:bold">Inspector</span>::<span style="color:#036;font-weight:bold">Plugin</span>
+  verify { |data| data.is_a?(<span style="color:#036;font-weight:bold">String</span>) }
+
+  analyze <span style="color:#080;font-weight:bold">do</span> |data|
+    word_count = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).length
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>word_count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> words</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">WordLengthPlugin</span>
+  <span style="color:#777"># same as before, not inheriting from anything</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Inspector</span>.registered_plugins &lt;&lt; <span style="color:#036;font-weight:bold">WordCountPlugin</span>.new &lt;&lt; <span style="color:#036;font-weight:bold">WordLengthPlugin</span>
+<span style="color:#036;font-weight:bold">Inspector</span>.analyze(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a test of the watcher plugins</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This small change makes a big difference in flexibility and leaves some of the decision making up to your users rather than forcing them down a particular path. Using the default approach of inheriting from <code>Inspector::Plugin</code> will feel nearly identical to an inheritance-only approach to the user. However, if more customizations are needed, this design provides an easy way to build plugins from scratch. Because it is so easy to implement this pattern, it is probably worth doing even if your immediate needs don’t call for such flexibility.</p>
+
+<h2 id="inject-dependencies">Inject dependencies</h2>
+
+<p>I covered dependency injection and the dependency inversion principle at length in <a href="http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html">Practicing Ruby 1.23</a>. Rather than repeating those details here, I’d like you to read that article as well as the comments from <a href="http://blog.rubybestpractices.com/posts/gregory/055-issue-23-solid-design.html#comment-317367342">Derick Bailey</a>. My conversation with Derick taught me a thing or two about the subtle distinctions between dependency injection (a technique) and dependency inversion (a design principle) that are hard to summarize but still well worth working through if you want to solidify your understanding of these two very important concepts.</p>
+
+<p>As an example of some practical code that uses dependency injection, let’s look at the Highline command-line library. In ordinary usage, Highline outputs everything to <code>STDIN</code> and <code>STDOUT</code>. You can install HighLine via RubyGems and run the following example to get a feel for how it works.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">highline</span><span style="color:#710">&quot;</span></span>
+
+console = <span style="color:#036;font-weight:bold">HighLine</span>.new
+name    = console.ask(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">What is your name?</span><span style="color:#710">&quot;</span></span>) 
+console.say(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>In ordinary cases, this is exactly what we want: ordinary input and output from your console. However, to test HighLine, we made it possible to inject input and output objects to use in place of <code>STDIN</code> and <code>STDOUT</code>. The next example shows the use of <code>StringIO</code> objects, which is what we use in our unit tests. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stringio</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">highline</span><span style="color:#710">&quot;</span></span>
+
+input   = <span style="color:#036;font-weight:bold">StringIO</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+input.rewind <span style="color:#777"># set seek pos back to 0</span>
+
+output  = <span style="color:#036;font-weight:bold">StringIO</span>.new
+
+console = <span style="color:#036;font-weight:bold">HighLine</span>.new(input, output)
+name = console.ask(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">What is your name?</span><span style="color:#710">&quot;</span></span>)
+console.say(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">!</span><span style="color:#710">&quot;</span></span>)
+
+output.rewind
+puts output.read
+</pre></div>
+</div>
+</div>
+
+<p>Interestingly enough, this ‘feature’ of HighLine has caused it to be used in a number of contexts that we didn’t anticipate. For example, it is occasionally used in GUI programs for its input validation features and is sometimes used in noninteractive scripts for its text formatting features. If we had directly worked against <code>STDIN</code> and <code>STDOUT</code>, these ways of using HighLine would not be possible without ugly hacks.</p>
+
+<h2 id="unit-tests-are-fast">Unit tests are fast</h2>
+
+<p>Personally, I am not obsessive about unit test performance. Many Rubyists care a lot about this and advocate the heavy use of mock objects to speed up your tests. Mike points out in his article that the combination of “mock objects, a lack of inheritance, and injected dependencies” will make your tests fast, and that’s basically true. </p>
+
+<p>Dependency injection does facilitate the use of mock objects, and our HighLine example demonstrates why that is the case. A lack of inheritance might imply that your method call chains are shorter and that you have fewer dependencies, but it’s not as strong of a metric as he makes it seem. Eventually, object composition can end up being more or less the same as inheritance in complexity, and in those cases you may still end up with slow tests. Composed object systems are easier to decouple, which is probably what he’s getting at here.</p>
+
+<p>For some practical examples of how you can use mocks to decouple your tests from your code and speed things up a bit, see <a href="http://blog.rubybestpractices.com/posts/gregory/052-issue-20-thoughts-on-mocking.html">Practicing Ruby 1.20</a>. If you read through that article, you’ll find out why I don’t care so much about limiting my dependencies to the object under test. But when all else is considered equal, fewer dependencies mean less code, which probably means faster tests.</p>
+
+<p>Having a performant test suite is certainly ideal; it’s just a matter of weighing he costs of fine-tuning your test suite versus the benefits that faster test runs provide. Personally, I felt that Mike somewhat overemphasized this particular point, but many well-known Rubyists would disagree with me on this one.</p>
+
+<h2 id="require-no-interface">Require no interface</h2>
+
+<p>Mike suggests that your library code should allow your users to name their methods however they want and should be designed to consume rather than be consumed. He then recognizes that this design may not always be possible and concedes that if you need the user to implement certain features, you should limit this functionality to one or two methods at most. This is great general advice, and if you look at Ruby itself, we can find some good examples.</p>
+
+<p>The <code>Enumerable</code> module is capable of providing the vast majority of its features if the user implements only an <code>each</code> method. If you want to use things like <code>sort</code>, you just need the yielded elements to implement a <code>&lt;=&gt;</code> method. All features in <code>Enumerable</code> can thus be supported by “one or two methods” implemented by the user, which makes it a very good API, considering the great wealth of functionality it provides.</p>
+
+<p>However, <code>Enumerator</code> takes things a step further by requiring no interface at all. You can name the methods of the target collection anything you want; you merely tell <code>Enumerator</code> which method it should delegate its <code>each</code> method to when you initialize an <code>Enumerator</code>. See the following example to see how flexible this approach is.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">RandomInfiniteList</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">generate</span>
+    loop <span style="color:#080;font-weight:bold">do</span>
+      <span style="color:#080;font-weight:bold">yield</span> rand
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+enum = <span style="color:#036;font-weight:bold">Enumerator</span>.new(<span style="color:#036;font-weight:bold">RandomInfiniteList</span>.new, <span style="color:#A60">:generate</span>)
+p enum.next
+p enum.take(<span style="color:#00D">10</span>)
+</pre></div>
+</div>
+</div>
+
+<p>In this way, <code>Enumerator</code> can be made to turn any object with an iterator method into an <code>Enumerable</code> object, regardless of what the name of that method is. This feature can be useful when you’re working with unidiomatic Ruby objects that provide an iterator but do not mix in <code>Enumerable</code>.</p>
+
+<p>We can also look at an example that’s a bit less abstract. If we look back at the <code>Inspector</code> example that we were using to discuss how to avoid hard inheritance requirements, we can see that it requires only a small interface for plugins to conform to. Although it isn’t so bad that each plugin needed an <code>analyze</code> method in our previous iteration, we can make some modifications so that it depends on no interface at all, which may bring us a step closer to what Mike was hinting at.</p>
+
+<p>The following example shows what an <code>Inspector</code> class that implements an “expects no interface” API style might look like. To keep things interesting, I’ve left the implementation of this class up to you. If you get stuck, feel free to leave a comment asking for hints on how to build this out.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># delegates to the WordLengthPlugin module</span>
+<span style="color:#036;font-weight:bold">Inspector</span>.report(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Word Length</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |data|
+  <span style="color:#036;font-weight:bold">WordLengthPlugin</span>.analyze(data)
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># implements the report as an inline function</span>
+<span style="color:#036;font-weight:bold">Inspector</span>.report(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Word Count</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span> |data|
+  word_count = data.split(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808"> </span><span style="color:#404">/</span></span>).length
+  puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Content contained </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>word_count<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> words</span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">Inspector</span>.analyze(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">This is a test of the watcher plugins</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h2 id="data-not-action">Data, not action</h2>
+
+<p>This guideline seems to boil down to the idea that your API calls should be simple “data in, data out” operations whenever that level of simplicity is easily within reach. After thinking about this concept a bit, I realized that a pair of common Ruby operations serve as perfect examples.</p>
+
+<p>Suppose that you want to open a binary file and read its contents into a <code>String</code>. You could write the following code, which will get the job done:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>file = <span style="color:#036;font-weight:bold">File</span>.open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo.jpg</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rb</span><span style="color:#710">&quot;</span></span>)
+image_data = file.read
+file.close
+</pre></div>
+</div>
+</div>
+
+<p>But this approach is the correct way to do things only if you want to work explicitly with the <code>File</code> object and control exactly when it gets opened and closed. If all you want to do is read the contents of a binary file, this is three actions for what should be one “data in, data out” operation. Fortunately, Ruby recognizes this as a common use case and provides a nicer API that you can use instead:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>image_data = <span style="color:#036;font-weight:bold">File</span>.binread(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo.jpg</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>In this example, we pass the filename and get back the contents of that file data. Though we have less control over the overall process, we also get to ignore irrelevant details like exactly when the file is opened and closed. This is what I think that Mike probably meant when he said “data, not action,” and it can be applied when designing your own APIs. To drive the point home, let’s look at another example.</p>
+
+<p>The following code shows the generic form of doing a GET request via the <code>Net::HTTP</code> standard library. It is not the most terse way to use <code>Net::HTTP</code>, but it is one of the most common.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">net/http</span><span style="color:#710">'</span></span>
+
+url = <span style="color:#036;font-weight:bold">URI</span>.parse(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http://www.google.com</span><span style="color:#710">'</span></span>)
+res = <span style="color:#036;font-weight:bold">Net</span>::<span style="color:#036;font-weight:bold">HTTP</span>.start(url.host, url.port) <span style="color:#080;font-weight:bold">do</span> |http|
+  http.get(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+puts res.body
+</pre></div>
+</div>
+</div>
+
+<p>There is a whole lot going on here, including explicit <code>URI</code> parsing and explicit calls to <code>get()</code>. But as you saw with <code>File.open</code> versus <code>File.binread</code>, Ruby provides a convenient alternative for this very common operation. The open-uri standard library makes it possible to write the following code instead:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+
+puts open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://google.com</span><span style="color:#710">&quot;</span></span>).read
+</pre></div>
+</div>
+</div>
+
+<p>Once again, we see a series of complex actions being converted into a simple “data in, data out” operation. In this case, we are converting a string that represents a URI into an IO object via the globally available <code>open()</code> method. This approach makes it possible for us to not think about explicitly parsing our string into a <code>URI</code> object and lets us ignore the details about starting a HTTP connection and explicitly making a GET request. When all we want is the source of a web page, it’s great to be able to ignore these details.</p>
+
+<h2 id="always-be-coding">Always be coding</h2>
+
+<p>As I reflect on Mike’s guidelines for Unobtrusive Ruby, it all seems to come down to making life easier for your users by limiting the impact your system has on them. Give your users small, flexible APIs that do not demand much of their systems, and they will have better luck using your code. This seems like a noble set of goals to me, and I hope my examples demonstrate the same spirit that Mike wanted to encourage in his post.</p>
+
+<p>However, I always worry about using design guidelines like these as some sort of absolute set of commandments. There were a whole lot of words like “always” and “never” in the original Unobtrusive Ruby post that, if left unchecked, could cause more harm than good. For me, context is king, and these ideas seem much more important for those who are writing code that is intended for widespread reuse than they might be for ordinary application development. That said, the examples I’ve shown here demonstrate that you can often be on the right side of these guidelines with little to no additional effort. Therefore, if we can keep the ideas behind Unobtrusive Ruby in the back of our minds and apply them when it’s an easy fit, we may well end up improving our code.</p>
+
+<p>This article is meant to be a conversation starter, not gospel. Please share your own thoughts on what Unobtrusive Ruby means to you, either via a comment here or on your own blog. I think it’s a conversation worth having, even if we haven’t quite nailed down all the definitions yet. If we end up getting an interesting discussion going, I’ll invite Mike to check out what we’ve discussed and see what he thinks about it.</p>
+
+<p>So what do you think? Was my code unobtrusive enough for you? If not, why not? ;)</p>
+
+  </div>
+</body>
+</html>

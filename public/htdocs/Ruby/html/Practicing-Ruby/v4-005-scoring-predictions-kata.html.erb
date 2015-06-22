@@ -1,0 +1,719 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article is written by James Edward Gray II.  James is an old friend of
+Greg’s, so he was thrilled to contribute. From late 2011 to mid 2012, James 
+wrote his own series of programming articles called <a href="http://subinterest.com/rubies-in-the-rough">Rubies in the Rough</a>.
+Yes, James just stole Greg’s good idea.</em></p>
+
+<p>In this article, we will look at a fun problem that was in a couple of the <a href="https://peepcode.com">Peepcode</a> <em>Play by Play</em> videos. I’ve played around with this kata a bit and given it to a programming student of mine, so I know it pretty well by now. Its solution touches on a couple of neat programming topics, so dig in and see what you can learn.</p>
+
+<h3 id="the-challenge">The challenge</h3>
+
+<p>I’m going to simplify the Peepcode task a bit so that we can get right to the heart of the problem. Here’s the challenge we’re going to work on:</p>
+
+<blockquote>
+  <p>Write a method that accepts two arguments: an <code>Array</code> of five guesses for
+finalists in a race and an <code>Array</code> of the five actual finalists.  Each
+position in the lists matches a finishing position in the race, so first place
+corresponds to index <code>0</code>.  Return an <code>Integer</code> score of the predictions:  <code>0</code>
+or more points.  Correctly guessing first place is worth <code>15</code> points, second
+is worth <code>10</code>, and so on down with <code>5</code>, <code>3</code>, and <code>1</code> point for fifth
+place.  It’s also worth <code>1</code> point to correctly guess a racer that finishes in
+the top five but to have that racer in the wrong position.</p>
+</blockquote>
+
+<p>I’m going to jump right into solving this problem, but I encourage everyone to stop and play with the problem a little before reading on.  You’ll get more out of what I say if you are familiar with the problem.</p>
+
+<p>OK, ready?</p>
+
+<h3 id="complete-specing">Complete specing</h3>
+
+<p>I test-drove my solution to this code, but probably not as everyone else does it.  Let me show you a trick I like to use for these fixed algorithms. First, let’s set up some directories for the code and create the needed files:</p>
+
+<pre><code>$ mkdir -p scoring_predictions/{lib,spec}
+$ cd scoring_predictions/
+$ touch lib/race.rb
+$ touch spec/scoring_spec.rb
+</code></pre>
+
+<p>At this point I opened <code>spec/scoring_spec.rb</code> in my editor and set to work.  We’re supposed to begin with the happy path, so I wrote an example for a set of perfect guesses:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">race</span><span style="color:#710">&quot;</span></span>
+
+describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Race::score</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  let(<span style="color:#A60">:winners</span>) { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w[</span><span style="color:#D20">First Second Third Fourth Fifth</span><span style="color:#710">]</span></span> }
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">add points for each position</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(winners, winners).should eq(<span style="color:#00D">15</span> + <span style="color:#00D">10</span> + <span style="color:#00D">5</span> + <span style="color:#00D">3</span> + <span style="color:#00D">1</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>At this point, most developers would start adding the library code to make this example pass.  However, I don’t find that approach very helpful for code like this.</p>
+
+<p>If I do “the right thing,” I should just return a hardcoded score.  Then I’ll need to write a second example to force me to generalize (or consider the hardcoded score a violation of DRY that I need to refactor).  Either way, the tasks are just busywork that isn’t helping me write the code.  Even having the extra example won’t raise my confidence that it scores the scenarios correctly.</p>
+
+<p>What would help me is to have an example for each rule in the challenge.  I’m going to need to do some programming to solve this—and nothing is getting me out of that.  All I can do is to make it easier to do that programming.  If the examples codify the rules for me, running them will tell me whether I am getting closer to a right answer just by watching the pass/fail ratio.</p>
+
+<p>With these thoughts in mind, I finished writing examples for the rules of the challenge:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">race</span><span style="color:#710">&quot;</span></span>
+
+describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Race::score</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  let(<span style="color:#A60">:winners</span>) { <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w[</span><span style="color:#D20">First Second Third Fourth Fifth</span><span style="color:#710">]</span></span> }
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">correct_guesses</span>(*indexes)
+    winners.map.with_index { |w, i| indexes.include?(i) ? w : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Wrong</span><span style="color:#710">&quot;</span></span> }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">add points for each position</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(winners, winners).should eq(<span style="color:#00D">15</span> + <span style="color:#00D">10</span> + <span style="color:#00D">5</span> + <span style="color:#00D">3</span> + <span style="color:#00D">1</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 0 points for no correct guesses</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    all_wrong = correct_guesses  <span style="color:#777"># none correct</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(all_wrong, winners).should eq(<span style="color:#00D">0</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 15 points for first place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(correct_guesses(<span style="color:#00D">0</span>), winners).should eq(<span style="color:#00D">15</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 10 points for second place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(correct_guesses(<span style="color:#00D">1</span>), winners).should eq(<span style="color:#00D">10</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 5 points for third place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(correct_guesses(<span style="color:#00D">2</span>), winners).should eq(<span style="color:#00D">5</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 3 points for fourth place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(correct_guesses(<span style="color:#00D">3</span>), winners).should eq(<span style="color:#00D">3</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives 1 point for fifth place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(correct_guesses(<span style="color:#00D">4</span>), winners).should eq(<span style="color:#00D">1</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gives one point for a correct guess in the wrong place</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    guesses = correct_guesses(<span style="color:#00D">0</span>)
+    guesses.unshift(guesses.pop)  <span style="color:#777"># shift positions by one</span>
+    <span style="color:#036;font-weight:bold">Race</span>.score(guesses, winners).should eq(<span style="color:#00D">1</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">score positional and misplaced guesses at the same time</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    guesses                = correct_guesses(<span style="color:#00D">0</span>, <span style="color:#00D">3</span>)
+    guesses[<span style="color:#00D">3</span>], guesses[<span style="color:#00D">4</span>] = guesses[<span style="color:#00D">4</span>], guesses[<span style="color:#00D">3</span>]
+    <span style="color:#036;font-weight:bold">Race</span>.score(guesses, winners).should eq(<span style="color:#00D">15</span> + <span style="color:#00D">1</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This probably looks like a lot of code, but it’s quite trivial.  You already saw the first example.  The next six just specify the score for each position (and one for no positions) with the help of a trivial method I wrote to generate right and wrong guesses.  The next-to-last example is the rule about right guesses in the wrong position.  Finally, I just wanted at least one example testing both scenarios at once.</p>
+
+<p>This gives me plenty of red to work with:</p>
+
+<pre><code>$ rspec
+FFFFFFFF
+
+Failures:
+
+…
+
+Finished in 0.00417 seconds
+9 examples, 9 failures
+
+Failed examples:
+
+rspec ./spec/scoring_spec.rb:8 # Race::score add points for each position
+rspec ./spec/scoring_spec.rb:12 # Race::score gives 0 points for …
+…
+</code></pre>
+
+<p>From there, I played around with an algorithm until I saw these examples go green.  I could show my process, but the truth is that we all attack this stuff in different ways.</p>
+
+<p>Instead, let’s look at a correct but not optimal solution.</p>
+
+<h3 id="what-the-iterators-can-do-for-you">What the iterators can do for you</h3>
+
+<p>The first pass my student made at this problem landed on some code like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Race</span>
+  module_function
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">score</span>(guesses, winners)
+    points = <span style="color:#00D">0</span>
+    guesses.each_with_index <span style="color:#080;font-weight:bold">do</span> |guess, i|
+      <span style="color:#080;font-weight:bold">if</span> guess == winners[i]
+        points += <span style="color:#080;font-weight:bold">case</span> i
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">15</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">10</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">5</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">3</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">4</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">1</span>
+                  <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">else</span>
+        winners.each <span style="color:#080;font-weight:bold">do</span> |winner|
+          points += <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> winner == guess
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    points
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The guy has only been studying Ruby a short while, so I thought this was a great first stab at the problem.  I did urge him to refine it, though.</p>
+
+<p>First, I mentioned that you can often tell that you have the wrong iterator if it does extra iterations.  The <code>else</code> code in the previous example is a good example of this.  It may find the <code>guess</code> in the first position of <code>winners</code>, but it would keep looking.  Although it’s possible to add a <code>break</code> statement to fix this problem, there are iterators that “short-circuit” when they find an answer.  For example, <code>find()</code>, which is close to what we want, or <code>any?()</code> which is even closer.  What we really want though, is this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Race</span>
+  module_function
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">score</span>(guesses, winners)
+    points = <span style="color:#00D">0</span>
+    guesses.each_with_index <span style="color:#080;font-weight:bold">do</span> |guess, i|
+      <span style="color:#080;font-weight:bold">if</span> guess == winners[i]
+        points += <span style="color:#080;font-weight:bold">case</span> i
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">15</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">10</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">2</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">5</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">3</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">3</span>
+                  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">4</span> <span style="color:#080;font-weight:bold">then</span> <span style="color:#00D">1</span>
+                  <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">elsif</span> winners.include? guess
+        points += <span style="color:#00D">1</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    points
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Another sign that you’re on the wrong track in Ruby is the need to track an index.  Sometimes you really do need one, but that need is quite rare.  Assume that you don’t and give in only when you can’t find a way around it.</p>
+
+<p>In this case, the path is almost clear.  The first thing you see the index used for is to walk two lists in parallel.  Ruby has an iterator for that.  It’s <code>zip()</code>.</p>
+
+<p>Unfortunately, we can’t switch straight to <code>zip()</code>.  If we did, we wouldn’t have the score.  It also needs the index in this setup.  That’s the problem we need to solve first.</p>
+
+<p>The trick is that <code>case</code> statement.  It’s really hiding the true nature of those scores.  If you squint hard enough, you’ll see that it’s really just another <code>Array</code>.  It would have been easier to see this if there were more of them (say, 100) because we would be less willing to type that out.</p>
+
+<p>That gives us the first step.  We need to move to something more like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Race</span>
+  module_function
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">score</span>(guesses, winners)
+    points = <span style="color:#00D">0</span>
+    guesses.each_with_index <span style="color:#080;font-weight:bold">do</span> |guess, i|
+      <span style="color:#080;font-weight:bold">if</span> guess == winners[i]
+        points += [<span style="color:#00D">15</span>, <span style="color:#00D">10</span>, <span style="color:#00D">5</span>, <span style="color:#00D">3</span>, <span style="color:#00D">1</span>][i]
+      <span style="color:#080;font-weight:bold">elsif</span> winners.include? guess
+        points += <span style="color:#00D">1</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    points
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code solves one of our problems.  We’re now working with <code>Array</code> objects all the way down.  That’s nice, but I don’t really like that change I just made.  It makes it painfully obvious that it’s a list of magic numbers.  That makes me want to give them a name:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Race</span>
+  <span style="color:#036;font-weight:bold">SCORES</span>    = [<span style="color:#00D">15</span>, <span style="color:#00D">10</span>, <span style="color:#00D">5</span>, <span style="color:#00D">3</span>, <span style="color:#00D">1</span>]
+  <span style="color:#036;font-weight:bold">MISPLACED</span> = <span style="color:#00D">1</span>
+
+  module_function
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">score</span>(guesses, winners, scores = <span style="color:#036;font-weight:bold">SCORES</span>, misplaced = <span style="color:#036;font-weight:bold">MISPLACED</span>)
+    points = <span style="color:#00D">0</span>
+    guesses.each_with_index <span style="color:#080;font-weight:bold">do</span> |guess, i|
+      <span style="color:#080;font-weight:bold">if</span> guess == winners[i]
+        points += scores[i]
+      <span style="color:#080;font-weight:bold">elsif</span> winners.include? guess
+        points += misplaced
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    points
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>That’s much better, in my opinion.  The scores now have names.  They are in constants, so you can reflect on them externally.  This approach allows us to update the specs to use these values.  (I’ll leave that work as an exercise for the interested reader.)  Finally, because we are passing the constants as defaults to method arguments, they can be overridden as needed, which ends their reign as magic values.</p>
+
+<p>Of course, we took that step to get to this one:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Race</span>
+  <span style="color:#036;font-weight:bold">SCORES</span>    = [<span style="color:#00D">15</span>, <span style="color:#00D">10</span>, <span style="color:#00D">5</span>, <span style="color:#00D">3</span>, <span style="color:#00D">1</span>]
+  <span style="color:#036;font-weight:bold">MISPLACED</span> = <span style="color:#00D">1</span>
+
+  module_function
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">score</span>(guesses, winners, scores = <span style="color:#036;font-weight:bold">SCORES</span>, misplaced = <span style="color:#036;font-weight:bold">MISPLACED</span>)
+    points = <span style="color:#00D">0</span>
+    guesses.zip(winners, scores) <span style="color:#080;font-weight:bold">do</span> |guess, winner, score|
+      <span style="color:#080;font-weight:bold">if</span> guess == winner
+        points += score
+      <span style="color:#080;font-weight:bold">elsif</span> winners.include? guess
+        points += misplaced
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+    points
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The switch to <code>zip()</code> was straightforward and makes the code read better.  Plus, we’re rid of that index.</p>
+
+<p>This code is pretty close to the code I ended up with while fiddling with this problem.</p>
+
+<h3 id="the-point">The point</h3>
+
+<p>I don’t want to tell you what to get out of this exercise, but I can tell you what I got out of it, which is mainly to remember the true purpose of a thing.  For example:</p>
+
+<ul>
+  <li>Following the proper steps of BDD is meant to <strong>help you write code</strong>.  If it turns into busywork that doesn’t help, you are free to go another way.  And maybe you should feel compelled to go another way at that point.</li>
+  <li>Iterators are intended to <strong>save you from maintenance and potential error points</strong>, such as:  tracking indexes or other variables and doing too much work.  If you find yourself in either of these scenarios, go spelunking in <code>Enumerable</code> to see whether there’s a better tool for the job.  Heck, do that anyway… it’s fun!  Do you know <a href="http://ruby-doc.org/core-1.9.3/Enumerable.html#method-i-chunk">what Enumerable#chunk() does</a> yet?</li>
+  <li>The primary purpose of code is to <strong>communicate with the reader.</strong>  Period.  No, really!  Notice that in all of the steps in this article, I am trying to tease out the underlying meaning of the code, then write the code as close to that intention as possible.  That’s when we’re at our best, if you ask me.</li>
+</ul>
+
+
+  </div>
+</body>
+</html>

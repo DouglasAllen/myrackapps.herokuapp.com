@@ -1,0 +1,880 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>In the <a href="http://practicingruby.com/articles/48">last issue</a>, I encouraged everyone to read Martin Fowler’s classic article <a href="http://martinfowler.com/articles/mocksArentStubs.html">Mocks Aren’t Stubs</a>. Since this article is a bit dated and leans heavily towards Java style development practices, I also offered my own commentary to hopefully bridge the gap between Fowler’s insights and the modern Ruby world. Now that we have the theories behind us, today we can focus on putting these ideas into practice.</p>
+
+<p>There is a style of behavior driven development that encourages mocking everything except the object under test. Fowler calls folks who follow this methodology <em>mockists</em>, and more-or-less presents this approach as a completely valid alternative to classic TDD, in which test doubles of any variety are only used when absolutely necessary. While I think that such an assessment is valid in the context Fowler originally wrote his article (2004/Java), I personally feel that the <em>mockist</em> style that Fowler describes has no place in modern Ruby development.</p>
+
+<p>That having been said, when used in moderation, mocking frameworks can make testing a whole lot easier. Today, I’ll be sharing my thoughts on when to use mocks and when not to. While these are not meant to be taken as strict rules to follow, they may shed some light on a middle ground between Fowler’s classicist and mockist categories.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> I’m using <a href="http://github.com/citrusbyte/contest">citrusbye/contest</a> and <a href="https://github.com/floehopper/mocha">mocha</a> in the tests shown in this article, but the ideas should apply to any testing framework + mocking system.</p>
+</blockquote>
+
+<h3 id="good-uses-for-mocks">Good uses for mocks</h3>
+
+<p>When I think back on my testing habits, I find that virtually all of my use of mock objects falls into one or more of the following three categories:</p>
+
+<ul>
+  <li>Testing code which depends on an external resource of some sort (a web service, the filesystem, mail server, etc.)</li>
+  <li>Testing code which would involve a large amount of non-reusable setup and fixture data if you didn’t mock at a high level.</li>
+  <li>Testing code which relies on features which are particularly computationally expensive.</li>
+</ul>
+
+<p>Each of these scenarios has their caveats, but odds are, most moderate to large
+size projects I work on hit at least one of them, and it isn’t rare
+to deal with all three of these issues simultaneously. That alone tells me that
+having a good understanding of how to use mocks is a key part of TDD. I’ll now
+share some examples that hopefully help drive that point home.</p>
+
+<p><b>Isolation from external resources</b></p>
+
+<p>It would be great if our projects were completely self-contained, not having to deal with any shared resources, but this isn’t realistic. Most projects need to deal with at least some external resources and may even have to tackle some systems integration problems. This often makes automating testing considerably more challenging than we would like it to be.</p>
+
+<p>Thankfully, mock objects provide some shortcuts for us. While they won’t help us with testing the code that needs to interact with the outside world, they can easily be used as stand-ins for our integration points when we are testing code that depends on outside resources. This makes it possible to test our high level logic without having to access whatever external resources our code needs to integrate with.</p>
+
+<p>To demonstrate how useful this can be, we’ll look at some simple tests from a tool I built which uses <em>win32ole</em> to integrate with some Windows based truck routing software. Below, you can see a bit of test code that ensures a particular error gets raised when an invalid stop is added to the trip object.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">trip must be able to detect an invalid stop</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span> 
+  trip = <span style="color:#036;font-weight:bold">MilesDavis</span>::<span style="color:#036;font-weight:bold">Trip</span>.create
+  expect_an_invalid_stop
+
+  error = assert_raises(<span style="color:#036;font-weight:bold">MilesDavis</span>::<span style="color:#036;font-weight:bold">InvalidStopError</span>) <span style="color:#080;font-weight:bold">do</span> 
+    trip.stops &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Fakeville, FK</span><span style="color:#710">&quot;</span></span> 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cannot Find: Fakeville, FK</span><span style="color:#710">&quot;</span></span>, error.message
+<span style="color:#080;font-weight:bold">end</span> 
+</pre></div>
+</div>
+</div>
+
+<p>If you guessed that the <code>expect_an_invalid_stop</code> method introduces a mock into
+these tests, you were right! While it might look a bit like magic on a first
+glance, I usually try to separate all but the most trivial mock logic into its
+own helper methods to make the tests easier to maintain. Here’s what
+<code>expect_an_invalid_stop</code> actually does:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">expect_an_invalid_stop</span>
+  server = mock()
+  server.expects(<span style="color:#A60">:CheckPlaceName</span>).returns(<span style="color:#00D">0</span>)
+  <span style="color:#036;font-weight:bold">MilesDavis</span>.expects(<span style="color:#A60">:server</span>).returns(server)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We can now take a look at the implementation code that these tests run against. It is a simple module that gets mixed into the stops array when a new <code>Trip</code> is created.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">StopValidation</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(place)
+    <span style="color:#080;font-weight:bold">unless</span> <span style="color:#036;font-weight:bold">MilesDavis</span>.server.CheckPlaceName(place) &gt; <span style="color:#00D">0</span>
+      raise <span style="color:#036;font-weight:bold">InvalidStopError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Cannot Find: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>place<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">super</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you go back and re-read the test and mock code, it should be pretty clear what is going on here. When this system is actually running in production, <code>MilesDavis.server</code> refers to a <em>win32ole</em> object, which explains the crappy camel case method names. But when running this particular test, we swap out the server call to return a mock object of our own creation.</p>
+
+<p>By crafting our tests to mock out any interaction with the server, our test suite still works fine outside of the production environment. Even though the core purpose of this library is to integrate with a proprietary bit of Windows code running on a particular machine, we were able to develop all but the lowest layer entirely within our Linux and Mac-based development environments without needing any direct access to the software we were integrating with.</p>
+
+<p>It’s worth mentioning that although this use case was extracted directly from a real world project, it was hand picked to demonstrate the value of mocks in this sort of context. Other interactions with external resources are not so black and white. For example, if you’re doing something like manipulating files on a system, it might make more sense to use temporary files than it would be to introduce mock objects. There are many other scenarios like this, so it’s usually best to weigh out the costs and benefits before going full steam ahead with mocks.</p>
+
+<p>That having been said, mocking external resources is almost always a valid use case, if not the most optimal one in certain situations.</p>
+
+<p><b>Avoiding complex setup + fixtures</b></p>
+
+<p>The main reason why integration with external resources is a pain is because it often requires lots of configuration and setup just to get things running. A similar phenomenon occurs internally when projects get large enough to have some complex object relations and/or advanced datastructures.</p>
+
+<p>What follows is a bit of test code for a decorator that we built to wrap some low level geospatial data that we were storing via PostGIS.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">retreive a valid US postal area</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  expect_postal_area_search(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">06511</span><span style="color:#710">&quot;</span></span>)
+  geom = <span style="color:#036;font-weight:bold">GeoRegion</span>.by_postal(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">06511</span><span style="color:#710">&quot;</span></span>)
+  assert_equal <span style="color:#A60">:postal</span>, geom.interpreted_type
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The mocking actually happens in <code>expect_postal_area_search</code>, which is shown
+below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">expect_postal_area_search</span>(zip)
+  <span style="color:#036;font-weight:bold">PostalArea</span>.expects(<span style="color:#A60">:find_by_zcta</span>).with(zip).returns(record_stub)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This mock emulates a simple <code>ActiveRecord</code> search, returning a stubbed out record which implements the bare minimum functionality required by our <code>GeoRegion</code> class. While somewhat uninteresting, below is the definition of <code>record_stub()</code>, for those curious.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">record_stub</span>
+  stub(<span style="color:#A60">:the_geom</span> =&gt; <span style="color:#036;font-weight:bold">Object</span>.new)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The guts of <code>GeoRegion</code> are actually a little bit complex, but our test was only meant to show that <code>GeoRegion.by_postal</code> returns an object that responds to <code>interpreted_type()</code> and returns the value <code>:postal</code>. This means we can focus on just that part of things without losing anything important.</p>
+
+<p>The part of the code that does the geometry lookup is a simple delegator to <code>PostalArea.find_by_zcta</code>, which is what <code>expect_postal_area_search</code> mocks out for us. The stubbed out record it returns ends up being used in a helper method that defines the <code>interpreted_type</code> on the record via a mixin and then sets its value.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">geom_for</span>(record, type = <span style="color:#069">nil</span>)
+  geom = (record &amp;&amp; record.the_geom) <span style="color:#080;font-weight:bold">or</span> 
+    raise <span style="color:#036;font-weight:bold">UnknownFormatError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Not a valid </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>type<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+
+  geom.extend(<span style="color:#036;font-weight:bold">Meta</span>)
+  geom.interpreted_type = type 
+  geom.record = record 
+  
+  <span style="color:#080;font-weight:bold">return</span> geom 
+<span style="color:#080;font-weight:bold">end</span>         
+</pre></div>
+</div>
+</div>
+
+<p>I won’t bother tracing the longish execution path that lies on either side of this helper method, but the key takeaway here is that we’re able to avoid to skip two layers of complexity by mocking out our call to <code>PostalArea</code> and stubbing out the actual geometry object that is associated with that <code>PostalArea</code>.</p>
+
+<p>We could have loaded fixture data into our testing environment which had the relevant geospacial data to perform the sort of search we needed for this feature, but doing so would certainly be more complicated than the two simple lines we used to create our mock and stub.</p>
+
+<p>Part of the reason mocks work out well here is that they allow you to focus on the behavior of <code>GeoRegion</code> rather than its implementation details. Even though under the hood a bunch of complex object manipulation is going on, we only really care about a very narrow set of functionality that <code>GeoRegion</code>’s adds as metadata to the geometry objects looked up through its search methods. If we had to actually populate the database with geometry data and concern ourselves with the messy relationships between these objects, our tests would be far less clear.</p>
+
+<p>Of course, this technique only really makes sense when understanding and maintaining the mock object’s interface is easier than creating the necessary setup code and fixtures to run the tests with real objects. Often times, the scales are tipped in the other direction, which I’ll talk about a little later in this article. But before we get into the bad ideas, we have one more good one to cover.</p>
+
+<p><b>Mocking for performance reasons</b></p>
+
+<p>The first two techniques both had something in common: They made life easier by preventing certain code from actually being run. If we take that idea and apply it to performance, we find that running less code is usually faster than running more code.</p>
+
+<p>Let’s consider the following simple code that sends an email message to a group each time a new member is added.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Group</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, admin)
+    <span style="color:#33B">@name</span>    = name
+    <span style="color:#33B">@admin</span>   = admin
+    <span style="color:#33B">@members</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:members</span>, <span style="color:#A60">:name</span>, <span style="color:#A60">:admin</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(new_user)
+    raise <span style="color:#080;font-weight:bold">if</span> members.include?(new_user)
+
+    members &lt;&lt; new_user
+    broadcast(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">New user added</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>new_user<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> joined the </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>+
+              <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">group on </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#036;font-weight:bold">Date</span>.today<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">broadcast</span>(title, content)
+    mail = <span style="color:#036;font-weight:bold">Mail</span>.new
+
+    mail.from(admin)
+    mail.to(members)
+    mail.subject(title)
+    mail.body(content)
+
+    mail.deliver
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because <code>Group#broadcast</code> is almost entirely calls to the external Mail library, it arguably doesn’t need unit tests, and instead could be covered by integration tests that set up a test mail server or something like that. However, <code>Group#&lt;&lt;</code> is a different story.</p>
+
+<p>If we focus on the behavior of appending a user to the group, we don’t actually need to focus on how <code>broadcast()</code> is implemented, we only need to verify that it is called. The following test demonstrates how to apply that line of thinking.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">adding users</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  group = <span style="color:#036;font-weight:bold">Group</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Practicing Ruby</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">greg@practicingruby.com</span><span style="color:#710">&quot;</span></span>)
+
+  expect_broadcast(group, <span style="color:#00D">2</span>)
+
+  group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">joe@example.com</span><span style="color:#710">&quot;</span></span>
+  group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">matz@example.com</span><span style="color:#710">&quot;</span></span>
+
+  assert_equal [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">joe@example.com</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">matz@example.com</span><span style="color:#710">&quot;</span></span>], group.members
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The most simple mock that reasonably covers the necessary functionality for <code>expect_broadcast()</code> is shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">expect_broadcast</span>(group, count)
+  group.expects(<span style="color:#A60">:broadcast</span>).times(count)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>We could actually go much farther here and verify the particular subject and content being passed to <code>broadcast()</code>, but as I said in <a href="http://practicingruby.com/articles/47">issue #18’s mini-rant on testing</a>, I don’t particularly like testing presentation logic that needs to be hand verified due to frequent superficial change. But personal preferences aside, even with a more complex set of expectations, using a mock object here is sure to be faster than actually sending an email.</p>
+
+<p>This is a bit contrived example, but imagine a group object with many more methods that send broadcast emails. Add to that all the email enabled features across an application, and you’ll quickly see the clock ticking longer and longer even if you do have a mail server that pipes everything to <em>/dev/null</em>.</p>
+
+<p>This sort of scenario will come up in a number of different domains, and whenever it does, mock objects might be the right way to go. The main downside of using this sort of approach is that it eliminates the possibility of using your tests as a performance benchmark for your project. It is also worth noting that without proper integration tests, your mocks will happily go green in places that your real code may never be able to run. But since these issues tend to get spotted very quickly in manual testing and ordinary application use, it’s usually okay to wait until this becomes a problem before worrying about it.</p>
+
+<p>The three types of scenarios I’ve covered so far pretty much completely describe the valid use cases for mocks that have come up in my work. It isn’t likely to be an exhaustive list, but I’ve working in a fairly large amount of projects across diverse domains and have yet to see another need for mocks that I didn’t cover here. I did run up against a couple anti-patterns though, so let’s take a look at those now before we wrap up.</p>
+
+<h3 id="bad-uses-for-mocks">Bad uses for mocks</h3>
+
+<p>Two very popular use cases for mocks should actually be considered harmful:</p>
+
+<ul>
+  <li>Using mocks for complete isolation of internal dependencies</li>
+  <li>Using mocks as contracts for unwritten objects</li>
+</ul>
+
+<p>To be sure, there are fairly strong arguments for each of these ideas, Fowler alone goes to great lengths making the case for them, and he is a moderate on these issues. But I’d argue the line of thinking is really geared towards languages that punish users from creating lots of objects with simple APIs connecting them together, such as Java. Let’s take a look at some Ruby examples so that we can consider that point.</p>
+
+<p><b>Using mocks for complete isolation of internal dependencies</b></p>
+
+<p>Consider this simple variation on the theme of a user group, in which <code>Group#&lt;&lt;</code> constructs Person objects for each new member of a group.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Group</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@members</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:members</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(person_name)
+    members &lt;&lt; <span style="color:#036;font-weight:bold">Person</span>.new(person_name)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">member_names</span>
+    members.map { |e| e.name }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>A mockist would not think about whether <code>Person</code> has external dependencies, complex setup requirements, or performance issues. They would just have started with a mock right away, perhaps something like this.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GroupTest</span> &lt; <span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Unit</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+  test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">adding members to a group</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    group = <span style="color:#036;font-weight:bold">Group</span>.new
+
+    expect_new_member(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>)
+    group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>
+
+    expect_new_member(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span>)
+    group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span>
+
+    assert_equal [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span>], group.member_names
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">expect_new_member</span>(member_name)
+    <span style="color:#036;font-weight:bold">Person</span>.expects(<span style="color:#A60">:new</span>).returns(stub(<span style="color:#A60">:name</span> =&gt; member_name))
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The neat thing about the code above is that it really does create some major isolation, in that it will still allow you to test <code>Group#&lt;&lt;</code> and <code>Group#member_names</code> with nothing more than a bare class definition for <code>Person</code>. If we wanted to be hardcore, you could even create a <code>Group#new_person</code> method and mock that instead, and then you wouldn’t even need a defined <code>Person</code> constant!</p>
+
+<p>But before we get too excited, let’s assume <code>Person</code> is just a trivial container method, such as the one shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name)
+    <span style="color:#33B">@name</span> = name
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:name</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code doesn’t require any complex setup, it isn’t using any external resources, and it doesn’t have any performance intensive characteristics to it. That means that in order to test it directly, all we need to do is remove a bunch of lines from our previous test case.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">adding members to a group</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  group = <span style="color:#036;font-weight:bold">Group</span>.new
+
+  group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>
+  group &lt;&lt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span>
+
+  assert_equal [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Jia Wu</span><span style="color:#710">&quot;</span></span>], group.member_names
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>By comparison, the above code is much more simple. But some smart folks still write it the other way. This is not without reason, and in fact has something to do with what happens when a change is made that causes tests to fail. To illustrate this, suppose that Person has a simple test that looks something like this.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a user has a name attribute</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  user = <span style="color:#036;font-weight:bold">User</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>)
+  assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Gregory Brown</span><span style="color:#710">&quot;</span></span>, user.name
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With the code we’ve seen so far, this test easily passes. But consider what happens when the implementation of User is changed to something like the code below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name)
+    <span style="color:#33B">@name</span> = name.upcase
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:name</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The version of our test suite which uses mock objects will have one failure in the test case that is specifically checking what <code>Person#name</code> returns. It will not cause our <code>Group</code> tests to fail, because a stubbed person object is used there instead. I’ve included the output of a test run using that approach so you can see what that looks like.</p>
+
+<pre><code>  1) Failure:
+test_adding_members_to_a_group(GroupTest)
+&lt;["Gregory Brown", "Jia Wu"]&gt; expected but was
+&lt;["GREGORY BROWN", "JIA WU"]&gt;.
+
+  2) Failure:
+test_a_user_has_a_name_attribute(PersonTest)
+&lt;"Gregory Brown"&gt; expected but was
+&lt;"GREGORY BROWN"&gt;.
+</code></pre>
+
+<p>This is exactly what mockists don’t like to see. The argument is that as your programs get more complex, the dependencies between objects get larger and larger and you end up with tens or hundreds of failing tests all because of a change in one place. This phenomena can and does occur, and it happens in smaller projects than you might think.</p>
+
+<p>But still, doesn’t something smell fishy?  The mock objects that are now being constructed in the tests for <code>Group#member_names</code> are now completely out of synchronization with the real specifications of the application. It isn’t possible to get the output they test against in real uses of the application, and so while they adequately test the behavior of <code>Group#member_names</code>, the isolation has caused the mocks to diverge from reality, making them untrustworthy as ‘living documentation’ for the real system.</p>
+
+<p>Personally, when I make a change that has potential system-wide affects, I prefer my tests to be verbose. Testing objects directly prevents this sort of out of sync representation of object behavior from being even possible, and so increases the reliability of the tests as both an integration testing safety net and as a documentation source.</p>
+
+<p>As for sifting through the sea of information that gets spit out when you <em>don’t</em> use mocks, there are ways of effectively sifting through it so as to not have problems even in very complex applications. But that is a topic more related to general debugging and may be better off described in another article.</p>
+
+<p>We still have one more point to cover before we wrap up here, and this is now edging on being a massive article, so let’s get to it.</p>
+
+<p><b>Using mocks as contracts for unwritten objects</b></p>
+
+<p>When writing code test first, it is possible to use mock objects as stand ins for objects that have not been defined yet. As I had mentioned before, with minor alterations we wouldn’t even need to have a <code>Person</code> class defined in order to effectively test <code>Group#&lt;&lt;</code> and <code>Group#member_names</code>.</p>
+
+<p>This is sort of neat, because it forces a radical form of behavior driven development. Since you’re not working with the real collaborator objects at all in your tests, you are absolutely forced to work with their expected behaviors and not their implementations.</p>
+
+<p>We’ve already hinted at some of the downsides of this approach though, in particular, that it is possible for our mocks can get out of sync with reality. We’ve seen an example of tests that don’t fail, even though they describe invalid output from <code>User#name</code>. Now let’s see an example of a change that does cause our original mock-based tests to fail, even though there is nothing wrong with the code itself.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># replace the Person object with this definition, which simply renames</span>
+<span style="color:#777"># Person#name to Person#full_name</span>
+<span style="color:#777">#</span>
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Person</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(full_name)
+    <span style="color:#33B">@full_name</span> = full_name
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:full_name</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Group</span>
+  <span style="color:#777"># update to call the renamed Person#full_name method</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">member_names</span>
+    members.map { |e| e.full_name }
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When we run the non-mocked version of our tests, nothing fails, because it never explicitly mentions the name attribute on <code>Person</code>. But the same cannot be said for our mocked code, which explicitly creates stubs with a name attribute, as shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">expect_new_member</span>(member_name)
+    <span style="color:#036;font-weight:bold">Person</span>.expects(<span style="color:#A60">:new</span>).returns(stub(<span style="color:#A60">:name</span> =&gt; member_name))
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can see the test output below as evidence that our mock is now indeed broken.</p>
+
+<pre><code>  1) Failure:
+test_adding_members_to_a_group(GroupTest)
+    [/home/sandal/devel/practicing-ruby/group.rb:14:in `member_names'
+     /home/sandal/devel/practicing-ruby/group.rb:14:in `map'
+    ...
+unexpected invocation: #&lt;Mock:0x7ff71166e6c0&gt;.full_name()
+satisfied expectations:
+- expected exactly once, already invoked once: Person.new(any_parameters)
+- expected exactly once, already invoked once: Person.new(any_parameters)
+- allowed any number of times, not yet invoked:
+  #&lt;Mock:0x7ff71166e6c0&gt;.name(any_parameters)
+- allowed any number of times, not yet invoked:
+  #&lt;Mock:0x7ff71166aac0&gt;.name(any_parameters)
+</code></pre>
+
+<p>So here we see the knife cuts both ways. While it’s true that our mocked code doesn’t need to worry about the implementations of anything except the object under test, it does tightly bind to the interface, even when changes to those interfaces don’t affect the object under test.</p>
+
+<p>This allows us to make the same argument that mockists make about cascading errors, from the other side of the fence. As projects grow bigger, the amount of red tests due to brittle mock objects grows larger and larger, making it harder to see what is actually broken and what needs to be changed. But unlike the problem of noisy directly tested objects, these sort of failures only indicate a problem with the tests, not the code.</p>
+
+<p>In languages where creating new objects is hard and time consuming, such a trade is probably worth considering. If we had to hand tune a Makefile, set up headers, declare variables, and consider memory management just to add a Person object like we might in C++, there might be a strong argument for how using mocks for driving tests helps you be more agile.</p>
+
+<p>But in Ruby, in which our first tests can be made to pass with just a single line like the one below, you have to wonder whether the juice is worth the squeeze.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#036;font-weight:bold">Person</span> = <span style="color:#036;font-weight:bold">Struct</span>.new(<span style="color:#A60">:name</span>)
+</pre></div>
+</div>
+</div>
+
+<p>One important thing to note is that despite my criticisms, there are folks out there who use very elegant design techniques and testing practices that can minimize the problems I have pointed out. But personally, I feel like these folks succeed in spite of the path they’ve chosen rather than because of it. The idea that using mocks to force you to think about design may work well as a gateway drug, but then once you’ve learned how to think about object design on its own, you can chuck out the training wheels and just focus on writing good code.</p>
+
+<p>The examples I’ve shown here might be a bit biased towards demonstrating my arguments, but at least should give a starting point for considering these issues on your own.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>We’ve simultaneously shown in this article that mock objects are both really damn useful and ridiculously annoying at the same time. Personally, I tend to shy away from tooling that requires you to swallow a large amount of dogma and a boatload of theory before you can even make use of it, and that is the main reason why I’m concerned about the whole mockist approach to things. From what I’ve seen, while a stereotypical <em>classicist</em> is hard to come by, these <em>mockist</em> folks that Fowler describes do exist and in my opinion, do more harm than good in getting folks to write clear, easy to understand Ruby code.</p>
+
+<p>Mocking frameworks are big guns, and should be treated as such. They can be life
+savers when used in moderation, but can make you pull your hair out if you use them inappropriately.</p>
+
+<p>In summary, it’s a bad idea to swallow bad tasting medicine with the abstract promise that it will be better for you in the end. If you can see clear benefits from the use of mocks and have weighed them out on a case by case basis against your other options, you should be fine. But if you are mostly using them because the RSpec team tells you to, you’re basically screwed :)</p>
+
+<p>My final disclaimer about what I’ve said here is that it is entirely based on my own experiences. You’ve worked on different problems in different environments than I have, and I’d love to know how those experiences have influenced your own thoughts on mocking.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/052-issue-20-thoughts-on-mocking.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

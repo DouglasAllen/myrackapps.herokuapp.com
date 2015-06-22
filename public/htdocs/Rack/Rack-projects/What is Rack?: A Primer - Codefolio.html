@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class=" js video" lang="en"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>What is Rack?: A Primer - Codefolio</title>
+  <meta name="author" content="Noah Gibbs">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://codefol.io/posts/What-is-Rack-A-Primer">
+  <link href="http://codefol.io/favicon.png" type="image/png" rel="icon">
+  <link href="http://codefol.io/atom.xml" rel="alternate" title="Codefolio" type="application/atom+xml">
+
+  <link href="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/bootstrap-readable.css" rel="stylesheet" type="text/css">
+<link href="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/lightbox.css" rel="stylesheet" type="text/css">
+<link href="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/codefolio.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+
+  <script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/ga.js" async="" type="text/javascript"></script><script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/jquery-2.js"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30520713-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+<script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/embed.js" async="" type="text/javascript"></script></head>
+
+  <body>
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://codefol.io/">
+              <img src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/Codefolio_text_100.png" title="Codefol.io" alt="A paper-cutout Codefol.io logo" height="47" width="100"> </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="http://codefol.io/">Blog</a>
+                </li>
+                <li>
+                    <a href="http://codefol.io/blog/archives">Archives</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="http://codefol.io/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="search navbar-form navbar-right" action="http://google.com/search" method="GET">
+                    <input name="q" value="site:codefol.io" type="hidden">
+                    <div class="form-group">
+                        <input class="form-control" name="q" placeholder="Search" type="text">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2012-07-22T23:37:00+00:00" pubdate="" data-updated="true">Jul 22<span>nd</span>, 2012</time>
+        
+           | <a href="#disqus_thread" data-disqus-identifier="http://codefol.io">Comments</a>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        What Is Rack? : a Primer
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><p>Maybe an engineer you respect 
+just told you to go learn about Rack — you won’t get better at Ruby web 
+stuff until you know what’s underneath.</p>
+
+<p>Maybe you have to write a config.ru to use <a href="http://heroku.com/">Heroku</a> and you’re thinking, “what’s config.ru?”.</p>
+
+<p>Maybe you have a deep, nasty Sinatra bug and you’re having to dig 
+into the Sinatra stack traces and stuff that might be failing is named 
+“Rack”.  Why “Rack”?</p>
+
+<p>Now what?</p>
+
+<p>Now it’s time to learn about Rack.</p>
+
+<h2> Quick Answers to “What’s Rack?”</h2>
+
+
+<p>Here are a few things Rack is.</p>
+
+<p>If these don’t help, scroll down a bit.  There’s far more detail below.</p>
+
+<p><a href="http://rack.github.com/">Rack</a> is a nice Ruby-fied replacement for <a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface">CGI</a>.</p>
+
+<p>Rack sits between all the frameworks (Rails, Sinatra, <a href="http://rebuilding-rails.com/">Rulers</a>) and all the app servers (thin, unicorn, Rainbows, mongrel) as an adapter.</p>
+
+<p>Rack is a convenient way to build your Ruby app out of a bunch of <a href="http://railscasts.com/episodes/151-rack-middleware">thin layers</a>, like a stack of pancakes.  The layers are called middleware.  Or pancakes, why not?</p>
+
+<h2> Less Hand-Wavey, Please! </h2>
+
+
+<p>Your app server (let’s say <a href="https://github.com/blog/517-unicorn">unicorn</a>) gets an HTTP request.  Somebody wants to post to <a href="http://your_site.com/people/127/fire_with_cause">http://your_site.com/people/127/fire_with_cause</a> (don’t worry, it’s <a href="http://www.dilbert.com/">Wally</a> — he’ll weasel out of it).</p>
+
+<p>Unicorn receives the request, parses it, hands it to Rack, and then Rack gives it to your Sinatra app (or Rails, or Padrino, or <a href="http://rebuilding-rails.com/">your framework of choice</a>) as a request, usually a method call.  This is where Rails routing takes over, for instance.</p>
+
+<p>Rack keeps Sinatra from having to know anything specific about 
+unicorn.  Or mongrel.  Or thin.  Or lighttpd.  Or any of the many other 
+wacky app servers out there.  That’s why it’s like CGI for Ruby.</p>
+
+<h2>But What Good Is It?</h2>
+
+
+<p>That’s fine.  But it helps the guys writing app servers, not you.  How does Rack help <i>you</i>?</p>
+
+<p>Rack lets you mess with those layers — the ones above Rails or 
+Sinatra, the ones underneath, and even the ones in the middle!  That’s 
+the whole “coding your app in thin layers, like a stack of pancakes” 
+thing from up above.</p>
+
+<p>Rails is actually implemented as a whole bunch of Rack pancakes (same
+ as middleware, but I’m calling them pancakes from here on out).  Here’s
+ what that stack looks like, lightly edited:</p>
+
+<figure class="code"><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">$ rake middleware
+</span><span class="line">use ActionDispatch::Static
+</span><span class="line">use Rack::Lock
+</span><span class="line">use Rack::Runtime
+</span><span class="line">use Rack::MethodOverride
+</span><span class="line">use ActionDispatch::RequestId
+</span><span class="line">use Rails::Rack::Logger
+</span><span class="line">use ActionDispatch::ShowExceptions
+</span><span class="line">use ActionDispatch::DebugExceptions
+</span><span class="line">use ActionDispatch::RemoteIp
+</span><span class="line">use ActionDispatch::Reloader
+</span><span class="line">use ActionDispatch::Callbacks
+</span><span class="line">use ActiveRecord::ConnectionAdapters::ConnectionManagement
+</span><span class="line">use ActiveRecord::QueryCache
+</span><span class="line">use ActionDispatch::Cookies
+</span><span class="line">use ActionDispatch::Session::CookieStore
+</span><span class="line">use ActionDispatch::Flash
+</span><span class="line">use ActionDispatch::ParamsParser
+</span><span class="line">use ActionDispatch::Head
+</span><span class="line">use Rack::ConditionalGet
+</span><span class="line">use Rack::ETag
+</span><span class="line">use ActionDispatch::BestStandardsSupport
+</span><span class="line">run RailsGame::Application.routes</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Each of those things is a Rack middleware that’s doing a little piece of the processing.</p>
+
+<p>Like Rack::Lock, up near the top?  That keeps more than one thread 
+from running in your Rails server at once so that you don’t have to make
+ all your code thread-safe.</p>
+
+<p>Or Rails::Rack::Logger?  That makes sure your requests get logged to the Rails logfiles.</p>
+
+<p>And what if you added one?  Maybe you could fix a lot of nasty bugs 
+with bad HTTP requests if you could just reject them immediately, before
+ they got a chance to screw up your web framework…</p>
+
+<p>Rack ships with a bunch of middlewares and Rails has a bunch of 
+others that it adds.  You can even insert your own into the stack if you
+ <a href="http://guides.rubyonrails.org/rails_on_rack.html">mess with config.ru</a> in your Rails app.</p>
+
+<p>A rack pancake can be as simple as <a href="http://rack.rubyforge.org/doc/Rack/Config.html">Rack::Config</a> where you hand it a block of code and it runs it on each request.  Or it can be as complex as <a href="http://rackamole.com/">RackAMole</a> which logs every request to a MongoDB instance you have to set up.  Or way, way more complex than that.</p>
+
+<p>There are <a href="https://github.com/rack/rack/wiki/List-of-Middleware">lots of fun pancakes</a> out there.</p>
+
+<h2> How Do I Use It?</h2>
+
+
+<p>Mostly it’s done for you.  Rails and Sinatra already have Rack 
+support.  You can modify config.ru in a Rails/Sinatra/whatever app if 
+you want to <a href="http://railscasts.com/episodes/151-rack-middleware">add Rack pancakes</a> to your app.</p>
+
+<p>But you don’t have to do anything at all for basic Rack support if you’re already using a Rack framework.</p>
+
+<p>What if you want to write a Rack-based framework and learn all the best tricks?  That’s a longer answer.  Luckily I’m writing a <a href="http://rebuilding-rails.com/">book with all those details</a>.</p>
+
+<p>For the first two chapters, sign up below:</p>
+
+<!-- Begin MailChimp Signup Form -->
+<div class="well" id="mc_embed_signup">
+<form action="http://rebuilding-rails.us2.list-manage.com/subscribe/post?u=c5569fb6471a3e64be2aa1466&amp;id=82afd59934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+	<h3>Free Email Rails Class? <a href="http://rebuilding-rails.com/">Two Free Chapters</a>? News?</h3>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input name="EMAIL" class="required email" id="mce-EMAIL" type="email">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input name="b_c5569fb6471a3e64be2aa1466_82afd59934" type="text"></div>
+	<div class="clear"><input value="I Want That!" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-lg btn-success" type="submit"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Noah Gibbs</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2012-07-22T23:37:00+00:00" pubdate="" data-updated="true">Jul 22<span>nd</span>, 2012</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class="category" href="http://codefol.io/blog/categories/primer/">primer</a>, <a class="category" href="http://codefol.io/blog/categories/rack/">rack</a>, <a class="category" href="http://codefol.io/blog/categories/rails/">rails</a>, <a class="category" href="http://codefol.io/blog/categories/ruby/">ruby</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  
+  
+</div>
+
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="http://codefol.io/posts/Unsolvable-Ruby-Problems-Array-map-on-an-Array-subclass-but-keep-the-subclass" title="Previous Post: Unsolvable Ruby Problems: Array#map on an Array subclass, but keep the subclass!">« Unsolvable Ruby Problems: Array#map on an Array subclass, but keep the subclass!</a></li>
+            
+            
+            <li class="next"><a href="http://codefol.io/posts/Rack-Authentication-Middleware" title="Next Post: Rack Authentication Middleware">Rack Authentication Middleware »</a></li>
+            
+          </ul>
+        
+      </footer>
+    </article>
+    
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><iframe verticalscrolling="no" horizontalscrolling="no" src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/a.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 654px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe><iframe style="width: 698px ! important; border: medium none ! important; overflow: hidden ! important; top: 0px ! important; min-width: 698px ! important; max-width: 698px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="indicator-north" id="dsq-indicator-north" frameborder="0"></iframe><iframe style="width: 698px ! important; border: medium none ! important; overflow: hidden ! important; bottom: 0px ! important; min-width: 698px ! important; max-width: 698px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="indicator-south" id="dsq-indicator-south" frameborder="0"></iframe></div>
+      </section>
+    
+  </div>
+
+  
+  <aside class="sidebar col-md-3">
+    
+      <section>
+  <p><a href="http://codefol.io/about.html">About me</a></p>
+
+  <p><a href="http://static.angelbob.com/portfolio">Online Portfolio</a></p>
+
+  <p><a href="http://twitter.com/codefolio"> <img src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/tw.png" alt="twitter icon"> </a></p>
+</section>
+<section>
+  
+<!-- Begin MailChimp Signup Form -->
+<div class="well" id="mc_embed_signup">
+<form action="http://rebuilding-rails.us2.list-manage.com/subscribe/post?u=c5569fb6471a3e64be2aa1466&amp;id=82afd59934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+	<h3>Free Email Rails Class? <a href="http://rebuilding-rails.com/">Two Free Chapters</a>? News?</h3>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address </label>
+	<input name="EMAIL" class="required email" id="mce-EMAIL" type="email">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;"><input name="b_c5569fb6471a3e64be2aa1466_82afd59934" type="text"></div>
+	<div class="clear"><input value="I Want That!" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-lg btn-success" type="submit"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+
+
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Popular Posts</h3>
+  </div>
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="http://codefol.io/posts/Where-Do-I-Put-My-Code">Where Do I Put My Code?</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/why-do-they-say-rails-doesnt-scale">Why Do They Say Rails Doesn't Scale?</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/Could-Not-Fetch-Specs-From-https-rubygems-org">Could Not Fetch Specs From https://rubygems.org/</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/How-Does-Rack-Parse-Query-Params-With-parse-nested-query">How Does Rack Parse Query Params? With Parse_nested_query</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/when-should-you-not-use-heroku">When Should You Not Use Heroku?</a>
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="http://codefol.io/posts/twenty-small-reasons-that-deploying-a-rails-app-is-hard">20 Small Reasons That Deploying a Rails App Is Hard</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/why-do-they-say-rails-doesnt-scale">Why Do They Say Rails Doesn't Scale?</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/soft-skills-by-john-sonmez">Soft Skills by John Sonmez</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/2014-year-in-review">2014 Year in Review: One Programmer's Side Business</a>
+    
+    <a class="list-group-item " href="http://codefol.io/posts/capistrano-be-sure-to-git-commit">Capistrano: Be Sure to Git Push!</a>
+    
+  </div>
+</section>
+
+
+    
+  </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright © 2012-2015 - Noah Gibbs<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/bootstrap.js"></script>
+<script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/lightbox-2.js"></script>
+<script src="What%20is%20Rack%3F:%20A%20Primer%20-%20Codefolio_files/modernizr-2.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'rubymadscience';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codefol.io/posts/14';
+        var disqus_url = disqus_identifier;
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function() {
+  $('.entry-content').each(function(i){
+    var _i = i;
+    $(this).find('img.lightbox').each(function(){
+      var img = $(this);
+      var title = img.attr("title");
+      img.removeClass("lightbox");
+      var classes = img.attr("class");
+      img.removeAttr("class");
+      console.log("Wrap image!");
+      img.wrap('<a href="'+this.src+'" data-lightbox="' + _i +'" class="' + classes + '" />');
+      if (title != "")
+      {
+        img.parent().attr("title", title);
+      }
+    });
+  });
+});
+</script>
+
+
+  
+
+<div style="display: none;" id="lightboxOverlay" class="lightboxOverlay"></div><div style="display: none;" id="lightbox" class="lightbox"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src=""><div class="lb-nav"><a class="lb-prev" href=""></a><a class="lb-next" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>

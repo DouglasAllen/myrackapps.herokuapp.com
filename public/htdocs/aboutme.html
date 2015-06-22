@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd"> 
+<html> 
+    <head>
+        <meta content="utf-8"> 
+        <title>About me</title> 
+        <link rel="stylesheet" href="stylesheets/aboutme.css"> 
+        <script type="text/javascript"> 
+            function showtime()
+            {
+                var message="<p><a href='http://qrz.com/db/kb9agt'>See QRZ post.</a></p>";
+                var message1="<p>refresh the page to view images again!</p>";
+                var message2="<p><a href='http://mormon.org'>I'm a Mormon.</a></p>";
+                document.getElementById("imageclick").innerHTML=Date()+ message  + message1 + message2;
+            }
+            function showtext()
+            {
+                var message="<p><a href='docs/Other/text_pages/Battery_Charging.txt'>Battery Charging in three steps.</a></p>";
+                var message1="<p><a href='aboutme.html'>Click here to view image!</a></p>";
+                document.getElementById("imageclick2").innerHTML=Date()+ message + message1;
+            }
+            function showw9s()
+            {
+                var message="<p><a href='http://www.w9icu.com/w9s.html'>This image is from W9S </a></p>";
+                var message1="<p><a href='aboutme.html'>Click here to view image!</a></p>";
+                var message2="<p><a href='docs/Other/beginners.html'>HF SSB & Computers</a></p>";
+                document.getElementById("imageclick3").innerHTML=Date()+ message + message1 + message2;
+            }
+            function CenterDemo()
+            {
+            //Checking Client Height with Table Height and Setting a New Table Top Position
+	              if (document.body.clientHeight>document.all('demo1').offsetHeight) document.all('demo1').style.top=((document.body.clientHeight)-(document.all('demo1').offsetHeight))/2;
+            }
+        </script> 
+    </head>
+    <body>
+     <div id="navrow">
+         <div id="navcontainer">
+           <ul>                     
+             <li>
+               <a href="/config", target = '_blank'>see the config.ru file</a>
+             </li>
+             <li>
+               <a href="/lobster", target = '_blank'>have some lobster</a>
+             </li>
+             <li>
+               <a href="/docs", target = '_blank'>email me for the password if you want to read the docs</a>
+             </li>
+             <li>
+               <a href="/root", target = '_blank'>read about Rack</a>
+             </li>
+             <li>              
+               <a href="/sinatra/html", target = '_blank'>see Sinatra work html here</a>
+             </li> 
+             <li>              
+               <a href="/sinatra/markdown", target = '_blank'>see Sinatra work markdown here</a>
+             </li>                 
+           </ul>
+         </div> 
+      </div>		
+	</div>        
+        <div>
+            <h1 align="center"><a href="aboutme.html"></a></h1>
+            <table id="demo1" border="0" cellpadding="0" cellspacing="0" width="500" style="position: relative">
+              <tr>
+                <th align="center">
+                  <h2>Me</h2>
+                </th>
+                <th align="center">
+                  <h2>About</h2>
+                </th>
+              </tr>                
+            </table>
+          <hr>
+            <table>
+              <tr>
+                <td>
+		  <div id="imageclick">
+		    <img src="images/2009-12-28 19.49.45.jpg" alt="Douglas George Allen" width="220" height="280" onclick="showtime()">
+		  </div>
+		</td>
+		<td align="left">
+		  <h2>My name is Douglas.</h2>
+		  <p>Click on the image to see more.</p> 
+		</td>
+              </tr>
+            </table>
+          <hr>
+            <table>           
+              <tr>
+                <td>
+                  <div id="imageclick2">
+                    <img src="images/189891_4587267214_4624_n.jpg" alt="Douglas George Allen" width="220" height="190" onclick="showtext()">
+                  </div>
+                </td>
+                <td align="left">
+                  <h2>I live in the United States of America.</h2>
+                  <p>Click on the image to see more.</p>
+                </td>
+              </tr>
+            </table>
+          <hr>
+            <table>
+              <tr>
+                <td>
+                  <div id="imageclick3">
+                    <img src="images/kb9agt.jpg" alt="Douglas George Allen" width="220" height="190" onclick="showw9s()">
+                  </div>
+                </td>
+                <td align="left">
+                    <h2>My station call is KB9AGT.</h2>
+                    <h2>I hold an Extra-Class Amateur Radio Operator License.
+                    <h2>My QTH is De Kalb Illinois, USA.</h2>
+                    <p>Click on any of the images for more about me.</p>
+                </td>
+              </tr>
+            </table>
+          <hr>
+        </div> 
+ 
+
+        <p>Learning Ruby and JRuby is a fun experience in building applications for the desktop and the web.</p>
+        <p>I completed a beginner online Java course for basic concepts of Object Oriented Programming. </p> 
+        <p>Then I completed a J2EE course about Java web apps. We used Glassfish server often. Tomcat is fun too.</p> 
+        <p>I also want to enhance the skills that I picked up in those courses while learning Ruby and Rails.</p> 
+        <p>My other about me page is <a href="http://douglasallen.github.io/gh-pages/aboutme2/">My Github page</a></p> 
+      
+        <p>I have a gists on github too. My favorite <a href="https://gist.github.com/2032003">https://gist.github.com/2032003</a></p> 
+        <p>I have a Heroku page that is my favorite <a href="http://equationoftime.herokuapp.com/">http://equationoftime.herokuapp.com/</a></p> 
+        <p>I have a Gem that is used in Equation of Time pages named equation_of_time.gem(gem install equation_of_time).</p>
+        <p>I have a Github page that shows all my Heroku apps <a href="http://douglasallen.github.com/Github_page/">http://douglasallen.github.com/Github_page/</a></p> 
+
+        <hr> 
+
+        <hr> 
+        <script language="JavaScript"><!--
+          function startApplet() {
+          appletsource='<applet code="org.jruby.JRubyApplet.class" archive="http://jruby.org.s3.amazonaws.com/tryjruby/jruby-complete-signed.jar" width="700" height="500">\n';
+          appletsource+='<param name="jruby.console" value="true" />\n';
+          appletsource+='<param name="jruby.banner" value="Welcome to JRuby on the Web!" />\n';
+          appletsource+='<param name="jruby.eval" value="ARGV << \'-f\' << \'--readline\' << \'--prompt\' << \'simple\'; require \'irb\' ; require \'irb/completion\' ; Thread.new { IRB.start }" />\n';
+          appletsource+='</applet>\n';
+          document.getElementById('appletplace').innerHTML=appletsource;
+          }
+         //--></script>
+          <div id="appletplace" align="center">  
+            <form name="myform"> 
+              <input type="button" value="Start the applet!" onClick="startApplet()"> 
+            </form>
+          </div>
+        <p>Try this when you get there.</p>
+        <p>loop do<br />
+             puts Time.now<br />
+             sleep 1<br />
+           end<br />
+        </p>
+        <p>Try some JRuby coding after the applet loads up<br/>
+						 Just use Crtl v after you copy the code to paste it into this online JIRB<br/>
+						 You don't need to install Ruby or type irb. It's all in the applet.
+        </p>
+        <p>Lets just see what they are running.<br/>
+             Type in after the prompt >> system 'jruby -v'
+        </p>
+        <p>The whole point for JRuby is that you should be able to import Java libraries. <br/>
+						Try typing in at the prompt >>   require 'java'<br/>
+						You should get => true<br/>
+						which means you may now import some Java libraries.<br/><br/>
+						Try pasting in the code here in figure 2.<br/>
+						<a href="http://www.oracle.com/technetwork/articles/dsl/jruby-141877.html#gs">http://www.oracle.com/technetwork/articles/dsl/jruby-141877.html#gs</a>
+				</P>
+        <p>  Did you get a little window with some text and a button?<br/>
+            I have modified that code and posted it here.<br/>
+            <a href="https://gist.github.com/DouglasAllen/5835488">https://gist.github.com/DouglasAllen/5835488</a><br/>
+            But still you will see errors in this window but it works better at home on an installed JRuby system.
+        </p>
+        <p>More about JRuby can be found here:<br/>
+            <a href="http://www.ruby-lang.org/en/documentation/quickstart/">http://www.ruby-lang.org/en/documentation/quickstart/</a></p>
+        </p>        
+        <p>Just refresh the page when you're done. Thanks!</p>
+        <hr> 
+        <p><a href="http://twitter.com/KB9AGT"> <img src="http://rubylearning.com/images/twitter-ani.gif"  style="border: 0px none ;" alt="Twitter Id" title="Follow me on Twitter to communicate and stay connected" /></a></p>
+       
+    </body>
+</html> 

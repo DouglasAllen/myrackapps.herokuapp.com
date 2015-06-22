@@ -1,0 +1,1368 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-types--grammar">You Don’t Know JS: Types &amp; Grammar</h1>
+<p># Appendix A: Mixed Environment JavaScript</p>
+
+<p>Beyond the core language mechanics we’ve fully explored in this book, there are several ways that your JS code can behave differently when it runs in the real world. If JS was executing purely inside an engine, it’d be entirely predictable based on nothing but the black-and-white of the spec. But JS pretty much always runs in the context of a hosting environment, which exposes your code to some degree of unpredictability.</p>
+
+<p>For example, when your code runs alongside code from other sources, or when your code runs in different types of JS engines (not just browsers), there are some things that may behave differently.</p>
+
+<p>We’ll briefly explore some of these concerns.</p>
+
+<h2 id="annex-b-ecmascript">Annex B (ECMAScript)</h2>
+
+<p>It’s a little known fact that the official name of the language is ECMAScript (referring to the ECMA standards body that manages it). What then is “JavaScript”? JavaScript is the common tradename of the language, of course, but more appropriately, JavaScript is basically the browser implementation of the spec.</p>
+
+<p>The official ECMAScript specification includes “Annex B,” which discusses specific deviations from the official spec for the purposes of JS compatibility in browsers.</p>
+
+<p>The proper way to consider these deviations is that they are only reliably present/valid if your code is running in a browser. If your code always runs in browsers, you won’t see any observable difference. If not (like if it can run in node.js, Rhino, etc.), or you’re not sure, tread carefully.</p>
+
+<p>The main compatibility differences:</p>
+
+<ul>
+  <li>Octal number literals are allowed, such as <code>0123</code> (decimal <code>83</code>) in non-<code>strict mode</code>.</li>
+  <li><code>window.escape(..)</code> and <code>window.unescape(..)</code> allow you to escape or unescape strings with <code>%</code>-delimited hexadecimal escape sequences. For example: <code>window.escape( "?foo=97%&amp;bar=3%" )</code> produces <code>"%3Ffoo%3D97%25%26bar%3D3%25"</code>.</li>
+  <li><code>String.prototype.substr</code> is quite similar to <code>String.prototype.substring</code>, except that instead of the second parameter being the ending index (noninclusive), the second parameter is the <code>length</code> (number of characters to include).</li>
+</ul>
+
+<h3 id="web-ecmascript">Web ECMAScript</h3>
+
+<p>The Web ECMAScript specification (http://javascript.spec.whatwg.org/) covers the differences between the official ECMAScript specification and the current JavaScript implementations in browsers.</p>
+
+<p>In other words, these items are “required” of browsers (to be compatible with each other) but are not (as of the time of writing) listed in the “Annex B” section of the official spec:</p>
+
+<ul>
+  <li><code>&lt;!--</code> and <code>--&gt;</code> are valid single-line comment delimiters.</li>
+  <li><code>String.prototype</code> additions for returning HTML-formatted strings: <code>anchor(..)</code>, <code>big(..)</code>, <code>blink(..)</code>, <code>bold(..)</code>, <code>fixed(..)</code>, <code>fontcolor(..)</code>, <code>fontsize(..)</code>, <code>italics(..)</code>, <code>link(..)</code>, <code>small(..)</code>, <code>strike(..)</code>, and <code>sub(..)</code>. <strong>Note:</strong> These are very rarely used in practice, and are generally discouraged in favor of other built-in DOM APIs or user-defined utilities.</li>
+  <li><code>RegExp</code> extensions: <code>RegExp.$1</code> .. <code>RegExp.$9</code> (match-groups) and <code>RegExp.lastMatch</code>/<code>RegExp["$&amp;"]</code> (most recent match).</li>
+  <li><code>Function.prototype</code> additions: <code>Function.prototype.arguments</code> (aliases internal <code>arguments</code> object) and <code>Function.caller</code> (aliases internal <code>arguments.caller</code>). <strong>Note:</strong> <code>arguments</code> and thus <code>arguments.caller</code> are deprecated, so you should avoid using them if possible. That goes doubly so for these aliases – don’t use them!</li>
+</ul>
+
+<p><strong>Note:</strong> Some other minor and rarely used deviations are not included in our list here. See the external “Annex B” and “Web ECMAScript” documents for more detailed information as needed.</p>
+
+<p>Generally speaking, all these differences are rarely used, so the deviations from the specification are not significant concerns. <strong>Just be careful</strong> if you rely on any of them.</p>
+
+<h2 id="host-objects">Host Objects</h2>
+
+<p>The well-covered rules for how variables behave in JS have exceptions to them when it comes to variables that are auto-defined, or otherwise created and provided to JS by the environment that hosts your code (browser, etc.) – so called, “host objects” (which include both built-in <code>object</code>s and <code>function</code>s).</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> a = document.createElement( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">div</span><span style="color:#710">&quot;</span></span> );
+
+<span style="color:#080;font-weight:bold">typeof</span> a;                                                                <span style="color:#777">// &quot;object&quot; -- as expected</span>
+Object.prototype.toString.call( a );        <span style="color:#777">// &quot;[object HTMLDivElement]&quot;</span>
+
+a.tagName;                                                                <span style="color:#777">// &quot;DIV&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>a</code> is not just an <code>object</code>, but a special host object because it’s a DOM element. It has a different internal <code>[[Class]]</code> value (<code>"HTMLDivElement"</code>) and comes with predefined (and often unchangeable) properties.</p>
+
+<p>Another such quirk has already been covered, in the “Falsy Objects” section in Chapter 4: some objects can exist but when coerced to <code>boolean</code> they (confoundingly) will coerce to <code>false</code> instead of the expected <code>true</code>.</p>
+
+<p>Other behavior variations with host objects to be aware of can include:</p>
+
+<ul>
+  <li>not having access to normal <code>object</code> built-ins like <code>toString()</code></li>
+  <li>not being overwritable</li>
+  <li>having certain predefined read-only properties</li>
+  <li>having methods that cannot be <code>this</code>-overriden to other objects</li>
+  <li>and more…</li>
+</ul>
+
+<p>Host objects are critical to making our JS code work with its surrounding environment. But it’s important to note when you’re interacting with a host object and be careful assuming its behaviors, as they will quite often not conform to regular JS <code>object</code>s.</p>
+
+<p>One notable example of a host object that you probably interact with regularly is the <code>console</code> object and its various functions (<code>log(..)</code>, <code>error(..)</code>, etc.). The <code>console</code> object is provided by the <em>hosting environment</em> specifically so your code can interact with it for various development-related output tasks.</p>
+
+<p>In browsers, <code>console</code> hooks up to the developer tools’ console display, whereas in node.js and other server-side JS environments, <code>console</code> is generally connected to the standard-output (<code>stdout</code>) and standard-error (<code>stderr</code>) streams of the JavaScript environment system process.</p>
+
+<h2 id="global-dom-variables">Global DOM Variables</h2>
+
+<p>You’re probably aware that declaring a variable in the global scope (with or without <code>var</code>) creates not only a global variable, but also its mirror: a property of the same name on the <code>global</code> object (<code>window</code> in the browser).</p>
+
+<p>But what may be less common knowledge is that (because of legacy browser behavior) creating DOM elements with <code>id</code> attributes creates global variables of those same names. For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span><span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>And:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (<span style="color:#080;font-weight:bold">typeof</span> foo == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">undefined</span><span style="color:#710">&quot;</span></span>) {
+        foo = <span style="color:#00D">42</span>;                <span style="color:#777">// will never run</span>
+}
+
+console.log( foo );        <span style="color:#777">// HTML element</span>
+</pre></div>
+</div>
+</div>
+
+<p>You’re perhaps used to managing global variable tests (using <code>typeof</code> or <code>.. in window</code> checks) under the assumption that only JS code creates such variables, but as you can see, the contents of your hosting HTML page can also create them, which can easily throw off your existence check logic if you’re not careful.</p>
+
+<p>This is yet one more reason why you should, if at all possible, avoid using global variables, and if you have to, use variables with unique names that won’t likely collide. But you also need to make sure not to collide with the HTML content as well as any other code.</p>
+
+<h2 id="native-prototypes">Native Prototypes</h2>
+
+<p>One of the most widely known and classic pieces of JavaScript <em>best practice</em> wisdom is: <strong>never extend native prototypes</strong>.</p>
+
+<p>Whatever method or property name you come up with to add to <code>Array.prototype</code> that doesn’t (yet) exist, if it’s a useful addition and well-designed, and properly named, there’s a strong chance it <em>could</em> eventually end up being added to the spec – in which case your extension is now in conflict.</p>
+
+<p>Here’s a real example that actually happened to me that illustrates this point well.</p>
+
+<p>I was building an embeddable widget for other websites, and my widget relied on jQuery (though pretty much any framework would have suffered this gotcha). It worked on almost every site, but we ran across one where it was totally broken.</p>
+
+<p>After almost a week of analysis/debugging, I found that the site in question had, buried deep in one of its legacy files, code that looked like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// Netscape 4 doesn't have Array.push</span>
+Array.prototype.<span style="color:#06B;font-weight:bold">push</span> = <span style="color:#080;font-weight:bold">function</span>(item) {
+        <span style="color:#950">this</span>[<span style="color:#950">this</span>.length-<span style="color:#00D">1</span>] = item;
+};
+</pre></div>
+</div>
+</div>
+
+<p>Aside from the crazy comment (who cares about Netscape 4 anymore!?), this looks reasonable, right?</p>
+
+<p>The problem is, <code>Array.prototype.push</code> was added to the spec sometime subsequent to this Netscape 4 era coding, but what was added is not compatible with this code. The standard <code>push(..)</code> allows multiple items to be pushed at once. This hacked one ignores the subsequent items.</p>
+
+<p>Basically all JS frameworks have code that relies on <code>push(..)</code> with multiple elements. In my case, it was code around the CSS selector engine that was completely busted. But there could conceivably be dozens of other places susceptible.</p>
+
+<p>The developer who originally wrote that <code>push(..)</code> hack had the right instinct to call it <code>push</code>, but didn’t foresee pushing multiple elements. They were certainly acting in good faith, but they created a landmine that didn’t go off until almost 10 years later when I unwittingly came along.</p>
+
+<p>There’s multiple lessons to take away on all sides.</p>
+
+<p>First, don’t extend the natives unless you’re absolutely sure your code is the only code that will ever run in that environment. If you can’t say that 100%, then extending the natives is dangerous. You must weigh the risks.</p>
+
+<p>Next, don’t unconditionally define extensions (because you can overwrite natives accidentally). In this particular example, had the code said this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (!Array.prototype.push) {
+        <span style="color:#777">// Netscape 4 doesn't have Array.push</span>
+        Array.prototype.<span style="color:#06B;font-weight:bold">push</span> = <span style="color:#080;font-weight:bold">function</span>(item) {
+                <span style="color:#950">this</span>[<span style="color:#950">this</span>.length-<span style="color:#00D">1</span>] = item;
+        };
+}
+</pre></div>
+</div>
+</div>
+
+<p>The <code>if</code> statement guard would have only defined this hacked <code>push()</code> for JS environments where it didn’t exist. In my case, that probably would have been OK. But even this approach is not without risk:</p>
+
+<ol>
+  <li>If the site’s code (for some crazy reason!) was relying on a <code>push(..)</code> that ignored multiple items, that code would have been broken years ago when the standard <code>push(..)</code> was rolled out.</li>
+  <li>If any other library had come in and hacked in a <code>push(..)</code> ahead of this <code>if</code> guard, and it did so in an incompatible way, that would have broken the site at that time.</li>
+</ol>
+
+<p>What that highlights is an interesting question that, frankly, doesn’t get enough attention from JS developers: <strong>Should you EVER rely on native built-in behavior</strong> if your code is running in any environment where it’s not the only code present?</p>
+
+<p>The strict answer is <strong>no</strong>, but that’s awfully impractical. Your code usually can’t redefine its own private untouchable versions of all built-in behavior relied on. Even if you <em>could</em>, that’s pretty wasteful.</p>
+
+<p>So, should you feature-test for the built-in behavior as well as compliance-testing that it does what you expect? And what if that test fails – should your code just refuse to run?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777">// don't trust Array.prototype.push</span>
+(<span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#080;font-weight:bold">if</span> (Array.prototype.push) {
+                <span style="color:#080;font-weight:bold">var</span> a = [];
+                a.push(<span style="color:#00D">1</span>,<span style="color:#00D">2</span>);
+                <span style="color:#080;font-weight:bold">if</span> (a[<span style="color:#00D">0</span>] === <span style="color:#00D">1</span> &amp;&amp; a[<span style="color:#00D">1</span>] === <span style="color:#00D">2</span>) {
+                        <span style="color:#777">// tests passed, safe to use!</span>
+                        <span style="color:#080;font-weight:bold">return</span>;
+                }
+        }
+
+        <span style="color:#080;font-weight:bold">throw</span> Error(
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Array#push() is missing/broken!</span><span style="color:#710">&quot;</span></span>
+        );
+})();
+</pre></div>
+</div>
+</div>
+
+<p>In theory, that sounds plausible, but it’s also pretty impractical to design tests for every single built-in method.</p>
+
+<p>So, what should we do? Should we <em>trust but verify</em> (feature- and compliance-test) <strong>everything</strong>? Should we just assume existence is compliance and let breakage (caused by others) bubble up as it will?</p>
+
+<p>There’s no great answer. The only fact that can be observed is that extending native prototypes is the only way these things bite you.</p>
+
+<p>If you don’t do it, and no one else does in the code in your application, you’re safe. Otherwise, you should build in at least a little bit of skepticism, pessimism, and expectation of possible breakage.</p>
+
+<p>Having a full set of unit/regression tests of your code that runs in all known environments is one way to surface some of these issues earlier, but it doesn’t do anything to actually protect you from these conflicts.</p>
+
+<h3 id="shimspolyfills">Shims/Polyfills</h3>
+
+<p>It’s usually said that the only safe place to extend a native is in an older (non-spec-compliant) environment, since that’s unlikely to ever change – new browsers with new spec features replace older browsers rather than amending them.</p>
+
+<p>If you could see into the future, and know for sure what a future standard was going to be, like for <code>Array.prototype.foobar</code>, it’d be totally safe to make your own compatible version of it to use now, right?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">if</span> (!Array.prototype.foobar) {
+        <span style="color:#777">// silly, silly</span>
+        Array.prototype.<span style="color:#06B;font-weight:bold">foobar</span> = <span style="color:#080;font-weight:bold">function</span>() {
+                <span style="color:#950">this</span>.push( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span> );
+        };
+}
+</pre></div>
+</div>
+</div>
+
+<p>If there’s already a spec for <code>Array.prototype.foobar</code>, and the specified behavior is equal to this logic, you’re pretty safe in defining such a snippet, and in that case it’s generally called a “polyfill” (or “shim”).</p>
+
+<p>Such code is <strong>very</strong> useful to include in your code base to “patch” older browser environments that aren’t updated to the newest specs. Using polyfills is a great way to create predictable code across all your supported environments.</p>
+
+<p><strong>Tip:</strong> ES5-Shim (https://github.com/es-shims/es5-shim) is a comprehensive collection of shims/polyfills for bringing a project up to ES5 baseline, and similarly, ES6-Shim (https://github.com/es-shims/es6-shim) provides shims for new APIs added as of ES6. While APIs can be shimmed/polyfilled, new syntax generally cannot. To bridge the syntactic divide, you’ll want to also use an ES6-to-ES5 transpiler like Traceur (https://github.com/google/traceur-compiler/wiki/GettingStarted).</p>
+
+<p>If there’s likely a coming standard, and most discussions agree what it’s going to be called and how it will operate, creating the ahead-of-time polyfill for future-facing standards compliance is called “prollyfill” (probably-fill).</p>
+
+<p>The real catch is if some new standard behavior can’t be (fully) polyfilled/prollyfilled.</p>
+
+<p>There’s debate in the community if a partial-polyfill for the common cases is acceptable (documenting the parts that cannot be polyfilled), or if a polyfill should be avoided if it purely can’t be 100% compliant to the spec.</p>
+
+<p>Many developers at least accept some common partial polyfills (like for instance <code>Object.create(..)</code>), because the parts that aren’t covered are not parts they intend to use anyway.</p>
+
+<p>Some developers believe that the <code>if</code> guard around a polyfill/shim should include some form of conformance test, replacing the existing method either if it’s absent or fails the tests. This extra layer of compliance testing is sometimes used to distinguish “shim” (compliance tested) from “polyfill” (existence checked).</p>
+
+<p>The only absolute take-away is that there is no absolute <em>right</em> answer here. Extending natives, even when done “safely” in older environments, is not 100% safe. The same goes for relying upon (possibly extended) natives in the presence of others’ code.</p>
+
+<p>Either should always be done with caution, defensive code, and lots of obvious documentation about the risks.</p>
+
+<h2 id="scripts"><code>&lt;script&gt;</code>s</h2>
+
+<p>Most browser-viewed websites/applications have more than one file that contains their code, and it’s common to have a few or several <code>&lt;script src=..&gt;&lt;/script&gt;</code> elements in the page that load these files separately, and even a few inline-code <code>&lt;script&gt; .. &lt;/script&gt;</code> elements as well.</p>
+
+<p>But do these separate files/code snippets constitute separate programs or are they collectively one JS program?</p>
+
+<p>The (perhaps surprising) reality is they act more like independent JS programs in most, but not all, respects.</p>
+
+<p>The one thing they <em>share</em> is the single <code>global</code> object (<code>window</code> in the browser), which means multiple files can append their code to that shared namespace and they can all interact.</p>
+
+<p>So, if one <code>script</code> element defines a global function <code>foo()</code>, when a second <code>script</code> later runs, it can access and call <code>foo()</code> just as if it had defined the function itself.</p>
+
+<p>But global variable scope <em>hoisting</em> (see the <em>Scope &amp; Closures</em> title of this series) does not occur across these boundaries, so the following code would not work (because <code>foo()</code>’s declaration isn’t yet declared), regardless of if they are (as shown) inline <code>&lt;script&gt; .. &lt;/script&gt;</code> elements or externally loaded <code>&lt;script src=..&gt;&lt;/script&gt;</code> files:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black">foo();</span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() { .. }</span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>But either of these <em>would</em> work instead:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black">  foo();
+  <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() { .. }</span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Or:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() { .. }</span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;script&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black">foo();</span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Also, if an error occurs in a <code>script</code> element (inline or external), as a separate standalone JS program it will fail and stop, but any subsequent <code>script</code>s will run (still with the shared <code>global</code>) unimpeded.</p>
+
+<p>You can create <code>script</code> elements dynamically from your code, and inject them into the DOM of the page, and the code in them will behave basically as if loaded normally in a separate file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>;
+
+<span style="color:#080;font-weight:bold">var</span> el = document.createElement( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">script</span><span style="color:#710">&quot;</span></span> );
+
+el.text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">function foo(){ alert( greeting );</span><span style="color:#b0b">\
+</span><span style="color:#D20"> } setTimeout( foo, 1000 );</span><span style="color:#710">&quot;</span></span>;
+
+document.body.appendChild( el );
+</pre></div>
+</div>
+</div>
+
+<p><strong>Note:</strong> Of course, if you tried the above snippet but set <code>el.src</code> to some file URL instead of setting <code>el.text</code> to the code contents, you’d be dynamically creating an externally loaded <code>&lt;script src=..&gt;&lt;/script&gt;</code> element.</p>
+
+<p>One difference between code in an inline code block and that same code in an external file is that in the inline code block, the sequence of characters <code>&lt;/script&gt;</code> cannot appear together, as (regardless of where it appears) it would be interpreted as the end of the code block. So, beware of code like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black">  <span style="color:#080;font-weight:bold">var</span> code = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;script&gt;alert( 'Hello World' )</span></span></span><span style="color:#070;font-weight:bold">&lt;/script&gt;</span>&quot;;
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>It looks harmless, but the <code>&lt;/script&gt;</code> appearing inside the <code>string</code> literal will terminate the script block abnormally, causing an error. The most common workaround is:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;/sc</span><span style="color:#710">&quot;</span></span> + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ript&gt;</span><span style="color:#710">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+<p>Also, beware that code inside an external file will be interpreted in the character set (UTF-8, ISO-8859-8, etc.) the file is served with (or the default), but that same code in an inline <code>script</code> element in your HTML page will be interpreted by the character set of the page (or its default).</p>
+
+<p><strong>Warning:</strong> The <code>charset</code> attribute will not work on inline script elements.</p>
+
+<p>Another deprecated practice with inline <code>script</code> elements is including HTML-style or X(HT)ML-style comments around inline code, like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="color:#777">&lt;!--</span><span style="background-color:hsla(0,0%,0%,0.07);color:black">
+alert( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello</span><span style="color:#710">&quot;</span></span> );
+<span style="color:#777">//</span></span><span style="color:#777">--&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;script&gt;</span>
+<span style="color:#777">&lt;!--</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#777">//</span></span><span style="color:#777">--&gt;</span><span style="font-weight:bold;color:#666">&lt;![CDATA[</span>//&gt;&lt;!--
+alert( &quot;World&quot; );
+//--&gt;&lt;!<span style="font-weight:bold;color:#666">]]&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Both of these are totally unnecessary now, so if you’re still doing that, stop it!</p>
+
+<p><strong>Note:</strong> Both <code>&lt;!--</code> and <code>--&gt;</code> (HTML-style comments) are actually specified as valid single-line comment delimiters (<code>var x = 2; &lt;!-- valid comment</code> and <code>--&gt; another valid line comment</code>) in JavaScript (see the “Web ECMAScript” section earlier), purely because of this old technique. But never use them.</p>
+
+<h2 id="reserved-words">Reserved Words</h2>
+
+<p>The ES5 spec defines a set of “reserved words” in Section 7.6.1 that cannot be used as standalone variable names. Technically, there are four categories: “keywords”, “future reserved words”, the <code>null</code> literal, and the <code>true</code> / <code>false</code> boolean literals.</p>
+
+<p>Keywords are the obvious ones like <code>function</code> and <code>switch</code>. Future reserved words include things like <code>enum</code>, though many of the rest of them (<code>class</code>, <code>extends</code>, etc.) are all now actually used by ES6; there are other strict-mode only reserved words like <code>interface</code>.</p>
+
+<p>StackOverflow user “art4theSould” creatively worked all these reserved words into a fun little poem (http://stackoverflow.com/questions/26255/reserved-keywords-in-javascript/12114140#12114140):</p>
+
+<blockquote>
+  <p>Let this long package float,
+Goto private class if short.
+While protected with debugger case,
+Continue volatile interface.
+Instanceof super synchronized throw,
+Extends final export throws.</p>
+
+  <p>Try import double enum?
+- False, boolean, abstract function,
+Implements typeof transient break!
+Void static, default do,
+Switch int native new.
+Else, delete null public var
+In return for const, true, char
+…Finally catch byte.</p>
+</blockquote>
+
+<p><strong>Note:</strong> This poem includes words that were reserved in ES3 (<code>byte</code>, <code>long</code>, etc.) that are no longer reserved as of ES5.</p>
+
+<p>Prior to ES5, the reserved words also could not be property names or keys in object literals, but that restriction no longer exists.</p>
+
+<p>So, this is not allowed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> <span style="color:#080;font-weight:bold">import</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">42</span><span style="color:#710">&quot;</span></span>;
+</pre></div>
+</div>
+</div>
+
+<p>But this is allowed:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">var</span> obj = { <span style="color:#080;font-weight:bold">import</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">42</span><span style="color:#710">&quot;</span></span> };
+console.log( obj.<span style="color:#080;font-weight:bold">import</span> );
+</pre></div>
+</div>
+</div>
+
+<p>You should be aware though that some older browser versions (mainly older IE) weren’t completely consistent on applying these rules, so there are places where using reserved words in object property name locations can still cause issues. Carefully test all supported browser environments.</p>
+
+<h2 id="implementation-limits">Implementation Limits</h2>
+
+<p>The JavaScript spec does not place arbitrary limits on things such as the number of arguments to a function or the length of a string literal, but these limits exist nonetheless, because of implementation details in different engines.</p>
+
+<p>For example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">addAll</span>() {
+        <span style="color:#080;font-weight:bold">var</span> sum = <span style="color:#00D">0</span>;
+        <span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> i=<span style="color:#00D">0</span>; i &lt; <span style="color:#950">arguments</span>.length; i++) {
+                sum += <span style="color:#950">arguments</span>[i];
+        }
+        <span style="color:#080;font-weight:bold">return</span> sum;
+}
+
+<span style="color:#080;font-weight:bold">var</span> nums = [];
+<span style="color:#080;font-weight:bold">for</span> (<span style="color:#080;font-weight:bold">var</span> i=<span style="color:#00D">1</span>; i &lt; <span style="color:#00D">100000</span>; i++) {
+        nums.push(i);
+}
+
+addAll( <span style="color:#00D">2</span>, <span style="color:#00D">4</span>, <span style="color:#00D">6</span> );                                <span style="color:#777">// 12</span>
+addAll.apply( <span style="color:#069">null</span>, nums );                <span style="color:#777">// should be: 499950000</span>
+</pre></div>
+</div>
+</div>
+
+<p>In some JS engines, you’ll get the correct <code>499950000</code> answer, but in others (like Safari 6.x), you’ll get the error: “RangeError: Maximum call stack size exceeded.”</p>
+
+<p>Examples of other limits known to exist:</p>
+
+<ul>
+  <li>maximum number of characters allowed in a string literal (not just a string value)</li>
+  <li>size (bytes) of data that can be sent in arguments to a function call (aka stack size)</li>
+  <li>number of parameters in a function declaration</li>
+  <li>maximum depth of non-optimized call stack (i.e., with recursion): how long a chain of function calls from one to the other can be</li>
+  <li>number of seconds a JS program can run continuously blocking the browser</li>
+  <li>maximum length allowed for a variable name</li>
+  <li>…</li>
+</ul>
+
+<p>It’s not very common at all to run into these limits, but you should be aware that limits can and do exist, and importantly that they vary between engines.</p>
+
+<h2 id="review">Review</h2>
+
+<p>We know and can rely upon the fact that the JS language itself has one standard and is predictably implemented by all the modern browsers/engines. This is a very good thing!</p>
+
+<p>But JavaScript rarely runs in isolation. It runs in an environment mixed in with code from third-party libraries, and sometimes it even runs in engines/environments that differ from those found in browsers.</p>
+
+<p>Paying close attention to these issues improves the reliability and robustness of your code.</p>
+
+    </div>
+  </body>
+</html>

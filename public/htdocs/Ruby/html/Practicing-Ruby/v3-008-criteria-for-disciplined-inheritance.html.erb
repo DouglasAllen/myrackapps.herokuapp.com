@@ -1,0 +1,851 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>In <a href="http://practicingruby.com/articles/24">Issue 3.7</a>, I started to explore the criteria laid out by Sakkinen’s
+<a href="http://scholar.google.com/scholar?cluster=5893037045851782349&amp;hl=en&amp;as_sdt=0,7&amp;sciodt=0,7">Disciplined Inheritance</a>, 
+a language-agnostic paper published more than two decades ago that is surprisingly 
+relevant to the modern Ruby programmer. In this issue, we continue where Issue 3.7 
+left off: on the question of how to maintain complete compatibility between
+parent and child objects in inheritance-based domain models. Or, to put it another way,
+this article explores how to reuse code safely within a system—
+without it becoming a maintenance nightmare.</p>
+
+<p>After taking a closer look at what Sakkinen exposed regarding this topic, I came to
+realize that the ideas he presented were strikingly similar to the <a href="http://en.wikipedia.org/wiki/Liskov_Substitution_Principle">Liskov Substitution
+Principle</a>. In fact,
+the extremely dynamic nature of Ruby makes 
+establishing <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.39.1223">a behavioral notion of subtyping</a> (Liskov and Wing 1993)
+a prerequisite for developing disciplined inheritance practices. 
+As a result, this article refers to Liskov’s work more than Sakkinen’s, 
+even though both papers have extremely interesting things to say on this topic. </p>
+
+<h3 id="defining-a-behavioral-subtype">Defining a behavioral subtype</h3>
+
+<p>Both Sakkinen and Liskov describe the essence of the inheritance relationship as 
+the ability of a child object to serve as a drop-in replacement wherever
+its parent object can be used. I’ve greatly simplified the concept by
+stating it in such a general fashion, but this is the thread that ties
+their independent works together. </p>
+
+<p>Liskov goes a step farther than Sakkinen by defining two kinds of 
+behavioral subtypes: children that extend the behavior specified by their 
+parents, and children that constrain the behavior specified by their parents. 
+These concepts are not mutually exclusive, but because each brings up
+its own set of challenges, it is convenient to separate them in this
+fashion.</p>
+
+<p>Both Sakkinen and Liskov emphasize that the abstract concept of subtyping 
+is  much more about the observable behavior of objects than it is about
+what exactly is going on under the hood. This concept is a natural way of thinking
+for Rubyists, and it is worth keeping in mind as you read through the rest
+of this article. In particular, when we talk about the type of an object,
+we are focusing on what that object <em>does</em>, not what it <em>is</em>.</p>
+
+<p>Although the concept of a behavioral subtype sounds like a direct analogue for
+what we commonly refer to as “duck typing” in Ruby, the former is about
+the full contract of an object rather than how it acts under certain
+circumstances. I go into more detail about the differences between
+these concepts toward the end of this article,
+but before we can discuss them meaningfully, we need to take a look
+at Liskov’s two types of behavioral subtyping and how they can
+be implemented.</p>
+
+<h3 id="behavioral-subtypes-as-extensions">Behavioral subtypes as extensions</h3>
+
+<p>Whether you realize it or not, odds are good that you are already familiar with using behavioral subtypes as extensions. Whenever we inherit from <code>ActiveRecord::Base</code> or mix <code>Enumerable</code> into one of our objects, we’re making use of this concept. In essence, the purpose of an extension is to bolt new behavior on top of an existing type to form a new subtype.</p>
+
+<p>To ensure that our child objects maintain the substitution principle, we need to make sure that any new behavior and modifications introduced by extensions follow a few simple rules. In particular, all new functionality must be either completely transparent to the parent object or defined in terms of the parent object’s functionality. Changing the signature of a method provided by the parent object would be considered an incompatible change, as would directly modifying instance variables referenced by the parent object. These strict rules may seem like overkill, but they are the only way to guarantee that your extended subtypes will be drop-in replacements for their supertypes.</p>
+
+<p>In practice, obeying these rules is not as hard as it seems. For example, suppose we wanted to extend <code>Prawn::Document</code> so that it implements some helpers for article typesetting:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Article</span>.generate(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test.pdf</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  h1 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Criteria for Disciplined Inheritance</span><span style="color:#710">&quot;</span></span>
+ 
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    This is an example of building a Prawn-based article
+    generator through the use of a behavioral subtype as
+    an extension. It's about as wonderful and self-referential
+    as you might expect.
+  </span><span style="color:#710">}</span></span>
+
+  h2 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Benefits of behavioral subtyping</span><span style="color:#710">&quot;</span></span>
+
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    The benefits of behavioral subtyping cannot be directly
+    known without experiencing them for yourself.
+  </span><span style="color:#710">}</span></span>
+
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    But if you REALLY get stuck, try asking Barbara Liskov.
+  </span><span style="color:#710">}</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The most simple way to implement this sort of domain language would be to create a subclass of <code>Prawn::Document</code>, as shown in the following example:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Prawn</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span> &lt; <span style="color:#036;font-weight:bold">Document</span>
+    include <span style="color:#036;font-weight:bold">Measurements</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">h1</span>(contents)
+      text(contents, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">24</span>)
+      move_down in2pt(<span style="color:#60E">0.3</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">h2</span>(contents)
+      move_down in2pt(<span style="color:#60E">0.1</span>)
+      text(contents, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">16</span>)
+      move_down in2pt(<span style="color:#60E">0.2</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">para</span>(contents)
+      text(contents.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>))
+      move_down in2pt(<span style="color:#60E">0.1</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As far as Liskov is concerned, <code>Prawn::Article</code> is a perfectly legitimate extension because instances of it are drop-in substitutes for <code>Prawn::Document</code> objects. In fact, this sort of extension is trivial to prove to be a behavioral subtype because it is defined purely in terms of public methods that are provided by its parents (<code>Prawn::Document</code> and <code>Prawn::Measurements</code>). Because the functionality added is so straightforward, the use of subclassing here might just be the right tool for the job. </p>
+
+<p>The downside of using subclassing is that even minor alterations to program requirements can cause encapsulation-related issues to become a real concern. For example, if we decide that we want to add a pair of instance variables that control the fonts used for headers and paragraphs, it would be hard to guarantee that these variables wouldn’t clash with the data contained within <code>Prawn::Document</code> objects. We can assume that calls to public methods provided by the parent object are safe, but we cannot say the same about referencing instance variables, so a delegation-based model starts to look more appealing.</p>
+
+<p>Suppose we wanted to support the following API, but via delegation rather than subclassing:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Article</span>.generate(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test.pdf</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  header_font    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Courier</span><span style="color:#710">&quot;</span></span>
+  paragraph_font <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Helvetica</span><span style="color:#710">&quot;</span></span>
+
+  h1 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Criteria for Disciplined Inheritance</span><span style="color:#710">&quot;</span></span>
+ 
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    This is an example of building a Prawn-based article
+    generator through the use of a behavioral subtype as
+    an extension. It's about as wonderful and self-referential
+    as you might expect.
+  </span><span style="color:#710">}</span></span>
+
+  h2 <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Benefits of behavioral subtyping</span><span style="color:#710">&quot;</span></span>
+
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    The benefits of behavioral subtyping cannot be directly
+    known without experiencing them for yourself.
+  </span><span style="color:#710">}</span></span>
+
+  para <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%{</span><span style="color:#D20">
+    But if you REALLY get stuck, try asking Barbara Liskov.
+  </span><span style="color:#710">}</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Using a <code>method_missing</code> hook and the <code>Prawn::Article.generate</code> class method, it
+is fairly easy to implement this DSL:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Prawn</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Article</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">generate</span>(*args, &amp;block)
+      <span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>.generate(*args) <span style="color:#080;font-weight:bold">do</span> |pdf|
+        new(pdf).instance_eval(&amp;block)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(document)
+      <span style="color:#069">self</span>.document = document      
+      document.extend(<span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Measurements</span>)
+
+      <span style="color:#777"># set defaults so that @paragraph_font and @header_font are never nil.</span>
+      paragraph_font <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Times-Roman</span><span style="color:#710">&quot;</span></span>
+      header_font    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Times-Roman</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">h1</span>(contents)
+      font(header_font) <span style="color:#080;font-weight:bold">do</span>
+        text(contents, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">24</span>)
+        move_down in2pt(<span style="color:#60E">0.3</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">h2</span>(contents)
+      font(header_font) <span style="color:#080;font-weight:bold">do</span>
+        move_down in2pt(<span style="color:#60E">0.1</span>)
+        text(contents, <span style="color:#A60">:size</span> =&gt; <span style="color:#00D">16</span>)
+        move_down in2pt(<span style="color:#60E">0.2</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">para</span>(contents)
+      font(paragraph_font) <span style="color:#080;font-weight:bold">do</span>
+        text(contents.gsub(<span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\s</span><span style="color:#808">+</span><span style="color:#404">/</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> </span><span style="color:#710">&quot;</span></span>))
+        move_down in2pt(<span style="color:#60E">0.1</span>)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">paragraph_font</span>(font=<span style="color:#069">nil</span>)
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#33B">@paragraph_font</span> = font <span style="color:#080;font-weight:bold">if</span> font
+
+      <span style="color:#33B">@paragraph_font</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">header_font</span>(font=<span style="color:#069">nil</span>)
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#33B">@header_font</span> = font <span style="color:#080;font-weight:bold">if</span> font
+
+      <span style="color:#33B">@header_font</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(id, *args, &amp;block)
+      document.send(id, *args, &amp;block)
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    attr_accessor <span style="color:#A60">:document</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Taking this approach involves writing more code and adds some complexity. However, that is a small price to pay for the peace of mind that comes with cleanly separating the data contained within the <code>Prawn::Article</code> and <code>Prawn::Document</code> objects. This design also makes it harder for <code>Prawn::Article</code> to have name clashes with <code>Prawn::Document</code>’s private methods and forces any private method calls to <code>Prawn::Document</code> to be done explicitly. Because transparent delegation exposes the full contract of the parent object, it is still necessary for the child object to maintain full compatibility with those methods in the same manner that a class-inheritance-based model would. Nonetheless, this pattern provides a safer way to implement subtypes because it avoids incidental clashes, which could otherwise occur easily.</p>
+
+<p>Although the examples we’ve looked at so far—combined with your own experiences—should give you a good sense of how to extend code via behavioral subtypes, there are some common pitfalls I have glossed over in order to keep things simple. I’ll get back to those before the end of the article, but for now let’s turn our attention to the other kind of subtypes Liskov describes in her paper. She refers to them as <em>constrained subtypes</em>, but I call them <em>restriction subtypes</em> as an easy-to-remember mirror image of the <em>extension subtype</em> concept.</p>
+
+<h3 id="behavioral-subtypes-as-restrictions">Behavioral subtypes as restrictions</h3>
+
+<p>Just as subtypes can be used to extend the behavior of a supertype, they can also be used to restrict generic behaviors by providing more specific implementations of them. The example Liskov uses in her paper illustrates how a stack structure can be viewed as a restriction on the more general concept of a bag.</p>
+
+<p>In its most simple form, a bag is essentially nothing more than a set that can contain duplicates. Items can be added and removed from a bag, and it is possible to determine whether the bag contains a given item. However, much like with a set, order is not guaranteed. The following code, which is somewhat of a contrived example, implements a <code>Bag</code> object similar to the one described in Liskov’s paper:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ContainerFullError</span>  = <span style="color:#036;font-weight:bold">Class</span>.new(<span style="color:#036;font-weight:bold">StandardError</span>)
+<span style="color:#036;font-weight:bold">ContainerEmptyError</span> = <span style="color:#036;font-weight:bold">Class</span>.new(<span style="color:#036;font-weight:bold">StandardError</span>)
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Bag</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(limit)
+    <span style="color:#069">self</span>.items  = [] 
+    <span style="color:#069">self</span>.limit = limit
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">push</span>(obj)
+    raise <span style="color:#036;font-weight:bold">ContainerFullError</span> <span style="color:#080;font-weight:bold">unless</span> data.length &lt; limit
+
+    data.shuffle!
+    data.push(obj)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pop</span>
+    raise <span style="color:#036;font-weight:bold">ContainerEmptyError</span> <span style="color:#080;font-weight:bold">if</span> data.empty?
+
+    data.shuffle!
+    data.pop
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">include?</span>(obj)
+    data.include?(obj)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_accessor <span style="color:#A60">:items</span>, <span style="color:#A60">:limit</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The challenge in determining whether a <code>Stack</code> object can meaningfully be considered a subtype of this sort of structure is that we need to find a way to describe the functionality of a bag so that it is general enough to allow for interesting subtypes to exist but specific enough to allow the <code>Bag</code> object to be used on its own in a predictable way. Because Ruby lacks the design-by-contract features that Liskov depends on in her paper, we need to describe this specification verbally rather than relying on our tools to enforce them for us. Something like the following list of rules is roughly similar to what she describes more formally in her work:</p>
+
+<p>1) A bag has <code>items</code> and a size <code>limit</code>.</p>
+
+<p>2) A bag has a <code>push</code> operation, which adds a new object to the bag’s <code>items</code>.</p>
+
+<ul>
+  <li>
+    <p>If the current number of <code>items</code> is less than the <code>limit</code>, the new object is added to the bag’s <code>items</code>.</p>
+  </li>
+  <li>
+    <p>Otherwise, a <code>ContainerFullError</code> is raised.</p>
+  </li>
+</ul>
+
+<p>3) A bag has a <code>pop</code> operation, which removes an object from the bag’s <code>items</code> and returns it as a result.</p>
+
+<ul>
+  <li>
+    <p>If the bag has no <code>items</code>, a <code>ContainerEmptyError</code> is raised.</p>
+  </li>
+  <li>
+    <p>Otherwise, one object is removed from the bag’s <code>items</code> and returned.</p>
+  </li>
+</ul>
+
+<p>4) A bag has an <code>include?</code> operation, which indicates whether the provided object is one of bag’s <code>items</code>.</p>
+
+<ul>
+  <li>
+    <p>If the bag’s <code>items</code> contains the provided object, <code>true</code> is returned.</p>
+  </li>
+  <li>
+    <p>Otherwise, <code>false</code> is returned.</p>
+  </li>
+</ul>
+
+<p>With these rules in mind, we can see that the following <code>Stack</code> object satisfies the definition of a bag while simultaneously introducing a predictable ordering to <code>items</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">ContainerFullError</span>  = <span style="color:#036;font-weight:bold">Class</span>.new(<span style="color:#036;font-weight:bold">StandardError</span>)
+<span style="color:#036;font-weight:bold">ContainerEmptyError</span> = <span style="color:#036;font-weight:bold">Class</span>.new(<span style="color:#036;font-weight:bold">StandardError</span>)
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Stack</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(limit)
+    <span style="color:#069">self</span>.items  = [] 
+    <span style="color:#069">self</span>.limit = limit
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">push</span>(obj)
+    raise <span style="color:#036;font-weight:bold">ContainerFullError</span> <span style="color:#080;font-weight:bold">unless</span> data.length &lt; limit
+
+    data.push(obj)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">pop</span>
+    raise <span style="color:#036;font-weight:bold">ContainerEmptyError</span> <span style="color:#080;font-weight:bold">if</span> data.empty?
+
+    data.pop
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">include?</span>(obj)
+    data.include?(obj)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_accessor <span style="color:#A60">:items</span>, <span style="color:#A60">:limit</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With this example code in mind, we can specify the behavior of a stack in the following way:</p>
+
+<p>1) A stack is a bag.</p>
+
+<p>2) A stack’s <code>pop</code> operation follows a last-in, first-out (LIFO) order.</p>
+
+<p>Because the ordering requirements of a stack don’t conflict with the defining characteristics of a bag, a stack can be substituted for a bag without any issues. The key thing to keep in mind here is that restriction subtypes can create additional constraints on top of what was specified by their supertypes but cannot loosen the constraints put upon them by their ancestors in any way. For example, based on the way we defined bag objects, we would not be able to return <code>nil</code> instead of raising <code>ContainerEmptyError</code> when <code>pop</code> is called on an empty stack, even if that seems like a fairly innocuous change.</p>
+
+<p>Once again, maintaining this sort of discipline may seem on the surface to be more trouble than it is worth. However, these kinds of assumptions are baked into useful patterns such as the <a href="http://en.wikipedia.org/wiki/Template_method_pattern">template method pattern</a> and are also key to designing type hierarchies for all sorts of data structures. A good example of these concepts in action can be found in the way Ruby organizes its numeric types. The class hierarchy is shown here, but be sure to check out Ruby’s documentation if you want to get a sense of how exactly these classes hang together.</p>
+
+<p>&lt;img src=”http://i.imgur.com/ObKrf.jpg” width=800/&gt;</p>
+
+<p>Whether you are designing extension subtypes or restriction subtypes, it is unfortunately easier to get things wrong than it is to get them right, due to all the subtle issues that need to be considered. For that reason, we’ll now take a look at a few examples of flawed behavioral subtypes and how to go about fixing them.</p>
+
+<h3 id="examples-of-flawed-behavioral-subtypes">Examples of flawed behavioral subtypes</h3>
+
+<p>To test your understanding of behavior subtype compatibility while simultaneously exposing some common pitfalls, I provide the following three flawed examples for you to study. As you read through them, try to figure out what the subtype compatibility problem is and how you might go about solving it.</p>
+
+<p>1) Suppose we want to add an equality operator to the bag structure. A sample operator is provided here for the <code>Bag</code> object, which conforms to the following newly specified
+feature: “Two bags are considered equal if they have equivalent items and size limits”. What problems will we encounter in implementing a bag-compatible equality operator for the <code>Stack</code> object? </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Bag</span>
+  <span style="color:#777"># other code similar to before</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    [data.sort, limit] == [other.sort, other.limit]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  protected 
+  
+  <span style="color:#777"># NOTE: Implementing == is one of the few legitimate uses of </span>
+  <span style="color:#777"># protected methods / attributes</span>
+  attr_accessor <span style="color:#A60">:data</span>, <span style="color:#A60">:limit</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>2) Suppose we have two mutable objects, a <code>Rectangle</code> and a <code>Square</code>, and we wish to implement <code>Square</code> as a restriction of <code>Rectangle</code>. Given the following implementation of a <code>Rectangle</code> object, what problems will be encountered in defining a <code>Square</code> object?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Rectangle</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">area</span>
+    width * height
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_accessor <span style="color:#A60">:width</span>, <span style="color:#A60">:height</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>3) Suppose we have a <code>PersistentSet</code> object that delegates all method calls to the <code>Set</code> object provided by Ruby’s standard library, as shown in the following code. Why is this not a compatible subtype, even though it does not explicitly modify the behavior of any of <code>Set</code>’s operations?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">set</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pstore</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">PersistentSet</span> 
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(filename)
+    <span style="color:#069">self</span>.store = <span style="color:#036;font-weight:bold">PStore</span>.new(filename)
+
+    store.transaction { store[<span style="color:#A60">:data</span>] ||= <span style="color:#036;font-weight:bold">Set</span>.new }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(name, *args, &amp;block)
+    store.transaction <span style="color:#080;font-weight:bold">do</span> 
+      store[<span style="color:#A60">:data</span>].send(name, *args, &amp;block)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_accessor <span style="color:#A60">:store</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To avoid spoiling the fun of finding and fixing the defects with these examples yourself, I’ve hidden my explanation of the <a href="https://gist.github.com/15b50f918c88bccd6eac">problems</a> and <a href="https://gist.github.com/3f53d4094759c0508e19">solutions</a> on a pair of gists. Please spend some time on this exercise before reading the spoilers, as you’ll learn a lot more that way!</p>
+
+<p>A huge hint is that the first problem is based on an issue discussed in <a href="http://www.cs.cmu.edu/~wing/publications/LiskovWing94.pdf">Liskov’s paper</a> and the second and third problems are discussed in an <a href="http://www.objectmentor.com/resources/articles/lsp.pdf">article about LSP</a> by Bob Martin. However, please note that their solutions are not exactly the most natural fit for Ruby, so there is still room for some creativity here.</p>
+
+<h3 id="behavioral-subtyping-versus-duck-typing">Behavioral subtyping versus duck typing</h3>
+
+<p>Between this article and the topics discussed in <a href="http://practicingruby.com/articles/24">Issue 3.7</a>, this two-part series offers a fairly comprehensive view of disciplined inheritance practices for the Ruby programmer. However, as I hinted toward the beginning of this article, there is the somewhat looser concept of duck typing that deserves a mention if we really want to see the whole picture.</p>
+
+<p>What duck typing and behavioral subtypes have in common is that both concepts rely on what an object can do rather than what exactly it is. They differ in that behavioral subtypes seem to be more about the behavior of an entire object and duck typing is about how a given object behaves within a certain context. Duck typing can be a good deal more flexible than behavioral subtyping in that sense, because typically it involves an object implementing a meaningful response to a single message rather than an entire suite of behaviors. You can find a ton of examples of duck typing in use in Ruby, but perhaps the easiest to spot is the ubiquitous use of the <code>to_s</code> method.</p>
+
+<p>By implementing a <code>to_s</code> method in our objects, we are able to indicate to Ruby that our object has a meaningful string representation, which can then be used in a wide range of contexts. Among other things, the <code>to_s</code> method is automatically called by irb when an <code>inspect</code> method is not also provided, called by the <code>Kernel#puts</code> method on whatever object you pass to it, and called automatically on the result of any expression executed via string interpolation. Implementing a meaningful <code>to_s</code> method is not exactly a form of behavioral subtyping but is still a very useful form of code sharing. <a href="http://blog.rubybestpractices.com/posts/gregory/046-issue-14-duck-typing.html">Issue 1.14</a> and <a href="http://blog.rubybestpractices.com/posts/gregory/047-issue-15-duck-typing-2.html">Issue 1.15</a> cover duck typing in great detail, but this single example is enough to point out the merits of this technique and how much simpler it is than the topics discussed in this article.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>A true challenge for any practicing Rubyist is finding a balance between the free-wheeling culture of Ruby development and the more rigorous approaches of our predecessors. Disciplined inheritance techniques will make our lives easier, and knowing what a behavioral subtype is and how to design one will surely come in handy on any moderately complex project. However, we should keep our eyes trained on how these issues relate to maintainability, understandability, and changeability rather than obsessing about how they can lead us to mathematically pure designs.</p>
+
+<p>I think there is room for another article on the practical applications of these ideas, in which I might talk about applying some design-by-contract concepts to Ruby programs or how to develop shared unit tests that make it easier to test for compatibility when implementing subtypes. But I don’t plan to work on that article immediately, so for now we can sort out those issues via comments on this article. If you have any suggestions for how to tie these ideas back to real problems, or questions on how to apply them to the things you’ve been working on, please share your thoughts. </p>
+
+  </div>
+</body>
+</html>

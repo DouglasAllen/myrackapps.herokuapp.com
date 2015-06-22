@@ -1,0 +1,494 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="the-basics-of-creating-rails-plugins">The Basics of Creating Rails Plugins</h1>
+
+<p>A Rails plugin is either an extension or a modification of the core framework. Plugins provide:</p>
+
+<ul>
+  <li>a way for developers to share bleeding-edge ideas without hurting the stable code base</li>
+  <li>a segmented architecture so that units of code can be fixed or updated on their own release schedule</li>
+  <li>an outlet for the core developers so that they don’t have to include every cool new feature under the sun</li>
+</ul>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>How to create a plugin from scratch.</li>
+  <li>How to write and run tests for the plugin.</li>
+</ul>
+
+<p>This guide describes how to build a test-driven plugin that will:</p>
+
+<ul>
+  <li>Extend core Ruby classes like Hash and String.</li>
+  <li>Add methods to ActiveRecord::Base in the tradition of the ‘acts_as’ plugins.</li>
+  <li>Give you information about where to put generators in your plugin.</li>
+</ul>
+
+<p>For the purpose of this guide pretend for a moment that you are an avid bird watcher.
+Your favorite bird is the Yaffle, and you want to create a plugin that allows other developers to share in the Yaffle
+goodness.</p>
+
+<hr />
+
+<h2 id="setup">Setup</h2>
+
+<p>Currently, Rails plugins are built as gems, <em>gemified plugins</em>. They can be shared across
+different rails applications using RubyGems and Bundler if desired.</p>
+
+<h3 id="generate-a-gemified-plugin">Generate a gemified plugin.</h3>
+
+<p>Rails ships with a <code>rails plugin new</code> command which creates a
+ skeleton for developing any kind of Rails extension with the ability
+ to run integration tests using a dummy Rails application. See usage
+ and options by asking for help:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails plugin --help
+</pre></div>
+</div>
+</div>
+
+<h2 id="testing-your-newly-generated-plugin">Testing your newly generated plugin</h2>
+
+<p>You can navigate to the directory that contains the plugin, run the <code>bundle install</code> command
+ and run the one generated test using the <code>rake</code> command.</p>
+
+<p>You should see:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  2 tests, 2 assertions, 0 failures, 0 errors, 0 skips
+</pre></div>
+</div>
+</div>
+
+<p>This will tell you that everything got generated properly and you are ready to start adding functionality.</p>
+
+<h2 id="extending-core-classes">Extending Core Classes</h2>
+
+<p>This section will explain how to add a method to String that will be available anywhere in your rails application.</p>
+
+<p>In this example you will add a method to String named <code>to_squawk</code>. To begin, create a new test file with a few assertions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/test/core_ext_test.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test_helper</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">CoreExtTest</span> &lt; <span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Unit</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_to_squawk_prepends_the_word_squawk</span>
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">squawk! Hello World</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>.to_squawk
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Run <code>rake</code> to run the test. This test should fail because we haven’t implemented the <code>to_squawk</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>    1) Error:
+  test_to_squawk_prepends_the_word_squawk(CoreExtTest):
+  NoMethodError: undefined method `to_squawk' for [Hello World](String)
+      test/core_ext_test.rb:5:in `test_to_squawk_prepends_the_word_squawk'
+</pre></div>
+</div>
+</div>
+
+<p>Great - now you are ready to start development.</p>
+
+<p>Then in <code>lib/yaffle.rb</code> add <code>require "yaffle/core_ext"</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yaffle/core_ext</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Finally, create the <code>core_ext.rb</code> file and add the <code>to_squawk</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle/core_ext.rb</span>
+
+<span style="color:#036;font-weight:bold">String</span>.class_eval <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">to_squawk</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">squawk! </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#069">self</span><span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>.strip
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To test that your method does what it says it does, run the unit tests with <code>rake</code> from your plugin directory.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  3 tests, 3 assertions, 0 failures, 0 errors, 0 skips
+</pre></div>
+</div>
+</div>
+
+<p>To see this in action, change to the test/dummy directory, fire up a console and start squawking:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails console
+&gt;&gt; &quot;Hello World&quot;.to_squawk
+=&gt; &quot;squawk! Hello World&quot;
+</pre></div>
+</div>
+</div>
+
+<h2 id="add-an-actsas-method-to-active-record">Add an “acts_as” Method to Active Record</h2>
+
+<p>A common pattern in plugins is to add a method called ‘acts_as_something’ to models. In this case, you
+want to write a method called ‘acts_as_yaffle’ that adds a ‘squawk’ method to your Active Record models.</p>
+
+<p>To begin, set up your files so that you have:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/test/acts_as_yaffle_test.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test_helper</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ActsAsYaffleTest</span> &lt; <span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Unit</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">yaffle/core_ext</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">yaffle/acts_as_yaffle</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle/acts_as_yaffle.rb</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ActsAsYaffle</span>
+    <span style="color:#777"># your code will go here</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<h3 id="add-a-class-method">Add a Class Method</h3>
+
+<p>This plugin will expect that you’ve added a method to your model named ‘last_squawk’. However, the
+plugin users might have already defined a method on their model named ‘last_squawk’ that they use
+for something else. This plugin will allow the name to be changed by adding a class method called ‘yaffle_text_field’.</p>
+
+<p>To start out, write a failing test that shows the behavior you’d like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/test/acts_as_yaffle_test.rb</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test_helper</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ActsAsYaffleTest</span> &lt; <span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Unit</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_a_hickwalls_yaffle_text_field_should_be_last_squawk</span>
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">last_squawk</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Hickwall</span>.yaffle_text_field
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_a_wickwalls_yaffle_text_field_should_be_last_tweet</span>
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">last_tweet</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Wickwall</span>.yaffle_text_field
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When you run <code>rake</code>, you should see the following:</p>
+
+<pre><code>    1) Error:
+  test_a_hickwalls_yaffle_text_field_should_be_last_squawk(ActsAsYaffleTest):
+  NameError: uninitialized constant ActsAsYaffleTest::Hickwall
+      test/acts_as_yaffle_test.rb:6:in `test_a_hickwalls_yaffle_text_field_should_be_last_squawk'
+
+    2) Error:
+  test_a_wickwalls_yaffle_text_field_should_be_last_tweet(ActsAsYaffleTest):
+  NameError: uninitialized constant ActsAsYaffleTest::Wickwall
+      test/acts_as_yaffle_test.rb:10:in `test_a_wickwalls_yaffle_text_field_should_be_last_tweet'
+
+  5 tests, 3 assertions, 0 failures, 2 errors, 0 skips
+</code></pre>
+
+<p>This tells us that we don’t have the necessary models (Hickwall and Wickwall) that we are trying to test.
+We can easily generate these models in our “dummy” Rails application by running the following commands from the
+test/dummy directory:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ cd test/dummy
+$ rails generate model Hickwall last_squawk:string
+$ rails generate model Wickwall last_squawk:string last_tweet:string
+</pre></div>
+</div>
+</div>
+
+<p>Now you can create the necessary database tables in your testing database by navigating to your dummy app
+and migrating the database. First</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ cd test/dummy
+$ rake db:migrate
+$ rake db:test:prepare
+</pre></div>
+</div>
+</div>
+
+<p>While you are here, change the Hickwall and Wickwall models so that they know that they are supposed to act
+like yaffles.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># test/dummy/app/models/hickwall.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Hickwall</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  acts_as_yaffle
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># test/dummy/app/models/wickwall.rb</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Wickwall</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  acts_as_yaffle <span style="color:#606">yaffle_text_field</span>: <span style="color:#A60">:last_tweet</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+</pre></div>
+</div>
+</div>
+
+<p>We will also add code to define the acts_as_yaffle method.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle/acts_as_yaffle.rb</span>
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ActsAsYaffle</span>
+    extend <span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Concern</span>
+
+    included <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ClassMethods</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">acts_as_yaffle</span>(options = {})
+        <span style="color:#777"># your code will go here</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.send <span style="color:#A60">:include</span>, <span style="color:#036;font-weight:bold">Yaffle</span>::<span style="color:#036;font-weight:bold">ActsAsYaffle</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can then return to the root directory (<code>cd ../..</code>) of your plugin and rerun the tests using <code>rake</code>.</p>
+
+<pre><code>    1) Error:
+  test_a_hickwalls_yaffle_text_field_should_be_last_squawk(ActsAsYaffleTest):
+  NoMethodError: undefined method `yaffle_text_field' for #&lt;Class:0x000001016661b8&gt;
+      /Users/xxx/.rvm/gems/ruby-1.9.2-p136@xxx/gems/activerecord-3.0.3/lib/active_record/base.rb:1008:in `method_missing'
+      test/acts_as_yaffle_test.rb:5:in `test_a_hickwalls_yaffle_text_field_should_be_last_squawk'
+
+    2) Error:
+  test_a_wickwalls_yaffle_text_field_should_be_last_tweet(ActsAsYaffleTest):
+  NoMethodError: undefined method `yaffle_text_field' for #&lt;Class:0x00000101653748&gt;
+      Users/xxx/.rvm/gems/ruby-1.9.2-p136@xxx/gems/activerecord-3.0.3/lib/active_record/base.rb:1008:in `method_missing'
+      test/acts_as_yaffle_test.rb:9:in `test_a_wickwalls_yaffle_text_field_should_be_last_tweet'
+
+  5 tests, 3 assertions, 0 failures, 2 errors, 0 skips
+
+</code></pre>
+
+<p>Getting closer… Now we will implement the code of the acts_as_yaffle method to make the tests pass.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle/acts_as_yaffle.rb</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ActsAsYaffle</span>
+   extend <span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Concern</span>
+
+    included <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ClassMethods</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">acts_as_yaffle</span>(options = {})
+        cattr_accessor <span style="color:#A60">:yaffle_text_field</span>
+        <span style="color:#069">self</span>.yaffle_text_field = (options[<span style="color:#A60">:yaffle_text_field</span>] || <span style="color:#A60">:last_squawk</span>).to_s
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.send <span style="color:#A60">:include</span>, <span style="color:#036;font-weight:bold">Yaffle</span>::<span style="color:#036;font-weight:bold">ActsAsYaffle</span>
+</pre></div>
+</div>
+</div>
+
+<p>When you run <code>rake</code> you should see the tests all pass:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  5 tests, 5 assertions, 0 failures, 0 errors, 0 skips
+</pre></div>
+</div>
+</div>
+
+<h3 id="add-an-instance-method">Add an Instance Method</h3>
+
+<p>This plugin will add a method named ‘squawk’ to any Active Record object that calls ‘acts_as_yaffle’. The ‘squawk’
+method will simply set the value of one of the fields in the database.</p>
+
+<p>To start out, write a failing test that shows the behavior you’d like:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/test/acts_as_yaffle_test.rb</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test_helper</span><span style="color:#710">'</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ActsAsYaffleTest</span> &lt; <span style="color:#036;font-weight:bold">Test</span>::<span style="color:#036;font-weight:bold">Unit</span>::<span style="color:#036;font-weight:bold">TestCase</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_a_hickwalls_yaffle_text_field_should_be_last_squawk</span>
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">last_squawk</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Hickwall</span>.yaffle_text_field
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_a_wickwalls_yaffle_text_field_should_be_last_tweet</span>
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">last_tweet</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">Wickwall</span>.yaffle_text_field
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_hickwalls_squawk_should_populate_last_squawk</span>
+    hickwall = <span style="color:#036;font-weight:bold">Hickwall</span>.new
+    hickwall.squawk(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>)
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">squawk! Hello World</span><span style="color:#710">&quot;</span></span>, hickwall.last_squawk
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_wickwalls_squawk_should_populate_last_tweet</span>
+    wickwall = <span style="color:#036;font-weight:bold">Wickwall</span>.new
+    wickwall.squawk(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello World</span><span style="color:#710">&quot;</span></span>)
+    assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">squawk! Hello World</span><span style="color:#710">&quot;</span></span>, wickwall.last_tweet
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Run the test to make sure the last two tests fail with an error that contains “NoMethodError: undefined method `squawk’”,
+then update ‘acts_as_yaffle.rb’ to look like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># yaffle/lib/yaffle/acts_as_yaffle.rb</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Yaffle</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ActsAsYaffle</span>
+    extend <span style="color:#036;font-weight:bold">ActiveSupport</span>::<span style="color:#036;font-weight:bold">Concern</span>
+
+    included <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">ClassMethods</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">acts_as_yaffle</span>(options = {})
+        cattr_accessor <span style="color:#A60">:yaffle_text_field</span>
+        <span style="color:#069">self</span>.yaffle_text_field = (options[<span style="color:#A60">:yaffle_text_field</span>] || <span style="color:#A60">:last_squawk</span>).to_s
+
+        include <span style="color:#036;font-weight:bold">Yaffle</span>::<span style="color:#036;font-weight:bold">ActsAsYaffle</span>::<span style="color:#036;font-weight:bold">LocalInstanceMethods</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">LocalInstanceMethods</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">squawk</span>(string)
+        write_attribute(<span style="color:#069">self</span>.class.yaffle_text_field, string.to_squawk)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>.send <span style="color:#A60">:include</span>, <span style="color:#036;font-weight:bold">Yaffle</span>::<span style="color:#036;font-weight:bold">ActsAsYaffle</span>
+</pre></div>
+</div>
+</div>
+
+<p>Run <code>rake</code> one final time and you should see:</p>
+
+<pre><code>  7 tests, 7 assertions, 0 failures, 0 errors, 0 skips
+</code></pre>
+
+<p>NOTE: The use of <code>write_attribute</code> to write to the field in model is just one example of how a plugin can interact with the model, and will not always be the right method to use. For example, you could also use <code>send("#{self.class.yaffle_text_field}=", string.to_squawk)</code>.</p>
+
+<h2 id="generators">Generators</h2>
+
+<p>Generators can be included in your gem simply by creating them in a lib/generators directory of your plugin. More information about
+the creation of generators can be found in the <a href="generators.html">Generators Guide</a></p>
+
+<h2 id="publishing-your-gem">Publishing your Gem</h2>
+
+<p>Gem plugins currently in development can easily be shared from any Git repository. To share the Yaffle gem with others, simply
+commit the code to a Git repository (like GitHub) and add a line to the Gemfile of the application in question:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">yaffle</span><span style="color:#710">'</span></span>, <span style="color:#606">git</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git://github.com/yaffle_watcher/yaffle.git</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>After running <code>bundle install</code>, your gem functionality will be available to the application.</p>
+
+<p>When the gem is ready to be shared as a formal release, it can be published to <a href="http://www.rubygems.org">RubyGems</a>.
+For more information about publishing gems to RubyGems, see: <a href="http://blog.thepete.net/2010/11/creating-and-publishing-your-first-ruby.html">Creating and Publishing Your First Ruby Gem</a></p>
+
+<h2 id="rdoc-documentation">RDoc Documentation</h2>
+
+<p>Once your plugin is stable and you are ready to deploy do everyone else a favor and document it! Luckily, writing documentation for your plugin is easy.</p>
+
+<p>The first step is to update the README file with detailed information about how to use your plugin. A few key things to include are:</p>
+
+<ul>
+  <li>Your name</li>
+  <li>How to install</li>
+  <li>How to add the functionality to the app (several examples of common use cases)</li>
+  <li>Warnings, gotchas or tips that might help users and save them time</li>
+</ul>
+
+<p>Once your README is solid, go through and add rdoc comments to all of the methods that developers will use. It’s also customary to add ‘#:nodoc:’ comments to those parts of the code that are not included in the public API.</p>
+
+<p>Once your comments are good to go, navigate to your plugin directory and run:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rake rdoc
+</pre></div>
+</div>
+</div>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://github.com/radar/guides/blob/master/gem-development.md">Developing a RubyGem using Bundler</a></li>
+  <li><a href="http://yehudakatz.com/2010/04/02/using-gemspecs-as-intended/">Using .gemspecs as Intended</a></li>
+  <li><a href="http://docs.rubygems.org/read/chapter/20">Gemspec Reference</a></li>
+  <li><a href="http://www.intridea.com/blog/2008/6/11/gemplugins-a-brief-introduction-to-the-future-of-rails-plugins">GemPlugins: A Brief Introduction to the Future of Rails Plugins</a></li>
+</ul>
+
+    </div>
+  </body>
+</html>

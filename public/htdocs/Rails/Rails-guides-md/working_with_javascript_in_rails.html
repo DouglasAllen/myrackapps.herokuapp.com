@@ -1,0 +1,463 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+    <!--  <link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+    <!--  <link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+  </head>
+  <body>
+    <div id="containter">    
+      <h1 id="working-with-javascript-in-rails">Working with JavaScript in Rails</h1>
+
+<p>This guide covers the built-in Ajax/JavaScript functionality of Rails (and
+more); it will enable you to create rich and dynamic Ajax applications with
+ease!</p>
+
+<p>After reading this guide, you will know:</p>
+
+<ul>
+  <li>The basics of Ajax.</li>
+  <li>Unobtrusive JavaScript.</li>
+  <li>How Rails’ built-in helpers assist you.</li>
+  <li>How to handle Ajax on the server side.</li>
+  <li>The Turbolinks gem.</li>
+</ul>
+
+<hr />
+
+<h2 id="an-introduction-to-ajax">An Introduction to Ajax</h2>
+
+<p>In order to understand Ajax, you must first understand what a web browser does
+normally.</p>
+
+<p>When you type <code>http://localhost:3000</code> into your browser’s address bar and hit
+‘Go,’ the browser (your ‘client’) makes a request to the server. It parses the
+response, then fetches all associated assets, like JavaScript files,
+stylesheets and images. It then assembles the page. If you click a link, it
+does the same process: fetch the page, fetch the assets, put it all together,
+show you the results. This is called the ‘request response cycle.’</p>
+
+<p>JavaScript can also make requests to the server, and parse the response. It
+also has the ability to update information on the page. Combining these two
+powers, a JavaScript writer can make a web page that can update just parts of
+itself, without needing to get the full page data from the server. This is a
+powerful technique that we call Ajax.</p>
+
+<p>Rails ships with CoffeeScript by default, and so the rest of the examples
+in this guide will be in CoffeeScript. All of these lessons, of course, apply
+to vanilla JavaScript as well.</p>
+
+<p>As an example, here’s some CoffeeScript code that makes an Ajax request using
+the jQuery library:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$.ajax(url: &quot;/test&quot;).done (html) -&gt;
+  $(&quot;#results&quot;).append html
+</pre></div>
+</div>
+</div>
+
+<p>This code fetches data from “/test”, and then appends the result to the <code>div</code>
+with an id of <code>results</code>.</p>
+
+<p>Rails provides quite a bit of built-in support for building web pages with this
+technique. You rarely have to write this code yourself. The rest of this guide
+will show you how Rails can help you write websites in this way, but it’s
+all built on top of this fairly simple technique.</p>
+
+<h2 id="unobtrusive-javascript">Unobtrusive JavaScript</h2>
+
+<p>Rails uses a technique called “Unobtrusive JavaScript” to handle attaching
+JavaScript to the DOM. This is generally considered to be a best-practice
+within the frontend community, but you may occasionally read tutorials that
+demonstrate other ways.</p>
+
+<p>Here’s the simplest way to write JavaScript. You may see it referred to as
+‘inline JavaScript’:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#950">this</span>.style.backgroundColor=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#990000</span><span style="color:#710">'</span></span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it red<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>When clicked, the link background will become red. Here’s the problem: what
+happens when we have lots of JavaScript we want to execute on a click?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#950">this</span>.style.backgroundColor=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#009900</span><span style="color:#710">'</span></span>;<span style="color:#950">this</span>.style.color=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#FFFFFF</span><span style="color:#710">'</span></span>;<span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it green<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Awkward, right? We could pull the function definition out of the click handler,
+and turn it into CoffeeScript:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>paintIt = (element, backgroundColor, textColor) -&gt;
+  element.style.backgroundColor = backgroundColor
+  if textColor?
+    element.style.color = textColor
+</pre></div>
+</div>
+</div>
+
+<p>And then on our page:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span>paintIt(<span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#990000</span><span style="color:#710">'</span></span>)<span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it red<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>That’s a little bit better, but what about multiple links that have the same
+effect?</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span>paintIt(<span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#990000</span><span style="color:#710">'</span></span>)<span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it red<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span>paintIt(<span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#009900</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#FFFFFF</span><span style="color:#710">'</span></span>)<span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it green<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">onclick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span>paintIt(<span style="color:#950">this</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#000099</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">#FFFFFF</span><span style="color:#710">'</span></span>)<span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it blue<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Not very DRY, eh? We can fix this by using events instead. We’ll add a <code>data-*</code>
+attribute to our link, and then bind a handler to the click event of every link
+that has that attribute:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>paintIt = (element, backgroundColor, textColor) -&gt;
+  element.style.backgroundColor = backgroundColor
+  if textColor?
+    element.style.color = textColor
+
+$ -&gt;
+  $(&quot;a[data-background-color]&quot;).click -&gt;
+    backgroundColor = $(this).data(&quot;background-color&quot;)
+    textColor = $(this).data(&quot;text-color&quot;)
+    paintIt(this, backgroundColor, textColor)
+</pre></div>
+</div>
+</div>
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-background-color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#990000</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it red<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-background-color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#009900</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-text-color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#FFFFFF</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it green<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-background-color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#000099</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-text-color</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">#FFFFFF</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>Paint it blue<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>We call this ‘unobtrusive’ JavaScript because we’re no longer mixing our
+JavaScript into our HTML. We’ve properly separated our concerns, making future
+change easy. We can easily add behavior to any link by adding the data
+attribute. We can run all of our JavaScript through a minimizer and
+concatenator. We can serve our entire JavaScript bundle on every page, which
+means that it’ll get downloaded on the first page load and then be cached on
+every page after that. Lots of little benefits really add up.</p>
+
+<p>The Rails team strongly encourages you to write your CoffeeScript (and
+JavaScript) in this style, and you can expect that many libraries will also
+follow this pattern.</p>
+
+<h2 id="built-in-helpers">Built-in Helpers</h2>
+
+<p>Rails provides a bunch of view helper methods written in Ruby to assist you
+in generating HTML. Sometimes, you want to add a little Ajax to those elements,
+and Rails has got your back in those cases.</p>
+
+<p>Because of Unobtrusive JavaScript, the Rails “Ajax helpers” are actually in two
+parts: the JavaScript half and the Ruby half.</p>
+
+<p><a href="https://github.com/rails/jquery-ujs/blob/master/src/rails.js">rails.js</a>
+provides the JavaScript half, and the regular Ruby view helpers add appropriate
+tags to your DOM. The CoffeeScript in rails.js then listens for these
+attributes, and attaches appropriate handlers.</p>
+
+<h3 id="formfor">form_for</h3>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormHelper.html#method-i-form_for"><code>form_for</code></a>
+is a helper that assists with writing forms. <code>form_for</code> takes a <code>:remote</code>
+option. It works like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for(<span style="color:#33B">@post</span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span>) <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  ...
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>This will generate the following HTML:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">accept-charset</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">UTF-8</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/posts</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_post</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-remote</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new_post</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  ...
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Note the <code>data-remote='true'</code>. Now, the form will be submitted by Ajax rather
+than by the browser’s normal submit mechanism.</p>
+
+<p>You probably don’t want to just sit there with a filled out <code>&lt;form&gt;</code>, though.
+You probably want to do something upon a successful submission. To do that,
+bind to the <code>ajax:success</code> event. On failure, use <code>ajax:error</code>. Check it out:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$(document).ready -&gt;
+  $(&quot;#new_post&quot;).on(&quot;ajax:success&quot;, (e, data, status, xhr) -&gt;
+    $(&quot;#new_post&quot;).append xhr.responseText
+  ).bind &quot;ajax:error&quot;, (e, xhr, status, error) -&gt;
+    $(&quot;#new_post&quot;).append &quot;&lt;p&gt;ERROR&lt;/p&gt;&quot;
+</pre></div>
+</div>
+</div>
+
+<p>Obviously, you’ll want to be a bit more sophisticated than that, but it’s a
+start.</p>
+
+<h3 id="formtag">form_tag</h3>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormTagHelper.html#method-i-form_tag"><code>form_tag</code></a>
+is very similar to <code>form_for</code>. It has a <code>:remote</code> option that you can use like
+this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_tag(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/posts</span><span style="color:#710">'</span></span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span>) <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>Everything else is the same as <code>form_for</code>. See its documentation for full
+details.</p>
+
+<h3 id="linkto">link_to</h3>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to"><code>link_to</code></a>
+is a helper that assists with generating links. It has a <code>:remote</code> option you
+can use like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> link_to <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">a post</span><span style="color:#710">&quot;</span></span>, <span style="color:#33B">@post</span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>which generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/posts/1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-remote</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>a post<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>You can bind to the same Ajax events as <code>form_for</code>. Here’s an example. Let’s
+assume that we have a list of posts that can be deleted with just one
+click. We would generate some HTML like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> link_to <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Delete post</span><span style="color:#710">&quot;</span></span>, <span style="color:#33B">@post</span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span>, <span style="color:#606">method</span>: <span style="color:#A60">:delete</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>and write some CoffeeScript like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ -&gt;
+  $(&quot;a[data-remote]&quot;).on &quot;ajax:success&quot;, (e, data, status, xhr) -&gt;
+    alert &quot;The post was deleted.&quot;
+</pre></div>
+</div>
+</div>
+
+<h3 id="buttonto">button_to</h3>
+
+<p><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-button_to"><code>button_to</code></a> is a helper that helps you create buttons. It has a <code>:remote</code> option that you can call like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> button_to <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A post</span><span style="color:#710">&quot;</span></span>, <span style="color:#33B">@post</span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>this generates</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;form</span> <span style="color:#b48">action</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/posts/1</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">button_to</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-remote</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">true</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">method</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+  <span style="color:#070;font-weight:bold">&lt;div&gt;</span><span style="color:#070;font-weight:bold">&lt;input</span> <span style="color:#b48">type</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">submit</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">value</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">A post</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span><span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/form&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Since it’s just a <code>&lt;form&gt;</code>, all of the information on <code>form_for</code> also applies.</p>
+
+<h2 id="server-side-concerns">Server-Side Concerns</h2>
+
+<p>Ajax isn’t just client-side, you also need to do some work on the server
+side to support it. Often, people like their Ajax requests to return JSON
+rather than HTML. Let’s discuss what it takes to make that happen.</p>
+
+<h3 id="a-simple-example">A Simple Example</h3>
+
+<p>Imagine you have a series of users that you would like to display and provide a
+form on that same page to create a new user. The index action of your
+controller looks like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">UsersController</span> &lt; <span style="color:#036;font-weight:bold">ApplicationController</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">index</span>
+    <span style="color:#33B">@users</span> = <span style="color:#036;font-weight:bold">User</span>.all
+    <span style="color:#33B">@user</span> = <span style="color:#036;font-weight:bold">User</span>.new
+  <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#777"># ...</span>
+</pre></div>
+</div>
+</div>
+
+<p>The index view (<code>app/views/users/index.html.erb</code>) contains:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;b&gt;</span>Users<span style="color:#070;font-weight:bold">&lt;/b&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;ul</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">users</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#33B">@users</span>.each <span style="color:#080;font-weight:bold">do</span> |user| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> render user <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="color:#070;font-weight:bold">&lt;/ul&gt;</span>
+
+<span style="color:#070;font-weight:bold">&lt;br&gt;</span>
+
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> form_for(<span style="color:#33B">@user</span>, <span style="color:#606">remote</span>: <span style="color:#069">true</span>) <span style="color:#080;font-weight:bold">do</span> |f| <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.label <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span><span style="color:#070;font-weight:bold">&lt;br&gt;</span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.text_field <span style="color:#A60">:name</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+  <span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> f.submit <span style="font-weight:bold;color:#666">%&gt;</span></span>
+<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%</span> <span style="color:#080;font-weight:bold">end</span> <span style="font-weight:bold;color:#666">%&gt;</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>app/views/users/_user.html.erb</code> partial contains the following:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;li&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> user.name <span style="font-weight:bold;color:#666">%&gt;</span></span><span style="color:#070;font-weight:bold">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The top portion of the index page displays the users. The bottom portion
+provides a form to create a new user.</p>
+
+<p>The bottom form will call the create action on the Users controller. Because
+the form’s remote option is set to true, the request will be posted to the
+users controller as an Ajax request, looking for JavaScript. In order to
+service that request, the create action of your controller would look like
+this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>  <span style="color:#777"># app/controllers/users_controller.rb</span>
+  <span style="color:#777"># ......</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">create</span>
+    <span style="color:#33B">@user</span> = <span style="color:#036;font-weight:bold">User</span>.new(params[<span style="color:#A60">:user</span>])
+
+    respond_to <span style="color:#080;font-weight:bold">do</span> |format|
+      <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@user</span>.save
+        format.html { redirect_to <span style="color:#33B">@user</span>, <span style="color:#606">notice</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">User was successfully created.</span><span style="color:#710">'</span></span> }
+        format.js   {}
+        format.json { render <span style="color:#606">json</span>: <span style="color:#33B">@user</span>, <span style="color:#606">status</span>: <span style="color:#A60">:created</span>, <span style="color:#606">location</span>: <span style="color:#33B">@user</span> }
+      <span style="color:#080;font-weight:bold">else</span>
+        format.html { render <span style="color:#606">action</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new</span><span style="color:#710">&quot;</span></span> }
+        format.json { render <span style="color:#606">json</span>: <span style="color:#33B">@user</span>.errors, <span style="color:#606">status</span>: <span style="color:#A60">:unprocessable_entity</span> }
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice the format.js in the <code>respond_to</code> block; that allows the controller to
+respond to your Ajax request. You then have a corresponding
+<code>app/views/users/create.js.erb</code> view file that generates the actual JavaScript
+code that will be sent and executed on the client side.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$(&quot;<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">&lt;%=</span> escape_javascript(render <span style="color:#33B">@user</span>) <span style="font-weight:bold;color:#666">%&gt;</span></span>&quot;).appendTo(&quot;#users&quot;);
+</pre></div>
+</div>
+</div>
+
+<h2 id="turbolinks">Turbolinks</h2>
+
+<p>Rails 4 ships with the <a href="https://github.com/rails/turbolinks">Turbolinks gem</a>.
+This gem uses Ajax to speed up page rendering in most applications.</p>
+
+<h3 id="how-turbolinks-works">How Turbolinks Works</h3>
+
+<p>Turbolinks attaches a click handler to all <code>&lt;a&gt;</code> on the page. If your browser
+supports
+<a href="https://developer.mozilla.org/en-US/docs/DOM/Manipulating_the_browser_history#The_pushState(\).C2.A0method">PushState</a>,
+Turbolinks will make an Ajax request for the page, parse the response, and
+replace the entire <code>&lt;body&gt;</code> of the page with the <code>&lt;body&gt;</code> of the response. It
+will then use PushState to change the URL to the correct one, preserving
+refresh semantics and giving you pretty URLs.</p>
+
+<p>The only thing you have to do to enable Turbolinks is have it in your Gemfile,
+and put <code>//= require turbolinks</code> in your CoffeeScript manifest, which is usually
+<code>app/assets/javascripts/application.js</code>.</p>
+
+<p>If you want to disable Turbolinks for certain links, add a <code>data-no-turbolink</code>
+attribute to the tag:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#070;font-weight:bold">&lt;a</span> <span style="color:#b48">href</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">...</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">data-no-turbolink</span><span style="color:#070;font-weight:bold">&gt;</span>No turbolinks here<span style="color:#070;font-weight:bold">&lt;/a&gt;</span>.
+</pre></div>
+</div>
+</div>
+
+<h3 id="page-change-events">Page Change Events</h3>
+
+<p>When writing CoffeeScript, you’ll often want to do some sort of processing upon
+page load. With jQuery, you’d write something like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$(document).ready -&gt;
+  alert &quot;page has loaded!&quot;
+</pre></div>
+</div>
+</div>
+
+<p>However, because Turbolinks overrides the normal page loading process, the
+event that this relies on will not be fired. If you have code that looks like
+this, you must change your code to do this instead:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$(document).on &quot;page:change&quot;, -&gt;
+  alert &quot;page has loaded!&quot;
+</pre></div>
+</div>
+</div>
+
+<p>For more details, including other events you can bind to, check out <a href="https://github.com/rails/turbolinks/blob/master/README.md">the
+Turbolinks
+README</a>.</p>
+
+<h2 id="other-resources">Other Resources</h2>
+
+<p>Here are some helpful links to help you learn even more:</p>
+
+<ul>
+  <li><a href="https://github.com/rails/jquery-ujs/wiki">jquery-ujs wiki</a></li>
+  <li><a href="https://github.com/rails/jquery-ujs/wiki/External-articles">jquery-ujs list of external articles</a></li>
+  <li><a href="http://www.alfajango.com/blog/rails-3-remote-links-and-forms/">Rails 3 Remote Links and Forms: A Definitive Guide</a></li>
+  <li><a href="http://railscasts.com/episodes/205-unobtrusive-javascript">Railscasts: Unobtrusive JavaScript</a></li>
+  <li><a href="http://railscasts.com/episodes/390-turbolinks">Railscasts: Turbolinks</a></li>
+</ul>
+
+    </div>
+  </body>
+</html>

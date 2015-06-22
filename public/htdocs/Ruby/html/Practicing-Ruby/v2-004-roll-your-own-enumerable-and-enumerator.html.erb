@@ -1,0 +1,783 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>When I first came to Ruby, one of the things that impressed me the most was the killer features provided by the <code>Enumerable</code> module. I eventually also came to love <code>Enumerator</code>, even though it took me a long time to figure out what it was and what one might use it for.</p>
+
+<p>As a beginner, I had always assumed that these features worked through some dark form of magic that was buried deep within the Ruby interpreter. With so much left to learn just in order to be productive, I was content to postpone learning the details about what was going on under the hood. After some time, I came to regret that decision, thanks to David A. Black.</p>
+
+<p>David teaches Ruby to raw beginners not only by showing them what <code>Enumerable</code> can do, but also by making them implement their own version of it! This is a profoundly good exercise, because it exposes how nonmagical the features are: if you understand <code>yield</code>, you can build all the methods in <code>Enumerable</code>. Similarly, the interesting features of <code>Enumerator</code> can be implemented fairly easily if you use Ruby’s <code>Fiber</code> construct.</p>
+
+<p>In this article, we’re going to work through the exercise of rolling your own subset of the functionality provided by <code>Enumerable</code> and <code>Enumerator</code>, discussing each detail along the way. Regardless of your skill level, an understanding of the elegant design of these constructs will undoubtedly give you a great source of inspiration that you can draw from when designing new constructs in your own programs.</p>
+
+<h3 id="setting-the-stage-with-some-tests">Setting the stage with some tests</h3>
+
+<p>I’ve selected a small but representative subset of the features that <code>Enumerable</code> and <code>Enumerator</code> provide and written some tests to nail down their behavior. These tests will guide my implementations throughout the rest of this article and serve as a roadmap for you if you’d like to try out the exercise on your own.</p>
+
+<p>If you have some time to do so, try to get at least some of the tests to go green before reading my implementation code and explanations, as you’ll learn a lot more that way. But if you’re not planning on doing that, at least read through the tests carefully and think about how you might go about implementing the features they describe.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SortedList</span>
+  include <span style="color:#036;font-weight:bold">FakeEnumerable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@data</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;&lt;</span>(new_element)
+    <span style="color:#33B">@data</span> &lt;&lt; new_element
+    <span style="color:#33B">@data</span>.sort!
+   
+    <span style="color:#069">self</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>
+    <span style="color:#080;font-weight:bold">if</span> block_given?
+      <span style="color:#33B">@data</span>.each { |e| <span style="color:#080;font-weight:bold">yield</span>(e) }
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#036;font-weight:bold">FakeEnumerator</span>.new(<span style="color:#069">self</span>, <span style="color:#A60">:each</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span> 
+<span style="color:#080;font-weight:bold">end</span>
+
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">minitest/autorun</span><span style="color:#710">&quot;</span></span>
+
+describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FakeEnumerable</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  before <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@list</span> = <span style="color:#036;font-weight:bold">SortedList</span>.new
+
+    <span style="color:#777"># will get stored interally as 3,4,7,13,42</span>
+    <span style="color:#33B">@list</span> &lt;&lt; <span style="color:#00D">3</span> &lt;&lt; <span style="color:#00D">13</span> &lt;&lt; <span style="color:#00D">42</span> &lt;&lt; <span style="color:#00D">4</span> &lt;&lt; <span style="color:#00D">7</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports map</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@list</span>.map { |x| x + <span style="color:#00D">1</span> }.must_equal([<span style="color:#00D">4</span>,<span style="color:#00D">5</span>,<span style="color:#00D">8</span>,<span style="color:#00D">14</span>,<span style="color:#00D">43</span>])  
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports sort_by</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#777"># ascii sort order</span>
+    <span style="color:#33B">@list</span>.sort_by { |x| x.to_s }.must_equal([<span style="color:#00D">13</span>, <span style="color:#00D">3</span>, <span style="color:#00D">4</span>, <span style="color:#00D">42</span>, <span style="color:#00D">7</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports select</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@list</span>.select { |x| x.even? }.must_equal([<span style="color:#00D">4</span>,<span style="color:#00D">42</span>])
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports reduce</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@list</span>.reduce(<span style="color:#A60">:+</span>).must_equal(<span style="color:#00D">69</span>)
+    <span style="color:#33B">@list</span>.reduce { |s,e| s + e }.must_equal(<span style="color:#00D">69</span>)
+    <span style="color:#33B">@list</span>.reduce(<span style="color:#00D">-10</span>) { |s,e| s + e }.must_equal(<span style="color:#00D">59</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+describe <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">FakeEnumerator</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  before <span style="color:#080;font-weight:bold">do</span>
+    <span style="color:#33B">@list</span> = <span style="color:#036;font-weight:bold">SortedList</span>.new
+
+    <span style="color:#33B">@list</span> &lt;&lt; <span style="color:#00D">3</span> &lt;&lt; <span style="color:#00D">13</span> &lt;&lt; <span style="color:#00D">42</span> &lt;&lt; <span style="color:#00D">4</span> &lt;&lt; <span style="color:#00D">7</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports next</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    enum = <span style="color:#33B">@list</span>.each
+
+    enum.next.must_equal(<span style="color:#00D">3</span>)
+    enum.next.must_equal(<span style="color:#00D">4</span>)
+    enum.next.must_equal(<span style="color:#00D">7</span>)
+    enum.next.must_equal(<span style="color:#00D">13</span>)
+    enum.next.must_equal(<span style="color:#00D">42</span>)
+
+    assert_raises(<span style="color:#036;font-weight:bold">StopIteration</span>) { enum.next }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports rewind</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    enum = <span style="color:#33B">@list</span>.each
+
+    <span style="color:#00D">4</span>.times { enum.next }
+    enum.rewind
+
+    <span style="color:#00D">2</span>.times { enum.next }
+    enum.next.must_equal(<span style="color:#00D">7</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">supports with_index</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+    enum     = <span style="color:#33B">@list</span>.map
+    expected = [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0. 3</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1. 4</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2. 7</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3. 13</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">4. 42</span><span style="color:#710">&quot;</span></span>]  
+
+    enum.with_index { |e,i| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">. </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }.must_equal(expected)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you do decide to try implementing these features yourself, get as close to the behavior that Ruby provides as you can, but don’t worry if your implementation is different from what Ruby really uses. Just think of this as if it’s a new problem that needs solving, and let the tests guide your implementation. Once you’ve done that, read on to see how I did it.</p>
+
+<h3 id="implementing-the-fakeenumerable-module">Implementing the <code>FakeEnumerable</code> module</h3>
+
+<p>Before I began work on implementing <code>FakeEnumerable</code>, I needed to get its tests to a failure state rather than an error state. The following code does exactly that:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">FakeEnumerable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map</span> 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">select</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sort_by</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">reduce</span>(*args)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>I then began working on implementing the methods one by one, starting with <code>map</code>. The key thing to realize while working with <code>Enumerable</code> is that every feature will build on top of the <code>each</code> method in some way, using it in combination with <code>yield</code> to produce its results. The <code>map</code> feature is possibly the most straightforward nontrivial combination of these operations, as you can see in this implementation:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map</span> 
+  out = []
+
+  each { |e| out &lt;&lt; <span style="color:#080;font-weight:bold">yield</span>(e) }
+
+  out
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Here we see that <code>map</code> is simply a function that builds up a new array by taking each element and replacing it with the return value of the block you provide to it. We can clean this up to make it a one liner using <code>Object#tap</code>, but I’m not sure if I like that approach because it breaks the simplicity of the implementation a bit. That said, I’ve included it here for your consideration and will use it throughout the rest of this article, just for the sake of brevity.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map</span>
+  [].tap { |out| each { |e| out &lt;&lt; <span style="color:#080;font-weight:bold">yield</span>(e) } }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Implementing <code>select</code> is quite easy as well. It builds on the same concepts used to implement <code>map</code> but adds a conditional check to see whether the block returns a <code>true</code> value. For each new yielded element, if the value returned by the block is logically true, the element gets added to the newly built array; otherwise, it does not.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">select</span>
+  [].tap { |out| each { |e| out &lt;&lt; e <span style="color:#080;font-weight:bold">if</span> <span style="color:#080;font-weight:bold">yield</span>(e) } }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Implementing <code>sort_by</code> is a little more tricky. I cheated and looked at the API documentation, which (perhaps surprisingly) describes how the method is implemented and even gives a reference implementation in Ruby. Apparently, <code>sort_by</code> uses a <a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Schwartzian transform</a> to convert the collection we are iterating over into tuples containing the sort key and the original element. It then uses <code>Array#sort</code> to put these in order, and it finally uses <code>map</code> on the resulting array to convert the array of tuples back into an array of the elements from the original collection. That’s definitely more confusing to explain than it is to implement in code, so just look at the following code for clarification:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">sort_by</span>
+  map { |a| [<span style="color:#080;font-weight:bold">yield</span>(a), a] }.sort.map { |a| a[<span style="color:#00D">1</span>] }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The interesting thing about this implementation is that <code>sort_by</code> is dependent on <code>map</code>, both on the current collection being iterated over as well as on the <code>Array</code> it generates. But after tracing it down to the core, this method is still expecting the collection to implement only the <code>each</code> method. Additionally, because <code>Array#sort</code> is thrown into the mix, your sort keys need to respond to <code>&lt;=&gt;</code>. But for such a powerful method, the contract is still very narrow.</p>
+
+<p>Implementing <code>reduce</code> is a bit more involved because it has three different ways of interacting with it. It’s also interesting because it’s one of the few <code>Enumerable</code> methods that isn’t necessarily designed to return an <code>Array</code> object. I’ll let you ponder the following implementation a bit before providing more commentary, because reading through it should be a good exercise. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">reduce</span>(operation_or_value=<span style="color:#069">nil</span>)
+  <span style="color:#080;font-weight:bold">case</span> operation_or_value
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#036;font-weight:bold">Symbol</span>
+    <span style="color:#777"># convert things like reduce(:+) into reduce { |s,e| s + e }</span>
+    <span style="color:#080;font-weight:bold">return</span> reduce { |s,e| s.send(operation_or_value, e) }
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#069">nil</span>
+    acc = <span style="color:#069">nil</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    acc = operation_or_value
+  <span style="color:#080;font-weight:bold">end</span>
+
+  each <span style="color:#080;font-weight:bold">do</span> |a|
+    <span style="color:#080;font-weight:bold">if</span> acc.nil?
+      acc = a
+    <span style="color:#080;font-weight:bold">else</span>
+      acc = <span style="color:#080;font-weight:bold">yield</span>(acc, a)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">return</span> acc
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>First, I have to say I’m not particularly happy with my implementation; it seems a bit too brute force and I think I might be missing some obvious refactorings. But it should have been readable enough for you to get a general feel for what’s going on. The first paragraph of code is simply handling the three different cases of <code>reduce()</code>. The real operation happens starting with our <code>each</code> call.</p>
+
+<p>Without a predefined initial value, we set the initial value to the first element in the collection, and our first yield occurs starting with the second element. Otherwise, the initial value and first element are yielded. The purpose of <code>reduce()</code> is to perform an operation on each successive value in a list by combining it in some way with the last calculated value. In this way, the list gets reduced to a single value in the end. This behavior explains why the old alias for this method in Ruby was called <code>inject</code>: a function is being injected between each element in the collection via our <code>yield</code> call. I find this operation much easier to understand when I’m able to see it in terms of primitive concepts such as <code>yield</code> and <code>each</code> because it makes it possible to trace exactly what is going on.</p>
+
+<p>If you are having trouble following the implementation of <code>reduce()</code>, don’t worry about it. It’s definitely one of the more complex <code>Enumerable</code> methods, and if you try to implement a few of the others and then return to studying <code>reduce()</code>, you may have better luck. But the beautiful thing is that if you ignore the <code>reduce(:+)</code> syntactic sugar, it introduces no new concepts beyond that what is used to implement <code>map()</code>. If you think you understand <code>map()</code> but not <code>reduce()</code>, it’s a sign that you may need to brush up on your fundamentals, such as how <code>yield</code> works.</p>
+
+<p>If you’ve been following along at home, you should at this point be passing all your <code>FakeEnumerable</code> tests. That means it’s time to get started on our <code>FakeEnumerator</code>.</p>
+
+<h3 id="implementing-the-fakeenumerator-class">Implementing the <code>FakeEnumerator</code> class</h3>
+
+<p>Similar to before, I needed to write some code to get my tests to a failure state. First, I set up the skeleton of the <code>FakeEnumerator</code> class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FakeEnumerator</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">next</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">with_index</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">rewind</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then I realized that I needed to back and at least modify the <code>FakeEnumerable#map</code> method, as my tests rely on it returning a <code>FakeEnumerator</code> object when a block is not provided, in a similar manner to the way <code>Enumerable#map</code> would return an <code>Enumerator</code> in that scenario.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">FakeEnumerable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">map</span> 
+    <span style="color:#080;font-weight:bold">if</span> block_given?
+      [].tap { |out| each { |e| out &lt;&lt; <span style="color:#080;font-weight:bold">yield</span>(e) } }
+    <span style="color:#080;font-weight:bold">else</span>
+      <span style="color:#036;font-weight:bold">FakeEnumerator</span>.new(<span style="color:#069">self</span>, <span style="color:#A60">:map</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Although, technically speaking, I should have also updated all my other <code>FakeEnumerable</code> methods, it’s not important to do so because our tests don’t cover it and that change introduces no new concepts to discuss. With this change to <code>map</code>, my tests all failed rather than erroring out, which meant it was time to start working on the implementation code.</p>
+
+<p>But before we get started, it’s worth reflecting on the core purpose of an <code>Enumerator</code>, which I haven’t talked about yet. At its core, an <code>Enumerator</code> is simply a proxy object that mixes in <code>Enumerable</code> and then delegates its <code>each</code> method to some other iterator provided by the object it wraps. This behavior turns an internal iterator into an external one, which allows you to pass it around and manipulate it as an object. </p>
+
+<p>Our tests call for us to implement <code>next</code>, <code>rewind</code>, and <code>each_index</code>, but before we can do that meaningfully, we need to make <code>FakeEnumerator</code> into a <code>FakeEnumerable</code>-enabled proxy object. There are no tests for this because I didn’t want to reveal too many hints to those who wanted to try this exercise at home, but this code will do the trick:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FakeEnumerator</span>
+  include <span style="color:#036;font-weight:bold">FakeEnumerable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(target, iter) 
+    <span style="color:#33B">@target</span> = target
+    <span style="color:#33B">@iter</span>   = iter
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">each</span>(&amp;block)
+    <span style="color:#33B">@target</span>.send(<span style="color:#33B">@iter</span>, &amp;block) 
+  <span style="color:#080;font-weight:bold">end</span>
+
+   <span style="color:#777"># other methods go here...</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Here we see that <code>each</code> uses <code>send</code> to call the original iterator method on the target object. Other than that, this is the ordinary pattern we’ve seen in implementing other collections. The next step is to implement our <code>next</code> method, which is a bit tricky.</p>
+
+<p>What we need to be able to do is iterate once, then pause and return a value. Then, when <code>next</code> is called again, we need to be able to advance one more iteration and repeat the process. We could do something like run the whole iteration and cache the results into an array, then do some sort of indexing operation, but that’s both inefficient and impractical for certain applications. This problem made me realize that Ruby’s <code>Fiber</code> construct might be a good fit because it specifically allows you to jump in and out of a chunk of code on demand. So I decided to try that out and see how far I could get. After some fumbling around, I got the following code to pass the test:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># loading the fiber stdlib gives us some extra features, including Fiber#alive?</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">fiber</span><span style="color:#710">&quot;</span></span> 
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">FakeEnumerator</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">next</span>
+    <span style="color:#33B">@fiber</span> ||= <span style="color:#036;font-weight:bold">Fiber</span>.new <span style="color:#080;font-weight:bold">do</span>
+      each { |e| <span style="color:#036;font-weight:bold">Fiber</span>.yield(e) }
+
+      raise <span style="color:#036;font-weight:bold">StopIteration</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@fiber</span>.alive?
+      <span style="color:#33B">@fiber</span>.resume 
+    <span style="color:#080;font-weight:bold">else</span>
+      raise <span style="color:#036;font-weight:bold">StopIteration</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code is hard to read because it isn’t really a linear flow, but I’ll do my best to explain it using my very limited knowledge of how the <code>Fiber</code> construct works. Basically, when you call <code>Fiber#new</code> with a block, the code in that block isn’t executed immediately. Instead, execution begins when <code>Fiber#resume</code> is called. Each time a <code>Fiber#yield</code> call is encountered, control is returned to the caller of <code>Fiber#resume</code> with the value that was passed to <code>Fiber#yield</code> returned. Each subsequent <code>Fiber#resume</code> picks up execution back at the point where the last <code>Fiber#yield</code> call was made, rather than at the beginning of the code block. This process continues until no more <code>Fiber#yield</code> calls remain, and then the last executed line of code is returned as the final value of <code>Fiber#resume</code>. Any additional attempts to call <code>Fiber#resume</code> result in a <code>FiberError</code> because there is nothing left to execute.</p>
+
+<p>If you reread the previous paragraph a couple of times and compare it to the definition of my <code>next</code> method, it should start to make sense. But if it’s causing your brain to melt, check out the <a href="http://ruby-doc.org/core-1.9/classes/Fiber.html">Fiber documentation</a>, which is reasonably helpful. </p>
+
+<p>The very short story about this whole thing is that using a <code>Fiber</code> in our <code>next</code> definition lets us keep track of just how far into the <code>each</code> iteration we are and jump back into the iterator on demand to get the next value. I prevent the <code>FiberError</code> from ever occurring by checking to see whether the <code>Fiber</code> object is still alive before calling <code>resume</code>. But I also need to make it so that the final executed statement within the <code>Fiber</code> raises a <code>StopIteration</code> error as well, to prevent it from returning the result of <code>each</code>, which would be the collection itself. This is a kludge, and if you have a better idea for how to handle this case, please leave me a comment.</p>
+
+<p>The use of <code>Fiber</code> objects to implement <code>next</code> makes it possible to work with infinite iterators, such as <code>Enumerable#cycle</code>. Though we won’t get into implementation details, the following code should give some hints as to why this is a useful feature:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; row_colors = [<span style="color:#A60">:red</span>, <span style="color:#A60">:green</span>].cycle
+=&gt; <span style="color:#777">#&lt;Enumerator: [:red, :green]:cycle&gt;</span>
+&gt;&gt; row_colors.next
+=&gt; <span style="color:#A60">:red</span>
+&gt;&gt; row_colors.next
+=&gt; <span style="color:#A60">:green</span>
+&gt;&gt; row_colors.next
+=&gt; <span style="color:#A60">:red</span>
+&gt;&gt; row_colors.next
+=&gt; <span style="color:#A60">:green</span>
+</pre></div>
+</div>
+</div>
+
+<p>As cool as that is, and as much as it makes me want to dig into implementing it, I have to imagine that you’re getting tired by now. Heck, I’ve already slept twice since I started writing this article! So let’s hurry up and finish implementing <code>rewind</code> and <code>each_index</code> so that we can wrap things up.</p>
+
+<p>I found a way to implement <code>rewind</code> that is trivial, but something about it makes me wonder if I’ve orphaned a <code>Fiber</code> object somewhere and whether that has weird garbage collection mplications. But nonetheless, because our implementation of <code>next</code> depends on the caching of a <code>Fiber</code> object to keep track of where it is in its iteration, the easiest way to rewind back to the beginning state is to simply wipe out that object. The following code gets my <code>rewind</code> tests passing:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">rewind</span>
+  <span style="color:#33B">@fiber</span> = <span style="color:#069">nil</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now only one feature stands between us and the completion of our exercise: <code>with_index</code>. The real <code>with_index</code> method in Ruby is much smarter than what you’re about to see, but for its most simple functionality, the following code will do the trick:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">with_index</span>
+  i = <span style="color:#00D">0</span>
+  each <span style="color:#080;font-weight:bold">do</span> |e| 
+    out = <span style="color:#080;font-weight:bold">yield</span>(e, i)
+    i += <span style="color:#00D">1</span>
+    out
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Here, I did the brute force thing and maintained my own counter. I then made a small modification to control flow so that rather than yielding just the element on each iteration, both the element and its index are yielded. Keep in mind that the <code>each</code> call here is a proxy to some other iterator on another collection, which is what gives us the ability to call <code>@list.map.with_index</code> and get <code>map</code> behavior rather than <code>each</code> behavior. Although you won’t use every day, knowing how to implement an around filter using <code>yield</code> can be quite useful.</p>
+
+<p>With this code written, my full test suite finally went green. Even though I’d done these exercises a dozen times before, I still learned a thing or two while writing this article, and I imagine there is still plenty left for me to learn as well. How about you?</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>This is definitely one of my favorite exercises for getting to understand Ruby better. I’m not usually big on contrived practice drills, but there is something about peeling back the magic on features that look really complex on the surface that gives me a great deal of satisfaction. I find that even if my solutions are very much cheap counterfeits of what Ruby must really be doing, it still helps tremendously to have implemented these features in any way I know how, because it gives me a mental model of my own construction from which to view the features.</p>
+
+<p>If you enjoyed this exercise, there are a number of things that you could do to squeeze even more out of it. The easiest way to do so is to implement a few more of the <code>Enumerable</code> and <code>Enumerator</code> methods. As you do that, you’ll find areas where the implementations we built out today are clearly insufficient or would be better off written another way. That’s fine, because it will teach you even more about how these features hang together. You can also discuss and improve upon the examples I’ve provided, as there is certainly room for refactoring in several of them. Finally, if you want to take a more serious approach to things, you could take a look at the tests in <a href="https://github.com/rubyspec/rubyspec">RubySpec</a> and the implementations in <a href="https://github.com/rubinius/rubinius">Rubinius</a>. Implementing Ruby in Ruby isn’t just something folks do for fun these days, and if you really enjoyed working on these low-level features, you might consider contributing to Rubinius in some way. The maintainers of that project are amazing, and you can learn a tremendous amount that way.</p>
+
+<p>Of course, not everyone has time to contribute to a Ruby implementation, even if it’s for the purpose of advancing their own understanding of Ruby. So I’d certainly settle for a comment here sharing your experiences with this exercise.</p>
+
+  </div>
+</body>
+</html>

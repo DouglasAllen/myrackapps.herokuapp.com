@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["profiler__","rubyvm"],"longSearchIndex":["profiler__","rubyvm"],"info":[["Profiler__","","Profiler__.html","",""],["RubyVM","","RubyVM.html","",""]]}}

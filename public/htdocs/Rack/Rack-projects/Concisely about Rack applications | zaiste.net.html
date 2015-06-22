@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"><title>Concisely about Rack applications | zaiste.net</title><meta content="Zaiste" name="author"><meta content="Zaiste is a Software Technologist who helps companies and brands build great software products. Expertise in: Java, Ruby, Python, JavaScript and Clojure." name="description"><meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"><link href="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/combined-cb006c4e48d.css" media="screen" rel="stylesheet" type="text/css"><link href="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/css.css" rel="stylesheet" type="text/css"><link href="http://zaiste.net/apple-touch-icon.png" rel="apple-touch-icon"><link href="http://zaiste.net/2012/08/concisely_about_rack_applications/atom.xml" rel="alternate" title="Sitewide ATOM Feed" type="application/atom+xml"><script src="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/ga.js" async="" type="text/javascript"></script><script type="text/javascript">var _gaq = _gaq || [];
+_gaq.push(['_setAccount', "UA-20458791-1"]);
+_gaq.push(['_setDomainName', "zaiste.net"]);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><script src="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/embed.js" async="" type="text/javascript"></script><script charset="UTF-8" async="" src="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/alfie.js"></script></head><body><div id="header"><ul id="nav"><li><a href="http://zaiste.net/">&nbsp; ◈ .&nbsp;</a></li><li><a href="http://zaiste.net/flux/">&nbsp; λ .&nbsp;</a></li><li><a href="http://zaiste.net/affairz/">&nbsp; PROJECTS .&nbsp;</a></li><li><a href="http://zaiste.net/about/">&nbsp; ME .&nbsp;</a></li></ul></div><div class="content"><div class="art"><h1>Concisely about Rack applications</h1><p><a href="https://github.com/rack/rack">Rack</a>
+ is a modular server interface for Ruby web applications. It unifies the
+ API for web servers, web frameworks and middlewares. This post is a 
+concise introduction to building basic Rack applications along with some
+ useful tricks.</p>
+
+<h2>Simplest Rack Application</h2>
+
+<p>Let's start with a simplest possible Rack application.</p>
+
+<pre><code>run lambda {|env| [200, {'Content-Type'  =&gt; 'text/plain'}, ["Hello, Zaiste!"]]}
+</code></pre>
+
+<p>We define here <a href="http://en.wikipedia.org/wiki/Anonymous_function">a lambda expression</a> that returns three elements: a <a href="http://httpstatusdogs.com/">numeric status</a>, headers as a hash and (optional) body (as string for Ruby 1.8 and as array for Ruby 1.9). A <a href="http://rack.rubyforge.org/doc/SPEC.html">Rack application can be defined</a> as an object which responds to <code>#call</code> method. This method takes one argument <code>env</code> and it returns three mentioned elements. As <code>lambdas</code> also respond to <code>#call</code> method, the code above represents a Rack application and it will run without any issue.</p>
+
+<h2>Running Rack Apps</h2>
+
+<p>We can run a Rack application using <code>rackup</code> command along with a special configuration file. By default <code>rackup</code> looks for a configuration file named <code>config.ru</code>, if you prefer to use a different name, you have to specify it as <code>rackup</code> command invocation parameter.</p>
+
+<p>Let's run our application:</p>
+
+<pre><code>λ rackup &amp;
+&gt;&gt; Thin web server (v1.5.0 codename Knife)
+&gt;&gt; Maximum connections set to 1024
+&gt;&gt; Listening on 0.0.0.0:9292, CTRL+C to stop
+
+λ curl http://localhost:9292
+127.0.0.1 - - [01/Jan/1979 19:10:44] "GET / HTTP/1.1" 200 - 0.0008
+Hello, Zaiste!
+</code></pre>
+
+<h2>Rack Apps as Ruby Objects</h2>
+
+<p>We can also write a Rack app using plain Ruby objects.</p>
+
+<pre><code>class RackApp
+  def self.call(env)
+    [200, {"Content-Type" =&gt; "text/plain"}, ["Hello, Zaiste!"]]
+  end
+end
+</code></pre>
+
+<p>Let's save this code as <code>lib/rack_app.rb</code> and put the following content into <code>config.ru</code>:</p>
+
+<pre><code>require 'rack_app'
+run RackApp
+</code></pre>
+
+<p>To run it, we must add <code>-Ilib</code> parameter to <code>rackup</code> command.</p>
+
+<pre><code>λ rackup -Ilib &amp;
+</code></pre>
+
+<p>Alternatively, we can run a Rack application just with <code>ruby</code> command, using either <code>Rack::Server</code> or <code>Rack::Handler</code>. Simply put one of following lines at the end of <code>rack_app.rb</code> file</p>
+
+<pre><code>Rack::Server.start app: RackApp
+</code></pre>
+
+<pre><code>Rack::Handler::Thin.run RackApp
+</code></pre>
+
+<p>and run it as</p>
+
+<pre><code>λ ruby ./lib/rack_app.rb
+&gt;&gt; Thin web server (v1.5.0 codename Knife)
+&gt;&gt; Maximum connections set to 1024
+&gt;&gt; Listening on 0.0.0.0:9292, CTRL+C to stop
+</code></pre>
+
+<h2>Handling Requests</h2>
+
+<p>Information carried by requests, come to Rack application through <code>env</code> parameter of <code>#call</code> method. <a href="https://gist.github.com/4272713">This gist</a> shows the structure and possible content of this parameter.</p>
+
+<p>For example, if we want to submit some information through URL (so-called GET data: the part of URL after <code>?</code> sign), it will be stored in <code>env['QUERY_STRING']</code>.</p>
+
+<pre><code>curl http://localhost:9292/?foo=bar&amp;baaz=none
+</code></pre>
+
+<pre><code>{… "QUERY_STRING"=&gt;"foo=bar&amp;baaz=none", … }
+</code></pre>
+
+<p>Another example, an information from <code>REQUEST_PATH</code> could 
+be used to implement a routing mechanism, i.e. triggering a specific 
+action based on the local path of the requested resource from the 
+request line.</p>
+
+<h2>Abstracting Requests and Responses</h2>
+
+<p>So far we've seen how to handle request parameters by hand and build responses from scratch. <a href="http://rack.rubyforge.org/doc/classes/Rack/Request.html"><code>Rack::Request</code></a> and <a href="http://rack.rubyforge.org/doc/classes/Rack/Response.html"><code>Rack::Response</code></a> provide convenient abstractions around these two concepts. The former class helps to handle incoming information, wrapping <code>env</code> hash and the latter makes it easier to generate response triplets.</p>
+
+<p>Let's wrap a <code>env</code> parameter with <code>Rack::Request</code>:</p>
+
+<pre><code>req = Rack::Request.new env
+req.params # the union of GET and POST data
+req.params['foo'] # specific user-data
+req.post?   # a POST request ?
+req.xhr?   # an AJAX request ?
+req.params['baaz'] =  'something'
+</code></pre>
+
+<p>It is important to note that modifying <code>Rack::Request</code> instance also modifies underlying <code>env</code> hash.</p>
+
+<p>Creating a response is similar, we can easily set headers, cookies or define a response status.</p>
+
+<pre><code>resp = Rack::Response.new
+resp.write 'Hello, Zaiste!'
+resp['X-Custom-Header'] = 'foo'
+resp.set_cookie 'foo', 'bar'
+resp.status = 200
+resp.finish
+</code></pre>
+
+<p>Let's put it all together as a whole Rack application</p>
+
+<pre><code>class FancyRackApp
+  def self.call(env)
+    req = Rack::Request.new(env)
+    case req.path
+    when "/"
+      Rack::Response.new("Hello, Zaiste!")
+    when /^\/name\/(.*)/
+      Rack::Response.new("Hello, #{$1}!")
+    else
+      Rack::Response.new("Not found", 404)
+    end
+  end
+end
+</code></pre>
+
+<p>And below results:</p>
+
+<pre><code>λ curl http://localhost:9292/
+127.0.0.1 - - [01/Jan/1979 19:10:44] "GET / HTTP/1.1" 200 - 0.0008
+Hello, Zaiste!
+</code></pre>
+
+<pre><code>λ curl http://localhost:9292/name/John
+127.0.0.1 - - [01/Jan/1979 19:10:44] "GET / HTTP/1.1" 200 - 0.0008
+Hello, John!
+</code></pre>
+
+<pre><code>λ curl http://localhost:9292/crazy
+127.0.0.1 - - [01/Jan/1979 19:10:44] "GET / HTTP/1.1" 404 - 0.0008
+Not found
+</code></pre>
+
+<h2>Class vs Object</h2>
+
+<p>If you happen to instantiate a Rack object inside <code>config.ru</code>,
+ it will be reused as long as Rack application runs. It means that the 
+content of instance variables will be carried between requests if not 
+set otherwise. It is a better idea to always define <code>#call</code> as a class method, i.e. pass in the class instead of an object inside <code>rackup</code> configuration file.</p>
+
+<h2>Cascading Rack Apps</h2>
+
+<p>Rack::Cascade provides a way to combine Rack applications as a 
+sequence. It takes an array of Rack applications as an argument. When a 
+new request arrives, it will try to use the first Rack app in the array,
+ if it gets a 404 response it will move to the next one.  Let's consider
+ the following example:</p>
+
+<pre><code>require "rack_app"
+run Rack::Cascade.new([Rack::File.new("public"), FancyRackApp])
+</code></pre>
+
+<p>The first app in our array is Rack::File, which serves static files 
+from the directory provided as an argument. If there is a request for a 
+file from <code>public</code> directory, Rack::File will try to look for
+ it. If not found, Rack::Cascade will move execution to next application
+ from the list.</p>
+
+<h2>Rack Middleware</h2>
+
+<p>Rack middleware provides a way to implement a chained process execution for web applications. It's an implementation of <a href="http://www.cise.ufl.edu/research/ParallelPatterns/PatternLanguage/AlgorithmStructure/Pipeline.htm">the pipeline design pattern</a>.
+ It acts « in the middle » between the client and the server processing 
+requests before they reach the server  and responses before they are 
+returned to the client. Middlewares can be used for various purposes 
+such as  managing user sessions, authentication or configuring static 
+files access etc.</p>
+
+<p>A Rack middleware has similar structure to Rack application, i.e. it responds to <code>#call</code>.
+ Unlike Rack application, Rack middleware has an initializer that takes 
+another Rack application or middleware as a parameter. In other words we
+ can « wrap » a simple Rack application with a middleware, and then 
+again, we can wrap the result with another middleware, and so on. As 
+Rack middlewares have access to a passed in application, they can 
+perform actions before or after they are passed to another Rack 
+application.</p>
+
+<p>The <code>use</code> keyword are used to define middlewares to instantiate, while by ‘run’ keyword designates a Rack application.</p>
+
+<h2>Middleware Stack</h2>
+
+<p><code>Rack::Builder</code> helps creating a middleware stack. It 
+wraps one Rack middleware around another and then around given Rack 
+application. Each object is instantiated with the next one, following in
+ the stack as a parameter, creating a final Rack application.</p>
+
+<pre><code>app = Rack::Builder.new do
+  use Rack::Etag           # Add an ETag
+  use Rack::Deflator      # Compress
+  run FancyRackApp     # User-defined logic
+end
+</code></pre>
+
+<p>The code inside <code>rackup</code> configuration file is wrapped around with a <code>Rack::Builder</code> instance.</p>
+
+<h2>Reloading</h2>
+
+<p>There is a handy Rack middleware which reloads the source of Rack application if it changed.</p>
+
+<pre><code>use Rack::Reloader, 0
+run RackApp
+</code></pre>
+
+<p>The only problem is that it only reloads Ruby files. If you have dynamic templates, you can take a look at <a href="https://github.com/alexch/rerun">rerun</a> gem</p>
+
+<h2>Authentication</h2>
+
+<p>Another useful middleware is <code>Rack::Auth::Basic</code>. It can be used to protect our applications with <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">Basic HTTP authentication</a>.</p>
+
+<pre><code>use Rack::Auth::Basic, "Restricted Area" do |username, password|
+  [username, password] == ['admin', 'admin']
+end
+</code></pre>
+
+<h2>Conclusion</h2>
+
+<p><a href="https://github.com/rack/rack">Rack</a> will help you better 
+understand how HTTP protocol works and how popular Ruby frameworks like 
+Rails make use of it. It is a good introduction to general mechanisms 
+used in web applications.</p>
+<section class="meta"><div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="Concisely%20about%20Rack%20applications%20%7C%20zaiste.net_files/a.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 385px ! important;" title="Disqus" tabindex="0" scrolling="no" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" width="100%"></iframe></div><script type="text/javascript">var disqus_shortname = 'zaistenet';
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><noscript>Please enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></div><div class="sidebar"><ul class="tags"><li><a href="http://zaiste.net/tags/ruby/">ruby</a></li><li><a href="http://zaiste.net/tags/rack/">rack</a></li></ul></div></div></body></html>

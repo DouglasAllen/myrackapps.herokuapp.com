@@ -1,0 +1,828 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p><strong>NOTE:</strong> This issue of Practicing Ruby was one of several content experiments 
+that was run in Volume 6. It uses a cookbook format (e.g. problem -&gt; solution -&gt; discussion)
+instead of the traditional long-form article format we use in most Practicing Ruby articles.</p>
+</blockquote>
+
+<p><strong>Problem: Code for data munging projects can easily become brittle.</strong></p>
+
+<p>Whenever you work on a project that involves a significant amount of <a href="http://en.wikipedia.org/wiki/Data_munging">data
+munging</a>, you can expect to get some mud on your boots. Even if the individual
+aggregation and transformation steps are simple, complexity arises from
+messy process of assembling a useful data processing pipeline. With each
+new change in requirements, this problem can easily be compounded in
+brittle systems that have not been designed with malleability in mind.</p>
+
+<p>As an example, imagine that you are implementing a tool that
+delivers auto-generated email newsletters by aggregating and 
+filtering links from Reddit. The following workflow provides
+a rough outline of what that sort of program would need to
+do in order to complete its task:</p>
+
+<ol>
+  <li>
+    <p>Map the raw JSON data from Reddit’s API to an intermediate format that can be
+used throughout the rest of the program.</p>
+  </li>
+  <li>
+    <p>Apply filters to ignore links that have already been included in a previous
+newsletter, or fall below a minimum score threshold. </p>
+  </li>
+  <li>
+    <p>Convert the curated list of links into a human readable format.</p>
+  </li>
+  <li>
+    <p>Send out the formatted list via email using GMail’s SMTP servers.</p>
+  </li>
+</ol>
+
+<p>Some will look at this set of steps and see a standalone script as the right
+tool for the job: the individual steps are simple, and the time investment is
+small enough that you could throw the entire script away and start again if you
+end up facing significant changes in requirements.</p>
+
+<p>Others will see this as a perfect opportunity to put together an elegant domain
+model that supports a classic object-oriented design style. By encapsulating all
+of these ideas in generalized abstractions, endless changes would be possible in
+the future, thus justifying the upfront design cost.</p>
+
+<p>Both of these perspectives have merit, but it would be unwise to set up a
+false dichotomy between formal design and skipping the design process entirely. 
+Interesting solutions to this problem also exist in the space between these two extremes,
+and so we’ll take a look at one of them now.</p>
+
+<hr />
+
+<p><strong>Solution: Reduce the cost of rework by organizing your codebase into
+isolated single-purpose components.</strong></p>
+
+<p>Unlike the typical web application which has a wide range of end-points serving 
+orthogonal concerns, the workflow for data munging projects often more closely 
+resembles a flow-chart, with clearly defined beginning and end points. The
+step-by-step nature of data munging projects makes them most naturally fit the 
+procedural programming paradigm. This is a source of tension in Ruby,
+because of its heavy object-oriented bias at the language level.</p>
+
+<p>A reasonable compromise is to embrace “procedural programming with
+objects”. Rather than discussing this technique in the abstract,
+we will instead explore what it looks like in practice by seeing
+how it can be used to build the Reddit curation tool we
+discussed earlier.</p>
+
+<p>Let’s start with the script that implements the core workflow of the program:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../lib/spyglass/actions/load_history_file</span><span style="color:#710">&quot;</span></span>
+require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../lib/spyglass/actions/fetch_links</span><span style="color:#710">&quot;</span></span>
+require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../lib/spyglass/actions/format_message</span><span style="color:#710">&quot;</span></span>
+require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../lib/spyglass/actions/deliver_message</span><span style="color:#710">&quot;</span></span>
+
+basedir = <span style="color:#036;font-weight:bold">File</span>.dirname(<span style="color:#069">__FILE__</span>)
+
+history   = <span style="color:#036;font-weight:bold">Spyglass</span>.load_history_file(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>basedir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/history.store</span><span style="color:#710">&quot;</span></span>)     <span style="color:#777">#1</span>
+min_score = <span style="color:#00D">20</span>
+
+selected_links = <span style="color:#036;font-weight:bold">Spyglass</span>.fetch_links(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ruby</span><span style="color:#710">&quot;</span></span>).select <span style="color:#080;font-weight:bold">do</span> |link|         <span style="color:#777">#2</span>
+  link.score &gt;= min_score &amp;&amp; history.new?(link)                        <span style="color:#777">#3</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+history.update(selected_links)                                         <span style="color:#777">#4</span>
+
+message = <span style="color:#036;font-weight:bold">Spyglass</span>.format_message(<span style="color:#606">links</span>: selected_links, 
+                                  <span style="color:#606">template</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>basedir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/message.erb</span><span style="color:#710">&quot;</span></span>)  <span style="color:#777">#5</span>
+
+<span style="color:#036;font-weight:bold">Spyglass</span>.deliver_message(<span style="color:#606">subject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Links for you!!!!!!</span><span style="color:#710">&quot;</span></span>,               <span style="color:#777">#6</span>
+                         <span style="color:#606">message</span>: message)
+</pre></div>
+</div>
+</div>
+
+<p>This code looks a bit different than the typical Ruby snippet, because rather
+than instantiating objects directly and then calling methods on them, it is
+simply calling methods on the <code>Spyglass</code> module. It is obvious from the
+<code>require_relative</code> calls that these features have been individually enabled,
+which is also a non-standard way of doing thing.</p>
+
+<p>If you set aside the quirks of this code for a moment, it should still be fairly
+easy to read. Here’s a rough English translation of what’s going on:</p>
+
+<ol>
+  <li>A history log is being loaded from a file.</li>
+  <li>Links in the “ruby” sub-reddit are being fetched and filtered</li>
+  <li>Links are filtered out if they’re below a score threshold or have been
+selected in a previous run of the program.</li>
+  <li>The history log is updated with the newly selected links</li>
+  <li>The selected links are formatted into a human readable message</li>
+  <li>The message is delivered with the subject “Links for you!!!!!!”</li>
+</ol>
+
+<p>Because the six steps above pretty much directly line up with the high-level
+requirements of the project, it is safe to say that this code is sufficiently
+expressive. But to properly evaluate the overall design, we’ll need to dig into
+the code that implements these features. Let’s proceed by walking through the
+features in the order that they are used.</p>
+
+<p>First up is the <code>Spyglass.load_history_file</code> procedure:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../data/history</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">load_history_file</span>(filename)
+    <span style="color:#036;font-weight:bold">Data</span>::<span style="color:#036;font-weight:bold">History</span>.new(filename)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method is a trivial stub that creates an instance of the
+<code>Spyglass::Data::History</code> class shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pstore</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Data</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">History</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(filename)
+        <span style="color:#33B">@store</span> = <span style="color:#036;font-weight:bold">PStore</span>.new(filename)
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">new?</span>(link)
+        <span style="color:#33B">@store</span>.transaction { <span style="color:#33B">@store</span>[link.url].nil? }
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">update</span>(links)
+        <span style="color:#33B">@store</span>.transaction <span style="color:#080;font-weight:bold">do</span>
+          links.each { |link| <span style="color:#33B">@store</span>[link.url] = <span style="color:#069">true</span> }
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>From this definition, we can infer that the job of the <code>History</code> 
+object is to keep track of which URLs have been selected in 
+previous runs of the program. It uses a <code>PStore</code> object as
+its persistence method, but that is mostly an implementation detail.</p>
+
+<p>With an understanding of how <code>Spyglass.load_history_file</code> works and 
+what type of object it returns, we can now move on to investigating
+the <code>Spyglass.fetch_links</code> procedure:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">json</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+
+require_relative <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">../data/link</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">fetch_links</span>(category)
+    document = open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://api.reddit.com/r/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>category<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">?limit=100</span><span style="color:#710">&quot;</span></span>).read
+
+    <span style="color:#036;font-weight:bold">JSON</span>.parse(document)[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">data</span><span style="color:#710">&quot;</span></span>][<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">children</span><span style="color:#710">&quot;</span></span>].map <span style="color:#080;font-weight:bold">do</span> |e|
+      e = e[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">data</span><span style="color:#710">&quot;</span></span>]
+
+      <span style="color:#036;font-weight:bold">Data</span>::<span style="color:#036;font-weight:bold">Link</span>.new(<span style="color:#606">url</span>: e[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">url</span><span style="color:#710">&quot;</span></span>], <span style="color:#606">score</span>: e[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">score</span><span style="color:#710">&quot;</span></span>], <span style="color:#606">title</span>: e[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">title</span><span style="color:#710">&quot;</span></span>])
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This method is responsible for making an HTTP request to the Reddit API to
+capture a JSON document representing the raw data about links in a particular
+subreddit. It then parses that document and transforms it into <code>Data::Link</code>
+objects. A quick look at the class definition for <code>Data::Link</code> reveals that it
+is a straightforward value object with no interesting business logic:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Data</span>
+    <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Link</span>
+      <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(<span style="color:#606">url</span>: raise, <span style="color:#606">score</span>: raise, <span style="color:#606">title</span>: raise)
+        <span style="color:#33B">@url</span>   = url
+        <span style="color:#33B">@score</span> = score
+        <span style="color:#33B">@title</span> = title
+      <span style="color:#080;font-weight:bold">end</span>
+
+      attr_reader <span style="color:#A60">:url</span>, <span style="color:#A60">:score</span>, <span style="color:#A60">:title</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>As simple as it is, the <code>Data::Link</code> object is a very important part of this 
+program, because every other feature that refers to links assumes that
+they conform to this interface. In other words, we’ve set in stone here
+that the data our program is interested in when it comes to links are
+its <code>score</code>, <code>url</code>, and <code>title</code>. Any changes to this interface would
+require widespread changes throughout our program.</p>
+
+<p>Based on what you’ve seen so far, you should be able to understand exactly how
+this program works up to step #4 in its main script. Only two steps remain:
+formatting the list of curated links into a human readable message, and
+delivering it to someone.</p>
+
+<p>The formatting procedure (i.e. <code>Spyglass.format_message</code>) is extremely basic, 
+as it is nothing more than a minimal wrapper around the <code>ERB</code> standard 
+library:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">erb</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">format_message</span>(<span style="color:#606">links</span>: raise, <span style="color:#606">template</span>: raise)
+    <span style="color:#036;font-weight:bold">ERB</span>.new(<span style="color:#036;font-weight:bold">File</span>.read(template), <span style="color:#069">nil</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span>).result(binding)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This code is somewhat generalized, allowing an arbitrary template to
+present the list of links. In the case of this particular script, we use a
+simple text-based template that looks like this:</p>
+
+<pre><code>Here are some links you might enjoy!
+&lt;% links.each do |link| -%&gt;
+
+  &lt;%= link.title %&gt;:
+  &lt;%= link.url   %&gt;
+&lt;% end %&gt;
+Have fun!
+-greg
+</code></pre>
+
+<p>When evaluated, this template spits out plain-text output that looks similar to
+what you see below:</p>
+
+<pre><code>Here are some links you might enjoy!
+
+  _why updated his site:
+  http://whytheluckystiff.net
+
+  Teabag: A Javascript test runner built on top of Rails:
+  https://github.com/modeset/teabag
+
+  Ruby 2.0 Works Hard So You Can Be Lazy:
+  http://patshaughnessy.net/2013/4/3/ruby-2-0-works-hard-so-you-can-be-lazy
+
+Have fun!
+-greg
+</code></pre>
+
+<p>From here, all that remains is to fire this message out via email, which is
+handled by the <code>Spyglass.deliver_message</code> procedure:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mail</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#036;font-weight:bold">Mail</span>.defaults <span style="color:#080;font-weight:bold">do</span>
+  delivery_method <span style="color:#A60">:smtp</span>, {
+    <span style="color:#A60">:address</span>              =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">smtp.gmail.com</span><span style="color:#710">'</span></span>,
+    <span style="color:#A60">:port</span>                 =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">587</span><span style="color:#710">'</span></span>,
+    <span style="color:#A60">:user_name</span>            =&gt; <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GMAIL_USER</span><span style="color:#710">&quot;</span></span>],
+    <span style="color:#A60">:password</span>             =&gt; <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GMAIL_PASSWORD</span><span style="color:#710">&quot;</span></span>],
+    <span style="color:#A60">:authentication</span>       =&gt; <span style="color:#A60">:plain</span>,
+    <span style="color:#A60">:enable_starttls_auto</span> =&gt; <span style="color:#069">true</span>
+  }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Spyglass</span>  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">deliver_message</span>(<span style="color:#606">message</span>: raise, <span style="color:#606">subject</span>: raise)
+    mail = <span style="color:#036;font-weight:bold">Mail</span>.new
+
+    mail.from = <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">GMAIL_USER</span><span style="color:#710">&quot;</span></span>]
+    mail.to   = <span style="color:#069">ENV</span>[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">SPYGLASS_RECIPIENT</span><span style="color:#710">&quot;</span></span>]
+
+    mail.subject = subject
+    mail.body    = message 
+
+    mail.deliver!
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is not as easy to read as many of the previous procedures, because it
+involves some configuration code. However, on closer investigation we can easily
+see that this is a thin wrapper around the <code>Mail</code> gem, and that it uses three
+environment variables for its settings: <code>GMAIL_USER</code>, <code>GMAIL_PASSWORD</code>, and
+<code>SPYGLASS_RECIPIENT</code>. This means that the main script for this program needs to
+have these values set before it can be run, as in the example below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ GMAIL_USER=&quot;test@gmail.com&quot; GMAIL_PASSWORD=&quot;password&quot; \
+  SPYGLASS_RECIPIENT=&quot;test@test.com&quot; ruby examples/reddit.rb
+</pre></div>
+</div>
+</div>
+
+<p>If you have a GMail account, you can actually give this a try by cloning
+the <a href="https://github.com/elm-city-craftworks/practicing-ruby-examples/tree/master/v6/009">practicing-ruby-examples
+repository</a>
+and running something similar to the line shown above in the <em>v6/009</em> folder.
+But as long as you understand the general idea behind this program, don’t worry
+if you can’t test it for yourself right now.</p>
+
+<p>Assuming that you have been able to understand this walk-through, you may already
+have some sense of why this solution is a reasonable middle ground between ad
+hoc scripting and formal object-oriented design. However, we should discuss the
+benefits and costs in more detail before we wrap things up here.</p>
+
+<hr />
+
+<p><strong>Discussion</strong></p>
+
+<p>The primary difference between object-oriented programming and “procedural
+programming with objects” is that the former binds certain behaviors to
+encapsulated data, and the latter decouples its data from its behavior.</p>
+
+<p>Object-oriented design is best suited for problems where most of the interesting
+details exist in the messages that are passed between objects. In other words,
+when you have a complex set of interactions between a network of communicating
+objects, it makes good sense to tightly bind together state and behavior.
+However, this comes at the cost of indirection, and so it becomes hard to keep a
+mental model in your mind of what the call graph looks like for even a single
+request.</p>
+
+<p>By contrast, data munging projects are procedural in nature, and so you have a
+good sense of what needs to happen at each step in the process. The final
+program represents a chain of transformations and filters on relatively simple
+data structures, with some side effects thrown in along the way. Because each
+step tends to be a very concrete action, the abstraction benefit that objects
+can offer is negated by the fact that so much is subject to change in the whole
+system.</p>
+
+<p>If you go back and read through the <a href="https://github.com/elm-city-craftworks/practicing-ruby-examples/tree/master/v6/009">codebase we discussed in this
+article</a>,
+you will find that the data objects are trivially understandable, and the
+actions are context-independent. Although they are not pure functions, each of
+the actions can be fully understood in terms of its inputs, outputs, and
+external dependencies. This makes it possible to make changes to the internals
+without thinking about their impact on the overall program, as long as the
+return values do not change.</p>
+
+<p>Another interesting benefit of “procedural programming with objects” is that a
+lack of internal behavioral dependencies makes it so that you can easily change
+the signature of a single action without requiring a cascade of changes
+throughout the system. The main script might need to be updated, but such
+revisions would be trivial.</p>
+
+<p>However, it is important to remember that all of these benefits come from the
+fact that data munging projects occupy a special domain where certain benefits
+of object-oriented programming are not especially important. You may want to
+consider adopting a traditional object-oriented design if any of the following
+conditions apply:</p>
+
+<ul>
+  <li>
+    <p>You have actions that need to store data in instance variables, rather than
+simply returning value objects or using repository objects like the <code>History</code>
+object in this example.</p>
+  </li>
+  <li>
+    <p>You have actions that need to call other actions in order to get their job
+done, rather than relying on simple data objects that rarely change.</p>
+  </li>
+  <li>
+    <p>You have actions that need to operate as a multi-step state machine, rather
+than a single-purpose procedure that you can fire and forget.</p>
+  </li>
+</ul>
+
+<p>All of the above are symptoms that the benefits of object-oriented design will
+outweigh its costs, and Ruby <em>is</em> a deeply object-oriented language, so you
+won’t lose out by heading in that direction. However, if you are stuck in the
+place between a throwaway script and a full object-oriented program, the example
+shown in this article might help you find a nice compromise.</p>
+
+  </div>
+</body>
+</html>

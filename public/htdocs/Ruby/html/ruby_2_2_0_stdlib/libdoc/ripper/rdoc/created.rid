@@ -1,0 +1,11 @@
+Fri, 06 Feb 2015 03:25:33 -0700
+ripper/eventids2.c	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/lib/ripper/core.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/lib/ripper/filter.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/lib/ripper/lexer.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/lib/ripper/sexp.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/lib/ripper.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/tools/generate-param-macros.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/tools/generate.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/tools/preproc.rb	Thu, 05 Feb 2015 22:39:31 -0700
+ripper/tools/strip.rb	Thu, 05 Feb 2015 22:39:31 -0700

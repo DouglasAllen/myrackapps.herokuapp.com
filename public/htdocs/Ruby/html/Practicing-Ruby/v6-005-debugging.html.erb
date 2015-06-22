@@ -1,0 +1,748 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was contributed by Carol Nichols
+(<a href="http://twitter.com/carols10cents">@carols10cents</a>,
+<a href="https://rstat.us/users/Carols10cents">carols10cents@rstat.us</a>), one of the
+active maintainers of <a href="https://rstat.us">rstat.us</a>. Carol is also involved in
+the Pittsburgh Ruby community, and is a co-organizer of the <a href="http://steelcityrubyconf.org/">Steel City Ruby
+Conf</a>. At the time of writing this article,
+she was busy doing Rails development for <a href="http://www.thinkthroughmath.com/">Think
+Through Math</a>.</em></p>
+
+<p>Whenever our code breaks, it can be hard to remain calm. Debugging
+often occurs when production is down, customers are experiencing a problem, and
+managers are asking for status updates every five minutes. In this situation, panicking
+is a natural response, but it can easily disrupt your troubleshooting process. It may
+lead to changing code on hunches rather than on evidence or writing
+untested code. By rushing to fix things immediately, you may make
+things worse or not know which of your changes actually
+fixed the problem. As many of us have learned the hard way: a
+chaotic debugging process is no fun for you, and no fun for the people
+who rely on your saoftware.</p>
+
+<p>Having a calm and collected way of approaching software defects goes a long way,
+especially if you also have a firm grasp of the tools and techniques that can
+help make the debugging process easier. This article is meant to help you with
+both of those things, so let’s get started.</p>
+
+<h2 id="dont-panic">Don’t Panic!</h2>
+
+<p>If external pressures are stressing you out, either disable
+the feature that is causing the problem, or roll the production code back to a known
+stable state before attempting to investigate further. Even
+if it isn’t ideal from a usability standpoint, functioning software with a
+few missing features is still more useful than unstable and potentially
+dangerous software.</p>
+
+<p>Once you’ve reproduced the issue in a development environment, you can start to narrow down the problem using
+a divide-and-conquer strategy. If you suspect the problem is coming from your
+application code, you might try starting with an end-to-end reproduction and
+then gradually eliminate components until you find the source of the issue.
+However, if you think the issues are coming from the infrastructure your
+project is built on top of (libraries, services, frameworks, and even Ruby
+itself!), it might be better to start with minimal stand-alone examples to test your 
+assumptions about your application’s integration points. Picking a good 
+angle of attack depends on the nature of the problem, so don’t be afraid to spend some time
+figuring out the right questions to ask – even if you’re under pressure.</p>
+
+<p>Regardless of your starting point, you won’t be guaranteed to find the source
+of your problem right away. However, each new experiment you try out will add yet another constraint to your 
+problem space, making it easier to reason about what is going
+wrong. The fear of the unknown is a big part of what causes us to panic in the
+first place, and so this approach will help you build up the confidence you
+need in order to maintain a calm mindset as you work.</p>
+
+<p>Throughout the rest of this article, we’ll discuss some things that will 
+help you find bugs, fix them, and make sure they stay fixed. But keep 
+this in mind: they work best if you don’t panic!</p>
+
+<blockquote>
+  <p>Editor’s Note: <em>Don’t Panic</em> is the motivating
+force behind several of the maintenance policies for practicingruby.com. For
+more on this topic, see Lessons 4 and 5 from <a href="https://practicingruby.com/articles/91">Issue
+5.6</a></p>
+</blockquote>
+
+<h2 id="read-stack-traces">Read stack traces</h2>
+
+<p>Stack traces are ugly. They typically present themselves as a wall of text 
+in your terminal when you aren’t expecting them. When pairing, I’ve often seen people
+ignore stack traces entirely and just start changing the code. But stack
+traces do have valuable information in them, and learning to pick out the
+useful parts of the stack trace can save you a lot of time in trying to narrow
+down the problem.</p>
+
+<p>The two most valuable pieces of information are the resulting error message
+(which is usually shown at the beginning of the stack trace in Ruby) and the
+last line of your code that was involved (which is often in middle). The
+error message will tell you <em>what</em> went wrong, and the last line of your
+code will tell you <em>where</em> the problem is coming from.</p>
+
+<p>A particularly horrible stack trace is <a href="https://gist.github.com/carols10cents/4751381/raw/b75bdb41e7fa8ded54d13dc786808b464357effe/gistfile1.txt">this 1400 line trace</a>
+from a Rails app using JRuby running on websphere. In this case, the error message
+<em>“ERROR [Default Executor-thread-15]”</em> is not very helpful. The vast majority of the lines are
+coming from JRuby’s Java code and are also uninformative. However, skimming
+through and looking for lines that don’t fit in, there are some lines that are
+longer than the others (shown wrapped and trimmed below for clarity):</p>
+
+<pre><code>rubyjit.ApplicationHelper
+  $$entity_label_5C9C81BAF0BBC4018616956A9F87C663730CB52E.
+  __file__(/..LONGPREFIX../app/helpers/application_helper.rb:232)
+  
+rubyjit.ApplicationHelper
+  $$entity_label_5C9C81BAF0BBC4018616956A9F87C663730CB52E
+  .__file__(/..LONGPREFIX../app/helpers/application_helper.rb)
+</code></pre>
+
+<p>These lines of the stack trace point to the last line of the Rails code that
+was involved, line 232 of <em>application_helper.rb</em>. But this particular line
+of code was simply concatenating two strings together – making it pretty
+clear that the problem was not caused by our application code! By trying
+various  values for those strings, we eventually found the cause of the
+problem: an <a href="https://github.com/jruby/jruby/issues/366">encoding-related bug</a> in
+JRuby was causing a Ruby 1.9 specific feature to be called from within Ruby 1.8
+mode. Even though our stack trace was very unpleasant to read and did not
+provide us with a useful error message, tracing the exception down to a
+particular line number was essential for identifying what would have otherwise
+been a needle in a haystack.</p>
+
+<p>Of course, there are some edge cases where line numbers are not very helpful. One is
+the dreaded <em>“syntax error, unexpected $end, expecting keyword_end”</em> error, which
+will usually point to the end of one of your files. It actually means you’re
+missing an <code>end</code> somewhere in that file. However, these situations are rare, and
+so it makes sense to skim stack traces for relevant line numbers
+that might give you a clue about where your bug is coming from.</p>
+
+<p>If all else fails, you can always try doing a web search for the name of the
+exception and its message – even if the results aren’t directly related to your
+issue, they may give you useful hints that can help you discover the right
+questions to ask about your problem.</p>
+
+<h2 id="use-debugging-tools">Use debugging tools</h2>
+
+<p>Debugging tools (such as ruby-debug) are useful because they allow you to inspect your code and its 
+environment while it’s actually running. However, this is also true about using
+a REPL (such as irb), and many Rubyists tend to strongly prefer the latter
+because it is a comfortable workflow for more than just troubleshooting.</p>
+
+<p>The <a href="http://pryrepl.org/">Pry</a> REPL is becoming increasingly popular, because it
+attempts to serve as both a debugger and an interactive console simultaneously.
+Placing the <code>binding.pry</code> command anywhere in your codebase will launch you into
+a Pry session whenever that line of code is executed. From there, you can do
+things like inspect the values in variables or run some arbitrary code. Much like 
+irb, this lets you try out ideas and hypotheses quickly. If you can’t easily
+think of a way to capture the debugging information you need with some simple
+print statements or a logger, it’s a sign that using Pry might get you 
+somewhere.</p>
+
+<p>This kind of workflow is especially useful when control flow gets complicated,
+such as when working with events or threads. For example, suppose we wanted to
+get a closer look at the behavior of <a href="https://github.com/elm-city-craftworks/practicing-ruby-examples/blob/master/v6/003/lib/actors.rb">the actor model</a>
+from the Dining Philosopher’s problem from <a href="https://practicingruby.com/articles/100">Issue 6.3</a>. 
+Here’s how we would inspect what’s happening in the <code>Waiter#request_to_eat</code>
+method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pry</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Waiter</span>
+  <span style="color:#777"># ...</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">request_to_eat</span>(philosopher)
+    binding.pry
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@eating</span>.include?(philosopher)
+
+    <span style="color:#33B">@eating</span> &lt;&lt; philosopher
+    philosopher.async.eat
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because the <code>Waiter</code> class is an actor, it will execute the requests to eat in
+sequence, but they will be queued up asynchronously. As soon as one is
+actually executed, we will be dropped into a Pry session:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>From: (..)/dining_philosophers.rb @ line 61 Waiter#request_to_eat:
+
+    60: def request_to_eat(philosopher)
+ =&gt; 61:   binding.pry
+    62:   return if @eating.include?(philosopher)
+    63:
+    64:   @eating &lt;&lt; philosopher
+    65:   philosopher.async.eat
+    66: end
+
+[1] pry(#&lt;Waiter&gt;)&gt;
+</pre></div>
+</div>
+</div>
+
+<p>From here, we can deeply interrogate the current state of our program,
+revealing that the <code>philosopher</code> references an <code>Actor::Proxy</code> 
+object, which in turn wraps a <code>Philosopher</code> object 
+(Schopenhauer in this case):</p>
+
+<pre><code># NOTE: this output cleaned up somewhat for clarity
+
+[1] pry(#&lt;Waiter&gt;)&gt; ls philosopher
+Actor::Proxy#methods: async  method_missing  send_later  terminate
+instance variables: @async_proxy  @mailbox  @mutex  @running  @target  @thread
+[2] pry(#&lt;Waiter&gt;)&gt; cd philosopher/@target
+[3] pry(#&lt;Philosopher&gt;):2&gt; ls
+Philosopher#methods: dine  drop_chopsticks  eat  take_chopsticks  think
+self.methods: __pry__
+instance variables: @left_chopstick  @name  @right_chopstick  @waiter
+locals: _  __  _dir_  _ex_  _file_  _in_  _out_  _pry_
+[4] pry(#&lt;Philosopher&gt;):2&gt; @name
+=&gt; "Schopenhauer"
+[5] pry(#&lt;Philosopher&gt;):2&gt; cd
+[6] pry(#&lt;Waiter&gt;)&gt; @eating.count
+=&gt; 0
+</code></pre>
+
+<p>Once we’re ready to move on to the next call to <code>request_to_eat</code>, we simply call
+<code>exit</code>. That immediately launches a new console that allows us to determine
+that Schopenhauer’s is already in the <code>@eating</code> queue by the time Aristotle’s request
+is starting to be processed:</p>
+
+<pre><code>[1] pry(#&lt;Waiter&gt;)&gt; cd philosopher/@target
+[2] pry(#&lt;Philosopher&gt;):2&gt; @name
+=&gt; "Aristotle"
+[3] pry(#&lt;Philosopher&gt;):2&gt; cd
+[4] pry(#&lt;Waiter&gt;)&gt; @eating.count
+=&gt; 1
+[5] pry(#&lt;Waiter&gt;)&gt; cd @eating.first/@target
+[6] pry(#&lt;Philosopher&gt;):2&gt; @name
+=&gt; "Schopenhauer"
+</code></pre>
+
+<p>Imagine for a moment that there was a defect in this code. Replicating this 
+exact situation in a test where we can access the values of
+<code>@eating</code> and the internals of the <code>philosopher</code> argument at these 
+particular points in the execution would
+not be straightforward, but Pry makes it easier to casually poke at these
+values as part of an ad-hoc exploration. If there was a bug to be found here,
+Pry could help you identify the conditions that trigger it, and then other
+techniques could be used to reproduce the issue once its root cause
+was discovered.</p>
+
+<p>This particular use case merely scratches the surface of Pry’s capabilities – 
+there are many commands that Pry provides that are powerful tools for inspecting your
+code while it’s running. That said, it is not a complete substitute for
+a traditional debugger. For example, gdb can be useful for hunting down
+hard-to-investigate issues such as segfaults in MRI’s C code. If you’re interested in that kind
+of thing, you may want to check out <a href="http://vimeo.com/54736113">this talk from Heath Lilley</a>
+about using gdb to determine why a Ruby program was crashing.</p>
+
+<p>You don’t always need to use a heavyweight debugging utility to solve
+your problems. Whenever you can get away with it, it’s reasonable to use the
+most simple thing that could possibly work; it’s amazing how much a decent log
+file or some well placed print statements can tell you about what’s going on in
+your code. But whenever you feel like those approaches are starting to get
+cumbersome, don’t be afraid to break out the power tools.</p>
+
+<h2 id="lean-on-tests-but-dont-overspecify">Lean on tests, but don’t overspecify</h2>
+
+<p>Whenever you need to fix a bug, you’re writing a test first, right? This
+serves multiple purposes: it gives you a convenient way to reproduce the issue
+while you’re experimenting, and if added to your test suite, it will help
+you detect regressions in future changes.</p>
+
+<p>Regardless of whether the tests you write end up becoming a permanent part of
+your test suite or not, they still provide a useful way to record your 
+discoveries and experiments during a debugging session. For example, you might 
+start with an end-to-end acceptance test that is able to reproduce the problem 
+and then write smaller and smaller tests as you are narrowing down where the 
+issue is occurring until you get to a unit test that covers the root cause.
+From there, you can fix the issue, run all the tests to confirm the fix, 
+and then finally remove the redundant tests that only reproduce the problem 
+indirectly. </p>
+
+<p>But why bother removing intermediate tests? It’s mostly just a matter of
+good housekeeping that helps maintain the clarity of your test suite. For
+example, negative tests like “it should not crash when given special characters” 
+are mostly just noise at the acceptance test level, unless someone could
+reasonably assume that the tested feature wouldn’t support that use case.
+For a real example of this kind of over-specification, here is a test that I 
+added to <a href="https://github.com/hotsh/rstat.us/commit/26444ea95ec8da12d4e74764bf52bdaad18e7776">rstat.us’ codebase</a>
+a while ago:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>it <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lets you update your profile even if you use a different case in the url</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  u = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:username</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">LADY_GAGA</span><span style="color:#710">&quot;</span></span>)
+  a = Factory(<span style="color:#A60">:authorization</span>, <span style="color:#A60">:user</span> =&gt; u)
+  log_in(u, a.uid)
+  visit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/users/lady_gaga/edit</span><span style="color:#710">&quot;</span></span>
+  bio_text = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">To be or not to be</span><span style="color:#710">&quot;</span></span>
+  fill_in <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bio</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:with</span> =&gt; bio_text
+  click_button <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Save</span><span style="color:#710">&quot;</span></span>
+
+  assert_match page.body, <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>bio_text<span style="font-weight:bold;color:#666">}</span></span><span style="color:#404">/</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Rather than adding another test for the case of going to the url for username
+“lady_gaga” when the username is “LADY_GAGA” (don’t ask why I chose Lady Gaga,
+I don’t remember), I could have instead updated
+<a href="https://github.com/hotsh/rstat.us/blob/26444ea95ec8da12d4e74764bf52bdaad18e7776/test/acceptance/profile_test.rb#L45">the existing happy path test</a>
+to encompass this situation (effectively replacing the existing happy path test
+with this special case test). In this way, both the special case and the happy path
+would be tested, but with less duplication.</p>
+
+<p>If in doubt, it’s probably better to have a few extra tests cornering a defect
+than too few, but just keep in mind that like all other code, your tests have a
+maintenance overhead along with a potential to become brittle. As with
+all things, having a sense of balance pays off here.</p>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>Even though sometimes it seems like software has a mind of its own, computers
+only do what a human has told them to do at some point. So next time you end up
+facing a painful defect, remember the following things:</p>
+
+<ul>
+  <li>
+    <p>You can figure out why a bug is happening by using deterministic processes to narrow down where the
+problem is happening. </p>
+  </li>
+  <li>
+    <p>You can learn to pick out the useful parts of stack traces, even if they
+seem heavily obfuscated at first.</p>
+  </li>
+  <li>
+    <p>You can use debugging tools to experiment with what your code is
+actually doing as it runs, especially in cases where it wouldn’t
+be easy to work out what was going on straight from your log files.</p>
+  </li>
+  <li>
+    <p>You can write tests that help you while debugging and then turn some
+or all of them into useful regression tests that will help make your
+codebase more stable as it grows. </p>
+  </li>
+</ul>
+
+<p>Thanks for reading. Now go figure out some bugs! &lt;3</p>
+
+  </div>
+</body>
+</html>

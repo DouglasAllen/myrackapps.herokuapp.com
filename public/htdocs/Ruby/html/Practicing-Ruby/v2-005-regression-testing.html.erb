@@ -1,0 +1,651 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>The most simple and unambiguous benefit that automated testing provides is that it can be used to minimize the impact of regressions. If each bug fix is accompanied by a corresponding test, it makes it very likely that known defects will be noticed immediately whenever they resurface. Over the lifetime of a project, regression tests end up forming a safety net that makes refactoring easier and maintenance work less scary.</p>
+
+<p>In this article, we will look at a couple of real bugs that were fixed in practicingruby.com and the tests that are meant to prevent them from recurring. Working on these fixes taught Jordan and me two valuable lessons that I think are worth sharing. For some, they will serve as evidence of why you should be writing regression tests; for others, they will serve more as a reminder of why the time you’re investing into your tests is worthwhile.</p>
+
+<p><em>As a bit of a warning to those expecting sage advice in this article, I am in no way an expert at Rails testing, and even my Ruby testing skills are probably average. But this newsletter is about practicing Ruby, not just pontificating about it. I’m not afraid to show some of my own weak spots from time to time, as long as we can all learn something from it.</em></p>
+
+<h3 id="lesson-1-more-granular-tests-make-for-better-regression-suites">LESSON 1: More granular tests make for better regression suites</h3>
+
+<p>We now have support for Github-style mentions in our comments here on practicingruby.com, but the initial version of this feature was much more fragile than the one that is now in place. When Jordan first demonstrated the feature to me, I immediately tried to break it by manually testing how it dealt with case sensitivity, punctuation, and mentions of users who were not subscribed to Practicing Ruby. I succeeded at demonstrating bad behavior for two out of three of these cases, so Jordan quickly coded up a fix and an accompanying test for that fix. The test he wrote is shown here:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">returns an array of valid users mentioned</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  person = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PerSon</span><span style="color:#710">&quot;</span></span>)
+  frank = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  comment = Factory(<span style="color:#A60">:comment</span>,
+    <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I mention @person: and @FRank-pepelio but @noexist isn't there</span><span style="color:#710">&quot;</span></span>)
+
+  mentioned_users = comment.mentioned_users
+
+  assert_equal <span style="color:#00D">2</span>, mentioned_users.count
+  assert mentioned_users.include?(person)
+  assert mentioned_users.include?(frank)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Seeing this test go green was sufficient evidence for me that after the fix, the feature was working as I’d expect it to. We committed it, and for the moment, the problem was solved. But when I took a second look at this test while preparing this article, I decided that I should rewrite it. Can you guess why?</p>
+
+<p>If you guessed that it was because I have some deep-rooted hatred for Frank Pepelio, unfortunately that’s not correct. But if instead you guessed that it was because I thought this test was covering too many different behaviors at once, you were spot on. I came up with the following tests as a suitable replacement.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">returns an array of valid users mentioned</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  person = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PerSon</span><span style="color:#710">&quot;</span></span>)
+  frank = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  comment = Factory(<span style="color:#A60">:comment</span>,
+    <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I mention @PerSon and @frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  mentioned_users = comment.mentioned_users
+
+  assert_equal <span style="color:#00D">2</span>, mentioned_users.count
+  assert mentioned_users.include?(person)
+  assert mentioned_users.include?(frank)
+<span style="color:#080;font-weight:bold">end</span>
+
+test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">omits mentioned users that do not have a matching user record</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  frank = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  comment = Factory(<span style="color:#A60">:comment</span>,
+    <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I mention @frank-pepelio and @noexist</span><span style="color:#710">&quot;</span></span>)
+
+  mentioned_users = comment.mentioned_users
+
+  assert_equal [frank], mentioned_users
+<span style="color:#080;font-weight:bold">end</span>
+
+test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">match mentioned users without case sensitivity</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  frank = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  comment = Factory(<span style="color:#A60">:comment</span>,
+    <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">I mention @FRANK-pepelio</span><span style="color:#710">&quot;</span></span>)
+
+  mentioned_users = comment.mentioned_users
+
+  assert_equal [frank], mentioned_users
+<span style="color:#080;font-weight:bold">end</span>
+
+test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">allows user mentions to include punctuation</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  frank = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">frank-pepelio</span><span style="color:#710">&quot;</span></span>)
+  person = Factory(<span style="color:#A60">:user</span>, <span style="color:#A60">:github_nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">person</span><span style="color:#710">&quot;</span></span>)
+
+  comment = Factory(<span style="color:#A60">:comment</span>, <span style="color:#A60">:body</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@person, @frank-pepelio: YAY!</span><span style="color:#710">&quot;</span></span>)
+  mentioned_users = comment.mentioned_users
+
+  assert_equal <span style="color:#00D">2</span>, mentioned_users.count
+  assert mentioned_users.include?(person)
+  assert mentioned_users.include?(frank)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>These tests are a whole lot more verbose than the ones Jordan wrote, even though they cover the same set of behaviors. However, the extra effort of writing tests this way gains us quite a bit. Our new tests are much more granular, making the expectations for this feature more explicit and easier to understand for those reading the tests. More important, though, the increased granularity extends to feedback provided by test failures. If we make a change that causes our mentions to no longer be case sensitive, we get a failure in the specific test about case sensitivity, rather than in a catch-all test designed to fully define the behavior of the feature. </p>
+
+<p>The value of your test suite as a safety net against regressions is directly related to the granularity of your tests. For any given feature, the more complex it is, the greater the importance of granular testing. Additionally, the more features you have, the more difficult it will be to keep track of the edge cases of any single feature unless you break out each of its behaviors explicitly. Because of the multiplicative effect between these two things, it means that most of the time, it’s worth it to make your test more granular, even if doing so takes a bit more time, effort, and code.</p>
+
+<h3 id="lesson-2-testing-your-critical-paths-is-important">LESSON 2: Testing your critical paths is important</h3>
+
+<p>Part of the process of rolling out our new notification features (including mentions) was to set up background job processing for sending emails. We decided to try out <a href="https://github.com/cerebris/mailhopper">MailHopper</a>, but in order to do so, we needed to upgrade to Rails 3.1. The upgrade was relatively straightfoward and Jordan did a fair bit of manual testing to make sure that notification emails were still being sent and that the application as a whole was still working as expected.</p>
+
+<p>Unfortunately, the one area he forgot to check was the code I wrote for linking MailChimp subscriptions to GitHub accounts. This may be some of the most simple code in the the application, but I still managed to use a couple of deprecated APIs without realizing it. If we had some integration tests in place, we probably would have caught these issues, but because we didn’t, they didn’t surface until several hours after we deployed the Rails 3.1 upgrade.</p>
+
+<p>The issues themselves were downright trivial. In one of our HAML-based views, I had written <code>- form_for</code> instead of <code>= form_for</code>, which upon upgrading to Rails 3.1 prevented the form from being rendered. In the process of fixing this issue, I stumbled across another problem. It used to be possible to call <code>ActionMailer</code> methods by prefixing them with <code>deliver_</code>; in Rails 3.1, though, you use an ordinary method call that returns a <code>Mail</code> object that you’re expected to explicitly call <code>deliver</code> on. Because my code was using the old syntax, it ended up raising a <code>NoMethodError</code> rather than sending an email once we did the upgrade. It took only a few minutes to fix these issues, but the fact that they cropped up at all was a sign of a deeper problem.</p>
+
+<p>In the early stages of building out practicingruby.com, we avoided writing tests because the code was very simple and because doing a manual check of all the features took no more than a few minutes before each deploy. I wanted to focus on content generation, and I didn’t want to overwhelm Jordan with too much work on Practicing Ruby because it would take his focus off of Mendicant University. But, as we fast-forward a couple weeks, the application is now complex enough that not writing tests is costing us time rather than saving us time. Even if we still don’t necessarily need 100% test coverage, we need to make sure that we’ve got the critical paths through this application covered so that the site can remain a good experience for our readers.</p>
+
+<p>With that in mind, I set out to write integration tests that cover the process of linking your GitHub account to your MailChimp subscription from end to end. I started with the easy case of when your GitHub email address matches the one you subscribed to this newsletter with. The code below is my first rough draft of a test that walks through that process.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">github autolinking</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#036;font-weight:bold">Factory</span>.create(<span style="color:#A60">:user</span>, <span style="color:#A60">:email</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>)
+
+  <span style="color:#036;font-weight:bold">OmniAuth</span>.config.add_mock(<span style="color:#A60">:github</span>, {
+    <span style="color:#A60">:uid</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">12345</span><span style="color:#710">'</span></span>,
+    <span style="color:#A60">:user_info</span> =&gt; {
+      <span style="color:#A60">:nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sandal</span><span style="color:#710">'</span></span>,
+      <span style="color:#A60">:email</span>    =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>
+    }
+  })
+
+  visit community_url
+
+  auth_link = <span style="color:#036;font-weight:bold">Authorization</span>.find_by_github_uid(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span>).
+                            authorization_link
+
+
+  assert_equal authorization_link_path(auth_link), current_path
+
+  refute_empty <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries
+
+  mail = <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries.first
+  <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries.clear
+
+  assert_equal [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>], mail.to
+
+  visit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/sessions/link/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>auth_link.secret<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  assert_equal articles_path, current_path
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>I was initially expecting this test to pass, but upon running, it ended up with a failure. I had forgotten that my previous manual testing was only of the more complex workflow, which has you explictly enter your email address. The fact that the same confirmation email gets sent by our application in two different ways is a sign that there is some violation of DRY going on, but the more immediate realization I had was that the setup costs of testing these different scenarios manually was causing both Jordan and me to cut corners and to not test all the paths we should have been testing. Fortunately, rewriting another <code>ActionMailer</code> call got this test to go green. </p>
+
+<p>No longer feeling confident in my ability to weed out these errors from memory, I did a quick projectwide search with ack on the word “deliver” to confirm that this was indeed the last instance of this particular bug. After I was sure that was the case, I was able to move onto the workflow that caused me to detect this bug in the first place: our manual MailChimp-to-GitHub linking process. It is more or less the same set of steps, but involves filling out a form field before the confirmation email gets sent. </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">github manual linking</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#036;font-weight:bold">Factory</span>.create(<span style="color:#A60">:user</span>, <span style="color:#A60">:email</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>)
+
+  <span style="color:#036;font-weight:bold">OmniAuth</span>.config.add_mock(<span style="color:#A60">:github</span>, {
+    <span style="color:#A60">:uid</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">12345</span><span style="color:#710">'</span></span>,
+    <span style="color:#A60">:user_info</span> =&gt; {
+      <span style="color:#A60">:nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sandal</span><span style="color:#710">'</span></span>,
+      <span style="color:#A60">:email</span>    =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test@test.com</span><span style="color:#710">&quot;</span></span>
+    }
+  })
+
+  visit community_url
+
+  auth_link = <span style="color:#036;font-weight:bold">Authorization</span>.find_by_github_uid(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span>).
+                            authorization_link
+
+
+  assert_equal edit_authorization_link_path(auth_link), current_path
+  fill_in <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">authorization_link_mailchimp_email</span><span style="color:#710">&quot;</span></span>, 
+          <span style="color:#A60">:with</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>
+  click_button(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Link this email address to my Github account</span><span style="color:#710">&quot;</span></span>)
+
+  refute_empty <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries
+  mail = <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries.first
+  <span style="color:#036;font-weight:bold">ActionMailer</span>::<span style="color:#036;font-weight:bold">Base</span>.deliveries.clear
+
+  assert_equal [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>], mail.to
+
+  auth_link.reload
+
+  visit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">/sessions/link/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>auth_link.secret<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  assert_equal articles_path, current_path
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because I had already fixed the issues that would have prevented these tests from passing, this test went green without any additional modifications to the application. However, when writing regression tests, it’s important to be able to verify that your tests are able to detect the defects they’re meant to protect against. To do so, I went ahead and reverted each of my fixes one by one, then reapplied them to confirm that without each fix, the tests fail, and with them, the tests pass. This check isn’t quite a substitute for writing tests before writing code but does at least help ensure that your tests are valid.</p>
+
+<p>Now that the immediate concern of having some tests to accompany my bug fixes was resolved, I turned my eye to the messy code I had just written and found it in dire need of refactoring. Because I typically only ever worked far down the Rails stack in my consulting work, proper integration testing is a skill I never picked up. But just my sense of Ruby coding in general made me realize that I could do some simple extractions to at least hide some of the nasty stuff this code was doing. The following tests show what I ended up with.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">github autolinking</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  email = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>
+  uid   = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span>
+
+  create_user(<span style="color:#A60">:email</span> =&gt; email)
+  login(<span style="color:#A60">:nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sandal</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:email</span> =&gt; email, <span style="color:#A60">:uid</span> =&gt; uid)
+
+  visit community_url
+  get_authorization_link(uid)
+
+  assert_confirmation_sent(email)
+
+  assert_activated
+<span style="color:#080;font-weight:bold">end</span>
+
+test <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">github manual linking</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">do</span>
+  mailchimp_email = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>
+  github_email    = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test@test.com</span><span style="color:#710">&quot;</span></span>
+  uid             = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">12345</span><span style="color:#710">&quot;</span></span>
+
+  create_user(<span style="color:#A60">:email</span> =&gt; mailchimp_email)
+  login(<span style="color:#A60">:nickname</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">sandal</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:email</span> =&gt; github_email, <span style="color:#A60">:uid</span> =&gt; uid)
+
+  visit community_url
+  get_authorization_link(uid)
+
+  assert_email_manually_entered(mailchimp_email)
+
+  assert_confirmation_sent(mailchimp_email)
+
+  assert_activated
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>To get the code to look like this, I didn’t do anything fancy. I just did ordinary method extractions by pushing paragraphs of code down into functions. In the event that you want to see exactly what changes I made, you can check out <a href="https://gist.github.com/3829d5bfc124c3640c5b">this gist</a>, which contains the entire test file. The end result provides a fairly nice high-level description of each step of these two scenarios.</p>
+
+<p>Writing these tests took me longer than I would have liked, in part because I’m not that comfortable with integration testing in Rails, but also because there are a lot of moving parts to consider. However, because this is a multistep process that involves nontrivial setup, repeated manual testing would quickly end up taking up more of my time than writing these tests did. For that reason, I definitely suggest writing up some integration tests for whatever critical paths you have in your applications.</p>
+
+<p>To make a long story short, the more annoying your workflows are to test manually, the more important it is for you to write automated tests that do the job for you. Also, your critical paths through your application really ought to be covered with automated tests so that they don’t just go up in smoke without you noticing. The good news is that your integration tests needn’t be bulletproof in order to be useful.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>I am trying to reach two audiences at once with this article: those who’d benefit from seeing how bug fixes can be accompanied by tests to help prevent regressions, and those who have experience with Rails testing who can discuss strategies for how to improve the tests I wrote.</p>
+
+<p>To be brutally honest, this newsletter is called Practicing Ruby and not Practicing Rails for a reason: I’m not really a Rails developer. However, I imagine that most of our readers have at least some experience with Rails and that many of you may be much stronger at testing Rails applications than I am. My hope is that you will take this opportunity to learn by teaching and tell me a thing or two about how I could have made my integration tests better.</p>
+
+<p>In particular, I am made uneasy by the large amount of global state that I’m having to manage in my integration tests. Is this a standard practice? If not, what are the alternatives? Am I supposed to use more mock objects to avoid these situations? Should I be designing my applications differently to make them easier to test? If so, what changes could I make to my implementation code to make these tests easier to write? These are all questions that ran through my mind as I was working on this article, and I’d appreciate any links to good resources that might help me answer them, or some advice based on your own experiences.</p>
+
+  </div>
+</body>
+</html>

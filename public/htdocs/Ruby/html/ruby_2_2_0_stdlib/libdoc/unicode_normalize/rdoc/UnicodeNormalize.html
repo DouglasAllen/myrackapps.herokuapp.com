@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : UnicodeNormalize  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:31:42 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: UnicodeNormalize (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>unicode_normalize/normalize.rb</li>      
+            
+          
+          <li class='in-file'>unicode_normalize/tables.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-canonical_ordering_one">::canonical_ordering_one</a></li>
+          
+          <li><a href="#method-c-hangul_comp_one">::hangul_comp_one</a></li>
+          
+          <li><a href="#method-c-hangul_decomp_one">::hangul_decomp_one</a></li>
+          
+          <li><a href="#method-c-nfc_one">::nfc_one</a></li>
+          
+          <li><a href="#method-c-nfd_one">::nfd_one</a></li>
+          
+          <li><a href="#method-c-nfkd_one">::nfkd_one</a></li>
+          
+          <li><a href="#method-c-normalize">::normalize</a></li>
+          
+          <li><a href="#method-c-normalized-3F">::normalized?</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./String.html">String</a></li>
+        
+          
+          
+          <li><a href="./UnicodeNormalize.html">UnicodeNormalize</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">UnicodeNormalize</h1>
+
+    <div id="description" class="description">
+      
+<p>automatically generated by template/unicode_norm_gen.tmpl</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="ACCENTS">ACCENTS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="CLASS_TABLE">CLASS_TABLE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="COMPOSITION_TABLE">COMPOSITION_TABLE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="DECOMPOSITION_TABLE">DECOMPOSITION_TABLE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="KOMPATIBLE_TABLE">KOMPATIBLE_TABLE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="LBASE">LBASE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="LCOUNT">LCOUNT</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="MAX_HASH_LENGTH">MAX_HASH_LENGTH</a></dt>
+          
+          <dd class="description"><p>Constant for max hash capacity to avoid DoS attack</p></dd>
+          
+        
+          <dt><a name="NCOUNT">NCOUNT</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="NF_HASH_C">NF_HASH_C</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="NF_HASH_D">NF_HASH_D</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="NF_HASH_K">NF_HASH_K</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="REGEXP_C">REGEXP_C</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="REGEXP_C_STRING">REGEXP_C_STRING</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="REGEXP_D">REGEXP_D</a></dt>
+          
+          <dd class="description"><p>Regular Expressions and Hash Constants</p></dd>
+          
+        
+          <dt><a name="REGEXP_D_STRING">REGEXP_D_STRING</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="REGEXP_K">REGEXP_K</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="REGEXP_K_STRING">REGEXP_K_STRING</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="SBASE">SBASE</a></dt>
+          
+          <dd class="description"><pre class="ruby"><span class="ruby-constant">Constants</span> <span class="ruby-constant">For</span> <span class="ruby-constant">Hangul</span>
+</pre>
+
+<p>for details such as the meaning of the identifiers below, please see <a
+href="http://www.unicode.org/versions/Unicode7.0.0/ch03.pdf">www.unicode.org/versions/Unicode7.0.0/ch03.pdf</a>,
+pp. 144/145</p></dd>
+          
+        
+          <dt><a name="SCOUNT">SCOUNT</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="TBASE">TBASE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="TCOUNT">TCOUNT</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="UNICODE_ENCODINGS">UNICODE_ENCODINGS</a></dt>
+          
+          <dd class="description"><p>Unicode-based encodings (except UTF-8)</p></dd>
+          
+        
+          <dt><a name="UNICODE_VERSION">UNICODE_VERSION</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="VBASE">VBASE</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="VCOUNT">VCOUNT</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="canonical_ordering_one-method" class="method-detail ">
+          <a name="method-c-canonical_ordering_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">canonical_ordering_one</span><span
+              class="method-args">(string)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Canonical Ordering</p>
+            
+
+            
+            <div class="method-source-code" id="canonical_ordering_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">canonical_ordering_one</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">sorting</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">each_char</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> [<span class="ruby-identifier">c</span>, <span class="ruby-constant">CLASS_TABLE</span>[<span class="ruby-identifier">c</span>]] }
+  (<span class="ruby-identifier">sorting</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">2</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-comment"># almost, but not exactly bubble sort</span>
+    (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">i</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">later_class</span> = <span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>].<span class="ruby-identifier">last</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-value">0</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">later_class</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">later_class</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">last</span>
+        <span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span>], <span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] = <span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>], <span class="ruby-identifier">sorting</span>[<span class="ruby-identifier">j</span>]
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">sorting</span>.<span class="ruby-identifier">collect</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:first</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">''</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- canonical_ordering_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- canonical_ordering_one-method -->
+      
+        <div id="hangul_comp_one-method" class="method-detail ">
+          <a name="method-c-hangul_comp_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">hangul_comp_one</span><span
+              class="method-args">(string)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="hangul_comp_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hangul_comp_one</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">length</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">length</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-value">0</span> <span class="ruby-operator">&lt;=</span> (<span class="ruby-identifier">lead</span> =<span class="ruby-identifier">string</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span><span class="ruby-operator">-</span><span class="ruby-constant">LBASE</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">lead</span>  <span class="ruby-operator">&lt;</span> <span class="ruby-constant">LCOUNT</span> <span class="ruby-keyword">and</span>
+                  <span class="ruby-value">0</span> <span class="ruby-operator">&lt;=</span> (<span class="ruby-identifier">vowel</span>=<span class="ruby-identifier">string</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">ord</span><span class="ruby-operator">-</span><span class="ruby-constant">VBASE</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">vowel</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">VCOUNT</span>
+    <span class="ruby-identifier">lead_vowel</span> = <span class="ruby-constant">SBASE</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">lead</span> <span class="ruby-operator">*</span> <span class="ruby-constant">VCOUNT</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">vowel</span>) <span class="ruby-operator">*</span> <span class="ruby-constant">TCOUNT</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">length</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2</span> <span class="ruby-keyword">and</span> <span class="ruby-value">0</span> <span class="ruby-operator">&lt;=</span> (<span class="ruby-identifier">trail</span>=<span class="ruby-identifier">string</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">ord</span><span class="ruby-operator">-</span><span class="ruby-constant">TBASE</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">trail</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">TCOUNT</span>
+      (<span class="ruby-identifier">lead_vowel</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">trail</span>).<span class="ruby-identifier">chr</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">string</span>[<span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">lead_vowel</span>.<span class="ruby-identifier">chr</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">string</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">string</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- hangul_comp_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- hangul_comp_one-method -->
+      
+        <div id="hangul_decomp_one-method" class="method-detail ">
+          <a name="method-c-hangul_decomp_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">hangul_decomp_one</span><span
+              class="method-args">(target)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Hangul Algorithm</p>
+            
+
+            
+            <div class="method-source-code" id="hangul_decomp_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hangul_decomp_one</span>(<span class="ruby-identifier">target</span>)
+  <span class="ruby-identifier">syllable_index</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">ord</span> <span class="ruby-operator">-</span> <span class="ruby-constant">SBASE</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">target</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">syllable_index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">syllable_index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SCOUNT</span>
+  <span class="ruby-identifier">l</span> = <span class="ruby-constant">LBASE</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">syllable_index</span> <span class="ruby-operator">/</span> <span class="ruby-constant">NCOUNT</span>
+  <span class="ruby-identifier">v</span> = <span class="ruby-constant">VBASE</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">syllable_index</span> <span class="ruby-operator">%</span> <span class="ruby-constant">NCOUNT</span>) <span class="ruby-operator">/</span> <span class="ruby-constant">TCOUNT</span>
+  <span class="ruby-identifier">t</span> = <span class="ruby-constant">TBASE</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">syllable_index</span> <span class="ruby-operator">%</span> <span class="ruby-constant">TCOUNT</span>
+  (<span class="ruby-identifier">t</span><span class="ruby-operator">==</span><span class="ruby-constant">TBASE</span> <span class="ruby-operator">?</span> [<span class="ruby-identifier">l</span>, <span class="ruby-identifier">v</span>] <span class="ruby-operator">:</span> [<span class="ruby-identifier">l</span>, <span class="ruby-identifier">v</span>, <span class="ruby-identifier">t</span>]).<span class="ruby-identifier">pack</span>(<span class="ruby-string">'U*'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">target</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- hangul_decomp_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- hangul_decomp_one-method -->
+      
+        <div id="nfc_one-method" class="method-detail ">
+          <a name="method-c-nfc_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nfc_one</span><span
+              class="method-args">(string)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="nfc_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nfc_one</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">nfd_string</span> = <span class="ruby-identifier">nfd_one</span> <span class="ruby-identifier">string</span>
+  <span class="ruby-identifier">start</span> = <span class="ruby-identifier">nfd_string</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">last_class</span> = <span class="ruby-constant">CLASS_TABLE</span>[<span class="ruby-identifier">start</span>]<span class="ruby-operator">-</span><span class="ruby-value">1</span>
+  <span class="ruby-identifier">accents</span> = <span class="ruby-string">''</span>
+  <span class="ruby-identifier">nfd_string</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">each_char</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">accent</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">accent_class</span> = <span class="ruby-constant">CLASS_TABLE</span>[<span class="ruby-identifier">accent</span>]
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">last_class</span><span class="ruby-operator">&lt;</span><span class="ruby-identifier">accent_class</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">composite</span> = <span class="ruby-constant">COMPOSITION_TABLE</span>[<span class="ruby-identifier">start</span><span class="ruby-operator">+</span><span class="ruby-identifier">accent</span>]
+      <span class="ruby-identifier">start</span> = <span class="ruby-identifier">composite</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">accents</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">accent</span>
+      <span class="ruby-identifier">last_class</span> = <span class="ruby-identifier">accent_class</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">hangul_comp_one</span>(<span class="ruby-identifier">start</span><span class="ruby-operator">+</span><span class="ruby-identifier">accents</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- nfc_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nfc_one-method -->
+      
+        <div id="nfd_one-method" class="method-detail ">
+          <a name="method-c-nfd_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nfd_one</span><span
+              class="method-args">(string)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Normalization Forms for Patterns (not whole Strings)</p>
+            
+
+            
+            <div class="method-source-code" id="nfd_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nfd_one</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">string</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">map!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-constant">DECOMPOSITION_TABLE</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">''</span>)
+  <span class="ruby-identifier">canonical_ordering_one</span>(<span class="ruby-identifier">hangul_decomp_one</span>(<span class="ruby-identifier">string</span>))
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- nfd_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nfd_one-method -->
+      
+        <div id="nfkd_one-method" class="method-detail ">
+          <a name="method-c-nfkd_one"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">nfkd_one</span><span
+              class="method-args">(string)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="nfkd_one-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nfkd_one</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">string</span>.<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">map!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-constant">KOMPATIBLE_TABLE</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">c</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-string">''</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- nfkd_one-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- nfkd_one-method -->
+      
+        <div id="normalize-method" class="method-detail ">
+          <a name="method-c-normalize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">normalize</span><span
+              class="method-args">(string, form = :nfc)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="normalize-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">form</span> = <span class="ruby-value">:nfc</span>)
+  <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encoding</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">encoding</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">form</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfc</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span> <span class="ruby-constant">REGEXP_C</span>, <span class="ruby-constant">NF_HASH_C</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfd</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span> <span class="ruby-constant">REGEXP_D</span>, <span class="ruby-constant">NF_HASH_D</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfkc</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP_K</span>, <span class="ruby-constant">NF_HASH_K</span>).<span class="ruby-identifier">gsub</span> <span class="ruby-constant">REGEXP_C</span>, <span class="ruby-constant">NF_HASH_C</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfkd</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP_K</span>, <span class="ruby-constant">NF_HASH_K</span>).<span class="ruby-identifier">gsub</span> <span class="ruby-constant">REGEXP_D</span>, <span class="ruby-constant">NF_HASH_D</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Invalid normalization form #{form}.&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">US_ASCII</span>
+    <span class="ruby-identifier">string</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">UNICODE_ENCODINGS</span>
+    <span class="ruby-identifier">normalize</span>(<span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>), <span class="ruby-identifier">form</span>).<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">encoding</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">CompatibilityError</span>, <span class="ruby-node">&quot;Unicode Normalization not appropriate for #{encoding}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- normalize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- normalize-method -->
+      
+        <div id="normalized-3F-method" class="method-detail ">
+          <a name="method-c-normalized-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">normalized?</span><span
+              class="method-args">(string, form = :nfc)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="normalized-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File unicode_normalize/normalize.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">normalized?</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">form</span> = <span class="ruby-value">:nfc</span>)
+  <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encoding</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">encoding</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">form</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfc</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">scan</span> <span class="ruby-constant">REGEXP_C</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>  <span class="ruby-keyword">if</span> <span class="ruby-constant">NF_HASH_C</span>[<span class="ruby-identifier">match</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">match</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfd</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">scan</span> <span class="ruby-constant">REGEXP_D</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">match</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>  <span class="ruby-keyword">if</span> <span class="ruby-constant">NF_HASH_D</span>[<span class="ruby-identifier">match</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">match</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfkc</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">normalized?</span>(<span class="ruby-identifier">string</span>, <span class="ruby-value">:nfc</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">!~</span> <span class="ruby-constant">REGEXP_K</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:nfkd</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">normalized?</span>(<span class="ruby-identifier">string</span>, <span class="ruby-value">:nfd</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">!~</span> <span class="ruby-constant">REGEXP_K</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Invalid normalization form #{form}.&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">US_ASCII</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-operator">*</span><span class="ruby-constant">UNICODE_ENCODINGS</span>
+    <span class="ruby-identifier">normalized?</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>), <span class="ruby-identifier">form</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">CompatibilityError</span>, <span class="ruby-node">&quot;Unicode Normalization not appropriate for #{encoding}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- normalized-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- normalized-3F-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_UnicodeNormalize_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_UnicodeNormalize_versioned").load("/associated/2_2_0/UnicodeNormalize.html");</script> <div id='tx_UnicodeNormalize' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_UnicodeNormalize").load("/associated/UnicodeNormalize.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_UnicodeNormalize.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

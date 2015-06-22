@@ -1,0 +1,1149 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article was written by Aaron Patterson, a Ruby
+developer living in Seattle, WA.  He’s been having fun writing Ruby for the past
+7 years, and hopes to share his love of Ruby with you.</em></p>
+
+<p>Hey everybody!  I hope you’re having a great day today!  The sun has peeked out
+of the clouds for a bit today, so I’m doing great!</p>
+
+<p>In this article, we’re going to be looking at some compiler tools for use with Ruby.  In
+order to explore these tools, we’ll write a JSON parser.  I know you’re saying,
+“but Aaron, <em>why</em> write a JSON parser?  Don’t we have like 1,234,567 of them?”.
+Yes!  We do have precisely 1,234,567 JSON parsers available in Ruby!  We’re
+going to parse JSON because the grammar is simple enough that we can finish the
+parser in one sitting, and because the grammar is complex enough that we can
+exercise some of Ruby’s compiler tools.</p>
+
+<p>As you read on, keep in mind that this isn’t an article about parsing JSON, 
+its an article about using parser and compiler tools in Ruby.</p>
+
+<h2 id="the-tools-well-be-using">The Tools We’ll Be Using</h2>
+
+<p>I’m going to be testing this with Ruby 2.1.0, but it should work under any
+flavor of Ruby you wish to try.  Mainly, we will be using a tool called <code>Racc</code>,
+and a tool called <code>StringScanner</code>.</p>
+
+<p><strong>Racc</strong></p>
+
+<p>We’ll be using Racc to generate our parser.  Racc is an LALR parser generator
+similar to YACC.  YACC stands for “Yet Another Compiler Compiler”, but this is
+the Ruby version, hence “Racc”.  Racc converts a grammar file (the “.y” file)
+to a Ruby file that contains state transitions.  These state transitions are
+interpreted by the Racc state machine (or runtime).  The Racc runtime ships
+with Ruby, but the tool that converts the “.y” files to state tables does not.
+In order to install the converter, do <code>gem install racc</code>.</p>
+
+<p>We will write “.y” files, but users cannot run the “.y” files.  First we convert
+them to runnable Ruby code, and ship the runnable Ruby code in our gem.  In
+practical terms, this means that <em>only we install the Racc gem</em>, other users
+do not need it.</p>
+
+<p>Don’t worry if this doesn’t make sense right now.  It will become more clear
+when we get our hands dirty and start playing with code.</p>
+
+<p><strong>StringScanner</strong></p>
+
+<p>Just like the name implies, <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/strscan/rdoc/StringScanner.html">StringScanner</a>
+is a class that helps us scan strings.  It keeps track of where we are
+in the string, and lets us advance forward via regular expressions or by
+character.</p>
+
+<p>Let’s try it out!  First we’ll create a <code>StringScanner</code> object, then we’ll scan
+some letters from it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">strscan</span><span style="color:#710">'</span></span>
+
+ss = <span style="color:#036;font-weight:bold">StringScanner</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">aabbbbb</span><span style="color:#710">'</span></span> <span style="color:#777">#=&gt; #&lt;StringScanner 0/7 @ &quot;aabbb...&quot;&gt;</span>
+ss.scan <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">a</span><span style="color:#404">/</span></span> <span style="color:#777">#=&gt; &quot;a&quot;</span>
+ss.scan <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">a</span><span style="color:#404">/</span></span> <span style="color:#777">#=&gt; &quot;a&quot;</span>
+ss.scan <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">a</span><span style="color:#404">/</span></span> <span style="color:#777">#=&gt; nil</span>
+ss <span style="color:#777">#=&gt; #&lt;StringScanner 2/7 &quot;aa&quot; @ &quot;bbbbb&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Notice that the third call to
+<a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/strscan/rdoc/StringScanner.html#method-i-scan">StringScanner#scan</a>
+resulted in a <code>nil</code>, since the regular expression did not match from the current
+position.  Also note that when you inspect the <code>StringScanner</code> instance, you can
+see the position of the scanner (in this case <code>2/7</code>).</p>
+
+<p>We can also move through the scanner character by character using
+<a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/strscan/rdoc/StringScanner.html#method-i-getch">StringScanner#getch</a>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>ss <span style="color:#777">#=&gt; #&lt;StringScanner 2/7 &quot;aa&quot; @ &quot;bbbbb&quot;&gt;</span>
+ss.getch <span style="color:#777">#=&gt; &quot;b&quot;</span>
+
+ss <span style="color:#777">#=&gt; #&lt;StringScanner 3/7 &quot;aab&quot; @ &quot;bbbb&quot;&gt;</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>getch</code> method returns the next character, and advances the pointer by one.</p>
+
+<p>Now that we’ve covered the basics for scanning strings, let’s take a 
+look at using Racc.</p>
+
+<h2 id="racc-basics">Racc Basics</h2>
+
+<p>As I said earlier, Racc is an LALR parser generator.  You can think of it as a
+system that lets you write limited regular expressions that can execute
+arbitrary code at different points as they’re being evaluated.</p>
+
+<p>Let’s look at an example.  Suppose we have a pattern we want to match:
+<code>(a|c)*abb</code>.  That is, we want to match any number of ‘a’ or ‘c’ followed by
+‘abb’.  To translate this to a Racc grammar, we try to break up this regular
+expression to smaller parts, and assemble them as the whole.  Each part is
+called a “production”.  Let’s try breaking up this regular expression so that we
+can see what the productions look like, and the format of a Racc grammar file.</p>
+
+<p>First we create our grammar file.  At the top of the file, we declare the Ruby
+class to be produced, followed by the <code>rule</code> keyword to indicate that we’re
+going to declare the productions, followed by the <code>end</code> keyword to indicate the
+end of the productions:</p>
+
+<pre><code>class Parser
+rule
+end
+</code></pre>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Next lets add the production for “a</td>
+      <td>c”.  We’ll call this production <code>a_or_c</code>:</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code>class Parser
+rule
+  a_or_c : 'a' | 'c' ;
+end
+</code></pre>
+
+<p>Now we have a rule named <code>a_or_c</code>, and it matches the characters ‘a’ or ‘c’.  In
+order to match one or more <code>a_or_c</code> productions, we’ll add a recursive
+production called <code>a_or_cs</code>:</p>
+
+<pre><code>class Parser
+rule
+  a_or_cs
+    : a_or_cs a_or_c
+    | a_or_c
+    ;
+  a_or_c : 'a' | 'c' ;
+end
+</code></pre>
+
+<p>The <code>a_or_cs</code> production recurses on itself, equivalent to the regular
+expression <code>(a|c)+</code>.  Next, a production for ‘abb’:</p>
+
+<pre><code>class Parser
+rule
+  a_or_cs
+    : a_or_cs a_or_c
+    | a_or_c
+    ;
+  a_or_c : 'a' | 'c' ;
+  abb    : 'a' 'b' 'b' 
+end
+</code></pre>
+
+<p>Finally, the <code>string</code> production ties everything together:</p>
+
+<pre><code>class Parser
+rule
+  string
+    : a_or_cs abb
+    | abb
+    ;
+  a_or_cs
+    : a_or_cs a_or_c
+    | a_or_c
+    ;
+  a_or_c : 'a' | 'c' ;
+  abb    : 'a' 'b' 'b';
+end
+</code></pre>
+
+<p>This final production matches one or more ‘a’ or ‘c’ characters followed by
+‘abb’, or just the string ‘abb’ on its own.  This is equivalent to our original
+regular expression of <code>(a|c)*abb</code>.</p>
+
+<p><strong>But Aaron, this is so long!</strong></p>
+
+<p>I know, it’s much longer than the regular expression version.  However, we can
+add arbitrary Ruby code to be executed at any point in the matching process.
+For example, every time we find just the string “abb”, we can execute some
+arbitrary code:</p>
+
+<pre><code>class Parser
+rule
+  string
+    | a_or_cs abb
+    | abb         
+    ;
+  a_or_cs
+    : a_or_cs a_or_c
+    | a_or_c
+    ;
+  a_or_c : 'a' | 'c' ;
+  abb    : 'a' 'b' 'b' { puts "I found abb!" };
+end
+</code></pre>
+
+<p>The Ruby code we want to execute should be wrapped in curly braces and placed
+after the rule where we want the trigger to fire.</p>
+
+<p>To use this parser, we also need a tokenizer that can break the input
+data into tokens, along with some other boilerplate code. If you are curious
+about how that works, you can check out <a href="https://gist.githubusercontent.com/sandal/9532497/raw/8e3bb03fc24c8f6604f96516bf242e7e13d0f4eb/parser_example.y">this standalone
+example</a>.</p>
+
+<p>Now that we’ve covered the basics, we can use knowledge we have so far to build 
+an event based JSON parser and tokenizer.</p>
+
+<h2 id="building-our-json-parser">Building our JSON Parser</h2>
+
+<p>Our JSON parser is going to consist of three different objects, a parser, a
+tokenizer, and document handler.The parser will be written with a Racc grammar, 
+and will ask the tokenizer for input from the input stream.  Whenever the parser 
+can identify a part of the JSON stream, it will send an event to the document 
+handler.  The document handler is responsible for collecting the JSON 
+information and translating it to a Ruby data structure. When we read in 
+a JSON document, the following method calls are made:</p>
+
+<p><img src="//i.imgur.com/HZ0Sa.png" alt="method calls" /></p>
+
+<p>It’s time to get started building this system. We’ll focus on building the 
+tokenizer first, then work on the grammar for the parser, and finally implement 
+the document handler.</p>
+
+<h2 id="building-the-tokenizer">Building the tokenizer</h2>
+
+<p>Our tokenizer is going to be constructed with an IO object.  We’ll read the
+JSON data from the IO object.  Every time <code>next_token</code> is called, the tokenizer
+will read a token from the input and return it. Our tokenizer will return the 
+following tokens, which we derived from the <a href="http://www.json.org/">JSON spec</a>:</p>
+
+<ul>
+  <li>Strings</li>
+  <li>Numbers</li>
+  <li>True</li>
+  <li>False</li>
+  <li>Null</li>
+</ul>
+
+<p>Complex types like arrays and objects will be determined by the parser.</p>
+
+<p><strong><code>next_token</code> return values:</strong></p>
+
+<p>When the parser calls <code>next_token</code> on the tokenizer, it expects a two element
+array or a <code>nil</code> to be returned.  The first element of the array must contain
+the name of the token, and the second element can be anything (but most people
+just add the matched text).  When a <code>nil</code> is returned, that indicates there are
+no more tokens left in the tokenizer.</p>
+
+<p><strong><code>Tokenizer</code> class definition:</strong></p>
+
+<p>Let’s look at the source for the Tokenizer class and walk through it:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">RJSON</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Tokenizer</span>
+    <span style="color:#036;font-weight:bold">STRING</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">&quot;(?:[^&quot;</span><span style="color:#D20">\\</span><span style="color:#808">]|</span><span style="color:#D20">\\</span><span style="color:#808">(?:[&quot;</span><span style="color:#D20">\\</span><span style="color:#D20">\/</span><span style="color:#808">bfnrt]|u[0-9a-fA-F]{4}))*&quot;</span><span style="color:#404">/</span></span>
+    <span style="color:#036;font-weight:bold">NUMBER</span> = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">-?(?:0|[1-9]</span><span style="color:#D20">\d</span><span style="color:#808">*)(?:</span><span style="color:#D20">\.</span><span style="color:#D20">\d</span><span style="color:#808">+)?(?:[eE][+-]?</span><span style="color:#D20">\d</span><span style="color:#808">+)?</span><span style="color:#404">/</span></span>
+    <span style="color:#069">TRUE</span>   = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">true</span><span style="color:#404">/</span></span>
+    <span style="color:#069">FALSE</span>  = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">false</span><span style="color:#404">/</span></span>
+    <span style="color:#036;font-weight:bold">NULL</span>   = <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">null</span><span style="color:#404">/</span></span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span> io
+      <span style="color:#33B">@ss</span> = <span style="color:#036;font-weight:bold">StringScanner</span>.new io.read
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">next_token</span>
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@ss</span>.eos?
+
+      <span style="color:#080;font-weight:bold">case</span>
+      <span style="color:#080;font-weight:bold">when</span> text = <span style="color:#33B">@ss</span>.scan(<span style="color:#036;font-weight:bold">STRING</span>) <span style="color:#080;font-weight:bold">then</span> [<span style="color:#A60">:STRING</span>, text]
+      <span style="color:#080;font-weight:bold">when</span> text = <span style="color:#33B">@ss</span>.scan(<span style="color:#036;font-weight:bold">NUMBER</span>) <span style="color:#080;font-weight:bold">then</span> [<span style="color:#A60">:NUMBER</span>, text]
+      <span style="color:#080;font-weight:bold">when</span> text = <span style="color:#33B">@ss</span>.scan(<span style="color:#069">TRUE</span>)   <span style="color:#080;font-weight:bold">then</span> [<span style="color:#A60">:TRUE</span>, text]
+      <span style="color:#080;font-weight:bold">when</span> text = <span style="color:#33B">@ss</span>.scan(<span style="color:#069">FALSE</span>)  <span style="color:#080;font-weight:bold">then</span> [<span style="color:#A60">:FALSE</span>, text]
+      <span style="color:#080;font-weight:bold">when</span> text = <span style="color:#33B">@ss</span>.scan(<span style="color:#036;font-weight:bold">NULL</span>)   <span style="color:#080;font-weight:bold">then</span> [<span style="color:#A60">:NULL</span>, text]
+      <span style="color:#080;font-weight:bold">else</span>
+        x = <span style="color:#33B">@ss</span>.getch
+        [x, x]
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>First we declare some regular expressions that we’ll use along with the string
+scanner.  These regular expressions were derived from the definitions on
+<a href="http://www.json.org">json.org</a>.  We instantiate a string scanner object in the
+constructor.  String scanner requires a string on construction, so we read the
+IO object.  However, we could build an alternative tokenizer that reads from the
+IO as needed.</p>
+
+<p>The real work is done in the <code>next_token</code> method.  The <code>next_token</code> method
+returns nil if there is nothing left to read from the string scanner, then it
+tries each regular expression until it finds a match.  If it finds a match, it
+returns the name of the token (for example <code>:STRING</code>) along with the text that
+it matched.  If none of the regular expressions match, then we read one
+character off the scanner, and return that character as both the name of the
+token, and the value.</p>
+
+<p>Let’s try feeding the tokenizer a JSON string and see what tokens come out:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>tok = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Tokenizer</span>.new <span style="color:#036;font-weight:bold">StringIO</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">{&quot;foo&quot;:null}</span><span style="color:#710">'</span></span>
+<span style="color:#777">#=&gt; #&lt;RJSON::Tokenizer:0x007fa8529fbeb8 @ss=#&lt;StringScanner 0/12 @ &quot;{\&quot;foo...&quot;&gt;&gt;</span>
+
+tok.next_token <span style="color:#777">#=&gt; [&quot;{&quot;, &quot;{&quot;]</span>
+tok.next_token <span style="color:#777">#=&gt; [:STRING, &quot;\&quot;foo\&quot;&quot;]</span>
+tok.next_token <span style="color:#777">#=&gt; [&quot;:&quot;, &quot;:&quot;]</span>
+tok.next_token <span style="color:#777">#=&gt; [:NULL, &quot;null&quot;]</span>
+tok.next_token <span style="color:#777">#=&gt; [&quot;}&quot;, &quot;}&quot;]</span>
+tok.next_token <span style="color:#777">#=&gt; nil</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this example, we wrap the JSON string with a <code>StringIO</code> object in order to
+make the string quack like an IO.  Next, we try reading tokens from the
+tokenizer.  Each token the Tokenizer understands has the name as the first value of
+the array, where the unknown tokens have the single character value.  For
+example, string tokens look like this: <code>[:STRING, "foo"]</code>, and unknown tokens
+look like this: <code>['(', '(']</code>.   Finally, <code>nil</code> is returned when the input has
+been exhausted.</p>
+
+<p>This is it for our tokenizer.  The tokenizer is initialized with an <code>IO</code> object, 
+and has only one method: <code>next_token</code>.  Now we can focus on the parser side.</p>
+
+<h2 id="building-the-parser">Building the parser</h2>
+
+<p>We have our tokenizer in place, so now it’s time to assemble the parser.  First
+we need to do a little house keeping.  We’re going to generate a Ruby file from
+our <code>.y</code> file.  The Ruby file needs to be regenerated every time the <code>.y</code> file
+changes.  A Rake task sounds like the perfect solution.</p>
+
+<p><strong>Defining a compile task:</strong></p>
+
+<p>The first thing we’ll add to the Rakefile is a rule that says <em>“translate .y files to
+.rb files using the following command”</em>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>rule <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.rb</span><span style="color:#710">'</span></span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.y</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span> |t|
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">racc -l -o </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>t.name<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>t.source<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Then we’ll add a “compile” task that depends on the generated <code>parser.rb</code> file:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>task <span style="color:#A60">:compile</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">lib/rjson/parser.rb</span><span style="color:#710">'</span></span>
+</pre></div>
+</div>
+</div>
+
+<p>We keep our grammar file as <code>lib/rjson/parser.y</code>, and when we run <code>rake
+compile</code>, rake will automatically translate the <code>.y</code> file to a <code>.rb</code> file using
+Racc.</p>
+
+<p>Finally we make the test task depend on the compile task so that when we run
+<code>rake test</code>, the compiled file is automatically generated:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>task <span style="color:#A60">:test</span> =&gt; <span style="color:#A60">:compile</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now we can compile and test the <code>.y</code> file.</p>
+
+<p><strong>Translating the JSON.org spec:</strong></p>
+
+<p>We’re going to translate the diagrams from <a href="http://www.json.org/">json.org</a> to a
+Racc grammar.  A JSON document should be an object or an array at the root, so
+we’ll make a production called <code>document</code> and it should be an <code>object</code> or an
+<code>array</code>:</p>
+
+<pre><code>rule
+  document
+    : object
+    | array
+    ;
+</code></pre>
+
+<p>Next we need to define <code>array</code>.  The <code>array</code> production can either be empty, or
+contain 1 or more values:</p>
+
+<pre><code>  array
+    : '[' ']'
+    | '[' values ']'
+    ;
+</code></pre>
+
+<p>The <code>values</code> production can be recursively defined as one value, or many values
+separated by a comma:</p>
+
+<pre><code>  values
+    : values ',' value
+    | value
+    ;
+</code></pre>
+
+<p>The JSON spec defines a <code>value</code> as a string, number, object, array, true, false,
+or null.  We’ll define it the same way, but for the immediate values such as
+NUMBER, TRUE, and FALSE, we’ll use the token names we defined in the tokenizer:</p>
+
+<pre><code>  value
+    : string
+    | NUMBER
+    | object
+    | array
+    | TRUE
+    | FALSE
+    | NULL
+    ;
+</code></pre>
+
+<p>Now we need to define the <code>object</code> production.  Objects can be empty, or
+have many pairs:</p>
+
+<pre><code>  object
+    : '{' '}'
+    | '{' pairs '}'
+    ;
+</code></pre>
+
+<p>We can have one or more pairs, and they must be separated with a comma.  We can
+define this recursively like we did with the array values:</p>
+
+<pre><code>  pairs
+    : pairs ',' pair
+    | pair
+    ;
+</code></pre>
+
+<p>Finally, a pair is a string and value separated by a colon:</p>
+
+<pre><code>  pair
+    : string ':' value
+    ;
+</code></pre>
+
+<p>Now we let Racc know about our special tokens by declaring them at the top, and
+we have our full parser:</p>
+
+<pre><code>class RJSON::Parser
+token STRING NUMBER TRUE FALSE NULL
+rule
+  document
+    : object
+    | array
+    ;
+  object
+    : '{' '}'
+    | '{' pairs '}'
+    ;
+  pairs
+    : pairs ',' pair
+    | pair
+    ;
+  pair : string ':' value ;
+  array
+    : '[' ']'
+    | '[' values ']'
+    ;
+  values
+    : values ',' value
+    | value
+    ;
+  value
+    : string
+    | NUMBER
+    | object
+    | array
+    | TRUE
+    | FALSE
+    | NULL
+    ;
+  string : STRING ;
+end
+</code></pre>
+
+<h2 id="building-the-handler">Building the handler</h2>
+
+<p>Our parser will send events to a document handler.  The document handler will
+assemble the beautiful JSON bits in to lovely Ruby object!  Granularity of the
+events is really up to you, but I’m going to go with 5 events:</p>
+
+<ul>
+  <li><code>start_object</code> - called when an object is started</li>
+  <li><code>end_object</code>   - called when an object ends</li>
+  <li><code>start_array</code>  - called when an array is started</li>
+  <li><code>end_array</code>    - called when an array ends</li>
+  <li><code>scalar</code>       - called with terminal values like strings, true, false, etc</li>
+</ul>
+
+<p>With these 5 events, we can assemble a Ruby object that represents the JSON
+object we are parsing.</p>
+
+<p><strong>Keeping track of events</strong></p>
+
+<p>The handler we build will simply keep track of events sent to us by the parser.
+This creates tree-like data structure that we’ll use to convert JSON to Ruby.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">RJSON</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Handler</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+      <span style="color:#33B">@stack</span> = [[<span style="color:#A60">:root</span>]]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start_object</span>
+      push [<span style="color:#A60">:hash</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">start_array</span>
+      push [<span style="color:#A60">:array</span>]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">end_array</span>
+      <span style="color:#33B">@stack</span>.pop
+    <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">alias</span> <span style="color:#A60">:end_object</span> <span style="color:#A60">:end_array</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">scalar</span>(s)
+      <span style="color:#33B">@stack</span>.last &lt;&lt; [<span style="color:#A60">:scalar</span>, s]
+    <span style="color:#080;font-weight:bold">end</span>
+
+    private
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">push</span>(o)
+      <span style="color:#33B">@stack</span>.last &lt;&lt; o
+      <span style="color:#33B">@stack</span> &lt;&lt; o
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When the parser encounters the start of an object, the handler pushes a list on
+the stack with the “hash” symbol to indicate the start of a hash.  Events that
+are children will be added to the parent, then when the object end is
+encountered the parent is popped off the stack.</p>
+
+<p>This may be a little hard to understand, so let’s look at some examples.  If we
+parse this JSON: <code>{"foo":{"bar":null}}</code>, then the <code>@stack</code> variable will look
+like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[[<span style="color:#A60">:root</span>,
+  [<span style="color:#A60">:hash</span>,
+    [<span style="color:#A60">:scalar</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>],
+    [<span style="color:#A60">:hash</span>,
+      [<span style="color:#A60">:scalar</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bar</span><span style="color:#710">&quot;</span></span>],
+      [<span style="color:#A60">:scalar</span>, <span style="color:#069">nil</span>]]]]]
+</pre></div>
+</div>
+</div>
+
+<p>If we parse a JSON array, like this JSON: <code>["foo",null,true]</code>, the <code>@stack</code>
+variable will look like this:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>[[<span style="color:#A60">:root</span>,
+  [<span style="color:#A60">:array</span>,
+    [<span style="color:#A60">:scalar</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo</span><span style="color:#710">&quot;</span></span>],
+    [<span style="color:#A60">:scalar</span>, <span style="color:#069">nil</span>],
+    [<span style="color:#A60">:scalar</span>, <span style="color:#069">true</span>]]]]
+</pre></div>
+</div>
+</div>
+
+<p><strong>Converting to Ruby:</strong></p>
+
+<p>Now that we have an intermediate representation of the JSON, let’s convert it to
+a Ruby data structure.  To convert to a Ruby data structure, we can just write a
+recursive function to process the tree:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">result</span>
+  root = <span style="color:#33B">@stack</span>.first.last
+  process root.first, root.drop(<span style="color:#00D">1</span>)
+<span style="color:#080;font-weight:bold">end</span>
+
+private
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">process</span> type, rest
+  <span style="color:#080;font-weight:bold">case</span> type
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:array</span>
+    rest.map { |x| process(x.first, x.drop(<span style="color:#00D">1</span>)) }
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:hash</span>
+    <span style="color:#036;font-weight:bold">Hash</span>[rest.map { |x|
+      process(x.first, x.drop(<span style="color:#00D">1</span>))
+    }.each_slice(<span style="color:#00D">2</span>).to_a]
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:scalar</span>
+    rest.first
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The <code>result</code> method removes the <code>root</code> node and sends the rest to the <code>process</code>
+method.  When the <code>process</code> method encounters a <code>hash</code> symbol it builds a hash
+using the children by recursively calling <code>process</code>.  Similarly, when an
+<code>array</code> symbol is found, an array is constructed recursively with the children.
+Scalar values are simply returned (which prevents an infinite loop).  Now if we
+call <code>result</code> on our handler, we can get the Ruby object back.</p>
+
+<p>Let’s see it in action:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rjson</span><span style="color:#710">'</span></span>
+
+input   = <span style="color:#036;font-weight:bold">StringIO</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">{&quot;foo&quot;:&quot;bar&quot;}</span><span style="color:#710">'</span></span>
+tok     = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Tokenizer</span>.new input
+parser  = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Parser</span>.new tok
+handler = parser.parse
+handler.result <span style="color:#777"># =&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;}</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Cleaning up the RJSON API:</strong></p>
+
+<p>We have a fully function JSON parser.  Unfortunately, the API is not very
+friendly.  Let’s take the previous example, and package it up in a method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">RJSON</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">load</span>(json)
+    input   = <span style="color:#036;font-weight:bold">StringIO</span>.new json
+    tok     = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Tokenizer</span>.new input
+    parser  = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Parser</span>.new tok
+    handler = parser.parse
+    handler.result
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Since we built our JSON parser to deal with IO from the start, we can add
+another method for people who would like to pass a socket or file handle:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">RJSON</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">load_io</span>(input)
+    tok     = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Tokenizer</span>.new input
+    parser  = <span style="color:#036;font-weight:bold">RJSON</span>::<span style="color:#036;font-weight:bold">Parser</span>.new tok
+    handler = parser.parse
+    handler.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">load</span>(json)
+    load_io <span style="color:#036;font-weight:bold">StringIO</span>.new json
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now the interface is a bit more friendly:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rjson</span><span style="color:#710">'</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">open-uri</span><span style="color:#710">'</span></span>
+
+<span style="color:#036;font-weight:bold">RJSON</span>.load <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">{&quot;foo&quot;:&quot;bar&quot;}</span><span style="color:#710">'</span></span> <span style="color:#777"># =&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;}</span>
+<span style="color:#036;font-weight:bold">RJSON</span>.load_io open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http://example.org/some_endpoint.json</span><span style="color:#710">'</span></span>)
+</pre></div>
+</div>
+</div>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>So we’ve finished our JSON parser.  Along the way we’ve studied compiler
+technology including the basics of parsers, tokenizers, and even interpreters
+(yes, we actually interpreted our JSON!).  You should be proud of yourself!</p>
+
+<p>The JSON parser we’ve built is versatile. We can:</p>
+
+<ul>
+  <li>Use it in an event driven manner by implementing a Handler object</li>
+  <li>Use a simpler API and just feed strings</li>
+  <li>Stream in JSON via IO objects</li>
+</ul>
+
+<p>I hope this article has given you the confidence to start playing with parser
+and compiler technology in Ruby. Please leave a comment if you have any
+questions for me.</p>
+
+<h2 id="post-script">Post Script</h2>
+
+<p>I want to follow up with a few bits of minutiae that I omitted to maintain
+clarity in the article:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/tenderlove/rjson/blob/master/lib/rjson/parser.y">Here</a> is
+the final grammar file for our JSON parser.  Notice 
+the <a href="https://github.com/tenderlove/rjson/blob/master/lib/rjson/parser.y#L53">—- inner section in the .y file</a>.
+Anything in that section is included <em>inside</em> the generated parser class.  This
+is how we get the handler object to be passed to the parser.</p>
+  </li>
+  <li>
+    <p>Our parser actually <a href="https://github.com/tenderlove/rjson/blob/master/lib/rjson/parser.y#L42-50">does the
+translation</a>
+of JSON terminal nodes to Ruby.  So we’re actually doing the translation of JSON
+to Ruby in two places: the parser <em>and</em> the document handler.  The document
+handler deals with structure where the parser deals with immediate values (like
+true, false, etc).  An argument could be made that none or all of this
+translation <em>should</em> be done in the parser.</p>
+  </li>
+  <li>
+    <p>Finally, I mentioned that <a href="https://github.com/tenderlove/rjson/blob/master/lib/rjson/tokenizer.rb">the
+tokenizer</a>
+buffers.  I implemented a simple non-buffering tokenizer that you can read
+<a href="https://github.com/tenderlove/rjson/blob/master/lib/rjson/stream_tokenizer.rb">here</a>.
+It’s pretty messy, but I think could be cleaned up by using a state machine.</p>
+  </li>
+</ul>
+
+<p>That’s all. Thanks for reading! &lt;3 &lt;3 &lt;3</p>
+
+<blockquote>
+  <p>NOTE: If you’d like to learn more about this topic, consider doing the Practicing Ruby self-guided course on <a href="https://practicingruby.com/articles/study-guide-1?u=dc2ab0f9bb">Streams, Files, and Sockets</a>. You’ve already completed one of its reading exercises by working through this article!</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

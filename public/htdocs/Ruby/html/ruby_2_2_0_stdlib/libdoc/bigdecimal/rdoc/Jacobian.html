@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Module : Jacobian  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:21:22 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = ''  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+    
+    
+  <!-- rel_prefix = '.'   asset_rel_prefix = ''  --> 
+  <title>Module: Jacobian (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href=".css/obf.css"  -->
+  <link rel="stylesheet" href="css/inuit.css" >
+  <link rel="stylesheet" href="css/grid.inuit.css" >
+  <link rel="stylesheet" href="css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="css/rdoc.css" type="text/css" >
+
+  <script src="/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="/js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="module rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>bigdecimal/lib/bigdecimal/jacobian.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-dfdxi">#dfdxi</a></li>
+          
+          <li><a href="#method-i-isEqual">#isEqual</a></li>
+          
+          <li><a href="#method-i-jacobian">#jacobian</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="./BigDecimal.html">BigDecimal</a></li>
+        
+          
+          
+          <li><a href="./BigMath.html">BigMath</a></li>
+        
+          
+          
+          <li><a href="./Float.html">Float</a></li>
+        
+          
+          
+          <li><a href="./Integer.html">Integer</a></li>
+        
+          
+          
+          <li><a href="./Jacobian.html">Jacobian</a></li>
+        
+          
+          
+          <li><a href="./Kernel.html">Kernel</a></li>
+        
+          
+          
+          <li><a href="./LUSolve.html">LUSolve</a></li>
+        
+          
+          
+          <li><a href="./Newton.html">Newton</a></li>
+        
+          
+          
+          <li><a href="./Rational.html">Rational</a></li>
+        
+          
+          
+          <li><a href="./String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="module">Jacobian</h1>
+
+    <div id="description" class="description">
+      
+<p>require ‘bigdecimal/jacobian’</p>
+
+<p>Provides methods to compute the <a href="Jacobian.html">Jacobian</a> matrix
+of a set of equations at a point x. In the methods below:</p>
+
+<p>f is an Object which is used to compute the <a
+href="Jacobian.html">Jacobian</a> matrix of the equations. It must provide
+the following methods:</p>
+<dl class="rdoc-list note-list"><dt>f.values(x)
+<dd>
+<p>returns the values of all functions at x</p>
+</dd><dt>f.zero
+<dd>
+<p>returns 0.0</p>
+</dd><dt>f.one
+<dd>
+<p>returns 1.0</p>
+</dd><dt>f.two
+<dd>
+<p>returns 2.0</p>
+</dd><dt>f.ten
+<dd>
+<p>returns 10.0</p>
+</dd><dt>f.eps
+<dd>
+<p>returns the convergence criterion (epsilon value) used to determine whether
+two values are considered equal. If |a-b| &lt; epsilon, the two values are
+considered equal.</p>
+</dd></dl>
+
+<p>x is the point at which to compute the <a
+href="Jacobian.html">Jacobian</a>.</p>
+
+<p>fx is f.values(x).</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="dfdxi-method" class="method-detail ">
+          <a name="method-i-dfdxi"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">dfdxi</span><span
+              class="method-args">(f,fx,x,i)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Computes the derivative of <a href="i">f</a> at <a href="i">x</a>. fx is
+the value of f at x.</p>
+            
+
+            
+            <div class="method-source-code" id="dfdxi-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File bigdecimal/lib/bigdecimal/jacobian.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dfdxi</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">fx</span>,<span class="ruby-identifier">x</span>,<span class="ruby-identifier">i</span>)
+  <span class="ruby-identifier">nRetry</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">n</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">xSave</span> = <span class="ruby-identifier">x</span>[<span class="ruby-identifier">i</span>]
+  <span class="ruby-identifier">ok</span> = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">ratio</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">ten</span><span class="ruby-operator">*</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">ten</span><span class="ruby-operator">*</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">ten</span>
+  <span class="ruby-identifier">dx</span> = <span class="ruby-identifier">x</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">abs</span><span class="ruby-operator">/</span><span class="ruby-identifier">ratio</span>
+  <span class="ruby-identifier">dx</span> = <span class="ruby-identifier">fx</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">abs</span><span class="ruby-operator">/</span><span class="ruby-identifier">ratio</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">isEqual</span>(<span class="ruby-identifier">dx</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">eps</span>)
+  <span class="ruby-identifier">dx</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">one</span><span class="ruby-operator">/</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">ten</span>     <span class="ruby-keyword">if</span> <span class="ruby-identifier">isEqual</span>(<span class="ruby-identifier">dx</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">eps</span>)
+  <span class="ruby-keyword">until</span> <span class="ruby-identifier">ok</span><span class="ruby-operator">&gt;</span><span class="ruby-value">0</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">deriv</span> = []
+    <span class="ruby-identifier">nRetry</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">nRetry</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Singular Jacobian matrix. No change at x[&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;]&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">dx</span> = <span class="ruby-identifier">dx</span><span class="ruby-operator">*</span><span class="ruby-identifier">f</span>.<span class="ruby-identifier">two</span>
+    <span class="ruby-identifier">x</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">dx</span>
+    <span class="ruby-identifier">fxNew</span> = <span class="ruby-identifier">f</span>.<span class="ruby-identifier">values</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">n</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">isEqual</span>(<span class="ruby-identifier">fxNew</span>[<span class="ruby-identifier">j</span>],<span class="ruby-identifier">fx</span>[<span class="ruby-identifier">j</span>],<span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>,<span class="ruby-identifier">f</span>.<span class="ruby-identifier">eps</span>) <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">ok</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">deriv</span> <span class="ruby-operator">&lt;&lt;=</span> (<span class="ruby-identifier">fxNew</span>[<span class="ruby-identifier">j</span>]<span class="ruby-operator">-</span><span class="ruby-identifier">fx</span>[<span class="ruby-identifier">j</span>])<span class="ruby-operator">/</span><span class="ruby-identifier">dx</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">deriv</span> <span class="ruby-operator">&lt;&lt;=</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">zero</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">x</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">xSave</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">deriv</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- dfdxi-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- dfdxi-method -->
+      
+        <div id="isEqual-method" class="method-detail ">
+          <a name="method-i-isEqual"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">isEqual</span><span
+              class="method-args">(a,b,zero=0.0,e=1.0e-8)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Determines the equality of two numbers by comparing to zero, or using the
+epsilon value</p>
+            
+
+            
+            <div class="method-source-code" id="isEqual-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File bigdecimal/lib/bigdecimal/jacobian.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">isEqual</span>(<span class="ruby-identifier">a</span>,<span class="ruby-identifier">b</span>,<span class="ruby-identifier">zero</span>=<span class="ruby-value">0.0</span>,<span class="ruby-identifier">e</span>=<span class="ruby-value">1.0e-8</span>)
+  <span class="ruby-identifier">aa</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">abs</span>
+  <span class="ruby-identifier">bb</span> = <span class="ruby-identifier">b</span>.<span class="ruby-identifier">abs</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">aa</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">zero</span> <span class="ruby-operator">&amp;&amp;</span>  <span class="ruby-identifier">bb</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">zero</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">a</span><span class="ruby-operator">-</span><span class="ruby-identifier">b</span>)<span class="ruby-operator">/</span>(<span class="ruby-identifier">aa</span><span class="ruby-operator">+</span><span class="ruby-identifier">bb</span>)).<span class="ruby-identifier">abs</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- isEqual-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- isEqual-method -->
+      
+        <div id="jacobian-method" class="method-detail ">
+          <a name="method-i-jacobian"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">jacobian</span><span
+              class="method-args">(f,fx,x)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Computes the <a href="Jacobian.html">Jacobian</a> of f at x. fx is the
+value of f at x.</p>
+            
+
+            
+            <div class="method-source-code" id="jacobian-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File bigdecimal/lib/bigdecimal/jacobian.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">jacobian</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">fx</span>,<span class="ruby-identifier">x</span>)
+  <span class="ruby-identifier">n</span> = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-identifier">dfdx</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">n</span><span class="ruby-operator">*</span><span class="ruby-identifier">n</span>)
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">n</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">df</span> = <span class="ruby-identifier">dfdxi</span>(<span class="ruby-identifier">f</span>,<span class="ruby-identifier">fx</span>,<span class="ruby-identifier">x</span>,<span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">n</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">dfdx</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">*</span><span class="ruby-identifier">n</span><span class="ruby-operator">+</span><span class="ruby-identifier">i</span>] = <span class="ruby-identifier">df</span>[<span class="ruby-identifier">j</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">dfdx</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- jacobian-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- jacobian-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_Jacobian_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Jacobian_versioned").load("/associated/2_2_0/Jacobian.html");</script> <div id='tx_Jacobian' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Jacobian").load("/associated/Jacobian.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_Jacobian.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

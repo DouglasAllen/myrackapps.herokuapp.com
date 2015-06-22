@@ -1,0 +1,643 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>Today, I’ve got a handful of neat examples to share, each which demonstrates an interesting use of duck typing. We’ll start by looking a feature built into Ruby’s core, and then look at a few examples from other open source Ruby projects.</p>
+
+<h3 id="type-coercion-ruby-style">Type Coercion, Ruby-style</h3>
+
+<p>Many dynamically typed languages that offer both integer and floating point
+arithmetic are smart about doing the right thing based on whether or not any
+floats are used in a given expression. While I assume that you are already 
+familiar with Ruby’s behavior, the following example demonstrates what 
+I’ve just described.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#00D">3</span>/<span style="color:#00D">2</span>
+=&gt; <span style="color:#00D">1</span>
+&gt;&gt; <span style="color:#00D">3</span>/<span style="color:#60E">2.0</span>
+=&gt; <span style="color:#60E">1.5</span>
+</pre></div>
+</div>
+</div>
+
+<p>This is an obvious candidate for implementation level special casing, but since all the primitive numeric types in Ruby are actually objects, Ruby prefers something a bit more flexible and consistent. What actually happens when an arithmetic operation is performed on a Ruby number is that a method called <code>coerce()</code> is called to do any necessary type modifications so that the computations work as expected. The irb session shown below demonstrates calling <code>coerce()</code> directly on both a <code>Fixnum</code> and a <code>Float</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; <span style="color:#00D">3</span>.coerce(<span style="color:#00D">2</span>)
+=&gt; [<span style="color:#00D">2</span>, <span style="color:#00D">3</span>]
+&gt;&gt; <span style="color:#00D">3</span>.coerce(<span style="color:#60E">2.0</span>)
+=&gt; [<span style="color:#60E">2.0</span>, <span style="color:#60E">3.0</span>]
+&gt;&gt; <span style="color:#60E">3.0</span>.coerce(<span style="color:#00D">3</span>)
+=&gt; [<span style="color:#60E">3.0</span>, <span style="color:#60E">3.0</span>]
+&gt;&gt; <span style="color:#60E">3.0</span>.coerce(<span style="color:#60E">2.0</span>)
+=&gt; [<span style="color:#60E">2.0</span>, <span style="color:#60E">3.0</span>]
+</pre></div>
+</div>
+</div>
+
+<p>Note that <code>Fixnum#coerce</code> only returns an array of Float values when its argument is a Float, but that <code>Float#coerce</code> always does this conversion. While what is shown above only demonstrates how floating point coercion works, we can actually create our own objects that duck type to Ruby numbers by simply defining a <code>coerce()</code> method on them.</p>
+
+<p>To demonstrate this, I have created a partial implementation of a <code>BinaryInteger</code> object. A <code>BinaryInteger</code> is meant to act similar to Ruby’s <code>Fixnum</code> objects but display itself to the user in binary notation. Here’s an example of how such an object might be used:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; int = <span style="color:#036;font-weight:bold">BinaryInteger</span>.new(<span style="color:#00D">40</span>)
+=&gt; <span style="color:#00D">0b101000</span>
+&gt;&gt; <span style="color:#00D">2</span> + int
+=&gt; <span style="color:#00D">0b101010</span>
+&gt;&gt; <span style="color:#60E">2.5</span> + int
+<span style="color:#606">TypeError</span>: <span style="color:#036;font-weight:bold">BinaryInteger</span> can<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">t be coerced into Float
+        from ./binary_integer.rb:49:in `+</span><span style="color:#710">'</span></span>
+        from (irb):<span style="color:#00D">4</span>
+        from :<span style="color:#00D">0</span>
+</pre></div>
+</div>
+</div>
+
+<p>The following class definition does not quite produce a complete <code>Numeric</code> work-alike but it is sufficient for making the previous example work as shown. It also serves to demonstrate that <code>coerce()</code> is indeed the magic that ties all of Ruby’s arithmetic operations together.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">BinaryInteger</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(value)
+    <span style="color:#33B">@value</span> = value
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_accessor <span style="color:#A60">:value</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">integer?</span>
+    <span style="color:#069">true</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">+</span>(other)
+    a,b = coerce(other) <span style="color:#777"># use our own coerce here</span>
+    <span style="color:#069">self</span>.class.new(a.value + b.value)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">coerce</span>(other)
+    raise <span style="color:#036;font-weight:bold">TypeError</span> <span style="color:#080;font-weight:bold">unless</span> other.integer? 
+
+    <span style="color:#080;font-weight:bold">if</span> other.respond_to?(<span style="color:#A60">:value</span>)
+      [<span style="color:#069">self</span>, other] <span style="color:#777"># no coercion needed</span>
+    <span style="color:#080;font-weight:bold">else</span>
+      [<span style="color:#069">self</span>, <span style="color:#069">self</span>.class.new(other)]
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">inspect</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0b</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span><span style="color:#33B">@value</span>.to_s(<span style="color:#00D">2</span>)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While it can be tricky to puzzle through how <code>coerce()</code> should work, since you can’t know in advance what the calling object will be, it is a lot more dynamic than enforcing class based typing. Getting in the practice of thinking in terms of the interactions between the objects in your project rather than their static definitions can lead to some very good design insights.</p>
+
+<p>In addition to the <code>coerce()</code> method for arithmetic, Ruby uses a whole score of other coercion hooks, including <code>to_int</code>, <code>to_str</code>, and <code>to_ary</code>. These methods are called on the arguments passed to a number of <code>Fixnum</code>, <code>String</code>, and <code>Array</code> methods. The neat thing is that there is no strict requirement that these methods actually return <code>Fixnum</code>, <code>String</code>, or <code>Array</code> objects, as long as they act close enough to the real thing where it counts (i.e. for whatever messages that get sent to them).</p>
+
+<p>We could probably spend all day going through other examples of where Ruby uses duck typing for coercion, for extension points, and tons of other uses. This is especially true when you consider that almost every mixin relies on a form of duck typing. For example, all functionality in <code>Enumerable</code> can work with anything that implements a sensible <code>each()</code> method. Similarly a suitable <code>&lt;=&gt;</code> operator unlocks all that <code>Comparable</code> has to offer. In both the core and standard library, you will find plenty of examples of this sort of design.</p>
+
+<p>The key point to take away from these observations is that duck-typed APIs aren’t some obscure edge case for the extensibility-obsessed, but instead, something baked into Ruby’s philosophy from the ground up. This means that you can and should imitate this style in your own libraries when it makes sense to do so.</p>
+
+<p>We’ll now take a look at a pair of examples from the wild, one from my own project (Prawn), and another from Aaron Patterson’s Rails 3.1 performance tuning adventures. Both involve the use of duck typing not for the purpose of infinite flexibility, but for addressing practical problems that come up in most moderately complex projects.</p>
+
+<h3 id="duck-typing-to-avoid-scope-creep">Duck typing to avoid scope creep</h3>
+
+<p>The first example of duck typing in actual Ruby projects that I want to share is actually quite similar to the contrived <code>read_data()</code> example I shared on Tuesday. Today, rather than showing you the usage code first, I want you to take a look at the implementation and try to spot the usage of duck typing and guess at what it gains us before reading on.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">image</span>(file, options={})
+  <span style="color:#036;font-weight:bold">Prawn</span>.verify_options [<span style="color:#A60">:at</span>, <span style="color:#A60">:position</span>, <span style="color:#A60">:vposition</span>, <span style="color:#A60">:height</span>,
+                        <span style="color:#A60">:width</span>, <span style="color:#A60">:scale</span>, <span style="color:#A60">:fit</span>], options
+
+  <span style="color:#080;font-weight:bold">if</span> file.respond_to?(<span style="color:#A60">:read</span>)
+    image_content = file.read
+  <span style="color:#080;font-weight:bold">else</span>
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>file<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> not found</span><span style="color:#710">&quot;</span></span> <span style="color:#080;font-weight:bold">unless</span> <span style="color:#036;font-weight:bold">File</span>.file?(file)
+    image_content = <span style="color:#036;font-weight:bold">File</span>.binread(file)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># additional implementation details omitted.</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># FULL IMPLEMENTATION OF image() at:</span>
+<span style="color:#777"># https://github.com/sandal/prawn/blob/master/lib/prawn/images.rb#L65</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you guessed this code is used to make it so that the <code>image()</code> method can be called with either a file name or a file handle, you had the right idea. It does all of the things we discussed yesterday, allowing the use of this code with <code>StringIO</code>, <code>Tempfile</code>, any mock object that implements a <code>read()</code> method, etc. But the really interesting use case is the one that we actually wrote this feature for, shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#036;font-weight:bold">Prawn</span>::<span style="color:#036;font-weight:bold">Document</span>.generate(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">remote_images.pdf</span><span style="color:#710">&quot;</span></span>) <span style="color:#080;font-weight:bold">do</span>
+  image open(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://prawn.majesticseacreature.com/images/prawn.png</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Through the use of <code>open-uri</code>, our duck-typed image method provides a nice way
+of rendering remote content! While this might not have been an easy feature to
+guess without knowing a bit about Prawn, it represents the elegant compromise that such an implementation affords us. Adding support for remote images was something that our users often asked for, but we wanted to avoid giving people the impression that Prawn was web-aware, and didn’t want to support a special case for this sort of logic, as it’d require either an API change or an ugly hack to determine whether the provided string was either a URI or a file name.</p>
+
+<p>The approach of accepting anything with a <code>read()</code> method combined with Ruby’s standard library <code>open-uri</code> made for something that is easy to document and easy for our users to remember. While a simple hack, I was very satisfied with how this design turned out because it seemed to mostly eliminate the problem for our users while simultaneously avoiding some overly complex implementation code that might be brittle and hard to test.</p>
+
+<p>These sort of tough design decisions are certainly not unique to Prawn, so we can now turn our eyes to Aaron Patterson’s performance optimization work on Rails 3.1.</p>
+
+<h3 id="duck-typing-for-performance-tuning">Duck typing for performance tuning</h3>
+
+<p>One area Aaron Patterson found was a hotspot for many Rails apps are <code>ActiveRecord</code> scopes, which allow the users to create custom filters. For example, consider the following example which filters by email address.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Comment</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:with_email</span>, lambda { |email|
+    where(<span style="color:#A60">:email</span> =&gt; email)
+  }
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#777"># Above code provides functionality shown below</span>
+<span style="color:#036;font-weight:bold">User</span>.with_email(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gregory.t.brown@gmail.com</span><span style="color:#710">&quot;</span></span>).count <span style="color:#777">#=&gt; 1</span>
+</pre></div>
+</div>
+</div>
+
+<p>The block syntax is nice and clean for simple things, but can get a bit unwieldy for complex logic. For example, if we wanted to throw in validations for the entered email addresses, our block would end up getting a bit ugly unless we implemented some private class methods to help out. If you’re thinking that private class methods sound weird and might be a bit of a code smell, they are, and that’s one indication that this API needs to be more flexible than what it is.</p>
+
+<p>That said, Aaron was on a performance tuning mission, not an API overhaul. The
+problem he found with the API was initially not an aesthetic one but an
+implementation detail: Executing code stored in a <code>Proc</code> object is considerably
+more computationally expensive than an ordinary method call. While this isn’t
+likely to be a bottleneck in ordinary situations, it is common for high traffic
+Rails applications to really hammer on their scopes, since they’re used for
+filtering the data that is presented to users. The key insight Aaron had was
+that making some other object quack like a <code>Proc</code> is as easy as implementing 
+a <code>call()</code> method.</p>
+
+<p>Shown below is the one line patch that changes the behavior of <code>scope()</code> to
+allow the use of any object that implements a meaningful <code>call()</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#777"># BEFORE</span>
+options = filter.is_a?(<span style="color:#036;font-weight:bold">Proc</span>) ? filter.call(*args) : filter
+
+<span style="color:#777"># AFTER</span>
+options = filter.respond_to?(<span style="color:#A60">:call</span>) ? filter.call(*args) : filter
+</pre></div>
+</div>
+</div>
+
+<p>With this nearly microscopic change, we can write a faster <code>with_email()</code> scope that also leaves room for complex logic such as validations in its own neatly defined namespace. The following definition is functionally equivalent to our original code that passes a <code>Proc</code> to <code>scope()</code>, but has a lot more potential for future growth.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">EmailFilter</span> 
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(model_class)
+    <span style="color:#33B">@model_class</span> = model_class
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">call</span>(email)
+    validate_address(email)
+    <span style="color:#33B">@model_class</span>.where(<span style="color:#A60">:email</span> =&gt; email)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">validate_address</span>(email)
+    <span style="color:#777"># do some validation magic here</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">User</span> &lt; <span style="color:#036;font-weight:bold">ActiveRecord</span>::<span style="color:#036;font-weight:bold">Base</span>
+  scope <span style="color:#A60">:with_email</span>, <span style="color:#036;font-weight:bold">EmailFilter</span>.new(<span style="color:#069">self</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The nice thing about this patch is that nothing is lost by doing things this way. Often times, when moving from explicit class checking to behavior based checks, the only overhead is that debugging can be a bit more complicated since there is no easy way to verify that an object implementing <code>call()</code> actually does so in a sensible way. However, with adequate unit tests and decent documentation, this kind of fuzziness is rarely a big enough problem in practical applications to outweigh the benefits that come along with utilizing this technique.</p>
+
+<p>Aside from the superficial improvements that come from converting <code>Proc</code> calls
+to method calls, the general approach of writing duck typed interfaces tends to increase the potential for further performance improvements. When code is written to explicitly avoid assuming too much about how objects are implemented, it is easy to swap out objects that are more performant in edge cases, or implement aggressive caching where appropriate. While it may seem counterintuitive, the same dynamic nature that makes Ruby slow at the implementation level makes a wide range of algorithmic improvements possible. We unfortunately won’t be exploring this topic today, but it would be a good topic for a future issue.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/047-issue-15-duck-typing-2.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

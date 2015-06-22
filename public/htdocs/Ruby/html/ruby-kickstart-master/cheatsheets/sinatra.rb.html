@@ -1,0 +1,623 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers">  <a href="#n1" name="n1">1</a></span><span style="color:#777"># a good book http://sinatra-book.gittr.com/       (note that most of it appears to be good, but some of it appears to be outdated)</span>
+<span class="line-numbers">  <a href="#n2" name="n2">2</a></span><span style="color:#777"># docs http://railsapi.com/doc/sinatra-v1.1.2/     (I really like example based docs like this one -- almost feels like another cheetsheat)</span>
+<span class="line-numbers">  <a href="#n3" name="n3">3</a></span>
+<span class="line-numbers">  <a href="#n4" name="n4">4</a></span>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rubygems</span><span style="color:#710">'</span></span>
+<span class="line-numbers">  <a href="#n5" name="n5">5</a></span>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">sinatra/base</span><span style="color:#710">'</span></span>
+<span class="line-numbers">  <a href="#n6" name="n6">6</a></span>extend <span style="color:#036;font-weight:bold">Sinatra</span>::<span style="color:#036;font-weight:bold">Delegator</span>
+<span class="line-numbers">  <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers">  <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers">  <a href="#n9" name="n9">9</a></span><span style="color:#777"># =====  To Create a Sinatra App  =====</span>
+<span class="line-numbers"> <strong><a href="#n10" name="n10">10</a></strong></span><span style="color:#777"># Make a simple text file that ends with .rb</span>
+<span class="line-numbers"> <a href="#n11" name="n11">11</a></span><span style="color:#777"># Require rubygems and sinatra</span>
+<span class="line-numbers"> <a href="#n12" name="n12">12</a></span><span style="color:#777"># Define your http methods, their routes and responses</span>
+<span class="line-numbers"> <a href="#n13" name="n13">13</a></span><span style="color:#777"># Run it like any Ruby file (if shotgun works on your computer, try with that)</span>
+<span class="line-numbers"> <a href="#n14" name="n14">14</a></span>
+<span class="line-numbers"> <a href="#n15" name="n15">15</a></span>
+<span class="line-numbers"> <a href="#n16" name="n16">16</a></span><span style="color:#777"># =====  HTTP Methods  =====</span>
+<span class="line-numbers"> <a href="#n17" name="n17">17</a></span><span style="color:#777"># get , post , put , delete</span>
+<span class="line-numbers"> <a href="#n18" name="n18">18</a></span><span style="color:#777"># To define one, simply type which one it is (correlates to a method invocation)</span>
+<span class="line-numbers"> <a href="#n19" name="n19">19</a></span><span style="color:#777"># Then pass it the route you wish to match, and the block that defines the code to execute when that route is matched</span>
+<span class="line-numbers"> <strong><a href="#n20" name="n20">20</a></strong></span>
+<span class="line-numbers"> <a href="#n21" name="n21">21</a></span><span style="color:#777"># Now when someone makes a get request to 'yourapp.com/home' it will return 'hello world'</span>
+<span class="line-numbers"> <a href="#n22" name="n22">22</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/home</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n23" name="n23">23</a></span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hello world!</span><span style="color:#710">'</span></span>
+<span class="line-numbers"> <a href="#n24" name="n24">24</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n25" name="n25">25</a></span>
+<span class="line-numbers"> <a href="#n26" name="n26">26</a></span>
+<span class="line-numbers"> <a href="#n27" name="n27">27</a></span><span style="color:#777"># =====  Routes  =====</span>
+<span class="line-numbers"> <a href="#n28" name="n28">28</a></span><span style="color:#777"># Routes are compiled into regular expressions.</span>
+<span class="line-numbers"> <a href="#n29" name="n29">29</a></span><span style="color:#777"># You can place named variables in the route by listing them like symbols</span>
+<span class="line-numbers"> <strong><a href="#n30" name="n30">30</a></strong></span><span style="color:#777"># '/hello/:name' will take the name out of the url and make it available in the params hash</span>
+<span class="line-numbers"> <a href="#n31" name="n31">31</a></span><span style="color:#777"># Routes are relative to the path your app is mounted on (probably the root of your application, ie localhost)</span>
+<span class="line-numbers"> <a href="#n32" name="n32">32</a></span>
+<span class="line-numbers"> <a href="#n33" name="n33">33</a></span><span style="color:#777"># what do the routes look like when they get compiled?</span>
+<span class="line-numbers"> <a href="#n34" name="n34">34</a></span><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Sinatra</span>
+<span class="line-numbers"> <a href="#n35" name="n35">35</a></span>  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Base</span>
+<span class="line-numbers"> <a href="#n36" name="n36">36</a></span>    <span style="color:#777"># Pure routes</span>
+<span class="line-numbers"> <a href="#n37" name="n37">37</a></span>    compile <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span>                               <span style="color:#777"># =&gt; [/^\/$/, []]</span>
+<span class="line-numbers"> <a href="#n38" name="n38">38</a></span>    compile <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors/brad-pitt</span><span style="color:#710">'</span></span>               <span style="color:#777"># =&gt; [/^\/actors\/brad(?:\-|%2D)pitt$/, []]</span>
+<span class="line-numbers"> <a href="#n39" name="n39">39</a></span>    
+<span class="line-numbers"> <strong><a href="#n40" name="n40">40</a></strong></span>    <span style="color:#777"># Routes with variables - notice it replaces the variable name with a capture group, </span>
+<span class="line-numbers"> <a href="#n41" name="n41">41</a></span>    <span style="color:#777"># And it keeps track of the variable name for assigning the match in the params hash</span>
+<span class="line-numbers"> <a href="#n42" name="n42">42</a></span>    compile <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors/:firstname-:lastname</span><span style="color:#710">'</span></span>    <span style="color:#777"># =&gt; [/^\/actors\/([^\/?#]+)(?:\-|%2D)([^\/?#]+)$/, [&quot;firstname&quot;, &quot;lastname&quot;]]</span>
+<span class="line-numbers"> <a href="#n43" name="n43">43</a></span>    compile <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/it/is/:time/in/:location</span><span style="color:#710">'</span></span>       <span style="color:#777"># =&gt; [/^\/it\/is\/([^\/?#]+)\/in\/([^\/?#]+)$/, [&quot;time&quot;, &quot;location&quot;]]</span>
+<span class="line-numbers"> <a href="#n44" name="n44">44</a></span>    
+<span class="line-numbers"> <a href="#n45" name="n45">45</a></span>    <span style="color:#777"># The splat will greedily eat up as much as it can, and get placed in the params hash under the name 'splat'</span>
+<span class="line-numbers"> <a href="#n46" name="n46">46</a></span>    compile <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/the-path-is/*</span><span style="color:#710">'</span></span>                  <span style="color:#777"># =&gt; [/^\/the(?:\-|%2D)path(?:\-|%2D)is\/(.*?)$/, [&quot;splat&quot;]]</span>
+<span class="line-numbers"> <a href="#n47" name="n47">47</a></span>  <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n48" name="n48">48</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n49" name="n49">49</a></span>
+<span class="line-numbers"> <strong><a href="#n50" name="n50">50</a></strong></span><span style="color:#777"># If you want, you can even create your own regexes for the routes</span>
+<span class="line-numbers"> <a href="#n51" name="n51">51</a></span><span style="color:#777"># Then, instead of naming them after the symbol given in the route, it will be passed into the block</span>
+<span class="line-numbers"> <a href="#n52" name="n52">52</a></span>get <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">%r{</span><span style="color:#808">/hello/([</span><span style="color:#D20">\w</span><span style="color:#808">]+)</span><span style="color:#404">}</span></span> <span style="color:#080;font-weight:bold">do</span> |firstname|
+<span class="line-numbers"> <a href="#n53" name="n53">53</a></span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>firstname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">!</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n54" name="n54">54</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n55" name="n55">55</a></span>
+<span class="line-numbers"> <a href="#n56" name="n56">56</a></span>
+<span class="line-numbers"> <a href="#n57" name="n57">57</a></span>
+<span class="line-numbers"> <a href="#n58" name="n58">58</a></span><span style="color:#777"># =====  The Params Hash  =====</span>
+<span class="line-numbers"> <a href="#n59" name="n59">59</a></span><span style="color:#777"># You can access the params hash by simply calling the params method, which returns the hash.</span>
+<span class="line-numbers"> <strong><a href="#n60" name="n60">60</a></strong></span><span style="color:#777"># The hash is populated with the parameters passed to your program</span>
+<span class="line-numbers"> <a href="#n61" name="n61">61</a></span><span style="color:#777"># They may come from matching the route you gave</span>
+<span class="line-numbers"> <a href="#n62" name="n62">62</a></span><span style="color:#777"># They may be passed at the end of a route</span>
+<span class="line-numbers"> <a href="#n63" name="n63">63</a></span><span style="color:#777"># They may be submitted with form data</span>
+<span class="line-numbers"> <a href="#n64" name="n64">64</a></span>actor_acknowledgment = lambda <span style="color:#080;font-weight:bold">do</span> 
+<span class="line-numbers"> <a href="#n65" name="n65">65</a></span>  firstname  =  params[<span style="color:#A60">:firstname</span>].capitalize
+<span class="line-numbers"> <a href="#n66" name="n66">66</a></span>  lastname   =  params[<span style="color:#A60">:lastname</span>].capitalize
+<span class="line-numbers"> <a href="#n67" name="n67">67</a></span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">You are looking for information about </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>firstname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>lastname<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">!</span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"> <a href="#n68" name="n68">68</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"> <a href="#n69" name="n69">69</a></span>
+<span class="line-numbers"> <strong><a href="#n70" name="n70">70</a></strong></span><span style="color:#777"># Each of the following url and method pairs will return &quot;You are looking for information about Brad Pitt&quot;</span>
+<span class="line-numbers"> <a href="#n71" name="n71">71</a></span><span style="color:#777"># When you go to them in your browser (the last one is done with curl -- sry Windows guys, didn't know how else to show it)</span>
+<span class="line-numbers"> <a href="#n72" name="n72">72</a></span>
+<span class="line-numbers"> <a href="#n73" name="n73">73</a></span><span style="color:#777"># http://localhost:4567/actors?lastname=pitt&amp;firstname=brad</span>
+<span class="line-numbers"> <a href="#n74" name="n74">74</a></span><span style="color:#777"># http://localhost:4567/actors?firstname=brad&amp;lastname=pitt</span>
+<span class="line-numbers"> <a href="#n75" name="n75">75</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors</span><span style="color:#710">'</span></span> , &amp;actor_acknowledgment
+<span class="line-numbers"> <a href="#n76" name="n76">76</a></span>
+<span class="line-numbers"> <a href="#n77" name="n77">77</a></span><span style="color:#777"># http://localhost:4567/actors/brad-pitt</span>
+<span class="line-numbers"> <a href="#n78" name="n78">78</a></span><span style="color:#777"># (probably not a great choice since real people can have hyphens in their name :P)</span>
+<span class="line-numbers"> <a href="#n79" name="n79">79</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors/:firstname-:lastname</span><span style="color:#710">'</span></span> , &amp;actor_acknowledgment
+<span class="line-numbers"> <strong><a href="#n80" name="n80">80</a></strong></span>
+<span class="line-numbers"> <a href="#n81" name="n81">81</a></span><span style="color:#777"># http://localhost:4567/actors/brad/pitt</span>
+<span class="line-numbers"> <a href="#n82" name="n82">82</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors/:firstname/:lastname</span><span style="color:#710">'</span></span> , &amp;actor_acknowledgment
+<span class="line-numbers"> <a href="#n83" name="n83">83</a></span>
+<span class="line-numbers"> <a href="#n84" name="n84">84</a></span><span style="color:#777"># curl -d 'firstname=brad&amp;lastname=pitt' http://localhost:4567/actors</span>
+<span class="line-numbers"> <a href="#n85" name="n85">85</a></span><span style="color:#777"># Notice in this case, that firstname and lastname will be passed invisibly ;)</span>
+<span class="line-numbers"> <a href="#n86" name="n86">86</a></span>post <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/actors</span><span style="color:#710">'</span></span> , &amp;actor_acknowledgment
+<span class="line-numbers"> <a href="#n87" name="n87">87</a></span>
+<span class="line-numbers"> <a href="#n88" name="n88">88</a></span>
+<span class="line-numbers"> <a href="#n89" name="n89">89</a></span><span style="color:#777"># =====  The Block  =====</span>
+<span class="line-numbers"> <strong><a href="#n90" name="n90">90</a></strong></span><span style="color:#777"># When defining how to respond to a request, you submit the http method, the route, and the block</span>
+<span class="line-numbers"> <a href="#n91" name="n91">91</a></span><span style="color:#777"># The block is what will be executed when the given http method </span>
+<span class="line-numbers"> <a href="#n92" name="n92">92</a></span><span style="color:#777"># Your params hash will be set and available, and any parameters that were captured will be in there</span>
+<span class="line-numbers"> <a href="#n93" name="n93">93</a></span><span style="color:#777"># Whatever your block returns is what will be displayed to the user</span>
+<span class="line-numbers"> <a href="#n94" name="n94">94</a></span>
+<span class="line-numbers"> <a href="#n95" name="n95">95</a></span>
+<span class="line-numbers"> <a href="#n96" name="n96">96</a></span><span style="color:#777"># -----  Redirect  -----</span>
+<span class="line-numbers"> <a href="#n97" name="n97">97</a></span><span style="color:#777"># You can send an HTTP redirect with the redirect method</span>
+<span class="line-numbers"> <a href="#n98" name="n98">98</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/invalid</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"> <a href="#n99" name="n99">99</a></span>  redirect <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/valid</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><strong><a href="#n100" name="n100">100</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n101" name="n101">101</a></span>
+<span class="line-numbers"><a href="#n102" name="n102">102</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/ruby</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n103" name="n103">103</a></span>  redirect <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">http://www.ruby-lang.org/</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n104" name="n104">104</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n105" name="n105">105</a></span>
+<span class="line-numbers"><a href="#n106" name="n106">106</a></span>
+<span class="line-numbers"><a href="#n107" name="n107">107</a></span><span style="color:#777"># -----  Cookie Sessions  -----</span>
+<span class="line-numbers"><a href="#n108" name="n108">108</a></span><span style="color:#777"># Sessions are a way that you can remember a user between HTTP requests (remember, HTTP is inherently stateless)</span>
+<span class="line-numbers"><a href="#n109" name="n109">109</a></span><span style="color:#777"># The easiest way is to use cookies. Cookies are very small (&lt;4kb) text files that sit on the client's computer</span>
+<span class="line-numbers"><strong><a href="#n110" name="n110">110</a></strong></span><span style="color:#777"># Also because they are stored on the client's computer, they can be edited by the client, so be careful what you put in there</span>
+<span class="line-numbers"><a href="#n111" name="n111">111</a></span>
+<span class="line-numbers"><a href="#n112" name="n112">112</a></span><span style="color:#777"># To use cookies for sessions, you need to specify so outside the block (ie at the top of your file)</span>
+<span class="line-numbers"><a href="#n113" name="n113">113</a></span>set <span style="color:#A60">:sessions</span>, <span style="color:#069">true</span>
+<span class="line-numbers"><a href="#n114" name="n114">114</a></span>
+<span class="line-numbers"><a href="#n115" name="n115">115</a></span><span style="color:#777"># Sessions are implemented with a simple hash</span>
+<span class="line-numbers"><a href="#n116" name="n116">116</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n117" name="n117">117</a></span>  session[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">thing</span><span style="color:#710">&quot;</span></span>] ||= <span style="color:#00D">0</span>
+<span class="line-numbers"><a href="#n118" name="n118">118</a></span>  session[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">thing</span><span style="color:#710">&quot;</span></span>] += <span style="color:#00D">1</span>
+<span class="line-numbers"><a href="#n119" name="n119">119</a></span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Thing is now: </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>session[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">thing</span><span style="color:#710">&quot;</span></span>]<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+<span class="line-numbers"><strong><a href="#n120" name="n120">120</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n121" name="n121">121</a></span>
+<span class="line-numbers"><a href="#n122" name="n122">122</a></span>
+<span class="line-numbers"><a href="#n123" name="n123">123</a></span><span style="color:#777"># =====  Before Filters  =====</span>
+<span class="line-numbers"><a href="#n124" name="n124">124</a></span><span style="color:#777"># Remember challenge 5:2 where my boss was using before filters to set @body_class? Sinatra has something similar. </span>
+<span class="line-numbers"><a href="#n125" name="n125">125</a></span><span style="color:#777"># You can specify a block of code to be run before each request. Instance variables are visible, and it can modify the environment</span>
+<span class="line-numbers"><a href="#n126" name="n126">126</a></span>
+<span class="line-numbers"><a href="#n127" name="n127">127</a></span><span style="color:#777"># for example, with the given get request, if we went to '/rock' in our browser, it would work. But if we went to '/rock/' it would not</span>
+<span class="line-numbers"><a href="#n128" name="n128">128</a></span><span style="color:#777"># because it would no longer match the regular expression generated by the path</span>
+<span class="line-numbers"><a href="#n129" name="n129">129</a></span><span style="color:#777"># but we could make a before filter that modifies the path to always remove any trailing slashes</span>
+<span class="line-numbers"><strong><a href="#n130" name="n130">130</a></strong></span>before { request.path_info.gsub! <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#D20">\/</span><span style="color:#808">$</span><span style="color:#404">/</span></span> , <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span> } <span style="color:#777"># !&gt; ambiguous first argument; put parentheses or even spaces</span>
+<span class="line-numbers"><a href="#n131" name="n131">131</a></span>get( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/rock</span><span style="color:#710">'</span></span> ){ <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">roll</span><span style="color:#710">'</span></span> }
+<span class="line-numbers"><a href="#n132" name="n132">132</a></span>
+<span class="line-numbers"><a href="#n133" name="n133">133</a></span>
+<span class="line-numbers"><a href="#n134" name="n134">134</a></span><span style="color:#777"># =====  Views  =====</span>
+<span class="line-numbers"><a href="#n135" name="n135">135</a></span><span style="color:#777"># As your Sinatra applications become more complex, creating Strings in your blocks will become britle, obtrusive</span>
+<span class="line-numbers"><a href="#n136" name="n136">136</a></span><span style="color:#777"># You can add views to a data section within the same file (you'll have to look that up on your own if you want to try it)</span>
+<span class="line-numbers"><a href="#n137" name="n137">137</a></span><span style="color:#777"># You can also place them into their own files in a subdirectory called 'views'</span>
+<span class="line-numbers"><a href="#n138" name="n138">138</a></span><span style="color:#777"># then if you want to call it from your sinatra block, you just call the method named after the templating language,</span>
+<span class="line-numbers"><a href="#n139" name="n139">139</a></span><span style="color:#777"># and pass in the name of your template</span>
+<span class="line-numbers"><strong><a href="#n140" name="n140">140</a></strong></span>
+<span class="line-numbers"><a href="#n141" name="n141">141</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n142" name="n142">142</a></span>  <span style="color:#33B">@people</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">bill barry sally sue jerry quinn</span><span style="color:#710">)</span></span>
+<span class="line-numbers"><a href="#n143" name="n143">143</a></span>  erb <span style="color:#A60">:roster</span> <span style="color:#777"># I return a String, so still need last line</span>
+<span class="line-numbers"><a href="#n144" name="n144">144</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n145" name="n145">145</a></span>
+<span class="line-numbers"><a href="#n146" name="n146">146</a></span><span style="color:#777"># -----  File: views/roster.erb  -----</span>
+<span class="line-numbers"><a href="#n147" name="n147">147</a></span><span style="color:#777"># &lt;h3&gt;Roster:&lt;/h3&gt;</span>
+<span class="line-numbers"><a href="#n148" name="n148">148</a></span><span style="color:#777"># &lt;ul&gt;</span>
+<span class="line-numbers"><a href="#n149" name="n149">149</a></span><span style="color:#777">#   &lt;% @people.each do |person| %&gt;</span>
+<span class="line-numbers"><strong><a href="#n150" name="n150">150</a></strong></span><span style="color:#777">#     &lt;li&gt;</span>
+<span class="line-numbers"><a href="#n151" name="n151">151</a></span><span style="color:#777">#       &lt;%= person %&gt;</span>
+<span class="line-numbers"><a href="#n152" name="n152">152</a></span><span style="color:#777">#     &lt;/li&gt;</span>
+<span class="line-numbers"><a href="#n153" name="n153">153</a></span><span style="color:#777">#   &lt;% end %&gt;</span>
+<span class="line-numbers"><a href="#n154" name="n154">154</a></span><span style="color:#777"># &lt;ul&gt;</span>
+<span class="line-numbers"><a href="#n155" name="n155">155</a></span>  
+<span class="line-numbers"><a href="#n156" name="n156">156</a></span>
+<span class="line-numbers"><a href="#n157" name="n157">157</a></span><span style="color:#777"># =====  Use A Layout  =====</span>
+<span class="line-numbers"><a href="#n158" name="n158">158</a></span><span style="color:#777"># Want to give your code a layout that each result is dropped into?</span>
+<span class="line-numbers"><a href="#n159" name="n159">159</a></span><span style="color:#777"># Just create a file views/layout.erb</span>
+<span class="line-numbers"><strong><a href="#n160" name="n160">160</a></strong></span><span style="color:#777"># Sinatra will know to use erb to render it b/c of your extension</span>
+<span class="line-numbers"><a href="#n161" name="n161">161</a></span><span style="color:#777"># Like with blocks, call yield when you want the content to be included</span>
+<span class="line-numbers"><a href="#n162" name="n162">162</a></span>
+<span class="line-numbers"><a href="#n163" name="n163">163</a></span><span style="color:#777"># -----  File: views/layout.erb  -----</span>
+<span class="line-numbers"><a href="#n164" name="n164">164</a></span><span style="color:#777"># &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+<span class="line-numbers"><a href="#n165" name="n165">165</a></span><span style="color:#777"># &lt;html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'&gt;</span>
+<span class="line-numbers"><a href="#n166" name="n166">166</a></span><span style="color:#777">#   &lt;head&gt;</span>
+<span class="line-numbers"><a href="#n167" name="n167">167</a></span><span style="color:#777">#     &lt;title&gt;My Awesome App!&lt;/title&gt;</span>
+<span class="line-numbers"><a href="#n168" name="n168">168</a></span><span style="color:#777">#     &lt;meta content='text/html;charset=utf-8' http-equiv='Content-Type' /&gt;</span>
+<span class="line-numbers"><a href="#n169" name="n169">169</a></span><span style="color:#777">#   &lt;/head&gt;</span>
+<span class="line-numbers"><strong><a href="#n170" name="n170">170</a></strong></span><span style="color:#777">#   &lt;body&gt;</span>
+<span class="line-numbers"><a href="#n171" name="n171">171</a></span><span style="color:#777">#     &lt;%= yield %&gt;</span>
+<span class="line-numbers"><a href="#n172" name="n172">172</a></span><span style="color:#777">#   &lt;/body&gt;</span>
+<span class="line-numbers"><a href="#n173" name="n173">173</a></span><span style="color:#777"># &lt;/html&gt;</span>
+<span class="line-numbers"><a href="#n174" name="n174">174</a></span>
+<span class="line-numbers"><a href="#n175" name="n175">175</a></span>
+<span class="line-numbers"><a href="#n176" name="n176">176</a></span><span style="color:#777"># what if you don't want to use the layout?</span>
+<span class="line-numbers"><a href="#n177" name="n177">177</a></span>get <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">/roster</span><span style="color:#710">'</span></span> <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n178" name="n178">178</a></span>  <span style="color:#33B">@roster</span> = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">%w(</span><span style="color:#D20">amy bill george sally</span><span style="color:#710">)</span></span>
+<span class="line-numbers"><a href="#n179" name="n179">179</a></span>  erb <span style="color:#A60">:roster</span> , <span style="color:#A60">:layout</span> =&gt; <span style="color:#069">false</span>
+<span class="line-numbers"><strong><a href="#n180" name="n180">180</a></strong></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n181" name="n181">181</a></span>
+<span class="line-numbers"><a href="#n182" name="n182">182</a></span>
+<span class="line-numbers"><a href="#n183" name="n183">183</a></span><span style="color:#777"># =====  Other Fun Stuff  =====</span>
+<span class="line-numbers"><a href="#n184" name="n184">184</a></span>
+<span class="line-numbers"><a href="#n185" name="n185">185</a></span><span style="color:#777"># Respond to routes that don't exist</span>
+<span class="line-numbers"><a href="#n186" name="n186">186</a></span>not_found <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n187" name="n187">187</a></span>  <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">This is nowhere to be found</span><span style="color:#710">'</span></span>
+<span class="line-numbers"><a href="#n188" name="n188">188</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n189" name="n189">189</a></span>
+<span class="line-numbers"><strong><a href="#n190" name="n190">190</a></strong></span><span style="color:#777"># configure is a block run once at startup</span>
+<span class="line-numbers"><a href="#n191" name="n191">191</a></span>configure <span style="color:#080;font-weight:bold">do</span>
+<span class="line-numbers"><a href="#n192" name="n192">192</a></span>  <span style="color:#777"># typically config info goes here, like how to find your database</span>
+<span class="line-numbers"><a href="#n193" name="n193">193</a></span><span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n194" name="n194">194</a></span>
+<span class="line-numbers"><a href="#n195" name="n195">195</a></span><span style="color:#777"># you can also configure based on environment</span>
+<span class="line-numbers"><a href="#n196" name="n196">196</a></span>configure <span style="color:#A60">:development</span>  <span style="color:#080;font-weight:bold">do</span> <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n197" name="n197">197</a></span>configure <span style="color:#A60">:production</span>   <span style="color:#080;font-weight:bold">do</span> <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n198" name="n198">198</a></span>configure <span style="color:#A60">:test</span>         <span style="color:#080;font-weight:bold">do</span> <span style="color:#080;font-weight:bold">end</span>
+<span class="line-numbers"><a href="#n199" name="n199">199</a></span>
+</pre></div>
+</div>
+</div>
+
+  </div>
+</body>
+</html>

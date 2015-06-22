@@ -1,0 +1,499 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    
+    <p>The Sinatra HTML5 boilerplate is an empty Sinatra app configured to use <a href="http://html5boilerplate.com/">Paul Irish’s HTML5 boilerplate as a layout</a>, <a href="http://sass-lang.com/">SCSS</a> for CSS files and <a href="http://jashkenas.github.com/coffee-script/">Coffeescript</a> for Javascript.</p>
+
+<p>The wonderful thing about Sinatra is that it lets you move as you wish, so if any of the listed features doesn’t work for you, there’s an easy way to make a change. Here’s the list of cool stuff.</p>
+
+<ul>
+  <li>Bundler support with an included Gemfile</li>
+  <li>Config.ru ready with Bundler integration</li>
+  <li>HTML5 boilerplate stripped</li>
+  <li>Coffeescript support (real time compiling)</li>
+  <li>SCSS support through the SASS gem (real time compiling)</li>
+</ul>
+
+<p>By default it uses ERB for templates. You can change that, however make sure to have the boilerplate in the format you like (someone said HAML?). Here are some links taken from the official Sinatra documentation that will help you out in making all of these changes.</p>
+
+<ul>
+  <li><a href="http://www.sinatrarb.com/intro.html#Views%20/%20Templates">Views/Templates</a></li>
+  <li><a href="http://www.sinatrarb.com/intro.html#CoffeeScript%20Templates">Coffeescript</a></li>
+  <li><a href="http://www.sinatrarb.com/intro.html#Scss%20Templates">Sass</a></li>
+</ul>
+
+<p>Please note that there are some other similar projects that add some more features that may make it easier for you to prototype. This one is meant to be a production template with no visual additions. A clean slate.</p>
+
+<h1 id="how-to">HOW TO</h1>
+
+<p>Download the package or fetch the repository, but don’t clone it. You want a fresh start.
+Note also that if you try to deploy this repository on Heroku, you will get a notice that tells you that you’re missing a Gemfile.lock file. That’s intentional on my end, as that file is usually project-specific, so Bundler will create one for you when you run it. This repository’s .gitignore file excludes Gemfile.lock, once again a good reason not to clone unless you want to modify the project itself.</p>
+
+<p>I’m assuming you name the project folder <code>my_sinatra_app</code>.</p>
+
+<pre><code>cd my_sinatra_app
+</code></pre>
+
+<p>You should use <a href="https://rvm.beginrescueend.com/">rvm</a> to manage your gems. Here’s one liner to get you started. Run it from inside the <code>my_sinatra_app</code> folder</p>
+
+<pre><code>rvm use 1.9.2@sinatra-html5-boilerplate --create --rvmrc
+</code></pre>
+
+<p>Now you have a sandboxed Sinatra folder with an RVM gemset.</p>
+
+<p>If you don’t have Bundler installed as a global gem or have any other reason to use it locally, you need to install it in the gemset.</p>
+
+<pre><code>gem install bundler
+</code></pre>
+
+<p>Then you need to run:</p>
+
+<pre><code>bundle install
+</code></pre>
+
+<p>Now run:</p>
+
+<pre><code>rackup
+</code></pre>
+
+<p>Then visit http://localhost:9292- You should see Hello World. You can also use <a href="http://rtomayko.github.com/shotgun/">Shotgun</a> to ease development instead of <code>rackup</code>.</p>
+
+<h1 id="coffeescript-support">COFFEESCRIPT SUPPORT</h1>
+
+<p>I’d advise you to install Coffee as a NPM module, as it gives you a bit more flexibility. <a href="http://jashkenas.github.com/coffee-script/#installation">Here are the instructions to do that</a>.</p>
+
+<h1 id="folders">FOLDERS</h1>
+
+<p>Configuration is stock, so most of the files are in the <code>/public</code> folder.</p>
+
+<p>The main <code>script.coffee</code> and <code>application.scss</code> files are respectively into the <code>coffee</code> and <code>scss</code> folders into the <code>views</code> folder as they need to be processed before being served. This is defined in the <code>my_sinatra_app.rb</code> file right after the <code>require</code> statements. The pattern is simple: if you need a <code>myname.css</code> file, then create a <code>myname.scss</code> file. In your layout, reference to the .js and .css files, not the .coffee and .scss sources.</p>
+
+<p>The <code>index.html</code> boilerplate file has been renamed <code>layout.erb</code>, the only difference with the stock boilerplate file is the presence of the <code>&lt;%= yield %&gt;</code> in the main container.</p>
+
+<h1 id="deploy">DEPLOY</h1>
+
+<p>As a default, the Gemfile contains a group that you should uncomment if you want to deploy on Heroku. Deployment is standard, [here’s the guide to do that][http://devcenter.heroku.com/articles/rack#frameworks]. You should be able to avoid configuration and just need to push the repo.
+I haven’t tested it on other environments, but it should work fine. If you experience some weird behaviours related to SASS or Coffeescript, your best shot is to compile them on your machine and deploy them as static files in the public directory. Doing this makes the project a completely stock Sinatra app, so that should be easy to debug.</p>
+
+<h1 id="thanks-and-links">THANKS AND LINKS</h1>
+
+<p><a href="https://github.com/froots/sinatra-heroku-boilerplate.">Froots’s Sinatra HTML5 boilerplate</a> inspired me.</p>
+
+<p>I decided to make my own simply because I don’t use HAML and didn’t want to have any kind of visual. But his project is cool, check it out if you need that stuff.</p>
+
+
+  </div>
+</body>
+</html>

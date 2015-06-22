@@ -1,0 +1,13 @@
+Fri, 06 Feb 2015 03:31:57 -0700
+win32ole/lib/win32ole/property.rb	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_error.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_event.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_method.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_param.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_record.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_type.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_typelib.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_variable.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_variant.c	Thu, 05 Feb 2015 22:39:26 -0700
+win32ole/win32ole_variant_m.c	Thu, 05 Feb 2015 22:39:26 -0700

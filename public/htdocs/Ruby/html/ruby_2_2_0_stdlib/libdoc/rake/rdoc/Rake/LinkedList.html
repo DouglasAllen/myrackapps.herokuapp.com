@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : Rake::LinkedList  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:24:15 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: Rake::LinkedList (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>rake/linked_list.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+      <!-- Namespace Contents -->
+      <div id="namespace-list-section" class="section">
+        <h3 class="section-header">Namespace</h3>
+        <ul class="link-list">
+          
+          <li><span class="type">CLASS</span> <a href="LinkedList/EmptyLinkedList.html">Rake::LinkedList::EmptyLinkedList</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-cons">::cons</a></li>
+          
+          <li><a href="#method-c-empty">::empty</a></li>
+          
+          <li><a href="#method-c-make">::make</a></li>
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-3D-3D">#==</a></li>
+          
+          <li><a href="#method-i-conj">#conj</a></li>
+          
+          <li><a href="#method-i-each">#each</a></li>
+          
+          <li><a href="#method-i-empty-3F">#empty?</a></li>
+          
+          <li><a href="#method-i-inspect">#inspect</a></li>
+          
+          <li><a href="#method-i-to_s">#to_s</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <!-- Included Modules -->
+      <div id="includes-section" class="section">
+        <h3 class="section-header">Included Modules</h3>
+        <ul class="link-list">
+        
+        
+          <li><span class="include">Enumerable</span></li>
+        
+        
+        </ul>
+      </div>
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../FileUtils.html">FileUtils</a></li>
+        
+          
+          
+          <li><a href="../Module.html">Module</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../Pathname.html">Pathname</a></li>
+        
+          
+          
+          <li><a href="../Rake/Application.html">Rake::Application</a></li>
+        
+          
+          
+          <li><a href="../Rake/CompositePublisher.html">Rake::CompositePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/DSL.html">Rake::DSL</a></li>
+        
+          
+          
+          <li><a href="../Rake/DefaultLoader.html">Rake::DefaultLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/EarlyTime.html">Rake::EarlyTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileCreationTask.html">Rake::FileCreationTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileList.html">Rake::FileList</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileTask.html">Rake::FileTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/FileUtilsExt.html">Rake::FileUtilsExt</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain.html">Rake::InvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationChain/EmptyInvocationChain.html">Rake::InvocationChain::EmptyInvocationChain</a></li>
+        
+          
+          
+          <li><a href="../Rake/InvocationExceptionMixin.html">Rake::InvocationExceptionMixin</a></li>
+        
+          
+          
+          <li><a href="../Rake/LateTime.html">Rake::LateTime</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList.html">Rake::LinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/LinkedList/EmptyLinkedList.html">Rake::LinkedList::EmptyLinkedList</a></li>
+        
+          
+          
+          <li><a href="../Rake/MakefileLoader.html">Rake::MakefileLoader</a></li>
+        
+          
+          
+          <li><a href="../Rake/MultiTask.html">Rake::MultiTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/NameSpace.html">Rake::NameSpace</a></li>
+        
+          
+          
+          <li><a href="../Rake/PackageTask.html">Rake::PackageTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/PrivateReader.html">Rake::PrivateReader</a></li>
+        
+          
+          
+          <li><a href="../Rake/RuleRecursionOverflowError.html">Rake::RuleRecursionOverflowError</a></li>
+        
+          
+          
+          <li><a href="../Rake/Scope.html">Rake::Scope</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshDirPublisher.html">Rake::SshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFilePublisher.html">Rake::SshFilePublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/SshFreshDirPublisher.html">Rake::SshFreshDirPublisher</a></li>
+        
+          
+          
+          <li><a href="../Rake/Task.html">Rake::Task</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArgumentError.html">Rake::TaskArgumentError</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskArguments.html">Rake::TaskArguments</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskLib.html">Rake::TaskLib</a></li>
+        
+          
+          
+          <li><a href="../Rake/TaskManager.html">Rake::TaskManager</a></li>
+        
+          
+          
+          <li><a href="../Rake/TestTask.html">Rake::TestTask</a></li>
+        
+          
+          
+          <li><a href="../Rake/Win32.html">Rake::Win32</a></li>
+        
+          
+          
+          <li><a href="../String.html">String</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">Rake::LinkedList</h1>
+
+    <div id="description" class="description">
+      
+<p>Polylithic linked list structure used to implement several data structures
+in Rake.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="EMPTY">EMPTY</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="head-attribute-method" class="method-detail">
+          <a name="head"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">head</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          
+          
+          </div>
+        </div>
+        
+        <div id="tail-attribute-method" class="method-detail">
+          <a name="tail"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tail</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="cons-method" class="method-detail ">
+          <a name="method-c-cons"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">cons</span><span
+              class="method-args">(head, tail)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Cons a new head onto the tail list.</p>
+            
+
+            
+            <div class="method-source-code" id="cons-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cons</span>(<span class="ruby-identifier">head</span>, <span class="ruby-identifier">tail</span>)
+  <span class="ruby-identifier">new</span>(<span class="ruby-identifier">head</span>, <span class="ruby-identifier">tail</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- cons-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- cons-method -->
+      
+        <div id="empty-method" class="method-detail ">
+          <a name="method-c-empty"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">empty</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>The standard empty list class for the given <a
+href="LinkedList.html">LinkedList</a> class.</p>
+            
+
+            
+            <div class="method-source-code" id="empty-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">empty</span>
+  <span class="ruby-keyword">self</span><span class="ruby-operator">::</span><span class="ruby-constant">EMPTY</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- empty-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- empty-method -->
+      
+        <div id="make-method" class="method-detail ">
+          <a name="method-c-make"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">make</span><span
+              class="method-args">(*args)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Make a list out of the given arguments. This method is polymorphic</p>
+            
+
+            
+            <div class="method-source-code" id="make-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">make</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">empty</span>
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">cons</span>(<span class="ruby-identifier">item</span>, <span class="ruby-identifier">result</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">result</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- make-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- make-method -->
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(head, tail=EMPTY)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 10</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">head</span>, <span class="ruby-identifier">tail</span>=<span class="ruby-constant">EMPTY</span>)
+  <span class="ruby-ivar">@head</span> = <span class="ruby-identifier">head</span>
+  <span class="ruby-ivar">@tail</span> = <span class="ruby-identifier">tail</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="3D-3D-method" class="method-detail ">
+          <a name="method-i-3D-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">==</span><span
+              class="method-args">(other)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Lists are structurally equivalent.</p>
+            
+
+            
+            <div class="method-source-code" id="3D-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">==</span>(<span class="ruby-identifier">other</span>)
+  <span class="ruby-identifier">current</span> = <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">current</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">current</span>.<span class="ruby-identifier">head</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">head</span>
+    <span class="ruby-identifier">current</span> = <span class="ruby-identifier">current</span>.<span class="ruby-identifier">tail</span>
+    <span class="ruby-identifier">other</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">tail</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">current</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">other</span>.<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- 3D-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- 3D-3D-method -->
+      
+        <div id="conj-method" class="method-detail ">
+          <a name="method-i-conj"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">conj</span><span
+              class="method-args">(item)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Polymorphically add a new element to the head of a list. The type of head
+node will be the same list type as the tail.</p>
+            
+
+            
+            <div class="method-source-code" id="conj-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">conj</span>(<span class="ruby-identifier">item</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">cons</span>(<span class="ruby-identifier">item</span>, <span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- conj-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- conj-method -->
+      
+        <div id="each-method" class="method-detail ">
+          <a name="method-i-each"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">each</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>For each item in the list.</p>
+            
+
+            
+            <div class="method-source-code" id="each-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>
+  <span class="ruby-identifier">current</span> = <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">current</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">current</span>.<span class="ruby-identifier">head</span>)
+    <span class="ruby-identifier">current</span> = <span class="ruby-identifier">current</span>.<span class="ruby-identifier">tail</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- each-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- each-method -->
+      
+        <div id="empty-3F-method" class="method-detail ">
+          <a name="method-i-empty-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">empty?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Is the list empty?</p>
+            
+
+            
+            <div class="method-source-code" id="empty-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- empty-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- empty-3F-method -->
+      
+        <div id="inspect-method" class="method-detail ">
+          <a name="method-i-inspect"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Same as <code>to_s</code>, but with inspected items.</p>
+            
+
+            
+            <div class="method-source-code" id="inspect-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 44</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-identifier">items</span> = <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">inspect</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;, &quot;</span>)
+  <span class="ruby-node">&quot;LL(#{items})&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- inspect-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-method -->
+      
+        <div id="to_s-method" class="method-detail ">
+          <a name="method-i-to_s"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">to_s</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Convert to string: LL(item, item…)</p>
+            
+
+            
+            <div class="method-source-code" id="to_s-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File rake/linked_list.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">items</span> = <span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">to_s</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;, &quot;</span>)
+  <span class="ruby-node">&quot;LL(#{items})&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- to_s-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_s-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_LinkedList_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_LinkedList_versioned").load("/associated/2_2_0/LinkedList.html");</script> <div id='tx_LinkedList' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_LinkedList").load("/associated/LinkedList.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_LinkedList.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

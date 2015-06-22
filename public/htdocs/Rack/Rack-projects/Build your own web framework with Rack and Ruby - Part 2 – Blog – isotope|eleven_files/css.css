@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Alice';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alice'), local('Alice-Regular'), url(http://fonts.gstatic.com/s/alice/v7/_H4kMcdhHr0B8RDaQcqpTA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Belgrano';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Belgrano'), local('Belgrano-Regular'), url(http://fonts.gstatic.com/s/belgrano/v6/9nICvxZmkDv7_ninPVYjofesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin Regular'), local('Cabin-Regular'), url(http://fonts.gstatic.com/s/cabin/v7/JEgmtEDzc-IH8jBshQXrYA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Underdog';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Underdog'), local('Underdog-Regular'), url(http://fonts.gstatic.com/s/underdog/v5/WRYaqMZC8yRPC5Si2-yiYfesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+}

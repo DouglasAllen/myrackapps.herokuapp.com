@@ -1,0 +1,856 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p><em>This article is written by Piotr Szotkowski. Greg invited Piotr to contribute
+to Practicing Ruby after seeing his RubyConf 2011 talk _Persisting
+Relations Across Time and Space_
+(<a href="http://persistence-rubyconf-2011.heroku.com">slides</a>,
+<a href="http://confreaks.net/videos/657">video</a>). This is not a one-to-one text
+version of that talk; Piotr has instead chosen to share some thoughts on the topics of
+<a href="http://architects.dzone.com/articles/polyglot-persistence-future">polyglot persistence</a>
+and modeling relations between objects.</em></p>
+
+<h3 id="persistence-your-objects-time-travel">Persistence: Your Objects’ Time Travel</h3>
+
+<blockquote>
+  <p>If the first thing you type, when writing a Ruby app, is <code>rails</code>, you’ve
+already lost the <a href="http://confreaks.com/videos/759">architecture game</a>.</p>
+
+  <p><cite>Uncle Bob Martin</cite></p>
+</blockquote>
+
+<p>The first thing we need to ask ourselves when thinking about object persistence
+is how we can dehydrate an object into a set of simple values—usually
+strings, numbers, dates, and boolean ‘flags’—in a way that will let us
+rehydrate it at some point, often on a completely unrelated
+run of our application. With the bulk of contemporary Ruby programs being Rails
+web apps, this issue is so obvious that we usually don’t even think about it; the
+persistence is conveniently taken care of by ActiveRecord, and we often actually
+<em>start</em> writing the application by defining database-oriented models of our
+objects: </p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>$ rails generate model person name bio:text height:float born:date vip:boolean
+$ rake db:migrate
+</pre></div>
+</div>
+</div>
+
+<p>This simple two-line command sequence takes care of all the behind-the-scenes 
+machinery required to persist instances of our <code>Person</code> class. The main 
+problem with the previous example is that it puts us into a tight tunnel
+of relational database-driven design. Although many came back saying that the
+light at the end is a truly glorious meadow and we should speed up to
+get there faster, our actual options of taking detours, driving on the
+shoulders, and stopping for a bit to get a high-altitude view of the road ahead
+are even more limited than the run of this metaphor. ActiveRecord’s handling of
+model relations (<code>belongs_to</code>, <code>has_many</code>, etc.)
+sometimes complicates the problem by giving us seemingly all-purpose solutions that
+are often quite useful but end up requiring just-this-little-bit-more tweaking, which accumulates over time.</p>
+
+<h3 id="persistence-in-practice">Persistence in practice</h3>
+
+<blockquote>
+  <p>A database is a black hole into which you put your data. If you’re lucky,
+you’ll get it back again. If you’re very lucky, you’ll get it back in a form
+you can use.</p>
+
+  <p><cite>Charlie Gibbs</cite></p>
+</blockquote>
+
+<p>As mentioned previously, persisting an object means dehydrating it into a set of
+simple values. The way we do this depends heavily on the database backend
+being used.</p>
+
+<p>When it comes to the most popular case of relational databases (such as MySQL,
+PostgreSQL or SQLite), we use tables for classes, rows for objects, and columns
+to hold a given object property across all instances of the same class. To
+persist an object, we serialize the given object’s properties down into table
+cells with column types supported by the underlying database—but even in this
+seemingly obvious case, it’s worth it to stop for a second and think.</p>
+
+<p>Should we go for the lowest common denominator (strings, numbers, and dates—
+even booleans are not really cross-engine; for instance, MySQL presents them as one-bit
+integers, <code>0</code> and <code>1</code>), should we use a given ORM’s ‘common ground’ (here
+booleans are usually fair game, and the ORM can take care of exposing them as
+<code>true</code> and <code>false</code>), or should we actually limit the portability while
+leveraging a given RDBMS’s features? For example, PostgreSQL exposes not only 
+‘real’ booleans but also <a href="http://www.postgresql.org/docs/9.1/static/datatype.html">a lot of other very useful
+types</a>, including
+geometric points and paths, network addresses, and XML documents that
+can be searched and filtered via XPath. It even supports arrays, which means
+that we can store a given blog post’s tags in a single column in the 
+<code>posts</code> table and query by inclusion/exclusion just as well as we could 
+with a separate join table.</p>
+
+<blockquote>
+  <p>Database research has produced a number of good results, but the relational
+database is not one of them.</p>
+
+  <p><cite>Henry G. Baker</cite></p>
+</blockquote>
+
+<p>Persisting objects in document databases (such as CouchDB or MongoDB) is
+somewhat similar, but often also quite a bit different; classes are usually mapped
+to collections, objects to documents, and object properties to these documents’
+fields. Although strings, numbers, and dates are serialized similarly to relational
+databases, document databases also usually allow us to store properties that
+are arrays or hashes and allow easy storage of related objects as nested
+documents (the canonical example being comments for a blog post, in cases when
+they’re most often requested only in the context of the given post). This
+results in all sorts of trade-offs. For example, you might end up needing to
+do fewer joins overall, but the ones you do have to do come at a higher 
+cost in both performance and upfront design work.</p>
+
+<p>Other kinds of databases have still other approaches for serializing objects:</p>
+
+<ul>
+  <li>
+    <p>Key-value stores (like Redis) usually need the objects to be in an
+already serialized form (e.g., represented as JSON strings), but there are
+gems like <a href="https://github.com/benlund/roc">ROC</a> that map simple objects
+directly to their canonical Redis representations. </p>
+  </li>
+  <li>
+    <p>Graph databases (such as Neo4j) are centered around object relations 
+and often allow persisting objects as schema-less nodes, akin to 
+document databases. </p>
+  </li>
+  <li>
+    <p>Many other storage types have their own object/persistence 
+mapping specifics as well. For example, as a directory service,
+LDAP does things in a way that is different from how general-purpose 
+persistence methods tend to work. </p>
+  </li>
+</ul>
+
+<p>From just this short overview, it should be fairly clear that there are no
+shortage of options when it comes to deciding how your objects should
+be persisted. In fact, even Ruby itself ships with a simple object store!</p>
+
+<h3 id="rubys-built-in-persistence-mechanism">Ruby’s built-in persistence mechanism</h3>
+
+<p>One of my personal favorite ways of persisting objects is the <code>PStore</code>
+library (which is distributed with Ruby) coupled with YAML serialization. Despite being
+highly inefficient (compared to powerhouses like relational or document
+databases), it’s often more than good enough for small applications, and its
+simplicity can be quite a benefit.</p>
+
+<p>Let’s assume for a second that we want to write <a href="https://github.com/chastell/signore">a small application for
+handling quotes</a>: what would be the
+simplest way to persist them? See for yourself:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">yaml/store</span><span style="color:#710">'</span></span>
+store = <span style="color:#036;font-weight:bold">YAML</span>::<span style="color:#036;font-weight:bold">Store</span>.new <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">quotes.yml</span><span style="color:#710">'</span></span>
+
+<span style="color:#777"># quotes are author + text structures</span>
+<span style="color:#036;font-weight:bold">Quote</span> = <span style="color:#036;font-weight:bold">Struct</span>.new <span style="color:#A60">:author</span>, <span style="color:#A60">:text</span>
+
+store.transaction <span style="color:#080;font-weight:bold">do</span>   <span style="color:#777"># a read/write transaction...</span>
+  store[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">db</span><span style="color:#710">'</span></span>] ||= []
+  store[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">db</span><span style="color:#710">'</span></span>] &lt;&lt; <span style="color:#036;font-weight:bold">Quote</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Charlie Gibbs</span><span style="color:#710">'</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">A database is a black hole into which you put your data.</span><span style="color:#710">'</span></span>)
+  store[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">db</span><span style="color:#710">'</span></span>] &lt;&lt; <span style="color:#036;font-weight:bold">Quote</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Will Jessop</span><span style="color:#710">'</span></span>,
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">MySQL is truly the PHP of the database world.</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">end</span>                    <span style="color:#777"># ...is atomically committed here</span>
+
+<span style="color:#777"># read-only transactions can be concurrent</span>
+<span style="color:#777"># and raise when you try to write anything</span>
+store.transaction(<span style="color:#069">true</span>) <span style="color:#080;font-weight:bold">do</span>
+  store[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">db</span><span style="color:#710">'</span></span>].each <span style="color:#080;font-weight:bold">do</span> |quote|
+    puts quote.text
+    puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-- </span><span style="color:#710">'</span></span> + quote.author
+    puts
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Saving the previous example file and running it prints the two quotes just fine:</p>
+
+<pre><code>$ ruby quotes.rb
+A database is a black hole into which you put your data.
+-- Charlie Gibbs
+
+MySQL is truly the PHP of the database world.
+-- Will Jessop
+</code></pre>
+
+<p>But a real treat awaits when we inspect the <code>quotes.yml</code> file:</p>
+
+<pre><code>---
+db:
+- !ruby/struct:Quote
+  author: Charlie Gibbs
+  text: A database is a black hole into which you put your data.
+- !ruby/struct:Quote
+  author: Will Jessop
+  text: MySQL is truly the PHP of the database world.
+</code></pre>
+
+<p>This approach allows us to have an automated way to persist and rehydrate our <code>Quote</code>
+objects while also allowing us to easily edit them and fix any typos right
+there in the YAML file. Is it scalable? Maybe not, but <a href="https://github.com/chastell/dotfiles/blob/aee1d31618e2e4ea88186eda163f29ebd72702d1/.local/share/signore/signatures.yml">my current
+database of email
+signatures</a>
+consists of 4,000 entries and works fast enough.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> If you’re eager to try YAML as a storage backend, check out <a href="https://github.com/nico-taing/yaml_record">YAML Record</a> and <a href="http://www.darkarts.co.za/yaml-model">YAML Model</a>.</p>
+</blockquote>
+
+<h3 id="sweet-relations-how-do-they-work">Sweet relations: how do they work?</h3>
+
+<p>Now that I’ve covered the idea of object persistence using various backends,
+it’s finally time to talk about relations between objects. Quite often the
+relations are the crux of our application (even when we’re not building
+another social network…), and the problem of their persistence is usually
+overlooked and simplified to ‘Let’s just use foreign keys and join tables where
+needed.’</p>
+
+<p>The way relations are canonically persisted depends greatly on the type of the
+database. Contrary to their name, relational databases are not an ideal
+solution for storing relations: their name comes from relations between the
+rows of a single table (which translates to the assumption that objects of the
+same class have the same property types), not from relations between objects of
+potentially different classes, which end up being rows in separate tables.</p>
+
+<p>Modeling relations in relational databases is quite complicated and depends on
+the type of relation, its directionality, and whether it carries any
+relation-specific data. For example, an object representing a person can have
+the relations such as having a particular gender (one-to-many relation), having
+a hobby (many-to-many), having a spouse (many-to-many, with the relation
+carrying additional data, such as start date of the relationship),
+participating in an event (many-to-many, with additional data such as
+participation role), being on two different ends of a parental relation (having
+parents and children), and so on. Some of these relations (gender) can be stored
+right in the <code>people</code> table; some need to be represented by having a foreign
+key; others require a separate join table (potentially carrying any
+relation-specific data). Dereferencing such relations means crafting and
+executing (potentially complicated) SQL <code>JOIN</code> queries.</p>
+
+<p><img src="http://i.imgur.com/CO6gf.png" alt="relations" /></p>
+
+<p><em>An example set of relations (arrows) between ‘typical’ objects in a system.</em></p>
+
+<p>Modeling relations in document databases is quite different from modeling for
+a RDMS. Some of the relations (like the above-mentioned post/comments example) 
+are best modeled using embedded documents. Despite being very useful in certain scenarios (e.g., retrieving
+a post with all of its comments), this approach might cause problems when new
+features require cross-cutting through all of such embedded documents. For
+example, retrieving all of the comments by a given person or getting the list of the
+most recent comments means scanning through the whole <code>posts</code> collection.</p>
+
+<p>Although some document databases employ implicit, foreign-key-like references
+(e.g., MongoDB’s DBRefs, which are two-key documents of the form `{ $ref:</p>
+<collection>, $id: <object_id> }`), dereferencing relations is usually a bigger
+problem (due to the lack of standard approaches like SQL `JOIN` queries) and is
+often done on the client side, even if it’s greatly simplified by tools like
+[MongoHydrator](https://github.com/gregspurrier/mongo_hydrator).
+
+Key-value stores are, by definition, the least relation-friendly backends—and
+using them for modeling relations requires explicit foreign keys that need to
+be managed on the client side. On the other end of the spectrum are graph databases:
+relations (modeled as edges) can usually carry any data required, can as
+easily point in either or both directions, and are represented in the same way
+regardless of whether they model a one-to-one, one-to-many, or many-to-many
+relation. Graph databases also allow for all kinds of data analysis/querying
+based on the relations themselves, making things like graph traversal or proximity
+metrics easier and faster than they would be with a relational database.
+
+### Modeling relations as proper objects
+
+Now that you know the different ways (and issues with) persisting objects and
+relations between them, is there a way to model relations that could be deemed
+‘persistence independent’, or at least ‘not persistence driven’? One such approach 
+would be to model relations as proper objects in the system, akin to
+how they’re modeled in graph databases.
+
+In this approach, relations would be objects that reference two other objects
+and carry any additional data particular to a given relation (such as
+participation role in a relation between a person and an event, start/end dates
+of the given relation, etc.). This approach is the most flexible in schema-less
+databases—document databases could have a separate collection of relations,
+and different relations could store different types of data. In relational
+databases, this design could be modeled by either separate tables (one per relation
+type) or a common `relations` table storing the references to the related
+objects and a relation type pointing to a table holding data for all relations
+of this particular type/schema.
+
+The main drawback of this approach is dereferencing—getting other objects
+related to the object at hand would be a two-step process: getting all of
+the object’s relations (potentially only of a certain type) and then getting
+all of the ‘other’ objects referenced by these relations. Note, however, that
+this is exactly what we do every day with join tables for many-to-many
+relations, so the drawback is mostly that this approach would apply to all of
+the relations in the given system, not only many-to-many ones.
+
+The main advantages of this approach are its simplicity (everything is an
+object; relations just happen to carry certain properties, like the identifiers
+of the objects they reference) and its potential higher portability (in that it doesn't tie
+the way relations are modeled to a given persistence approach). Having
+relations as proper objects can also help in producing aggregated statistics
+about the system (like ‘what are the hubs of the system—the most connected
+objects, regardless of relation type’).
+
+Additionally, when all of the objects in the system have unique identifiers
+(_of course_ [PostgreSQL has a native type for
+UUIDs](http://www.postgresql.org/docs/9.1/static/datatype-uuid.html)),
+relations no longer need to carry the information about the table/collection of
+the referenced object; assuming the system has a way to retrieve an object
+solely based on its UUID, relations become—in their simplest form—just
+triples of 128-bit UUIDs (one identifying the relation and the other two identifying the
+referenced objects) plus some information about the relation type.
+
+### Object databases
+
+&gt; Now that people are considering NoSQL, will more people consider no-database?
+&gt;
+&gt; <cite>Martin Fowler</cite>
+
+A different approach to solving problems with persisting relations
+between objects is to persist the objects not in a way that requires explicit
+mapping, but by using an object database.
+
+In the past, there were a few approaches to solving this problem in Ruby—
+notable contestants being [Madeleine](http://madeleine.rubyforge.org),
+[ODB](http://zeropluszero.com/software/odb/), and
+[HybridDB](https://github.com/pauliephonic/hybriddb); unfortunately, all of
+these seem to be no longer maintained (although some birds at the wroc\_love.rb
+conference earlier this year suggested that it might be revived if enough interest
+is expressed!). Currently the most promising solution for straight object
+persistence is [MagLev](http://maglev.github.com), a recently released Ruby
+implementation built on top of the GemStone/S Virtual Machine known as _the_
+Smalltalk object persistence solution. Although it probably won’t be
+a widely adopted silver bullet for some time, I have high hopes for MagLev and
+the changes that object persistence can bring to the way we think about giving our
+objects immortality.
+
+Unfortunately, because the use of object databases is not widespread at all,
+there is not much more to say about them except that they may prove to be an
+interesting option in the future.
+
+### Not your usual persistence models
+
+I will wrap up this article with two examples of object persistence
+that are not related to persisting relations but rather to hiding persistence
+altogether. ActiveRecord gives us a nice abstraction for wrting SQL, but
+these two examples show how persistence can be abstracted even more.
+
+The first example is [Candy](https://github.com/SFEley/candy). Although it is
+currently unmaintained and in need of a fix to get running with the current
+mongo gem, Candy is a nice and/or crazy example of how object persistence can be hidden
+from our eyes with a single `include Candy::Piece` line:
+
+~~~ruby
+require 'candy'
+
+class Conference
+  include Candy::Piece
+end
+
+rubyconf = Conference.new
+# connects to localhost:27017 and 'chastell' db if needed
+# and saves a new document to the 'Conference' collection
+
+rubyconf.location = 'New Orleans'   # method_missing resaves
+
+rubyconf.events = { parties: { thursday: '&amp;block Party' } }
+rubyconf.events.parties.thursday    #=&gt; '&amp;block Party'
+~~~
+
+For a similarly unobtrusive way to _query_ a collection,
+[Ambition](https://github.com/defunkt/ambition) provides a way 
+to do Ruby-like queries against any supported persistence store. 
+Like Candy, it is currently unmaintained but still worth checking out.
+
+To see why Ambition is interesting, compare the following query against 
+an ActiveRecord-supported store:
+
+~~~ruby
+require 'ambition/adapters/active_record'
+
+class Person &lt; ActiveRecord::Base
+end
+
+Person.select do |p|
+  (p.country == 'USA' &amp;&amp; p.age &gt;= 21) ||
+  (p.country != 'USA' &amp;&amp; p.age &gt;= 18)
+end
+~~~
+
+with an example query against an LDAP backend:
+
+~~~ruby
+require 'ambition/adapters/active_ldap'
+
+class Person &lt; ActiveLdap::Base
+end
+
+Person.select do |p|
+  (p.country == 'USA' &amp;&amp; p.age &gt;= 21) ||
+  (p.country != 'USA' &amp;&amp; p.age &gt;= 18)
+end
+~~~
+
+Although the code difference lays solely in the `require` and inheritance
+clauses, the resulting backend query in the first place is the following SQL:
+
+~~~sql
+SELECT * FROM people
+WHERE (
+  (people.country =  'USA' AND people.age &gt;= 21) OR
+  (people.country &lt;&gt; 'USA' AND people.age &gt;= 18)
+)
+~~~
+
+And the query generated by the latter is the equivalent LDAP selector:
+
+~~~
+(|
+  (&amp; (country=USA)    (age&gt;=21))
+  (&amp; (!(country=USA)) (age&gt;=18))
+)
+~~~
+
+These examples demonstrate how the benefits of the cross-platform nature of
+using an ORM are preserved even though the syntax makes it appear as if
+you are not working with a database at all. Although this style of interface
+never quite caught on in the Ruby world, it is at least interesting to
+think about.
+
+### Closing thoughts
+
+The problem of persisting object relations is tightly related to the general problem of object
+persistence. Rails, with its `rails generate model`–driven development,
+teaches us that our domain models should be tied one-to-one to their database
+representations, but there are other (potentially better) ways to do persistence
+in the object-oriented world.
+
+If this topic sounds intriguing, you might be
+interested in another of my talks, which was given at wroc\_love.rb this year (with a
+highly revised version scheduled for the Scottish Ruby Conference in Edinburgh):
+_Decoupling Persistence (Like There’s Some Tomorrow)_
+([slides](http://decoupling-wrocloverb-2012.heroku.com),
+[video](https://www.youtube.com/watch?v=w7Eol9N3jGI)).
+</object_id></collection>
+
+  </div>
+</body>
+</html>

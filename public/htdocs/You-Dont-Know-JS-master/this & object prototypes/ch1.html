@@ -1,0 +1,1226 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/default.css">-->
+      <!--<!--<link href="stylesheets/d.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/fixes.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/main.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/reset.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/print.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/styles.css" rel="stylesheet" type="text/css" />-->
+      <!--<link href="stylesheets/style.css" rel="stylesheet" type="text/css" />-->
+
+     <style>
+/* Site */
+body {
+      font-family: Verdana, Lucida Grande, Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 18px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;	
+      background: #fff url(/images/topbluefade.gif) repeat-x center top;	
+}
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+a img {
+	border: none;
+}
+a.nohover {
+	background-color: transparent !important;
+}
+a.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+a.align-right img {
+	display: block;
+}
+a.align-center {
+	display: inline-block;
+	margin: 0px 5px;
+}
+a.align-center img {
+	display: block;
+}
+img.bordered {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+}
+img.align-right {
+	float: right;
+	margin: 0px 0px 0px 10px;
+}
+span.highlight {
+	background-color: #ffc;
+}
+div.section {
+	margin: 0px auto;
+	overflow: hidden;
+	width: 700px;
+}
+div.section h2 {
+	color: #000;
+	float: left;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px 0px 20px 0px;
+	text-align: right;
+	width: 200px;
+}
+div.section h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0px 0px 0px 250px;
+	line-height: 140%;
+}
+div.section h3.pull-left {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 120%;
+	color: #900;
+	float: left;
+	margin: 0px 0px 10px 0px;
+	width: 200px;
+	text-align: right;
+}
+div.section p {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section h2.small {
+	font-size: 20px;
+}
+div.section p.small {
+	font-size: 14px;
+}
+div.section blockquote {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section blockquote p {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 140%;
+	margin: 0px 25px;
+	width: auto;
+}
+div.section p.more {
+	font-size: 12px;
+	text-align: center;
+}
+div.section p.centered {
+	text-align: center;
+}
+div.section p.download,
+div.section p.credit {
+	font-size: 14px;
+}
+div.section p.footnote,
+div.section p.sponsorship {
+	font-size: 12px;
+}
+div.section img.biopic {
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+	float: left;
+	margin: 0px 0px 10px 40px;
+}
+div.section a.screencast {
+	background-color: transparent !important;
+	float: left;
+	clear: left;
+	margin: 0px 0px 25px 25px;
+}
+div.section a.screencast img {
+	display: block;
+	background-color: #fff;
+	border: 2px solid #ccc;
+	padding: 2px;
+}
+div.section ul.grid {
+	list-style: none;
+	margin: 0px 0px 15px 280px;
+	padding: 0px;
+	overflow: hidden;
+	width: 420px;
+}
+div.section ul.grid li {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	height: 160px;
+	width: 200px;
+}
+div.section ul.grid li a {
+	background-color: transparent !important;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+div.section ul.grid li img {
+	display: block;
+	border: 1px solid #ccc;
+	padding: 1px;
+}
+div.section ul.grid li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+div.section ul.grid li p a {
+	display: inline;
+}
+div.section ul.grid li p a:hover {
+	background-color: #f4dda6 !important;
+}
+div.section div.video {
+	margin: 0px 0px 25px 250px;
+	width: 450px;
+}
+div.section ul.links {
+	list-style: none;
+	float: left;
+	clear: left;
+	text-align: right;
+	width: 200px;
+	padding: 0px;
+	margin: 0px 0px 20px 0px;
+	font-family: Georgia;
+	font-size: 14px;
+	line-height: 140%;
+	overflow: hidden;
+}
+div.section ul.links li {
+	float: right;
+	clear: right;
+}
+div.section ul.links li.rss {
+	background: url(/images/rss.png) no-repeat 0px 1px;
+	padding: 0px 0px 0px 22px;
+}
+div.section code {
+	font-family: Courier New, Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+#navigation {
+	width: 726px;
+	margin: 15px auto 10px;
+	font-size: 10px;
+	line-height: 12px;
+	text-align: center;
+}
+#navigation a {
+	color: #000;
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: underline;
+}
+#navigation a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+#article {
+	padding: 0px 0px 20px 0px;
+}
+#article header {
+	background: url(/images/rails.png) no-repeat left top;
+	margin: 50px auto 32px;
+	width: 606px;
+	padding-left: 100px;
+	text-align: center;
+}
+#article header h1 {
+	margin: 0 auto 12px;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+	font-size: 38px;
+  line-height: 30px;
+  color: #000000;
+}
+#article header h2 {
+	margin: 0 auto;
+  font-family: "expressway",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	font-size: 21px;
+	line-height: 24px;
+	color: #999999;
+}
+#article p a,
+#article ol a,
+#article ul a {
+	color: #369;
+}
+#article p a:hover,
+#article ol a:hover,
+#article ul a:hover {
+	background-color: #f4dda6;
+	text-decoration: none;
+}
+#article hr.rule {
+	border: 0px;
+	color: #bbb;
+	background-color: #bbb;
+	height: 1px;
+	width: 670px;
+	margin: 0px auto 25px;
+}
+#article p.missing {
+	color: #000;
+	font-family: Georgia;
+	font-size: 28px;
+	font-weight: normal;
+	line-height: 120%;
+	margin: 0px auto;
+	text-align: center;
+	width: 700px;
+}
+#footer {
+	color: #666;
+	font-size: 11px;
+	margin: 0px auto;
+	padding: 0px 0px 44px 0px;
+	text-align: center;
+	width: 726px;
+}
+#footer p {
+	margin: 12px 0px;
+}
+#footer p a {
+	color: #000;
+}
+#footer p a:hover {
+	background-color: #333;
+	color: #fff;
+	text-decoration: none;
+}
+#sponsored_by {
+	margin: 17px 0px !important;
+}
+#sponsored_by a:hover {
+	background-color: transparent !important;
+}
+#sponsored_by a img {
+	vertical-align: -7px;
+}
+
+/* Overview */
+#announce {
+	background-color: #981a21;
+	color: #fff;
+	font-size: 11px;
+	line-height: 13px;
+	margin: 0px;
+	padding: 5px 0px;
+	text-align: center;
+}
+#announce a {
+	color: #fff !important;
+	text-decoration: underline;
+}
+#announce a:hover {
+	background-color: #000 !important;
+	text-decoration: none;
+}
+#slivers {
+	background: url(/images/herobackground.gif) repeat-x left top;
+	border-top: 2px solid #F6E69F;
+	border-bottom: 2px solid #F6E69F;
+	padding: 10px;
+}
+#slivers ul {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px;
+	overflow: hidden;
+	width: 792px;
+}
+#slivers ul li {
+	float: left;
+	margin: 0px 24px;
+	width: 150px;
+}
+#slivers ul li h2 {
+	color: #0e3062;
+	font-family: Georgia;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	margin: 0px 0px 10px 0px;
+	text-align: center;
+}
+#slivers ul li img {
+	display: block;
+	margin: 0px auto 5px;
+}
+#slivers ul li p {
+	margin: 0px;
+	text-align: center;
+}
+#slivers ul li p a {
+	color: #000;
+	font-size: 10px;
+}
+#slivers ul li p a:hover {
+	background-color: #000;
+	color: #fff;
+	text-decoration: none;
+}
+
+#slideshow {
+	font-family: Georgia;
+	font-size: 16px;
+	height: 132px;
+	line-height: 140%;
+	margin: 0px auto 30px;
+	text-align: center;
+	width: 700px;
+	padding: 30px 0px 0px 0px;
+	position: relative;
+}
+#slideshow blockquote {
+	margin: 0px;
+	position: absolute;
+	width: 700px;
+}
+#slideshow blockquote p {
+	margin: 0px;
+}
+#slideshow blockquote p cite {
+	font-size: 14px;
+	color: #464242;
+}
+#slideshow p.more {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	width: 700px;
+}
+#slideshow p.more a {
+	color: #464242;
+}
+#slideshow p.more a:hover {
+	background-color: #000;
+	text-decoration: none;
+}
+#used_by ul {
+	list-style: none;
+	margin: 0px 0px 0px 280px;
+	padding: 0px;
+	overflow: hidden;
+}
+#used_by ul li {
+	float: left;
+	margin: 0px 0px 20px 0px;
+	width: 209px;
+}
+#used_by ul li img {
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+#used_by ul li p {
+	font-size: 10px;
+	font-family: inherit;
+	margin: 0px;
+	width: auto;
+}
+/* Applications */
+#applications {
+	list-style: none;
+	margin: 0px auto;
+	padding: 0px 0px 0px 110px;
+	overflow: hidden;
+	width: 700px;
+}
+#applications li {
+	float: left;
+	width: 200px;
+	margin: 0px 0px 20px 0px;
+}
+#applications li a {
+	display: block;
+	margin: 0px 0px 5px 0px;
+	background-color: transparent !important;
+}
+#applications li a img {
+	background-color: #fff;
+	border: 1px solid #CCC;
+	padding: 1px;
+	display: block;
+}
+#applications li p {
+	font-size: 10px;
+	margin: 0px;
+}
+#applications li p a {
+	display: inline;
+}
+#applications li p a:hover {
+	background-color: #f4dda6 !important;
+}
+/* Quotes */
+#article.quotes blockquote {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px auto 25px;
+	text-align: center;
+	width: 700px;
+	padding: 0px;
+	position: relative;
+}
+#article.quotes blockquote p {
+	margin: 0px;
+}
+#article.quotes blockquote p cite {
+	font-size: 14px;
+	color: #a69e8a;
+}
+/* Security Policy */
+#article.security {
+	margin: 50px auto 30px;
+	width: 700px;
+}
+#article.security h2 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	margin: 40px 0px 15px 0px;
+}
+#article.security h3 {
+	color: #900;
+	font-family: Georgia;
+	font-size: 18px;
+	margin: 0;
+	line-height: 140%;
+}
+#article.security p,
+#article.security ol {
+	font-family: Georgia;
+	font-size: 18px;
+	line-height: 140%;
+	margin: 0px 0px 25px 0px;
+}
+#article.security ol li {
+	margin: 0px 0px 10px 0px;
+}
+
+     </style>
+  </head>
+  <body>
+    <div id="containter">          
+      <h1 id="you-dont-know-js-this--object-prototypes">You Don’t Know JS: <em>this</em> &amp; Object Prototypes</h1>
+<p># Chapter 1: <code>this</code> Or That?</p>
+
+<p>One of the most confused mechanisms in JavaScript is the <code>this</code> keyword. It’s a special identifier keyword that’s automatically defined in the scope of every function, but what exactly it refers to bedevils even seasoned JavaScript developers.</p>
+
+<blockquote>
+  <p>Any sufficiently <em>advanced</em> technology is indistinguishable from magic. – Arthur C. Clarke</p>
+</blockquote>
+
+<p>JavaScript’s <code>this</code> mechanism isn’t actually <em>that</em> advanced, but developers often paraphrase that quote in their own mind by inserting “complex” or “confusing”, and there’s no question that without lack of clear understanding, <code>this</code> can seem downright magical in <em>your</em> confusion.</p>
+
+<p><strong>Note:</strong> The word “this” is a terribly common pronoun in general discourse. So, it can be very difficult, especially verbally, to determine whether we are using “this” as a pronoun or using it to refer to the actual keyword identifier. For clarity, I will always use <code>this</code> to refer to the special keyword, and “this” or <em>this</em> or this otherwise.</p>
+
+<h2 id="why-this">Why <code>this</code>?</h2>
+
+<p>If the <code>this</code> mechanism is so confusing, even to seasoned JavaScript developers, one may wonder why it’s even useful? Is it more trouble than it’s worth? Before we jump into the <em>how</em>, we should examine the <em>why</em>.</p>
+
+<p>Let’s try to illustrate the motivation and utility of <code>this</code>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">identify</span>() {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.name.toUpperCase();
+}
+
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">speak</span>() {
+        <span style="color:#080;font-weight:bold">var</span> greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, I'm </span><span style="color:#710">&quot;</span></span> + identify.call( <span style="color:#950">this</span> );
+        console.log( greeting );
+}
+
+<span style="color:#080;font-weight:bold">var</span> me = {
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Kyle</span><span style="color:#710">&quot;</span></span>
+};
+
+<span style="color:#080;font-weight:bold">var</span> you = {
+        <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Reader</span><span style="color:#710">&quot;</span></span>
+};
+
+identify.call( me ); <span style="color:#777">// KYLE</span>
+identify.call( you ); <span style="color:#777">// READER</span>
+
+speak.call( me ); <span style="color:#777">// Hello, I'm KYLE</span>
+speak.call( you ); <span style="color:#777">// Hello, I'm READER</span>
+</pre></div>
+</div>
+</div>
+
+<p>If the <em>how</em> of this snippet confuses you, don’t worry! We’ll get to that shortly. Just set those questions aside briefly so we can look into the <em>why</em> more clearly.</p>
+
+<p>This code snippet allows the <code>identify()</code> and <code>speak()</code> functions to be re-used against multiple <em>context</em> (<code>me</code> and <code>you</code>) objects, rather than needing a separate version of the function for each object.</p>
+
+<p>Instead of relying on <code>this</code>, you could have explicitly passed in a context object to both <code>identify()</code> and <code>speak()</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">identify</span>(context) {
+        <span style="color:#080;font-weight:bold">return</span> context.name.toUpperCase();
+}
+
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">speak</span>(context) {
+        <span style="color:#080;font-weight:bold">var</span> greeting = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, I'm </span><span style="color:#710">&quot;</span></span> + identify( context );
+        console.log( greeting );
+}
+
+identify( you ); <span style="color:#777">// READER</span>
+speak( me ); <span style="color:#777">// Hello, I'm KYLE</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, the <code>this</code> mechanism provides a more elegant way of implicitly “passing along” an object reference, leading to cleaner API design and easier re-use.</p>
+
+<p>The more complex your usage pattern is, the more clearly you’ll see that passing context around as an explicit parameter is often messier than passing around a <code>this</code> context. When we explore objects and prototypes, you will see the helpfulness of a collection of functions being able to automatically reference the proper context object.</p>
+
+<h2 id="confusions">Confusions</h2>
+
+<p>We’ll soon begin to explain how <code>this</code> <em>actually</em> works, but first we must  dispel some misconceptions about how it <em>doesn’t</em> actually work.</p>
+
+<p>The name “this” creates confusion when developers try to think about it too literally. There are two meanings often assumed, but both are incorrect.</p>
+
+<h3 id="itself">Itself</h3>
+
+<p>The first common temptation is to assume <code>this</code> refers to the function itself. That’s a reasonable grammatical inference, at least.</p>
+
+<p>Why would you want to refer to a function from inside itself? The most common reasons would be things like recursion (calling a function from inside itself) or having an event handler that can unbind itself when it’s first called.</p>
+
+<p>Developers new to JS’s mechanisms often think that referencing the function as an object (all functions in JavaScript are objects!) lets you store <em>state</em> (values in properties) between function calls. While this is certainly possible and has some limited uses, the rest of the book will expound on many other patterns for <em>better</em> places to store state besides the function object.</p>
+
+<p>But for just a moment, we’ll explore that pattern, to illustrate how <code>this</code> doesn’t let a function get a reference to itself like we might have assumed.</p>
+
+<p>Consider the following code, where we attempt to track how many times a function (<code>foo</code>) was called:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(num) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo: </span><span style="color:#710">&quot;</span></span> + num );
+
+        <span style="color:#777">// keep track of how many times `foo` is called</span>
+        <span style="color:#950">this</span>.count++;
+}
+
+foo.count = <span style="color:#00D">0</span>;
+
+<span style="color:#080;font-weight:bold">var</span> i;
+
+<span style="color:#080;font-weight:bold">for</span> (i=<span style="color:#00D">0</span>; i&lt;<span style="color:#00D">10</span>; i++) {
+        <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">5</span>) {
+                foo( i );
+        }
+}
+<span style="color:#777">// foo: 6</span>
+<span style="color:#777">// foo: 7</span>
+<span style="color:#777">// foo: 8</span>
+<span style="color:#777">// foo: 9</span>
+
+<span style="color:#777">// how many times was `foo` called?</span>
+console.log( foo.count ); <span style="color:#777">// 0 -- WTF?</span>
+</pre></div>
+</div>
+</div>
+
+<p><code>foo.count</code> is <em>still</em> <code>0</code>, even though the four <code>console.log</code> statements clearly indicate <code>foo(..)</code> was in fact called four times. The frustration stems from a <em>too literal</em> interpretation of what <code>this</code> (in <code>this.count++</code>) means.</p>
+
+<p>When the code executes <code>foo.count = 0</code>, indeed it’s adding a property <code>count</code> to the function object <code>foo</code>. But for the <code>this.count</code> reference inside of the function, <code>this</code> is not in fact pointing <em>at all</em> to that function object, and so even though the property names are the same, the root objects are different, and confusion ensues.</p>
+
+<p><strong>Note:</strong> A responsible developer <em>should</em> ask at this point, “If I was incrementing a <code>count</code> property but it wasn’t the one I expected, which <code>count</code> <em>was</em> I incrementing?” In fact, were she to dig deeper, she would find that she had accidentally created a global variable <code>count</code> (see Chapter 2 for <em>how</em> that happened!), and it currently has the value <code>NaN</code>. Of course, once she identifies this peculiar outcome, she then has a whole other set of questions: “How was it global, and why did it end up <code>NaN</code> instead of some proper count value?” (see Chapter 2).</p>
+
+<p>Instead of stopping at this point and digging into why the <code>this</code> reference doesn’t seem to be behaving as <em>expected</em>, and answering those tough but important questions, many developers simply avoid the issue altogether, and hack toward some other solution, such as creating another object to hold the <code>count</code> property:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(num) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo: </span><span style="color:#710">&quot;</span></span> + num );
+
+        <span style="color:#777">// keep track of how many times `foo` is called</span>
+        data.count++;
+}
+
+<span style="color:#080;font-weight:bold">var</span> data = {
+        <span style="color:#606">count</span>: <span style="color:#00D">0</span>
+};
+
+<span style="color:#080;font-weight:bold">var</span> i;
+
+<span style="color:#080;font-weight:bold">for</span> (i=<span style="color:#00D">0</span>; i&lt;<span style="color:#00D">10</span>; i++) {
+        <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">5</span>) {
+                foo( i );
+        }
+}
+<span style="color:#777">// foo: 6</span>
+<span style="color:#777">// foo: 7</span>
+<span style="color:#777">// foo: 8</span>
+<span style="color:#777">// foo: 9</span>
+
+<span style="color:#777">// how many times was `foo` called?</span>
+console.log( data.count ); <span style="color:#777">// 4</span>
+</pre></div>
+</div>
+</div>
+
+<p>While it is true that this approach “solves” the problem, unfortunately it simply ignores the real problem – lack of understanding what <code>this</code> means and how it works – and instead falls back to the comfort zone of a more familiar mechanism: lexical scope.</p>
+
+<p><strong>Note:</strong> Lexical scope is a perfectly fine and useful mechanism; I am not belittling the use of it, by any means (see <em>“Scope &amp; Closures”</em> title of this book series). But constantly <em>guessing</em> at how to use <code>this</code>, and usually being <em>wrong</em>, is not a good reason to retreat back to lexical scope and never learn <em>why</em> <code>this</code> eludes you.</p>
+
+<p>To reference a function object from inside itself, <code>this</code> by itself will typically be insufficient. You generally need a reference to the function object via a lexical identifier (variable) that points at it.</p>
+
+<p>Consider these two functions:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() {
+        foo.count = <span style="color:#00D">4</span>; <span style="color:#777">// `foo` refers to itself</span>
+}
+
+setTimeout( <span style="color:#080;font-weight:bold">function</span>(){
+        <span style="color:#777">// anonymous function (no name), cannot</span>
+        <span style="color:#777">// refer to itself</span>
+}, <span style="color:#00D">10</span> );
+</pre></div>
+</div>
+</div>
+
+<p>In the first function, called a “named function”, <code>foo</code> is a reference that can be used to refer to the function from inside itself.</p>
+
+<p>But in the second example, the function callback passed to <code>setTimeout(..)</code> has no name identifier (so called an “anonymous function”), so there’s no proper way to refer to the function object itself.</p>
+
+<p><strong>Note:</strong> The old-school but now deprecated and frowned-upon <code>arguments.callee</code> reference inside a function <em>also</em> points to the function object of the currently executing function. This reference is typically the only way to access an anonymous function’s object from inside itself. The best approach, however, is to avoid the use of anonymous functions altogether, at least for those which require a self-reference, and instead use a named function (expression). <code>arguments.callee</code> is deprecated and should not be used.</p>
+
+<p>So another solution to our running example would have been to use the <code>foo</code> identifier as a function object reference in each place, and not use <code>this</code> at all, which <em>works</em>:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(num) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo: </span><span style="color:#710">&quot;</span></span> + num );
+
+        <span style="color:#777">// keep track of how many times `foo` is called</span>
+        foo.count++;
+}
+
+foo.count = <span style="color:#00D">0</span>;
+
+<span style="color:#080;font-weight:bold">var</span> i;
+
+<span style="color:#080;font-weight:bold">for</span> (i=<span style="color:#00D">0</span>; i&lt;<span style="color:#00D">10</span>; i++) {
+        <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">5</span>) {
+                foo( i );
+        }
+}
+<span style="color:#777">// foo: 6</span>
+<span style="color:#777">// foo: 7</span>
+<span style="color:#777">// foo: 8</span>
+<span style="color:#777">// foo: 9</span>
+
+<span style="color:#777">// how many times was `foo` called?</span>
+console.log( foo.count ); <span style="color:#777">// 4</span>
+</pre></div>
+</div>
+</div>
+
+<p>However, that approach similarly side-steps <em>actual</em> understanding of <code>this</code> and relies entirely on the lexical scoping of variable <code>foo</code>.</p>
+
+<p>Yet another way of approaching the issue is to force <code>this</code> to actually point at the <code>foo</code> function object:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>(num) {
+        console.log( <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">foo: </span><span style="color:#710">&quot;</span></span> + num );
+
+        <span style="color:#777">// keep track of how many times `foo` is called</span>
+        <span style="color:#777">// Note: `this` IS actually `foo` now, based on</span>
+        <span style="color:#777">// how `foo` is called (see below)</span>
+        <span style="color:#950">this</span>.count++;
+}
+
+foo.count = <span style="color:#00D">0</span>;
+
+<span style="color:#080;font-weight:bold">var</span> i;
+
+<span style="color:#080;font-weight:bold">for</span> (i=<span style="color:#00D">0</span>; i&lt;<span style="color:#00D">10</span>; i++) {
+        <span style="color:#080;font-weight:bold">if</span> (i &gt; <span style="color:#00D">5</span>) {
+                <span style="color:#777">// using `call(..)`, we ensure the `this`</span>
+                <span style="color:#777">// points at the function object (`foo`) itself</span>
+                foo.call( foo, i );
+        }
+}
+<span style="color:#777">// foo: 6</span>
+<span style="color:#777">// foo: 7</span>
+<span style="color:#777">// foo: 8</span>
+<span style="color:#777">// foo: 9</span>
+
+<span style="color:#777">// how many times was `foo` called?</span>
+console.log( foo.count ); <span style="color:#777">// 4</span>
+</pre></div>
+</div>
+</div>
+
+<p><strong>Instead of avoiding <code>this</code>, we embrace it.</strong> We’ll explain in a little bit <em>how</em> such techniques work much more completely, so don’t worry if you’re still a bit confused!</p>
+
+<h3 id="its-scope">Its Scope</h3>
+
+<p>The next most common misconception about the meaning of <code>this</code> is that it somehow refers to the function’s scope. It’s a tricky question, because in one sense there is some truth, but in the other sense, it’s quite misguided.</p>
+
+<p>To be clear, <code>this</code> does not, in any way, refer to a function’s <strong>lexical scope</strong>. It is true that internally, scope is kind of like an object with properties for each of the available identifiers. But the scope “object” is not accessible to JavaScript code. It’s an inner part of the <em>Engine</em>’s implementation.</p>
+
+<p>Consider code which attempts (and fails!) to cross over the boundary and use <code>this</code> to implicitly refer to a function’s lexical scope:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">foo</span>() {
+        <span style="color:#080;font-weight:bold">var</span> a = <span style="color:#00D">2</span>;
+        <span style="color:#950">this</span>.bar();
+}
+
+<span style="color:#080;font-weight:bold">function</span> <span style="color:#06B;font-weight:bold">bar</span>() {
+        console.log( <span style="color:#950">this</span>.a );
+}
+
+foo(); <span style="color:#777">//ReferenceError: a is not defined</span>
+</pre></div>
+</div>
+</div>
+
+<p>There’s more than one mistake in this snippet. While it may seem contrived, the code you see is a distillation of actual real-world code that has been exchanged in public community help forums. It’s a wonderful (if not sad) illustration of just how misguided <code>this</code> assumptions can be.</p>
+
+<p>Firstly, an attempt is made to reference the <code>bar()</code> function via <code>this.bar()</code>. It is almost certainly an <em>accident</em> that it works, but we’ll explain the <em>how</em> of that shortly. The most natural way to have invoked <code>bar()</code> would have been to omit the leading <code>this.</code> and just make a lexical reference to the identifier.</p>
+
+<p>However, the developer who writes such code is attempting to use <code>this</code> to create a bridge between the lexical scopes of <code>foo()</code> and <code>bar()</code>, so that <code>bar()</code> has access to the variable <code>a</code> in the inner scope of <code>foo()</code>. <strong>No such bridge is possible.</strong> You cannot use a <code>this</code> reference to look something up in a lexical scope. It is not possible.</p>
+
+<p>Every time you feel yourself trying to mix lexical scope look-ups with <code>this</code>, remind yourself: <em>there is no bridge</em>.</p>
+
+<h2 id="whats-this">What’s <code>this</code>?</h2>
+
+<p>Having set aside various incorrect assumptions, let us now turn our attention to how the <code>this</code> mechanism really works.</p>
+
+<p>We said earlier that <code>this</code> is not an author-time binding but a runtime binding. It is contextual based on the conditions of the function’s invocation. <code>this</code> binding has nothing to do with where a function is declared, but has instead everything to do with the manner in which the function is called.</p>
+
+<p>When a function is invoked, an activation record, otherwise known as an execution context, is created. This record contains information about where the function was called from (the call-stack), <em>how</em> the function was invoked, what parameters were passed, etc. One of the properties of this record is the <code>this</code> reference which will be used for the duration of that function’s execution.</p>
+
+<p>In the next chapter, we will learn to find a function’s <strong>call-site</strong> to determine how its execution will bind <code>this</code>.</p>
+
+<h2 id="review-tldr">Review (TL;DR)</h2>
+
+<p><code>this</code> binding is a constant source of confusion for the JavaScript developer who does not take the time to learn how the mechanism actually works. Guesses, trial-and-error, and blind copy-n-paste from Stack Overflow answers is not an effective or proper way to leverage <em>this</em> important <code>this</code> mechanism.</p>
+
+<p>To learn <code>this</code>, you first have to learn what <code>this</code> is <em>not</em>, despite any assumptions or misconceptions that may lead you down those paths. <code>this</code> is neither a reference to the function itself, nor is it a reference to the function’s <em>lexical</em> scope.</p>
+
+<p><code>this</code> is actually a binding that is made when a function is invoked, and <em>what</em> it references is determined entirely by the call-site where the function is called.</p>
+
+    </div>
+  </body>
+</html>

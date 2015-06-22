@@ -1,0 +1,708 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <p>If you are using <code>send</code> to test private methods in your tests, you are almost certainly doing it wrong. Most private methods tend to fall into one of the following categories, none of which require <code>send</code> to test:</p>
+
+<ul>
+  <li>A method that does not have behavior of its own (a helper function) </li>
+  <li>A method that actually deserves to be public on the current object </li>
+  <li>A method that is only private to hide a design flaw</li>
+</ul>
+
+<p>Take a look at the three objects below and try to match them to the patterns listed above.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Book</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name)
+    <span style="color:#33B">@name</span> = name
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">available_for_purchase?</span>
+    copies_remaining &gt; <span style="color:#00D">0</span>     
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">copies_remaining</span>
+    <span style="color:#036;font-weight:bold">Inventory</span>.count(<span style="color:#A60">:book</span>, <span style="color:#33B">@name</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Inventory</span>
+  extend <span style="color:#069">self</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">count</span>(item_type, name)
+    item_class(item_type).find_by_name(name).quantity
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">receive</span>(item_type, name, quantity)
+    item_class(item_type).create(name, quantity)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">item_class</span>(item_type)
+    <span style="color:#080;font-weight:bold">case</span> item_type
+    <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:book</span>
+      <span style="color:#036;font-weight:bold">InStockBook</span>
+    <span style="color:#080;font-weight:bold">when</span> <span style="color:#A60">:video</span>
+      <span style="color:#036;font-weight:bold">InStockVideo</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">InStockBook</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">titles</span>
+    <span style="color:#33B">@titles</span> ||= {}
+  <span style="color:#080;font-weight:bold">end</span>
+  
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">find_by_name</span>(name)
+    titles[name]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">create</span>(name, quantity)
+    titles[name] = new(name, quantity)
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(name, quantity)
+    <span style="color:#33B">@title</span>     = name
+    <span style="color:#33B">@quantity</span>  = quantity
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:title</span>, <span style="color:#A60">:quantity</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn</span>
+    <span style="color:#33B">@isbn</span> ||= isbn_from_service
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_from_service</span>
+    isbn_service_connect
+
+    isbn = <span style="color:#33B">@isbn_service</span>.find_isbn_for(<span style="color:#33B">@title</span>)
+
+    isbn_service_disconnect
+
+    <span style="color:#080;font-weight:bold">return</span> isbn
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_service_connect</span>
+    <span style="color:#33B">@isbn_service</span> = <span style="color:#036;font-weight:bold">IsbnService</span>.new
+    <span style="color:#33B">@isbn_service</span>.connect
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_service_disconnect</span>
+    <span style="color:#33B">@isbn_service</span>.disconnect
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you guessed that <code>Inventory</code> was the object which demonstrated a private method that doesn’t implement an external behavior, you guessed right. The sole purpose of <code>Inventory#item_class</code> is just to make the code in <code>Inventory#count</code> and <code>Inventory#receive</code> a bit cleaner to read. Therefore, it’d be wasteful to write an explicit test such as the one below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_item_class</span>
+  assert_equal <span style="color:#036;font-weight:bold">InStockBook</span>, <span style="color:#036;font-weight:bold">Inventory</span>.send(<span style="color:#A60">:item_class</span>, <span style="color:#A60">:book</span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The following tests implicitly cover the functionality of <code>Inventory#item_class</code> while focusing on actual interactions through the public interface.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_stocking_a_book</span>
+  <span style="color:#036;font-weight:bold">Inventory</span>.receive(<span style="color:#A60">:book</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">100</span>)
+  assert_equal <span style="color:#00D">100</span>, <span style="color:#036;font-weight:bold">Inventory</span>.count(<span style="color:#A60">:book</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Because indirectly testing a private method will result in the same code coverage results as testing the method directly, you won’t silently miss out on a failure if <code>Inventory#item_class</code> does not work as expected. However, by writing your tests this way, you focus primarily on what can be done to the object via its external interface. This leads to clearer, more maintainable tests. If a user is expected to add books through <code>Inventory#receive</code>, they should not need to know about <code>InStockBook</code>, so it can be regarded as an implementation detail. Changing the definition of <code>Inventory#item_class</code> or even removing it entirely will not require a change to these tests as long as you maintain the signature of the objects public API.</p>
+
+<p>Now that we’ve identified the approach for testing <code>Inventory</code>, we are left with <code>Book</code> and <code>InStockBook</code> to discuss. Of the two, the problem with <code>Book</code> is a little more obvious, so we’ll tackle it first.</p>
+
+<p>Book implements a method called <code>available_for_purchase?</code>, which relies on a private method called <code>copies_remaining</code> to operate. The following code demonstrates a poorly implemented test.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_copies_remaining</span>
+  book = <span style="color:#036;font-weight:bold">Book</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#036;font-weight:bold">Inventory</span>.receive(book.name, <span style="color:#00D">10</span>)
+ 
+  assert_equal book.send(<span style="color:#A60">:copies_remaining</span>), <span style="color:#00D">10</span> 
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The reason why this is poor is because once again, we are relying on <code>send</code> to call a private method in our tests. Our theory from the previous example is that private methods do not need to be tested because they don’t actually implement behavior. However, <code>Book#copies_remaining</code> seems like something you might want to actually make use of. If you imagine a web front-end for an e-commerce site, it’s easy to visualize both an indicator of whether an item is in stock, as well as how many of that item are still available.</p>
+
+<p>The rule of thumb here is that if a method provides a sensible behavior that fits the context of your object, it’s better off to just make it public. The following test seems very natural to me.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_copies_remaining</span>
+  book = <span style="color:#036;font-weight:bold">Book</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>)
+  <span style="color:#036;font-weight:bold">Inventory</span>.receive(book.name, <span style="color:#00D">10</span>)
+  
+  assert_equal book.copies_remaining, <span style="color:#00D">10</span> 
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>So far we’ve seen two extremes: Private methods that are rightfully private and do not need to be tested explicitly, and private methods that ought to be public so that they can be tested explicitly. We will now examine the space between these two opposite ends of the spectrum.  </p>
+
+<p>Let’s think a bit about how we could test the <code>InStockBook#isbn</code> shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">InStockBook</span>
+
+  <span style="color:#777"># .. other features omitted</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn</span>
+    <span style="color:#33B">@isbn</span> ||= isbn_from_service
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>One way to do it the would be to mock out the call to <code>isbn_from_service</code> as we do in the following tests.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_retreive_isbn</span>
+  book = <span style="color:#036;font-weight:bold">InStockBook</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">10</span>)
+  book.expects(<span style="color:#A60">:isbn_from_service</span>).once.returns(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">978-0-596-52300-8</span><span style="color:#710">&quot;</span></span>)
+
+  <span style="color:#777"># Verify caching by calling isbn twice but expecting only one service</span>
+  <span style="color:#777"># call to be made</span>
+  <span style="color:#00D">2</span>.times { assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">978-0-596-52300-8</span><span style="color:#710">&quot;</span></span>, <span style="color:#33B">@book</span>.isbn }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The downside of this approach is that by mocking out the call to <code>isbn_from_service</code>, we’re bypassing all of the following code, leaving it untested.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_from_service</span>
+  isbn_service_connect
+
+  isbn = <span style="color:#33B">@isbn_service</span>.find_isbn_for(<span style="color:#33B">@title</span>)
+
+  isbn_service_disconnect
+
+  <span style="color:#080;font-weight:bold">return</span> isbn
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_service_connect</span>
+  <span style="color:#33B">@isbn_service</span> = <span style="color:#036;font-weight:bold">IsbnService</span>.new
+  <span style="color:#33B">@isbn_service</span>.connect
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn_service_disconnect</span>
+  <span style="color:#33B">@isbn_service</span>.disconnect
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Making these methods public on <code>InStockBook</code> doesn’t make much sense, but we also can’t say that these are mere implementation details that can be ignored. In these situations, typically some redesign is necessary, and in this case, a simple shift of this functionality upstream to the <code>IsbnService</code> class makes the most sense.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">IsbnService</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">find_isbn_for</span>(title)
+    service = new
+
+    service.connect
+    isbn = service.find_isbn_for(title) <span style="color:#777"># delegate to instance</span>
+    service.disconnect
+
+    <span style="color:#080;font-weight:bold">return</span> isbn
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#777"># .. other functionality</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This functionality can now easily be tested as a public behavior of the <code>IsbnService</code> class, where it won’t get jumbled up with <code>InStockBook</code>’s logic. All that’s left to do is rewrite our <code>InStockBook#isbn</code> method so that it delegates to this new class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">InStockBook</span>
+
+  <span style="color:#777"># .. other features omitted</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">isbn</span>
+    <span style="color:#33B">@isbn</span> ||= <span style="color:#036;font-weight:bold">IsbnService</span>.find_isbn_for(<span style="color:#33B">@title</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Our updated <code>isbn</code> tests only need to change slightly to accommodate this
+change:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">test_retreive_isbn</span>
+  book = <span style="color:#036;font-weight:bold">InStockBook</span>.new(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Ruby Best Practices</span><span style="color:#710">&quot;</span></span>, <span style="color:#00D">10</span>)
+  <span style="color:#036;font-weight:bold">IsbnService</span>.expects(<span style="color:#A60">:find_isbn_for</span>).with(book.title).once.
+              returns(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">978-0-596-52300-8</span><span style="color:#710">&quot;</span></span>)
+
+  <span style="color:#777"># Verify caching by calling isbn twice but expecting only one service</span>
+  <span style="color:#777"># call to be made</span>
+  <span style="color:#00D">2</span>.times { assert_equal <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">978-0-596-52300-8</span><span style="color:#710">&quot;</span></span>, <span style="color:#33B">@book</span>.isbn }
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now, when reading the tests for <code>InStockBook</code>, the developer can safely gloss
+over <code>IsbnService</code>’s implementation until its contract changes. With this
+dilemma solved, we’ve now comprehensively categorized the strategies that allow
+you to avoid testing private methods without sacrificing the clarity and
+coverage of your test suite.</p>
+
+<h3 id="reflections">Reflections</h3>
+
+<p>We’ve now seen examples of how to deal with all of the following situations that might tempt us to use <code>send</code> in our tests unnecessarily:</p>
+
+<ol>
+  <li>A method that does not have behavior of its own (a helper function) </li>
+  <li>A method that actually deserves to be public on the current object </li>
+  <li>A method that is only private to hide a design flaw</li>
+</ol>
+
+<p>Can you think of a situation where none of these approaches seem to work? Please feel free to share them in the comments section below.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/034-issue-5-testing-antipatterns.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

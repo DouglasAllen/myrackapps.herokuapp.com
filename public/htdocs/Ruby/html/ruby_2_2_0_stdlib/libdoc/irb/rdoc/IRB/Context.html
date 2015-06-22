@@ -1,0 +1,2480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : IRB::Context  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:22:32 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '..'   asset_rel_prefix = '..'  --> 
+  <title>Class: IRB::Context (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="..css/obf.css"  -->
+  <link rel="stylesheet" href="../css/inuit.css" >
+  <link rel="stylesheet" href="../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../css/rdoc.css" type="text/css" >
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>irb/context.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/change-ws.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/history.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/math-mode.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/save-history.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/tracer.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/use-loader.rb</li>      
+            
+          
+          <li class='in-file'>irb/ext/workspaces.rb</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link"><a href="../Object.html">Object</a></p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-__exit__">#__exit__</a></li>
+          
+          <li><a href="#method-i-_set_last_value">#_set_last_value</a></li>
+          
+          <li><a href="#method-i-change_workspace">#change_workspace</a></li>
+          
+          <li><a href="#method-i-debug-3F">#debug?</a></li>
+          
+          <li><a href="#method-i-debug_level-3D">#debug_level=</a></li>
+          
+          <li><a href="#method-i-eval_history-3D">#eval_history=</a></li>
+          
+          <li><a href="#method-i-exit">#exit</a></li>
+          
+          <li><a href="#method-i-file_input-3F">#file_input?</a></li>
+          
+          <li><a href="#method-i-history_file">#history_file</a></li>
+          
+          <li><a href="#method-i-history_file-3D">#history_file=</a></li>
+          
+          <li><a href="#method-i-home_workspace">#home_workspace</a></li>
+          
+          <li><a href="#method-i-inspect-3F">#inspect?</a></li>
+          
+          <li><a href="#method-i-inspect_mode-3D">#inspect_mode=</a></li>
+          
+          <li><a href="#method-i-irb_level">#irb_level</a></li>
+          
+          <li><a href="#method-i-main">#main</a></li>
+          
+          <li><a href="#method-i-math_mode-3D">#math_mode=</a></li>
+          
+          <li><a href="#method-i-pop_workspace">#pop_workspace</a></li>
+          
+          <li><a href="#method-i-prompt_mode-3D">#prompt_mode=</a></li>
+          
+          <li><a href="#method-i-prompting-3F">#prompting?</a></li>
+          
+          <li><a href="#method-i-push_workspace">#push_workspace</a></li>
+          
+          <li><a href="#method-i-save_history">#save_history</a></li>
+          
+          <li><a href="#method-i-save_history-3D">#save_history=</a></li>
+          
+          <li><a href="#method-i-set_last_value">#set_last_value</a></li>
+          
+          <li><a href="#method-i-use_loader">#use_loader</a></li>
+          
+          <li><a href="#method-i-use_loader-3D">#use_loader=</a></li>
+          
+          <li><a href="#method-i-use_loader-3F">#use_loader?</a></li>
+          
+          <li><a href="#method-i-use_readline-3D">#use_readline=</a></li>
+          
+          <li><a href="#method-i-use_tracer-3D">#use_tracer=</a></li>
+          
+          <li><a href="#method-i-verbose-3F">#verbose?</a></li>
+          
+          <li><a href="#method-i-workspaces">#workspaces</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../IRB/Abort.html">IRB::Abort</a></li>
+        
+          
+          
+          <li><a href="../IRB/Context.html">IRB::Context</a></li>
+        
+          
+          
+          <li><a href="../IRB/ContextExtender.html">IRB::ContextExtender</a></li>
+        
+          
+          
+          <li><a href="../IRB/ExtendCommandBundle.html">IRB::ExtendCommandBundle</a></li>
+        
+          
+          
+          <li><a href="../IRB/FileInputMethod.html">IRB::FileInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/Frame.html">IRB::Frame</a></li>
+        
+          
+          
+          <li><a href="../IRB/InputMethod.html">IRB::InputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/Inspector.html">IRB::Inspector</a></li>
+        
+          
+          
+          <li><a href="../IRB/Irb.html">IRB::Irb</a></li>
+        
+          
+          
+          <li><a href="../IRB/IrbLoader.html">IRB::IrbLoader</a></li>
+        
+          
+          
+          <li><a href="../IRB/JobManager.html">IRB::JobManager</a></li>
+        
+          
+          
+          <li><a href="../IRB/LoadAbort.html">IRB::LoadAbort</a></li>
+        
+          
+          
+          <li><a href="../IRB/MethodExtender.html">IRB::MethodExtender</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier.html">IRB::Notifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/AbstractNotifier.html">IRB::Notifier::AbstractNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/CompositeNotifier.html">IRB::Notifier::CompositeNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/LeveledNotifier.html">IRB::Notifier::LeveledNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/Notifier/NoMsgNotifier.html">IRB::Notifier::NoMsgNotifier</a></li>
+        
+          
+          
+          <li><a href="../IRB/OutputMethod.html">IRB::OutputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/ReadlineInputMethod.html">IRB::ReadlineInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/StdioInputMethod.html">IRB::StdioInputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/StdioOutputMethod.html">IRB::StdioOutputMethod</a></li>
+        
+          
+          
+          <li><a href="../IRB/WorkSpace.html">IRB::WorkSpace</a></li>
+        
+          
+          
+          <li><a href="../Object.html">Object</a></li>
+        
+          
+          
+          <li><a href="../XMP.html">XMP</a></li>
+        
+          
+          
+          <li><a href="../XMP/StringInputMethod.html">XMP::StringInputMethod</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">IRB::Context</h1>
+
+    <div id="description" class="description">
+      
+<p>A class that wraps the current state of the irb session, including the
+configuration of <a href="../IRB.html#method-c-conf">IRB.conf</a>.</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="ap_name-attribute-method" class="method-detail">
+          <a name="ap_name"></a>
+          
+          <a name="ap_name="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">ap_name</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:AP_NAME]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="auto_indent_mode-attribute-method" class="method-detail">
+          <a name="auto_indent_mode"></a>
+          
+          <a name="auto_indent_mode="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">auto_indent_mode</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Can be either the default <code>IRB.conf[:AUTO_INDENT]</code>, or the mode
+set by <a href="Context.html#method-i-prompt_mode-3D">prompt_mode=</a></p>
+
+<p>To enable auto-indentation in irb:</p>
+
+<pre class="ruby"><span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[:<span class="ruby-constant">AUTO_INDENT</span>] = <span class="ruby-keyword">true</span>
+</pre>
+
+<p>or</p>
+
+<pre class="ruby"><span class="ruby-identifier">irb_context</span>.<span class="ruby-identifier">auto_indent_mode</span> = <span class="ruby-keyword">true</span>
+</pre>
+
+<p>or</p>
+
+<pre class="ruby"><span class="ruby-constant">IRB</span>.<span class="ruby-constant">CurrentContext</span>.<span class="ruby-identifier">auto_indent_mode</span> = <span class="ruby-keyword">true</span>
+</pre>
+
+<p>See Configuration at IRB for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="back_trace_limit-attribute-method" class="method-detail">
+          <a name="back_trace_limit"></a>
+          
+          <a name="back_trace_limit="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">back_trace_limit</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The limit of backtrace lines displayed as top <code>n</code> and tail
+<code>n</code>.</p>
+
+<p>The default value is 16.</p>
+
+<p>Can also be set using the <code>--back-trace-limit</code> command line
+option.</p>
+
+<p>See Command line options at IRB for more command line options.</p>
+          
+          </div>
+        </div>
+        
+        <div id="debug_level-attribute-method" class="method-detail">
+          <a name="debug_level"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">debug_level</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The debug level of irb</p>
+
+<p>See <a href="Context.html#method-i-debug_level-3D">debug_level=</a> for
+more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="echo-attribute-method" class="method-detail">
+          <a name="echo"></a>
+          
+          <a name="echo="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">echo</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether to echo the return value to output or not.</p>
+
+<p>Uses <a href="../IRB.html#method-c-conf">IRB.conf</a> if available, or
+defaults to <code>true</code>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;hello&quot;</span>
+<span class="ruby-comment"># hello</span>
+<span class="ruby-comment">#=&gt; nil</span>
+<span class="ruby-constant">IRB</span>.<span class="ruby-constant">CurrentContext</span>.<span class="ruby-identifier">echo</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;omg&quot;</span>
+<span class="ruby-comment"># omg</span>
+</pre>
+          
+          </div>
+        </div>
+        
+        <div id="echo-3F-attribute-method" class="method-detail">
+          <a name="echo?"></a>
+          
+          <a name="echo?="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">echo?</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether to echo the return value to output or not.</p>
+
+<p>Uses <a href="../IRB.html#method-c-conf">IRB.conf</a> if available, or
+defaults to <code>true</code>.</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;hello&quot;</span>
+<span class="ruby-comment"># hello</span>
+<span class="ruby-comment">#=&gt; nil</span>
+<span class="ruby-constant">IRB</span>.<span class="ruby-constant">CurrentContext</span>.<span class="ruby-identifier">echo</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;omg&quot;</span>
+<span class="ruby-comment"># omg</span>
+</pre>
+          
+          </div>
+        </div>
+        
+        <div id="eval_history-attribute-method" class="method-detail">
+          <a name="eval_history"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">eval_history</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The command result history limit.</p>
+          
+          </div>
+        </div>
+        
+        <div id="ignore_eof-attribute-method" class="method-detail">
+          <a name="ignore_eof"></a>
+          
+          <a name="ignore_eof="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">ignore_eof</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>^D</code> (<code>control-d</code>) will be ignored or not.</p>
+
+<p>If set to <code>false</code>, <code>^D</code> will quit irb.</p>
+          
+          </div>
+        </div>
+        
+        <div id="ignore_eof-3F-attribute-method" class="method-detail">
+          <a name="ignore_eof?"></a>
+          
+          <a name="ignore_eof?="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">ignore_eof?</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>^D</code> (<code>control-d</code>) will be ignored or not.</p>
+
+<p>If set to <code>false</code>, <code>^D</code> will quit irb.</p>
+          
+          </div>
+        </div>
+        
+        <div id="ignore_sigint-attribute-method" class="method-detail">
+          <a name="ignore_sigint"></a>
+          
+          <a name="ignore_sigint="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">ignore_sigint</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>^C</code> (<code>control-c</code>) will be ignored or not.</p>
+
+<p>If set to <code>false</code>, <code>^C</code> will quit irb.</p>
+
+<p>If set to <code>true</code>,</p>
+<ul><li>
+<p>during input:   cancel input then return to top level.</p>
+</li><li>
+<p>during execute: abandon current execution.</p>
+</li></ul>
+          
+          </div>
+        </div>
+        
+        <div id="ignore_sigint-3F-attribute-method" class="method-detail">
+          <a name="ignore_sigint?"></a>
+          
+          <a name="ignore_sigint?="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">ignore_sigint?</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>^C</code> (<code>control-c</code>) will be ignored or not.</p>
+
+<p>If set to <code>false</code>, <code>^C</code> will quit irb.</p>
+
+<p>If set to <code>true</code>,</p>
+<ul><li>
+<p>during input:   cancel input then return to top level.</p>
+</li><li>
+<p>during execute: abandon current execution.</p>
+</li></ul>
+          
+          </div>
+        </div>
+        
+        <div id="inspect_mode-attribute-method" class="method-detail">
+          <a name="inspect_mode"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">inspect_mode</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:INSPECT_MODE]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="io-attribute-method" class="method-detail">
+          <a name="io"></a>
+          
+          <a name="io="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">io</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The current input method</p>
+
+<p>Can be either <a href="StdioInputMethod.html">StdioInputMethod</a>, <a
+href="ReadlineInputMethod.html">ReadlineInputMethod</a>, <a
+href="FileInputMethod.html">FileInputMethod</a> or other specified when the
+context is created. See <a href="Context.html#method-c-new">::new</a> for
+more information on <code>input_method</code>.</p>
+          
+          </div>
+        </div>
+        
+        <div id="irb-attribute-method" class="method-detail">
+          <a name="irb"></a>
+          
+          <a name="irb="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">irb</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Current irb session</p>
+          
+          </div>
+        </div>
+        
+        <div id="irb_name-attribute-method" class="method-detail">
+          <a name="irb_name"></a>
+          
+          <a name="irb_name="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">irb_name</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Can be either name from <code>IRB.conf[:IRB_NAME]</code>, or the number of
+the current job set by <a href="JobManager.html">JobManager</a>, such as
+<code>irb#2</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="irb_path-attribute-method" class="method-detail">
+          <a name="irb_path"></a>
+          
+          <a name="irb_path="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">irb_path</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Can be either the <a href="Context.html#attribute-i-irb_name">irb_name</a>
+surrounded by parenthesis, or the <code>input_method</code> passed to <a
+href="Context.html#method-c-new">::new</a></p>
+          
+          </div>
+        </div>
+        
+        <div id="last_value-attribute-method" class="method-detail">
+          <a name="last_value"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">last_value</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The return value of the last statement evaluated.</p>
+          
+          </div>
+        </div>
+        
+        <div id="load_modules-attribute-method" class="method-detail">
+          <a name="load_modules"></a>
+          
+          <a name="load_modules="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">load_modules</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:LOAD_MODULES]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="math-3F-attribute-method" class="method-detail">
+          <a name="math?"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">math?</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Returns whether bc mode is enabled.</p>
+
+<p>See <a href="Context.html#method-i-math_mode-3D">math_mode=</a></p>
+          
+          </div>
+        </div>
+        
+        <div id="math_mode-attribute-method" class="method-detail">
+          <a name="math_mode"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">math_mode</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Returns whether bc mode is enabled.</p>
+
+<p>See <a href="Context.html#method-i-math_mode-3D">math_mode=</a></p>
+          
+          </div>
+        </div>
+        
+        <div id="prompt_c-attribute-method" class="method-detail">
+          <a name="prompt_c"></a>
+          
+          <a name="prompt_c="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">prompt_c</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>IRB prompt for continuated statement (e.g. immediately after an
+<code>if</code>)</p>
+
+<p>See IRB for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="prompt_i-attribute-method" class="method-detail">
+          <a name="prompt_i"></a>
+          
+          <a name="prompt_i="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">prompt_i</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Standard IRB prompt</p>
+
+<p>See IRB for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="prompt_mode-attribute-method" class="method-detail">
+          <a name="prompt_mode"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">prompt_mode</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:PROMPT_MODE]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="prompt_n-attribute-method" class="method-detail">
+          <a name="prompt_n"></a>
+          
+          <a name="prompt_n="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">prompt_n</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>See Customizing the IRB Prompt at IRB for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="prompt_s-attribute-method" class="method-detail">
+          <a name="prompt_s"></a>
+          
+          <a name="prompt_s="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">prompt_s</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>IRB prompt for continuated strings</p>
+
+<p>See IRB for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="rc-attribute-method" class="method-detail">
+          <a name="rc"></a>
+          
+          <a name="rc="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">rc</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:RC]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="rc-3F-attribute-method" class="method-detail">
+          <a name="rc?"></a>
+          
+          <a name="rc?="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">rc?</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A copy of the default <code>IRB.conf[:RC]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="return_format-attribute-method" class="method-detail">
+          <a name="return_format"></a>
+          
+          <a name="return_format="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">return_format</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The format of the return statement, set by <a
+href="Context.html#method-i-prompt_mode-3D">prompt_mode=</a> using the
+<code>:RETURN</code> of the <code>mode</code> passed to set the current <a
+href="Context.html#attribute-i-prompt_mode">prompt_mode</a>.</p>
+          
+          </div>
+        </div>
+        
+        <div id="thread-attribute-method" class="method-detail">
+          <a name="thread"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">thread</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The current thread in this context</p>
+          
+          </div>
+        </div>
+        
+        <div id="use_readline-attribute-method" class="method-detail">
+          <a name="use_readline"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">use_readline</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>Readline</code> is enabled or not.</p>
+
+<p>A copy of the default <code>IRB.conf[:USE_READLINE]</code></p>
+
+<p>See <a href="Context.html#method-i-use_readline-3D">use_readline=</a> for
+more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="use_readline-3F-attribute-method" class="method-detail">
+          <a name="use_readline?"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">use_readline?</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether <code>Readline</code> is enabled or not.</p>
+
+<p>A copy of the default <code>IRB.conf[:USE_READLINE]</code></p>
+
+<p>See <a href="Context.html#method-i-use_readline-3D">use_readline=</a> for
+more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="use_tracer-attribute-method" class="method-detail">
+          <a name="use_tracer"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">use_tracer</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether Tracer is used when evaluating statements in this context.</p>
+
+<p>See <code>lib/tracer.rb</code> for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="use_tracer-3F-attribute-method" class="method-detail">
+          <a name="use_tracer?"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">use_tracer?</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether Tracer is used when evaluating statements in this context.</p>
+
+<p>See <code>lib/tracer.rb</code> for more information.</p>
+          
+          </div>
+        </div>
+        
+        <div id="verbose-attribute-method" class="method-detail">
+          <a name="verbose"></a>
+          
+          <a name="verbose="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">verbose</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Whether verbose messages are displayed or not.</p>
+
+<p>A copy of the default <code>IRB.conf[:VERBOSE]</code></p>
+          
+          </div>
+        </div>
+        
+        <div id="workspace-attribute-method" class="method-detail">
+          <a name="workspace"></a>
+          
+          <a name="workspace="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">workspace</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p><a href="WorkSpace.html">WorkSpace</a> in the current context</p>
+          
+          </div>
+        </div>
+        
+        <div id="workspace_home-attribute-method" class="method-detail">
+          <a name="workspace_home"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">workspace_home</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>The toplevel workspace, see <a
+href="Context.html#method-i-home_workspace">home_workspace</a></p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(irb, workspace = nil, input_method = nil, output_method = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Creates a new IRB context.</p>
+
+<p>The optional <code>input_method</code> argument:</p>
+<dl class="rdoc-list note-list"><dt><code>nil</code>
+<dd>
+<p>uses stdin or Readline</p>
+</dd><dt><code>String</code>
+<dd>
+<p>uses a File</p>
+</dd><dt><code>other</code>
+<dd>
+<p>uses this as <a href="InputMethod.html">InputMethod</a></p>
+</dd></dl>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">irb</span>, <span class="ruby-identifier">workspace</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">input_method</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">output_method</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@irb</span> = <span class="ruby-identifier">irb</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">workspace</span>
+    <span class="ruby-ivar">@workspace</span> = <span class="ruby-identifier">workspace</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@workspace</span> = <span class="ruby-constant">WorkSpace</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@thread</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-constant">Thread</span>
+
+  <span class="ruby-comment"># copy of default configuration</span>
+  <span class="ruby-ivar">@ap_name</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:AP_NAME</span>]
+  <span class="ruby-ivar">@rc</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:RC</span>]
+  <span class="ruby-ivar">@load_modules</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:LOAD_MODULES</span>]
+
+  <span class="ruby-ivar">@use_readline</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_READLINE</span>]
+  <span class="ruby-ivar">@verbose</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:VERBOSE</span>]
+  <span class="ruby-ivar">@io</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect_mode</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:INSPECT_MODE</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">math_mode</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:MATH_MODE</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:MATH_MODE</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">use_tracer</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_TRACER</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_TRACER</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">use_loader</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_LOADER</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_LOADER</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">eval_history</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:EVAL_HISTORY</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:EVAL_HISTORY</span>]
+
+  <span class="ruby-ivar">@ignore_sigint</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:IGNORE_SIGINT</span>]
+  <span class="ruby-ivar">@ignore_eof</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:IGNORE_EOF</span>]
+
+  <span class="ruby-ivar">@back_trace_limit</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:BACK_TRACE_LIMIT</span>]
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">prompt_mode</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:PROMPT_MODE</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:SINGLE_IRB</span>] <span class="ruby-keyword">or</span> <span class="ruby-operator">!</span><span class="ruby-keyword">defined?</span>(<span class="ruby-constant">IRB</span><span class="ruby-operator">::</span><span class="ruby-constant">JobManager</span>)
+    <span class="ruby-ivar">@irb_name</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:IRB_NAME</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@irb_name</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:IRB_NAME</span>]<span class="ruby-operator">+</span><span class="ruby-node">&quot;#&quot;</span><span class="ruby-operator">+</span><span class="ruby-constant">IRB</span>.<span class="ruby-constant">JobManager</span>.<span class="ruby-identifier">n_jobs</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@irb_path</span> = <span class="ruby-string">&quot;(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@irb_name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">input_method</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">use_readline?</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">if</span> (<span class="ruby-keyword">defined?</span>(<span class="ruby-constant">ReadlineInputMethod</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">tty?</span> <span class="ruby-operator">&amp;&amp;</span>
+          <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:PROMPT_MODE</span>] <span class="ruby-operator">!=</span> <span class="ruby-value">:INF_RUBY</span>)
+        <span class="ruby-ivar">@io</span> = <span class="ruby-constant">ReadlineInputMethod</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@io</span> = <span class="ruby-constant">StdioInputMethod</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-ivar">@io</span> = <span class="ruby-constant">StdioInputMethod</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">ReadlineInputMethod</span>)
+        <span class="ruby-ivar">@io</span> = <span class="ruby-constant">ReadlineInputMethod</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@io</span> = <span class="ruby-constant">StdioInputMethod</span>.<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
+    <span class="ruby-ivar">@io</span> = <span class="ruby-constant">FileInputMethod</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">input_method</span>)
+    <span class="ruby-ivar">@irb_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">input_method</span>)
+    <span class="ruby-ivar">@irb_path</span> = <span class="ruby-identifier">input_method</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@io</span> = <span class="ruby-identifier">input_method</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save_history</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:SAVE_HISTORY</span>] <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:SAVE_HISTORY</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">output_method</span>
+    <span class="ruby-ivar">@output_method</span> = <span class="ruby-identifier">output_method</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@output_method</span> = <span class="ruby-constant">StdioOutputMethod</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@echo</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:ECHO</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@echo</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@echo</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">debug_level</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:DEBUG_LEVEL</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="__exit__-method" class="method-detail method-alias">
+          <a name="method-i-__exit__"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">__exit__</span><span
+              class="method-args">(ret = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Context.html#method-i-exit">exit</a>
+          </div>
+          
+        </div><!-- __exit__-method -->
+      
+        <div id="_set_last_value-method" class="method-detail method-alias">
+          <a name="method-i-_set_last_value"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">_set_last_value</span><span
+              class="method-args">(value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>See <a href="Context.html#method-i-set_last_value">set_last_value</a></p>
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Context.html#method-i-set_last_value">set_last_value</a>
+          </div>
+          
+        </div><!-- _set_last_value-method -->
+      
+        <div id="change_workspace-method" class="method-detail ">
+          <a name="method-i-change_workspace"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">change_workspace</span><span
+              class="method-args">(*_main)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Changes the current workspace to given object or binding.</p>
+
+<p>If the optional argument is omitted, the workspace will be <a
+href="Context.html#method-i-home_workspace">home_workspace</a> which is
+inherited from <code>TOPLEVEL_BINDING</code> or the main object,
+<code>IRB.conf[:MAIN_CONTEXT]</code> when irb was initialized.</p>
+
+<p>See <a href="WorkSpace.html#method-c-new">IRB::WorkSpace.new</a> for more
+information.</p>
+            
+
+            
+            <div class="method-source-code" id="change_workspace-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/change-ws.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">change_workspace</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_main</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">_main</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@workspace</span> = <span class="ruby-identifier">home_workspace</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">main</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@workspace</span> = <span class="ruby-constant">WorkSpace</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">_main</span>[<span class="ruby-value">0</span>])
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-keyword">class</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">main</span>;<span class="ruby-identifier">ancestors</span>;<span class="ruby-keyword">end</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-constant">ExtendCommandBundle</span>)
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">ExtendCommandBundle</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- change_workspace-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- change_workspace-method -->
+      
+        <div id="debug-3F-method" class="method-detail ">
+          <a name="method-i-debug-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">debug?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Whether or not debug mode is enabled, see <a
+href="Context.html#method-i-debug_level-3D">debug_level=</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="debug-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 373</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">debug?</span>
+  <span class="ruby-ivar">@debug_level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- debug-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- debug-3F-method -->
+      
+        <div id="debug_level-3D-method" class="method-detail ">
+          <a name="method-i-debug_level-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">debug_level=</span><span
+              class="method-args">(value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets the debug level of irb</p>
+
+<p>Can also be set using the <code>--irb_debug</code> command line option.</p>
+
+<p>See Command line options at IRB for more command line options.</p>
+            
+
+            
+            <div class="method-source-code" id="debug_level-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 367</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">debug_level=</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@debug_level</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-constant">RubyLex</span>.<span class="ruby-identifier">debug_level</span> = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- debug_level-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- debug_level-3D-method -->
+      
+        <div id="eval_history-3D-method" class="method-detail ">
+          <a name="method-i-eval_history-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">eval_history=</span><span
+              class="method-args">(no)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets command result history limit.</p>
+
+<p><code>no</code> is an Integer or <code>nil</code>.</p>
+
+<p>Returns <code>no</code> of history items if greater than 0.</p>
+
+<p>If <code>no</code> is 0, the number of history items is unlimited.</p>
+
+<p>If <code>no</code> is <code>nil</code>, execution result history isn’t used
+(default).</p>
+            
+
+            
+            <div class="method-source-code" id="eval_history-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/history.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">eval_history=</span>(<span class="ruby-identifier">no</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">no</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@eval_history</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@eval_history</span>
+      <span class="ruby-ivar">@eval_history_values</span>.<span class="ruby-identifier">size</span>(<span class="ruby-identifier">no</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@eval_history_values</span> = <span class="ruby-constant">History</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">no</span>)
+      <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:__TMP__EHV__</span>] = <span class="ruby-ivar">@eval_history_values</span>
+      <span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">evaluate</span>(<span class="ruby-keyword">self</span>, <span class="ruby-string">&quot;__ = IRB.conf[:__TMP__EHV__]&quot;</span>)
+      <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:__TMP_EHV__</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@eval_history_values</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@eval_history</span> = <span class="ruby-identifier">no</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- eval_history-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- eval_history-3D-method -->
+      
+        <div id="exit-method" class="method-detail ">
+          <a name="method-i-exit"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">exit</span><span
+              class="method-args">(ret = 0)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Exits the current session, see <a
+href="../IRB.html#method-c-irb_exit">IRB.irb_exit</a></p>
+            
+
+            
+            <div class="method-source-code" id="exit-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 388</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">exit</span>(<span class="ruby-identifier">ret</span> = <span class="ruby-value">0</span>)
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">irb_exit</span>(<span class="ruby-ivar">@irb</span>, <span class="ruby-identifier">ret</span>)
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- exit-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Context.html#method-i-__exit__">__exit__</a>
+          </div>
+          
+
+          
+        </div><!-- exit-method -->
+      
+        <div id="file_input-3F-method" class="method-detail ">
+          <a name="method-i-file_input-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">file_input?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Whether <a href="Context.html#attribute-i-io">io</a> uses a File for the
+<code>input_method</code> passed when creating the current context, see <a
+href="Context.html#method-c-new">::new</a></p>
+            
+
+            
+            <div class="method-source-code" id="file_input-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 291</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">file_input?</span>
+  <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">FileInputMethod</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- file_input-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- file_input-3F-method -->
+      
+        <div id="history_file-method" class="method-detail ">
+          <a name="method-i-history_file"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">history_file</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>A copy of the default <code>IRB.conf[:HISTORY_FILE]</code></p>
+            
+
+            
+            <div class="method-source-code" id="history_file-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/save-history.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">history_file</span>
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:HISTORY_FILE</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- history_file-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- history_file-method -->
+      
+        <div id="history_file-3D-method" class="method-detail ">
+          <a name="method-i-history_file-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">history_file=</span><span
+              class="method-args">(hist)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Set <code>IRB.conf[:HISTORY_FILE]</code> to the given <code>hist</code>.</p>
+            
+
+            
+            <div class="method-source-code" id="history_file-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/save-history.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">history_file=</span>(<span class="ruby-identifier">hist</span>)
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:HISTORY_FILE</span>] = <span class="ruby-identifier">hist</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- history_file-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- history_file-3D-method -->
+      
+        <div id="home_workspace-method" class="method-detail ">
+          <a name="method-i-home_workspace"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">home_workspace</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Inherited from <code>TOPLEVEL_BINDING</code>.</p>
+            
+
+            
+            <div class="method-source-code" id="home_workspace-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/change-ws.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">home_workspace</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@home_workspace</span>
+    <span class="ruby-ivar">@home_workspace</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@home_workspace</span> = <span class="ruby-ivar">@workspace</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- home_workspace-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- home_workspace-method -->
+      
+        <div id="inspect-3F-method" class="method-detail ">
+          <a name="method-i-inspect-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Whether <a href="Context.html#attribute-i-inspect_mode">inspect_mode</a> is
+set or not, see <a
+href="Context.html#method-i-inspect_mode-3D">inspect_mode=</a> for more
+detail.</p>
+            
+
+            
+            <div class="method-source-code" id="inspect-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 285</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect?</span>
+  <span class="ruby-ivar">@inspect_mode</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@inspect_mode</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- inspect-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect-3F-method -->
+      
+        <div id="inspect_mode-3D-method" class="method-detail ">
+          <a name="method-i-inspect_mode-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">inspect_mode=</span><span
+              class="method-args">(opt)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Specifies the inspect mode with <code>opt</code>:</p>
+<dl class="rdoc-list note-list"><dt><code>true</code>
+<dd>
+<p>display <code>inspect</code></p>
+</dd><dt><code>false</code>
+<dd>
+<p>display <code>to_s</code></p>
+</dd><dt><code>nil</code>
+<dd>
+<p>inspect mode in non-math mode, non-inspect mode in math mode</p>
+</dd></dl>
+
+<p>See <a href="Inspector.html">IRB::Inspector</a> for more information.</p>
+
+<p>Can also be set using the <code>--inspect</code> and
+<code>--noinspect</code> command line options.</p>
+
+<p>See Command line options at IRB for more command line options.</p>
+            
+
+            
+            <div class="method-source-code" id="inspect_mode-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 308</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect_mode=</span>(<span class="ruby-identifier">opt</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> = <span class="ruby-constant">Inspector</span><span class="ruby-operator">::</span><span class="ruby-constant">INSPECTORS</span>[<span class="ruby-identifier">opt</span>]
+    <span class="ruby-ivar">@inspect_mode</span> = <span class="ruby-identifier">opt</span>
+    <span class="ruby-ivar">@inspect_method</span> = <span class="ruby-identifier">i</span>
+    <span class="ruby-identifier">i</span>.<span class="ruby-identifier">init</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">opt</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-constant">Inspector</span>.<span class="ruby-identifier">keys_with_inspector</span>(<span class="ruby-constant">Inspector</span><span class="ruby-operator">::</span><span class="ruby-constant">INSPECTORS</span>[<span class="ruby-keyword">true</span>]).<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@inspect_mode</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect_mode</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-constant">Inspector</span>.<span class="ruby-identifier">keys_with_inspector</span>(<span class="ruby-constant">Inspector</span><span class="ruby-operator">::</span><span class="ruby-constant">INSPECTORS</span>[<span class="ruby-keyword">false</span>]).<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@inspect_mode</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect_mode</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Can't switch inspect mode.&quot;</span>
+        <span class="ruby-keyword">return</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^\s*\{.*\}\s*$/</span>
+      <span class="ruby-keyword">begin</span>
+        <span class="ruby-identifier">inspector</span> = <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;proc#{opt}&quot;</span>
+      <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Can't switch inspect mode(#{opt}).&quot;</span>
+        <span class="ruby-keyword">return</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect_mode</span> = <span class="ruby-identifier">inspector</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Proc</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">inspect_mode</span> = <span class="ruby-constant">IRB</span><span class="ruby-operator">::</span><span class="ruby-constant">Inspector</span>(<span class="ruby-identifier">opt</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">Inspector</span>
+      <span class="ruby-identifier">prefix</span> = <span class="ruby-string">&quot;usr%d&quot;</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-value">1</span>
+      <span class="ruby-keyword">while</span> <span class="ruby-constant">Inspector</span><span class="ruby-operator">::</span><span class="ruby-constant">INSPECTORS</span>[<span class="ruby-identifier">format</span>(<span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">i</span>)]; <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>; <span class="ruby-keyword">end</span>
+      <span class="ruby-ivar">@inspect_mode</span> = <span class="ruby-identifier">format</span>(<span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">i</span>)
+      <span class="ruby-ivar">@inspect_method</span> = <span class="ruby-identifier">opt</span>
+      <span class="ruby-constant">Inspector</span>.<span class="ruby-identifier">def_inspector</span>(<span class="ruby-identifier">format</span>(<span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">i</span>), <span class="ruby-ivar">@inspect_method</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Can't switch inspect mode(#{opt}).&quot;</span>
+      <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;Switch to#{unless @inspect_mode; ' non';end} inspect mode.\n&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">verbose?</span>
+  <span class="ruby-ivar">@inspect_mode</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- inspect_mode-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- inspect_mode-3D-method -->
+      
+        <div id="irb_level-method" class="method-detail ">
+          <a name="method-i-irb_level"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">irb_level</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Size of the current <a href="WorkSpace.html">WorkSpace</a> stack</p>
+            
+
+            
+            <div class="method-source-code" id="irb_level-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/workspaces.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">irb_level</span>
+  <span class="ruby-identifier">workspace_stack</span>.<span class="ruby-identifier">size</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- irb_level-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- irb_level-method -->
+      
+        <div id="main-method" class="method-detail ">
+          <a name="method-i-main"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">main</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>The top-level workspace, see <a
+href="WorkSpace.html#attribute-i-main">IRB::WorkSpace#main</a></p>
+            
+
+            
+            <div class="method-source-code" id="main-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">main</span>
+  <span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">main</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- main-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- main-method -->
+      
+        <div id="math_mode-3D-method" class="method-detail ">
+          <a name="method-i-math_mode-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">math_mode=</span><span
+              class="method-args">(opt)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets bc mode, which loads <code>lib/mathn.rb</code> so fractions or matrix
+are available.</p>
+
+<p>Also available as the <code>-m</code> command line option.</p>
+
+<p>See Command line options at IRB and the unix manpage <code>bc(1)</code> for
+more information.</p>
+            
+
+            
+            <div class="method-source-code" id="math_mode-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/math-mode.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">math_mode=</span>(<span class="ruby-identifier">opt</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@math_mode</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">opt</span>
+    <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">fail</span> <span class="ruby-constant">CantReturnToNormalMode</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@math_mode</span> = <span class="ruby-identifier">opt</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">math_mode</span>
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">Math</span>
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;start math mode\n&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">verbose?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- math_mode-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- math_mode-3D-method -->
+      
+        <div id="pop_workspace-method" class="method-detail ">
+          <a name="method-i-pop_workspace"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">pop_workspace</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Removes the last element from the current <a
+href="Context.html#method-i-workspaces">workspaces</a> stack and returns
+it, or <code>nil</code> if the current workspace stack is empty.</p>
+
+<p>Also, see <a
+href="Context.html#method-i-push_workspace">push_workspace</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="pop_workspace-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/workspaces.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">pop_workspace</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;workspace stack empty\n&quot;</span>
+    <span class="ruby-keyword">return</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@workspace</span> = <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">pop</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- pop_workspace-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- pop_workspace-method -->
+      
+        <div id="prompt_mode-3D-method" class="method-detail ">
+          <a name="method-i-prompt_mode-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">prompt_mode=</span><span
+              class="method-args">(mode)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets the <code>mode</code> of the prompt in this context.</p>
+
+<p>See Customizing the IRB Prompt at IRB for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="prompt_mode-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 269</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prompt_mode=</span>(<span class="ruby-identifier">mode</span>)
+  <span class="ruby-ivar">@prompt_mode</span> = <span class="ruby-identifier">mode</span>
+  <span class="ruby-identifier">pconf</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:PROMPT</span>][<span class="ruby-identifier">mode</span>]
+  <span class="ruby-ivar">@prompt_i</span> = <span class="ruby-identifier">pconf</span>[<span class="ruby-value">:PROMPT_I</span>]
+  <span class="ruby-ivar">@prompt_s</span> = <span class="ruby-identifier">pconf</span>[<span class="ruby-value">:PROMPT_S</span>]
+  <span class="ruby-ivar">@prompt_c</span> = <span class="ruby-identifier">pconf</span>[<span class="ruby-value">:PROMPT_C</span>]
+  <span class="ruby-ivar">@prompt_n</span> = <span class="ruby-identifier">pconf</span>[<span class="ruby-value">:PROMPT_N</span>]
+  <span class="ruby-ivar">@return_format</span> = <span class="ruby-identifier">pconf</span>[<span class="ruby-value">:RETURN</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">ai</span> = <span class="ruby-identifier">pconf</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value">:AUTO_INDENT</span>)
+    <span class="ruby-ivar">@auto_indent_mode</span> = <span class="ruby-identifier">ai</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@auto_indent_mode</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:AUTO_INDENT</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- prompt_mode-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- prompt_mode-3D-method -->
+      
+        <div id="prompting-3F-method" class="method-detail ">
+          <a name="method-i-prompting-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">prompting?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Whether <a href="Context.html#method-i-verbose-3F">verbose?</a> is
+<code>true</code>, and <code>input_method</code> is either <a
+href="StdioInputMethod.html">StdioInputMethod</a> or <a
+href="ReadlineInputMethod.html">ReadlineInputMethod</a>, see <a
+href="Context.html#attribute-i-io">io</a> for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="prompting-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 251</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">prompting?</span>
+  <span class="ruby-identifier">verbose?</span> <span class="ruby-operator">||</span> (<span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">tty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">StdioInputMethod</span>) <span class="ruby-operator">||</span>
+               (<span class="ruby-keyword">defined?</span>(<span class="ruby-constant">ReadlineInputMethod</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">ReadlineInputMethod</span>)))
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- prompting-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- prompting-3F-method -->
+      
+        <div id="push_workspace-method" class="method-detail ">
+          <a name="method-i-push_workspace"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">push_workspace</span><span
+              class="method-args">(*_main)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Creates a new workspace with the given object or binding, and appends it
+onto the current <a href="Context.html#method-i-workspaces">workspaces</a>
+stack.</p>
+
+<p>See <a href="Context.html#method-i-change_workspace">#change_workspace</a>
+and <a href="WorkSpace.html#method-c-new">IRB::WorkSpace.new</a> for more
+information.</p>
+            
+
+            
+            <div class="method-source-code" id="push_workspace-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/workspaces.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">push_workspace</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">_main</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">_main</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;No other workspace\n&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ws</span> = <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">pop</span>
+    <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@workspace</span>
+    <span class="ruby-ivar">@workspace</span> = <span class="ruby-identifier">ws</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">workspaces</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">workspaces</span>.<span class="ruby-identifier">push</span> <span class="ruby-ivar">@workspace</span>
+  <span class="ruby-ivar">@workspace</span> = <span class="ruby-constant">WorkSpace</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">binding</span>, <span class="ruby-identifier">_main</span>[<span class="ruby-value">0</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-keyword">class</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">main</span>;<span class="ruby-identifier">ancestors</span>;<span class="ruby-keyword">end</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-constant">ExtendCommandBundle</span>)
+    <span class="ruby-identifier">main</span>.<span class="ruby-identifier">extend</span> <span class="ruby-constant">ExtendCommandBundle</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- push_workspace-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- push_workspace-method -->
+      
+        <div id="save_history-method" class="method-detail ">
+          <a name="method-i-save_history"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">save_history</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>A copy of the default <code>IRB.conf[:SAVE_HISTORY]</code></p>
+            
+
+            
+            <div class="method-source-code" id="save_history-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/save-history.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_history</span>
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:SAVE_HISTORY</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- save_history-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- save_history-method -->
+      
+        <div id="save_history-3D-method" class="method-detail ">
+          <a name="method-i-save_history-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">save_history=</span><span
+              class="method-args">(val)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets <code>IRB.conf[:SAVE_HISTORY]</code> to the given <code>val</code> and
+calls init_save_history with this context.</p>
+
+<p>Will store the number of <code>val</code> entries of history in the <a
+href="Context.html#method-i-history_file">history_file</a></p>
+
+<p>Add the following to your <code>.irbrc</code> to change the number of
+history entries stored to 1000:</p>
+
+<pre class="ruby"><span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[:<span class="ruby-constant">SAVE_HISTORY</span>] = <span class="ruby-value">1000</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="save_history-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/save-history.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_history=</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:SAVE_HISTORY</span>] = <span class="ruby-identifier">val</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>
+    <span class="ruby-identifier">main_context</span> = <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:MAIN_CONTEXT</span>]
+    <span class="ruby-identifier">main_context</span> = <span class="ruby-keyword">self</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">main_context</span>
+    <span class="ruby-identifier">main_context</span>.<span class="ruby-identifier">init_save_history</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- save_history-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- save_history-3D-method -->
+      
+        <div id="set_last_value-method" class="method-detail ">
+          <a name="method-i-set_last_value"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">set_last_value</span><span
+              class="method-args">(value)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets the return value from the last statement evaluated in this context to
+<a href="Context.html#attribute-i-last_value">last_value</a>.</p>
+            
+
+            
+            <div class="method-source-code" id="set_last_value-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_last_value</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-ivar">@last_value</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">evaluate</span> <span class="ruby-keyword">self</span>, <span class="ruby-string">&quot;_ = IRB.CurrentContext.last_value&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- set_last_value-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Context.html#method-i-_set_last_value">_set_last_value</a>
+          </div>
+          
+
+          
+        </div><!-- set_last_value-method -->
+      
+        <div id="use_loader-method" class="method-detail ">
+          <a name="method-i-use_loader"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">use_loader</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns whether <code>irb</code>‘s own file reader method is used by
+<code>load</code>/<code>require</code> or not.</p>
+
+<p>This mode is globally affected (irb-wide).</p>
+            
+
+            
+            <div class="method-source-code" id="use_loader-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/use-loader.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_loader</span>
+  <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_LOADER</span>]
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- use_loader-source -->
+            
+          </div>
+
+          
+          <div class="aliases">
+            Also aliased as: <a href="Context.html#method-i-use_loader-3F">use_loader?</a>
+          </div>
+          
+
+          
+        </div><!-- use_loader-method -->
+      
+        <div id="use_loader-3D-method" class="method-detail ">
+          <a name="method-i-use_loader-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">use_loader=</span><span
+              class="method-args">(opt)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets <a href="../IRB.html#method-c-conf">IRB.conf</a></p>
+
+<p>See <a href="Context.html#method-i-use_loader">use_loader</a> for more
+information.</p>
+            
+
+            
+            <div class="method-source-code" id="use_loader-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/use-loader.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_loader=</span>(<span class="ruby-identifier">opt</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_LOADER</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">opt</span>
+    <span class="ruby-constant">IRB</span>.<span class="ruby-identifier">conf</span>[<span class="ruby-value">:USE_LOADER</span>] = <span class="ruby-identifier">opt</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">opt</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">$&quot;</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;irb/cmd/load&quot;</span>)
+      <span class="ruby-keyword">end</span>
+      (<span class="ruby-keyword">class</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">main</span>;<span class="ruby-keyword">self</span>;<span class="ruby-keyword">end</span>).<span class="ruby-identifier">instance_eval</span> {
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:load</span>, <span class="ruby-value">:irb_load</span>
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:require</span>, <span class="ruby-value">:irb_require</span>
+      }
+    <span class="ruby-keyword">else</span>
+      (<span class="ruby-keyword">class</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@workspace</span>.<span class="ruby-identifier">main</span>;<span class="ruby-keyword">self</span>;<span class="ruby-keyword">end</span>).<span class="ruby-identifier">instance_eval</span> {
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:load</span>, <span class="ruby-value">:__original__load__IRB_use_loader__</span>
+        <span class="ruby-identifier">alias_method</span> <span class="ruby-value">:require</span>, <span class="ruby-value">:__original__require__IRB_use_loader__</span>
+      }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;Switch to load/require#{unless use_loader; ' non';end} trace mode.\n&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">verbose?</span>
+  <span class="ruby-identifier">opt</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- use_loader-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- use_loader-3D-method -->
+      
+        <div id="use_loader-3F-method" class="method-detail method-alias">
+          <a name="method-i-use_loader-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">use_loader?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            
+            
+
+            
+          </div>
+
+          
+
+          
+          <div class="aliases">
+            Alias for: <a href="Context.html#method-i-use_loader">use_loader</a>
+          </div>
+          
+        </div><!-- use_loader-3F-method -->
+      
+        <div id="use_readline-3D-method" class="method-detail ">
+          <a name="method-i-use_readline-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">use_readline=</span><span
+              class="method-args">(opt)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Obsolete method.</p>
+
+<p>Can be set using the <code>--noreadline</code> and <code>--readline</code>
+command line options.</p>
+
+<p>See Command line options at IRB for more command line options.</p>
+            
+
+            
+            <div class="method-source-code" id="use_readline-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 357</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_readline=</span>(<span class="ruby-identifier">opt</span>)
+  <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;This method is obsolete.&quot;</span>
+  <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;Do nothing.&quot;</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- use_readline-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- use_readline-3D-method -->
+      
+        <div id="use_tracer-3D-method" class="method-detail ">
+          <a name="method-i-use_tracer-3D"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">use_tracer=</span><span
+              class="method-args">(opt)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Sets whether or not to use the Tracer library when evaluating statements in
+this context.</p>
+
+<p>See <code>lib/tracer.rb</code> for more information.</p>
+            
+
+            
+            <div class="method-source-code" id="use_tracer-3D-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/tracer.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">use_tracer=</span>(<span class="ruby-identifier">opt</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">opt</span>
+    <span class="ruby-constant">Tracer</span>.<span class="ruby-identifier">set_get_line_procs</span>(<span class="ruby-ivar">@irb_path</span>) {
+      <span class="ruby-operator">|</span><span class="ruby-identifier">line_no</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">rests</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">line</span>(<span class="ruby-identifier">line_no</span>)
+    }
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">opt</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@use_tracer</span>
+    <span class="ruby-constant">Tracer</span>.<span class="ruby-identifier">off</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@use_tracer</span>=<span class="ruby-identifier">opt</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- use_tracer-3D-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- use_tracer-3D-method -->
+      
+        <div id="verbose-3F-method" class="method-detail ">
+          <a name="method-i-verbose-3F"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">verbose?</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>Returns whether messages are displayed or not.</p>
+            
+
+            
+            <div class="method-source-code" id="verbose-3F-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/context.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">verbose?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@verbose</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">ReadlineInputMethod</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">ReadlineInputMethod</span>)
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">tty?</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@io</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">FileInputMethod</span>)
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@verbose</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- verbose-3F-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- verbose-3F-method -->
+      
+        <div id="workspaces-method" class="method-detail ">
+          <a name="method-i-workspaces"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">workspaces</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+          <div>
+  
+            
+            <p>WorkSpaces in the current stack</p>
+            
+
+            
+            <div class="method-source-code" id="workspaces-source">
+              <pre> <!-- method.markup_code 290 -->
+               <span class="ruby-comment"># File irb/ext/workspaces.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">workspaces</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span> <span class="ruby-ivar">@workspaces</span>
+    <span class="ruby-ivar">@workspaces</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@workspaces</span> = []
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+            </pre> 
+            </div><!-- workspaces-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- workspaces-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_Context_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Context_versioned").load("/associated/2_2_0/Context.html");</script> <div id='tx_Context' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_Context").load("/associated/Context.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is provided by <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>. <a href="http://www.neurogami.com">Maximum R+D</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_Context.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+

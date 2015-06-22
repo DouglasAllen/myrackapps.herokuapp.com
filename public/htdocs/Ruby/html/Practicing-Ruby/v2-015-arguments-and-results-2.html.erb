@@ -1,0 +1,812 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../../assets/images/header.png" />
+    <p>Back in 1997, James Noble published a paper called <a href="http://www.laputan.org/pub/patterns/noble/noble.pdf">Arguments and Results</a> which outlined several useful patterns for designing better object protocols. Despite the fact that this paper was written nearly 15 years ago, it addresses design problems that programmers still struggle with today. In this two part article, I show how the patterns James came up with can be applied to modern Ruby programs.</p>
+
+<p><u>Arguments and Results</u> is written in such a way that it is natural to split the patterns it describes into two separate groups: patterns about method arguments and patterns about the results returned by methods. I’ve decided to split this Practicing Ruby article in the same manner in order to make it easier for me to write and easier for you to read. </p>
+
+<p>In <a href="http://practicingruby.com/articles/14">Issue 2.14</a> I outlined various kinds of arguments objects that can be used to simplify the messages being sent within a system. In this issue, I will show how results objects can provide similar flexibility on the response side of things.</p>
+
+<h3 id="results-objects">Results objects</h3>
+
+<p>Results objects are similar to argument objects in that they simplify the interface of one object at the cost of introducing new objects into the system. The <code>Report</code> class I built for <a href="http://practicingruby.com/articles/13">Issue 2.13</a> is a good example of this sort of object. If we start with its class definition and work our way backwards to what the code would have looked like without it, we will be able to see the reason why this object was introduced in the first place.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">SubscriptionCounter</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Report</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(series)
+      <span style="color:#33B">@series</span> = series
+
+      <span style="color:#33B">@issue_numbers</span> = series.map(&amp;<span style="color:#A60">:number</span>)
+      <span style="color:#33B">@weekly_counts</span> = series.map(&amp;<span style="color:#A60">:count</span>)
+      <span style="color:#33B">@weekly_deltas</span> = series.map(&amp;<span style="color:#A60">:delta</span>)
+      <span style="color:#33B">@average_delta</span> = <span style="color:#036;font-weight:bold">Statistics</span>.adjusted_mean(<span style="color:#33B">@weekly_deltas</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+ 
+    attr_reader <span style="color:#A60">:issue_numbers</span>, <span style="color:#A60">:weekly_counts</span>, <span style="color:#A60">:weekly_deltas</span>, 
+                <span style="color:#A60">:average_delta</span>, <span style="color:#A60">:summary</span>, <span style="color:#A60">:series</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">table</span>(*fields)
+      series.map { |e| fields.map { |f| e.send(f) } }
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The following code outlines how <code>Report</code> is actually used by client code. It essentally serves as a bridge between <code>Series</code> and <code>Report::PDF</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>campaigns = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Campaign</span>.all
+series    = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">DataSeries</span>.new(campaigns, <span style="color:#00D">10</span>)
+report    = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Report</span>.new(series)
+
+<span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Report</span>::<span style="color:#036;font-weight:bold">PDF</span>.new(report).save_as(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pr-subscribers.pdf</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>If we pretend that <code>Report</code> never existed and that its methods were implemented directly on <code>DataSeries</code>, we would end up with something similar to the following client code:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>campaigns = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Campaign</span>.all
+series    = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">DataSeries</span>.new(campaigns, <span style="color:#00D">10</span>)
+
+<span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Report</span>::<span style="color:#036;font-weight:bold">PDF</span>.new(series).save_as(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pr-subscribers.pdf</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>This example actually looks a bit cleaner than the previous one, but results in six new methods getting added to <code>DataSeries</code> and introduces tighter coupling between the <code>DataSeries</code> and <code>PDF</code> objects. Due to the increased coupling, a change in the interface of the <code>DataSeries</code> object will directly impact the presentation code in the <code>PDF</code> object, whereas before the <code>Report</code> object provided a buffer zone between the two classes.</p>
+
+<p>While it is still possible to substitute a <code>DataSeries</code> object with some other object that provides an equivalent interface, we have lost the flexibility of reusing the code that actually does the aggregation work. Before removing the <code>Report</code> object, it was possible to use it to wrap any pretty much any <code>Enumerable</code> collection of objects which provided <code>number</code>, <code>count</code>, and <code>delta</code> methods. Now we must either do the aggregation ourselves or use a <code>DataSeries</code> object directly.</p>
+
+<p>These downsides are why I introduced the <code>Report</code> object in the first place, and they make the case for using an object that exists simply to aggregate some results based on the data contained in another object. If I wanted to make the integration of this results object a bit tighter and simplify the client code, I could have introduced a <code>DataSeries#report</code> method such as the one shown below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">SubscriptionCounter</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DataSeries</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">report</span>
+      <span style="color:#036;font-weight:bold">Report</span>.new(<span style="color:#069">self</span>)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>With this method added, I could either have the <code>Report::PDF</code> accept an object that responds to <code>report</code>, or call the method explicitly in my client code. If I went with the former approach I could use the same client code as shown in the previous example, making the <code>Report</code> object completely transparent to the end user. However, the latter approach still looks a bit cleaner than what I had originally without introducing too much coupling into the system:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>campaigns = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Campaign</span>.all
+series    = <span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">DataSeries</span>.new(campaigns, <span style="color:#00D">10</span>)
+
+<span style="color:#036;font-weight:bold">SubscriptionCounter</span>::<span style="color:#036;font-weight:bold">Report</span>::<span style="color:#036;font-weight:bold">PDF</span>.new(series.report).save_as(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">pr-subscribers.pdf</span><span style="color:#710">&quot;</span></span>)
+</pre></div>
+</div>
+</div>
+
+<p>While this pattern certainly has its benefits, it may feel a bit unexciting to Ruby developers. When results objects are introduced simply to reduce coupling between two different subsystems in your project or to provide a bit of encapsulation for some cached values, they feel like ordinary objects that don’t require a special name. However, explictly thinking of results objects as an abstraction opens the door for more interesting techniques as well.</p>
+
+<h3 id="lazy-objects">Lazy objects</h3>
+
+<p>One interesting aspect of introducing results objects into a system is that it helps facilitate lazy evaluation. Ruby’s own <code>Enumerator</code> object provides an excellent example of how powerful this combination can be. Laziness allows <code>Enumerator</code> objects to efficiently chain different transformations together. This makes it possible to do things like <code>map.with_index</code> without having to iterate over the collection multiple times or store an intermediate representation of the indexed data:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; [<span style="color:#00D">1</span>,<span style="color:#00D">2</span>,<span style="color:#00D">3</span>,<span style="color:#00D">4</span>].map.with_index { |e,i| <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">. </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>e<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> }
+=&gt; [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">0. 1</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">1. 2</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">2. 3</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">3. 4</span><span style="color:#710">&quot;</span></span>]
+</pre></div>
+</div>
+</div>
+
+<p>Lazy objects can also represent infinite or repeating sequences in a very elegant way. The examples below show some bits of functionality baked into <code>Enumerator</code> that make modeling these kinds of sequences a whole lot easier.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt;  players = [<span style="color:#A60">:red</span>, <span style="color:#A60">:black</span>].cycle
+=&gt; <span style="color:#777">#&lt;Enumerator: [:red, :black]:cycle&gt;</span>
+&gt;&gt; players.next
+=&gt; <span style="color:#A60">:red</span>
+&gt;&gt; players.next
+=&gt; <span style="color:#A60">:black</span>
+&gt;&gt; players.next
+=&gt; <span style="color:#A60">:red</span>
+&gt;&gt; players.next
+=&gt; <span style="color:#A60">:black</span>
+&gt;&gt; odds = <span style="color:#036;font-weight:bold">Enumerator</span>.new { |y| k = <span style="color:#00D">0</span>; loop { y &lt;&lt; <span style="color:#00D">2</span>*k + <span style="color:#00D">1</span>; k += <span style="color:#00D">1</span> } }
+=&gt; <span style="color:#777">#&lt;Enumerator: #&lt;Enumerator::Generator:0x00000100972b50&gt;:each&gt;</span>
+&gt;&gt; odds.next
+=&gt; <span style="color:#00D">1</span>
+&gt;&gt; odds.next
+=&gt; <span style="color:#00D">3</span>
+&gt;&gt; odds.next
+=&gt; <span style="color:#00D">5</span>
+&gt;&gt; odds.take(<span style="color:#00D">10</span>)
+=&gt; [<span style="color:#00D">1</span>, <span style="color:#00D">3</span>, <span style="color:#00D">5</span>, <span style="color:#00D">7</span>, <span style="color:#00D">9</span>, <span style="color:#00D">11</span>, <span style="color:#00D">13</span>, <span style="color:#00D">15</span>, <span style="color:#00D">17</span>, <span style="color:#00D">19</span>]
+</pre></div>
+</div>
+</div>
+
+<p>While infinite sequences may seem like a very academic topic, they show up in some practical applications as well. For example, some video games use procedural generation to produce seemingly infinite randomly generated maps. The video below demonstrates that technique being used in a very crude manner, but the same general approach could be used to build rich three dimensional environments as well, such as the ones found in <a href="http://www.minecraft.net/">MineCraft</a>. (<em>NOTE: I accidentally uploaded this video with ambient sounds rather than muted, and won’t be able to fix this until I return from vacation after December 15th. If you don’t like the sound of keyboard motions, heavy breathing, and some weird beeping noise: mute your audio before playing this video. Sorry!</em>)</p>
+
+<div align="center">
+<iframe width="640" height="480" src="//www.youtube.com/embed/fg-dYZfd6Y4?rel=0" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+<p>To implement the map generation code, I put together a simple <code>Location</code> object which is essentially an infinite two dimensional doubly linked list. Notice how the class definition below makes extensive use of the common <code>||=</code> idiom to handle the lazy evaluation and caching.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Location</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">[]</span>(x,y)
+    <span style="color:#33B">@locations</span>        ||= {}
+    <span style="color:#33B">@locations</span>[[x,y]] ||= new(x,y)
+  <span style="color:#080;font-weight:bold">end</span> 
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>     = x
+    <span style="color:#33B">@y</span>     = y
+    <span style="color:#33B">@color</span> = [<span style="color:#A60">:green</span>, <span style="color:#A60">:green</span>, <span style="color:#A60">:blue</span>].sample
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    [x,y] == [other.x, other.y]
+  <span style="color:#080;font-weight:bold">end</span>  
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>, <span style="color:#A60">:color</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">north</span>
+    <span style="color:#33B">@north</span> ||= <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,<span style="color:#33B">@y</span>-<span style="color:#00D">1</span>] 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">south</span>
+    <span style="color:#33B">@south</span> ||= <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,y+<span style="color:#00D">1</span>]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">east</span>
+    <span style="color:#33B">@east</span> ||= <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>+<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">west</span>
+    <span style="color:#33B">@west</span> ||= <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>-<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] 
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">neighbors</span>
+    [north, south, east, west]
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While this technique works fine and is the traditional way to achieve lazy evaluation in Ruby, it feels a bit primitive. Ruby does not provide a general purpose construct for lazy evaluation, but if it did, it would allow us to write code similar to what you see below:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Location</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">[]</span>(x,y)
+    <span style="color:#33B">@locations</span>        ||= {}
+    <span style="color:#33B">@locations</span>[[x,y]] ||= new(x,y)
+  <span style="color:#080;font-weight:bold">end</span> 
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>     = x
+    <span style="color:#33B">@y</span>     = y
+    <span style="color:#33B">@color</span> = [<span style="color:#A60">:green</span>, <span style="color:#A60">:green</span>, <span style="color:#A60">:blue</span>].sample
+
+    <span style="color:#33B">@north</span> = <span style="color:#036;font-weight:bold">LazyObject</span>.new { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,<span style="color:#33B">@y</span>-<span style="color:#00D">1</span>] }
+    <span style="color:#33B">@south</span> = <span style="color:#036;font-weight:bold">LazyObject</span>.new { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,y+<span style="color:#00D">1</span>] }
+    <span style="color:#33B">@east</span>  = <span style="color:#036;font-weight:bold">LazyObject</span>.new { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>+<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] }
+    <span style="color:#33B">@west</span>  = <span style="color:#036;font-weight:bold">LazyObject</span>.new { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>-<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    [x,y] == [other.x, other.y]
+  <span style="color:#080;font-weight:bold">end</span>  
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">neighbors</span>
+    [north, south, east, west]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>, <span style="color:#A60">:color</span>, <span style="color:#A60">:north</span>, <span style="color:#A60">:south</span>, <span style="color:#A60">:east</span>, <span style="color:#A60">:west</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Such an object can be implemented as a simple proxy which delays the execution of a callback until the results are actually needed. The following code illustrates one way to do that:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">LazyObject</span> &lt; <span style="color:#036;font-weight:bold">BasicObject</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(&amp;callback)
+    <span style="color:#33B">@callback</span> = callback
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">__result__</span>
+    <span style="color:#33B">@__result__</span> ||= <span style="color:#33B">@callback</span>.call
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">method_missing</span>(*a, &amp;b)
+    __result__.send(*a, &amp;b)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Another option would be to use <a href="http://moonbase.rydia.net/software/lazy.rb/">lazy.rb</a>, which provides similar functionality via <code>Lazy::Promise</code> objects that get instantiated via the <code>Lazy.promise</code> method:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lazy</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Location</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#069">self</span>.<span style="color:#06B;font-weight:bold">[]</span>(x,y)
+    <span style="color:#33B">@locations</span>        ||= {}
+    <span style="color:#33B">@locations</span>[[x,y]] ||= new(x,y)
+  <span style="color:#080;font-weight:bold">end</span> 
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(x,y)
+    <span style="color:#33B">@x</span>     = x
+    <span style="color:#33B">@y</span>     = y
+    <span style="color:#33B">@color</span> = [<span style="color:#A60">:green</span>, <span style="color:#A60">:green</span>, <span style="color:#A60">:blue</span>].sample
+
+    <span style="color:#33B">@north</span> = <span style="color:#036;font-weight:bold">Lazy</span>.promise { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,<span style="color:#33B">@y</span>-<span style="color:#00D">1</span>] }
+    <span style="color:#33B">@south</span> = <span style="color:#036;font-weight:bold">Lazy</span>.promise { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>,y+<span style="color:#00D">1</span>] }
+    <span style="color:#33B">@east</span>  = <span style="color:#036;font-weight:bold">Lazy</span>.promise { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>+<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] }
+    <span style="color:#33B">@west</span>  = <span style="color:#036;font-weight:bold">Lazy</span>.promise { <span style="color:#036;font-weight:bold">Location</span>[<span style="color:#33B">@x</span>-<span style="color:#00D">1</span>, <span style="color:#33B">@y</span>] }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    [x,y] == [other.x, other.y]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">neighbors</span>
+    [north, south, east, west]
+  <span style="color:#080;font-weight:bold">end</span>
+
+  attr_reader <span style="color:#A60">:x</span>, <span style="color:#A60">:y</span>, <span style="color:#A60">:color</span>, <span style="color:#A60">:north</span>, <span style="color:#A60">:south</span>, <span style="color:#A60">:east</span>, <span style="color:#A60">:west</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>This approach provides a thread safe solution and prevents us from having to reinvent the wheel. The only downside is that <em>lazy.rb</em> is a bit dated and generates some warnings on Ruby 1.9 due to the way it implements its core proxy object. But whether you use <em>lazy.rb</em> or roll your own lazy object, it is important to understand that the difference between this pattern and the common Ruby idiom of delaying execution via cached method calls is more than just a matter of aesthetics. To illustrate why that is the case, we can can consider the difference in behavior between the two approaches when <code>Location#neighbors</code> is called.</p>
+
+<p>In the original example that explictly defines the <code>north</code>, <code>south</code>, <code>east</code>, and <code>west</code> methods, the first time the <code>neighbors</code> method is called, four <code>Location</code> objects are created. This means that the following line of code will generate all four neighboring <code>Location</code> objects even if not all of them are needed to answer the question it asks:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>green_neighbor = location.neighbors.find { |loc| loc.color == <span style="color:#A60">:green</span> }
+</pre></div>
+</div>
+</div>
+
+<p>By contrast, a <code>Location</code> object that uses some form of lazy object would behave differently here. Because <code>Enumerable#find</code> returns as soon as it finds a single object which matches its conditions, the <code>Location#color</code> method will not necessarily get called on each of the neighboring locations. This means that in the best case scenario, only one new <code>Location</code> object would end up getting created. While this particular example is a bit contrived, it’s not hard to see why this is a desireable characteristic of lazy objects that cannot be easily emulated via the standard Ruby idiom for delayed execution.</p>
+
+<h3 id="future-objects">Future objects</h3>
+
+<p>Lazy objects provide certain performance benefits in the sense that they make it possible to avoid unnecessary computation, but they don’t do anything to improve the perceived waiting time for any computations that actually need to be run. This is where future objects come in handy.</p>
+
+<p>A future object is essentially an object which immediately begins doing some processing in the background but only blocks if the results are demanded before the thread has finished executing. The example below demonstrates how this sort of object can come in handy for building a simple non-blocking download manager:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lazy</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DownloadManager</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@downloads</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save</span>(url, filename)
+    downloads &lt;&lt; <span style="color:#036;font-weight:bold">Lazy</span>.future { <span style="color:#036;font-weight:bold">File</span>.binwrite(filename, open(url).read) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">finish_all_downloads</span>
+    downloads.each { |d| <span style="color:#036;font-weight:bold">Lazy</span>.demand(d) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_reader <span style="color:#A60">:downloads</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+downloader = <span style="color:#036;font-weight:bold">DownloadManager</span>.new 
+
+downloader.save(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://prawn.majesticseacreature.com/manual.pdf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">manual.pdf</span><span style="color:#710">&quot;</span></span>)
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Starting Prawn manual download</span><span style="color:#710">&quot;</span></span>
+
+downloader.save(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://sandal.github.com/rbp-book/pdfs/rbp_1-0.pdf</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rbp_1-0.pdf</span><span style="color:#710">&quot;</span></span>)
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Starting download of Ruby Best Practices book</span><span style="color:#710">&quot;</span></span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Waiting for downloads to finish...</span><span style="color:#710">&quot;</span></span>
+downloader.finish_all_downloads
+</pre></div>
+</div>
+</div>
+
+<p>In this particular example the callback doesn’t return a meaningful value, and so the <code>DownloadManager#finish_all_downloads</code> method makes use of <code>Lazy.demand</code> to force each future to wrap up its computations. However, the following example demonstrates that the future objects that <em>lazy.rb</em> provides can also be used as transparent proxy objects:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">open-uri</span><span style="color:#710">&quot;</span></span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">lazy</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Download</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(url, filename)
+    <span style="color:#33B">@filename</span> = filename
+    <span style="color:#33B">@contents</span> = open(url).read
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save</span>
+    <span style="color:#036;font-weight:bold">File</span>.binwrite(<span style="color:#33B">@filename</span>, <span style="color:#33B">@contents</span>)
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DownloadManager</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@downloads</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">save</span>(url, filename)
+    downloads &lt;&lt; <span style="color:#036;font-weight:bold">Lazy</span>.future { <span style="color:#036;font-weight:bold">Download</span>.new(url, filename) }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">finish_all_downloads</span>
+    downloads.each { |d| d.save }
+  <span style="color:#080;font-weight:bold">end</span>
+
+  private
+
+  attr_reader <span style="color:#A60">:downloads</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+downloader = <span style="color:#036;font-weight:bold">DownloadManager</span>.new 
+
+downloader.save(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://prawn.majesticseacreature.com/manual.pdf</span><span style="color:#710">&quot;</span></span>, 
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">manual.pdf</span><span style="color:#710">&quot;</span></span>)
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Starting Prawn manual download</span><span style="color:#710">&quot;</span></span>
+
+downloader.save(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://sandal.github.com/rbp-book/pdfs/rbp_1-0.pdf</span><span style="color:#710">&quot;</span></span>, 
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rbp_1-0.pdf</span><span style="color:#710">&quot;</span></span>)
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Starting download of Ruby Best Practices book</span><span style="color:#710">&quot;</span></span>
+
+puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Waiting for downloads to finish...</span><span style="color:#710">&quot;</span></span>
+downloader.finish_all_downloads
+</pre></div>
+</div>
+</div>
+
+<p>In both examples, the future object will block as long as necessary to allow the computations to complete, but only when it is forced to do so. Until this occurs, other operations can continue in parallel and/or block the execution of these future objects. This means in the best case scenario, a computation will end up being completed before it is actually needed, and the results will be returned from the future object’s cache at that time.</p>
+
+<p>While implementing a generic future object from scratch would not be difficult for anyone who has experience working with threads, concurrency is a weak point for me and I rather not confuse folks by giving potentially bad advice through a naive implementation of my own. Those who are really itching to see how such an object is implemented should look at the <a href="https://github.com/mental/lazy/blob/master/lib/lazy.rb#L138-146">lazy.rb source code</a>, but if you treat future objects as black boxes you just need to know a few basic things about Ruby’s thread model to make use of this construct effectively.</p>
+
+<p>The most important thing to keep in mind is that thread scheduling in standard Ruby is affected by a global interpreter lock (GIL) which makes it so that most computations end up blocking the execution of other threads. Alternative implementations such as JRuby and Rubinius remove this lock, but in standard Ruby this basically means that threads are mostly useful for backgrounding operations such as file and network I/O. This is because unlike most computations, I/O operations will give other threads a chance to run while waiting on their data to become available. Because lazy.rb’s implementation is thread based, future objects inherit the same set of restrictions. The other thing to be aware of is that Ruby does not explicitly join all of its threads once the main execution thread completes. This means that if I did not explicitly call <code>downloader.finish_all_downloads</code> in the previous example, the threads spun up by my future objects would be terminated if the main thread finished up before the downloads were completed. This may be obvious to anyone with a background in concurrency, but I scratched by head for a bit because of this issue.</p>
+
+<p>Other than those issues, future objects pretty much allow you to solve some basic concurrency problems without knowing a whole lot about how to work with low level concurrency primitives. While the example I’ve shown here is a bit dull, I can imagine this technique might come in handy for things like sending emails or doing some time intensive computations that are part of an interactive reporting system. Both of these are problems I’ve had to solve before using tools like <a href="https://github.com/defunkt/resque">Resque</a>, but simple future objects might prove to be a lightweight 
+alternative. I’d be curious to hear from our readers who have some concurrency experience whether that seems like a good idea or not, and also whether you have ideas for other potential applications of future objects.</p>
+
+<h2 id="reflections">Reflections</h2>
+
+<p>The general concept of wrapping data in results objects isn’t that exciting, but the notion of lazy objects and future objects show that results objects can be imbued with rich behaviors that can make our code more flexible and easier to understand. </p>
+
+<p>While Rubyists are no strangers to benefits of lazy evaluation, the process of writing this article has lead me to believe that we can probably benefit from having some higher level constructs to work with. However, explaining my thoughts on that would take a whole other article.</p>
+
+<p>Similarly, it seems that Ruby provides all the basic tooling necessary for concurrency, even when you take into account the limitations of standard Ruby due to its GIL. It would be nice if we could establish some good patterns and constructs for making this kind of programming more accessible to the amateur. Such constructs may end up hiding some of the details that experienced developers care about, but would likely lead to more performant code without sacrificing maintainability or learnability.</p>
+
+<p>On a closing note, the fact that there are two interesting subcategories of results objects hints that there may be more left to discover. This is similarly true for patterns about arguments. I can feel in my gut that there are other patterns out there just waiting to be discovered, but cannot think of any off the top of my head at the moment. Have you seen anything in the wild that hints at how we can expand on these ideas? If so, please leave a comment! </p>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,803 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+  <title>Practicing Ruby</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      padding: 30px;
+      color: #333;
+      border: 1px solid #aaa;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    body > *:first-child {
+      margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+      margin-bottom: 0 !important;
+    }
+
+    a {
+      color: #4183C4;
+      text-decoration: none;
+    }
+
+    a.absent {
+      color: #cc0000;
+    }
+
+    a.anchor {
+      display: block;
+      padding-left: 30px;
+      margin-left: -30px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin: 20px 0 10px;
+      padding: 0;
+      font-weight: bold;
+      -webkit-font-smoothing: antialiased;
+      cursor: text;
+      position: relative;
+    }
+
+    h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+      text-decoration: none;
+    }
+
+    h1 tt, h1 code {
+      font-size: inherit;
+    }
+
+    h2 tt, h2 code {
+      font-size: inherit;
+    }
+
+    h3 tt, h3 code {
+      font-size: inherit;
+    }
+
+    h4 tt, h4 code {
+      font-size: inherit;
+    }
+
+    h5 tt, h5 code {
+      font-size: inherit;
+    }
+
+    h6 tt, h6 code {
+      font-size: inherit;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px solid #cccccc;
+      color: black;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      color: #777777;
+      font-size: 14px;
+    }
+
+    p, blockquote, ul, ol, dl, li, table, pre {
+      margin: 3px 0;
+    }
+
+    hr {
+      background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+      border: 0 none;
+      color: #cccccc;
+      height: 4px;
+      padding: 0;
+    }
+
+    body > h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h1:first-child + h2 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+      margin-top: 0;
+    }
+
+    li p.first {
+      display: inline-block;
+    }
+
+    ul, ol {
+      padding-left: 30px;
+    }
+
+    ul :first-child, ol :first-child {
+      margin-top: 0;
+    }
+
+    ul :last-child, ol :last-child {
+      margin-bottom: 0;
+    }
+
+    dl {
+      padding: 0;
+    }
+
+    dl dt {
+      font-size: 14px;
+      font-weight: bold;
+      font-style: italic;
+      padding: 0;
+      margin: 15px 0 5px;
+    }
+
+    dl dt:first-child {
+      padding: 0;
+    }
+
+    dl dt > :first-child {
+      margin-top: 0;
+    }
+
+    dl dt > :last-child {
+      margin-bottom: 0;
+    }
+
+    dl dd {
+      margin: 0 0 15px;
+      padding: 0 15px;
+    }
+
+    dl dd > :first-child {
+      margin-top: 0;
+    }
+
+    dl dd > :last-child {
+      margin-bottom: 0;
+    }
+
+    blockquote {
+      border-left: 4px solid #dddddd;
+      padding: 0 15px;
+      color: #777777;
+    }
+
+    blockquote > :first-child {
+      margin-top: 0;
+    }
+
+    blockquote > :last-child {
+      margin-bottom: 0;
+    }
+
+    table {
+      padding: 0;
+    }
+    table tr {
+      border-top: 1px solid #cccccc;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
+    }
+
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0;
+    }
+
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    span.frame {
+      display: block;
+      overflow: hidden;
+    }
+
+    span.frame > span {
+      border: 1px solid #dddddd;
+      display: block;
+      float: left;
+      overflow: hidden;
+      margin: 13px 0 0;
+      padding: 7px;
+      width: auto;
+    }
+
+    span.frame span img {
+      display: block;
+      float: left;
+    }
+
+    span.frame span span {
+      clear: both;
+      color: #333333;
+      display: block;
+      padding: 5px 0 0;
+    }
+
+    span.align-center {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-center > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: center;
+    }
+
+    span.align-center span img {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    span.align-right {
+      display: block;
+      overflow: hidden;
+      clear: both;
+    }
+
+    span.align-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px 0 0;
+      text-align: right;
+    }
+
+    span.align-right span img {
+      margin: 0;
+      text-align: right;
+    }
+
+    span.float-left {
+      display: block;
+      margin-right: 13px;
+      overflow: hidden;
+      float: left;
+    }
+
+    span.float-left span {
+      margin: 13px 0 0;
+    }
+
+    span.float-right {
+      display: block;
+      margin-left: 13px;
+      overflow: hidden;
+      float: right;
+    }
+
+    span.float-right > span {
+      display: block;
+      overflow: hidden;
+      margin: 13px auto 0;
+      text-align: right;
+    }
+
+    code, tt {
+      font-family: "Lucida Console", "Courier New", courier;
+      font-size: 12px;
+      margin: 0 2px;
+      padding: 3px 5px;
+      white-space: nowrap;
+      border: 1px solid #eaeaea;
+      background-color: #f8f8f8;
+      border-radius: 3px;
+    }
+
+    pre code {
+      margin: 0;
+      padding: 0;
+      white-space: pre;
+      border: none;
+      background: transparent;
+    }
+
+    .highlight pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      font-size: 13px;
+      line-height: 19px;
+      overflow: auto;
+      padding: 6px 10px;
+      border-radius: 3px;
+    }
+
+    pre code, pre tt {
+      background-color: transparent;
+      border: none;
+    }
+
+    span.line-numbers {
+      margin-right: 10px;
+    }
+
+    img.logo {
+      display: block;
+      margin: 10px auto;
+    }
+
+    h1.logo {
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="containter">
+    <h1 class="logo">Practicing Ruby</h1>
+    <img class="logo" src="../images/header.png" />
+    <blockquote>
+  <p>Note: This article series on modules is also available as a <a href="https://github.com/elm-city-craftworks/pr-monthly/blob/gh-pages/b5e5a89847701c4aa7c170cf/sept-2012-modules.pdf?raw=true">PDF download</a>. The
+PDF version has been revised and is more up-to-date than what you see here.</p>
+</blockquote>
+
+<h3 id="using-mix-ins-to-augment-class-definitions">Using Mix-ins to Augment Class Definitions</h3>
+
+<p>Although knowing <a href="http://practicingruby.com/articles/36">how to use modules for namespacing</a> is important, it’s really only a small part of what you can do with modules. What modules do best is providing a convenient way to write code that can be mixed into other objects, augmenting their behaviors. Because modules facilitate code sharing in a way that is distinct from both the general OO concept of class inheritance and from things like Java’s interfaces, they require you to think about your design in a way that’s a bit different from most other object oriented programming languages.</p>
+
+<p>While I imagine that most of our readers are comfortable with using mixins, I’ll
+refer to some core Ruby mixins to illustrate their power before moving on to more 
+subtle points. For example, consider the following bit of code which implements lazily evaluated computations:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Computation</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(&amp;block)
+    <span style="color:#33B">@action</span> = block
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">result</span>
+    <span style="color:#33B">@result</span> ||= <span style="color:#33B">@action</span>.call
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;</span>(other)
+    result &lt; other.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&gt;</span>(other)
+    result &gt; other.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&gt;=</span>(other)
+    result &gt;= other.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=</span>(other)
+    result &lt;= other.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    result == other.result
+  <span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#080;font-weight:bold">end</span>
+
+a = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">1</span> + <span style="color:#00D">1</span> }
+b = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">4</span>*<span style="color:#00D">5</span> }
+c = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">-3</span> }
+
+p a &lt; b  <span style="color:#777">#=&gt; true</span>
+p a &lt;= b <span style="color:#777">#=&gt; true</span>
+p b &gt; c  <span style="color:#777">#=&gt; true</span>
+p b &gt;= c <span style="color:#777">#=&gt; true</span>
+p a == b <span style="color:#777">#=&gt; false</span>
+</pre></div>
+</div>
+</div>
+
+<p>While Ruby makes defining custom operators easy, there is a lot more code here than there needs to be. We can easily clean it up by mixing in Ruby’s built in <code>Comparable</code> module.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Computation</span>
+  include <span style="color:#036;font-weight:bold">Comparable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(&amp;block)
+    <span style="color:#33B">@action</span> = block
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">result</span>
+    <span style="color:#33B">@result</span> ||= <span style="color:#33B">@action</span>.call
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=&gt;</span>(other)
+    <span style="color:#080;font-weight:bold">return</span>  <span style="color:#00D">0</span> <span style="color:#080;font-weight:bold">if</span> result == other.result
+    <span style="color:#080;font-weight:bold">return</span>  <span style="color:#00D">1</span> <span style="color:#080;font-weight:bold">if</span> result &gt; other.result
+    <span style="color:#080;font-weight:bold">return</span> <span style="color:#00D">-1</span> <span style="color:#080;font-weight:bold">if</span> result &lt; other.result
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+a = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">1</span> + <span style="color:#00D">1</span> }
+b = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">4</span>*<span style="color:#00D">5</span> }
+c = <span style="color:#036;font-weight:bold">Computation</span>.new { <span style="color:#00D">-3</span> }
+
+p a &lt; b  <span style="color:#777">#=&gt; true</span>
+p a &lt;= b <span style="color:#777">#=&gt; true</span>
+p b &gt; c  <span style="color:#777">#=&gt; true</span>
+p b &gt;= c <span style="color:#777">#=&gt; true</span>
+p a == b <span style="color:#777">#=&gt; false</span>
+</pre></div>
+</div>
+</div>
+
+<p>We see that our individual operator definitions have disappeared, and in its place are two new bits of code. The first new thing is just an include statement that tells Ruby to mix the <code>Comparable</code> functionality into the <code>Computation</code> class definition. But in order to make use of the mixin, we need to tell <code>Comparable</code> how to evaluate the sort order of our <code>Computation</code> objects, and that’s where <code>&lt;=&gt;</code> comes in.</p>
+
+<p>The <code>&lt;=&gt;</code> method, sometimes called the spaceship operator, essentially fills in a template method that allows <code>Comparable</code> to work. It codifies the notion of comparison in an abstract manner by expecting the method to return <code>-1</code> when the current object is considered less than the object it is being compared to, <code>0</code> when the two are considered equal, and <code>1</code> when the current object is considered greater than the object it is being compared to.</p>
+
+<p>If you’re still scratching your head a bit, pretend that rather than being a core Ruby object, that we’ve implemented <code>Comparable</code> ourselves by writing the following code.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Comparable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">==</span>(other)
+    (<span style="color:#069">self</span> &lt;=&gt; other) == <span style="color:#00D">0</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;</span>(other)
+    (<span style="color:#069">self</span> &lt;=&gt; other) == <span style="color:#00D">-1</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=</span>(other)
+    <span style="color:#069">self</span> &lt; other || <span style="color:#069">self</span> == other
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&gt;</span>(other)
+    (<span style="color:#069">self</span> &lt;=&gt; other) == <span style="color:#00D">1</span>
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&gt;=</span>(other)
+    <span style="color:#069">self</span> &gt; other || <span style="color:#069">self</span> == other
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>Now, if you imagine these method definitions literally getting pasted into your <code>Computation</code> class when <code>Comparable</code> is included, you’ll see that it would provide a behavior that is functionally equivalent to our initial example.</p>
+
+<p>Of course, it wouldn’t make sense for Ruby to implement such a feature for us
+without using it in its own structures. Because Ruby’s numeric classes
+all implement <code>&lt;=&gt;</code>, we are able to simply delegate our <code>&lt;=&gt;</code> call to the 
+result of the computations.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Computation</span>
+  include <span style="color:#036;font-weight:bold">Comparable</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>(&amp;block)
+    <span style="color:#33B">@action</span> = block
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">result</span>
+    <span style="color:#33B">@result</span> ||= <span style="color:#33B">@action</span>.call
+  <span style="color:#080;font-weight:bold">end</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">&lt;=&gt;</span>(other)
+    result &lt;=&gt; other.result
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>The only requirement for this code to work as expected is that each <code>Computation</code>’s result must implement the <code>&lt;=&gt;</code> method. Since all objects that mix in <code>Comparable</code> have to implement <code>&lt;=&gt;</code>, any comparable object returned as a result should work fine here.</p>
+
+<p>While not a technically complicated example, there is surprising power in having a primitive built into your programming language which trivializes the implementation of the Template Method design pattern. If you look at Ruby’s <code>Enumerable</code> module and the powerful features it offers, you might think it would be a much more complicated example to study. But it too hinges on Template Method and requires only an <code>each()</code> method to give you all sorts of complex functionality including things like <code>select()</code>, <code>map()</code>, and <code>inject()</code>. If you haven’t tried it before, you should certainly try to roll your own <code>Enumerable</code> module to get a sense of just how useful mixins can be.</p>
+
+<p>We can also invert this relationship by having our class define a template, and then relying on the module that we mix in to provide the necessary details. If we look back at a previous example <code>TicTacToe</code>, we can see a practical example of this technique by looking at the play method in our <code>TicTacToe::Game</code> class.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">TicTacToe</span>
+  <span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Game</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">play</span>
+      catch(<span style="color:#A60">:finished</span>) <span style="color:#080;font-weight:bold">do</span>
+        loop <span style="color:#080;font-weight:bold">do</span>
+          start_new_turn
+          show_board
+
+          check_move { |error_message| puts error_message }
+          check_win { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">#{</span>current_player<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> wins</span><span style="color:#710">&quot;</span></span> }
+          check_draw { puts <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">It's a tie</span><span style="color:#710">&quot;</span></span> }
+        <span style="color:#080;font-weight:bold">end</span>
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#777"># ...</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this code, we wanted to keep our event loop abstract, and rely on a mixed in module to provide the logic for executing and validating a move as well as checking end game conditions. As a result, we ended up with the <code>TicTacToe::Rules</code> module shown below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">TicTacToe</span>
+  <span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Rules</span>
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_move</span>
+      row, col = move_input
+      board[row, col] = current_player
+    <span style="color:#080;font-weight:bold">rescue</span> <span style="color:#036;font-weight:bold">TicTacToe</span>::<span style="color:#036;font-weight:bold">Board</span>::<span style="color:#036;font-weight:bold">InvalidRequest</span> =&gt; error
+      <span style="color:#080;font-weight:bold">yield</span> error.message <span style="color:#080;font-weight:bold">if</span> block_given?
+      <span style="color:#080;font-weight:bold">retry</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_win</span>
+      <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">false</span> <span style="color:#080;font-weight:bold">unless</span> board.last_move
+
+      win = board.intersecting_lines(*board.last_move).any? <span style="color:#080;font-weight:bold">do</span> |line|
+        line.all? { |cell| cell == current_player }
+      <span style="color:#080;font-weight:bold">end</span>
+
+      <span style="color:#080;font-weight:bold">if</span> win
+        <span style="color:#080;font-weight:bold">yield</span>
+        game_over
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+
+    <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">check_draw</span>
+      <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@board</span>.covered?
+        <span style="color:#080;font-weight:bold">yield</span>
+        game_over
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>When we look at this code, we see some basic business logic implementing the rules of Tic Tac Toe, with some placeholder hooks being provided by <code>yield()</code> that allows the calling code to inject some logic at certain key points in the process. This is how we manage to split the UI code from the game logic, without creating frivolous adapter classes.</p>
+
+<p>While this is a more complicated example than our walkthrough of <code>Comparable</code>, the two share a common thread. In both cases, some coupling exists between the module and the object it is being mixed into. This is a common pattern when using mixins, in which the module and the code it is mixed into have to do a bit of a secret handshake to be able to talk to one another, but as long as they agree on that, neither needs to know about the other’s inner workings. The end result is two components which must agree on an interface but do not need to necessarily understand each other’s implementations. Code with this sort of coupling is easy to test and easy to refactor.</p>
+
+<h3 id="using-mix-ins-to-augment-objects-directly">Using Mix-ins to Augment Objects Directly</h3>
+
+<p>As you may already know, Ruby’s mixin capability is not limited to simply including new behavior into a class definition. You can also extend the behavior of a class itself, through the use of the <code>extend()</code> method. We can look to the Ruby standard library <i>forwardable</i> for a nice example of how this is used. Consider the following trivial <code>Stack</code> implementation.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">forwardable</span><span style="color:#710">&quot;</span></span>
+
+<span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Stack</span>
+  extend <span style="color:#036;font-weight:bold">Forwardable</span>
+
+  def_delegators <span style="color:#A60">:@data</span>, <span style="color:#A60">:push</span>, <span style="color:#A60">:pop</span>, <span style="color:#A60">:size</span>, <span style="color:#A60">:first</span>, <span style="color:#A60">:empty?</span>
+
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">initialize</span>
+    <span style="color:#33B">@data</span> = []
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>In this example, we can see that after we extend our <code>Stack</code> class with the <code>Forwardable</code> module, we are provided with a class level method called <code>def_delegators</code> which allows us to easily define methods which delegate to an object stored in the specified instance variable. Playing around with the <code>Stack</code> object a bit should illustrate what this code has done for us.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>&gt;&gt; stack = <span style="color:#036;font-weight:bold">Stack</span>.new
+=&gt; <span style="color:#777">#&lt;Stack:0x4f09c @data=[]&gt;</span>
+&gt;&gt; stack.push <span style="color:#00D">1</span>
+=&gt; [<span style="color:#00D">1</span>]
+&gt;&gt; stack.push <span style="color:#00D">2</span>
+=&gt; [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>]
+&gt;&gt; stack.push <span style="color:#00D">3</span>
+=&gt; [<span style="color:#00D">1</span>, <span style="color:#00D">2</span>, <span style="color:#00D">3</span>]
+&gt;&gt; stack.size
+=&gt; <span style="color:#00D">3</span>
+&gt;&gt; <span style="color:#080;font-weight:bold">until</span> stack.empty?
+&gt;&gt;   p stack.pop
+&gt;&gt; <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#00D">3</span>
+<span style="color:#00D">2</span>
+<span style="color:#00D">1</span>
+</pre></div>
+</div>
+</div>
+
+<p>As before, it may be helpful to think about how we might implement <code>Forwardable</code> ourselves. The following bit of code shows one way to approach the problem.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">MyForwardable</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">def_delegators</span>(ivar, *delegated_methods)
+    delegated_methods.each <span style="color:#080;font-weight:bold">do</span> |m|
+      define_method(m) <span style="color:#080;font-weight:bold">do</span> |*a, &amp;b|
+        obj = instance_variable_get(ivar)
+        obj.send(m,*a, &amp;b)
+      <span style="color:#080;font-weight:bold">end</span>
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>While the metaprogramming aspects of this may be a bit noisy to read if you’re not familiar with them, this is fairly vanilla dynamic Ruby code. If you’ve got Ruby 1.9.2 installed, you can actually try it out on your own and verify that it does indeed work as expected. But the practical use case of this code isn’t what’s important here.</p>
+
+<p>The key thing to notice about this code is that while it essentially implements a class method, nothing in the module’s syntax directly indicates this to be the case. The only hint we get that this is meant to be used at the class level is the use of <code>define_method()</code>, but we need to dig into the implementation code to notice that.</p>
+
+<p>Before we wrap up, we should investigate why this is the case.</p>
+
+<h3 id="a-brief-stroking-of-the-beard">A Brief Stroking of the Beard</h3>
+
+<p>The key thing to recognize is that <code>include()</code> mixes methods into the instances of the base object while <code>extend()</code> mixes methods into the base object itself. Notice that this is more general than a class method / instance method dichotomy.</p>
+
+<p>Let’s explore a few different possibilities using a somewhat contrived example so that we can focus on the mixin mechanics. First, we start with an ordinary module, which is somewhat useless on its own.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">module</span> <span style="color:#B06;font-weight:bold">Greeter</span>
+  <span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hello</span>
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hi</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span>
+</pre></div>
+</div>
+</div>
+
+<p>By including <code>Greeter</code> into <code>SomeClass</code>, we make it so that we can now call <code>hello()</code> on instances of <code>SomeClass</code>.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">SomeClass</span>
+  include <span style="color:#036;font-weight:bold">Greeter</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">SomeClass</span>.new.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>But as we saw in the <code>Forwardable</code> example, extending <code>AnotherClass</code> with <code>Greeter</code> would allow us to call the hello method directly at the class level, as in the example below.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#080;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">AnotherClass</span>
+  extend <span style="color:#036;font-weight:bold">Greeter</span>
+<span style="color:#080;font-weight:bold">end</span>
+
+<span style="color:#036;font-weight:bold">AnotherClass</span>.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Be sure to note at this point that <code>extend()</code> and <code>include()</code> are two totally
+different operations. Because you did not extend <code>SomeClass</code> with <code>Greeter</code>, you
+could not call <code>SomeClass.hello()</code>. Similarly, you cannot call
+<code>AnotherClass.new.hello()</code> without explicitly including <code>Greeter</code>.</p>
+
+<p>From the examples so far, it might seem as if <code>include()</code> is for defining instance methods, and <code>extend()</code> is for class methods. But that is not quite accurate, and the next bit of code illustrates just how much deeper the rabbit hole goes.</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre>obj = <span style="color:#036;font-weight:bold">Object</span>.new
+obj.extend(<span style="color:#036;font-weight:bold">Greeter</span>)
+obj.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>Before you let this example make you go cross-eyed, let’s review the key point I made at the beginning of this section: <i>The key thing to recognize is that <code>include()</code> mixes methods into the instances of the base object while <code>extend()</code> mixes methods into the base object itself.</i></p>
+
+<p>Since not every base object can have instances, not every object can have modules included into them (in fact, only classes can). But <em>every</em> object can be extended by modules. This includes, among other things, classes and modules themselves.</p>
+
+<p>Let’s try to bring the two <code>extend()</code> examples closer together with the following little snippet:</p>
+
+<div class="highlighter-coderay"><div class="CodeRay">
+  <div class="code"><pre><span style="color:#036;font-weight:bold">MyClass</span> = <span style="color:#036;font-weight:bold">Class</span>.new
+<span style="color:#036;font-weight:bold">MyClass</span>.extend(<span style="color:#036;font-weight:bold">Greeter</span>)
+<span style="color:#036;font-weight:bold">MyClass</span>.hello <span style="color:#777">#=&gt; &quot;hi&quot;</span>
+</pre></div>
+</div>
+</div>
+
+<p>If you feel like you understand the lines above, you’re ready for the rest
+of this mini-series. If not, please ponder the following questions and leave a
+comment sharing your thoughts.</p>
+
+<h3 id="questions-to-consider">Questions To Consider</h3>
+
+<ul>
+  <li>
+    <p>Why do we have both <code>include()</code> and <code>extend()</code> available to us? Why not just have one way of doing mixins?</p>
+  </li>
+  <li>
+    <p>When you write <code>extend()</code> within a class definition, does it do any sort of special casing? Or is it the same as calling <code>extend()</code> on any other object?</p>
+  </li>
+  <li>
+    <p>Except for mixing in class methods, what is <code>extend()</code> useful for?</p>
+  </li>
+</ul>
+
+<p>Please feel free to ask for hints on any of these if you’re stumped, or share your answers if you’d like to help others and maybe get a bit of feedback to check your assumptions against.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This article has also been published on the Ruby Best Practices blog. There <a href="http://blog.rubybestpractices.com/posts/gregory/038-issue-9-uses-for-modules.html#disqus_thread">may be additional commentary</a> 
+over there worth taking a look at.</p>
+</blockquote>
+
+  </div>
+</body>
+</html>

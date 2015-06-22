@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <!-- classpage -- >
+    <!-- RD version: 0.32.0  -->
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta name='description' content='  Class : OpenSSL::ASN1::ASN1Data  -   Ruby 2_2_0 ' />
+  <meta content="2015-02-06 03:23:36 -0700" http-equiv="change-date" />
+  <!-- rel_prefix  = '../..'  ENV['RDOC_FOR_WEBSITE']   = false-->
+    
+  <!-- rel_prefix = '../..'   asset_rel_prefix = '../..'  --> 
+  <title>Class: OpenSSL::ASN1::ASN1Data (Ruby 2_2_0) </title>
+  <!-- link rel="stylesheet" href="../..css/obf.css"  -->
+  <link rel="stylesheet" href="../../css/inuit.css" >
+  <link rel="stylesheet" href="../../css/grid.inuit.css" >
+  <link rel="stylesheet" href="../../css/2011.css" type="text/css" >
+  <link rel="stylesheet" href="../../css/rdoc.css" type="text/css" >
+
+  <script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../../js/rubydoc.js" type="text/javascript" charset="utf-8"></script> 
+
+ 
+<script src="../../js/highlight.min.js"></script>
+<script> 
+  hljs.tabReplace = '  ';
+  hljs.initHighlightingOnLoad();
+  </script> 
+
+  <style type='text/css'>
+
+    #vulns-alert #vulns{
+      background-color: #c33 ! important;
+      width: 100%;
+      text-align: center;
+   }
+   
+   #vulns-alert #vulns a {
+    color: #F99 ! important;
+   }
+ </style>
+
+</head>
+
+<body id="top" class="class rdocstar">
+<div id='actionbar' >
+<div class='wrapper'>
+  <ul class='grids g0'></ul>
+</div>
+<span id='vulns-alert'></span>
+<!-- VERSION HEADER for 2_2_0 NOT FOUND --></div> <!-- end action bar -->
+ <div class='wrapper'>
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../../index.html">Home</a>
+          <a href="../../index.html#classes">Classes</a>
+          <a href="../../index.html#methods">Methods</a>
+          
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul id='file-metadata'>
+
+          
+          
+          
+          <li class='in-file'>openssl/ossl_asn1.c</li>      
+            
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-to_der">#to_der</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+          
+          
+          
+          <li><a href="../../Integer.html">Integer</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1.html">OpenSSL::ASN1</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1/ASN1Data.html">OpenSSL::ASN1::ASN1Data</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1/ASN1Error.html">OpenSSL::ASN1::ASN1Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1/Constructive.html">OpenSSL::ASN1::Constructive</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1/ObjectId.html">OpenSSL::ASN1::ObjectId</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ASN1/Primitive.html">OpenSSL::ASN1::Primitive</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/BNError.html">OpenSSL::BNError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Buffering.html">OpenSSL::Buffering</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Cipher.html">OpenSSL::Cipher</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Cipher/Cipher.html">OpenSSL::Cipher::Cipher</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Cipher/CipherError.html">OpenSSL::Cipher::CipherError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Config.html">OpenSSL::Config</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/ConfigError.html">OpenSSL::ConfigError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Digest.html">OpenSSL::Digest</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Digest/DigestError.html">OpenSSL::Digest::DigestError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Engine.html">OpenSSL::Engine</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Engine/EngineError.html">OpenSSL::Engine::EngineError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/HMAC.html">OpenSSL::HMAC</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/HMACError.html">OpenSSL::HMACError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Netscape.html">OpenSSL::Netscape</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Netscape/SPKI.html">OpenSSL::Netscape::SPKI</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Netscape/SPKIError.html">OpenSSL::Netscape::SPKIError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP.html">OpenSSL::OCSP</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP/BasicResponse.html">OpenSSL::OCSP::BasicResponse</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP/CertificateId.html">OpenSSL::OCSP::CertificateId</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP/OCSPError.html">OpenSSL::OCSP::OCSPError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP/Request.html">OpenSSL::OCSP::Request</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OCSP/Response.html">OpenSSL::OCSP::Response</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/OpenSSLError.html">OpenSSL::OpenSSLError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS12.html">OpenSSL::PKCS12</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS12/PKCS12Error.html">OpenSSL::PKCS12::PKCS12Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS5.html">OpenSSL::PKCS5</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS5/PKCS5Error.html">OpenSSL::PKCS5::PKCS5Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS7.html">OpenSSL::PKCS7</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS7/PKCS7Error.html">OpenSSL::PKCS7::PKCS7Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS7/RecipientInfo.html">OpenSSL::PKCS7::RecipientInfo</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKCS7/SignerInfo.html">OpenSSL::PKCS7::SignerInfo</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/DHError.html">OpenSSL::PKey::DHError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/DSAError.html">OpenSSL::PKey::DSAError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/EC.html">OpenSSL::PKey::EC</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/EC/Group.html">OpenSSL::PKey::EC::Group</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/EC/Group/Error.html">OpenSSL::PKey::EC::Group::Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/EC/Point.html">OpenSSL::PKey::EC::Point</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/EC/Point/Error.html">OpenSSL::PKey::EC::Point::Error</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/ECError.html">OpenSSL::PKey::ECError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/PKeyError.html">OpenSSL::PKey::PKeyError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/PKey/RSAError.html">OpenSSL::PKey::RSAError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Random.html">OpenSSL::Random</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/Random/RandomError.html">OpenSSL::Random::RandomError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL.html">OpenSSL::SSL</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/Nonblock.html">OpenSSL::SSL::Nonblock</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLContext.html">OpenSSL::SSL::SSLContext</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLError.html">OpenSSL::SSL::SSLError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLErrorWaitReadable.html">OpenSSL::SSL::SSLErrorWaitReadable</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLErrorWaitWritable.html">OpenSSL::SSL::SSLErrorWaitWritable</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLServer.html">OpenSSL::SSL::SSLServer</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SSLSocket.html">OpenSSL::SSL::SSLSocket</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/Session.html">OpenSSL::SSL::Session</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/Session/SessionError.html">OpenSSL::SSL::Session::SessionError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/SSL/SocketForwarder.html">OpenSSL::SSL::SocketForwarder</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509.html">OpenSSL::X509</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Attribute.html">OpenSSL::X509::Attribute</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/AttributeError.html">OpenSSL::X509::AttributeError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/CRL.html">OpenSSL::X509::CRL</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/CRLError.html">OpenSSL::X509::CRLError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Certificate.html">OpenSSL::X509::Certificate</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/CertificateError.html">OpenSSL::X509::CertificateError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Extension.html">OpenSSL::X509::Extension</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/ExtensionError.html">OpenSSL::X509::ExtensionError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/ExtensionFactory.html">OpenSSL::X509::ExtensionFactory</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Name.html">OpenSSL::X509::Name</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Name/RFC2253DN.html">OpenSSL::X509::Name::RFC2253DN</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/NameError.html">OpenSSL::X509::NameError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Request.html">OpenSSL::X509::Request</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/RequestError.html">OpenSSL::X509::RequestError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Revoked.html">OpenSSL::X509::Revoked</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/RevokedError.html">OpenSSL::X509::RevokedError</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/Store.html">OpenSSL::X509::Store</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/StoreContext.html">OpenSSL::X509::StoreContext</a></li>
+        
+          
+          
+          <li><a href="../../OpenSSL/X509/StoreError.html">OpenSSL::X509::StoreError</a></li>
+        
+          
+          
+          <li><a href="../../unknown.html">unknown</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div> <!-- metadata -->
+  <div class='adzbox'  id="azk83167">
+    
+  </div> 
+  <div id="documentation">
+    <h1 class="class">OpenSSL::ASN1::ASN1Data</h1>
+
+    <div id="description" class="description">
+      
+<p>The top-level class representing any ASN.1 object. When parsed by <a
+href="../ASN1.html#method-c-decode">OpenSSL::ASN1.decode</a>, tagged values
+are always represented by an instance of <a
+href="ASN1Data.html">ASN1Data</a>.</p>
+
+<h2 id="class-OpenSSL::ASN1::ASN1Data-label-The+role+of+ASN1Data+for+parsing+tagged+values">The role of <a href="ASN1Data.html">ASN1Data</a> for parsing tagged values<span><a href="#class-OpenSSL::ASN1::ASN1Data-label-The+role+of+ASN1Data+for+parsing+tagged+values">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>When encoding an ASN.1 type it is inherently clear what original type (e.g.
+INTEGER, OCTET STRING etc.) this value has, regardless of its tagging. But
+opposed to the time an ASN.1 type is to be encoded, when parsing them it is
+not possible to deduce the "real type" of tagged values. This is why tagged
+values are generally parsed into <a href="ASN1Data.html">ASN1Data</a>
+instances, but with a different outcome for implicit and explicit tagging.</p>
+
+<h3 id="class-OpenSSL::ASN1::ASN1Data-label-Example+of+a+parsed+implicitly+tagged+value">Example of a parsed implicitly tagged value<span><a href="#class-OpenSSL::ASN1::ASN1Data-label-Example+of+a+parsed+implicitly+tagged+value">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>An implicitly 1-tagged INTEGER value will be parsed as an <a
+href="ASN1Data.html">ASN1Data</a> with</p>
+<ul><li>
+<p><code>tag</code> equal to 1</p>
+</li><li>
+<p><code>tag_class</code> equal to <code>:CONTEXT_SPECIFIC</code></p>
+</li><li>
+<p><code>value</code> equal to a <code>String</code> that carries the raw
+encoding of the INTEGER.</p>
+</li></ul>
+
+<p>This implies that a subsequent decoding step is required to completely
+decode implicitly tagged values.</p>
+
+<h3 id="class-OpenSSL::ASN1::ASN1Data-label-Example+of+a+parsed+explicitly+tagged+value">Example of a parsed explicitly tagged value<span><a href="#class-OpenSSL::ASN1::ASN1Data-label-Example+of+a+parsed+explicitly+tagged+value">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>An explicitly 1-tagged INTEGER value will be parsed as an <a
+href="ASN1Data.html">ASN1Data</a> with</p>
+<ul><li>
+<p><code>tag</code> equal to 1</p>
+</li><li>
+<p><code>tag_class</code> equal to <code>:CONTEXT_SPECIFIC</code></p>
+</li><li>
+<p><code>value</code> equal to an <code>Array</code> with one single element,
+an instance of OpenSSL::ASN1::Integer, i.e. the inner element is the
+non-tagged primitive value, and the tagging is represented in the outer <a
+href="ASN1Data.html">ASN1Data</a></p>
+</li></ul>
+
+<h2 id="class-OpenSSL::ASN1::ASN1Data-label-Example+-+Decoding+an+implicitly+tagged+INTEGER">Example - Decoding an implicitly tagged INTEGER<span><a href="#class-OpenSSL::ASN1::ASN1Data-label-Example+-+Decoding+an+implicitly+tagged+INTEGER">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-identifier">int</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span><span class="ruby-operator">::</span><span class="ruby-constant">Integer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>, <span class="ruby-value">0</span>, :<span class="ruby-constant">IMPLICIT</span>) <span class="ruby-comment"># implicit 0-tagged</span>
+<span class="ruby-identifier">seq</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span><span class="ruby-operator">::</span><span class="ruby-constant">Sequence</span>.<span class="ruby-identifier">new</span>( [<span class="ruby-identifier">int</span>] )
+<span class="ruby-identifier">der</span> = <span class="ruby-identifier">seq</span>.<span class="ruby-identifier">to_der</span>
+<span class="ruby-identifier">asn1</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">der</span>)
+<span class="ruby-comment"># pp asn1 =&gt; #&lt;OpenSSL::ASN1::Sequence:0x87326e0</span>
+<span class="ruby-comment">#              @infinite_length=false,</span>
+<span class="ruby-comment">#              @tag=16,</span>
+<span class="ruby-comment">#              @tag_class=:UNIVERSAL,</span>
+<span class="ruby-comment">#              @tagging=nil,</span>
+<span class="ruby-comment">#              @value=</span>
+<span class="ruby-comment">#                [#&lt;OpenSSL::ASN1::ASN1Data:0x87326f4</span>
+<span class="ruby-comment">#                   @infinite_length=false,</span>
+<span class="ruby-comment">#                   @tag=0,</span>
+<span class="ruby-comment">#                   @tag_class=:CONTEXT_SPECIFIC,</span>
+<span class="ruby-comment">#                   @value=&quot;\x01&quot;&gt;]&gt;</span>
+<span class="ruby-identifier">raw_int</span> = <span class="ruby-identifier">asn1</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>]
+<span class="ruby-comment"># manually rewrite tag and tag class to make it an UNIVERSAL value</span>
+<span class="ruby-identifier">raw_int</span>.<span class="ruby-identifier">tag</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span><span class="ruby-operator">::</span><span class="ruby-constant">INTEGER</span>
+<span class="ruby-identifier">raw_int</span>.<span class="ruby-identifier">tag_class</span> = :<span class="ruby-constant">UNIVERSAL</span>
+<span class="ruby-identifier">int2</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">raw_int</span>)
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">int2</span>.<span class="ruby-identifier">value</span> <span class="ruby-comment"># =&gt; 1</span>
+</pre>
+
+<h2 id="class-OpenSSL::ASN1::ASN1Data-label-Example+-+Decoding+an+explicitly+tagged+INTEGER">Example - Decoding an explicitly tagged INTEGER<span><a href="#class-OpenSSL::ASN1::ASN1Data-label-Example+-+Decoding+an+explicitly+tagged+INTEGER">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-identifier">int</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span><span class="ruby-operator">::</span><span class="ruby-constant">Integer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>, <span class="ruby-value">0</span>, :<span class="ruby-constant">EXPLICIT</span>) <span class="ruby-comment"># explicit 0-tagged</span>
+<span class="ruby-identifier">seq</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span><span class="ruby-operator">::</span><span class="ruby-constant">Sequence</span>.<span class="ruby-identifier">new</span>( [<span class="ruby-identifier">int</span>] )
+<span class="ruby-identifier">der</span> = <span class="ruby-identifier">seq</span>.<span class="ruby-identifier">to_der</span>
+<span class="ruby-identifier">asn1</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1</span>.<span class="ruby-identifier">decode</span>(<span class="ruby-identifier">der</span>)
+<span class="ruby-comment"># pp asn1 =&gt; #&lt;OpenSSL::ASN1::Sequence:0x87326e0</span>
+<span class="ruby-comment">#              @infinite_length=false,</span>
+<span class="ruby-comment">#              @tag=16,</span>
+<span class="ruby-comment">#              @tag_class=:UNIVERSAL,</span>
+<span class="ruby-comment">#              @tagging=nil,</span>
+<span class="ruby-comment">#              @value=</span>
+<span class="ruby-comment">#                [#&lt;OpenSSL::ASN1::ASN1Data:0x87326f4</span>
+<span class="ruby-comment">#                   @infinite_length=false,</span>
+<span class="ruby-comment">#                   @tag=0,</span>
+<span class="ruby-comment">#                   @tag_class=:CONTEXT_SPECIFIC,</span>
+<span class="ruby-comment">#                   @value=</span>
+<span class="ruby-comment">#                     [#&lt;OpenSSL::ASN1::Integer:0x85bf308</span>
+<span class="ruby-comment">#                        @infinite_length=false,</span>
+<span class="ruby-comment">#                        @tag=2,</span>
+<span class="ruby-comment">#                        @tag_class=:UNIVERSAL</span>
+<span class="ruby-comment">#                        @tagging=nil,</span>
+<span class="ruby-comment">#                        @value=1&gt;]&gt;]&gt;</span>
+<span class="ruby-identifier">int2</span> = <span class="ruby-identifier">asn1</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>]
+<span class="ruby-identifier">puts</span> <span class="ruby-identifier">int2</span>.<span class="ruby-identifier">value</span> <span class="ruby-comment"># =&gt; 1</span>
+</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="infinite_length-attribute-method" class="method-detail">
+          <a name="infinite_length"></a>
+          
+          <a name="infinite_length="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">infinite_length</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Never <code>nil</code>. A <code>Boolean</code> indicating whether the
+encoding was infinite length (in the case of parsing) or whether an
+infinite length encoding shall be used (in the encoding case). In DER,
+every value has a finite length associated with it. But in scenarios where
+large amounts of data need to be transferred it might be desirable to have
+some kind of streaming support available. For example, huge OCTET STRINGs
+are preferably sent in smaller-sized chunks, each at a time. This is
+possible in BER by setting the length bytes of an encoding to zero and by
+this indicating that the following value will be sent in chunks. Infinite
+length encodings are always constructed. The end of such a stream of chunks
+is indicated by sending a EOC (End of Content) tag. SETs and SEQUENCEs may
+use an infinite length encoding, but also primitive types such as e.g.
+OCTET STRINGS or BIT STRINGS may leverage this functionality (cf. ITU-T
+X.690).</p>
+          
+          </div>
+        </div>
+        
+        <div id="tag-attribute-method" class="method-detail">
+          <a name="tag"></a>
+          
+          <a name="tag="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tag</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A <code>Number</code> representing the tag number of this <a
+href="ASN1Data.html">ASN1Data</a>. Never <code>nil</code>.</p>
+          
+          </div>
+        </div>
+        
+        <div id="tag_class-attribute-method" class="method-detail">
+          <a name="tag_class"></a>
+          
+          <a name="tag_class="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">tag_class</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>A <code>Symbol</code> representing the tag class of this <a
+href="ASN1Data.html">ASN1Data</a>. Never <code>nil</code>. See <a
+href="ASN1Data.html">ASN1Data</a> for possible values.</p>
+          
+          </div>
+        </div>
+        
+        <div id="value-attribute-method" class="method-detail">
+          <a name="value"></a>
+          
+          <a name="value="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">value</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description 245">
+          
+          <p>Carries the value of a ASN.1 type. Please confer <a
+href="Constructive.html">Constructive</a> and <a
+href="Primitive.html">Primitive</a> for the mappings between ASN.1 data
+types and Ruby classes.</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">OpenSSL::ASN1::ASN1Data.new(value, tag, tag_class) => ASN1Data</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p><code>value</code>: Please have a look at <a
+href="Constructive.html">Constructive</a> and <a
+href="Primitive.html">Primitive</a> to see how Ruby types are mapped to
+ASN.1 types and vice versa.</p>
+
+<p><code>tag</code>: A <code>Number</code> indicating the tag number.</p>
+
+<p><code>tag_class</code>: A <code>Symbol</code> indicating the tag class.
+Please cf. <a href="../ASN1.html">ASN1</a> for possible values.</p>
+
+<h2 id="method-c-new-label-Example">Example<span><a href="#method-c-new-label-Example">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-identifier">asn1_int</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1Data</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">42</span>, <span class="ruby-value">2</span>, :<span class="ruby-constant">UNIVERSAL</span>) <span class="ruby-comment"># =&gt; Same as OpenSSL::ASN1::Integer.new(42)</span>
+<span class="ruby-identifier">tagged_int</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">ASN1Data</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">42</span>, <span class="ruby-value">0</span>, :<span class="ruby-constant">CONTEXT_SPECIFIC</span>) <span class="ruby-comment"># implicitly 0-tagged INTEGER</span>
+</pre>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+ossl_asn1data_initialize(VALUE self, VALUE value, VALUE tag, VALUE tag_class)
+{
+    if(!SYMBOL_P(tag_class))
+        ossl_raise(eASN1Error, &quot;invalid tag class&quot;);
+    if((SYM2ID(tag_class) == sUNIVERSAL) &amp;&amp; NUM2INT(tag) &gt; 31)
+        ossl_raise(eASN1Error, &quot;tag number for Universal too large&quot;);
+    ossl_asn1_set_tag(self, tag);
+    ossl_asn1_set_value(self, value);
+    ossl_asn1_set_tag_class(self, tag_class);
+    ossl_asn1_set_infinite_length(self, Qfalse);
+
+    return self;
+}
+            </pre> 
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="to_der-method" class="method-detail ">
+          <a name="method-i-to_der"></a>
+
+          
+          
+          <div class="method-heading">
+            <span class="method-callseq">to_der => DER-encoded String</span>
+            
+            <span class="method-click-advice">click to toggle source</span>
+            
+          </div>
+          
+          
+          <div>
+  
+            
+            <p>Encodes this <a href="ASN1Data.html">ASN1Data</a> into a DER-encoded String
+value. The result is DER-encoded except for the possibility of infinite
+length encodings. Infinite length encodings are not allowed in strict DER,
+so strictly speaking the result of such an encoding would be a
+BER-encoding.</p>
+            
+
+            
+            <div class="method-source-code" id="to_der-source">
+              <pre> <!-- method.markup_code 290 -->
+               static VALUE
+ossl_asn1data_to_der(VALUE self)
+{
+    VALUE value, der, inf_length;
+    int tag, tag_class, is_cons = 0;
+    long length;
+    unsigned char *p;
+
+    value = ossl_asn1_get_value(self);
+    if(rb_obj_is_kind_of(value, rb_cArray)){
+        is_cons = 1;
+        value = join_der(value);
+    }
+    StringValue(value);
+
+    tag = ossl_asn1_tag(self);
+    tag_class = ossl_asn1_tag_class(self);
+    inf_length = ossl_asn1_get_infinite_length(self);
+    if (inf_length == Qtrue) {
+        is_cons = 2;
+    }
+    if((length = ossl_asn1_object_size(is_cons, RSTRING_LENINT(value), tag)) &lt;= 0)
+        ossl_raise(eASN1Error, NULL);
+    der = rb_str_new(0, length);
+    p = (unsigned char *)RSTRING_PTR(der);
+    ossl_asn1_put_object(&amp;p, is_cons, RSTRING_LENINT(value), tag, tag_class);
+    memcpy(p, RSTRING_PTR(value), RSTRING_LEN(value));
+    p += RSTRING_LEN(value);
+    ossl_str_adjust(der, p);
+
+    return der;
+}
+            </pre> 
+            </div><!-- to_der-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- to_der-method -->
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+  <div id='tx_ASN1Data_versioned' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_ASN1Data_versioned").load("/associated/2_2_0/ASN1Data.html");</script> <div id='tx_ASN1Data' class='associated_wrapper'></div><script type='text/javascript'>$("#tx_ASN1Data").load("/associated/ASN1Data.html");</script> 
+      
+  </div><!-- documentation -->
+  <div id='dynamic'>
+  </div>
+      
+<div class='grids wrapper' id="footer">
+  <p><small>This page was generated for Ruby 2_2_0</small></p> 
+  
+   <p><a href="http://www.ruby-doc.org">Ruby-doc.org</a> is a service of <a href="http://www.jamesbritt.com">James Britt</a> and <a href="http://www.neurogami.com">Neurogami</a>, an <a href="http://www.neurogami.com">application development company in Scottsdale, AZ</a>.</p>
+ 
+    <p><small>Generated with Ruby-doc Rdoc Generator 0.32.0</small>.</p>
+  </div>
+</div>
+  
+ <script type='text/javascript'>
+$(document).ready(function() {
+      $.ajaxSetup({ cache: false });
+      $("#vulns-alert").load("/associated/vulns.html");
+    });
+
+    </script>
+
+
+ 
+		<script type='text/javascript'>
+
+	function loadPlus(plusdocs){
+		var img_h = $("img.carbonad-image").css('height');
+		//if(img_h != undefined) { //---
+			$(plusdocs).find("div[class='associated_wrapper']").each (function() {
+					$("#" + this.id).append($(plusdocs).find("#" + this.id ));
+					});
+		//} // ---
+	} // end loadPlusdocs
+
+
+$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+			$.get('/associated/2_2_0/plus_ASN1Data.html', 
+			function(plusdocs) {
+			setTimeout(function() {
+				loadPlus(plusdocs);
+				}, 2000);
+			}
+			);
+		});
+</script>
+		
+</body>
+</html>
+
+
